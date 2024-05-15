@@ -1,0 +1,14 @@
+[general]
+name = GeoBasis_Loader
+email = news@geoobserver.de
+author = Mike Elstermann (#geoObserver), Anton May
+qgisMinimumVersion = 3.0
+description = GeoBasis_Loader (Open Data GeoBasisdaten)
+about = Das Plugin vereinfacht das Finden und Einfügen ausgewählter WMS-/WFS-Dienste aus den Open Data Portalen der Landesvermessungsämter sowie von Hintergrundkarten (OSM, Basemap.de) zum aktuellen View. Ziel ist es, eine deutschlandweite Sammlung der GeoBasisdaten mit aktuellen Links anzubieten. Mehr Informationen zum GeoBasis_Loader inkl. Status und Versionshistorie auf <a href="https://geoobserver.de/geobasis_loader/">geoObserver.de</a></br></br>
+version = 0.1
+changelog = 0.1 ... Initiale Version inkl. Daten für BB, SN, ST, TH
+icon =GeoBasis _Loader_icon.png
+tracker = https://github.com/geoObserver/geobasis_loader/issues/
+repository = https://github.com/geoObserver/geobasis_loader/
+homepage = https://geoobserver.de/qgis-plugin-geobasis-loader/
+category = Plugins
