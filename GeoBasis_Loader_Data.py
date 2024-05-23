@@ -68,6 +68,22 @@ services = {
         "seperator": True,
         "opacity": 0.75,
       },
+      "flustuecke_wfs":{
+        "name":"BE: ALKIS Flurstücke (WFS)",
+        "uri":"pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:25833' typename='fis:s_wfs_alkis' url='https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_wfs_alkis' version='auto'",
+        "type": "wfs",
+        "opacity": 0.75,
+        "fillColor": "transparent",
+      },
+      "gebaeude_wfs":{
+        "name":"BE: ALKIS Gebäude (WFS)",
+        "uri":"pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:25833' typename='fis:s_wfs_alkis_gebaeudeflaechen' url='https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_wfs_alkis_gebaeudeflaechen' version='auto'",
+        "seperator": True,
+        "type": "wfs",
+        "opacity": 0.75,
+        "fillColor": (220,220,220),
+        "strokeWidth": 0.1
+      },
       "tk_farbig_layergroup":{
         "name":"BE: Topograf. Karten farbig (WMS)",
         "layers": {
