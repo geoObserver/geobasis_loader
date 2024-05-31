@@ -22,7 +22,7 @@ services = {
     'bundeslandname': 'Deutschland',
     'themen': {
       'osm': {
-        'name': 'DE: OpenStreetMap (XYZ)',
+        'name': 'OSM: OpenStreetMap (XYZ)',
         'uri': '&type=xyz&url=https://tile.openstreetmap.org/{z}/{x}/{y}.png&zmax=19&zmin=0',
         'seperator': True,
       },
@@ -35,7 +35,18 @@ services = {
         'uri': f'crs=EPSG:3857&{defaultWMSSettings}layers=de_basemapde_web_raster_farbe&styles&url=https://sgx.geodatenzentrum.de/wms_basemapde?',
         'seperator': True,
       },
-      'verwaltung': {
+        'grau-wfs': {
+            'name': 'DE: basemap.de grau (WFS)', 
+            'uri': '&type=xyz&styleUrl=https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/styles/bm_web_gry.json&zmin=0&zmax=20&url=https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/tiles/v1/bm_web_de_3857/{z}/{x}/{y}.pbf',
+            'type': "vectorTiles"
+        },
+        'farbig-wfs': {
+            'name': 'DE: basemap.de farbig (WFS)',
+            'uri': '&type=xyz&styleUrl=https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/styles/bm_web_col.json&zmin=0&zmax=20&url=https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/tiles/v1/bm_web_de_3857/{z}/{x}/{y}.pbf',
+            'type': "vectorTiles",
+            'seperator': True,
+        },
+         'verwaltung': {
         'name': 'DE: Verwaltungsgebiete 1:2 500 000 (WMS)',
         'uri': f'crs=EPSG:25832&{defaultWMSSettings}layers=vg2500_lan&styles&url=https://sgx.geodatenzentrum.de/wms_vg2500',
         'opacity': 0.75,
@@ -158,6 +169,29 @@ services = {
       }
     }
   },
+  'by': {   # ----------- bayern -------------------------------------------------------------------------
+    'bundeslandname': 'Bayern',
+    'themen': {
+      "webkarte_farbig":{
+        "name":"BY: Webkarte farbig (WMTS)",
+        "uri": f"{utm32}{defaultWMSSettings}layers=by_webkarte&styles=default&tileMatrixSet=adv_utm32&url=https://geoservices.bayern.de/od/wmts/geobasis/v1/1.0.0/WMTSCapabilities.xml",
+      },
+      "webkarte_grau":{
+        "name":"BY: Webkarte grau (WMTS)",
+        "uri": f"{utm32}{defaultWMSSettings}layers=by_webkarte_grau&styles=default&tileMatrixSet=adv_utm32&url=https://geoservices.bayern.de/od/wmts/geobasis/v1/1.0.0/WMTSCapabilities.xml",
+        "seperator": True,
+      },
+      "TK":{
+        "name":"BY: Topograf. Karte (WMTS)",
+        "uri": f"{utm32}{defaultWMSSettings}layers=by_amtl_karte&styles=default&tileMatrixSet=adv_utm32&url=https://geoservices.bayern.de/od/wmts/geobasis/v1/1.0.0/WMTSCapabilities.xml",
+        "seperator": True,
+      },
+      "dop20":{
+        "name":"BY: Digitale Orthophotos - DOP30 (WMS)",
+        "uri": f"{utm32}{defaultWMSSettings}format=image/jpeg&layers=by_dop&styles=default&tileMatrixSet=adv_utm32&url=https://geoservices.bayern.de/od/wmts/geobasis/v1/1.0.0/WMTSCapabilities.xml",
+      }
+    }
+  },
   'bb': {   # ----------- brandenburg -------------------------------------------------------------------------
     'bundeslandname': 'Brandenburg',
     'themen': {
@@ -204,6 +238,22 @@ services = {
         "uri": f"{utm32}{defaultWMSSettings}layers=bbv_pg_zobau_2024&styles&url=https://isk.geobasis-bb.de/ows/brw_wms",
         "seperator": True,
         "opacity": 0.75,
+      },
+      "flustuecke_wfs":{
+        "name":"BB: ALKIS Flurstücke (WFS)",
+        "uri":"pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:25833' typename='ave:Flurstueck' url='https://isk.geobasis-bb.de/ows/alkis_vereinf_wfs' version='auto'",
+        "type": "wfs",
+        "opacity": 0.75,
+        "fillColor": "transparent",
+      },
+      "gebaeude_wfs":{
+        "name":"BB: ALKIS Gebäude (WFS)",
+        "uri":"pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:25833' typename='ave:GebaeudeBauwerk' url='https://isk.geobasis-bb.de/ows/alkis_vereinf_wfs' version='auto'",
+        "seperator": True,
+        "type": "wfs",
+        "opacity": 0.75,
+        "fillColor": (220,220,220),
+        "strokeWidth": 0.1
       },
       "tk_farbig_layergroup":{
         "name":"BB: Topograf. Karten farbig (WMS)",
@@ -276,6 +326,96 @@ services = {
         "name":"BB: Digitale Orthophotos - DOP20 (WMS)",
         "uri": f"{utm32}{defaultWMSSettings}layers=bebb_dop20c&styles&url=https://isk.geobasis-bb.de/mapproxy/dop20c/service/wms",
         "seperator": True,
+      }
+    }
+  },
+  'hb': {   # ----------- bremen -------------------------------------------------------------------------
+    'bundeslandname': 'Bremen',
+    'themen': {
+      "dop20hb":{
+        "name":"HB: Digitale Orthophotos - DOP20 (WMS)",
+        "uri": f"{utm32}{defaultWMSSettings}layers=DOP20_2023_HB&styles&url=https://geodienste.bremen.de/wms_dop20_2023?VERSION%3D1.3.0",
+      },
+      "dop20bhv":{
+        "name":"BHV: Digitale Orthophotos - DOP20 (WMS)",
+        "uri": f"{utm32}{defaultWMSSettings}layers=DOP20_2023_BHV&styles&url=https://geodienste.bremen.de/wms_dop20_2023?VERSION%3D1.3.0",
+      }
+    }
+  },
+  'he': {   # ----------- hessen -------------------------------------------------------------------------
+    'bundeslandname': 'Hessen',
+    'themen': {
+      "flurstuecke":{
+        "name":"HE: ALKIS Flurstücke, Gebäude, Nutzung (WMS)",
+        "uri": f"{utm32}{defaultWMSSettings}layers=he_alk&styles&url=https://www.geoportal.hessen.de/mapbender/php/wms.php?inspire%3D1%26layer_id%3D52063%26withChilds%3D1",
+        "seperator": True,
+      },
+      "bodenrichtwerte":{
+        "name":"HE: Bodenrichtwerte Bauland 2024 (WMS)",
+        "uri": f"{utm32}{defaultWMSSettings}url=https://www.gds-srv.hessen.de/cgi-bin/lika-services/ogc-free-maps.ows?language%3Dger%26VERSION%3D1.3.0&layers=hboris_feature&layers=hboris_label&styles=&styles=",
+        "seperator": True,
+        "opacity": 0.75,
+      },
+      "flustuecke_wfs":{
+        "name":"HE: ALKIS Flurstücke (WFS)",
+        "uri":"pageSize='10000' pagingEnabled='disabled' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:25832' typename='ave:Flurstueck' url='https://www.gds.hessen.de/wfs2/aaa-suite/cgi-bin/alkis/vereinf/wfs' version='1.0.0'",
+        "type": "wfs",
+        "opacity": 0.75,
+        "fillColor": "transparent",
+      },
+      "gebaeude_wfs":{
+        "name":"HE: ALKIS Gebäude (WFS)",
+        "uri":"pageSize='10000' pagingEnabled='disabled' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:25832' typename='ave:GebaeudeBauwerk' url='https://www.gds.hessen.de/wfs2/aaa-suite/cgi-bin/alkis/vereinf/wfs' version='1.0.0'",
+        "seperator": True,
+        "type": "wfs",
+        "opacity": 0.75,
+        "fillColor": (220,220,220),
+        "strokeWidth": 0.1
+      },
+      "tk_farbig_layergroup":{
+        "name":"HE: Topograf. Karten farbig (WMS)",
+        "layers": {
+#          "tk_10_farbig": {
+#            "name":"HE: TK 10 farbig (WMS)",
+#            "uri": f"{utm32}{defaultWMSSettings}layers=he_dtk&styles&url=https://www.geoportal.hessen.de/mapbender/php/wms.php?inspire%3D1%26layer_id%3D52113%26withChilds%3D1",
+#            "opacity": 0.75,
+#            "minScale": 17500.0,
+#            "maxScale": 1
+#          },
+          "tk_25_farbig":{
+            "name":"HE: TK 25 farbig (WMS)",
+            "uri": f"{utm32}{defaultWMSSettings}layers=he_dtk25&styles&url=https://www.geoportal.hessen.de/mapbender/php/wms.php?inspire%3D1%26layer_id%3D52068%26withChilds%3D1",
+            "opacity": 0.75,
+            "minScale": 37500.0,
+            "maxScale": 1.0
+          },
+          "tk_50_farbig":{
+            "name":"HE: TK 50 farbig (WMS)",
+            "uri": f"{utm32}{defaultWMSSettings}layers=he_dtk50&styles&url=https://www.geoportal.hessen.de/mapbender/php/wms.php?inspire%3D1%26layer_id%3D52085%26withChilds%3D1",
+            "opacity": 0.75,
+            "minScale": 75000.0,
+            "maxScale": 37500.0
+          },
+          "tk_100_farbig":{
+            "name":"HE: TK 100 farbig (WMS)",
+            "uri": f"{utm32}{defaultWMSSettings}layers=he_dtk100&styles&url=https://www.geoportal.hessen.de/mapbender/php/wms.php?inspire%3D1%26layer_id%3D52092%26withChilds%3D1",
+            "opacity": 0.75,
+            "minScale": 500000.0,
+            "maxScale": 75000.0
+          },
+        },
+      },
+      "pg_4_100":{
+        "name":"HE: Präsentationsgrafik - PG4 ... PG100 (WMS)",
+        "uri": f"{utm32}{defaultWMSSettings}url=https://www.gds-srv.hessen.de/cgi-bin/lika-services/ogc-free-maps.ows?language%3Dger%26VERSION%3D1.3.0&layers=he_pg4&layers=he_pg10&layers=he_pg100&layers=he_pg50&layers=he_pg25&styles=&styles=&styles=&styles=&styles=",
+        "seperator": True,
+      },
+      "dop20":{
+        "name":"HE: Digitale Orthophotos - DOP20 (WMS)",
+        "uri": f"{utm32}{defaultWMSSettings}layers=he_dop_rgb&styles&url=https://www.geoportal.hessen.de/mapbender/php/wms.php?inspire%3D1%26layer_id%3D52123%26withChilds%3D1",
+        #"minScale": 25000.0,
+        #"maxScale": 1.0,
+        "seperator": True
       }
     }
   },
@@ -384,6 +524,15 @@ services = {
       "dop10":{
         "name":"MV: Digitale Orthophotos - DOP10 (WMS)",
         "uri": f"{utm32}{defaultWMSSettings}layers=mv_dop&styles=palette_rgb&url=https://www.geodaten-mv.de/dienste/adv_dop",
+      },
+    }
+  },
+  'ni': {   # ----------- niedersachsen -------------------------------------------------------------------------
+    'bundeslandname': 'Niedersachsen',
+    'themen': {
+      "dop20":{
+        "name":"NI: Digitale Orthophotos - DOP20 (WMS)",
+        "uri": f"{utm32}{defaultWMSSettings}layers=dop20&styles&url=https://www.geobasisdaten.niedersachsen.de/doorman/noauth/wms_ni_dop",
       },
     }
   },
@@ -523,6 +672,99 @@ services = {
       }
     }
   },
+  'rp': {   # ----------- Rheinland-Pfalz -------------------------------------------------------------------------
+    'bundeslandname': 'Rheinland-Pfalz',
+    'themen': {
+      "flurstuecke":{
+        "name":"RP: ALKIS Flurstücke (WMS)",
+        "uri": f"{utm32}{defaultWMSSettings}layers=Flurstueck&styles&url=https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id%3D61680%26withChilds%3D1%26VERSION%3D1.1.1",
+      },
+      "gebaeude":{
+        "name":"RP: ALKIS Gebäude (WMS)",
+        "uri": f"{utm32}{defaultWMSSettings}layers=GebaeudeBauwerke&styles&url=https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id%3D61680%26withChilds%3D1%26VERSION%3D1.1.1",
+      },
+      "nutzung":{
+        "name":"RP: ALKIS Tatsächliche Nutzung (WMS)",
+        "uri": f"{utm32}{defaultWMSSettings}layers=Nutzung&styles&url=https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id%3D61680%26withChilds%3D1%26VERSION%3D1.1.1",
+      },      
+      "alkis_alles": {
+        "name": "RP: ▶︎ ALKIS Flurstücke, Gebäude, Nutzung (WMS)",
+        "layers": ["nutzung", "flurstuecke", "gebaeude"],
+        "seperator": True,
+      },
+      "tk_farbig_layergroup":{
+        "name":"RP: Topograf. Karten farbig (WMS)",
+        "layers": {
+          "tk_10_farbig": {
+            "name":"RP: TK 5 farbig (WMS)",
+            "uri": f"{utm32}{defaultWMSSettings}layers=rp_dtk5&styles&url=https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id%3D24142%26VERSION%3D1.1.1%26withChilds%3D1",
+            "opacity": 0.75,
+            "minScale": 17500.0,
+            "maxScale": 1
+          },
+          "tk_25_farbig":{
+            "name":"RP: TK 25 farbig (WMS)",
+            "uri": f"{utm32}{defaultWMSSettings}layers=rp_dtk25&styles&url=https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id%3D61671%26VERSION%3D1.1.1%26withChilds%3D1",
+            "opacity": 0.75,
+            "minScale": 37500.0,
+            "maxScale": 17500.0
+          },
+          "tk_50_farbig":{
+            "name":"RP: TK 50 farbig (WMS)",
+            "uri": f"{utm32}{defaultWMSSettings}layers=rp_dtk50&styles&url=https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id%3D61696%26VERSION%3D1.1.1%26withChilds%3D1",
+            "opacity": 0.75,
+            "minScale": 75000.0,
+            "maxScale": 37500.0
+          },
+          "tk_100_farbig":{
+            "name":"RP: TK 100 farbig (WMS)",
+            "uri": f"{utm32}{defaultWMSSettings}layers=rp_dtk100&styles&url=https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id%3D61694%26VERSION%3D1.1.1%26withChilds%3D1",
+            "opacity": 0.75,
+            "minScale": 500000.0,
+            "maxScale": 75000.0
+          },
+        },
+      },
+      "tk_grau_layergroup":{
+        "name":"RP: Topograf. Karten grau/sw (WMS)",
+        "layers": {
+          "tk_10_grau": {
+            "name":"RP: TK 5 grau (WMS)",
+            "uri": f"{utm32}{defaultWMSSettings}layers=rp_dtk5_grau&styles&url=https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id%3D24142%26VERSION%3D1.1.1%26withChilds%3D1",
+            "opacity": 0.75,
+            "minScale": 17500.0,
+            "maxScale": 1
+          },
+          "tk_25_grau":{
+            "name":"RP: TK 25 grau (WMS)",
+            "uri": f"{utm32}{defaultWMSSettings}layers=rp_dtk25_grau&styles&url=https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id%3D61671%26VERSION%3D1.1.1%26withChilds%3D1",
+            "opacity": 0.75,
+            "minScale": 37500.0,
+            "maxScale": 17500.0
+          },
+          "tk_50_grau":{
+            "name":"RP: TK 50 grau (WMS)",
+            "uri": f"{utm32}{defaultWMSSettings}layers=rp_dtk50_grau&styles&url=https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id%3D61696%26VERSION%3D1.1.1%26withChilds%3D1",
+            "opacity": 0.75,
+            "minScale": 75000.0,
+            "maxScale": 37500.0
+          },
+          "tk_100_grau":{
+            "name":"RP: TK 100 grau (WMS)",
+            "uri": f"{utm32}{defaultWMSSettings}layers=rp_dtk100_grau&styles&url=https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id%3D61694%26VERSION%3D1.1.1%26withChilds%3D1",
+            "opacity": 0.75,
+            "minScale": 500000.0,
+            "maxScale": 75000.0
+          },
+        },
+        "seperator": True,
+      },
+      "dop40":{
+        "name":"RP: Digitale Orthophotos - DOP40 (WMS)",
+        "uri": f"{utm32}{defaultWMSSettings}layers=rp_dop40&styles&url=https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id%3D61675%26VERSION%3D1.1.1%26withChilds%3D1",
+      }
+    }
+  },
   'sn': {   # ----------- sachsen -------------------------------------------------------------------------
     'bundeslandname': 'Sachsen',
     'themen': {
@@ -569,6 +811,22 @@ services = {
         "uri": f"{utm32}{defaultWMSSettings}&layers=brw_akt&styles&url=https://www.landesvermessung.sachsen.de/fp/http-proxy/svc?cfg%3Dboris",
         "seperator": True,
         "opacity": 0.75,
+      },
+      "flustuecke_wfs":{
+        "name":"SN: ALKIS Flurstücke (WFS)",
+        "uri":"pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:25833' typename='ave:Flurstueck' url='https://geodienste.sachsen.de/aaa/public_alkis/vereinf/wfs' url='https://geodienste.sachsen.de/aaa/public_alkis/vereinf/wfs?VERSION=1.1.0' version='auto'",
+        "type": "wfs",
+        "opacity": 0.75,
+        "fillColor": "transparent",
+      },
+      "gebaeude_wfs":{
+        "name":"SN: ALKIS Gebäude (WFS)",
+        "uri":"pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:25833' typename='ave:GebaeudeBauwerk' url='https://geodienste.sachsen.de/aaa/public_alkis/vereinf/wfs' url='https://geodienste.sachsen.de/aaa/public_alkis/vereinf/wfs?VERSION=1.1.0' version='auto'",
+        "seperator": True,
+        "type": "wfs",
+        "opacity": 0.75,
+        "fillColor": (220,220,220),
+        "strokeWidth": 0.1
       },
       "dtk farbe":{
         "name":"SN: Topograf. Karten farbig (WMS)",
@@ -755,6 +1013,14 @@ services = {
         "name":"SH: ALKIS Flurstücke, Gebäude, Nutzung (WMS)",
         "uri": f"{utm32}{defaultWMSSettings}layers=SH_ALKIS&styles&url=https://service.gdi-sh.de/WMS_SH_ALKIS_OpenGBD",
         "seperator": True,
+      },
+      "flurstuecke_wfs":{
+        "name":"SH: ALKIS Flurstücke (WFS)",
+        "uri":"pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:25833' typename='cp:CadastralParcel' url='https://service.gdi-sh.de/SH_INSPIREDOWNLOAD_AI_CP_ALKIS' url='https://service.gdi-sh.de/SH_INSPIREDOWNLOAD_AI_CP_ALKIS?version=2.0.0' version='auto'",
+        "seperator": True,
+        "type": "wfs",
+        "opacity": 0.75,
+        "fillColor": "transparent",
       },
       "tk_farbig_layergroup":{
         "name":"SH: Topograf. Karten farbig (WMS)",

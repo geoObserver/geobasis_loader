@@ -8,7 +8,7 @@ from qgis.utils import *
 from . import GeoBasis_Loader_Data
 
 class GeoBasis_Loader:
-    version = u'0.3'
+    version = u'0.5'
     myPlugin = u'GeoBasis Loader'
     myPluginGB = myPlugin + u' >>>>>'
     myPluginV = myPlugin + u' (v' + version + ')'
@@ -98,13 +98,19 @@ class GeoBasis_Loader:
         opacity = attributes["opacity"] if "opacity" in attributes else 1
         maxScale = attributes["maxScale"] if "maxScale" in attributes else NULL
         minScale = attributes["minScale"] if "minScale" in attributes else NULL
-        
+
         fillColor = attributes["fillColor"] if "fillColor" in attributes else (220,220,220)
         strokeColor = attributes["strokeColor"] if "strokeColor" in attributes else "black"
         strokeWidth = attributes["strokeWidth"] if "strokeWidth" in attributes else 0.3
         
-        print(attributes['uri'])
-        layer = QgsRasterLayer(attributes['uri'], attributes['name'], 'wms') if layerType == 'wms' else QgsVectorLayer(attributes['uri'], attributes['name'], 'WFS')
+        if layerType == "wfs":
+            layer = QgsVectorLayer(attributes['uri'], attributes['name'], 'WFS')
+        elif layerType == "vectorTiles":
+            layer = QgsVectorTileLayer(attributes['uri'], attributes['name'])
+            layer.loadDefaultStyle()
+        else:
+            layer = QgsRasterLayer(attributes['uri'], attributes['name'], 'wms')
+
         if not layer.isValid():
             iface.messageBar().pushCritical(self.myPluginV, self.myCritical_1 + attributes['name'] + self.myCritical_2)
             return;
@@ -124,10 +130,10 @@ class GeoBasis_Loader:
             layer.setScaleBasedVisibility(True)
                 
         if layerType == 'wfs':
-            color = (0x1000 * fillColor[0] + 0x100 * fillColor[1] + fillColor[2]) if type(fillColor) == tuple else fillColor
-            layer.renderer().symbol().setColor(QColor(color))
-            color = (0x1000 * strokeColor[0] + 0x100 * strokeColor[1] + strokeColor[2]) if type(strokeColor) == tuple else strokeColor
-            layer.renderer().symbol().symbolLayer(0).setStrokeColor(QColor(color))
+            color = QColor(int(fillColor[0]), int(fillColor[1]), int(fillColor[2])) if type(fillColor) == tuple else QColor(fillColor)
+            layer.renderer().symbol().setColor(color)
+            color = QColor(int(strokeColor[0]), int(strokeColor[1]), int(strokeColor[2])) if type(strokeColor) == tuple else QColor(strokeColor)
+            layer.renderer().symbol().symbolLayer(0).setStrokeColor(color)
             layer.renderer().symbol().symbolLayer(0).setStrokeWidth(strokeWidth)
             
             layer.triggerRepaint()
