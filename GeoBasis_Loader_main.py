@@ -1,4 +1,5 @@
 from functools import partial
+from typing import Dict
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import QUrl
@@ -26,6 +27,7 @@ class GeoBasis_Loader:
         self.mainMenu = QMenu(self.myPluginV)
         self.mainMenu.setIcon(icon)
         self.iface.pluginMenu().addMenu(self.mainMenu)
+
     
     def initGui(self):
         # ------- Menübaum bauen und einfügen ------------------------
