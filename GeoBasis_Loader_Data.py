@@ -342,6 +342,90 @@ services = {
       }
     }
   },
+  'hh': {   # ----------- hamburg -------------------------------------------------------------------------
+    'bundeslandname': 'Hamburg',
+    'themen': {
+      "flurstuecke":{
+        "name":"HH: ALKIS Flurstücke (WMS)",
+        "uri": f"{utm32}{defaultWMSSettings}&url=https://geodienste.hamburg.de/HH_WMS_ALKIS_Basiskarte&layers=19&layers=21&layers=24&layers=30&layers=36&styles=&styles=&styles=&styles=&styles="
+      },
+      "gebaeude":{
+        "name":"HH: ALKIS Gebäude (WMS)",
+        "uri": f"{utm32}{defaultWMSSettings}&url=https://geodienste.hamburg.de/HH_WMS_ALKIS_Basiskarte&layers=14&layers=15&layers=8&layers=29&layers=35&layers=26&layers=27&layers=32&layers=33&layers=34&layers=28&styles=&styles=&styles=&styles=&styles=&styles=&styles=&styles=&styles=&styles=&styles=",
+      },
+      "nutzung":{
+        "name":"HH: ALKIS Tatsächliche Nutzung (WMS)",
+        "uri": f"{utm32}{defaultWMSSettings}&url=https://geodienste.hamburg.de/HH_WMS_ALKIS_Basiskarte&layers=0&layers=1&layers=4&layers=6&styles=&styles=&styles=&styles=",
+      },
+      "alkis_alles": {
+        "name": "HH: ▶︎ ALKIS Flurstücke, Gebäude, Nutzung (WMS)",
+        "layers": ["nutzung", "flurstuecke", "gebaeude"],
+        "seperator": True,
+      },
+      "brw_layergroup":{
+        "name":"HH: Bodenrichtwerte (WMS)",
+        "layers": {
+          "brw_1": {
+            "name":"HH: BRW Einfamilienhäuser (WMS)",
+            "uri": f"{utm32}{defaultWMSSettings}layers=brw_uek_efh&styles&url=https://geodienste.hamburg.de/HH_WMS_UEKnormierteBodenrichtwerte",
+            "opacity": 0.75
+          },
+          "brw_2": {
+            "name":"HH: BRW Mehfamilienhäuser (WMS)",
+            "uri": f"{utm32}{defaultWMSSettings}layers=brw_uek_mfh&styles&url=https://geodienste.hamburg.de/HH_WMS_UEKnormierteBodenrichtwerte",
+            "opacity": 0.75
+          },
+          "brw_3": {
+            "name":"HH: BRW Läden (WMS)",
+            "uri": f"{utm32}{defaultWMSSettings}layers=brw_uek_gh&styles&url=https://geodienste.hamburg.de/HH_WMS_UEKnormierteBodenrichtwerte",
+            "opacity": 0.75
+          },
+          "brw_4": {
+            "name":"HH: BRW Bürohäuser (WMS)",
+            "uri": f"{utm32}{defaultWMSSettings}layers=brw_uek_bh&styles&url=https://geodienste.hamburg.de/HH_WMS_UEKnormierteBodenrichtwerte",
+            "opacity": 0.75
+          },
+          "brw_5": {
+            "name":"HH: BRW Produktion und Logistik (WMS)",
+            "uri": f"{utm32}{defaultWMSSettings}layers=brw_uek_pl&styles&url=https://geodienste.hamburg.de/HH_WMS_UEKnormierteBodenrichtwerte",
+            "opacity": 0.75
+          },
+        },
+        "seperator": True
+      },
+      "flustuecke_wfs":{
+        "name":"HH: ALKIS Flurstücke (WFS)",
+        "uri":"pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:25832' typename='ave:Flurstueck' url='https://geodienste.hamburg.de/WFS_HH_ALKIS_vereinfacht' version='auto'",
+        "type": "wfs",
+        "opacity": 0.75,
+        "fillColor": "transparent",
+      },
+      "gebaeude_wfs":{
+        "name":"HH: ALKIS Gebäude (WFS)",
+        "uri":"pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:25832' typename='ave:GebaeudeBauwerk' url='https://geodienste.hamburg.de/WFS_HH_ALKIS_vereinfacht' version='auto'",
+        "seperator": True,
+        "type": "wfs",
+        "opacity": 0.75,
+        "fillColor": (220,220,220),
+        "strokeWidth": 0.1
+      },
+
+      "dk5":{
+        "name":"HH: Topograf. Karte farbig DK5 (WMS)",
+        "uri": f"{utm32}{defaultWMSSettings}&layers=DK5&styles&url=https://geodienste.hamburg.de/HH_WMS_DK5",
+        "seperator": True
+      },
+      "dop15":{
+        "name":"HH: Digitale Orthophotos - DOP15 (WMS)",
+        "uri": f"{utm32}{defaultWMSSettings}layers=dop_rgb_0_5000&styles&url=https://geodienste.hamburg.de/HH_WMS_DOP",
+      },
+      "dop100":{
+        "name":"HH: Digitale Orthophotos - DOP100(WMS)",
+        "uri": f"{utm32}{defaultWMSSettings}&layers=dop_rgb_downscale&styles&url=https://geodienste.hamburg.de/HH_WMS_DOP",
+        "seperator": True,
+      }
+    }
+  },
   'he': {   # ----------- hessen -------------------------------------------------------------------------
     'bundeslandname': 'Hessen',
     'themen': {
