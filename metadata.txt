@@ -10,7 +10,7 @@ changelog = 0.1 ... Initiale Version inkl. Daten für BB, SN, ST, TH
 	0.2 ... Code-Refactoring (generisch), zzgl. weitere Daten für BB, SN, TH, MV
 	0.3 ... FAQs, weitere Themen für BE, SH und NW sowie Ergänzung der WFS
 	0.4 ... Weitere Themen für HE, RLP, Vectortiles für Basemap.de, WFS für SN, BY reduziert, HB/BHV und NI nur DOP
-	0.5 ... ???
+	0.5 ... Weitere Themen für HH, Fix (Dict)
 icon =GeoBasis_Loader_icon.png
 tracker = https://github.com/geoObserver/geobasis_loader/issues/
 repository = https://github.com/geoObserver/geobasis_loader/
