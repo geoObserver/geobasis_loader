@@ -1,17 +1,16 @@
 from functools import partial
-import json
+import re
 from typing import Dict
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import QUrl
-from PyQt5.QtNetwork import QNetworkRequest, QNetworkReply
-#from PyQt5.QtWebKitWidgets import QWebView # type: ignore
+# from PyQt5.QtWebKitWidgets import QWebView # type: ignore
 from qgis.core import *
 from qgis.utils import *
 from .GeoBasis_Loader_Network import NetworkHandler
 
 class GeoBasis_Loader:
-    version = u'0.8_dev'
+    version = u'0.9_dev'
     myPlugin = u'GeoBasis Loader'
     myPluginGB = myPlugin + u' >>>>>'
     myPluginV = myPlugin + u' (v' + version + ')'
@@ -19,7 +18,7 @@ class GeoBasis_Loader:
     myCritical_2 = u', Dienst nicht verfügbar (URL?)'
     myInfo_1 = u'Layer '
     myInfo_2 = u' erfolgreich geladen.'
-    
+        
     plugin_dir = os.path.dirname(__file__)
     networkHandler = None
     services = None
@@ -37,8 +36,10 @@ class GeoBasis_Loader:
         self.iface.pluginMenu().addMenu(self.mainMenu)
         # self.fetchUrlJSON()       
         #self.iface.messageBar().pushMessage(self.myPluginV,f'Sollte Euch das Plugin gefallen,{"&nbsp;"}könnt Ihr es gern mit Eurer Mitarbeit,{"&nbsp;"}einem Voting und ggf.{"&nbsp;"}einem kleinen Betrag unterstützen ...{"&nbsp;"}Danke!!', 3, 8)
-        #self.iface.messageBar().pushMessage(self.myPluginV,u'Lese JSON: ' + self.networkHandler.getURL() + ' ...', 3, 8)
-
+        
+        url = self.networkHandler.getURL()
+        version = re.findall(r'\d+', url)[0]
+        self.iface.messageBar().pushMessage(self.myPluginV, u'Lese JSON-Steuerdatei: v' + version + ' ...', 3, 5)        
     
     def initGui(self):    
         if self.services is None:
@@ -49,16 +50,22 @@ class GeoBasis_Loader:
             menu = self.buildGUIOneState(self.services[state]['themen'], state)
             action = self.mainMenu.addAction(self.services[state]['bundeslandname'])
             action.setMenu(menu)
+            if state == 'de':
+                self.mainMenu.addSeparator()
         
-        # ------- Über-Schaltfläche für #geoObserver ------------------------
         self.mainMenu.addSeparator()
+        
+        # ------- Über-Schaltfläche für die JSON-Datei ------------------------
+        #self.mainMenu.addAction("Über...", partial(self.openWebSite, 'https://geoobserver.de/download/GeoBasis_Loader_JsonInfo_v1.php'))
+        
+        # # ------- Über-Schaltfläche für #geoObserver ------------------------
         self.mainMenu.addAction("Über ...", partial(self.openWebSite, 'https://geoobserver.de/qgis-plugin-geobasis-loader/'))        
         
-        # ------- Status-Schaltfläche für #geoObserver ------------------------
-        self.mainMenu.addAction("Status ...", partial(self.openWebSite, 'https://geoobserver.de/qgis-plugin-geobasis-loader/#statustabelle'))        
+        # # ------- Status-Schaltfläche für #geoObserver ------------------------
+        # self.mainMenu.addAction("Status ...", partial(self.openWebSite, 'https://geoobserver.de/qgis-plugin-geobasis-loader/#statustabelle'))        
         
-        # ------- Status-Schaltfläche für #geoObserver ------------------------
-        self.mainMenu.addAction("FAQs ...", partial(self.openWebSite, 'https://geoobserver.de/qgis-plugin-geobasis-loader/#faq'))        
+        # # ------- Status-Schaltfläche für #geoObserver ------------------------
+        # self.mainMenu.addAction("FAQs ...", partial(self.openWebSite, 'https://geoobserver.de/qgis-plugin-geobasis-loader/#faq'))        
         
     def buildGUIOneState(self, stateDict: Dict, stateAbbr):
         menu = QMenu(stateAbbr)
@@ -107,7 +114,7 @@ class GeoBasis_Loader:
         
     def addLayer(self, attributes: Dict, standalone: bool = True):
         uri = attributes.get('uri', "n.n.")
-        layerType = attributes.get('type', 'wms')
+        layerType = attributes.get('type', 'ogc_wms')
         
         opacity = attributes.get('opacity', 1)
         maxScale = attributes.get('maxScale', NULL)
@@ -121,11 +128,13 @@ class GeoBasis_Loader:
             iface.messageBar().pushCritical(self.myPluginV, self.myCritical_1 + attributes['name'] + f", URL des Themas derzeit unbekannt.{'&nbsp;'}Falls gültige/aktuelle URL bekannt,{'&nbsp;'}bitte dem Autor melden.")
             return
         
-        if layerType == "wfs":
+        if layerType == "ogc_wfs":
             layer = QgsVectorLayer(uri, attributes['name'], 'WFS')
-        elif layerType == "vectorTiles":
+        elif layerType == "ogc_vectorTiles":
             layer = QgsVectorTileLayer(uri, attributes['name'])
             layer.loadDefaultStyle()
+        elif layerType == "ogc_wcs":
+            layer = QgsRasterLayer(uri, attributes['name'], 'wcs')
         else:
             layer = QgsRasterLayer(uri, attributes['name'], 'wms')
 
@@ -133,8 +142,10 @@ class GeoBasis_Loader:
             iface.messageBar().pushCritical(self.myPluginV, self.myCritical_1 + attributes['name'] + self.myCritical_2)
             return;
         
-        layer.setOpacity(opacity) 
-        if layerType == 'wfs' and (maxScale == NULL or minScale == NULL):
+        if hasattr(layer, 'setOpacity'):
+            layer.setOpacity(opacity) 
+            
+        if layerType == 'ogc_wfs' and (maxScale == NULL or minScale == NULL):
             maxScale = 1.0
             minScale = 25000    
         
@@ -147,10 +158,10 @@ class GeoBasis_Loader:
             layer.setMaximumScale(maxScale)
             layer.setScaleBasedVisibility(True)
                 
-        if layerType == 'wfs':         
+        if layerType == 'ogc_wfs':         
             color = QColor(int(fillColor[0]), int(fillColor[1]), int(fillColor[2])) if type(fillColor) == list else QColor(fillColor)
             layer.renderer().symbol().setColor(color)
-            color = QColor(int(strokeColor[0]), int(strokeColor[1]), int(strokeColor[2])) if type(strokeColor) == tuple else QColor(strokeColor)
+            color = QColor(int(strokeColor[0]), int(strokeColor[1]), int(strokeColor[2])) if type(strokeColor) == list else QColor(strokeColor)
             layer.renderer().symbol().symbolLayer(0).setStrokeColor(color)
             layer.renderer().symbol().symbolLayer(0).setStrokeWidth(strokeWidth)
             
