@@ -6,7 +6,7 @@ from PyQt5.QtCore import QUrl, QObject, pyqtSignal
 from qgis.core import *
 
 class NetworkHandler(QObject):
-    __JSON_URL = "https://geoobserver.de/download/GeoBasis_Loader_dev.json"
+    __JSON_URL = "https://geoobserver.de/download/GeoBasis_Loader_v2_dev.json"
     __PLUGIN_DIR = os.path.dirname(__file__)
     __JSON_FILE_PATH = __PLUGIN_DIR + "/" + "Data.json"
     
@@ -24,7 +24,8 @@ class NetworkHandler(QObject):
         
     def fetchUrlJSON(self):
         url = QUrl(self.__JSON_URL)
-        request = QNetworkRequest(url)   
+        request = QNetworkRequest(url)
+        request.setAttribute(QNetworkRequest.CacheLoadControlAttribute, QNetworkRequest.AlwaysNetwork)   
         self.__reply = self.__manager.get(request)      
         self.__reply.finished.connect(self.__handleResponse)
         
@@ -49,11 +50,11 @@ class NetworkHandler(QObject):
             return
 
         if os.path.exists(self.__JSON_FILE_PATH):
-            self.__iface.messageBar().pushWarning(self.__pluginName, "Netzwerkfehler beim laden der URL's, Verwendung der gecachten Daten")
+            self.__iface.messageBar().pushWarning(self.__pluginName, "Netzwerkfehler beim Laden der URL's, Verwendung der gecachten Daten")
             services = self.__readJson()
             self.finished.emit(services)
         else:
-            self.__iface.messageBar().pushCritical(self.__pluginName, "Netzwerkfehler beim laden der URL's, Überprüfen Sie die Internetverbindung oder kontaktieren Sie den Author")
+            self.__iface.messageBar().pushCritical(self.__pluginName, "Netzwerkfehler beim Laden der URL's, Überprüfen Sie die Internetverbindung oder kontaktieren Sie den Autor")
         
     def __writeJson(self, data: str):
         mode = "w" if os.path.exists(self.__JSON_FILE_PATH) else "x"
