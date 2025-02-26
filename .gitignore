@@ -1,4 +1,6 @@
 __pycache__
 pb_tool.cfg_202406040_rett
-LICENSE.txt
-Data.json
+LICENSE
+
+# Ignore all catalog JSON files in root of directory
+katalog*.json
