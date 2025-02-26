@@ -4,3 +4,7 @@ LICENSE
 
 # Ignore all catalog JSON files in root of directory
 katalog*.json
+GeoBasis_Loader_Network_doc.py
+GeoBasis_Loader_main_doc.py
+.DS_Store
+GeoBasis_Loader_icon_.png
