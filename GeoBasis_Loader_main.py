@@ -12,7 +12,7 @@ from typing import Dict, Union
 from .GeoBasis_Loader_Network import NetworkHandler
 
 class GeoBasis_Loader:
-    version = u'1.2'
+    version = u'1.2_dev'
     myPlugin = u'GeoBasis Loader'
     myPluginGB = myPlugin + u' >>>>>'
     myPluginV = myPlugin + u' (v' + version + ')'
