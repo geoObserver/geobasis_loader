@@ -12,7 +12,7 @@ from typing import Dict, Union
 from .GeoBasis_Loader_Network import NetworkHandler
 
 class GeoBasis_Loader:
-    version = u'1.2_dev'
+    version = u'1.2'
     myPlugin = u'GeoBasis Loader'
     myPluginGB = myPlugin + u' >>>>>'
     myPluginV = myPlugin + u' (v' + version + ')'
@@ -99,13 +99,13 @@ class GeoBasis_Loader:
             self.main_menu.addSeparator()
                 
         # ------- Über-Schaltfläche für die JSON-Datei ------------------------
-        action = QAction(text="Wenn möglich, Dienste automatisch im KBS laden", parent=self.main_menu, checkable=True, checked=self.automatic_crs)
+        action = QAction(text="Wenn möglich, Dienste autom. im KBS laden", parent=self.main_menu, checkable=True, checked=self.automatic_crs)
         action.toggled.connect(self.toggle_automatic_crs)
         self.main_menu.addAction(action)
         self.main_menu.addSeparator()
         
         # ------- Spenden-Schaltfläche für #geoObserver ------------------------
-        self.main_menu.addAction("Den GeoBasis_Loader mit einer Spende unterstützen ...", partial(self.open_web_site, 'https://geoobserver.de/support_geobasis_loader/'))
+        self.main_menu.addAction("GeoBasis_Loader per Spende unterstützen ...", partial(self.open_web_site, 'https://geoobserver.de/support_geobasis_loader/'))
         
         # ------- Über-Schaltfläche für #geoObserver ------------------------
         self.main_menu.addAction("Über ...", partial(self.open_web_site, 'https://geoobserver.de/qgis-plugin-geobasis-loader/'))
