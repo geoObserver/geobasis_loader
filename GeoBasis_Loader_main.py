@@ -10,6 +10,7 @@ from qgis.utils import *
 from qgis._gui import QgisInterface
 from typing import Dict, Union
 from .GeoBasis_Loader_Network import NetworkHandler
+from .topic_search import SearchFilter
 
 class GeoBasis_Loader:
     version = u'1.2'
@@ -30,6 +31,8 @@ class GeoBasis_Loader:
     overview_network_handler = None
     services = None
     catalogs = None
+    
+    search_filter = None
 
 # =========================================================================
     def __init__(self, iface: QgisInterface) -> None:   
@@ -58,6 +61,9 @@ class GeoBasis_Loader:
         self.main_menu = QMenu(self.myPluginV)
         self.main_menu.setIcon(icon)
         self.iface.pluginMenu().addMenu(self.main_menu)
+        
+        self.search_filter = SearchFilter()
+        self.iface.registerLocatorFilter(self.search_filter)
         # self.fetchUrlJSON()       
         #self.iface.messageBar().pushMessage(self.myPluginV,f'Sollte Euch das Plugin gefallen,{"&nbsp;"}könnt Ihr es gern mit Eurer Mitarbeit,{"&nbsp;"}einem Voting und ggf.{"&nbsp;"}einem kleinen Betrag unterstützen ...{"&nbsp;"}Danke!!', 3, 8)     
     
@@ -139,6 +145,9 @@ class GeoBasis_Loader:
 #===================================================================================
 
     def unload(self):
+        self.iface.invalidateLocatorResults()
+        self.iface.deregisterLocatorFilter(self.search_filter)
+        self.search_filter = None
         if self.main_menu:
             self.iface.pluginMenu().removeAction(self.main_menu.menuAction())
 
