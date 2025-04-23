@@ -20,9 +20,13 @@ class GeoBasis_Loader:
     catalogs = None
     
     search_filter = None
+    qgs_settings = QgsSettings()
 
 # =========================================================================
-    def __init__(self, iface: QgisInterface) -> None:   
+    def __init__(self, iface: QgisInterface) -> None:
+        from .catalog_manager import CatalogManager
+        CatalogManager.setup(iface)
+        
         # ------- Network Handler für die einzelnen Kataloge erstellen -------------
         self.catalog_network_handler = NetworkHandler(config.PLUGIN_NAME_AND_VERSION, iface, QgsNetworkAccessManager.instance())
         self.catalog_network_handler.finished.connect(self.set_services)
@@ -35,12 +39,12 @@ class GeoBasis_Loader:
         self.epsg_dialog = EpsgDialog(parent=iface.mainWindow())
 
         # ------- Letzten Katalog laden --------------------------------------------
-        current_catalog = config.USER_SETTINGS.value(config.CURRENT_CATALOG_SETTINGS_KEY)
+        current_catalog = self.qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)
         if current_catalog is not None:
             self.catalog_network_handler.fetch_catalog(current_catalog["url"])
             
         # ------- Letzte Einstellung für automatisches Koordinatensystem laden -----
-        saved_option = config.USER_SETTINGS.value(config.AUTOMATIC_CRS_SETTINGS_KEY, "false")
+        saved_option = self.qgs_settings.value(config.AUTOMATIC_CRS_SETTINGS_KEY, "false")
         self.automatic_crs = False if saved_option == "false" else True
 
         self.iface = iface
@@ -61,7 +65,7 @@ class GeoBasis_Loader:
         
         if self.services is not None:
             # ------- Name des Katalogs einfügen -------------------------
-            action = self.main_menu.addAction(config.USER_SETTINGS.value(config.CURRENT_CATALOG_SETTINGS_KEY)["titel"])
+            action = self.main_menu.addAction(self.qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)["titel"])
             self.main_menu.addSeparator()
             # ------- Menübaum bauen und einfügen ------------------------
             for state in self.services:
@@ -146,7 +150,7 @@ class GeoBasis_Loader:
         new_state = not self.automatic_crs
         
         self.automatic_crs = new_state
-        config.USER_SETTINGS.setValue(config.AUTOMATIC_CRS_SETTINGS_KEY, new_state)
+        self.qgs_settings.setValue(config.AUTOMATIC_CRS_SETTINGS_KEY, new_state)
 
     def open_web_site(self, url):
         url = QUrl(url)
@@ -161,7 +165,7 @@ class GeoBasis_Loader:
         # self.webWindow.show()
         
     def change_current_catalog(self, catalog: dict):
-        config.USER_SETTINGS.setValue(config.CURRENT_CATALOG_SETTINGS_KEY, catalog)
+        self.qgs_settings.setValue(config.CURRENT_CATALOG_SETTINGS_KEY, catalog)
         self.catalog_network_handler.fetch_catalog(catalog["url"])
         
     def set_catalogs(self, catalogs: list[Dict[str, str]]):
@@ -169,7 +173,7 @@ class GeoBasis_Loader:
         self.initGui()
         
     def set_services(self, services: Dict):
-        current_catalog = config.USER_SETTINGS.value(config.CURRENT_CATALOG_SETTINGS_KEY)
+        current_catalog = self.qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)
         titel = current_catalog["titel"]
         url = current_catalog["url"]
         version = re.findall(r'v\d+', url)[0]
