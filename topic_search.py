@@ -1,5 +1,5 @@
 from typing import Optional, override
-from qgis.core import QgsLocatorFilter
+from qgis.core import QgsLocatorFilter, QgsLocatorResult, QgsLocatorContext, QgsFeedback
 
 # Strings wie Beschreibung und Name werden nicht übersetzt und sind momentan nur in Deutsch 
 
@@ -8,6 +8,7 @@ from qgis.core import QgsLocatorFilter
 class SearchFilter(QgsLocatorFilter):
     def __init__(self):
         super().__init__()
+        self.setUseWithoutPrefix(True)
 
     @override
     def name(self) -> str:
@@ -27,4 +28,17 @@ class SearchFilter(QgsLocatorFilter):
     
     @override
     def clone(self) -> Optional[QgsLocatorFilter]:
+        self.clearPreviousResults()
         return self.__class__()
+    
+    @override
+    def fetchResults(self, search_string: str, context: QgsLocatorContext, feedback: QgsFeedback) -> None:
+        if len(search_string) < 2 or feedback.isCanceled():
+            return
+        
+        print(search_string, feedback)
+        
+        result = QgsLocatorResult(self, "Ergebnis" + search_string)
+        result.description = "Beschreibung" + search_string
+        
+        self.resultFetched.emit(result)
