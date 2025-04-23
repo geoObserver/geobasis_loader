@@ -13,3 +13,5 @@ PLUGIN_DIR = os.path.dirname(__file__)
 USER_SETTINGS = QgsSettings()
 CURRENT_CATALOG_SETTINGS_KEY = 'geobasis_loader/current_catalog'
 AUTOMATIC_CRS_SETTINGS_KEY = 'geobasis_loader/automatic_crs'
+
+CATALOG_OVERVIEW = "https://geoobserver.de/download/GeoBasis_Loader/GeoBasis_Loader_v4_Kataloge.json"
