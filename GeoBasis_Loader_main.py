@@ -64,8 +64,10 @@ class GeoBasis_Loader:
             action = self.main_menu.addAction(config.USER_SETTINGS.value(config.CURRENT_CATALOG_SETTINGS_KEY)["titel"])
             self.main_menu.addSeparator()
             # ------- Menübaum bauen und einfügen ------------------------
-            for state in self.services:                
-                
+            for state in self.services:
+                # Falls der zweite Eintrag kein Dictionary ist, überspringen, da es Metadata ist
+                if type(state[1]) != dict:
+                    continue
                 menu = self.gui_for_one_topic(state[1]['themen'], state[0])
                 action = self.main_menu.addAction(state[1]['bundeslandname'])
                 action.setMenu(menu)
