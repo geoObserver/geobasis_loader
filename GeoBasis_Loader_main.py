@@ -11,22 +11,9 @@ from qgis._gui import QgisInterface
 from typing import Dict, Union
 from .GeoBasis_Loader_Network import NetworkHandler
 from .topic_search import SearchFilter
+from . import config
 
 class GeoBasis_Loader:
-    version = u'1.2'
-    myPlugin = u'GeoBasis Loader'
-    myPluginGB = myPlugin + u' >>>>>'
-    myPluginV = myPlugin + u' (v' + version + ')'
-    myCritical_1 = u'Layerladefehler '
-    myCritical_2 = u', Dienst nicht verfügbar (URL?)'
-    myInfo_1 = u'Layer '
-    myInfo_2 = u' erfolgreich geladen.'
-    
-    plugin_dir = os.path.dirname(__file__)
-    user_settings = QgsSettings()
-    current_catalog_settings_key = 'geobasis_loader/current_catalog'
-    automatic_crs_settings_key = 'geobasis_loader/automatic_crs'
-    
     catalog_network_handler = None
     overview_network_handler = None
     services = None
@@ -37,10 +24,10 @@ class GeoBasis_Loader:
 # =========================================================================
     def __init__(self, iface: QgisInterface) -> None:   
         # ------- Network Handler für die einzelnen Kataloge erstellen -------------
-        self.catalog_network_handler = NetworkHandler(self.myPluginV, iface, QgsNetworkAccessManager.instance())
+        self.catalog_network_handler = NetworkHandler(config.PLUGIN_NAME_AND_VERSION, iface, QgsNetworkAccessManager.instance())
         self.catalog_network_handler.finished.connect(self.set_services)
         # ------- Network Handler für die Katalog Übersicht erstellen --------------
-        self.overview_network_handler = NetworkHandler(self.myPluginV, iface, QgsNetworkAccessManager.instance())
+        self.overview_network_handler = NetworkHandler(config.PLUGIN_NAME_AND_VERSION, iface, QgsNetworkAccessManager.instance())
         self.overview_network_handler.finished.connect(self.set_catalogs)
         self.overview_network_handler.fetch_catalog_overview()
         
@@ -48,17 +35,17 @@ class GeoBasis_Loader:
         self.epsg_dialog = EpsgDialog(parent=iface.mainWindow())
 
         # ------- Letzten Katalog laden --------------------------------------------
-        current_catalog = self.user_settings.value(self.current_catalog_settings_key)
+        current_catalog = config.USER_SETTINGS.value(config.CURRENT_CATALOG_SETTINGS_KEY)
         if current_catalog is not None:
             self.catalog_network_handler.fetch_catalog(current_catalog["url"])
             
         # ------- Letzte Einstellung für automatisches Koordinatensystem laden -----
-        saved_option = self.user_settings.value(self.automatic_crs_settings_key, "false")
+        saved_option = config.USER_SETTINGS.value(config.AUTOMATIC_CRS_SETTINGS_KEY, "false")
         self.automatic_crs = False if saved_option == "false" else True
 
         self.iface = iface
-        icon = QIcon(self.plugin_dir + "/GeoBasis_Loader_icon.png")
-        self.main_menu = QMenu(self.myPluginV)
+        icon = QIcon(config.PLUGIN_DIR + "/GeoBasis_Loader_icon.png")
+        self.main_menu = QMenu(config.PLUGIN_NAME_AND_VERSION)
         self.main_menu.setIcon(icon)
         self.iface.pluginMenu().addMenu(self.main_menu)
         
@@ -74,7 +61,7 @@ class GeoBasis_Loader:
         
         if self.services is not None:
             # ------- Name des Katalogs einfügen -------------------------
-            action = self.main_menu.addAction(self.user_settings.value(self.current_catalog_settings_key)["titel"])
+            action = self.main_menu.addAction(config.USER_SETTINGS.value(config.CURRENT_CATALOG_SETTINGS_KEY)["titel"])
             self.main_menu.addSeparator()
             # ------- Menübaum bauen und einfügen ------------------------
             for state in self.services:                
@@ -157,7 +144,7 @@ class GeoBasis_Loader:
         new_state = not self.automatic_crs
         
         self.automatic_crs = new_state
-        self.user_settings.setValue(self.automatic_crs_settings_key, new_state)
+        config.USER_SETTINGS.setValue(config.AUTOMATIC_CRS_SETTINGS_KEY, new_state)
 
     def open_web_site(self, url):
         url = QUrl(url)
@@ -172,7 +159,7 @@ class GeoBasis_Loader:
         # self.webWindow.show()
         
     def change_current_catalog(self, catalog: dict):
-        self.user_settings.setValue(self.current_catalog_settings_key, catalog)
+        config.USER_SETTINGS.setValue(config.CURRENT_CATALOG_SETTINGS_KEY, catalog)
         self.catalog_network_handler.fetch_catalog(catalog["url"])
         
     def set_catalogs(self, catalogs: list[Dict[str, str]]):
@@ -180,11 +167,11 @@ class GeoBasis_Loader:
         self.initGui()
         
     def set_services(self, services: Dict):
-        current_catalog = self.user_settings.value(self.current_catalog_settings_key)
+        current_catalog = config.USER_SETTINGS.value(config.CURRENT_CATALOG_SETTINGS_KEY)
         titel = current_catalog["titel"]
         url = current_catalog["url"]
         version = re.findall(r'v\d+', url)[0]
-        self.iface.messageBar().pushMessage(self.myPluginV, u'Lese '+ titel + ", Version " + version + ' ...', 3, 3)   
+        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, u'Lese '+ titel + ", Version " + version + ' ...', 3, 3)   
         
         self.services = services       
         self.initGui()
@@ -244,7 +231,7 @@ class GeoBasis_Loader:
         strokeWidth = attributes.get('strokeWidth', 0.3)
         
         if uri == "n.n.":
-            self.iface.messageBar().pushCritical(self.myPluginV, self.myCritical_1 + attributes['name'] + f", URL des Themas derzeit unbekannt.{'&nbsp;'}Falls gültige/aktuelle URL bekannt,{'&nbsp;'}bitte dem Autor melden.")
+            self.iface.messageBar().pushCritical(config.PLUGIN_NAME_AND_VERSION, config.MY_CRITICAL_1 + attributes['name'] + f", URL des Themas derzeit unbekannt.{'&nbsp;'}Falls gültige/aktuelle URL bekannt,{'&nbsp;'}bitte dem Autor melden.")
             return
         
         if layerType == "ogc_wfs":
@@ -258,7 +245,7 @@ class GeoBasis_Loader:
             layer = QgsRasterLayer(uri, attributes['name'], 'wms')
 
         if not layer.isValid():
-            self.iface.messageBar().pushCritical(self.myPluginV, self.myCritical_1 + attributes['name'] + self.myCritical_2)
+            self.iface.messageBar().pushCritical(config.PLUGIN_NAME_AND_VERSION, config.MY_CRITICAL_1 + attributes['name'] + config.MY_CRITICAL_2)
             return
         
         if hasattr(layer, 'setOpacity'):
@@ -272,9 +259,9 @@ class GeoBasis_Loader:
         
         if minScale is not None and maxScale is not None:
             if minScale < maxScale:
-                self.iface.messageBar().pushCritical(self.myPluginV, self.myCritical_1 + attributes['name'] + "; Skalenwerte vertauscht oder fehlerhaft")
+                self.iface.messageBar().pushCritical(config.PLUGIN_NAME_AND_VERSION, config.MY_CRITICAL_1 + attributes['name'] + "; Skalenwerte vertauscht oder fehlerhaft")
             elif minScale == maxScale: 
-                self.iface.messageBar().pushCritical(self.myPluginV, self.myCritical_1 + attributes['name'] + "; Skalenwerte gleich")   
+                self.iface.messageBar().pushCritical(config.PLUGIN_NAME_AND_VERSION, config.MY_CRITICAL_1 + attributes['name'] + "; Skalenwerte gleich")   
             elif minScale > maxScale:
                 layer.setMinimumScale(minScale)
                 layer.setMaximumScale(maxScale)
@@ -290,7 +277,7 @@ class GeoBasis_Loader:
             layer.triggerRepaint()
             self.iface.layerTreeView().refreshLayerSymbology(layer.id())
         
-        self.iface.messageBar().pushMessage(self.myPluginV, self.myInfo_1 + attributes['name'] + self.myInfo_2, 3, 1)
+        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, config.MY_INFO_1 + attributes['name'] + config.MY_INFO_2, 3, 1)
         QgsProject.instance().addMapLayer(layer, standalone)
         if not standalone:
             return layer
