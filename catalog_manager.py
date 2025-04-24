@@ -1,4 +1,4 @@
-import json, os, re
+import json, os, re, pathlib
 from functools import partial
 import email.utils
 from PyQt5.QtNetwork import QNetworkRequest, QNetworkReply
@@ -82,9 +82,9 @@ class CatalogManager:
     def set_overview(cls, overview: str, catalog_name: str, last_modified: float, fetch_catalogs: bool = True) -> None:
         cls.overview = json.loads(overview)
         file_name = 'katalog_overview'
-        file_path = cls.catalog_path + file_name + '.json'
+        file_path = pathlib.Path(cls.catalog_path + file_name + '.json')
         
-        localLastModified = os.path.getmtime(file_path) if os.path.exists(file_path) else 0.0
+        localLastModified = os.path.getmtime(file_path) if file_path.exists() else 0.0
         if localLastModified < last_modified:
             cls.write_json(overview, file_path)
         
@@ -99,9 +99,9 @@ class CatalogManager:
         cls.catalogs[catalog_name] = list(catalog.items())
         
         file_name = re.sub(r'\ ', '_', catalog_name.split(':')[0].lower())
-        file_path = cls.catalog_path + file_name + '.json'
+        file_path = pathlib.Path(cls.catalog_path + file_name + '.json')
         
-        localLastModified = os.path.getmtime(file_path) if os.path.exists(file_path) else 0.0
+        localLastModified = os.path.getmtime(file_path) if file_path.exists() else 0.0
         if localLastModified < last_modified:
             cls.write_json(catalog, file_path)
 
@@ -110,8 +110,8 @@ class CatalogManager:
         is_overview_response = catalog_name == "overview"
         
         file_name = re.sub(r'\ ', '_', catalog_name.split(':')[0].lower()) if not is_overview_response else 'katalog_overview'
-        file_path = cls.catalog_path + file_name + '.json'
-        if not os.path.exists(file_path):
+        file_path = pathlib.Path(cls.catalog_path + file_name + '.json')
+        if not file_path.exists():
             error += ", Überprüfen Sie die Internetverbindung oder kontaktieren Sie den Autor"
             cls.catalog_network_handler.__iface.messageBar().pushWarning(config.PLUGIN_NAME_AND_VERSION, error)
             return
@@ -128,14 +128,15 @@ class CatalogManager:
         cls.catalog_network_handler.__iface.messageBar().pushWarning(config.PLUGIN_NAME_AND_VERSION, error)
     
     @classmethod
-    def write_json(cls, data: str, file_path: str) -> None:
+    def write_json(cls, data: str, file_path: pathlib.Path) -> None:        
+        file_path.parent.mkdir(mode=0o660,parents=True, exist_ok=True)
         mode = "w" if os.path.exists(file_path) else "x"
         
         with open(file_path, mode, encoding="utf-8", newline="\n") as file:
-            file.write(data)
+            file.write(json.dumps(data))
 
     @classmethod
-    def read_json(cls, file_path: str) -> dict:
+    def read_json(cls, file_path: pathlib.Path) -> dict:
         services: dict | list = None
         with open(file_path, "r", encoding="utf-8") as file:
             data = file.read()
