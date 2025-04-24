@@ -12,7 +12,7 @@ class NetworkHandler(QObject):
     __manager: QgsNetworkAccessManager = None
     __reply: QNetworkReply = None
     
-    finished = pyqtSignal(list, str, float)
+    finished = pyqtSignal(str, str, float)
     error_occurred = pyqtSignal(str, str)
     
     def __init__(self, iface: QgisInterface, manager: QgsNetworkAccessManager) -> None:
@@ -46,19 +46,14 @@ class NetworkHandler(QObject):
                 json_string = re.sub(r'^{', '[', json_string)
                 json_string = re.sub(r",}$", ']', json_string)
                 json_string = re.sub(r"}$", ']', json_string)
-                ###################################################################
-            
-            services = json.loads(json_string)
-            if not is_overview_response:
-                services = list(services.items())                
-                        
+                ###################################################################        
      
             # Holt sich die Timestamps der letzten Modifikationen der lokalen JSON-Datei und der JSON-Datei aus dem Internet
             # (Über-)Schreibt dann die loakle JSON-Datei, wenn die Datei im Internet neuer ist
             # Sozusagen eigene Cache-Implementation             
             networkLastModifiedRawValue = self.__reply.rawHeader(bytearray('Last-Modified', "utf-8")).data().decode()
             networkLastModified = email.utils.parsedate_to_datetime(networkLastModifiedRawValue).timestamp()
-            self.finished.emit(services, catalog_name, networkLastModified)
+            self.finished.emit(json_string, catalog_name, networkLastModified)
 
             return
 
@@ -84,8 +79,8 @@ class CatalogManager:
         overview_network_handler.fetch_catalog_overview()
     
     @classmethod
-    def set_overview(cls, overview: dict, catalog_name: str, last_modified: float, fetch_catalogs: bool = True) -> None:
-        cls.overview = overview
+    def set_overview(cls, overview: str, catalog_name: str, last_modified: float, fetch_catalogs: bool = True) -> None:
+        cls.overview = json.loads(overview)
         file_name = 'katalog_overview'
         file_path = cls.catalog_path + file_name + '.json'
         
@@ -98,9 +93,10 @@ class CatalogManager:
                 cls.catalog_network_handler.fetch_catalog(catalog["url"])
     
     @classmethod
-    def add_catalog(cls, catalog: dict, catalog_name: str, last_modified: float) -> None:
+    def add_catalog(cls, catalog: str, catalog_name: str, last_modified: float) -> None:
+        catalog = json.loads(catalog)
         cls.catalogs = cls.catalogs or {}
-        cls.catalogs[catalog_name] = catalog
+        cls.catalogs[catalog_name] = list(catalog.items())
         
         file_name = re.sub(r'\ ', '_', catalog_name.split(':')[0].lower())
         file_path = cls.catalog_path + file_name + '.json'

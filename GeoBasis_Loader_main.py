@@ -12,6 +12,7 @@ from typing import Dict, Union
 from .GeoBasis_Loader_Network import NetworkHandler
 from .topic_search import SearchFilter
 from . import config
+from .catalog_manager import CatalogManager
 
 class GeoBasis_Loader:
     catalog_network_handler = None
@@ -24,7 +25,6 @@ class GeoBasis_Loader:
 
 # =========================================================================
     def __init__(self, iface: QgisInterface) -> None:
-        from .catalog_manager import CatalogManager
         CatalogManager.setup(iface)
         
         # ------- Network Handler für die einzelnen Kataloge erstellen -------------
