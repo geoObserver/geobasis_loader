@@ -8,16 +8,14 @@ from qgis._gui import QgisInterface
 from . import config
 
 class NetworkHandler(QObject):
-    __iface = None
     __manager: QgsNetworkAccessManager = None
     __reply: QNetworkReply = None
     
     finished = pyqtSignal(str, str, float)
     error_occurred = pyqtSignal(str, str)
     
-    def __init__(self, iface: QgisInterface, manager: QgsNetworkAccessManager) -> None:
+    def __init__(self, manager: QgsNetworkAccessManager) -> None:
         super().__init__()
-        self.__iface = iface
         self.__manager = manager
         
     def __fetch_data(self, url: str = '') -> QNetworkReply:
@@ -64,19 +62,16 @@ class CatalogManager:
     catalogs = None
     catalog_path = f'{config.PLUGIN_DIR}/catalogs/'
     
-    catalog_network_handler: NetworkHandler = None
+    catalog_network_handlers: list[NetworkHandler] = []
     
     @classmethod
     def setup(cls, iface: QgisInterface) -> None:
-        # ------- Network Handler für die einzelnen Kataloge erstellen -------------
-        cls.catalog_network_handler = NetworkHandler(iface,  QgsNetworkAccessManager.instance())
-        cls.catalog_network_handler.finished.connect(cls.add_catalog)
-        cls.catalog_network_handler.error_occurred.connect(cls.handle_fetch_error)
+        cls.iface = iface
         # ------- Network Handler für die Katalog Übersicht erstellen --------------
-        overview_network_handler = NetworkHandler(iface, QgsNetworkAccessManager.instance())
-        overview_network_handler.finished.connect(cls.set_overview)
-        overview_network_handler.error_occurred.connect(cls.handle_fetch_error)
-        overview_network_handler.fetch_catalog_overview()
+        cls.overview_network_handler = NetworkHandler(QgsNetworkAccessManager.instance())
+        cls.overview_network_handler.finished.connect(cls.set_overview)
+        cls.overview_network_handler.error_occurred.connect(cls.handle_fetch_error)
+        cls.overview_network_handler.fetch_catalog_overview()
     
     @classmethod
     def set_overview(cls, overview: str, catalog_name: str, last_modified: float, fetch_catalogs: bool = True) -> None:
@@ -89,8 +84,13 @@ class CatalogManager:
             cls.write_json(overview, file_path)
         
         if fetch_catalogs:
-            for catalog in overview:
-                cls.catalog_network_handler.fetch_catalog(catalog["url"])
+            for catalog in cls.overview:
+                # ------- Network Handler für die einzelnen Kataloge erstellen -------------
+                handler = NetworkHandler(QgsNetworkAccessManager.instance())
+                handler.finished.connect(cls.add_catalog)
+                handler.error_occurred.connect(cls.handle_fetch_error)
+                handler.fetch_catalog(catalog["url"], catalog["titel"])
+                cls.catalog_network_handlers.append(handler)
     
     @classmethod
     def add_catalog(cls, catalog: str, catalog_name: str, last_modified: float) -> None:
@@ -113,7 +113,7 @@ class CatalogManager:
         file_path = pathlib.Path(cls.catalog_path + file_name + '.json')
         if not file_path.exists():
             error += ", Überprüfen Sie die Internetverbindung oder kontaktieren Sie den Autor"
-            cls.catalog_network_handler.__iface.messageBar().pushWarning(config.PLUGIN_NAME_AND_VERSION, error)
+            cls.iface.messageBar().pushWarning(config.PLUGIN_NAME_AND_VERSION, error)
             return
 
         services = cls.read_json(file_path)
@@ -125,7 +125,7 @@ class CatalogManager:
             cls.overview = services
         
         error += ", Verwendung der gecachten Daten"
-        cls.catalog_network_handler.__iface.messageBar().pushWarning(config.PLUGIN_NAME_AND_VERSION, error)
+        cls.iface.messageBar().pushWarning(config.PLUGIN_NAME_AND_VERSION, error)
     
     @classmethod
     def write_json(cls, data: str, file_path: pathlib.Path) -> None:        
