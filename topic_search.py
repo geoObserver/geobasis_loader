@@ -1,4 +1,5 @@
 from typing import Optional, override
+from .catalog_manager import CatalogManager
 from qgis.core import QgsLocatorFilter, QgsLocatorResult, QgsLocatorContext, QgsFeedback
 
 # Strings wie Beschreibung und Name werden nicht übersetzt und sind momentan nur in Deutsch 
@@ -33,12 +34,20 @@ class SearchFilter(QgsLocatorFilter):
     
     @override
     def fetchResults(self, search_string: str, context: QgsLocatorContext, feedback: QgsFeedback) -> None:
-        if len(search_string) < 2 or feedback.isCanceled():
+        search_string.removeprefix(self.prefix())
+        if len(search_string) < 3 or feedback.isCanceled():
             return
         
-        print(search_string, feedback)
-        
-        result = QgsLocatorResult(self, "Ergebnis" + search_string)
-        result.description = "Beschreibung" + search_string
-        
-        self.resultFetched.emit(result)
+        for _, catalog in CatalogManager.catalogs.items():
+            for _, group in catalog:
+                if feedback.isCanceled():
+                    return
+                
+                for _, topic in group["themen"].items():
+                    if search_string.lower() in topic["name"].lower():
+                        result = QgsLocatorResult(self, topic["name"])
+                        self.resultFetched.emit(result)
+    
+    @override
+    def triggerResult(self, result):
+        return super().triggerResult(result)
