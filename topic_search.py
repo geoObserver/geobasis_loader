@@ -34,6 +34,7 @@ class SearchFilter(QgsLocatorFilter):
     
     @override
     def fetchResults(self, search_string: str, context: QgsLocatorContext, feedback: QgsFeedback) -> None:
+        search_string = search_string.lower()
         search_string.removeprefix(self.prefix())
         if len(search_string) < 3 or feedback.isCanceled():
             return
@@ -44,7 +45,14 @@ class SearchFilter(QgsLocatorFilter):
                     return
                 
                 for _, topic in group["themen"].items():
-                    if search_string.lower() in topic["name"].lower():
+                    hit = False
+                    if search_string in topic["name"].lower():
+                        hit = True
+                    elif "keywords" in topic:
+                        if any(search_string in keyword.lower() for keyword in topic["keywords"]):
+                            hit = True
+                
+                    if hit:
                         result = QgsLocatorResult(self, topic["name"])
                         self.resultFetched.emit(result)
     
