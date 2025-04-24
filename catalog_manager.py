@@ -11,6 +11,8 @@ class NetworkHandler(QObject):
     __manager: QgsNetworkAccessManager = None
     __reply: QNetworkReply = None
     
+    done = False
+    
     finished = pyqtSignal(str, str, float)
     error_occurred = pyqtSignal(str, str)
     
@@ -53,9 +55,9 @@ class NetworkHandler(QObject):
             networkLastModified = email.utils.parsedate_to_datetime(networkLastModifiedRawValue).timestamp()
             self.finished.emit(json_string, catalog_name, networkLastModified)
 
-            return
-
-        self.error_occurred.emit("Netzwerkfehler beim Laden der URL's", catalog_name)
+        else:
+            self.error_occurred.emit("Netzwerkfehler beim Laden der URL's", catalog_name)
+        self.done = True
 
 class CatalogManager:
     overview = None
@@ -74,6 +76,19 @@ class CatalogManager:
         cls.overview_network_handler.fetch_catalog_overview()
     
     @classmethod
+    def __add_network_handler(cls) -> NetworkHandler:
+        handler = NetworkHandler(QgsNetworkAccessManager.instance())
+        handler.finished.connect(cls.add_catalog)
+        handler.error_occurred.connect(cls.handle_fetch_error)
+        cls.catalog_network_handlers.append(handler)
+        return handler
+        
+    @classmethod
+    def clear_network_handlers(cls) -> None:
+        if all(handler.done for handler in cls.catalog_network_handlers):
+            cls.catalog_network_handlers.clear()
+    
+    @classmethod
     def set_overview(cls, overview: str, catalog_name: str, last_modified: float, fetch_catalogs: bool = True) -> None:
         cls.overview = json.loads(overview)
         file_name = 'katalog_overview'
@@ -86,12 +101,25 @@ class CatalogManager:
         if fetch_catalogs:
             for catalog in cls.overview:
                 # ------- Network Handler für die einzelnen Kataloge erstellen -------------
-                handler = NetworkHandler(QgsNetworkAccessManager.instance())
-                handler.finished.connect(cls.add_catalog)
-                handler.error_occurred.connect(cls.handle_fetch_error)
+                handler = cls.__add_network_handler()
                 handler.fetch_catalog(catalog["url"], catalog["titel"])
-                cls.catalog_network_handlers.append(handler)
     
+    @classmethod
+    def get_catalog(cls, name: str) -> dict:
+        if cls.catalogs is None:
+            cls.catalogs = {}
+
+        if name in cls.catalogs:
+            return cls.catalogs[name]
+        
+        if cls.overview is None:
+            cls.iface.messageBar().pushWarning(config.PLUGIN_NAME_AND_VERSION, "Katalog Übersicht ist nicht geladen, Bitte warten Sie oder kontaktieren Sie den Author")
+            return None
+    
+        handler = cls.__add_network_handler()
+        catalog_info = list(filter(lambda x: x["titel"] == name, cls.overview))[0]
+        handler.fetch_catalog(catalog_info["url"], catalog_info["titel"])
+        
     @classmethod
     def add_catalog(cls, catalog: str, catalog_name: str, last_modified: float) -> None:
         catalog = json.loads(catalog)
@@ -104,6 +132,8 @@ class CatalogManager:
         localLastModified = os.path.getmtime(file_path) if file_path.exists() else 0.0
         if localLastModified < last_modified:
             cls.write_json(catalog, file_path)
+        
+        cls.clear_network_handlers()
 
     @classmethod
     def handle_fetch_error(cls, error: str, catalog_name: str) -> None:
@@ -126,6 +156,8 @@ class CatalogManager:
         
         error += ", Verwendung der gecachten Daten"
         cls.iface.messageBar().pushWarning(config.PLUGIN_NAME_AND_VERSION, error)
+        
+        cls.clear_network_handlers()
     
     @classmethod
     def write_json(cls, data: str, file_path: pathlib.Path) -> None:        
