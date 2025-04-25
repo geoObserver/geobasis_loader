@@ -76,7 +76,7 @@ class CatalogManager:
         cls.overview_network_handler.fetch_catalog_overview()
     
     @classmethod
-    def __add_network_handler(cls) -> NetworkHandler:
+    def add_network_handler(cls) -> NetworkHandler:
         handler = NetworkHandler(QgsNetworkAccessManager.instance())
         handler.finished.connect(cls.add_catalog)
         handler.error_occurred.connect(cls.handle_fetch_error)
@@ -101,7 +101,7 @@ class CatalogManager:
         if fetch_catalogs:
             for catalog in cls.overview:
                 # ------- Network Handler für die einzelnen Kataloge erstellen -------------
-                handler = cls.__add_network_handler()
+                handler = cls.add_network_handler()
                 handler.fetch_catalog(catalog["url"], catalog["titel"])
     
     @classmethod
@@ -116,7 +116,7 @@ class CatalogManager:
             cls.iface.messageBar().pushWarning(config.PLUGIN_NAME_AND_VERSION, "Katalog Übersicht ist nicht geladen, Bitte warten Sie oder kontaktieren Sie den Author")
             return None
     
-        handler = cls.__add_network_handler()
+        handler = cls.add_network_handler()
         catalog_info = list(filter(lambda x: x["titel"] == name, cls.overview))[0]
         handler.fetch_catalog(catalog_info["url"], catalog_info["titel"])
         
