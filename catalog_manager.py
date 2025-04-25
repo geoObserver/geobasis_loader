@@ -1,6 +1,7 @@
 import json, os, re, pathlib
 from functools import partial
 import email.utils
+from typing import Optional
 from PyQt5.QtNetwork import QNetworkRequest, QNetworkReply
 from PyQt5.QtCore import QUrl, QObject, pyqtSignal
 from qgis.core import QgsNetworkAccessManager, QgsSettings
@@ -61,10 +62,12 @@ class NetworkHandler(QObject):
 
 class CatalogManager:
     overview = None
-    catalogs = None
+    catalogs = {}
     catalog_path = f'{config.PLUGIN_DIR}/catalogs/'
     
     catalog_network_handlers: list[NetworkHandler] = []
+    
+    _pending_callbacks: dict[str, callable] = {}
     
     @classmethod
     def setup(cls, iface: QgisInterface) -> None:
@@ -105,25 +108,36 @@ class CatalogManager:
                 handler.fetch_catalog(catalog["url"], catalog["titel"])
     
     @classmethod
-    def get_catalog(cls, name: str) -> dict:
-        if cls.catalogs is None:
-            cls.catalogs = {}
-
-        if name in cls.catalogs:
-            return cls.catalogs[name]
+    def get_catalog(cls, catalog_name: str, callback: callable = None) -> Optional[dict]:
+        if catalog_name == "overview":
+            if callback and cls.overview is not None:
+                callback(cls.overview)
+        
+        if catalog_name in cls.catalogs :
+            if callback:
+                callback(cls.catalogs[catalog_name])
+            else:
+                return cls.catalogs[catalog_name]
         
         if cls.overview is None:
             cls.iface.messageBar().pushWarning(config.PLUGIN_NAME_AND_VERSION, "Katalog Übersicht ist nicht geladen, Bitte warten Sie oder kontaktieren Sie den Author")
             return None
+
+        if callback:
+            if catalog_name not in cls._pending_callbacks:
+                cls._pending_callbacks[catalog_name] = []
+            cls._pending_callbacks[catalog_name].append(callback)
     
         handler = cls.add_network_handler()
-        catalog_info = list(filter(lambda x: x["titel"] == name, cls.overview))[0]
+        catalog_info = list(filter(lambda x: x["titel"] == catalog_name, cls.overview))[0]
         handler.fetch_catalog(catalog_info["url"], catalog_info["titel"])
+        
+        return None
         
     @classmethod
     def add_catalog(cls, catalog: str, catalog_name: str, last_modified: float) -> None:
         catalog = json.loads(catalog)
-        cls.catalogs = cls.catalogs or {}
+        cls.catalogs = cls.catalogs
         cls.catalogs[catalog_name] = list(catalog.items())
         
         file_name = re.sub(r'\ ', '_', catalog_name.split(':')[0].lower())
@@ -132,6 +146,11 @@ class CatalogManager:
         localLastModified = os.path.getmtime(file_path) if file_path.exists() else 0.0
         if localLastModified < last_modified:
             cls.write_json(catalog, file_path)
+        
+        if catalog_name in cls._pending_callbacks:
+            for callback in cls._pending_callbacks[catalog_name]:
+                callback(cls.catalogs[catalog_name])
+            del cls._pending_callbacks[catalog_name]
         
         cls.clear_network_handlers()
 
@@ -144,18 +163,33 @@ class CatalogManager:
         if not file_path.exists():
             error += ", Überprüfen Sie die Internetverbindung oder kontaktieren Sie den Autor"
             cls.iface.messageBar().pushWarning(config.PLUGIN_NAME_AND_VERSION, error)
+            
+            # Notify callbacks with None result for the failed catalog
+            if not is_overview_response and catalog_name in cls._pending_callbacks:
+                for callback in cls._pending_callbacks[catalog_name]:
+                    callback(None)
+                del cls._pending_callbacks[catalog_name]
             return
 
         services = cls.read_json(file_path)
         if not is_overview_response:
             services = list(services.items())
-            cls.catalogs = cls.catalogs or {}
+            cls.catalogs = cls.catalogs
             cls.catalogs[catalog_name] = services
         else:
             cls.overview = services
+            for catalog in services:
+                # ------- Network Handler für die einzelnen Kataloge erstellen -------------
+                handler = cls.add_network_handler()
+                handler.fetch_catalog(catalog["url"], catalog["titel"])
         
         error += ", Verwendung der gecachten Daten"
         cls.iface.messageBar().pushWarning(config.PLUGIN_NAME_AND_VERSION, error)
+        
+        if catalog_name in cls._pending_callbacks:
+            for callback in cls._pending_callbacks[catalog_name]:
+                callback(services)
+            del cls._pending_callbacks[catalog_name]
         
         cls.clear_network_handlers()
     
