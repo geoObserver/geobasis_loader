@@ -26,14 +26,14 @@ class GeoBasis_Loader:
 # =========================================================================
     def __init__(self, iface: QgisInterface) -> None:
         CatalogManager.setup(iface)
-        
+        CatalogManager.get_catalog("overview", self.set_catalogs)
         # ------- Network Handler für die einzelnen Kataloge erstellen -------------
-        self.catalog_network_handler = NetworkHandler(config.PLUGIN_NAME_AND_VERSION, iface, QgsNetworkAccessManager.instance())
-        self.catalog_network_handler.finished.connect(self.set_services)
-        # ------- Network Handler für die Katalog Übersicht erstellen --------------
-        self.overview_network_handler = NetworkHandler(config.PLUGIN_NAME_AND_VERSION, iface, QgsNetworkAccessManager.instance())
-        self.overview_network_handler.finished.connect(self.set_catalogs)
-        self.overview_network_handler.fetch_catalog_overview()
+        # self.catalog_network_handler = NetworkHandler(config.PLUGIN_NAME_AND_VERSION, iface, QgsNetworkAccessManager.instance())
+        # self.catalog_network_handler.finished.connect(self.set_services)
+        # # ------- Network Handler für die Katalog Übersicht erstellen --------------
+        # self.overview_network_handler = NetworkHandler(config.PLUGIN_NAME_AND_VERSION, iface, QgsNetworkAccessManager.instance())
+        # self.overview_network_handler.finished.connect(self.set_catalogs)
+        # self.overview_network_handler.fetch_catalog_overview()
         
         # ------- Dialog für die EPSG-Auswahl erstellen
         self.epsg_dialog = EpsgDialog(parent=iface.mainWindow())
@@ -41,7 +41,8 @@ class GeoBasis_Loader:
         # ------- Letzten Katalog laden --------------------------------------------
         current_catalog = self.qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)
         if current_catalog is not None:
-            self.catalog_network_handler.fetch_catalog(current_catalog["url"])
+            CatalogManager.get_catalog(current_catalog["titel"], self.set_catalogs)
+            # self.catalog_network_handler.fetch_catalog(current_catalog["url"])
             
         # ------- Letzte Einstellung für automatisches Koordinatensystem laden -----
         saved_option = self.qgs_settings.value(config.AUTOMATIC_CRS_SETTINGS_KEY, "false")
