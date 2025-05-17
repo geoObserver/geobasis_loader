@@ -1,6 +1,6 @@
 import os
 
-PLUGIN_VERSION = '1.2'
+PLUGIN_VERSION = '1.3'
 PLUGIN_NAME = 'GeoBasis Loader'
 PLUGIN_NAME_AND_VERSION = PLUGIN_NAME + ' (v' + PLUGIN_VERSION + ')'
 MY_CRITICAL_1 = 'Layerladefehler '
