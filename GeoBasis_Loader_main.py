@@ -5,20 +5,16 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import QUrl
 # from PyQt5.QtWebKitWidgets import QWebView # type: ignore
 from .dialog import EpsgDialog
-from qgis.core import QgsSettings, QgsProject, QgsNetworkAccessManager, QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer
+from qgis.core import QgsSettings, QgsProject, QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer
 from qgis.utils import *
 from qgis._gui import QgisInterface
 from typing import Dict, Union
-from .GeoBasis_Loader_Network import NetworkHandler
 from .topic_search import SearchFilter
 from . import config
 from .catalog_manager import CatalogManager
 
 class GeoBasis_Loader:
-    catalog_network_handler = None
-    overview_network_handler = None
     services = None
-    catalogs = None
     
     search_filter = None
     qgs_settings = QgsSettings()
@@ -26,14 +22,10 @@ class GeoBasis_Loader:
 # =========================================================================
     def __init__(self, iface: QgisInterface) -> None:
         CatalogManager.setup(iface)
-        CatalogManager.get_catalog("overview", self.set_catalogs)
+        CatalogManager.get_overview(callback=self.initGui)
         # ------- Network Handler für die einzelnen Kataloge erstellen -------------
         # self.catalog_network_handler = NetworkHandler(config.PLUGIN_NAME_AND_VERSION, iface, QgsNetworkAccessManager.instance())
         # self.catalog_network_handler.finished.connect(self.set_services)
-        # # ------- Network Handler für die Katalog Übersicht erstellen --------------
-        # self.overview_network_handler = NetworkHandler(config.PLUGIN_NAME_AND_VERSION, iface, QgsNetworkAccessManager.instance())
-        # self.overview_network_handler.finished.connect(self.set_catalogs)
-        # self.overview_network_handler.fetch_catalog_overview()
         
         # ------- Dialog für die EPSG-Auswahl erstellen
         self.epsg_dialog = EpsgDialog(parent=iface.mainWindow())
@@ -41,7 +33,7 @@ class GeoBasis_Loader:
         # ------- Letzten Katalog laden --------------------------------------------
         current_catalog = self.qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)
         if current_catalog is not None:
-            CatalogManager.get_catalog(current_catalog["titel"], self.set_catalogs)
+            CatalogManager.get_catalog(current_catalog["titel"], current_catalog["url"], self.set_services)
             # self.catalog_network_handler.fetch_catalog(current_catalog["url"])
             
         # ------- Letzte Einstellung für automatisches Koordinatensystem laden -----
@@ -81,19 +73,18 @@ class GeoBasis_Loader:
             
             self.main_menu.addSeparator()
             
-
-        if self.catalogs is not None:
+        if CatalogManager.overview is not None:
             # ------- Katalogmenü erstellen ------------------------------------
             menu = QMenu('catalogs')
             menu.setObjectName('catalog-overview')
             
             # ------- Einträge im Katalogmenü erstellen ------------------------
-            for catalog in self.catalogs:
+            for catalog in CatalogManager.overview:
                 action = menu.addAction(catalog["titel"], partial(self.change_current_catalog, catalog))
                 action.setObjectName("open-" + catalog["titel"])
                 
             # ------- Katalogmenü tum Hauptmenü hinzufügen ---------------------
-            action = self.main_menu.addAction("Weitere Kataloge (Other Catalogs)")
+            action = self.main_menu.addAction("Katalog wechseln (Change Catalogs)")
             action.setMenu(menu)
             
             self.main_menu.addSeparator()
@@ -167,11 +158,7 @@ class GeoBasis_Loader:
         
     def change_current_catalog(self, catalog: dict):
         self.qgs_settings.setValue(config.CURRENT_CATALOG_SETTINGS_KEY, catalog)
-        self.catalog_network_handler.fetch_catalog(catalog["url"])
-        
-    def set_catalogs(self, catalogs: list[Dict[str, str]]):
-        self.catalogs = catalogs
-        self.initGui()
+        CatalogManager.get_catalog(catalog["titel"], callback=self.set_services)
         
     def set_services(self, services: Dict):
         current_catalog = self.qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)
@@ -307,6 +294,8 @@ class GeoBasis_Loader:
             newLayerGroup.addLayer(subLayer)
             
     def addLayerCombination(self, layers) -> None:
+        # TODO: Bug when disabling automatic crs
+        
         preferred_crs = None
         
         if "layers" not in layers[0]:
