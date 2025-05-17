@@ -1,15 +1,15 @@
 from typing import Optional, override
+
 from .catalog_manager import CatalogManager
 from qgis.core import QgsLocatorFilter, QgsLocatorResult, QgsLocatorContext, QgsFeedback
-
 # Strings wie Beschreibung und Name werden nicht übersetzt und sind momentan nur in Deutsch 
 
-# TODO: QGIS crash wenn Plugin neugeladen wird und Locator verwendet wird
-
 class SearchFilter(QgsLocatorFilter):
-    def __init__(self):
+    def __init__(self, gbl):
         super().__init__()
         self.setUseWithoutPrefix(True)
+        # Not pretty but it is what it is
+        self.gbl = gbl
 
     @override
     def name(self) -> str:
@@ -29,7 +29,7 @@ class SearchFilter(QgsLocatorFilter):
     
     @override
     def clone(self) -> Optional[QgsLocatorFilter]:
-        return self.__class__()
+        return self.__class__(self.gbl)
     
     @override
     def fetchResults(self, string: Optional[str], context: QgsLocatorContext, feedback: QgsFeedback) -> None:
@@ -65,5 +65,5 @@ class SearchFilter(QgsLocatorFilter):
     
     @override
     def triggerResult(self, result: QgsLocatorResult):
-        data = result._userData()
-        print(result.displayString, data)
+        data = result._userData()        
+        self.gbl.add_topic(data["catalog_name"], data["group_key"], data["topic_key"])

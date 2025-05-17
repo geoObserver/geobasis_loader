@@ -44,7 +44,7 @@ class GeoBasis_Loader(QObject):
         self.main_menu.setIcon(icon)
         self.iface.pluginMenu().addMenu(self.main_menu)
         
-        self.search_filter = SearchFilter()
+        self.search_filter = SearchFilter(self)
         self.iface.registerLocatorFilter(self.search_filter)    
         #self.iface.messageBar().pushMessage(self.myPluginV,f'Sollte Euch das Plugin gefallen,{"&nbsp;"}könnt Ihr es gern mit Eurer Mitarbeit,{"&nbsp;"}einem Voting und ggf.{"&nbsp;"}einem kleinen Betrag unterstützen ...{"&nbsp;"}Danke!!', 3, 8)     
     
