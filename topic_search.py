@@ -33,10 +33,13 @@ class SearchFilter(QgsLocatorFilter):
         return self.__class__()
     
     @override
-    def fetchResults(self, search_string: str, context: QgsLocatorContext, feedback: QgsFeedback) -> None:
-        search_string = search_string.lower()
-        search_string.removeprefix(self.prefix())
-        if len(search_string) < 3 or feedback.isCanceled():
+    def fetchResults(self, string: Optional[str], context: QgsLocatorContext, feedback: QgsFeedback) -> None:
+        if string is None:
+            return
+        
+        string = string.lower()
+        string.removeprefix(self.prefix())
+        if len(string) < 3 or feedback.isCanceled():
             return
         
         for _, catalog in CatalogManager.catalogs.items():
@@ -46,10 +49,10 @@ class SearchFilter(QgsLocatorFilter):
                 
                 for _, topic in group["themen"].items():
                     hit = False
-                    if search_string in topic["name"].lower():
+                    if string in topic["name"].lower():
                         hit = True
                     elif "keywords" in topic:
-                        if any(search_string in keyword.lower() for keyword in topic["keywords"]):
+                        if any(string in keyword.lower() for keyword in topic["keywords"]):
                             hit = True
                 
                     if hit:
