@@ -1,8 +1,8 @@
 import re, os
 from functools import partial
-from PyQt5.QtWidgets import *
-from PyQt5.QtGui import *
-from PyQt5.QtCore import QUrl
+from PyQt5.QtWidgets import QMenu, QAction
+from PyQt5.QtGui import QIcon, QColor
+from PyQt5.QtCore import QUrl, QObject
 # from PyQt5.QtWebKitWidgets import QWebView # type: ignore
 from .dialog import EpsgDialog
 from qgis.core import QgsSettings, QgsProject, QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer
@@ -13,19 +13,17 @@ from .topic_search import SearchFilter
 from . import config
 from .catalog_manager import CatalogManager
 
-class GeoBasis_Loader:
+class GeoBasis_Loader(QObject):
     services = None
     
     search_filter = None
     qgs_settings = QgsSettings()
 
 # =========================================================================
-    def __init__(self, iface: QgisInterface) -> None:
+    def __init__(self, iface: QgisInterface, parent = None) -> None:
+        super().__init__(parent)
         CatalogManager.setup(iface)
         CatalogManager.get_overview(callback=self.initGui)
-        # ------- Network Handler für die einzelnen Kataloge erstellen -------------
-        # self.catalog_network_handler = NetworkHandler(config.PLUGIN_NAME_AND_VERSION, iface, QgsNetworkAccessManager.instance())
-        # self.catalog_network_handler.finished.connect(self.set_services)
         
         # ------- Dialog für die EPSG-Auswahl erstellen
         self.epsg_dialog = EpsgDialog(parent=iface.mainWindow())
@@ -47,13 +45,10 @@ class GeoBasis_Loader:
         self.iface.pluginMenu().addMenu(self.main_menu)
         
         self.search_filter = SearchFilter()
-        self.iface.registerLocatorFilter(self.search_filter)
-        # self.fetchUrlJSON()       
+        self.iface.registerLocatorFilter(self.search_filter)    
         #self.iface.messageBar().pushMessage(self.myPluginV,f'Sollte Euch das Plugin gefallen,{"&nbsp;"}könnt Ihr es gern mit Eurer Mitarbeit,{"&nbsp;"}einem Voting und ggf.{"&nbsp;"}einem kleinen Betrag unterstützen ...{"&nbsp;"}Danke!!', 3, 8)     
     
-    def initGui(self) -> None:
-        # if self.main_menu 
-        
+    def initGui(self) -> None:        
         self.main_menu.clear()
         
         if self.services is not None:
@@ -104,25 +99,18 @@ class GeoBasis_Loader:
         # ------- Status-Schaltfläche für #geoObserver ------------------------
         # self.mainMenu.addAction("Status ...", partial(self.openWebSite, 'https://geoobserver.de/qgis-plugin-geobasis-loader/#statustabelle'))        
         
-        # ------- Status-Schaltfläche für #geoObserver ------------------------
-        # self.mainMenu.addAction("FAQs ...", partial(self.openWebSite, 'https://geoobserver.de/qgis-plugin-geobasis-loader/#faq'))
-        
-    def gui_for_one_topic(self, topic_dict: dict, topic_abbreviation: str) -> QMenu:        
+    def gui_for_one_topic(self, topic_dict: dict, topic_abbreviation: str) -> QMenu:
         menu = QMenu(topic_abbreviation)
         menu.setObjectName('loader-' + topic_abbreviation)
         for baseLayer in topic_dict:
-            if "layers" not in topic_dict[baseLayer]:
-                action = menu.addAction(topic_dict[baseLayer]['name'], partial(self.addLayer, topic_dict[baseLayer], None))
-            else:
-                layers = topic_dict[baseLayer]["layers"]
-                if type(layers) == list:
-                    combinationLayers = []
-                    for layer in layers:
-                        combinationLayers.append(topic_dict[layer])
-                    action = menu.addAction(topic_dict[baseLayer]['name'], partial(self.addLayerCombination, combinationLayers))
-                else:
-                    action = menu.addAction(topic_dict[baseLayer]['name'], partial(self.addLayerGroup, None, layers, topic_dict[baseLayer]['name']))
+            action = QAction(topic_dict[baseLayer]['name'], menu)
             action.setObjectName(topic_dict[baseLayer]['name'])
+            action.setData({
+                "group_key": topic_abbreviation,
+                "topic_key": baseLayer
+            })
+            action.triggered.connect(self.add_topic)
+            menu.addAction(action)
             if "seperator" in topic_dict[baseLayer]:
                 menu.addSeparator()
         return menu     
@@ -187,6 +175,31 @@ class GeoBasis_Loader:
             current_crs = "CRS:84"
             
         return current_crs
+    
+    def add_topic(self, catalog_title: Optional[str] = None, group_key: Optional[str] = None, topic_key: Optional[str] = None):
+        sender: QAction = self.sender()
+        if sender is not None:
+            data = sender.data()
+            catalog_title = self.qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)["titel"]
+            group_key = data["group_key"]
+            topic_key = data["topic_key"]
+
+        catalog = dict(CatalogManager.get_catalog(catalog_title))
+        topic = catalog[group_key]["themen"][topic_key]
+        
+        if "layers" not in topic:
+            self.addLayer(topic, None)
+            return
+        
+        layers = topic["layers"]
+        if type(layers) == list:
+            combination_layers = []
+            for layer in layers:
+                sub_topic = catalog[group_key]["themen"][layer]
+                combination_layers.append(sub_topic)
+            self.addLayerCombination(combination_layers)
+        else:
+            self.addLayerGroup(None, layers, topic["name"])
     
     def addLayer(self, attributes: Dict, crs: str, standalone: bool = True):
         uri: str = attributes.get('uri', "n.n.")
