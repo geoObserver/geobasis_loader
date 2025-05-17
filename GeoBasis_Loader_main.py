@@ -112,18 +112,14 @@ class GeoBasis_Loader(QObject):
         menu = QMenu(topic_abbreviation)
         menu.setObjectName('loader-' + topic_abbreviation)
         for baseLayer in topic_dict:
-            if "layers" not in topic_dict[baseLayer]:
-                action = menu.addAction(topic_dict[baseLayer]['name'], partial(self.addLayer, topic_dict[baseLayer], None))
-            else:
-                layers = topic_dict[baseLayer]["layers"]
-                if type(layers) == list:
-                    combinationLayers = []
-                    for layer in layers:
-                        combinationLayers.append(topic_dict[layer])
-                    action = menu.addAction(topic_dict[baseLayer]['name'], partial(self.addLayerCombination, combinationLayers))
-                else:
-                    action = menu.addAction(topic_dict[baseLayer]['name'], partial(self.addLayerGroup, None, layers, topic_dict[baseLayer]['name']))
+            action = QAction(topic_dict[baseLayer]['name'], menu)
             action.setObjectName(topic_dict[baseLayer]['name'])
+            action.setData({
+                "group_key": topic_abbreviation,
+                "topic_key": baseLayer
+            })
+            action.triggered.connect(self.add_topic)
+            menu.addAction(action)
             if "seperator" in topic_dict[baseLayer]:
                 menu.addSeparator()
         return menu     
@@ -188,6 +184,31 @@ class GeoBasis_Loader(QObject):
             current_crs = "CRS:84"
             
         return current_crs
+    
+    def add_topic(self, catalog_title: Optional[str] = None, group_key: Optional[str] = None, topic_key: Optional[str] = None):
+        sender: QAction = self.sender()
+        if sender is not None:
+            data = sender.data()
+            catalog_title = self.qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)["titel"]
+            group_key = data["group_key"]
+            topic_key = data["topic_key"]
+
+        catalog = dict(CatalogManager.get_catalog(catalog_title))
+        topic = catalog[group_key]["themen"][topic_key]
+        
+        if "layers" not in topic:
+            self.addLayer(topic, None)
+            return
+        
+        layers = topic["layers"]
+        if type(layers) == list:
+            combination_layers = []
+            for layer in layers:
+                sub_topic = catalog[group_key]["themen"][layer]
+                combination_layers.append(sub_topic)
+            self.addLayerCombination(combination_layers)
+        else:
+            self.addLayerGroup(None, layers, topic["name"])
     
     def addLayer(self, attributes: Dict, crs: str, standalone: bool = True):
         uri: str = attributes.get('uri', "n.n.")
