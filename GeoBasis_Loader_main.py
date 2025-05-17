@@ -24,9 +24,6 @@ class GeoBasis_Loader(QObject):
         super().__init__(parent)
         CatalogManager.setup(iface)
         CatalogManager.get_overview(callback=self.initGui)
-        # ------- Network Handler für die einzelnen Kataloge erstellen -------------
-        # self.catalog_network_handler = NetworkHandler(config.PLUGIN_NAME_AND_VERSION, iface, QgsNetworkAccessManager.instance())
-        # self.catalog_network_handler.finished.connect(self.set_services)
         
         # ------- Dialog für die EPSG-Auswahl erstellen
         self.epsg_dialog = EpsgDialog(parent=iface.mainWindow())
@@ -48,13 +45,10 @@ class GeoBasis_Loader(QObject):
         self.iface.pluginMenu().addMenu(self.main_menu)
         
         self.search_filter = SearchFilter()
-        self.iface.registerLocatorFilter(self.search_filter)
-        # self.fetchUrlJSON()       
+        self.iface.registerLocatorFilter(self.search_filter)    
         #self.iface.messageBar().pushMessage(self.myPluginV,f'Sollte Euch das Plugin gefallen,{"&nbsp;"}könnt Ihr es gern mit Eurer Mitarbeit,{"&nbsp;"}einem Voting und ggf.{"&nbsp;"}einem kleinen Betrag unterstützen ...{"&nbsp;"}Danke!!', 3, 8)     
     
-    def initGui(self) -> None:
-        # if self.main_menu 
-        
+    def initGui(self) -> None:        
         self.main_menu.clear()
         
         if self.services is not None:
@@ -105,10 +99,7 @@ class GeoBasis_Loader(QObject):
         # ------- Status-Schaltfläche für #geoObserver ------------------------
         # self.mainMenu.addAction("Status ...", partial(self.openWebSite, 'https://geoobserver.de/qgis-plugin-geobasis-loader/#statustabelle'))        
         
-        # ------- Status-Schaltfläche für #geoObserver ------------------------
-        # self.mainMenu.addAction("FAQs ...", partial(self.openWebSite, 'https://geoobserver.de/qgis-plugin-geobasis-loader/#faq'))
-        
-    def gui_for_one_topic(self, topic_dict: dict, topic_abbreviation: str) -> QMenu:        
+    def gui_for_one_topic(self, topic_dict: dict, topic_abbreviation: str) -> QMenu:
         menu = QMenu(topic_abbreviation)
         menu.setObjectName('loader-' + topic_abbreviation)
         for baseLayer in topic_dict:
