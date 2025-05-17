@@ -29,7 +29,6 @@ class SearchFilter(QgsLocatorFilter):
     
     @override
     def clone(self) -> Optional[QgsLocatorFilter]:
-        self.clearPreviousResults()
         return self.__class__()
     
     @override
@@ -42,12 +41,12 @@ class SearchFilter(QgsLocatorFilter):
         if len(string) < 3 or feedback.isCanceled():
             return
         
-        for _, catalog in CatalogManager.catalogs.items():
-            for _, group in catalog:
+        for catalog_name, catalog in CatalogManager.catalogs.items():
+            for group_key, group in catalog:
                 if feedback.isCanceled():
                     return
                 
-                for _, topic in group["themen"].items():
+                for topic_key, topic in group["themen"].items():
                     hit = False
                     if string in topic["name"].lower():
                         hit = True
@@ -56,9 +55,15 @@ class SearchFilter(QgsLocatorFilter):
                             hit = True
                 
                     if hit:
-                        result = QgsLocatorResult(self, topic["name"])
+                        data = {
+                            "catalog_name": catalog_name,
+                            "group_key": group_key,
+                            "topic_key": topic_key
+                        }
+                        result = QgsLocatorResult(self, topic["name"], data)
                         self.resultFetched.emit(result)
     
     @override
-    def triggerResult(self, result):
-        return super().triggerResult(result)
+    def triggerResult(self, result: QgsLocatorResult):
+        data = result._userData()
+        print(result.displayString, data)
