@@ -1,8 +1,8 @@
 import re, os
 from functools import partial
-from PyQt5.QtWidgets import *
-from PyQt5.QtGui import *
-from PyQt5.QtCore import QUrl
+from PyQt5.QtWidgets import QMenu, QAction
+from PyQt5.QtGui import QIcon, QColor
+from PyQt5.QtCore import QUrl, QObject
 # from PyQt5.QtWebKitWidgets import QWebView # type: ignore
 from .dialog import EpsgDialog
 from qgis.core import QgsSettings, QgsProject, QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer
@@ -13,14 +13,15 @@ from .topic_search import SearchFilter
 from . import config
 from .catalog_manager import CatalogManager
 
-class GeoBasis_Loader:
+class GeoBasis_Loader(QObject):
     services = None
     
     search_filter = None
     qgs_settings = QgsSettings()
 
 # =========================================================================
-    def __init__(self, iface: QgisInterface) -> None:
+    def __init__(self, iface: QgisInterface, parent = None) -> None:
+        super().__init__(parent)
         CatalogManager.setup(iface)
         CatalogManager.get_overview(callback=self.initGui)
         # ------- Network Handler für die einzelnen Kataloge erstellen -------------
