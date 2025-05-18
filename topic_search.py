@@ -37,7 +37,7 @@ class SearchFilter(QgsLocatorFilter):
             return
         
         string = string.lower()
-        string.removeprefix(self.prefix())
+        string = string.removeprefix(self.prefix())
         if len(string) < 3 or feedback.isCanceled():
             return
         

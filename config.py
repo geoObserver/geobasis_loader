@@ -17,7 +17,7 @@ CATALOG_OVERVIEW = "GeoBasis_Loader_v5_Kataloge.json"
 CATALOG_OVERVIEW_NAME = "catalog_overview"
 class ServerHosts(str, Enum):
     GEOOBSERVER = "https://geoobserver.de/download/GeoBasis_Loader/{name}"
-    GITHUB = "https://api.github.com/repos/geoObserver/geobasis_loader/contents/kataloge/{name}?ref=two-servers"
+    GITHUB = "https://api.github.com/repos/geoObserver/geobasis_loader/contents/kataloge/{name}?ref=main"
     
     @classmethod
     def get_servers(cls) -> list[str]:
