@@ -1,0 +1,422 @@
+{
+  "Bevölkerung": {
+    "bundeslandname": "Bevölkerung",
+    "themen": {
+      "100m": {
+        "name": "Zensus 2022: Bevölkerung 100m (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=bevoelkerung_100m&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "1km": {
+        "name": "Zensus 2022: Bevölkerung 1km (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=bevoelkerung_1km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "10km": {
+        "name": "Zensus 2022: Bevölkerung 10km (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=bevoelkerung_10km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "Bevölkerung_alles": {
+        "name": "Zensus 2022: \u25b6\ufe0e Bevölkerung 100m, 1km, 10km (WMS)",
+        "layers": ["100m", "1km", "10km"]
+      }
+    }
+  },
+  "Nettokaltmieten": {
+    "bundeslandname": "Nettokaltmieten",
+    "themen": {
+      "100m": {
+        "name": "Zensus 2022: Nettokaltmieten 100m (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=durchschnittMiete_100m&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "1km": {
+        "name": "Zensus 2022: Nettokaltmieten 1km (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=durchschnittMiete_1km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "10km": {
+        "name": "Zensus 2022: Nettokaltmieten 10km (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=durchschnittMiete_10km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "Nettokaltmieten_alles": {
+        "name": "Zensus 2022: \u25b6\ufe0e Nettokaltmieten 100m, 1km, 10km (WMS)",
+        "layers": ["100m", "1km", "10km"]
+      }
+    }
+  },
+  "Ausländeranteil": {
+    "bundeslandname": "Ausländeranteil",
+    "themen": {
+      "100m": {
+        "name": "Zensus 2022: Ausländeranteil 100m (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=auslaenderanteil_100m&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "1km": {
+        "name": "Zensus 2022: Ausländeranteil 1km (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=auslaenderanteil_1km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "10km": {
+        "name": "Zensus 2022: Ausländeranteil 10km (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=auslaenderanteil_10km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "Ausländeranteil_alles": {
+        "name": "Zensus 2022: \u25b6\ufe0e Ausländeranteil 100m, 1km, 10km (WMS)",
+        "layers": ["100m", "1km", "10km"]
+      }
+    }
+  },
+  "Bevölkerungsanteilu18": {
+    "bundeslandname": "Bevölkerungsanteil unter 18 Jahre",
+    "themen": {
+      "100m": {
+        "name": "Zensus 2022: Bevölkerungsanteil unter 18 Jahre 100m (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=anteilu18_100m&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "1km": {
+        "name": "Zensus 2022: Bevölkerungsanteil unter 18 Jahre 1km (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=anteilu18_1km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "10km": {
+        "name": "Zensus 2022: Bevölkerungsanteil unter 18 Jahre 10km (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=anteilu18_10km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "Bevölkerungsanteil_u18_alles": {
+        "name": "Zensus 2022: \u25b6\ufe0e Bevölkerungsanteil unter 18 Jahre 100m, 1km, 10km (WMS)",
+        "layers": ["100m", "1km", "10km"]
+      }
+    }
+  },
+  "Bevölkerungsanteilue65": {
+    "bundeslandname": "Bevölkerungsanteil über 65 Jahre",
+    "themen": {
+      "100m": {
+        "name": "Zensus 2022: Bevölkerungsanteil über 65 Jahre 100m (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=anteilue65_100m&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "1km": {
+        "name": "Zensus 2022: Bevölkerungsanteil über 65 Jahre 1km (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=anteilue65_1km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "10km": {
+        "name": "Zensus 2022: Bevölkerungsanteil über 65 Jahre 10km (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=anteilue65_10km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "Bevölkerungsanteil_u18_alles": {
+        "name": "Zensus 2022: \u25b6\ufe0e Bevölkerungsanteil über 65 Jahre 100m, 1km, 10km (WMS)",
+        "layers": ["100m", "1km", "10km"]
+      }
+    }
+  },
+  "Eigentümerquote": {
+    "bundeslandname": "Eigentümerquote in Wohngebäuden in %",
+    "themen": {
+      "100m": {
+        "name": "Zensus 2022: Eigentümerquote in Wohngebäuden in % 100m (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=eigentuemerquote_100m&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "1km": {
+        "name": "Zensus 2022: Eigentümerquote in Wohngebäuden in % 1km (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=eigentuemerquote_1km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "10km": {
+        "name": "Zensus 2022: Eigentümerquote in Wohngebäuden in % 10km (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=eigentuemerquote_10km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "eigentuemerquote_alles": {
+        "name": "Zensus 2022: \u25b6\ufe0e Eigentümerquote in Wohngebäuden in % 100m, 1km, 10km (WMS)",
+        "layers": ["100m", "1km", "10km"]
+      }
+    }
+  },
+  "Durchschnittsalter": {
+    "bundeslandname": "Durchschnittsalter",
+    "themen": {
+      "100m": {
+        "name": "Zensus 2022: Durchschnittsalter 100m (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=durchschnittsalter_100m&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "1km": {
+        "name": "Zensus 2022: Durchschnittsalter 1km (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=durchschnittsalter_1km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "10km": {
+        "name": "Zensus 2022: Durchschnittsalter 10km (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=durchschnittsalter_10km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "Durchschnittsalter_alles": {
+        "name": "Zensus 2022: \u25b6\ufe0e Durchschnittsalter 100m, 1km, 10km (WMS)",
+        "layers": ["100m", "1km", "10km"]
+      }
+    }
+  },
+  "DurchschnittHauhaltsgroesse": {
+    "bundeslandname": "Durchschnittliche Haushaltsgröße in Personen",
+    "themen": {
+      "100m": {
+        "name": "Zensus 2022: Durchschnittliche Haushaltsgröße in Personen 100m (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=durchschnittHaushaltsgroesse_100m&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "1km": {
+        "name": "Zensus 2022: Durchschnittliche Haushaltsgröße in Personen 1km (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=durchschnittHaushaltsgroesse_1km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "10km": {
+        "name": "Zensus 2022: Durchschnittliche Haushaltsgröße in Personen 10km (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=durchschnittHaushaltsgroesse_10km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "DurchschnittlicheHaushaltsgroess_alles": {
+        "name": "Zensus 2022: \u25b6\ufe0e Durchschnittliche Haushaltsgröße in Personen 100m, 1km, 10km (WMS)",
+        "layers": ["100m", "1km", "10km"]
+      }
+    }
+  },
+  "Leerstandsquote": {
+    "bundeslandname": "Leerstandsquote in %",
+    "themen": {
+      "100m": {
+        "name": "Zensus 2022: Leerstandsquote in % 100m (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=leerstandsquote_100m&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "1km": {
+        "name": "Zensus 2022: Leerstandsquote in % 1km (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=leerstandsquote_1km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "10km": {
+        "name": "Zensus 2022: Leerstandsquote in % 10km (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=leerstandsquote_10km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "Leerstandsquote_alles": {
+        "name": "Zensus 2022: \u25b6\ufe0e Leerstandsquote in % 100m, 1km, 10km (WMS)",
+        "layers": ["100m", "1km", "10km"]
+      }
+    }
+  },
+  "Marktleerstandsquote": {
+    "bundeslandname": "Marktaktiv leerstehende Wohnungen in %",
+    "themen": {
+      "100m": {
+        "name": "Zensus 2022: Marktleerstandsquote in % 100m (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=marktleerstandsquote_100m&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "1km": {
+        "name": "Zensus 2022: Marktleerstandsquote in % 1km (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=marktleerstandsquote_1km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "10km": {
+        "name": "Zensus 2022: Marktleerstandsquote in % 10km (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=marktleerstandsquote_10km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "marktleerstandsquote_alles": {
+        "name": "Zensus 2022: \u25b6\ufe0e Marktleerstandsquote in % 100m, 1km, 10km (WMS)",
+        "layers": ["100m", "1km", "10km"]
+      }
+    }
+  },
+  "WohnflaecheProBewohner": {
+    "bundeslandname": "Wohnfläche pro Bewohner",
+    "themen": {
+      "100m": {
+        "name": "Zensus 2022: Wohnfläche pro Bewohner 100m (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=wohnflaecheBewohner_100m&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "1km": {
+        "name": "Zensus 2022: Wohnfläche pro Bewohner 1km (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=wohnflaecheBewohner_1km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "10km": {
+        "name": "Zensus 2022: Wohnfläche pro Bewohner 10km (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=wohnflaecheBewohner_10km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "WohnflächeProBewohner_alles": {
+        "name": "Zensus 2022: \u25b6\ufe0e Wohnflaeche pro Bewohner 100m, 1km, 10km (WMS)",
+        "layers": ["100m", "1km", "10km"]
+      }
+    }
+  },
+  "WohnflaecheProWohnung": {
+    "bundeslandname": "Wohnfläche pro Wohnung",
+    "themen": {
+      "100m": {
+        "name": "Zensus 2022: Wohnfläche pro Wohnung 100m (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=wohnflaecheWohnung_100m&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "1km": {
+        "name": "Zensus 2022: Wohnfläche pro Wohnung 1km (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=wohnflaecheWohnung_1km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "10km": {
+        "name": "Zensus 2022: Wohnfläche pro Wohnung 10km (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=wohnflaecheWohnung_10km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "WohnflächeProWohnung_alles": {
+        "name": "Zensus 2022: \u25b6\ufe0e Wohnflaeche pro Wohnung 100m, 1km, 10km (WMS)",
+        "layers": ["100m", "1km", "10km"]
+      }
+    }
+  },
+  "WohnnungenNachEnergietraeger": {
+    "bundeslandname": "Wohnungen nach Energieträger",
+    "themen": {
+      "100m": {
+        "name": "Zensus 2022: Wohnungen nach Energieträger 100m (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=energietraeger_100m&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "1km": {
+        "name": "Zensus 2022: Wohnungen nach Energieträger 1km (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=energietraeger_1km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "10km": {
+        "name": "Zensus 2022: Wohnungen nach Energieträger 10km (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=energietraeger_10km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "WohnnungenNachEnergietraeger_alles": {
+        "name": "Zensus 2022: \u25b6\ufe0e Wohnungen nach Energieträger 100m, 1km, 10km (WMS)",
+        "layers": ["100m", "1km", "10km"]
+      }
+    }
+  },
+  "WohnnungenNachUeberwiegenderHeizungsart": {
+    "bundeslandname": "Wohnungen nach überwiegender Heizungsart",
+    "themen": {
+      "100m": {
+        "name": "Zensus 2022: Wohnungen nach überwiegender Heizungsart 100m (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=heizungsarten_100m&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "1km": {
+        "name": "Zensus 2022: Wohnungen nach überwiegender Heizungsart 1km (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=heizungsarten_1km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "10km": {
+        "name": "Zensus 2022: Wohnungen nach überwiegender Heizungsart 10km (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326",  "EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3875", "EPSG:4248", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:25831","EPSG:32632", "EPSG:28992", "EPSG:3035"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=heizungsarten_10km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "WohnnungenNachUeberwiegenderHeizungsart_alles": {
+        "name": "Zensus 2022: \u25b6\ufe0e Wohnungen nach überwiegender Heizungsart 100m, 1km, 10km (WMS)",
+        "layers": ["100m", "1km", "10km"]
+      }
+    }
+  }
+}

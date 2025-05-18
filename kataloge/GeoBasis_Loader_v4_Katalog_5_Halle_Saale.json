@@ -1,0 +1,514 @@
+{
+  "Kap1": {
+    "bundeslandname": "1. Bevölkerung",
+    "themen": {
+      "1.1": {
+        "name": "Bevölkerung nach Altersgruppen 2016 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=ff8328f7-d9f6-0d70-cb2c-22ded9e70a5a&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/ff8328f7-d9f6-0d70-cb2c-22ded9e70a5a",
+        "opacity": 0.75
+      },
+      "1.2": {
+        "name": "Bevölkerung nach Altersgruppen 2017 (WMS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=10&format=image/png&layers=fbde17b7-84d4-ef12-4317-3be6be966314&styles&url=https://geodienste.halle.de/opendata/fbde17b7-84d4-ef12-4317-3be6be966314",
+        "opacity": 0.75
+      },
+      "1.3": {
+        "name": "Bevölkerung nach Altersgruppen 2018 (WMS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=10&format=image/png&layers=f29638d7-bafb-d85f-c907-01b4d544b6f4&styles&url=https://geodienste.halle.de/opendata/f29638d7-bafb-d85f-c907-01b4d544b6f4",
+        "opacity": 0.75
+      },
+      "1.4": {
+        "name": "Bevölkerung nach Altersgruppen 2019 (WMS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=10&format=image/png&layers=f079914e-4ef0-bf07-ee0d-05498a8cd17f&styles&url=https://geodienste.halle.de/opendata/f079914e-4ef0-bf07-ee0d-05498a8cd17f",
+        "opacity": 0.75
+      },
+      "1.5": {
+        "name": "Bevölkerung nach Altersgruppen 2020 (WMS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=10&format=image/png&layers=fd021afa-fa05-f4fa-31c0-a5dbb092996a&styles&url=https://geodienste.halle.de/opendata/fd021afa-fa05-f4fa-31c0-a5dbb092996a",
+        "opacity": 0.75
+      },
+      "1.6": {
+        "name": "Bevölkerung nach Altersgruppen 2021 (WMS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=10&format=image/png&layers=fb7c7826-c2e1-82f9-395c-bf3c65da4786&styles&url=https://geodienste.halle.de/opendata/fb7c7826-c2e1-82f9-395c-bf3c65da4786",
+        "opacity": 0.75
+      },
+      "1.7": {
+        "name": "Bevölkerung nach Altersgruppen 2022 (WMS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=10&format=image/png&layers=f4fed13f-c8da-79bb-d11d-4919fc5b1d7c&styles&url=https://geodienste.halle.de/opendata/f4fed13f-c8da-79bb-d11d-4919fc5b1d7c",
+        "opacity": 0.75,
+        "seperator": true
+      },
+      "1.8": {
+        "name": "Bevölkerung nach Familienstand 2016 (WMS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=10&format=image/png&layers=f6dc9fc5-07b7-7226-e61a-b513d4be1115&styles&url=https://geodienste.halle.de/opendata/f6dc9fc5-07b7-7226-e61a-b513d4be1115",
+        "opacity": 0.75
+      },
+      "1.9": {
+        "name": "Bevölkerung nach Familienstand 2017 (WMS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=10&format=image/png&layers=f07e7147-128d-111f-f4a4-c69888aa4101&styles&url=https://geodienste.halle.de/opendata/f07e7147-128d-111f-f4a4-c69888aa4101",
+        "opacity": 0.75
+      },
+      "1.10": {
+        "name": "Bevölkerung nach Familienstand 2018 (WMS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=10&format=image/png&layers=ffa452ad-192e-c816-11aa-b468447d4365&styles&url=https://geodienste.halle.de/opendata/ffa452ad-192e-c816-11aa-b468447d4365",
+        "opacity": 0.75
+      },
+      "1.11": {
+        "name": "Bevölkerung nach Familienstand 2019 (WMS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=10&format=image/png&layers=f51be6a0-910d-9c73-e66b-9ca5d48cfd91&styles&url=https://geodienste.halle.de/opendata/f51be6a0-910d-9c73-e66b-9ca5d48cfd91",
+        "opacity": 0.75
+      },
+      "1.12": {
+        "name": "Bevölkerung nach Familienstand 2020 (WMS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=10&format=image/png&layers=f818482f-228f-9de5-1e33-3b790e0d5dc9&styles&url=https://geodienste.halle.de/opendata/f818482f-228f-9de5-1e33-3b790e0d5dc9",
+        "opacity": 0.75
+      },
+      "1.13": {
+        "name": "Bevölkerung nach Familienstand 2021 (WMS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=10&format=image/png&layers=fbad60e5-c9a8-b518-e34c-d2f829d9d78a&styles&url=https://geodienste.halle.de/opendata/fbad60e5-c9a8-b518-e34c-d2f829d9d78a",
+        "opacity": 0.75
+      },
+      "1.14": {
+        "name": "Bevölkerung nach Familienstand 2022 (WMS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=10&format=image/png&layers=f3c96774-babb-7363-b94c-f6cc416a3996&styles&url=https://geodienste.halle.de/opendata/f3c96774-babb-7363-b94c-f6cc416a3996",
+        "opacity": 0.75,
+        "seperator": true
+      },
+      "1.15": {
+        "name": "Bevölkerung nach Geschlecht 2016 (WMS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=10&format=image/png&layers=f7a75416-ac16-0be2-3840-ca158f1706a2&styles&url=https://geodienste.halle.de/opendata/f7a75416-ac16-0be2-3840-ca158f1706a2",
+        "opacity": 0.75
+      },
+      "1.16": {
+        "name": "Bevölkerung nach Geschlecht 2017 (WMS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=10&format=image/png&layers=ff7f775d-fdcc-3b10-cc4e-0505a59c32e4&styles&url=https://geodienste.halle.de/opendata/ff7f775d-fdcc-3b10-cc4e-0505a59c32e4",
+        "opacity": 0.75
+      },
+      "1.17": {
+        "name": "Bevölkerung nach Geschlecht 2018 (WMS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=10&format=image/png&layers=fa677269-3ff5-7d3f-6e81-4897fa70de4c&styles&url=https://geodienste.halle.de/opendata/fa677269-3ff5-7d3f-6e81-4897fa70de4c",
+        "opacity": 0.75
+      },
+      "1.18": {
+        "name": "Bevölkerung nach Geschlecht 2019 (WMS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=10&format=image/png&layers=f310e609-8de9-b803-bc55-d5388bed2402&styles&url=https://geodienste.halle.de/opendata/f310e609-8de9-b803-bc55-d5388bed2402",
+        "opacity": 0.75
+      },
+      "1.19": {
+        "name": "Bevölkerung nach Geschlecht 2020 (WMS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=10&format=image/png&layers=f50a9e02-f5d0-2fea-e08d-34c253acb6c8&styles&url=https://geodienste.halle.de/opendata/f50a9e02-f5d0-2fea-e08d-34c253acb6c8",
+        "opacity": 0.75
+      },
+      "1.20": {
+        "name": "Bevölkerung nach Geschlecht 2021 (WMS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=10&format=image/png&layers=f2100404-9c33-2fdb-3db9-59248da53cc9&styles&url=https://geodienste.halle.de/opendata/f2100404-9c33-2fdb-3db9-59248da53cc9",
+        "opacity": 0.75
+      },
+      "1.21": {
+        "name": "Bevölkerung nach Geschlecht 2022 (WMS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=10&format=image/png&layers=fd83efa8-2b00-70d3-352b-29986f498b9f&styles&url=https://geodienste.halle.de/opendata/fd83efa8-2b00-70d3-352b-29986f498b9f",
+        "opacity": 0.75,
+        "seperator": true
+      }
+    }
+  },
+  "Kap2": {
+    "bundeslandname": "2. Bildung und Wissenschaft",
+    "themen": {
+      "2.1": {
+        "name": "Schulen (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&layers=fe15de6b-c161-cf03-d436-5d4e65eb56d5&styles&url=https://geodienste.halle.de/opendata/fe15de6b-c161-cf03-d436-5d4e65eb56d5",
+        "opacity": 0.75
+      }
+    }
+  },
+  "Kap3": {
+    "bundeslandname": "3. Geographie, Geologie und Geobasisdaten",
+    "themen": {
+      "3.1": {
+        "name": "Stadtgrenze (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=fa4a4584-a8b0-9306-24cd-cd05f398e448&styles&url=https://geodienste.halle.de/opendata/fa4a4584-a8b0-9306-24cd-cd05f398e448",
+        "opacity": 1.0
+      },
+      "3.2": {
+        "name": "Stadtbezirke Umrisse (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f12e2735-e59e-2072-8bb5-221189da5c1c&styles&url=https://geodienste.halle.de/opendata/f12e2735-e59e-2072-8bb5-221189da5c1c",
+        "opacity": 1.0
+      },
+      "3.3": {
+        "name": "Stadtviertel Umrisse (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f4354112-1c12-a113-af80-7d1582c74bea&styles&url=https://geodienste.halle.de/opendata/f4354112-1c12-a113-af80-7d1582c74bea",
+        "opacity": 1.0
+      },
+      "3.4": {
+        "name": "Baublöcke Umrisse (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f6cfcbfb-e586-e782-e9ae-50d5c7151aa9&styles&url=https://geodienste.halle.de/opendata/f6cfcbfb-e586-e782-e9ae-50d5c7151aa9",
+        "opacity": 1.0,
+        "seperator": true
+      },
+      "3.5": {
+        "name": "Digitale Stadtgrundkarte (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:3857", "EPSG:900913"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f398a5d8-9dce-cbbc-b7ae-7e1a7f5bf809&styles&url=https://geodienste.halle.de/opendata/f398a5d8-9dce-cbbc-b7ae-7e1a7f5bf809",
+        "opacity": 1.0,
+        "seperator": true
+      },
+      "3.6": {
+        "name": "Höhenfestpunkte Stadt Halle (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f4d7a014-edce-fc02-7760-c998e3149ab3&styles&url=https://geodienste.halle.de/opendata/f4d7a014-edce-fc02-7760-c998e3149ab3",
+        "opacity": 1.0
+      },
+      "3.7": {
+        "name": "Höhenfestpunkte Land Sachsen-Anhalt (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f353de43-bcf6-f124-5f53-e6218b7531fd&styles&url=https://geodienste.halle.de/opendata/f353de43-bcf6-f124-5f53-e6218b7531fd",
+        "opacity": 1.0,
+        "seperator": true
+      },
+      "3.8": {
+        "name": "Gitter 1km x 1km (Kilometerquadrate) (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f1501109-271e-3089-450e-73b22f1db87f&styles&url=https://geodienste.halle.de/opendata/f1501109-271e-3089-450e-73b22f1db87f",
+        "opacity": 1.0
+      },
+      "3.9": {
+        "name": "Gitter 1km x 1km (Kilometerquadrate LS489 EPSG_4647) (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f8ff2819-4d69-8268-2f7e-3650de336f62&styles&url=https://geodienste.halle.de/opendata/f8ff2819-4d69-8268-2f7e-3650de336f62",
+        "opacity": 1.0
+      },
+      "3.10": {
+        "name": "Gitter 500m x 250m (500er Kartenblätter) (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f0c99f8a-2dc2-396c-060d-0c88984ba92f&styles&url=https://geodienste.halle.de/opendata/f0c99f8a-2dc2-396c-060d-0c88984ba92f",
+        "opacity": 1.0,
+        "seperator": true
+      },
+      "3.11": {
+        "name": "Hexagon-Gitter 1000m (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f4ebfe85-cee1-7ebf-acf1-940b8d194973&styles&url=https://geodienste.halle.de/opendata/f4ebfe85-cee1-7ebf-acf1-940b8d194973",
+        "opacity": 1.0
+      },
+      "3.15": {
+        "name": "Hexagon-Gitter 500m (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f6c967aa-e04f-489b-d569-8f53ccef89b9&styles&url=https://geodienste.halle.de/opendata/f6c967aa-e04f-489b-d569-8f53ccef89b9",
+        "opacity": 1.0
+      },
+      "3.14": {
+        "name": "Hexagon-Gitter 250m (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=fd6a7fd7-8703-1a05-27af-110ef5fad060&styles&url=https://geodienste.halle.de/opendata/fd6a7fd7-8703-1a05-27af-110ef5fad060",
+        "opacity": 1.0
+      },
+      "3.13": {
+        "name": "Hexagon-Gitter 107.46m (3ha) (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f056d11c-27df-7c3e-1838-e3bb43ab9ee8&styles&url=https://geodienste.halle.de/opendata/f056d11c-27df-7c3e-1838-e3bb43ab9ee8",
+        "opacity": 1.0
+      },
+      "3.12": {
+        "name": "Hexagon-Gitter 100m (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f9571682-4b38-1b0a-5d84-a474bcd64959&styles&url=https://geodienste.halle.de/opendata/f9571682-4b38-1b0a-5d84-a474bcd64959",
+        "opacity": 1.0
+      },
+      "3.16": {
+        "name": "Hexagon-Gitter 50m (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f4e40e94-dd94-3bd7-6233-09c869cd1dad&styles&url=https://geodienste.halle.de/opendata/f4e40e94-dd94-3bd7-6233-09c869cd1dad",
+        "opacity": 1.0,
+        "seperator": true
+      },
+      "3.17": {
+        "name": "Quadrat-Gitter 1000m (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f5d52925-6934-4091-795a-113870cce301&styles&url=https://geodienste.halle.de/opendata/f5d52925-6934-4091-795a-113870cce301",
+        "opacity": 1.0
+      },
+      "3.20": {
+        "name": "Quadrat-Gitter 500m (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f2e5edb9-e3b9-25cf-981b-80acf34ca1c6&styles&url=https://geodienste.halle.de/opendata/f2e5edb9-e3b9-25cf-981b-80acf34ca1c6",
+        "opacity": 1.0
+      },
+      "3.19": {
+        "name": "Quadrat-Gitter 250m (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f1524313-2707-d9a9-4c73-c198cbc63904&styles&url=https://geodienste.halle.de/opendata/f1524313-2707-d9a9-4c73-c198cbc63904",
+        "opacity": 1.0
+      },
+      "3.18": {
+        "name": "Quadrat-Gitter 100m (1ha) (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f264b359-6f9a-dd3b-61d4-aa2a7ae0ec11&styles&url=https://geodienste.halle.de/opendata/f264b359-6f9a-dd3b-61d4-aa2a7ae0ec11",
+        "opacity": 1.0
+      },
+      "3.21": {
+        "name": "Quadrat-Gitter 50m (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=fdd8269f-b4d7-dd40-bd05-c4b2fba93a3a&styles&url=https://geodienste.halle.de/opendata/fdd8269f-b4d7-dd40-bd05-c4b2fba93a3a",
+        "opacity": 1.0,
+        "seperator": true
+      }
+    }
+  },
+  "Kap4": {
+    "bundeslandname": "4. Infrastruktur, Bauen und Wohnen",
+    "themen": {
+      "4.1": {
+        "name": "Entwicklungssatzung Heide-Süd (§ 165 BauGB) (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f7014fed-19d4-1958-5958-8904bf73bf78&styles&url=https://geodienste.halle.de/opendata/f7014fed-19d4-1958-5958-8904bf73bf78",
+        "opacity": 0.75
+      },
+      "4.2": {
+        "name": "FNP_2019_08_26_Nutzungsarten (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f75118fe-bb16-7c33-16b7-c663a23ef77a&styles&url=https://geodienste.halle.de/opendata/f75118fe-bb16-7c33-16b7-c663a23ef77a",
+        "opacity": 0.75
+      },
+      "4.3": {
+        "name": "Sanierungssatzung (§ 142 BauGB) (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f413faa0-c636-4d24-dbb9-55050fca71b9&styles&url=https://geodienste.halle.de/opendata/f413faa0-c636-4d24-dbb9-55050fca71b9",
+        "opacity": 0.75
+      },
+      "4.4": {
+        "name": "Städtische Spielplätze 2020 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f99755f0-d0f0-19b6-6011-9df79b880250&styles&url=https://geodienste.halle.de/opendata/f99755f0-d0f0-19b6-6011-9df79b880250",
+        "opacity": 0.75
+      },
+      "4.5": {
+        "name": "Stadtumbaugebiete (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=fea32850-90bc-e606-7fac-15e5e6388f1f&styles&url=https://geodienste.halle.de/opendata/fea32850-90bc-e606-7fac-15e5e6388f1f",
+        "opacity": 0.75
+      }
+    }
+  },
+  "Kap5": {
+    "bundeslandname": "5. Politik und Wahlen",
+    "themen": {
+      "5.1": {
+        "name": "Briefwahlbezirke 2019 (Europa- und Stadtratswahl) (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f0501a51-1505-23d4-926f-f0bd535ed016&styles&url=https://geodienste.halle.de/opendata/f0501a51-1505-23d4-926f-f0bd535ed016",
+        "opacity": 0.75
+      }
+    }
+  },
+  "Kap6": {
+    "bundeslandname": "6. Transport und Verkehr",
+    "themen": {
+      "6.1": {
+        "name": "Baustellen (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f625fc0c-674e-7ec5-7acf-3ce0f296dac5&styles&url=https://geodienste.halle.de/opendata/f625fc0c-674e-7ec5-7acf-3ce0f296dac5",
+        "opacity": 1.0
+      },
+      "6.2": {
+        "name": "Umleitungen (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=fdcdfc9f-2f6a-4cb4-9c5b-74b595ee47e1&styles&url=https://geodienste.halle.de/opendata/fdcdfc9f-2f6a-4cb4-9c5b-74b595ee47e1",
+        "opacity": 1.0
+      },
+      "6.3": {
+        "name": "Parkplätze/Parkhäuser (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=fc8cd3cd-01f7-3663-d0c0-984bd3507f0b&styles&url=https://geodienste.halle.de/opendata/fc8cd3cd-01f7-3663-d0c0-984bd3507f0b",
+        "opacity": 1.0
+      },
+      "6.4": {
+        "name": "Bewohnerparkzonen (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f1b4e731-caa5-0ec3-ce32-9fe187ac7fee&styles&url=https://geodienste.halle.de/opendata/f1b4e731-caa5-0ec3-ce32-9fe187ac7fee",
+        "opacity": 1.0
+      },
+      "6.5": {
+        "name": "Öffentliche Behindertenparkplätze (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=fb6c27ba-c2f0-2840-1f1f-a78c4c13108e&styles&url=https://geodienste.halle.de/opendata/fb6c27ba-c2f0-2840-1f1f-a78c4c13108e",
+        "opacity": 1.0,
+        "seperator": true
+      },
+      "6.6": {
+        "name": "Kraftfahrzeuge nach Art des KFZ 2016 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=ffb0d2b5-7cc7-0338-265e-9337a881a680&styles&url=https://geodienste.halle.de/opendata/ffb0d2b5-7cc7-0338-265e-9337a881a680",
+        "opacity": 1.0
+      },
+      "6.7": {
+        "name": "Kraftfahrzeuge nach Art des KFZ 2017 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f1a51c43-1bb3-4347-40fe-10c5ca66f7a7&styles&url=https://geodienste.halle.de/opendata/f1a51c43-1bb3-4347-40fe-10c5ca66f7a7",
+        "opacity": 1.0
+      },
+      "6.8": {
+        "name": "Kraftfahrzeuge nach Art des KFZ 2018 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=fdc56703-7009-2f08-8d97-6623ea7a1e02&styles&url=https://geodienste.halle.de/opendata/fdc56703-7009-2f08-8d97-6623ea7a1e02",
+        "opacity": 1.0
+      },
+      "6.9": {
+        "name": "Kraftfahrzeuge nach Art des KFZ 2019 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f5716547-9b18-2f1a-986f-016be98193b0&styles&url=https://geodienste.halle.de/opendata/f5716547-9b18-2f1a-986f-016be98193b0",
+        "opacity": 1.0
+      },
+      "6.10": {
+        "name": "Kraftfahrzeuge nach Art des KFZ 2020 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f74a2a21-8475-275b-768e-3a0f61ce5ee5&styles&url=https://geodienste.halle.de/opendata/f74a2a21-8475-275b-768e-3a0f61ce5ee5",
+        "opacity": 1.0
+      },
+      "6.11": {
+        "name": "Kraftfahrzeuge nach Art des KFZ 2021 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=fb8a8abf-595f-d359-ef39-d8a6bf625c28&styles&url=https://geodienste.halle.de/opendata/fb8a8abf-595f-d359-ef39-d8a6bf625c28",
+        "opacity": 1.0
+      },
+      "6.12": {
+        "name": "Kraftfahrzeuge nach Art des KFZ 2022 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=fbc5b3ce-60ca-f221-5ec2-7bd13232c4cf&styles&url=https://geodienste.halle.de/opendata/fbc5b3ce-60ca-f221-5ec2-7bd13232c4cf",
+        "opacity": 1.0
+      }
+    }
+  },
+  "Kap7": {
+    "bundeslandname": "7. Umwelt und Klima",
+    "themen": {
+      "7.1": {
+        "name": "2022 Lärmbelastete Flächen INDUSTRIE 24h (Lden) (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f9fd27da-2c3d-3c32-fd6e-0069cad51c59&styles&url=https://geodienste.halle.de/opendata/f9fd27da-2c3d-3c32-fd6e-0069cad51c59",
+        "opacity": 0.75
+      }
+    }
+  },
+  "Kap8": {
+    "bundeslandname": "8. Wirtschaft und Arbeit",
+    "themen": {
+      "8.1": {
+        "name": "Baumärkte (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f3ac3cde-1652-8fcf-f855-e2d7c1fed758&styles&url=https://geodienste.halle.de/opendata/f3ac3cde-1652-8fcf-f855-e2d7c1fed758",
+        "opacity": 1.0
+      },
+      "8.2": {
+        "name": "Lebensmitteleinzelhandel (großflächig) (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f56594d4-41fd-dbde-d6da-294f255f91f0&styles&url=https://geodienste.halle.de/opendata/f56594d4-41fd-dbde-d6da-294f255f91f0",
+        "opacity": 1.0
+      },
+      "8.3": {
+        "name": "Möbelmärkte (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f00b10c1-6cb3-832d-c64e-3f32432a01b0&styles&url=https://geodienste.halle.de/opendata/f00b10c1-6cb3-832d-c64e-3f32432a01b0",
+        "opacity": 1.0
+      },
+      "8.4": {
+        "name": "Zentren (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=fa1745af-b0ad-f4e3-aa8e-934ff9d6fceb&styles&url=https://geodienste.halle.de/opendata/fa1745af-b0ad-f4e3-aa8e-934ff9d6fceb",
+        "opacity": 1.0
+      }
+    }
+  } 
+}

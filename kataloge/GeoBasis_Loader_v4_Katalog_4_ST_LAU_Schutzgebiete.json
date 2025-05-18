@@ -1,0 +1,266 @@
+{
+  "lsa_lau_1": {
+    "bundeslandname": "ST: LSA SG Naturschutz (WMS)",
+    "themen": {
+       "lsa_sg_1": {
+        "name": "ST: LSA Biosphärenreservate (WMS)",
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lau_br_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:2399", "EPSG:2398", "EPSG:2397", "EPSG:31468", "EPSG:31469", "EPSG:31467", "EPSG:900913", "EPSG:4326", "EPSG:2168", "EPSG:2167", "EPSG:2166", "EPSG:4258", "OGC:CRS84"],
+        "type": "ogc_wms"
+      },
+       "lsa_sg_2": {
+        "name": "ST: LSA EU-Vogelschutzgebiete SPA (WMS)",
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lau_spa_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:2399", "EPSG:2398", "EPSG:2397", "EPSG:31468", "EPSG:31469", "EPSG:31467", "EPSG:900913", "EPSG:4326", "EPSG:2168", "EPSG:2167", "EPSG:2166", "EPSG:4258", "OGC:CRS84"],
+        "type": "ogc_wms"
+      },
+       "lsa_sg_3": {
+        "name": "ST: LSA Fauna-Flora-Habitat - Gebiete FFH (WMS)",
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lau_ffh_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:2399", "EPSG:2398", "EPSG:2397", "EPSG:31468", "EPSG:31469", "EPSG:31467", "EPSG:900913", "EPSG:4326", "EPSG:2168", "EPSG:2167", "EPSG:2166", "EPSG:4258", "OGC:CRS84"],
+        "type": "ogc_wms"
+      },
+       "lsa_sg_4": {
+        "name": "ST: LSA Ramsar-Feuchtgebiete (WMS)",
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lau_fib_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:2399", "EPSG:2398", "EPSG:2397", "EPSG:31468", "EPSG:31469", "EPSG:31467", "EPSG:900913", "EPSG:4326", "EPSG:2168", "EPSG:2167", "EPSG:2166", "EPSG:4258", "OGC:CRS84"],
+        "type": "ogc_wms"
+      },
+       "lsa_sg_5": {
+        "name": "ST: LSA Nationalparke (WMS)",
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lau_nap_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:2399", "EPSG:2398", "EPSG:2397", "EPSG:31468", "EPSG:31469", "EPSG:31467", "EPSG:900913", "EPSG:4326", "EPSG:2168", "EPSG:2167", "EPSG:2166", "EPSG:4258", "OGC:CRS84"],
+        "type": "ogc_wms"
+      },
+       "lsa_sg_6": {
+        "name": "ST: LSA Nationales Naturmonumente (WMS)",
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lau_nnm_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:2399", "EPSG:2398", "EPSG:2397", "EPSG:31468", "EPSG:31469", "EPSG:31467", "EPSG:900913", "EPSG:4326", "EPSG:2168", "EPSG:2167", "EPSG:2166", "EPSG:4258", "OGC:CRS84"],
+        "type": "ogc_wms"
+      },
+       "lsa_sg_7": {
+        "name": "ST: LSA Naturschutzgebiete (WMS)",
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lau_nsg_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:2399", "EPSG:2398", "EPSG:2397", "EPSG:31468", "EPSG:31469", "EPSG:31467", "EPSG:900913", "EPSG:4326", "EPSG:2168", "EPSG:2167", "EPSG:2166", "EPSG:4258", "OGC:CRS84"],
+        "type": "ogc_wms"
+      },
+       "lsa_sg_8": {
+        "name": "ST: LSA Landschaftsschutzgebiete (WMS)",
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lau_lsg_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:2399", "EPSG:2398", "EPSG:2397", "EPSG:31468", "EPSG:31469", "EPSG:31467", "EPSG:900913", "EPSG:4326", "EPSG:2168", "EPSG:2167", "EPSG:2166", "EPSG:4258", "OGC:CRS84"],
+        "type": "ogc_wms"
+      },
+       "lsa_sg_9": {
+        "name": "ST: LSA Naturparke (WMS)",
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lau_nup_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:2399", "EPSG:2398", "EPSG:2397", "EPSG:31468", "EPSG:31469", "EPSG:31467", "EPSG:900913", "EPSG:4326", "EPSG:2168", "EPSG:2167", "EPSG:2166", "EPSG:4258", "OGC:CRS84"],
+        "type": "ogc_wms"
+      },
+       "lsa_sg_10": {
+        "name": "ST: LSA Flächenhafte Naturdenkmale NDF (WMS)",
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lau_ndf_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:2399", "EPSG:2398", "EPSG:2397", "EPSG:31468", "EPSG:31469", "EPSG:31467", "EPSG:900913", "EPSG:4326", "EPSG:2168", "EPSG:2167", "EPSG:2166", "EPSG:4258", "OGC:CRS84"],
+        "type": "ogc_wms"
+      },
+       "lsa_sg_11": {
+        "name": "ST: LSA Geschützte Landschaftsbestandteile (WMS)",
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lau_glb_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:2399", "EPSG:2398", "EPSG:2397", "EPSG:31468", "EPSG:31469", "EPSG:31467", "EPSG:900913", "EPSG:4326", "EPSG:2168", "EPSG:2167", "EPSG:2166", "EPSG:4258", "OGC:CRS84"],
+        "type": "ogc_wms"
+      },
+       "lsa_sg_12": {
+        "name": "ST: LSA Flächennaturdenkmale FND (WMS)",
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lau_fnd_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:2399", "EPSG:2398", "EPSG:2397", "EPSG:31468", "EPSG:31469", "EPSG:31467", "EPSG:900913", "EPSG:4326", "EPSG:2168", "EPSG:2167", "EPSG:2166", "EPSG:4258", "OGC:CRS84"],
+        "type": "ogc_wms"
+      },
+       "lsa_sg_13": {
+        "name": "ST: LSA Geschützte Parke (WMS)",
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lau_gp_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:2399", "EPSG:2398", "EPSG:2397", "EPSG:31468", "EPSG:31469", "EPSG:31467", "EPSG:900913", "EPSG:4326", "EPSG:2168", "EPSG:2167", "EPSG:2166", "EPSG:4258", "OGC:CRS84"],
+        "type": "ogc_wms"
+      },
+       "lsa_sg_14": {
+        "name": "ST: LSA Allgemeinverfügungen zur nationalen Sicherstellung (WMS)",
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lau_av_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:2399", "EPSG:2398", "EPSG:2397", "EPSG:31468", "EPSG:31469", "EPSG:31467", "EPSG:900913", "EPSG:4326", "EPSG:2168", "EPSG:2167", "EPSG:2166", "EPSG:4258", "OGC:CRS84"],
+        "type": "ogc_wms"
+      },
+       "lsa_sg_15": {
+        "name": "ST: LSA Vertragliche Vereinbarungen (WMS)",
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lau_ven_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:2399", "EPSG:2398", "EPSG:2397", "EPSG:31468", "EPSG:31469", "EPSG:31467", "EPSG:900913", "EPSG:4326", "EPSG:2168", "EPSG:2167", "EPSG:2166", "EPSG:4258", "OGC:CRS84"],
+        "type": "ogc_wms"
+      }
+    }
+  },
+  "lsa_lau_2": {
+    "bundeslandname": "ST: LSA SG Wasserschutz (WMS)",
+    "themen": {
+      "lsa_wsg_1": {
+        "name": "ST: LSA Wasserschutzgebiete (WMS)",
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lau_wsg_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:2399", "EPSG:2398", "EPSG:2397", "EPSG:31468", "EPSG:31469", "EPSG:31467", "EPSG:900913", "EPSG:4326", "EPSG:2168", "EPSG:2167", "EPSG:2166", "EPSG:4258", "OGC:CRS84"],
+        "minScale": 1000000.0,
+        "maxScale": 1.0,
+        "type": "ogc_wms"
+      }
+    }
+  },
+  "lsa_lau_3": {
+    "bundeslandname": "ST: LSA SG Naturschutz (WFS) derzeit unter 1:25000",
+    "themen": {
+       "lsa_sg_1": {
+        "name": "ST: LSA Biosphärenreservate (WFS)",
+        "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='sg:lau_br_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto'",
+        "type": "ogc_wfs",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:4326", "EPSG:900913"],
+        "minScale": 1000000.0,
+        "maxScale": 1.0,
+        "opacity": 0.75
+      },
+       "lsa_sg_2": {
+        "name": "ST: LSA EU-Vogelschutzgebiete SPA (WFS)",
+        "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='sg:lau_spa_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto'",
+        "type": "ogc_wfs",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:4326", "EPSG:900913"],
+        "minScale": 1000000.0,
+        "maxScale": 1.0,
+        "opacity": 0.75
+      },
+       "lsa_sg_3": {
+        "name": "ST: LSA Fauna-Flora-Habitat - Gebiete FFH (WFS)",
+        "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='sg:lau_ffh_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto'",
+        "type": "ogc_wfs",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:4326", "EPSG:900913"],
+        "minScale": 1000000.0,
+        "maxScale": 1.0,
+        "opacity": 0.75
+      },
+       "lsa_sg_4": {
+        "name": "ST: LSA Ramsar-Feuchtgebiete (WFS)",
+        "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='sg:lau_fib_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto'",
+        "type": "ogc_wfs",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:4326", "EPSG:900913"],
+        "minScale": 1000000.0,
+        "maxScale": 1.0,
+        "opacity": 0.75
+      },
+       "lsa_sg_5": {
+        "name": "ST: LSA Nationalparke (WFS)",
+        "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='sg:lau_nap_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto'",
+        "type": "ogc_wfs",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:4326", "EPSG:900913"],
+        "minScale": 1000000.0,
+        "maxScale": 1.0,
+        "opacity": 0.75
+      },
+       "lsa_sg_6": {
+        "name": "ST: LSA Nationales Naturmonumente (WFS)",
+        "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='sg:lau_nnm_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto'",
+        "type": "ogc_wfs",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:4326", "EPSG:900913"],
+        "minScale": 1000000.0,
+        "maxScale": 1.0,
+        "opacity": 0.75
+      },
+       "lsa_sg_7": {
+        "name": "ST: LSA Naturschutzgebiete (WFS)",
+        "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='sg:lau_nsg_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto'",
+        "type": "ogc_wfs",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:4326", "EPSG:900913"],
+        "minScale": 1000000.0,
+        "maxScale": 1.0,
+        "opacity": 0.75
+      },
+       "lsa_sg_8": {
+        "name": "ST: LSA Landschaftsschutzgebiete (WFS)",
+        "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='sg:lau_lsg_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto'",
+        "type": "ogc_wfs",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:4326", "EPSG:900913"],
+        "minScale": 1000000.0,
+        "maxScale": 1.0,
+        "opacity": 0.75
+      },
+       "lsa_sg_9": {
+        "name": "ST: LSA Naturparke (WFS)",
+        "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='sg:lau_nup_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto'",
+        "type": "ogc_wfs",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:4326", "EPSG:900913"],
+        "minScale": 1000000.0,
+        "maxScale": 1.0,
+        "opacity": 0.75
+      },
+       "lsa_sg_10": {
+        "name": "ST: LSA Flächenhafte Naturdenkmale NDF (WFS)",
+        "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='sg:lau_ndf_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto'",
+        "type": "ogc_wfs",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:4326", "EPSG:900913"],
+        "minScale": 1000000.0,
+        "maxScale": 1.0,
+        "opacity": 0.75
+      },
+       "lsa_sg_11": {
+        "name": "ST: LSA Geschützte Landschaftsbestandteile (WFS)",
+        "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='sg:lau_glb_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto'",
+        "type": "ogc_wfs",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:4326", "EPSG:900913"],
+        "minScale": 1000000.0,
+        "maxScale": 1.0,
+        "opacity": 0.75
+      },
+       "lsa_sg_12": {
+        "name": "ST: LSA Flächennaturdenkmale FND (WFS)",
+        "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='sg:lau_fnd_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto'",
+        "type": "ogc_wfs",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:4326", "EPSG:900913"],
+        "minScale": 1000000.0,
+        "maxScale": 1.0,
+        "opacity": 0.75
+      },
+       "lsa_sg_13": {
+        "name": "ST: LSA Geschützte Parke (WFS)",
+        "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='sg:lau_gp_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto'",
+        "type": "ogc_wfs",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:4326", "EPSG:900913"],
+        "minScale": 1000000.0,
+        "maxScale": 1.0,
+        "opacity": 0.75
+      },
+       "lsa_sg_14": {
+        "name": "ST: LSA Allgemeinverfügungen zur nationalen Sicherstellung (WFS)",
+        "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='sg:lau_av_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto'",
+        "type": "ogc_wfs",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:4326", "EPSG:900913"],
+        "minScale": 1000000.0,
+        "maxScale": 1.0,
+        "opacity": 0.75
+      },
+       "lsa_sg_15": {
+        "name": "ST: LSA Vertragliche Vereinbarungen (WFS)",
+          "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='sg:lau_ven_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto",
+        "type": "ogc_wfs",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:4326", "EPSG:900913"],
+        "minScale": 1000000.0,
+        "maxScale": 1.0,
+        "opacity": 0.75
+      }
+    }
+  },
+  "lsa_lau_4": {
+    "bundeslandname": "ST: LSA SG Wasserschutz (WFS) derzeit nur unter 1:25000",
+    "themen": {
+      "lsa_wsg_1": {
+        "name": "ST: LSA Wasserschutzgebiete (WFS)",
+        "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='sg:lau_wsg_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto'",
+        "type": "ogc_wfs",
+        "valid_epsg": ["EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:4326"],
+        "minScale": 1000000.0,
+        "maxScale": 1.0,
+        "opacity": 0.75,
+        "fillColor": [100, 100, 255],
+        "strokeWidth": 0.1
+      }
+    }
+  }
+}
