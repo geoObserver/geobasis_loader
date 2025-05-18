@@ -175,9 +175,6 @@ class GeoBasis_Loader(QObject):
                 return None
             current_crs = self.epsg_dialog.selected_coord
         
-        if current_crs == "OGC:CRS84":
-            current_crs = "CRS:84"
-            
         return current_crs
     
     def add_topic(self, catalog_title: Optional[str] = None, group_key: Optional[str] = None, topic_key: Optional[str] = None):
@@ -215,20 +212,10 @@ class GeoBasis_Loader(QObject):
             if crs is None:
                 return
         
+        # if crs == "OGC:CRS84":
+        #     crs = "CRS:84"
+        
         uri = re.sub(r'EPSG:placeholder', crs, uri)
-       
-        # if valid_epsg_codes is not None:
-        #     current_crs = QgsProject.instance().crs().authid()          
-        #     if current_crs not in valid_epsg_codes or not self.automatic_crs:
-        #         self.epsg_dialog.set_table_data(valid_epsg_codes, attributes.get('name', "Fehler"))
-        #         self.epsg_dialog.exec_()
-        #         if self.epsg_dialog.selected_coord is None:
-        #             return
-        #         current_crs = self.epsg_dialog.selected_coord
-                
-        #     if current_crs == "OGC:CRS84":
-        #         current_crs = "CRS:84"
-        #     uri = re.sub(r'EPSG:placeholder', current_crs, uri)
 
         if layerType != "ogc_wfs":
             uri += "&stepHeight=3000&stepWidth=3000"
@@ -311,8 +298,6 @@ class GeoBasis_Loader(QObject):
             newLayerGroup.addLayer(subLayer)
             
     def addLayerCombination(self, layers) -> None:
-        # TODO: Bug when disabling automatic crs
-        
         preferred_crs = None
         
         if "layers" not in layers[0]:
