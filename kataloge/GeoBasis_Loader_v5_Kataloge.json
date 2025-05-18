@@ -1,30 +1,30 @@
 [
   {
     "titel": "Katalog 1: Deutschland / Germany",
-    "url": "https://geoobserver.de/download/GeoBasis_Loader/GeoBasis_Loader_v4_Katalog_1_Germany.json"
+    "name": "GeoBasis_Loader_v5_Katalog_1_Germany"
   },
   {
     "titel": "Katalog 2: Europa / Europe",
-    "url": "https://geoobserver.de/download/GeoBasis_Loader/GeoBasis_Loader_v4_Katalog_2_Europe.json"
+    "name": "GeoBasis_Loader_v5_Katalog_2_Europe"
   },
   {
     "titel": "Katalog 3: Welt / World",
-    "url": "https://geoobserver.de/download/GeoBasis_Loader/GeoBasis_Loader_v4_Katalog_3_World.json"
+    "name": "GeoBasis_Loader_v5_Katalog_3_World"
   },
   {
     "titel": "Katalog 4: ST LAU Schutzgebiete",
-    "url": "https://geoobserver.de/download/GeoBasis_Loader/GeoBasis_Loader_v4_Katalog_4_ST_LAU_Schutzgebiete.json"
+    "name": "GeoBasis_Loader_v5_Katalog_4_ST_LAU_Schutzgebiete"
   },
   {
     "titel": "Katalog 5: BONUS Halle (Saale) - im Aufbau",
-    "url": "https://geoobserver.de/download/GeoBasis_Loader/GeoBasis_Loader_v4_Katalog_5_Halle_Saale.json"
+    "name": "GeoBasis_Loader_v5_Katalog_5_Halle_Saale"
   },
   {
     "titel": "Katalog 6: Deutschland Schutzgebiete",
-    "url": "https://geoobserver.de/download/GeoBasis_Loader/GeoBasis_Loader_v4_Katalog_6_DE_Schutzgebiete.json"
+    "name": "GeoBasis_Loader_v5_Katalog_6_DE_Schutzgebiete"
   },
   {
     "titel": "Katalog 7: Deutschland Zensus 2022 (15.05.2022)",
-    "url": "https://geoobserver.de/download/GeoBasis_Loader/GeoBasis_Loader_v4_Katalog_7_Deutschland_Zensus_2022.json"
+    "name": "GeoBasis_Loader_v5_Katalog_7_Deutschland_Zensus_2022"
   }
 ]
