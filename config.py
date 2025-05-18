@@ -16,8 +16,8 @@ AUTOMATIC_CRS_SETTINGS_KEY = 'geobasis_loader/automatic_crs'
 CATALOG_OVERVIEW = "GeoBasis_Loader_v5_Kataloge.json"
 CATALOG_OVERVIEW_NAME = "catalog_overview"
 class ServerHosts(str, Enum):
-    GITHUB = "https://api.github.com/repos/geoObserver/geobasis_loader/contents/kataloge/{name}?ref=two-servers"
     GEOOBSERVER = "https://geoobserver.de/download/GeoBasis_Loader/{name}"
+    GITHUB = "https://api.github.com/repos/geoObserver/geobasis_loader/contents/kataloge/{name}?ref=two-servers"
     
     @classmethod
     def get_servers(cls) -> list[str]:
