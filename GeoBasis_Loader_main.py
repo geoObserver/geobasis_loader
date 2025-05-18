@@ -47,7 +47,7 @@ class GeoBasis_Loader(QObject):
         self.iface.registerLocatorFilter(self.search_filter)    
         #self.iface.messageBar().pushMessage(self.myPluginV,f'Sollte Euch das Plugin gefallen,{"&nbsp;"}könnt Ihr es gern mit Eurer Mitarbeit,{"&nbsp;"}einem Voting und ggf.{"&nbsp;"}einem kleinen Betrag unterstützen ...{"&nbsp;"}Danke!!', 3, 8)     
     
-    def initGui(self) -> None:        
+    def initGui(self) -> None:
         self.main_menu.clear()
         
         if self.services is not None:
@@ -85,6 +85,8 @@ class GeoBasis_Loader(QObject):
             # ------- Katalogmenü tum Hauptmenü hinzufügen ---------------------
             action = self.main_menu.addAction("Katalog wechseln (Change Catalogs)")
             action.setMenu(menu)
+            action = self.main_menu.addAction("Kataloge neu laden (Reload Catalogs)")
+            action.triggered.connect(lambda: CatalogManager.get_overview(callback=self.initGui))
             
             self.main_menu.addSeparator()
                 
