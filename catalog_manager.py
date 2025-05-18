@@ -39,6 +39,8 @@ class NetworkHandler(QObject):
         self.__reply.finished.connect(partial(self.__handle_response, config.CATALOG_OVERVIEW, config.CATALOG_OVERVIEW_NAME, True))
   
     def fetch_catalog(self, catalog_name: str, catalog_title: str) -> None:
+        if not catalog_name.endswith(".json"):
+            catalog_name += ".json"
         url = self._server.format(name=catalog_name)
         self.__reply = self.__fetch_data(url=url)
         self.__reply.finished.connect(partial(self.__handle_response, catalog_name, catalog_title, False))
@@ -115,7 +117,7 @@ class CatalogManager:
         
         localLastModified = os.path.getmtime(file_path) if file_path.exists() else 0.0
         if localLastModified < last_modified:
-            cls.write_json(overview, file_path)
+            cls.write_json(cls.overview, file_path)
         
         if fetch_catalogs:
             for catalog in cls.overview:
@@ -208,9 +210,12 @@ class CatalogManager:
             cls.iface.messageBar().pushWarning(config.PLUGIN_NAME_AND_VERSION, error)
             
             # Notify callbacks with None result for the failed catalog
-            if not is_overview_response and catalog_name in cls._pending_callbacks:
+            if catalog_name in cls._pending_callbacks:
                 for callback in cls._pending_callbacks[catalog_name]:
-                    callback(None)
+                    if is_overview_response:
+                        callback()
+                    else:
+                        callback(None)
                 del cls._pending_callbacks[catalog_name]
             return
 
@@ -221,7 +226,7 @@ class CatalogManager:
             cls.catalogs[catalog_name] = services
         else:
             cls.overview = services
-            for catalog in services:
+            for catalog in cls.overview:
                 # ------- Network Handler für die einzelnen Kataloge erstellen -------------
                 handler = cls.add_network_handler(catalog["titel"])
                 handler.fetch_catalog(catalog["name"], catalog["titel"])
@@ -231,7 +236,10 @@ class CatalogManager:
         
         if catalog_name in cls._pending_callbacks:
             for callback in cls._pending_callbacks[catalog_name]:
-                callback(services)
+                if is_overview_response:
+                    callback()
+                else:
+                    callback(services)
             del cls._pending_callbacks[catalog_name]
         
         cls.clear_network_handlers()
@@ -242,7 +250,8 @@ class CatalogManager:
         mode = "w" if os.path.exists(file_path) else "x"
         
         with open(file_path, mode, encoding="utf-8", newline="\n") as file:
-            file.write(json.dumps(data))
+            data = json.dumps(data)
+            file.write(data)
 
     @classmethod
     def read_json(cls, file_path: pathlib.Path) -> Union[dict, list]:
