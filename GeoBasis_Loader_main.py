@@ -61,7 +61,12 @@ class GeoBasis_Loader(QObject):
                 if type(state[1]) != dict:
                     continue
                 menu = self.gui_for_one_topic(state[1]['themen'], state[0])
-                action = self.main_menu.addAction(state[1]['bundeslandname'])
+                
+                # Compatibility, can be removed later
+                if "menu" in state[1]:
+                    action = self.main_menu.addAction(state[1]['menu'])
+                else:
+                    action = self.main_menu.addAction(state[1]['bundeslandname'])
                 action.setMenu(menu)
                 if state[0] == 'de':
                     self.main_menu.addSeparator()
