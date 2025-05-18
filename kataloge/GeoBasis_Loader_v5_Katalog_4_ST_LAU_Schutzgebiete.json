@@ -1,6 +1,6 @@
 {
   "lsa_lau_1": {
-    "bundeslandname": "ST: LSA SG Naturschutz (WMS)",
+    "menu": "ST: LSA SG Naturschutz (WMS)",
     "themen": {
        "lsa_sg_1": {
         "name": "ST: LSA Biosphärenreservate (WMS)",
@@ -95,7 +95,7 @@
     }
   },
   "lsa_lau_2": {
-    "bundeslandname": "ST: LSA SG Wasserschutz (WMS)",
+    "menu": "ST: LSA SG Wasserschutz (WMS)",
     "themen": {
       "lsa_wsg_1": {
         "name": "ST: LSA Wasserschutzgebiete (WMS)",
@@ -108,7 +108,7 @@
     }
   },
   "lsa_lau_3": {
-    "bundeslandname": "ST: LSA SG Naturschutz (WFS) derzeit unter 1:25000",
+    "menu": "ST: LSA SG Naturschutz (WFS) derzeit unter 1:25000",
     "themen": {
        "lsa_sg_1": {
         "name": "ST: LSA Biosphärenreservate (WFS)",
@@ -248,7 +248,7 @@
     }
   },
   "lsa_lau_4": {
-    "bundeslandname": "ST: LSA SG Wasserschutz (WFS) derzeit nur unter 1:25000",
+    "menu": "ST: LSA SG Wasserschutz (WFS) derzeit nur unter 1:25000",
     "themen": {
       "lsa_wsg_1": {
         "name": "ST: LSA Wasserschutzgebiete (WFS)",

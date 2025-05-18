@@ -1,6 +1,6 @@
 {
   "osm1": {
-    "bundeslandname": "OpenStreetMap pur",
+    "menu": "OpenStreetMap pur",
     "themen": {
       "osm1": {
         "name": "OSM: OpenStreetMap (XYZ)",
@@ -50,7 +50,7 @@
     }
   },
   "osm_sport": {
-    "bundeslandname": "OpenStreetMap Sport",
+    "menu": "OpenStreetMap Sport",
     "themen": {
       "osm_sport1": {
         "name": "OSM: CyclOSM (XYZ)",
@@ -109,7 +109,7 @@
     }
   },
   "osm2": {
-    "bundeslandname": "OpenStreetMap abgeleitet",
+    "menu": "OpenStreetMap abgeleitet",
     "themen": {
       "otm": {
         "name": "OSM: OpenTopoMap (XYZ)",
@@ -152,7 +152,7 @@
     }
   },
   "osm3_cartodb": {
-    "bundeslandname": "OpenStreetMap CartoDB",
+    "menu": "OpenStreetMap CartoDB",
     "themen": {
       "CartoDB_DarkMatter": {
         "name": "OSM: CartoDB DarkMatter (XYZ)",
@@ -220,7 +220,7 @@
     }
   },
   "google": {
-    "bundeslandname": "Google",
+    "menu": "Google",
     "themen": {
       "google_maps": {
         "name": "Google: Maps (XYZ)",
@@ -249,7 +249,7 @@
     }
   },
   "BING": {
-    "bundeslandname": "BING",
+    "menu": "BING",
     "themen": {
       "Bing_VirtualEarth": {
         "name": "Bing VirtualEarth (XYZ)",
@@ -260,7 +260,7 @@
     }
   },
   "USGS": {
-    "bundeslandname": "USGS",
+    "menu": "USGS",
     "themen": {
       "usgs_topobasemap": {
         "name": "USGS Topo Base Map (WMS)",
@@ -271,7 +271,7 @@
     }
   },
   "ESRI": {
-    "bundeslandname": "ESRI",
+    "menu": "ESRI",
     "themen": {
       "Esri_Graylight": {
         "valid_epsg": ["EPSG:3857"],

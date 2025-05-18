@@ -1,6 +1,6 @@
 {
   "DE_bund_1": {
-    "bundeslandname": "DE Schutzgebiete (WMS)",
+    "menu": "DE Schutzgebiete (WMS)",
     "themen": {
        "DE_sg_1": {
         "name": "DE: Landschaftsschutzgbiete (WMS)",
@@ -59,7 +59,7 @@
     }
   },
   "DE_bund_2": {
-    "bundeslandname": "DE Schutzgebiete (WFS)",
+    "menu": "DE Schutzgebiete (WFS)",
     "themen": {
        "DE_sg_1": {
         "name": "DE: Landschaftsschutzgbiete (WFS)",

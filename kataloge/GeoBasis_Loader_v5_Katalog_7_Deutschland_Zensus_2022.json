@@ -1,6 +1,6 @@
 {
   "Bevölkerung": {
-    "bundeslandname": "Bevölkerung",
+    "menu": "Bevölkerung",
     "themen": {
       "100m": {
         "name": "Zensus 2022: Bevölkerung 100m (WMS)",
@@ -30,7 +30,7 @@
     }
   },
   "Nettokaltmieten": {
-    "bundeslandname": "Nettokaltmieten",
+    "menu": "Nettokaltmieten",
     "themen": {
       "100m": {
         "name": "Zensus 2022: Nettokaltmieten 100m (WMS)",
@@ -60,7 +60,7 @@
     }
   },
   "Ausländeranteil": {
-    "bundeslandname": "Ausländeranteil",
+    "menu": "Ausländeranteil",
     "themen": {
       "100m": {
         "name": "Zensus 2022: Ausländeranteil 100m (WMS)",
@@ -90,7 +90,7 @@
     }
   },
   "Bevölkerungsanteilu18": {
-    "bundeslandname": "Bevölkerungsanteil unter 18 Jahre",
+    "menu": "Bevölkerungsanteil unter 18 Jahre",
     "themen": {
       "100m": {
         "name": "Zensus 2022: Bevölkerungsanteil unter 18 Jahre 100m (WMS)",
@@ -120,7 +120,7 @@
     }
   },
   "Bevölkerungsanteilue65": {
-    "bundeslandname": "Bevölkerungsanteil über 65 Jahre",
+    "menu": "Bevölkerungsanteil über 65 Jahre",
     "themen": {
       "100m": {
         "name": "Zensus 2022: Bevölkerungsanteil über 65 Jahre 100m (WMS)",
@@ -150,7 +150,7 @@
     }
   },
   "Eigentümerquote": {
-    "bundeslandname": "Eigentümerquote in Wohngebäuden in %",
+    "menu": "Eigentümerquote in Wohngebäuden in %",
     "themen": {
       "100m": {
         "name": "Zensus 2022: Eigentümerquote in Wohngebäuden in % 100m (WMS)",
@@ -180,7 +180,7 @@
     }
   },
   "Durchschnittsalter": {
-    "bundeslandname": "Durchschnittsalter",
+    "menu": "Durchschnittsalter",
     "themen": {
       "100m": {
         "name": "Zensus 2022: Durchschnittsalter 100m (WMS)",
@@ -210,7 +210,7 @@
     }
   },
   "DurchschnittHauhaltsgroesse": {
-    "bundeslandname": "Durchschnittliche Haushaltsgröße in Personen",
+    "menu": "Durchschnittliche Haushaltsgröße in Personen",
     "themen": {
       "100m": {
         "name": "Zensus 2022: Durchschnittliche Haushaltsgröße in Personen 100m (WMS)",
@@ -240,7 +240,7 @@
     }
   },
   "Leerstandsquote": {
-    "bundeslandname": "Leerstandsquote in %",
+    "menu": "Leerstandsquote in %",
     "themen": {
       "100m": {
         "name": "Zensus 2022: Leerstandsquote in % 100m (WMS)",
@@ -270,7 +270,7 @@
     }
   },
   "Marktleerstandsquote": {
-    "bundeslandname": "Marktaktiv leerstehende Wohnungen in %",
+    "menu": "Marktaktiv leerstehende Wohnungen in %",
     "themen": {
       "100m": {
         "name": "Zensus 2022: Marktleerstandsquote in % 100m (WMS)",
@@ -300,7 +300,7 @@
     }
   },
   "WohnflaecheProBewohner": {
-    "bundeslandname": "Wohnfläche pro Bewohner",
+    "menu": "Wohnfläche pro Bewohner",
     "themen": {
       "100m": {
         "name": "Zensus 2022: Wohnfläche pro Bewohner 100m (WMS)",
@@ -330,7 +330,7 @@
     }
   },
   "WohnflaecheProWohnung": {
-    "bundeslandname": "Wohnfläche pro Wohnung",
+    "menu": "Wohnfläche pro Wohnung",
     "themen": {
       "100m": {
         "name": "Zensus 2022: Wohnfläche pro Wohnung 100m (WMS)",
@@ -360,7 +360,7 @@
     }
   },
   "WohnnungenNachEnergietraeger": {
-    "bundeslandname": "Wohnungen nach Energieträger",
+    "menu": "Wohnungen nach Energieträger",
     "themen": {
       "100m": {
         "name": "Zensus 2022: Wohnungen nach Energieträger 100m (WMS)",
@@ -390,7 +390,7 @@
     }
   },
   "WohnnungenNachUeberwiegenderHeizungsart": {
-    "bundeslandname": "Wohnungen nach überwiegender Heizungsart",
+    "menu": "Wohnungen nach überwiegender Heizungsart",
     "themen": {
       "100m": {
         "name": "Zensus 2022: Wohnungen nach überwiegender Heizungsart 100m (WMS)",

@@ -1,6 +1,6 @@
 {
   "a": {
-    "bundeslandname": "Österreich",
+    "menu": "Österreich",
     "themen": {
       "basemap1": {
         "name": "A: Geoland Basemap (WMTS)",
@@ -49,7 +49,7 @@
     }
   },
   "ch": {
-    "bundeslandname": "Schweiz",
+    "menu": "Schweiz",
     "themen": {
       "flurstuecke": {
         "name": "CH: Flurstücke (WMS)",
@@ -101,7 +101,7 @@
     }
   },
   "cz": {
-    "bundeslandname": "Tschechien",
+    "menu": "Tschechien",
     "themen": {
       "flurstuecke": {
         "name": "CZ: Flurstücke/Gebäude (WMS)",

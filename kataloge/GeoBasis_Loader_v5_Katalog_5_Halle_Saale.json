@@ -1,6 +1,6 @@
 {
   "Kap1": {
-    "bundeslandname": "1. Bevölkerung",
+    "menu": "1. Bevölkerung",
     "themen": {
       "1.1": {
         "name": "Bevölkerung nach Altersgruppen 2016 (WMS)",
@@ -155,7 +155,7 @@
     }
   },
   "Kap2": {
-    "bundeslandname": "2. Bildung und Wissenschaft",
+    "menu": "2. Bildung und Wissenschaft",
     "themen": {
       "2.1": {
         "name": "Schulen (WMS)",
@@ -167,7 +167,7 @@
     }
   },
   "Kap3": {
-    "bundeslandname": "3. Geographie, Geologie und Geobasisdaten",
+    "menu": "3. Geographie, Geologie und Geobasisdaten",
     "themen": {
       "3.1": {
         "name": "Stadtgrenze (WMS)",
@@ -325,7 +325,7 @@
     }
   },
   "Kap4": {
-    "bundeslandname": "4. Infrastruktur, Bauen und Wohnen",
+    "menu": "4. Infrastruktur, Bauen und Wohnen",
     "themen": {
       "4.1": {
         "name": "Entwicklungssatzung Heide-Süd (§ 165 BauGB) (WMS)",
@@ -365,7 +365,7 @@
     }
   },
   "Kap5": {
-    "bundeslandname": "5. Politik und Wahlen",
+    "menu": "5. Politik und Wahlen",
     "themen": {
       "5.1": {
         "name": "Briefwahlbezirke 2019 (Europa- und Stadtratswahl) (WMS)",
@@ -377,7 +377,7 @@
     }
   },
   "Kap6": {
-    "bundeslandname": "6. Transport und Verkehr",
+    "menu": "6. Transport und Verkehr",
     "themen": {
       "6.1": {
         "name": "Baustellen (WMS)",
@@ -467,7 +467,7 @@
     }
   },
   "Kap7": {
-    "bundeslandname": "7. Umwelt und Klima",
+    "menu": "7. Umwelt und Klima",
     "themen": {
       "7.1": {
         "name": "2022 Lärmbelastete Flächen INDUSTRIE 24h (Lden) (WMS)",
@@ -479,7 +479,7 @@
     }
   },
   "Kap8": {
-    "bundeslandname": "8. Wirtschaft und Arbeit",
+    "menu": "8. Wirtschaft und Arbeit",
     "themen": {
       "8.1": {
         "name": "Baumärkte (WMS)",

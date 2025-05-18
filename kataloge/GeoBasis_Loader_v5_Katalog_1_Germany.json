@@ -1,6 +1,6 @@
 {
   "de": {
-    "bundeslandname": "Deutschland",
+    "menu": "Deutschland",
     "themen": {
       "verwaltung": {
         "name": "DE: Verwaltungsgebiete 1:2 500 000 (WMS)",
@@ -451,7 +451,7 @@
     }
   },
   "be": {
-    "bundeslandname": "Berlin",
+    "menu": "Berlin",
     "themen": {
       "flurstuecke": {
         "name": "BE: ALKIS Flurstücke (WMS)",
@@ -601,7 +601,7 @@
     }
   },
   "bw": {
-    "bundeslandname": "Baden-Württemberg",
+    "menu": "Baden-Württemberg",
     "themen": {
       "alkis_layergroup": {
         "name": "BW: ALKIS Flurstücke, Gebäude, Nutzung (WMS)",
@@ -738,7 +738,7 @@
     }
   },
   "by": {
-    "bundeslandname": "Bayern",
+    "menu": "Bayern",
     "themen": {
       "alkis_parzellen_grau": {
         "name": "BY: ALKIS-Parzellarkarte (Graustufen) (WMS)",
@@ -908,7 +908,7 @@
     }
   },
   "bb": {
-    "bundeslandname": "Brandenburg",
+    "menu": "Brandenburg",
     "themen": {
       "flurstuecke": {
         "name": "BB: ALKIS Flurstücke (WMS)",
@@ -1145,7 +1145,7 @@
     }
   },
   "hb": {
-    "bundeslandname": "Bremen",
+    "menu": "Bremen",
     "themen": {
       "flurstuecke": {
         "name": "HB: ALKIS Flurstücke (WMS)",
@@ -1274,7 +1274,7 @@
     }
   },
   "hh": {
-    "bundeslandname": "Hamburg",
+    "menu": "Hamburg",
     "themen": {
       "flurstuecke": {
         "name": "HH: ALKIS Flurstücke (WMS)",
@@ -1387,7 +1387,7 @@
     }
   },
   "he": {
-    "bundeslandname": "Hessen",
+    "menu": "Hessen",
     "themen": {
       "flurstuecke": {
         "name": "HE: ALKIS Flurstücke, Gebäude, Nutzung (WMS)",
@@ -1477,7 +1477,7 @@
     }
   },
   "mv": {
-    "bundeslandname": "Mecklenburg-Vorpommern",
+    "menu": "Mecklenburg-Vorpommern",
     "themen": {
       "flurstuecke": {
         "name": "MV: ALKIS Flurstücke (WMS)",
@@ -1648,7 +1648,7 @@
     }
   },
   "ni": {
-    "bundeslandname": "Niedersachsen",
+    "menu": "Niedersachsen",
     "themen": {
       "flurstuecke": {
         "name": "NI: ALKIS Flurstücke, Gebäude, Nutzung (WMS)",
@@ -1846,7 +1846,7 @@
     }
   },
   "nw": {
-    "bundeslandname": "Nordrhein-Westfalen",
+    "menu": "Nordrhein-Westfalen",
     "themen": {
       "flurstuecke": {
         "name": "NW: ALKIS Flurstücke (WMS)",
@@ -2022,7 +2022,7 @@
     }
   },
   "rp": {
-    "bundeslandname": "Rheinland-Pfalz",
+    "menu": "Rheinland-Pfalz",
     "themen": {
       "flurstuecke": {
         "name": "RP: ALKIS Flurstücke (WMS)",
@@ -2252,7 +2252,7 @@
     }
   },
   "sl": {
-    "bundeslandname": "Saarland",
+    "menu": "Saarland",
     "themen": {
       "flurstuecke_geb_sw_wms": {
         "name": "SL: ALKIS Flurstücke/Gebäude Schwarzweiß (WMS)",
@@ -2339,7 +2339,7 @@
     }
   },
   "sn": {
-    "bundeslandname": "Sachsen",
+    "menu": "Sachsen",
     "themen": {
       "flurstuecke": {
         "name": "SN: ALKIS Flurstücke (WMS)",
@@ -2447,7 +2447,7 @@
     }
   },
   "st": {
-    "bundeslandname": "Sachsen-Anhalt",
+    "menu": "Sachsen-Anhalt",
     "themen": {
       "flurstuecke_wms": {
         "name": "ST: ALKIS Flurstücke (WMS)",
@@ -2831,7 +2831,7 @@
     }
   },
   "sh": {
-    "bundeslandname": "Schleswig-Holstein",
+    "menu": "Schleswig-Holstein",
     "themen": {
       "flurstuecke": {
         "name": "SH: ALKIS Flurstücke, Gebäude, Nutzung (WMS)",
@@ -2945,7 +2945,7 @@
     }
   },
   "th": {
-    "bundeslandname": "Thüringen",
+    "menu": "Thüringen",
     "themen": {
       "flurstuecke": {
         "name": "TH: ALKIS Flurstücke (WMS)",
