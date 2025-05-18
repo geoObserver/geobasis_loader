@@ -30,9 +30,8 @@ class GeoBasis_Loader(QObject):
 
         # ------- Letzten Katalog laden --------------------------------------------
         current_catalog = self.qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)
-        if current_catalog is not None:
-            CatalogManager.get_catalog(current_catalog["titel"], current_catalog["url"], self.set_services)
-            # self.catalog_network_handler.fetch_catalog(current_catalog["url"])
+        if current_catalog is not None and "name" in current_catalog:
+            CatalogManager.get_catalog(current_catalog["titel"], current_catalog["name"], self.set_services)
             
         # ------- Letzte Einstellung für automatisches Koordinatensystem laden -----
         saved_option = self.qgs_settings.value(config.AUTOMATIC_CRS_SETTINGS_KEY, "false")
@@ -156,8 +155,8 @@ class GeoBasis_Loader(QObject):
     def set_services(self, services: Dict):
         current_catalog = self.qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)
         titel = current_catalog["titel"]
-        url = current_catalog["url"]
-        version = re.findall(r'v\d+', url)[0]
+        name = current_catalog["name"]
+        version = re.findall(r'v\d+', name)[0]
         self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, u'Lese '+ titel + ", Version " + version + ' ...', 3, 3)   
         
         self.services = services       
