@@ -1,4 +1,4 @@
-from typing import Optional, override
+from typing import Optional
 
 from .catalog_manager import CatalogManager
 from qgis.core import QgsLocatorFilter, QgsLocatorResult, QgsLocatorContext, QgsFeedback
@@ -11,27 +11,27 @@ class SearchFilter(QgsLocatorFilter):
         # Not pretty but it is what it is
         self.gbl = gbl
 
-    @override
+    # @override
     def name(self) -> str:
         return "GeoBasis_Loader Suche"
     
-    @override
+    # @override
     def displayName(self) -> str:
         return self.name()
 
-    @override
+    # @override
     def description(self) -> str:
         return "Nach einem Thema im GeoBasis_Loader suchen"
     
-    @override
+    # @override
     def prefix(self) -> str:        
         return "gbl"
     
-    @override
+    # @override
     def clone(self) -> Optional[QgsLocatorFilter]:
         return self.__class__(self.gbl)
     
-    @override
+    # @override
     def fetchResults(self, string: Optional[str], context: QgsLocatorContext, feedback: QgsFeedback) -> None:
         if string is None:
             return
@@ -63,7 +63,7 @@ class SearchFilter(QgsLocatorFilter):
                         result = QgsLocatorResult(self, topic["name"], data)
                         self.resultFetched.emit(result)
     
-    @override
+    # @override
     def triggerResult(self, result: QgsLocatorResult):
         data = result._userData()        
         self.gbl.add_topic(data["catalog_name"], data["group_key"], data["topic_key"])
