@@ -17,8 +17,8 @@ changelog = 0.1 ... Initiale Version inkl. Daten für BB, SN, ST, TH
 	0.9 ... WCS-Support
 	1.0 ... Einführung von Katalogen, JSON v3
 	1.1 ... JSON v4, Abfrage der Projektionen oder dynamische Zuweisung
-	1.2 ... Fix für Gruppen, Wording/Handling EPSG-Tabelle, ...
-	1.3 ... Suche nach Themennamen und Keywords, alle Kataloge neu laden, Code-Refactoring, ...
+	1.2 ... Fix für Gruppen, Wording/Handling EPSG-Tabelle
+	1.3 ... Suche nach Themennamen und Keywords, alle Kataloge neu laden, Hosten der Kataloge auf mehreren Servern, Code-Refactoring
 icon = GeoBasis_Loader_icon.png
 tracker = https://github.com/geoObserver/geobasis_loader/issues/
 repository = https://github.com/geoObserver/geobasis_loader/
