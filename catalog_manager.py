@@ -14,6 +14,7 @@ class NetworkHandler(QObject):
     _server: str = config.ServerHosts.get_servers()[0]
     
     done = False
+    successful = False
     
     finished = pyqtSignal(str, str, float)
     error_occurred = pyqtSignal(str, str)
@@ -64,8 +65,9 @@ class NetworkHandler(QObject):
             # Sozusagen eigene Cache-Implementation             
             networkLastModifiedRawValue = self.__reply.rawHeader(bytearray('Last-Modified', "utf-8")).data().decode()
             networkLastModified = email.utils.parsedate_to_datetime(networkLastModifiedRawValue).timestamp()
-            self.finished.emit(json_string, catalog_title, networkLastModified)
+            self.successful = True
             self.done = True
+            self.finished.emit(json_string, catalog_title, networkLastModified)
             return
         
         server_list = config.ServerHosts.get_servers()
@@ -106,7 +108,16 @@ class CatalogManager:
         
     @classmethod
     def clear_network_handlers(cls) -> None:
-        if all(handler[1].done for handler in cls.catalog_network_handlers.items()):
+        if all(handler.done for handler in cls.catalog_network_handlers.values()):
+            successful_count = sum(handler.successful for handler in cls.catalog_network_handlers.values())
+            handler_count = len(cls.catalog_network_handlers)
+            message = f"Es wurden {successful_count} von {handler_count} Kataloge neu geladen"
+            
+            if successful_count / handler_count >= 0.5:
+                cls.iface.messageBar().pushSuccess(config.PLUGIN_NAME_AND_VERSION, message)
+            else:
+                cls.iface.messageBar().pushWarning(config.PLUGIN_NAME_AND_VERSION, message)
+            
             cls.catalog_network_handlers.clear()
     
     @classmethod
