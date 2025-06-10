@@ -1,6 +1,6 @@
 {
   "de": {
-    "menu": "Deutschland",
+    "menu": "Deutschland test",
     "themen": {
       "verwaltung": {
         "name": "DE: Verwaltungsgebiete 1:2 500 000 (WMS)",
@@ -218,6 +218,19 @@
         "type": "ogc_wms",
         "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:32632"],
         "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=nirrer&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2018-01-01T00:00:00.000Z,2019-01-01T00:00:00.000Z,2020-01-01T00:00:00.000Z,2021-01-01T00:00:00.000Z&type=wmst&url=https://sgx.geodatenzentrum.de/wms_sentinel2_de",
+        "seperator": true
+      },
+      "landbedeckung_bkg": {
+        "name": "DE: Landbedeckung 2023 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:25833", "EPSG:32632", "EPSG:32633", "EPSG:4647", "EPSG:5650", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3857", "EPSG:102100", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4839", "EPSG:3068", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:3035", "EPSG:3034", "EPSG:3044", "EPSG:3045", "EPSG:4647", "EPSG:5650"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=2023_lb_de&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_lb-de"
+      },
+      "landbedeckung_bkg_stand": {
+        "name": "DE: Landbedeckung Aktualität 2023 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:25833", "EPSG:32632", "EPSG:32633", "EPSG:4647", "EPSG:5650", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3857", "EPSG:102100", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4839", "EPSG:3068", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:3035", "EPSG:3034", "EPSG:3044", "EPSG:3045", "EPSG:4647", "EPSG:5650"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=2023_lb_aktualitaet&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_lb-de",
         "seperator": true
       },
       "bsw_layergroup": {
@@ -1851,7 +1864,7 @@
       "flurstuecke": {
         "name": "NW: ALKIS Flurstücke (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5649", "EPSG:5650", "EPSG:5651", "EPSG:5652", "EPSG:5653", "EPSG:25831", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469"],
+        "valid_epsg": ["EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5649", "EPSG:5650", "EPSG:5651", "EPSG:5652", "EPSG:5653", "EPSG:25831", "EPSG:25832", "EPSG:25833", "EPSG:28992","EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469"],
         "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&layers=adv_alkis_flurstuecke&styles&url=https://www.wms.nrw.de/geobasis/wms_nw_alkis"
       },
@@ -2453,6 +2466,7 @@
         "name": "ST: ALKIS Flurstücke (WMS)",
         "type": "ogc_wms",
         "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "ALKIS", "WMS: ALKIS Flurstücke"],
+        "komgis_priority": "60004",
         "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "valid_epsg": ["EPSG:3857", "EPSG:4326","EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4839"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_flurstuecke&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_ALKIS_WMS_AdV_konform_App/guest"
@@ -2461,6 +2475,7 @@
         "name": "ST: ALKIS Gebäude (WMS)",
         "type": "ogc_wms",
         "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "ALKIS", "WMS: ALKIS Gebäude"],
+        "komgis_priority": "60005",
         "keywords": ["ALKIS", "ALK", "AAA", "Gebäude", "Hausnummern"], 
         "valid_epsg": ["EPSG:3857", "EPSG:4326","EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4839"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_gebaeude&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_ALKIS_WMS_AdV_konform_App/guest",
@@ -2473,6 +2488,7 @@
             "name": "Gewässer",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "ALKIS", "ALKIS Tatsächliche Nutzung", "WMS: Gewässer"],
+            "komgis_priority": "60010",
             "keywords": ["ALKIS", "ALK", "Nutzung", "Gewässer"], 
             "valid_epsg": ["EPSG:3857", "EPSG:4326","EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4839"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_gewaesser&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_ALKIS_WMS_AdV_konform_App/guest",
@@ -2482,6 +2498,7 @@
             "name": "Siedlung",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "ALKIS", "ALKIS Tatsächliche Nutzung", "WMS: Siedlung"],
+            "komgis_priority": "60009",
             "keywords": ["ALKIS", "ALK", "Nutzung", "Siedlung"], 
             "valid_epsg": ["EPSG:3857", "EPSG:4326","EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4839"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_siedlung&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_ALKIS_WMS_AdV_konform_App/guest",
@@ -2491,6 +2508,7 @@
             "name": "Vegetation",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "ALKIS", "ALKIS Tatsächliche Nutzung", "WMS: Vegetation"],
+            "komgis_priority": "60008",
             "keywords": ["ALKIS", "ALK", "Nutzung", "Vegetation"], 
             "valid_epsg": ["EPSG:3857", "EPSG:4326","EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4839"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_vegetation&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_ALKIS_WMS_AdV_konform_App/guest",
@@ -2500,6 +2518,7 @@
             "type": "ogc_wms",
             "valid_epsg": ["EPSG:3857", "EPSG:4326","EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4839"],
             "name": "Verkehr",
+            "komgis_priority": "60007",
             "keywords": ["ALKIS", "ALK", "Nutzung", "Verkehr"], 
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "ALKIS", "ALKIS Tatsächliche Nutzung", "WMS: Verkehr"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_verkehr&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_ALKIS_WMS_AdV_konform_App/guest",
