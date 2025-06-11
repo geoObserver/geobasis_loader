@@ -246,6 +246,12 @@
         "uri": "crs=EPSG:placeholder&type=xyz&zmin=0&zmax=20&url=https://mt1.google.com/vt/lyrs%3Dy%26x%3D{x}%26y%3D{y}%26z%3D{z}",
         "type": "ogc_wmts"
       },
+      "google_labels": {
+        "name": "Google: Labels (XYZ)",
+        "valid_epsg": ["EPSG:3857"],
+        "uri": "crs=EPSG:placeholder&type=xyz&zmin=0&zmax=20&url=https://mt1.google.com/vt/lyrs%3Dh%26x%3D{x}%26y%3D{y}%26z%3D{z}",
+        "type": "ogc_wmts"
+      },
       "google_traffic": {
         "name": "Google: Traffic (XYZ)",
         "valid_epsg": ["EPSG:3857"],
