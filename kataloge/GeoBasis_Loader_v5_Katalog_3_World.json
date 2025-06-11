@@ -245,6 +245,12 @@
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&type=xyz&zmin=0&zmax=20&url=https://mt1.google.com/vt/lyrs%3Dy%26x%3D{x}%26y%3D{y}%26z%3D{z}",
         "type": "ogc_wmts"
+      },
+      "google_traffic": {
+        "name": "Google: Traffic (XYZ)",
+        "valid_epsg": ["EPSG:3857"],
+        "uri": "crs=EPSG:placeholder&type=xyz&url=https://mt0.google.com/vt/lyrs%3Dh@221097413,traffic%7Cseconds_into_week:-1%26hl%3Den%26style%3D2%26x%3D%7Bx%7D%26y%3D%7By%7D%26z%3D%7Bz%7D&zmax=18&zmin=0",
+        "type": "ogc_wmts"
       }
     }
   },
