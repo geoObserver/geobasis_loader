@@ -2357,6 +2357,7 @@
       "flurstuecke": {
         "name": "SN: ALKIS Flurstücke (WMS)",
         "type": "ogc_wms",
+        "komgis_node": ["Externe Geodienste", "Land Sachsen", "ALKIS", "WMS: ALKIS Flurstücke"],
         "valid_epsg": ["EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:25832", "EPSG:31469", "EPSG:31468", "EPSG:31467", "EPSG:31466", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3398", "EPSG:3399", "EPSG:5650", "EPSG:4647"],
         "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_flurstuecke&url=https://geodienste.sachsen.de/wms_geosn_alkis-adv/guest"
@@ -2364,6 +2365,7 @@
       "gebaeude": {
         "name": "SN: ALKIS Gebäude (WMS)",
         "type": "ogc_wms",
+        "komgis_node": ["Externe Geodienste", "Land Sachsen", "ALKIS", "WMS: ALKIS Gebäude"],
         "valid_epsg": ["EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:25832", "EPSG:31469", "EPSG:31468", "EPSG:31467", "EPSG:31466", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3398", "EPSG:3399", "EPSG:5650", "EPSG:4647"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_gebaeude&url=https://geodienste.sachsen.de/wms_geosn_alkis-adv/guest"
       },
@@ -2373,6 +2375,7 @@
           "gewaesser": {
             "name": "Gewässer",
             "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste", "Land Sachsen", "ALKIS", "ALKIS Tatsächliche Nutzung", "WMS: Gewässer"],
             "valid_epsg": ["EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:25832", "EPSG:31469", "EPSG:31468", "EPSG:31467", "EPSG:31466", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3398", "EPSG:3399", "EPSG:5650", "EPSG:4647"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_gewaesser&url=https://geodienste.sachsen.de/wms_geosn_alkis-adv/guest",
             "opacity": 0.75
@@ -2380,6 +2383,7 @@
           "siedlung": {
             "name": "Siedlung",
             "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste", "Land Sachsen", "ALKIS", "ALKIS Tatsächliche Nutzung", "WMS: Siedlung"],
             "valid_epsg": ["EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:25832", "EPSG:31469", "EPSG:31468", "EPSG:31467", "EPSG:31466", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3398", "EPSG:3399", "EPSG:5650", "EPSG:4647"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_siedlung&url=https://geodienste.sachsen.de/wms_geosn_alkis-adv/guest",
             "opacity": 0.75
@@ -2387,12 +2391,15 @@
           "vegetation": {
             "name": "Vegetation",
             "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste", "Land Sachsen", "ALKIS", "ALKIS Tatsächliche Nutzung", "WMS: Vegetation"],
             "valid_epsg": ["EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:25832", "EPSG:31469", "EPSG:31468", "EPSG:31467", "EPSG:31466", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3398", "EPSG:3399", "EPSG:5650", "EPSG:4647"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_vegetation&url=https://geodienste.sachsen.de/wms_geosn_alkis-adv/guest",
             "opacity": 0.75
           },
           "verkehr": {
+            "name": "Verkehr",
             "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste", "Land Sachsen", "ALKIS", "ALKIS Tatsächliche Nutzung", "WMS: Verkehr"],
             "valid_epsg": ["EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:25832", "EPSG:31469", "EPSG:31468", "EPSG:31467", "EPSG:31466", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3398", "EPSG:3399", "EPSG:5650", "EPSG:4647"],
             "name": "Verkehr",
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&&layers=adv_alkis_verkehr&url=https://geodienste.sachsen.de/wms_geosn_alkis-adv/guest",
@@ -2408,6 +2415,7 @@
       "bodenrichtwerte": {
         "name": "SN: Bodenrichtwerte Bauland 2024 (WMS)",
         "type": "ogc_wms",
+        "komgis_node": ["Externe Geodienste", "Land Sachsen", "Bodenrichtwerte", "WMS: Bodenrichtwerte Bauland 2024"],
         "valid_epsg": ["EPSG:4258", "EPSG:4326", "EPSG:25832", "EPSG:25833", "EPSG:31469", "EPSG:31468", "EPSG:31467", "EPSG:31466", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3398", "EPSG:3399", "EPSG:2180", "EPSG:5514", "EPSG:5650"],
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Bauland 2024&styles&tilePixelRatio=0&url=https://www.landesvermessung.sachsen.de/fp/http-proxy/svc?cfg%3Dboris_2024",
         "seperator": true,
@@ -2439,6 +2447,7 @@
       "dtk farbe": {
         "name": "SN: Topograf. Karten farbig (WMS)",
         "type": "ogc_wms",
+        "komgis_node": ["Externe Geodienste", "Land Sachsen", "Topografische Karten", "WMS: Topograf. Karten farbig "],
         "valid_epsg": ["EPSG:4326", "EPSG:4258", "EPSG:25833", "EPSG:25832", "EPSG:31469", "EPSG:31468", "EPSG:31467", "EPSG:31466", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3398", "EPSG:3399", "EPSG:2180"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=sn_dtk_pg_color&url=https://geodienste.sachsen.de/wms_geosn_dtk-pg-color/guest",
         "opacity": 0.75
@@ -2446,6 +2455,7 @@
       "dtk grau": {
         "name": "SN: Topograf. Karten grau (WMS)",
         "type": "ogc_wms",
+        "komgis_node": ["Externe Geodienste", "Land Sachsen", "Topografische Karten", "WMS: Topograf. Karten grau "],
         "valid_epsg": ["EPSG:4326", "EPSG:4258", "EPSG:25833", "EPSG:25832", "EPSG:31469", "EPSG:31468", "EPSG:31467", "EPSG:31466", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3398", "EPSG:3399", "EPSG:2180"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=sn_dtk_pg_grau&url=https://geodienste.sachsen.de/wms_geosn_dtk-pg-grau/guest",
         "seperator": true,
@@ -2454,6 +2464,7 @@
       "dop20": {
         "name": "SN: Digitale Orthophotos - DOP20 (WMS)",
         "type": "ogc_wms",
+        "komgis_node": ["Externe Geodienste", "Land Sachsen", "Digitale Orthophotos", "WMS: DOP20 "],
 		"valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25833", "EPSG:4258", "EPSG:25832", "EPSG:31469", "EPSG:31465", "EPSG:31468", "EPSG:31464", "EPSG:31467", "EPSG:31463", "EPSG:31466", "EPSG:31462", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:102100", "EPSG:3398", "EPSG:3399", "EPSG:2180", "EPSG:5514", "EPSG:102067", "EPSG:102067", "EPSG:5514", "EPSG:5650"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&&layers=sn_dop_020&tilePixelRatio=0&url=https://geodienste.sachsen.de/wms_geosn_dop-rgb/guest?VERSION%3D1.3.0t"
       }
@@ -2969,6 +2980,7 @@
       "flurstuecke": {
         "name": "TH: ALKIS Flurstücke (WMS)",
         "type": "ogc_wms",
+        "komgis_node": ["Externe Geodienste", "Land Thüringen", "ALKIS", "WMS: ALKIS Flurstücke"],
         "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:4839", "EPSG:3857"],
         "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_flurstuecke&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/adv_alkis_wms_th"
@@ -2976,6 +2988,7 @@
       "gebaeude": {
         "name": "TH: ALKIS Gebäude (WMS)",
         "type": "ogc_wms",
+        "komgis_node": ["Externe Geodienste", "Land Thüringen", "ALKIS", "WMS: ALKIS Gebäude"],
         "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:4839", "EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_gebaeude&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/adv_alkis_wms_th"
       },
@@ -2985,6 +2998,7 @@
           "gewaesser": {
             "name": "Gewässer",
             "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste", "Land Thüringen", "ALKIS", "ALKIS Tatsächliche Nutzung", "WMS: Gewässer"],
             "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:4839", "EPSG:3857"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_gewaesser&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/adv_alkis_wms_th",
             "opacity": 0.75
@@ -2992,6 +3006,7 @@
           "siedlung": {
             "name": "Siedlung",
             "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste", "Land Thüringen", "ALKIS", "ALKIS Tatsächliche Nutzung", "WMS: Siedlung"],
             "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:4839", "EPSG:3857"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_siedlung&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/adv_alkis_wms_th",
             "opacity": 0.75
@@ -2999,6 +3014,7 @@
           "vegetation": {
             "name": "Vegetation",
             "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste", "Land Thüringen", "ALKIS", "ALKIS Tatsächliche Nutzung", "WMS: Vegetation"],
             "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:4839", "EPSG:3857"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_vegetation&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/adv_alkis_wms_th",
             "opacity": 0.75
@@ -3006,6 +3022,7 @@
           "verkehr": {
             "name": "Verkehr",
             "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste", "Land Thüringen", "ALKIS", "ALKIS Tatsächliche Nutzung", "WMS: Verkehr"],
             "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:4839", "EPSG:3857"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_verkehr&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/adv_alkis_wms_th",
             "opacity": 0.75
@@ -3020,6 +3037,7 @@
       "bodenrichtwerte": {
         "name": "TH: Bodenrichtwerte Aktuell PTO (WMS)",
         "type": "ogc_wms",
+        "komgis_node": ["Externe Geodienste", "Land Thüringen", "Bodenrichtwerte (BRW)", "WMS: Bodenrichtwerte Aktuell PTO"],
         "valid_epsg": ["EPSG:31467", "EPSG:31468", "EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:3038", "EPSG:3039", "EPSG:3040", "EPSG:3041", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3857"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/boris/vBORIS_simple?VERSION%3D1.3.0&layers=vBODENRICHTWERTZONE_aktuell&layers=vBODENRICHTWERTZONE_aktuell_PTO&styles=Bodenrichtwertzone&styles=default",
         "seperator": true,
@@ -3054,6 +3072,7 @@
           "tk_10_farbig": {
             "name": "TH: TK 10 farbig (WMS)",
             "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste", "Land Thüringen", "Digitale Topografische Karten (DTK)", "Farbvariante", "WMS: TK 10 farbig"],
             "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:31467", "EPSG:31468", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3038", "EPSG:3039", "EPSG:3040", "EPSG:3041", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3857"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=th_dtk10&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/geobasis/DTK10col",
             "opacity": 0.75,
@@ -3063,6 +3082,7 @@
           "tk_25_farbig": {
             "name": "TH: TK 25 farbig (WMS)",
             "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste", "Land Thüringen", "Digitale Topografische Karten (DTK)", "Farbvariante", "WMS: TK 25 farbig"],
             "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:31467", "EPSG:31468", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3038", "EPSG:3039", "EPSG:3040", "EPSG:3041", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3857"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=th_dtk25&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/geobasis/DTK25col",
             "opacity": 0.75,
@@ -3072,6 +3092,7 @@
           "tk_50_farbig": {
             "name": "TH: TK 50 farbig (WMS)",
             "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste", "Land Thüringen", "Digitale Topografische Karten (DTK)", "Farbvariante", "WMS: TK 50 farbig"],
             "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:31467", "EPSG:31468", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3038", "EPSG:3039", "EPSG:3040", "EPSG:3041", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3857"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=th_dtk50&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/geobasis/DTK50col",
             "opacity": 0.75,
@@ -3081,6 +3102,7 @@
           "tk_100_farbig": {
             "name": "TH: TK 100 farbig (WMS)",
             "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste", "Land Thüringen", "Digitale Topografische Karten (DTK)", "Farbvariante", "WMS: TK 100 farbig"],
             "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:31467", "EPSG:31468", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3038", "EPSG:3039", "EPSG:3040", "EPSG:3041", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3857"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=th_dtk100&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/geobasis/DTK100col",
             "opacity": 0.75,
@@ -3093,12 +3115,14 @@
       "dop20": {
         "name": "TH: Digitale Orthophotos - DOP20 (WMS)",
         "type": "ogc_wms",
+        "komgis_node": ["Externe Geodienste", "Land Thüringen", "Digitale Orthophotos (DOP)", "WMS: DOP 20"],
         "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:31467", "EPSG:31468", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3038", "EPSG:3039", "EPSG:3040", "EPSG:3041", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=th_dop&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/DOP"
       },
       "dop200": {
         "name": "TH: Digitale Orthophotos - DOP200 (WMS)",
         "type": "ogc_wms",
+        "komgis_node": ["Externe Geodienste", "Land Thüringen", "Digitale Orthophotos (DOP)", "WMS: DOP 200"],
         "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:31467", "EPSG:31468", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3038", "EPSG:3039", "EPSG:3040", "EPSG:3041", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=th_dop200rgb&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/DOP"
       }
