@@ -454,6 +454,267 @@
           }
         }
       },
+      "dipul_layergroup": {
+        "name": "DE: Dipul - Drohnenverbotszonen (WMS)",
+        "layers": {
+          "dipul_1": {
+            "name": "DE: Dipul - Bahnanlagen (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - Bahnanlagen"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=bahnanlagen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "dipul_3": {
+            "name": "DE: Dipul - Oberste Bundes- und Landesbehörden und Verfassungsorgane (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - Oberste Bundes- und Landesbehörden und Verfassungsorgane"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=behoerden&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "dipul_5": {
+            "name": "DE: Dipul - Binnenwasserstraßen (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - Binnenwasserstraßen"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=binnenwasserstrassen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "dipul_7": {
+            "name": "DE: Dipul - Bundesautobahnen (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - Bundesautobahnen"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=bundesautobahnen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "dipul_9": {
+            "name": "DE: Dipul - Bundesstraßen (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - Bundesstraßen"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=bundesstrassen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "dipul_11": {
+            "name": "DE: Dipul - Diplomatische und konsularische Vertretungen (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - Diplomatische und konsularische Vertretungen"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=diplomatische_vertretungen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "dipul_13": {
+            "name": "DE: Dipul - FFH-Gebiete (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - FFH-Gebiete"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=ffh-gebiete&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "dipul_15": {
+            "name": "DE: Dipul - Flugbeschränkungsgebiete (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - Flugbeschränkungsgebiete"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=flugbeschraenkungsgebiete&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "dipul_17": {
+            "name": "DE: Dipul - Flughäfen (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - Flughäfen"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=flughaefen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "dipul_19": {
+            "name": "DE: Dipul - Flugplätze (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - Flugplätze"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=flugplaetze&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "dipul_21": {
+            "name": "DE: Dipul - Freibäder und Badestrände (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - Freibäder und Badestrände"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=freibaeder&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "dipul_23": {
+            "name": "DE: Dipul - Industrieanlagen (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - Industrieanlagen"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=industrieanlagen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "dipul_25": {
+            "name": "DE: Dipul - Internationale Organisationen im Sinne des Völkerrechts (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - Internationale Organisationen im Sinne des Völkerrechts"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=internationale_organisationen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "dipul_27": {
+            "name": "DE: Dipul - JVA und Einrichtungen des Maßregelvollzugs (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - JVA und Einrichtungen des Maßregelvollzugs"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=justizvollzugsanstalten&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "dipul_29": {
+            "name": "DE: Dipul - Kontrollzonen (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - Kontrollzonen"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=kontrollzonen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "dipul_31": {
+            "name": "DE: Dipul - Kraftwerke (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - Kraftwerke"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=kraftwerke&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "dipul_33": {
+            "name": "DE: Dipul - Krankenhäuser (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - Krankenhäuser"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=krankenhaeuser&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "dipul_35": {
+            "name": "DE: Dipul - Einrichtungen BSL-4 (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - Einrichtungen BSL-4"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=labore&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "dipul_37": {
+            "name": "DE: Dipul - Militärische Anlagen und Organisationen (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - Militärische Anlagen und Organisationen"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=militaerische_anlagen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "dipul_39": {
+            "name": "DE: Dipul - Modellflugplätze (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - Modellflugplätze"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=modellflugplaetze&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "dipul_41": {
+            "name": "DE: Dipul - Nationalparks (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - Nationalparks"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=nationalparks&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "dipul_43": {
+            "name": "DE: Dipul - Naturschutzgebiete (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - Naturschutzgebiete"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=naturschutzgebiete&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "dipul_45": {
+            "name": "DE: Dipul - Liegenschaften der Polizei (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - Liegenschaften der Polizei"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=polizei&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "dipul_47": {
+            "name": "DE: Dipul - Schifffahrtsanlagen (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - Schifffahrtsanlagen"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=schifffahrtsanlagen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "dipul_49": {
+            "name": "DE: Dipul - Seewasserstraßen (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - Seewasserstraßen"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=seewasserstrassen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "dipul_51": {
+            "name": "DE: Dipul - Andere Sicherheitsbehörden (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - Andere Sicherheitsbehörden"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=sicherheitsbehoerden&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "dipul_53": {
+            "name": "DE: Dipul - Stromleitungen (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - Stromleitungen"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=stromleitungen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "dipul_55": {
+            "name": "DE: Dipul - Temporäre Betriebseinschränkungen (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - Temporäre Betriebseinschränkungen"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=temporaere_betriebseinschraenkungen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "dipul_57": {
+            "name": "DE: Dipul - Umspannwerke (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - Umspannwerke"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=umspannwerke&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "dipul_59": {
+            "name": "DE: Dipul - Vogelschutzgebiete (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - Vogelschutzgebiete"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=vogelschutzgebiete&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "dipul_61": {
+            "name": "DE: Dipul - Windkraftanlagen (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - Windkraftanlagen"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=windkraftanlagen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "dipul_63": {
+            "name": "DE: Dipul - Wohngrundstücke (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Drohnenverbotszonen", "WMS: Dipul - Wohngrundstücke"],
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=wohngrundstuecke&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
+            "opacity": 0.75
+          }
+        }
+      },
       "kfz": {
         "name": "DE: KFZ-Kennzeichen (WMS)",
         "type": "ogc_wms",
