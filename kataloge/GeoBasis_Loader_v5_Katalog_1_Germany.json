@@ -179,25 +179,25 @@
       "TopPlusOpen_farbig_wmts": {
         "name": "DE: TopPlusOpen farbig (WMTS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:3857","EPSG:25832"],
+        "valid_epsg": ["EPSG:25832"],
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=web&styles=default&tileMatrixSet=EU_EPSG_25832_TOPPLUS&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wmts_topplus_open/1.0.0/WMTSCapabilities.xml"
       },
       "TopPlusOpen_grau_wmts": {
         "name": "DE: TopPlusOpen grau (WMTS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:3857","EPSG:25832"],
+        "valid_epsg": ["EPSG:25832"],
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=web_grau&styles=default&tileMatrixSet=EU_EPSG_25832_TOPPLUS&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wmts_topplus_open/1.0.0/WMTSCapabilities.xml"
       },
       "TopPlusOpen_light_farbig_wmts": {
         "name": "DE: TopPlusOpen light farbig (WMTS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:3857","EPSG:25832"],
+        "valid_epsg": ["EPSG:25832"],
         "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=web_light&styles=default&tileMatrixSet=EU_EPSG_25832_TOPPLUS&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wmts_topplus_open/1.0.0/WMTSCapabilities.xml"
       },
       "TopPlusOpen_light_grau_wmts": {
         "name": "DE: TopPlusOpen light grau (WMST)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:3857","EPSG:25832"],
+        "valid_epsg": ["EPSG:25832"],
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=web_light_grau&styles=default&tileMatrixSet=EU_EPSG_25832_TOPPLUS&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wmts_topplus_open/1.0.0/WMTSCapabilities.xml",
         "seperator": true
       },
