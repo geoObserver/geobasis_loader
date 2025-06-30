@@ -1649,14 +1649,7 @@
         "name": "HH: Digitale Orthophotos - DOP20 (WMS)",
         "type": "ogc_wms",
         "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:31467", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:3044", "EPSG:3857", "OGC:CRS84"],
-        "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&layers=dop_rgb_0_5000&styles&url=https://geodienste.hamburg.de/HH_WMS_DOP"
-      },
-      "dop100": {
-        "name": "HH: Digitale Orthophotos - DOP100 (WMS) reduzierte DOP 20",
-        "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:31467", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:3044", "EPSG:3857", "OGC:CRS84"],
-        "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&layers=dop_rgb_downscale&styles&url=https://geodienste.hamburg.de/HH_WMS_DOP",
-        "seperator": true
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop_zeitreihe_unbelaubt&styles&tilePixelRatio=0&timeDimensionExtent=2005/2025/P1Y&type=wmst&url=https://geodienste.hamburg.de/wms_dop_zeitreihe_unbelaubt?Version%3D1.3.0&allowTemporalUpdates=true&allowTemporalUpdates=true&temporalSource=provider&temporalSource=provider"
       }
     }
   },
