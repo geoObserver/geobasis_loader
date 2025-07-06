@@ -869,7 +869,70 @@
         "name": "BE: Digitale Orthophotos - DOP20 (WMS)",
         "type": "ogc_wms",
         "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:3857", "EPSG:4258", "OGC:CRS84"],
-        "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&layers=truedop_2023&styles&url=https://gdi.berlin.de/services/wms/truedop_2023",
+        "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&layers=truedop_2023&styles&url=https://gdi.berlin.de/services/wms/truedop_2023"
+      },
+      "dom100": {
+        "name": "BE: Digitale Oberflächenmodell - DOM100 - 2020-2022 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=bebb_bdom&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/bdom/service/wms",
+        "seperator": true
+      },
+      "dom20_2009-2012f": {
+        "name": "BE: Histor. Digitale Orthophotos - DOP20 - 2009-2012 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2009_2012_farbe&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2009_2012/service/wms"
+      },
+      "dom20_2013-2015f": {
+        "name": "BE: Histor. Digitale Orthophotos - DOP20 - 2013-2015 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2013_2015_farbe&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2013_2015/service/wms"
+      },
+      "dom20_2016-2018f": {
+        "name": "BE: Histor. Digitale Orthophotos - DOP20 - 2016-2018 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2016_2018_farbe&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2016_2018/service/wms"
+      },
+      "dom20_2019-2021f": {
+        "name": "BE: Histor. Digitale Orthophotos - DOP20 - 2019-2021 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2019_2021_farbe&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2019_2021/service/wms",
+        "seperator": true
+      },
+      "dom20_2009-2012g": {
+        "name": "BE: Histor. Digitale Orthophotos monochrom - DOP20 - 2009-2012 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2009_2012_graustufen&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2009_2012/service/wms"
+      },
+      "dom20_2013-2015g": {
+        "name": "BE: Histor. Digitale Orthophotos monochrom - DOP20 - 2013-2015 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2013_2015_grau&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2013_2015/service/wms"
+      },
+      "dom20_2016-2018g": {
+        "name": "BE: Histor. Digitale Orthophotos monochrom - DOP20 - 2016-2018 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2016_2018_graustufen&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2016_2018/service/wms"
+      },
+      "dom20_2019-2021g": {
+        "name": "BE: Histor. Digitale Orthophotos monochrom - DOP20 - 2019-2021 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2019_2021_graustufen&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2019_2021/service/wms",
+        "seperator": true
+      },
+      "schmett": {
+        "name": "BE: Schmettausches Kartenwerk 1767-1787 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=schmettau&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/schmettau/service/wms",
         "seperator": true
       }
     }
@@ -1415,6 +1478,70 @@
         "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "OGC:CRS84"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&layers=bebb_dop20c&styles&url=https://isk.geobasis-bb.de/mapproxy/dop20c/service/wms",
         "seperator": true
+      },
+      "dom100": {
+        "name": "BE: Digitale Oberflächenmodell - DOM100 - 2020-2022 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=bebb_bdom&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/bdom/service/wms",
+        "seperator": true
+      },
+      "dom20_2009-2012f": {
+        "name": "BE: Histor. Digitale Orthophotos - DOP20 - 2009-2012 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2009_2012_farbe&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2009_2012/service/wms"
+      },
+      "dom20_2013-2015f": {
+        "name": "BE: Histor. Digitale Orthophotos - DOP20 - 2013-2015 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2013_2015_farbe&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2013_2015/service/wms"
+      },
+      "dom20_2016-2018f": {
+        "name": "BE: Histor. Digitale Orthophotos - DOP20 - 2016-2018 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2016_2018_farbe&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2016_2018/service/wms"
+      },
+      "dom20_2019-2021f": {
+        "name": "BE: Histor. Digitale Orthophotos - DOP20 - 2019-2021 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2019_2021_farbe&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2019_2021/service/wms",
+        "seperator": true
+      },
+      "dom20_2009-2012g": {
+        "name": "BE: Histor. Digitale Orthophotos monochrom - DOP20 - 2009-2012 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2009_2012_graustufen&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2009_2012/service/wms"
+      },
+      "dom20_2013-2015g": {
+        "name": "BE: Histor. Digitale Orthophotos monochrom - DOP20 - 2013-2015 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2013_2015_grau&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2013_2015/service/wms"
+      },
+      "dom20_2016-2018g": {
+        "name": "BE: Histor. Digitale Orthophotos monochrom - DOP20 - 2016-2018 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2016_2018_graustufen&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2016_2018/service/wms"
+      },
+      "dom20_2019-2021g": {
+        "name": "BE: Histor. Digitale Orthophotos monochrom - DOP20 - 2019-2021 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2019_2021_graustufen&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2019_2021/service/wms",
+        "seperator": true
+      },
+      "schmett": {
+        "name": "BE: Schmettausches Kartenwerk 1767-1787 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=schmettau&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/schmettau/service/wms",
+        "seperator": true
       }
     }
   },
@@ -1440,7 +1567,7 @@
         "name": "HB: ALKIS Flurstücke (WFS)",
         "uri": "IgnoreAxisOrientation='1' pageSize='0' pagingEnabled='disabled' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='app:Flurstuecke' url='https://geodienste.bremen.de/wfs_hduk2958loah3976niun' version='2.0.0'",
         "type": "ogc_wfs",
-        "valid_epsg": ["EPSG:25832"],
+        "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:31467", "EPSG:3857", "EPSG:3044", "EPSG:3034", "EPSG:3035"],
         "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "opacity": 0.75,
         "minScale": 25000.0,
