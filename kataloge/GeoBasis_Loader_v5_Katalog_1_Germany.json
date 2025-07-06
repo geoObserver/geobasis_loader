@@ -878,53 +878,53 @@
         "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=bebb_bdom&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/bdom/service/wms",
         "seperator": true
       },
-      "dom20_2009-2012f": {
+      "dop20_2009-2012f": {
         "name": "BE: Histor. Digitale Orthophotos - DOP20 - 2009-2012 (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "OGC:CRS84"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2009_2012_farbe&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2009_2012/service/wms"
       },
-      "dom20_2013-2015f": {
+      "dop20_2013-2015f": {
         "name": "BE: Histor. Digitale Orthophotos - DOP20 - 2013-2015 (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "OGC:CRS84"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2013_2015_farbe&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2013_2015/service/wms"
       },
-      "dom20_2016-2018f": {
+      "dop20_2016-2018f": {
         "name": "BE: Histor. Digitale Orthophotos - DOP20 - 2016-2018 (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "OGC:CRS84"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2016_2018_farbe&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2016_2018/service/wms"
       },
-      "dom20_2019-2021f": {
+      "dop20_2019-2021f": {
         "name": "BE: Histor. Digitale Orthophotos - DOP20 - 2019-2021 (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "OGC:CRS84"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2019_2021_farbe&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2019_2021/service/wms",
         "seperator": true
       },
-      "dom20_2009-2012g": {
+      "dop20_2009-2012g": {
         "name": "BE: Histor. Digitale Orthophotos monochrom - DOP20 - 2009-2012 (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "OGC:CRS84"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2009_2012_graustufen&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2009_2012/service/wms"
       },
-      "dom20_2013-2015g": {
+      "dop20_2013-2015g": {
         "name": "BE: Histor. Digitale Orthophotos monochrom - DOP20 - 2013-2015 (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "OGC:CRS84"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2013_2015_grau&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2013_2015/service/wms"
       },
-      "dom20_2016-2018g": {
+      "dop20_2016-2018g": {
         "name": "BE: Histor. Digitale Orthophotos monochrom - DOP20 - 2016-2018 (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "OGC:CRS84"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2016_2018_graustufen&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2016_2018/service/wms"
       },
-      "dom20_2019-2021g": {
+      "dop20_2019-2021g": {
         "name": "BE: Histor. Digitale Orthophotos monochrom - DOP20 - 2019-2021 (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "OGC:CRS84"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2019_2021_graustufen&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2019_2021/service/wms",
         "seperator": true
       },
@@ -1486,53 +1486,53 @@
         "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=bebb_bdom&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/bdom/service/wms",
         "seperator": true
       },
-      "dom20_2009-2012f": {
+      "dop20_2009-2012f": {
         "name": "BE: Histor. Digitale Orthophotos - DOP20 - 2009-2012 (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "OGC:CRS84"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2009_2012_farbe&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2009_2012/service/wms"
       },
-      "dom20_2013-2015f": {
+      "dop20_2013-2015f": {
         "name": "BE: Histor. Digitale Orthophotos - DOP20 - 2013-2015 (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "OGC:CRS84"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2013_2015_farbe&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2013_2015/service/wms"
       },
-      "dom20_2016-2018f": {
+      "dop20_2016-2018f": {
         "name": "BE: Histor. Digitale Orthophotos - DOP20 - 2016-2018 (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "OGC:CRS84"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2016_2018_farbe&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2016_2018/service/wms"
       },
-      "dom20_2019-2021f": {
+      "dop20_2019-2021f": {
         "name": "BE: Histor. Digitale Orthophotos - DOP20 - 2019-2021 (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "OGC:CRS84"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2019_2021_farbe&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2019_2021/service/wms",
         "seperator": true
       },
-      "dom20_2009-2012g": {
+      "dop20_2009-2012g": {
         "name": "BE: Histor. Digitale Orthophotos monochrom - DOP20 - 2009-2012 (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "OGC:CRS84"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2009_2012_graustufen&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2009_2012/service/wms"
       },
-      "dom20_2013-2015g": {
+      "dop20_2013-2015g": {
         "name": "BE: Histor. Digitale Orthophotos monochrom - DOP20 - 2013-2015 (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "OGC:CRS84"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2013_2015_grau&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2013_2015/service/wms"
       },
-      "dom20_2016-2018g": {
+      "dop20_2016-2018g": {
         "name": "BE: Histor. Digitale Orthophotos monochrom - DOP20 - 2016-2018 (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "OGC:CRS84"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2016_2018_graustufen&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2016_2018/service/wms"
       },
-      "dom20_2019-2021g": {
+      "dop20_2019-2021g": {
         "name": "BE: Histor. Digitale Orthophotos monochrom - DOP20 - 2019-2021 (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "OGC:CRS84"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2019_2021_graustufen&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2019_2021/service/wms",
         "seperator": true
       },
