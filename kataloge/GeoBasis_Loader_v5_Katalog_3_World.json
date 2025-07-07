@@ -1,4 +1,15 @@
 {
+  "Basemap World": {
+    "menu": "Basemap World (außer Deutschland)",
+    "themen": {
+      "Bing_VirtualEarth": {
+        "name": "Basemap World (außer Deutschland) farbig (WFS)",
+        "valid_epsg": ["EPSG:3857"],
+        "uri": "&type=xyz&styleUrl=https://sgx.geodatenzentrum.de/gdz_basemapworld_vektor/styles/bm_web_wld_col.json&zmin=0&zmax=19&url=https://sgx.geodatenzentrum.de/gdz_basemapworld_vektor/tiles/v1/bm_web_wld_3857/{z}/{x}/{y}.pbf",
+        "type": "ogc_vectorTiles"
+      }
+    }
+  },
   "osm1": {
     "menu": "OpenStreetMap pur",
     "themen": {
