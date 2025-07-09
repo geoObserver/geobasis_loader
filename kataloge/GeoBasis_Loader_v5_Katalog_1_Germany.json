@@ -721,6 +721,130 @@
         "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland", "WMS: KFZ-Kennzeichen"],
         "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=kfz250&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_kfz250"
+      },
+      "unfall_layergroup": {
+        "name": "DE: Unfallatlas (WMS)",
+        "layers": {
+          "unfall_1": {
+            "name": "DE: Route DLM1000 (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Route DLM1000"],
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
+            "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=route_DLM1000&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
+          },
+          "unfall_2": {
+            "name": "DE: Route BasisDLM (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Route BasisDLM"],
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
+            "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=route_BasisDLM&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
+          },
+          "unfall_3": {
+            "name": "DE: Beteiligung GKFZ 5000 (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Beteiligung GKFZ 5000"],
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
+            "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Beteiligung_GKFZ_5000&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
+          },
+          "unfall_4": {
+            "name": "DE: Beteiligung GKFZ 250 (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Beteiligung  GKFZ 250"],
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
+            "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Beteiligung_GKFZ_250&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
+          },
+          "unfall_5": {
+            "name": "DE: Beteiligung Fussgaenger 5000 (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Beteiligung Fussgaenger 5000"],
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
+            "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Beteiligung_Fussgaenger_5000&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
+          },
+          "unfall_6": {
+            "name": "DE: Beteiligung Fussgaenger 250 (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Beteiligung Fussgaenger 250"],
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
+            "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Beteiligung_Fussgaenger_250&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
+          },
+          "unfall_7": {
+            "name": "DE: Beteiligung Fahrrad 5000 (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Beteiligung Fahrrad 5000"],
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
+            "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Beteiligung_Fahrrad_5000&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
+          },
+          "unfall_8": {
+            "name": "DE: Beteiligung Fahrrad 250 (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Beteiligung Fahrrad 250"],
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
+            "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Beteiligung_Fahrrad_250&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
+          },
+          "unfall_9": {
+            "name": "DE: Beteiligung Motorrad 5000 (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Beteiligung Motorrad 5000"],
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
+            "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Beteiligung_Motorrad_5000&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
+          },
+          "unfall_10": {
+            "name": "DE: Beteiligung Motorrad 250 (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Beteiligung Motorrad 250"],
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
+            "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Beteiligung_Motorrad_250&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
+          },
+          "unfall_11": {
+            "name": "DE: Beteiligung PKW 5000 (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Beteiligung PKW 5000"],
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
+            "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Beteiligung_PKW_5000&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
+          },
+          "unfall_12": {
+            "name": "DE: Beteiligung PKW 250 (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Beteiligung PKW 250"],
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
+            "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Beteiligung_PKW_250&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
+          },
+          "unfall_13": {
+            "name": "DE: Getötete 5000 (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Getötete 5000"],
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
+            "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Getoetete_5000&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
+          },
+          "unfall_14": {
+            "name": "DE: Getötete 250 (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Getötete 250"],
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
+            "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Getoetete_250&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
+          },
+          "unfall_15": {
+            "name": "DE: Personenschaden 5000 (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Personenschaden 5000"],
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
+            "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Personenschaden_5000&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
+          },
+          "unfall_16": {
+            "name": "DE: Personenschaden 250 (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Personenschaden 250"],
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
+            "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Personenschaden_250&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
+          },
+          "unfall_200": {
+            "name": "DE: Unfallorte (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Unfallorte"],
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
+            "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Unfallorte&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
+          }
+        }
       }
     }
   },
