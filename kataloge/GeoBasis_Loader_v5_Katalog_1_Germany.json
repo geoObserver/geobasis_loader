@@ -3379,6 +3379,97 @@
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png8&layers=PS.ProtectedSitesarchaeologischesFlaechendenkmalST&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss-org2/service/INSPIRE_PS_LDA_WMS/guest",
             "opacity": 0.75
           }
+        },
+        "seperator": true
+      },
+      "howa_layergroup": {
+        "name": "ST: Hochwasserschutzanlagen (WMS)",
+        "layers": {
+          "howa_1": {
+            "name": "ST: Deiche und Wände (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:3044", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:3045", "EPSG:4326", "EPSG:900913"],
+            "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Hochwasserschutzanlagen", "WMS: Deiche und Wände"],
+            "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lhw_hwrmrl_deiche_waende&styles&tilePixelRatio=0&url=http://www.geofachdatenserver.de/ws/wms/3e63df0e-407f-e46a/LHW-LSA_HWRMRL/ows.wms"
+          },
+          "howa_2": {
+            "name": "ST: Polder und Rückhaltebecken (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:3044", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:3045", "EPSG:4326", "EPSG:900913"],
+            "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Hochwasserschutzanlagen", "WMS: Polder und Rückhaltebecken"],
+            "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lhw_hwrmrl_polder_rhb&styles&tilePixelRatio=0&url=http://www.geofachdatenserver.de/ws/wms/3e63df0e-407f-e46a/LHW-LSA_HWRMRL/ows.wms",
+            "opacity": 0.75
+          }
+        }
+      },
+      "hq200_layergroup": {
+        "name": "ST: HQ200 Hochwasser niedriger Wahrscheinlichkeit (WMS)",
+        "layers": {
+          "hq200_1": {
+            "name": "ST: Anschlaglinie (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:3044", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:3045", "EPSG:4326", "EPSG:900913"],
+            "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Hochwasser HQ 200", "WMS: Anschlaglinie"],
+            "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lhw_hwrmrl_anschlagliniene_hqextrem&styles&tilePixelRatio=0&url=http://www.geofachdatenserver.de/ws/wms/3e63df0e-407f-e46a/LHW-LSA_HWRMRL/ows.wms"
+          },
+          "hq200_2": {
+            "name": "ST: Wassertiefen (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:3044", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:3045", "EPSG:4326", "EPSG:900913"],
+            "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Hochwasser HQ 200", "WMS: Wassertiefen"],
+            "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lhw_hwrmrl_wt_hq200&styles&tilePixelRatio=0&url=http://www.geofachdatenserver.de/ws/wms/3e63df0e-407f-e46a/LHW-LSA_HWRMRL/ows.wms",
+            "opacity": 0.75
+          },
+          "hq200_3": {
+            "name": "ST: Flächennutzung im Überflutungsgebiet (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:3044", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:3045", "EPSG:4326", "EPSG:900913"],
+            "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Hochwasser HQ 200", "WMS: Flächennutzung im Überflutungsgebiet"],
+            "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lhw_hwrmrl_btnt_hq200&styles&tilePixelRatio=0&url=http://www.geofachdatenserver.de/ws/wms/3e63df0e-407f-e46a/LHW-LSA_HWRMRL/ows.wms",
+            "opacity": 0.75
+          }
+        }
+      },
+      "hq100_layergroup": {
+        "name": "ST: HQ100 Hochwasser mittlerer Wahrscheinlichkeit (WMS)",
+        "layers": {
+          "hq200_1": {
+            "name": "ST: Wassertiefen (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:3044", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:3045", "EPSG:4326", "EPSG:900913"],
+            "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Hochwasser HQ 100", "WMS: Wassertiefen"],
+            "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lhw_hwrmrl_wt_hq100&styles&tilePixelRatio=0&url=http://www.geofachdatenserver.de/ws/wms/3e63df0e-407f-e46a/LHW-LSA_HWRMRL/ows.wms",
+            "opacity": 0.75
+          },
+          "hq100_3": {
+            "name": "ST: Flächennutzung im Überflutungsgebiet (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:3044", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:3045", "EPSG:4326", "EPSG:900913"],
+            "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Hochwasser HQ 200", "WMS: Flächennutzung im Überflutungsgebiet"],
+            "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lhw_hwrmrl_btnt_hq100&styles&tilePixelRatio=0&url=http://www.geofachdatenserver.de/ws/wms/3e63df0e-407f-e46a/LHW-LSA_HWRMRL/ows.wms",
+            "opacity": 0.75
+          }
+        }
+      },
+      "hq10_layergroup": {
+        "name": "ST: HQ10 Hochwasser hoher Wahrscheinlichkeit (WMS)",
+        "layers": {
+          "hq200_1": {
+            "name": "ST: Wassertiefen (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:3044", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:3045", "EPSG:4326", "EPSG:900913"],
+            "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Hochwasser HQ 10", "WMS: Wassertiefen"],
+            "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lhw_hwrmrl_wt_hq10_20&styles&tilePixelRatio=0&url=http://www.geofachdatenserver.de/ws/wms/3e63df0e-407f-e46a/LHW-LSA_HWRMRL/ows.wms",
+            "opacity": 0.75
+          },
+          "hq10_3": {
+            "name": "ST: Flächennutzung im Überflutungsgebiet (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:3044", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:3045", "EPSG:4326", "EPSG:900913"],
+            "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Hochwasser HQ 200", "WMS: Flächennutzung im Überflutungsgebiet"],
+            "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lhw_hwrmrl_btnt_hq10_20&styles&tilePixelRatio=0&url=http://www.geofachdatenserver.de/ws/wms/3e63df0e-407f-e46a/LHW-LSA_HWRMRL/ows.wms",
+            "opacity": 0.75
+          }
         }
       }
     }
