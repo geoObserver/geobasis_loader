@@ -3000,7 +3000,7 @@
         "name": "ST: ALKIS Flurstücke (WMS)",
         "type": "ogc_wms",
         "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "ALKIS", "WMS: ALKIS Flurstücke"],
-        "komgis_priority": "60004",
+        "komgis_priority": "75000",
         "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "valid_epsg": ["EPSG:3857", "EPSG:4326","EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4839"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_flurstuecke&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_ALKIS_WMS_AdV_konform_App/guest"
@@ -3009,7 +3009,7 @@
         "name": "ST: ALKIS Gebäude (WMS)",
         "type": "ogc_wms",
         "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "ALKIS", "WMS: ALKIS Gebäude"],
-        "komgis_priority": "60005",
+        "komgis_priority": "85000",
         "keywords": ["ALKIS", "ALK", "AAA", "Gebäude", "Hausnummern"], 
         "valid_epsg": ["EPSG:3857", "EPSG:4326","EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4839"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_gebaeude&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_ALKIS_WMS_AdV_konform_App/guest",
@@ -3022,7 +3022,7 @@
             "name": "Gewässer",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "ALKIS", "ALKIS Tatsächliche Nutzung", "WMS: Gewässer"],
-            "komgis_priority": "60010",
+            "komgis_priority": "87200",
             "keywords": ["ALKIS", "ALK", "Nutzung", "Gewässer"], 
             "valid_epsg": ["EPSG:3857", "EPSG:4326","EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4839"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_gewaesser&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_ALKIS_WMS_AdV_konform_App/guest",
@@ -3032,7 +3032,7 @@
             "name": "Siedlung",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "ALKIS", "ALKIS Tatsächliche Nutzung", "WMS: Siedlung"],
-            "komgis_priority": "60009",
+            "komgis_priority": "87100",
             "keywords": ["ALKIS", "ALK", "Nutzung", "Siedlung"], 
             "valid_epsg": ["EPSG:3857", "EPSG:4326","EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4839"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_siedlung&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_ALKIS_WMS_AdV_konform_App/guest",
@@ -3042,7 +3042,7 @@
             "name": "Vegetation",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "ALKIS", "ALKIS Tatsächliche Nutzung", "WMS: Vegetation"],
-            "komgis_priority": "60008",
+            "komgis_priority": "87400",
             "keywords": ["ALKIS", "ALK", "Nutzung", "Vegetation"], 
             "valid_epsg": ["EPSG:3857", "EPSG:4326","EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4839"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_vegetation&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_ALKIS_WMS_AdV_konform_App/guest",
@@ -3052,9 +3052,9 @@
             "type": "ogc_wms",
             "valid_epsg": ["EPSG:3857", "EPSG:4326","EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4839"],
             "name": "Verkehr",
-            "komgis_priority": "60007",
             "keywords": ["ALKIS", "ALK", "Nutzung", "Verkehr"], 
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "ALKIS", "ALKIS Tatsächliche Nutzung", "WMS: Verkehr"],
+            "komgis_priority": "87300",
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_verkehr&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_ALKIS_WMS_AdV_konform_App/guest",
             "opacity": 0.75
           }
@@ -3070,6 +3070,7 @@
         "type": "ogc_wms",
         "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839"],
         "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Geoleistungspaket (GLP)", "Bodenrichtwerte (BRW)", "WMS: Bodenrichtwerte Bauland 2024"],
+        "komgis_priority": "79000",
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=Bauland&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_BRW2024_gast/guest?VERSION%3D1.3.0",
         "opacity": 0.75
       },
@@ -3078,6 +3079,7 @@
         "type": "ogc_wms",
         "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839"],
         "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Geoleistungspaket (GLP)", "Bodenrichtwerte (BRW)", "WMS: Bodenrichtwerte Land- und Forstwirtschaft 2024"],
+        "komgis_priority": "79010",
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=Landwirtschaft&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_BRW2024_gast/guest?VERSION%3D1.3.0",
         "seperator": true,
         "opacity": 0.75
@@ -3090,6 +3092,7 @@
             "type": "ogc_wms",
             "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839"],
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Geoleistungspaket (GLP)", "Digitale Verwaltungsgrenzen (DVG)", "WMS: DVG Land"],
+            "komgis_priority": "79900",
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_DVG_ALKIS_WMS_OpenData/guest?VERSION%3D1.3.0&layers=land&styles="
           },
           "land_bez": {
@@ -3097,6 +3100,7 @@
             "type": "ogc_wms",
             "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839"],
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Geoleistungspaket (GLP)", "Digitale Verwaltungsgrenzen (DVG)", "WMS: DVG Bezeichung"],
+            "komgis_priority": "74910",
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_DVG_ALKIS_WMS_OpenData/guest?VERSION%3D1.3.0&layers=landbez&styles="
           },
           "lk": {
@@ -3104,6 +3108,7 @@
             "type": "ogc_wms",
             "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839"],
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Geoleistungspaket (GLP)", "Digitale Verwaltungsgrenzen (DVG)", "WMS: DVG Landkreis"],
+            "komgis_priority": "79920",
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_DVG_ALKIS_WMS_OpenData/guest?VERSION%3D1.3.0&layers=lk&styles="
           },
           "lk_bez": {
@@ -3111,6 +3116,7 @@
             "type": "ogc_wms",
             "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839"],
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Geoleistungspaket (GLP)", "Digitale Verwaltungsgrenzen (DVG)", "WMS: DVG Landkreis Bezeichung"],
+            "komgis_priority": "74930",
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_DVG_ALKIS_WMS_OpenData/guest?VERSION%3D1.3.0&layers=lkbez&styles="
           },
           "gmd": {
@@ -3118,6 +3124,7 @@
             "type": "ogc_wms",
             "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839"],
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Geoleistungspaket (GLP)", "Digitale Verwaltungsgrenzen (DVG)", "WMS: DVG Gemeinde"],
+            "komgis_priority": "79940",
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_DVG_ALKIS_WMS_OpenData/guest?VERSION%3D1.3.0&layers=gmd&styles="
           },
           "gmd_bez": {
@@ -3125,6 +3132,7 @@
             "type": "ogc_wms",
             "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839"],
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Geoleistungspaket (GLP)", "Digitale Verwaltungsgrenzen (DVG)", "WMS: DVG Gemeinde Bezeichung"],
+            "komgis_priority": "74950",
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_DVG_ALKIS_WMS_OpenData/guest?VERSION%3D1.3.0&layers=gmdbez&styles="
           }
         }
@@ -3137,6 +3145,7 @@
             "type": "ogc_wms",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:4647", "EPSG:102362", "EPSG:25832"],
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Festpunktübersicht", "WMS: Lagefestpunkte"],
+            "komgis_priority": "74500",
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=3&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_Festpunktuebersicht_OpenData/guest?VERSION%3D1.3.0"
           },
           "FP_Hoehe": {
@@ -3144,6 +3153,7 @@
             "type": "ogc_wms",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:4647", "EPSG:102362", "EPSG:25832"],
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Festpunktübersicht", "WMS: Höhenfestpunkte"],
+            "komgis_priority": "74510",
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=2&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_Festpunktuebersicht_OpenData/guest?VERSION%3D1.3.0"
           },
           "FP_Schwere": {
@@ -3151,6 +3161,7 @@
             "type": "ogc_wms",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:4647", "EPSG:102362", "EPSG:25832"],
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Festpunktübersicht", "WMS: Schwerefestpunkte"],
+            "komgis_priority": "74520",
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=1&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_Festpunktuebersicht_OpenData/guest?VERSION%3D1.3.0"
           }
         },
@@ -3197,6 +3208,7 @@
             "name": "ST: TK 10 farbig (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Geoleistungspaket (GLP)", "Digitale Topografische Karten (DTK)", "Farbvariante", "WMS: DTK 10 (farbig)"],
+            "komgis_priority": "90500",
             "valid_epsg": ["EPSG:31468", "EPSG:31467", "EPSG:31469", "EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3857"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=lsa_lvermgeo_dtk10_col_1&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_DTK_WMS_OpenData/guest?VERSION%3D1.3.0",
             "opacity": 0.75,
@@ -3207,6 +3219,7 @@
             "name": "ST: TK 25 farbig (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Geoleistungspaket (GLP)", "Digitale Topografische Karten (DTK)", "Farbvariante", "WMS: DTK 25 (farbig)"],
+            "komgis_priority": "90600",
             "valid_epsg": ["EPSG:31468", "EPSG:31467", "EPSG:31469", "EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3857"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=lsa_lvermgeo_dtk25_col_1&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_DTK_WMS_OpenData/guest?VERSION%3D1.3.0",
             "opacity": 0.75,
@@ -3217,6 +3230,7 @@
             "name": "ST: TK 50 farbig (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Geoleistungspaket (GLP)", "Digitale Topografische Karten (DTK)", "Farbvariante", "WMS: DTK 50 (farbig)"],
+            "komgis_priority": "90700",
             "valid_epsg": ["EPSG:31468", "EPSG:31467", "EPSG:31469", "EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3857"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=lsa_lvermgeo_dtk50_col_1&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_DTK_WMS_OpenData/guest?VERSION%3D1.3.0",
             "opacity": 0.75,
@@ -3227,6 +3241,7 @@
             "name": "ST: TK 100 farbig (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Geoleistungspaket (GLP)", "Digitale Topografische Karten (DTK)", "Farbvariante", "WMS: DTK 100 (farbig)"],
+            "komgis_priority": "90800",
             "valid_epsg": ["EPSG:31468", "EPSG:31467", "EPSG:31469", "EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3857"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=lsa_lvermgeo_dtk100_col_1&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_DTK_WMS_OpenData/guest?VERSION%3D1.3.0",
             "opacity": 0.75,
@@ -3237,6 +3252,7 @@
             "name": "ST: TÜK 250 farbig (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Geoleistungspaket (GLP)", "Digitale Topografische Karten (DTK)", "Farbvariante", "WMS: DTK 250 (farbig)"],
+            "komgis_priority": "90900",
             "valid_epsg": ["EPSG:31468", "EPSG:31467", "EPSG:31469", "EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3857"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=TUEK_250_col&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_DTK_WMS_OpenData/guest?VERSION%3D1.3.0",
             "opacity": 0.75,
@@ -3252,6 +3268,7 @@
             "name": "ST: TK 10 grau (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Geoleistungspaket (GLP)", "Digitale Topografische Karten (DTK)", "Graustufenvariante", "WMS: DTK 10 (grau)"],
+            "komgis_priority": "90501",
             "valid_epsg": ["EPSG:31468", "EPSG:31467", "EPSG:31469", "EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3857"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=lsa_lvermgeo_dtk10_ein_1&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_DTK_WMS_OpenData/guest?VERSION%3D1.3.0",
             "opacity": 0.75,
@@ -3262,6 +3279,7 @@
             "name": "ST: TK 25 grau (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Geoleistungspaket (GLP)", "Digitale Topografische Karten (DTK)", "Graustufenvariante", "WMS: DTK 25 (grau)"],
+            "komgis_priority": "90601",
             "valid_epsg": ["EPSG:31468", "EPSG:31467", "EPSG:31469", "EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3857"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=lsa_lvermgeo_dtk25_ein_1&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_DTK_WMS_OpenData/guest?VERSION%3D1.3.0",
             "opacity": 0.75,
@@ -3272,6 +3290,7 @@
             "name": "ST: TK 50 grau (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Geoleistungspaket (GLP)", "Digitale Topografische Karten (DTK)", "Graustufenvariante", "WMS: DTK 50 (grau)"],
+            "komgis_priority": "90701",
             "valid_epsg": ["EPSG:31468", "EPSG:31467", "EPSG:31469", "EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3857"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=lsa_lvermgeo_dtk50_ein_1&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_DTK_WMS_OpenData/guest?VERSION%3D1.3.0",
             "opacity": 0.75,
@@ -3282,6 +3301,7 @@
             "name": "ST: TK 100 grau (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Geoleistungspaket (GLP)", "Digitale Topografische Karten (DTK)", "Graustufenvariante", "WMS: DTK 100 (grau)"],
+            "komgis_priority": "90801",
             "valid_epsg": ["EPSG:31468", "EPSG:31467", "EPSG:31469", "EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3857"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=lsa_lvermgeo_dtk100_ein_1&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_DTK_WMS_OpenData/guest?VERSION%3D1.3.0",
             "opacity": 0.75,
@@ -3292,6 +3312,7 @@
             "name": "ST: TÜK 250 grau (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Geoleistungspaket (GLP)", "Digitale Topografische Karten (DTK)", "Graustufenvariante", "WMS: DTK 250 (grau)"],
+            "komgis_priority": "90901",
             "valid_epsg": ["EPSG:31468", "EPSG:31467", "EPSG:31469", "EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3857"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=TUEK_250_grau&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_DTK_WMS_OpenData/guest?VERSION%3D1.3.0",
             "opacity": 0.75,
@@ -3305,6 +3326,7 @@
         "name": "ST: Digitale Orthophotos - DOP20 (WMS)",
         "type": "ogc_wms",
         "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Geoleistungspaket (GLP)", "Digitale Orthophotos (DOP)", "WMS: DOP 20"],
+        "komgis_priority": "89400",
         "valid_epsg": ["EPSG:4647", "EPSG:31468", "EPSG:31467", "EPSG:31469", "EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=lsa_lvermgeo_dop20_2&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_DOP_WMS_OpenData/guest"
       },
@@ -3312,6 +3334,7 @@
         "name": "ST: Digitale Orthophotos - DOP100 (WMS)",
         "type": "ogc_wms",
         "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Geoleistungspaket (GLP)", "Digitale Orthophotos (DOP)", "WMS: DOP 100"],
+        "komgis_priority": "89500",
         "valid_epsg": ["EPSG:4647", "EPSG:31468", "EPSG:31467", "EPSG:31469", "EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=lsa_lvermgeo_dop100_unbesch&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_DOP_WMS_OpenData/guest"
       },
@@ -3319,6 +3342,7 @@
         "name": "ST: DOP - Kachelübersicht-Überfliegungsdatum (WMS)",
         "type": "ogc_wms",
         "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Geoleistungspaket (GLP)", "Digitale Orthophotos (DOP)", "WMS: Kachelübersicht-Überfliegungsdatum"],
+        "komgis_priority": "75100",
         "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:25833"],
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=2&styles=default&tilePixelRatio=0&url=https://geodatenportal.sachsen-anhalt.de/ows_lvermgeo_wms_st_geobasis",
         "seperator": true
@@ -3344,6 +3368,7 @@
             "type": "ogc_wms",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:4258", "EPSG:4267", "EPSG:4269", "EPSG:102113", "EPSG:3785", "EPSG:25832", "EPSG:25833"],
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Denkmalschutz", "WMS: Baudenkmal"],
+            "komgis_priority": "84100",
             "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=PS.ProtectedSitesbaudenkmalST&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss-org2/service/INSPIRE_PS_LDA_WMS/guest",
             "opacity": 0.75
           },
@@ -3352,6 +3377,7 @@
             "type": "ST: ogc_wms",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:4258", "EPSG:4267", "EPSG:4269", "EPSG:102113", "EPSG:3785", "EPSG:25832", "EPSG:25833"],
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Denkmalschutz", "WMS: Kleindenkmal"],
+            "komgis_priority": "84200",
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=PS.ProtectedSiteskleindenkmalST&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss-org2/service/INSPIRE_PS_LDA_WMS/guest",
             "opacity": 0.75
           },
@@ -3360,6 +3386,7 @@
             "type": "ogc_wms",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:4258", "EPSG:4267", "EPSG:4269", "EPSG:102113", "EPSG:3785", "EPSG:25832", "EPSG:25833"],
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Denkmalschutz", "WMS: Denkmalbereich"],
+            "komgis_priority": "84300",
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png8&layers=PS.ProtectedSitesdenkmalbereichST&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss-org2/service/INSPIRE_PS_LDA_WMS/guest",
             "opacity": 0.75
           },
@@ -3368,6 +3395,7 @@
             "type": "ogc_wms",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:4258", "EPSG:4267", "EPSG:4269", "EPSG:102113", "EPSG:3785", "EPSG:25832", "EPSG:25833"],
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Denkmalschutz", "WMS: Archaeologisches Kulturdenkmal"],
+            "komgis_priority": "84400",
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png8&layers=PS.ProtectedSitesarchaeologischesKulturdenkmalST&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss-org2/service/INSPIRE_PS_LDA_WMS/guest",
             "opacity": 0.75
           },
@@ -3376,6 +3404,7 @@
             "type": "ogc_wms",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:4258", "EPSG:4267", "EPSG:4269", "EPSG:102113", "EPSG:3785", "EPSG:25832", "EPSG:25833"],
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Denkmalschutz", "WMS: Archaeologisches Flaechendenkmal"],
+            "komgis_priority": "84500",
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png8&layers=PS.ProtectedSitesarchaeologischesFlaechendenkmalST&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss-org2/service/INSPIRE_PS_LDA_WMS/guest",
             "opacity": 0.75
           }
@@ -3390,6 +3419,7 @@
             "type": "ogc_wms",
             "valid_epsg": ["EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:3044", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:3045", "EPSG:4326", "EPSG:900913"],
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Hochwasserschutzanlagen", "WMS: Deiche und Wände"],
+            "komgis_priority": "76000",
             "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lhw_hwrmrl_deiche_waende&styles&tilePixelRatio=0&url=http://www.geofachdatenserver.de/ws/wms/3e63df0e-407f-e46a/LHW-LSA_HWRMRL/ows.wms"
           },
           "howa_2": {
@@ -3397,6 +3427,7 @@
             "type": "ogc_wms",
             "valid_epsg": ["EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:3044", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:3045", "EPSG:4326", "EPSG:900913"],
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Hochwasserschutzanlagen", "WMS: Polder und Rückhaltebecken"],
+            "komgis_priority": "85010",
             "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lhw_hwrmrl_polder_rhb&styles&tilePixelRatio=0&url=http://www.geofachdatenserver.de/ws/wms/3e63df0e-407f-e46a/LHW-LSA_HWRMRL/ows.wms",
             "opacity": 0.75
           }
@@ -3410,6 +3441,7 @@
             "type": "ogc_wms",
             "valid_epsg": ["EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:3044", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:3045", "EPSG:4326", "EPSG:900913"],
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Hochwasser HQ 200", "WMS: Anschlaglinie"],
+            "komgis_priority": "76010",
             "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lhw_hwrmrl_anschlagliniene_hqextrem&styles&tilePixelRatio=0&url=http://www.geofachdatenserver.de/ws/wms/3e63df0e-407f-e46a/LHW-LSA_HWRMRL/ows.wms"
           },
           "hq200_2": {
@@ -3417,6 +3449,7 @@
             "type": "ogc_wms",
             "valid_epsg": ["EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:3044", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:3045", "EPSG:4326", "EPSG:900913"],
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Hochwasser HQ 200", "WMS: Wassertiefen"],
+            "komgis_priority": "86490",
             "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lhw_hwrmrl_wt_hq200&styles&tilePixelRatio=0&url=http://www.geofachdatenserver.de/ws/wms/3e63df0e-407f-e46a/LHW-LSA_HWRMRL/ows.wms",
             "opacity": 0.75
           },
@@ -3425,6 +3458,7 @@
             "type": "ogc_wms",
             "valid_epsg": ["EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:3044", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:3045", "EPSG:4326", "EPSG:900913"],
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Hochwasser HQ 200", "WMS: Flächennutzung im Überflutungsgebiet"],
+            "komgis_priority": "86500",
             "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lhw_hwrmrl_btnt_hq200&styles&tilePixelRatio=0&url=http://www.geofachdatenserver.de/ws/wms/3e63df0e-407f-e46a/LHW-LSA_HWRMRL/ows.wms",
             "opacity": 0.75
           }
@@ -3438,6 +3472,7 @@
             "type": "ogc_wms",
             "valid_epsg": ["EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:3044", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:3045", "EPSG:4326", "EPSG:900913"],
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Hochwasser HQ 100", "WMS: Wassertiefen"],
+            "komgis_priority": "86470",
             "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lhw_hwrmrl_wt_hq100&styles&tilePixelRatio=0&url=http://www.geofachdatenserver.de/ws/wms/3e63df0e-407f-e46a/LHW-LSA_HWRMRL/ows.wms",
             "opacity": 0.75
           },
@@ -3446,6 +3481,7 @@
             "type": "ogc_wms",
             "valid_epsg": ["EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:3044", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:3045", "EPSG:4326", "EPSG:900913"],
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Hochwasser HQ 100", "WMS: Flächennutzung im Überflutungsgebiet"],
+            "komgis_priority": "86480",
             "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lhw_hwrmrl_btnt_hq100&styles&tilePixelRatio=0&url=http://www.geofachdatenserver.de/ws/wms/3e63df0e-407f-e46a/LHW-LSA_HWRMRL/ows.wms",
             "opacity": 0.75
           }
@@ -3459,6 +3495,7 @@
             "type": "ogc_wms",
             "valid_epsg": ["EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:3044", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:3045", "EPSG:4326", "EPSG:900913"],
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Hochwasser HQ 10", "WMS: Wassertiefen"],
+            "komgis_priority": "86450",
             "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lhw_hwrmrl_wt_hq10_20&styles&tilePixelRatio=0&url=http://www.geofachdatenserver.de/ws/wms/3e63df0e-407f-e46a/LHW-LSA_HWRMRL/ows.wms",
             "opacity": 0.75
           },
@@ -3467,6 +3504,7 @@
             "type": "ogc_wms",
             "valid_epsg": ["EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:25832", "EPSG:4647", "EPSG:5652", "EPSG:3044", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:3045", "EPSG:4326", "EPSG:900913"],
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Hochwasser HQ 10", "WMS: Flächennutzung im Überflutungsgebiet"],
+            "komgis_priority": "86460",
             "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=lhw_hwrmrl_btnt_hq10_20&styles&tilePixelRatio=0&url=http://www.geofachdatenserver.de/ws/wms/3e63df0e-407f-e46a/LHW-LSA_HWRMRL/ows.wms",
             "opacity": 0.75
           }
