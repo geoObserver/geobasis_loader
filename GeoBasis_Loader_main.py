@@ -5,7 +5,7 @@ from PyQt5.QtGui import QIcon, QColor
 from PyQt5.QtCore import QUrl, QObject
 # from PyQt5.QtWebKitWidgets import QWebView # type: ignore
 from .dialog import EpsgDialog
-from qgis.core import QgsSettings, QgsProject, QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer, QgsLayerTree, QgsLayerTreeLayer
+from qgis.core import QgsSettings, QgsProject, QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer, QgsMapLayer, QgsLayerTree, QgsLayerTreeLayer
 from qgis.utils import *
 from qgis._gui import QgisInterface
 from typing import Dict, Union
@@ -278,11 +278,13 @@ class GeoBasis_Loader(QObject):
             self.iface.layerTreeView().refreshLayerSymbology(layer.id())
         
         self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, config.MY_INFO_1 + attributes['name'] + config.MY_INFO_2, 3, 1) # type: ignore
-        root: QgsLayerTree = QgsProject.instance().layerTreeRoot() 
+        root: QgsLayerTree = QgsProject.instance().layerTreeRoot()
         QgsProject.instance().addMapLayer(layer, standalone) # type: ignore
         
         if standalone:
             ltl: QgsLayerTreeLayer = root.findLayer(layer) # type: ignore
+            ltl.setExpanded(False)
+            
             _ltl = ltl.clone()
             root.insertChildNode(0, _ltl)
             root.removeChildNode(ltl)
@@ -302,9 +304,12 @@ class GeoBasis_Loader(QObject):
             if preferred_crs is None:
                 return
         
+        root: QgsLayerTree = QgsProject.instance().layerTreeRoot() # type: ignore
         for layerKey in layers:
-            subLayer = self.addLayer(layers[layerKey], preferred_crs, False)
+            subLayer: QgsMapLayer = self.addLayer(layers[layerKey], preferred_crs, False)
             newLayerGroup.addLayer(subLayer)
+            ltl: QgsLayerTreeLayer = root.findLayer(subLayer) # type: ignore
+            ltl.setExpanded(False)
             
     def addLayerCombination(self, layers) -> None:
         preferred_crs = None
