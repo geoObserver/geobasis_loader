@@ -334,48 +334,56 @@
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Starkregen", "Extremes Ereignis", "WMS: Fliessrichtung extremes Ereignis"],
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
-            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=richtung_extrem&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_starkregen"
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=richtung_extrem&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_starkregen",
+            "opacity": 0.75
           },
           "starkregen4": {
             "name": "DE: Fliessrichtung aussergewöhnliches Ereignis (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Starkregen", "Aussergewöhnliches Ereignis", "WMS: Fliessrichtung aussergewöhnliches Ereignis"],
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
-            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=richtung_agw&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_starkregen"
+            "is_visible": "false",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=richtung_agw&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_starkregen",
+            "opacity": 0.75
           },
           "starkregen1": {
             "name": "DE: Fliessgeschwindigkeit extremes Ereignis (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Starkregen", "Extremes Ereignis", "WMS: Fliessgeschwindigkeit extremes Ereignis"],
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
-            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=geschwindigkeit_extrem&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_starkregen"
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=geschwindigkeit_extrem&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_starkregen",
+            "opacity": 0.75
           },
           "starkregen2": {
             "name": "DE: Fliessgeschwindigkeit aussergewöhnliches Ereignis (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Starkregen", "Aussergewöhnliches Ereignis", "WMS: Fliessgeschwindigkeit aussergewöhnliches Ereignis"],
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
-            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=geschwindigkeit_agw&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_starkregen"
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=geschwindigkeit_agw&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_starkregen",
+            "opacity": 0.75
           },
           "starkregen5": {
             "name": "DE: Überflutungstiefe extremes Ereignis (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Starkregen", "Extremes Ereignis", "WMS: Überflutungstiefe extremes Ereignis"],
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
-            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=tiefe_extrem&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_starkregen"
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=tiefe_extrem&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_starkregen",
+            "opacity": 0.75
           },
           "starkregen6": {
             "name": "DE: Überflutungstiefe aussergewöhnliches Ereignis (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Starkregen", "Aussergewöhnliches Ereignis", "WMS: Überflutungstiefe aussergewöhnliches Ereignis"],
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
-            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=tiefe_agw&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_starkregen"
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=tiefe_agw&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_starkregen",
+            "opacity": 0.75
           },
           "starkregen7": {
             "name": "DE: Gewässer (WMS)",
             "type": "ogc_wms",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
-            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gewaesser&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_starkregen"
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gewaesser&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_starkregen",
+            "opacity": 0.75
           }
         }
       },
