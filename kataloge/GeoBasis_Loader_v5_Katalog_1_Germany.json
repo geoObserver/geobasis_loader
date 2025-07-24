@@ -3377,12 +3377,12 @@
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:4258", "EPSG:4267", "EPSG:4269", "EPSG:102113", "EPSG:3785", "EPSG:25832", "EPSG:25833"],
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Denkmalschutz", "WMS: Baudenkmal"],
             "komgis_priority": "84100",
-            "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=PS.ProtectedSitesbaudenkmalST&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss-org2/service/INSPIRE_PS_LDA_WMS/guest",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=PS.ProtectedSitesbaudenkmalST&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss-org2/service/INSPIRE_PS_LDA_WMS/guest",
             "opacity": 0.75
           },
           "denkmal_2": {
             "name": "ST: Kleindenkmal",
-            "type": "ST: ogc_wms",
+            "type": "ogc_wms",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:4258", "EPSG:4267", "EPSG:4269", "EPSG:102113", "EPSG:3785", "EPSG:25832", "EPSG:25833"],
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Denkmalschutz", "WMS: Kleindenkmal"],
             "komgis_priority": "84200",
