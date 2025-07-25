@@ -6,6 +6,7 @@
         "name": "DE: Verwaltungsgebiete 1:2 500 000 (WMS)",
         "type": "ogc_wms",
         "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","WMS: Verwaltungsgebiete 1:2 500 000"],
+        "komgis_priority": "87500",
         "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=vg2500_lan&url=https://sgx.geodatenzentrum.de/wms_vg2500",
         "opacity": 0.75
@@ -17,6 +18,7 @@
             "name": "DE: VG 250 Staat (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Verwaltungsgebiete 1: 250 000", "WMS: VG 250 Staat"],
+            "komgis_priority": "78006",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:31466", "EPSG:31467", "EPSG:5650", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=vg250_sta&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_vg250",
             "opacity": 0.75
@@ -25,6 +27,7 @@
             "name": "DE: VG 250 Bundesländer (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Verwaltungsgebiete 1: 250 000", "WMS: VG 250 Bundesländer"],
+            "komgis_priority": "78005",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:31466", "EPSG:31467", "EPSG:5650", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=vg250_lan&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_vg250",
             "opacity": 0.75
@@ -33,6 +36,7 @@
             "name": "DE: VG 250 Regierungsbezirke (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Verwaltungsgebiete 1: 250 000", "WMS: VG 250 Regierungsbezirke"],
+            "komgis_priority": "78004",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:31466", "EPSG:31467", "EPSG:5650", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=vg250_rbz&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_vg250",
             "opacity": 0.75
@@ -41,6 +45,7 @@
             "name": "DE: VG 250 Kreise (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Verwaltungsgebiete 1: 250 000", "WMS: VG 250 Kreise"],
+            "komgis_priority": "78003",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=vg250_krs&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_vg250",
             "opacity": 0.75
@@ -49,6 +54,7 @@
             "name": "DE: VG 250 Verwaltungsgebiete (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Verwaltungsgebiete 1: 250 000", "WMS: VG 250 Verwaltungsgebiete"],
+            "komgis_priority": "78002",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:31466", "EPSG:31467", "EPSG:5650", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=vg250_vwg&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_vg250",
             "opacity": 0.75
@@ -57,6 +63,7 @@
             "name": "DE: VG 250 Gemeinden (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Verwaltungsgebiete 1: 250 000", "WMS: VG 250 Gemeinden"],
+            "komgis_priority": "78001",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:31466", "EPSG:31467", "EPSG:5650", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=vg250_gem&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_vg250",
             "opacity": 0.75
@@ -71,11 +78,13 @@
             "name": "DE: Gradnetz - WSV (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Gradnetze", "WMS: Gradnetz - WSV"],
+            "komgis_priority": "77900",
             "valid_epsg": ["EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:3857", "EPSG:4019", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:104258"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=GN&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/netze/wms?VERSION%3D1.3.0"
           },
           "gradnetz_beschriftung": {
             "name": "DE: Gradnetz Beschriftung - WSV (WMS)",
+            "komgis_priority": "74801",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Gradnetze", "WMS: Gradnetz Beschriftung - WSV"],
             "valid_epsg": ["EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:3857", "EPSG:4019", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:104258"],
@@ -90,6 +99,7 @@
             "name": "DE: Gauss Krüger Streifen Beschriftung - WSV (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Gauss Krüger Streifen", "WMS: Gauss Krüger Streifen Beschriftung - WSV"],
+            "komgis_priority": "74802",
             "valid_epsg": ["EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:3857", "EPSG:4019", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:104258"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gkzonen_text&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/zonen/wms?VERSION%3D1.3.0"
           },
@@ -97,6 +107,7 @@
             "name": "DE: Gauss Krüger Streifen - WSV (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Gauss Krüger Streifen", "WMS: Gauss Krüger Streifen - WSV"],
+            "komgis_priority": "87001",
             "valid_epsg": ["EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:3857", "EPSG:4019", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:104258"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gkzonen&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/zonen/wms?VERSION%3D1.3.0",
             "opacity": 0.5
@@ -110,6 +121,7 @@
             "name": "DE: UTM Zonen Beschriftung - WSV (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","UTM Zonen", "WMS: UTM Zonen Beschriftung - WSV"],
+            "komgis_priority": "74803",
             "valid_epsg": ["EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:3857", "EPSG:4019", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:104258"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=utmzonen_text&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/zonen/wms?VERSION%3D1.3.0"
           },
@@ -117,6 +129,7 @@
             "name": "DE: UTM Zonen - WSV (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","UTM Zonen", "WMS: UTM Zonen - WSV"],
+            "komgis_priority": "87002",
             "valid_epsg": ["EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:3857", "EPSG:4019", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:104258"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=utmzonen&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/zonen/wms?VERSION%3D1.3.0",
             "opacity": 0.5
@@ -128,6 +141,7 @@
         "name": "DE: basemap.de grau (WMS)",
         "type": "ogc_wms",
         "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Basemap.de", "WMS: Basemap.de (Grau)"],
+        "komgis_priority": "95001",
         "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:25833", "EPSG:32632", "EPSG:32633", "EPSG:4647", "EPSG:5650", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3857", "EPSG:900913", "EPSG:102100", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4839", "EPSG:3068", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:3035", "EPSG:3034", "EPSG:3044", "EPSG:3045", "EPSG:4647", "EPSG:5650"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=de_basemapde_web_raster_grau&url=https://sgx.geodatenzentrum.de/wms_basemapde?"
       },
@@ -135,6 +149,7 @@
         "name": "DE: basemap.de farbig (WMS)",
         "type": "ogc_wms",
         "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Basemap.de", "WMS: Basemap.de (Farbe)"],
+        "komgis_priority": "95002",
         "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:25833", "EPSG:32632", "EPSG:32633", "EPSG:4647", "EPSG:5650", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3857", "EPSG:900913", "EPSG:102100", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4839", "EPSG:3068", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:3035", "EPSG:3034", "EPSG:3044", "EPSG:3045", "EPSG:4647", "EPSG:5650"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=de_basemapde_web_raster_farbe&url=https://sgx.geodatenzentrum.de/wms_basemapde?"
       },
@@ -240,6 +255,7 @@
             "name": "DE: Kilometermarken - WSV (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Bundeswasserstraßen", "WMS: Kilometermarken"],
+            "komgis_priority": "74813",
             "valid_epsg": ["EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:3857", "EPSG:4019", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:104258"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://via.bund.de/wsv/bwastr/wms&layers=Kilometermarken&styles="
           },
@@ -247,6 +263,7 @@
             "name": "DE: Gewaessernamen - WSV (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Bundeswasserstraßen", "WMS: Gewaessernamen"],
+            "komgis_priority": "74814",
             "valid_epsg": ["EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:3857", "EPSG:4019", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:104258"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://via.bund.de/wsv/bwastr/wms&layers=Gewaessernamen&styles="
           },
@@ -254,6 +271,7 @@
             "name": "DE: Fliessrichtung - WSV (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Bundeswasserstraßen", "WMS: Fliessrichtung"],
+            "komgis_priority": "74815",
             "valid_epsg": ["EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:3857", "EPSG:4019", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:104258"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://via.bund.de/wsv/bwastr/wms&layers=Fliessrichtung&styles="
           },
@@ -261,6 +279,7 @@
             "name": "DE: Gewaessernetz (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Bundeswasserstraßen", "WMS: Gewaessernetz"],
+            "komgis_priority": "74816",
             "valid_epsg": ["EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:3857", "EPSG:4019", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:104258"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://via.bund.de/wsv/bwastr/wms&layers=Gewaessernetz&styles="
           }
@@ -273,6 +292,7 @@
             "name": "DE: Pegelmesstelle (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Pegel Online - WSV", "WMS: Pegelmesstelle"],
+            "komgis_priority": "74803",
             "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Pegelpunkte&styles&tilePixelRatio=0&url=https://www.pegelonline.wsv.de/webservices/gis/wms?VERSION%3D1.3.0"
           },
@@ -280,6 +300,7 @@
             "name": "DE: Pegelname - WSV (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Pegel Online - WSV", "WMS: Pegelname"],
+            "komgis_priority": "74804",
             "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Pegelnamen&styles&tilePixelRatio=0&url=https://www.pegelonline.wsv.de/webservices/gis/wms?VERSION%3D1.3.0",
             "minScale": 100000.0,
@@ -289,6 +310,7 @@
             "name": "DE: Wasserstand - WSV (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Pegel Online - WSV", "WMS: Wasserstand"],
+            "komgis_priority": "74805",
             "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Pegelwasserstand&styles&tilePixelRatio=0&url=https://www.pegelonline.wsv.de/webservices/gis/wms?VERSION%3D1.3.0",
             "minScale": 100000.0,
@@ -333,6 +355,7 @@
             "name": "DE: Fliessrichtung extremes Ereignis (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Starkregen", "Extremes Ereignis", "WMS: Fliessrichtung extremes Ereignis"],
+            "komgis_priority": "79901",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=richtung_extrem&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_starkregen",
             "opacity": 0.75
@@ -341,6 +364,7 @@
             "name": "DE: Fliessrichtung aussergewöhnliches Ereignis (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Starkregen", "Aussergewöhnliches Ereignis", "WMS: Fliessrichtung aussergewöhnliches Ereignis"],
+            "komgis_priority": "84102",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
             "is_visible": "false",
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=richtung_agw&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_starkregen",
@@ -350,6 +374,7 @@
             "name": "DE: Fliessgeschwindigkeit extremes Ereignis (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Starkregen", "Extremes Ereignis", "WMS: Fliessgeschwindigkeit extremes Ereignis"],
+            "komgis_priority": "84101",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=geschwindigkeit_extrem&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_starkregen",
             "opacity": 0.75
@@ -358,6 +383,7 @@
             "name": "DE: Fliessgeschwindigkeit aussergewöhnliches Ereignis (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Starkregen", "Aussergewöhnliches Ereignis", "WMS: Fliessgeschwindigkeit aussergewöhnliches Ereignis"],
+            "komgis_priority": "79902",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=geschwindigkeit_agw&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_starkregen",
             "opacity": 0.75
@@ -366,6 +392,7 @@
             "name": "DE: Überflutungstiefe extremes Ereignis (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Starkregen", "Extremes Ereignis", "WMS: Überflutungstiefe extremes Ereignis"],
+            "komgis_priority": "84104",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=tiefe_extrem&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_starkregen",
             "opacity": 0.75
@@ -374,6 +401,7 @@
             "name": "DE: Überflutungstiefe aussergewöhnliches Ereignis (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Starkregen", "Aussergewöhnliches Ereignis", "WMS: Überflutungstiefe aussergewöhnliches Ereignis"],
+            "komgis_priority": "84103",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=tiefe_agw&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_starkregen",
             "opacity": 0.75
@@ -469,6 +497,7 @@
             "name": "DE: Dipul - Bahnanlagen (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Bahnanlagen"],
+            "komgis_priority": "83032",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=bahnanlagen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -477,6 +506,7 @@
             "name": "DE: Dipul - Oberste Bundes- und Landesbehörden und Verfassungsorgane (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Oberste Bundes- und Landesbehörden und Verfassungsorgane"],
+            "komgis_priority": "83031",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=behoerden&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -485,6 +515,7 @@
             "name": "DE: Dipul - Binnenwasserstraßen (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Binnenwasserstraßen"],
+            "komgis_priority": "83030",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=binnenwasserstrassen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -493,6 +524,7 @@
             "name": "DE: Dipul - Bundesautobahnen (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Bundesautobahnen"],
+            "komgis_priority": "83029",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=bundesautobahnen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -501,6 +533,7 @@
             "name": "DE: Dipul - Bundesstraßen (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Bundesstraßen"],
+            "komgis_priority": "83028",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=bundesstrassen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -509,6 +542,7 @@
             "name": "DE: Dipul - Diplomatische und konsularische Vertretungen (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Diplomatische und konsularische Vertretungen"],
+            "komgis_priority": "83027",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=diplomatische_vertretungen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -517,6 +551,7 @@
             "name": "DE: Dipul - FFH-Gebiete (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - FFH-Gebiete"],
+            "komgis_priority": "83026",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=ffh-gebiete&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -525,6 +560,7 @@
             "name": "DE: Dipul - Flugbeschränkungsgebiete (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Flugbeschränkungsgebiete"],
+            "komgis_priority": "83025",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=flugbeschraenkungsgebiete&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -533,6 +569,7 @@
             "name": "DE: Dipul - Flughäfen (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Flughäfen"],
+            "komgis_priority": "83024",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=flughaefen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -541,6 +578,7 @@
             "name": "DE: Dipul - Flugplätze (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Flugplätze"],
+            "komgis_priority": "83023",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=flugplaetze&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -549,6 +587,7 @@
             "name": "DE: Dipul - Freibäder und Badestrände (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Freibäder und Badestrände"],
+            "komgis_priority": "83022",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=freibaeder&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -557,6 +596,7 @@
             "name": "DE: Dipul - Industrieanlagen (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Industrieanlagen"],
+            "komgis_priority": "83021",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=industrieanlagen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -565,6 +605,7 @@
             "name": "DE: Dipul - Internationale Organisationen im Sinne des Völkerrechts (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Internationale Organisationen im Sinne des Völkerrechts"],
+            "komgis_priority": "83020",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=internationale_organisationen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -573,6 +614,7 @@
             "name": "DE: Dipul - JVA und Einrichtungen des Maßregelvollzugs (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - JVA und Einrichtungen des Maßregelvollzugs"],
+            "komgis_priority": "83019",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=justizvollzugsanstalten&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -581,6 +623,7 @@
             "name": "DE: Dipul - Kontrollzonen (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Kontrollzonen"],
+            "komgis_priority": "83019",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=kontrollzonen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -589,6 +632,7 @@
             "name": "DE: Dipul - Kraftwerke (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Kraftwerke"],
+            "komgis_priority": "83017",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=kraftwerke&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -597,6 +641,7 @@
             "name": "DE: Dipul - Krankenhäuser (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Krankenhäuser"],
+            "komgis_priority": "83016",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=krankenhaeuser&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -605,6 +650,7 @@
             "name": "DE: Dipul - Einrichtungen BSL-4 (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Einrichtungen BSL-4"],
+            "komgis_priority": "83015",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=labore&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -613,6 +659,7 @@
             "name": "DE: Dipul - Militärische Anlagen und Organisationen (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Militärische Anlagen und Organisationen"],
+            "komgis_priority": "83014",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=militaerische_anlagen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -621,6 +668,7 @@
             "name": "DE: Dipul - Modellflugplätze (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Modellflugplätze"],
+            "komgis_priority": "83013",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=modellflugplaetze&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -629,6 +677,7 @@
             "name": "DE: Dipul - Nationalparks (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Nationalparks"],
+            "komgis_priority": "83012",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=nationalparks&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -637,6 +686,7 @@
             "name": "DE: Dipul - Naturschutzgebiete (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Naturschutzgebiete"],
+            "komgis_priority": "83011",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=naturschutzgebiete&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -645,6 +695,7 @@
             "name": "DE: Dipul - Liegenschaften der Polizei (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Liegenschaften der Polizei"],
+            "komgis_priority": "83010",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=polizei&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -653,6 +704,7 @@
             "name": "DE: Dipul - Schifffahrtsanlagen (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Schifffahrtsanlagen"],
+            "komgis_priority": "83009",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=schifffahrtsanlagen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -661,6 +713,7 @@
             "name": "DE: Dipul - Seewasserstraßen (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Seewasserstraßen"],
+            "komgis_priority": "83008",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=seewasserstrassen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -669,6 +722,7 @@
             "name": "DE: Dipul - Andere Sicherheitsbehörden (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Andere Sicherheitsbehörden"],
+            "komgis_priority": "83007",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=sicherheitsbehoerden&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -677,6 +731,7 @@
             "name": "DE: Dipul - Stromleitungen (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Stromleitungen"],
+            "komgis_priority": "83006",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=stromleitungen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -685,6 +740,7 @@
             "name": "DE: Dipul - Temporäre Betriebseinschränkungen (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Temporäre Betriebseinschränkungen"],
+            "komgis_priority": "83005",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=temporaere_betriebseinschraenkungen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -693,6 +749,7 @@
             "name": "DE: Dipul - Umspannwerke (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Umspannwerke"],
+            "komgis_priority": "83004",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=umspannwerke&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -701,6 +758,7 @@
             "name": "DE: Dipul - Vogelschutzgebiete (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Vogelschutzgebiete"],
+            "komgis_priority": "83003",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=vogelschutzgebiete&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -709,6 +767,7 @@
             "name": "DE: Dipul - Windkraftanlagen (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Windkraftanlagen"],
+            "komgis_priority": "83002",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=windkraftanlagen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -717,6 +776,7 @@
             "name": "DE: Dipul - Wohngrundstücke (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Wohngrundstücke"],
+            "komgis_priority": "83001",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=wohngrundstuecke&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
@@ -727,6 +787,7 @@
         "name": "DE: KFZ-Kennzeichen (WMS)",
         "type": "ogc_wms",
         "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland", "WMS: KFZ-Kennzeichen"],
+            "komgis_priority": "74000",
         "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=kfz250&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_kfz250"
       },
@@ -737,6 +798,7 @@
             "name": "DE: Route DLM1000 (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Route DLM1000"],
+            "komgis_priority": "75016",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=route_DLM1000&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
           },
@@ -744,6 +806,7 @@
             "name": "DE: Route BasisDLM (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Route BasisDLM"],
+            "komgis_priority": "75015",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=route_BasisDLM&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
           },
@@ -751,6 +814,7 @@
             "name": "DE: Beteiligung GKFZ 5000 (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Beteiligung GKFZ 5000"],
+            "komgis_priority": "75014",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Beteiligung_GKFZ_5000&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
           },
@@ -758,6 +822,7 @@
             "name": "DE: Beteiligung GKFZ 250 (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Beteiligung  GKFZ 250"],
+            "komgis_priority": "75013",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Beteiligung_GKFZ_250&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
           },
@@ -765,6 +830,7 @@
             "name": "DE: Beteiligung Fussgaenger 5000 (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Beteiligung Fussgaenger 5000"],
+            "komgis_priority": "75012",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Beteiligung_Fussgaenger_5000&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
           },
@@ -772,6 +838,7 @@
             "name": "DE: Beteiligung Fussgaenger 250 (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Beteiligung Fussgaenger 250"],
+            "komgis_priority": "75011",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Beteiligung_Fussgaenger_250&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
           },
@@ -779,6 +846,7 @@
             "name": "DE: Beteiligung Fahrrad 5000 (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Beteiligung Fahrrad 5000"],
+            "komgis_priority": "75010",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Beteiligung_Fahrrad_5000&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
           },
@@ -786,6 +854,7 @@
             "name": "DE: Beteiligung Fahrrad 250 (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Beteiligung Fahrrad 250"],
+            "komgis_priority": "75009",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Beteiligung_Fahrrad_250&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
           },
@@ -793,6 +862,7 @@
             "name": "DE: Beteiligung Motorrad 5000 (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Beteiligung Motorrad 5000"],
+            "komgis_priority": "75008",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Beteiligung_Motorrad_5000&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
           },
@@ -800,6 +870,7 @@
             "name": "DE: Beteiligung Motorrad 250 (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Beteiligung Motorrad 250"],
+            "komgis_priority": "75007",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Beteiligung_Motorrad_250&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
           },
@@ -807,6 +878,7 @@
             "name": "DE: Beteiligung PKW 5000 (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Beteiligung PKW 5000"],
+            "komgis_priority": "75006",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Beteiligung_PKW_5000&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
           },
@@ -814,6 +886,7 @@
             "name": "DE: Beteiligung PKW 250 (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Beteiligung PKW 250"],
+            "komgis_priority": "75005",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Beteiligung_PKW_250&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
           },
@@ -821,6 +894,7 @@
             "name": "DE: Getötete 5000 (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Getötete 5000"],
+            "komgis_priority": "75004",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Getoetete_5000&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
           },
@@ -828,6 +902,7 @@
             "name": "DE: Getötete 250 (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Getötete 250"],
+            "komgis_priority": "75003",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Getoetete_250&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
           },
@@ -835,6 +910,7 @@
             "name": "DE: Personenschaden 5000 (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Personenschaden 5000"],
+            "komgis_priority": "75002",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Personenschaden_5000&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
           },
@@ -842,6 +918,7 @@
             "name": "DE: Personenschaden 250 (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Personenschaden 250"],
+            "komgis_priority": "75001",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Personenschaden_250&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
           },
@@ -849,6 +926,7 @@
             "name": "DE: Unfallorte (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Unfallorte"],
+            "komgis_priority": "74530",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Unfallorte&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
           }
