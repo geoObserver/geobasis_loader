@@ -22,3 +22,11 @@ class ServerHosts(str, Enum):
     @classmethod
     def get_servers(cls) -> list[str]:
         return [a.value for a in cls]
+    
+class InternalProperties(str, Enum):
+    VISIBILITY = "__visible__"
+    PATH = "__path__"
+    
+    @classmethod
+    def get_properties(cls) -> list["InternalProperties"]:
+        return [a for a in cls if a != cls.PATH]
