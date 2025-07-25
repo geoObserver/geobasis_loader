@@ -189,6 +189,15 @@ class CatalogManager:
                 handler.fetch_catalog(catalog_info["name"], catalog_info["titel"])
     
         return None
+    
+    @classmethod
+    def get_current_catalog(cls, callback: Optional[callable] = None) -> Union[None, dict, list]:
+        qgs_settings = QgsSettings()
+        current_catalog = qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)
+        if current_catalog is None or "name" not in current_catalog:
+            return None
+        
+        return cls.get_catalog(current_catalog["titel"], current_catalog["name"], callback)
         
     @classmethod
     def add_catalog(cls, catalog: str, catalog_name: str, last_modified: float) -> None:
