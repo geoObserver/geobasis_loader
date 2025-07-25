@@ -258,7 +258,7 @@ class CatalogManager:
     @classmethod
     def write_json(cls, data: str, file_path: pathlib.Path) -> None:        
         file_path.parent.mkdir(mode=0o777, parents=True, exist_ok=True)
-        mode = "w" if os.path.exists(file_path) else "x"
+        mode = "w" if file_path.exists() else "x"
         
         with open(file_path, mode, encoding="utf-8", newline="\n") as file:
             data = json.dumps(data)
@@ -266,8 +266,10 @@ class CatalogManager:
 
     @classmethod
     def read_json(cls, file_path: pathlib.Path) -> Union[dict, list]:
+        if not file_path.exists():
+            return {}
+        
         services: Union[dict, list]
         with open(file_path, "r", encoding="utf-8") as file:
-            data = file.read()
-            services = json.loads(data)
+            services = json.load(file)
         return services
