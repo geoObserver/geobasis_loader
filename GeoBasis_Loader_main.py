@@ -61,7 +61,7 @@ class GeoBasis_Loader(QObject):
             # ------- Menübaum bauen und einfügen ------------------------
             for state in self.services:
                 # Falls der zweite Eintrag kein Dictionary ist, überspringen, da es Metadata ist
-                if type(state[1]) != dict:
+                if type(state[1]) != dict or not state[1][config.InternalProperties.VISIBILITY]:
                     continue
                 menu = self.gui_for_one_topic(state[1]['themen'], state[0])
                 
@@ -109,21 +109,23 @@ class GeoBasis_Loader(QObject):
         self.main_menu.addAction("Über ...", partial(self.open_web_site, 'https://geoobserver.de/qgis-plugin-geobasis-loader/'))
 
         # ------- Status-Schaltfläche für #geoObserver ------------------------
-        # self.mainMenu.addAction("Status ...", partial(self.openWebSite, 'https://geoobserver.de/qgis-plugin-geobasis-loader/#statustabelle'))        
+        # self.mainMenu.addAction("Status ...", partial(self.openWebSite, 'https://geoobserver.de/qgis-plugin-geobasis-loader/#statustabelle'))
         
     def gui_for_one_topic(self, topic_dict: dict, topic_abbreviation: str) -> QMenu:
         menu = QMenu(topic_abbreviation)
         menu.setObjectName('loader-' + topic_abbreviation)
-        for baseLayer in topic_dict:
-            action = QAction(topic_dict[baseLayer]['name'], menu)
-            action.setObjectName(topic_dict[baseLayer]['name'])
+        for key, baseLayer in topic_dict.items():
+            if not baseLayer[config.InternalProperties.VISIBILITY]:
+                continue
+            action = QAction(baseLayer['name'], menu)
+            action.setObjectName(baseLayer['name'])
             action.setData({
                 "group_key": topic_abbreviation,
-                "topic_key": baseLayer
+                "topic_key": key
             })
             action.triggered.connect(self.add_topic)
             menu.addAction(action)
-            if "seperator" in topic_dict[baseLayer]:
+            if "seperator" in baseLayer:
                 menu.addSeparator()
         return menu     
     
