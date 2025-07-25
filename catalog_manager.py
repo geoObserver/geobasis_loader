@@ -261,7 +261,7 @@ class CatalogManager:
         mode = "w" if file_path.exists() else "x"
         
         with open(file_path, mode, encoding="utf-8", newline="\n") as file:
-            data = json.dumps(data)
+            data = json.dumps(data, indent=2)
             file.write(data)
 
     @classmethod
