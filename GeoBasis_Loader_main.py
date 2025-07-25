@@ -5,6 +5,7 @@ from PyQt5.QtGui import QIcon, QColor
 from PyQt5.QtCore import QUrl, QObject
 # from PyQt5.QtWebKitWidgets import QWebView # type: ignore
 from .dialog import EpsgDialog
+from .ui.settings_dialog import SettingsDialog
 from qgis.core import QgsSettings, QgsProject, QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer, QgsMapLayer, QgsLayerTree, QgsLayerTreeLayer
 from qgis.utils import *
 from qgis._gui import QgisInterface
@@ -27,6 +28,9 @@ class GeoBasis_Loader(QObject):
         
         # ------- Dialog für die EPSG-Auswahl erstellen
         self.epsg_dialog = EpsgDialog(parent=iface.mainWindow())
+        
+        # ------- Dialog für die Einstellungen erstellen
+        self.settings_dialog = SettingsDialog(parent=iface.mainWindow())
 
         # ------- Letzten Katalog laden --------------------------------------------
         current_catalog = self.qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)
@@ -57,7 +61,7 @@ class GeoBasis_Loader(QObject):
             # ------- Menübaum bauen und einfügen ------------------------
             for state in self.services:
                 # Falls der zweite Eintrag kein Dictionary ist, überspringen, da es Metadata ist
-                if type(state[1]) != dict:
+                if type(state[1]) != dict or not state[1][config.InternalProperties.VISIBILITY]:
                     continue
                 menu = self.gui_for_one_topic(state[1]['themen'], state[0])
                 
@@ -94,6 +98,8 @@ class GeoBasis_Loader(QObject):
         action = QAction(text="Wenn möglich, Dienste autom. im KBS laden", parent=self.main_menu, checkable=True, checked=self.automatic_crs)
         action.toggled.connect(self.toggle_automatic_crs)
         self.main_menu.addAction(action)
+        
+        self.main_menu.addAction("Einstellungen", self.open_settigs)
         self.main_menu.addSeparator()
         
         # ------- Spenden-Schaltfläche für #geoObserver ------------------------
@@ -103,21 +109,23 @@ class GeoBasis_Loader(QObject):
         self.main_menu.addAction("Über ...", partial(self.open_web_site, 'https://geoobserver.de/qgis-plugin-geobasis-loader/'))
 
         # ------- Status-Schaltfläche für #geoObserver ------------------------
-        # self.mainMenu.addAction("Status ...", partial(self.openWebSite, 'https://geoobserver.de/qgis-plugin-geobasis-loader/#statustabelle'))        
+        # self.mainMenu.addAction("Status ...", partial(self.openWebSite, 'https://geoobserver.de/qgis-plugin-geobasis-loader/#statustabelle'))
         
     def gui_for_one_topic(self, topic_dict: dict, topic_abbreviation: str) -> QMenu:
         menu = QMenu(topic_abbreviation)
         menu.setObjectName('loader-' + topic_abbreviation)
-        for baseLayer in topic_dict:
-            action = QAction(topic_dict[baseLayer]['name'], menu)
-            action.setObjectName(topic_dict[baseLayer]['name'])
+        for key, baseLayer in topic_dict.items():
+            if not baseLayer[config.InternalProperties.VISIBILITY]:
+                continue
+            action = QAction(baseLayer['name'], menu)
+            action.setObjectName(baseLayer['name'])
             action.setData({
                 "group_key": topic_abbreviation,
-                "topic_key": baseLayer
+                "topic_key": key
             })
             action.triggered.connect(self.add_topic)
             menu.addAction(action)
-            if "seperator" in topic_dict[baseLayer]:
+            if "seperator" in baseLayer:
                 menu.addSeparator()
         return menu     
     
@@ -131,6 +139,15 @@ class GeoBasis_Loader(QObject):
             self.iface.pluginMenu().removeAction(self.main_menu.menuAction())
 
 #=================================================================================== 
+
+    def open_settigs(self) -> None:
+        status = self.settings_dialog.exec_()
+        # Abbruch
+        if status == 0:
+            return
+        
+        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, 'Einstellungen erfolgreich gespeichert', 3, 3)
+        self.initGui()
 
     def toggle_automatic_crs(self) -> None:
         new_state = not self.automatic_crs
@@ -159,7 +176,7 @@ class GeoBasis_Loader(QObject):
         titel = current_catalog["titel"]
         name = current_catalog["name"]
         version = re.findall(r'v\d+', name)[0]
-        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, u'Lese '+ titel + ", Version " + version + ' ...', 3, 3)   
+        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, 'Lese '+ titel + ", Version " + version + ' ...', 3, 3)
         
         self.services = services       
         self.initGui()
