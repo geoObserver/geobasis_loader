@@ -104,10 +104,14 @@ class GeoBasis_Loader(QObject):
         self.main_menu.addSeparator()
         
         # ------- Spenden-Schaltfläche für #geoObserver ------------------------
-        self.main_menu.addAction("GeoBasis_Loader per Spende unterstützen ...", partial(self.open_web_site, 'https://geoobserver.de/support_geobasis_loader/'))
+        action = self.main_menu.addAction("GeoBasis_Loader per Spende unterstützen ...", self.open_web_site)
+        if action:
+            action.setData('https://geoobserver.de/support_geobasis_loader/')
         
         # ------- Über-Schaltfläche für #geoObserver ------------------------
-        self.main_menu.addAction("Über ...", partial(self.open_web_site, 'https://geoobserver.de/qgis-plugin-geobasis-loader/'))
+        action = self.main_menu.addAction("Über ...", self.open_web_site)
+        if action:
+            action.setData('https://geoobserver.de/qgis-plugin-geobasis-loader/')
 
         # ------- Status-Schaltfläche für #geoObserver ------------------------
         # self.mainMenu.addAction("Status ...", partial(self.openWebSite, 'https://geoobserver.de/qgis-plugin-geobasis-loader/#statustabelle'))
@@ -115,13 +119,13 @@ class GeoBasis_Loader(QObject):
     def gui_for_one_topic(self, topic_dict: dict, topic_abbreviation: str) -> QMenu:
         tip_layer = "Thema hinzufügen"
         tip_layergroup = "Themengruppe hinzufügen"
-        def _create_action(name: str, parent: QMenu, path: str) -> QAction:
+        def _create_action(name: str, parent: QMenu, path: str, tip: str = tip_layer, slot = self.add_topic) -> QAction:
             action = QAction(name, parent)
             action.setObjectName(name)
-            action.setStatusTip(tip_layer)
-            action.setToolTip(tip_layer)
+            action.setStatusTip(tip)
+            action.setToolTip(tip)
             action.setData(path)
-            action.triggered.connect(self.add_topic)
+            action.triggered.connect(slot)
             return action
         
         menu = custom_widgets.ComplexMenu(topic_abbreviation)
@@ -131,6 +135,12 @@ class GeoBasis_Loader(QObject):
         
         for baseLayer in topic_dict.values():
             if not baseLayer[config.InternalProperties.VISIBILITY]:
+                continue
+            
+            if baseLayer.get("type", "") == "web":
+                print(baseLayer)
+                action = _create_action(baseLayer["name"], menu, baseLayer["uri"], "Informationen öffnen", self.open_web_site)
+                menu.addAction(action)
                 continue
             
             if isinstance(baseLayer.get("layers", []), dict):
@@ -189,8 +199,13 @@ class GeoBasis_Loader(QObject):
         self.automatic_crs = new_state
         self.qgs_settings.setValue(config.AUTOMATIC_CRS_SETTINGS_KEY, new_state)
 
-    def open_web_site(self, url):
-        url = QUrl(url)
+    def open_web_site(self):
+        sender = self.sender()
+        if not isinstance(sender, QAction):
+            return
+        
+        data = sender.data()
+        url = QUrl(data)
         
         # Opens webpage in the standard browser
         QDesktopServices.openUrl(url)
