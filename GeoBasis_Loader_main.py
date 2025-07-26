@@ -12,6 +12,7 @@ from qgis._gui import QgisInterface
 from typing import Dict, Union
 from .topic_search import SearchFilter
 from . import config
+from .ui import custom_widgets
 from .catalog_manager import CatalogManager
 
 class GeoBasis_Loader(QObject):
@@ -112,22 +113,55 @@ class GeoBasis_Loader(QObject):
         # self.mainMenu.addAction("Status ...", partial(self.openWebSite, 'https://geoobserver.de/qgis-plugin-geobasis-loader/#statustabelle'))
         
     def gui_for_one_topic(self, topic_dict: dict, topic_abbreviation: str) -> QMenu:
-        menu = QMenu(topic_abbreviation)
+        tip_layer = "Thema hinzufügen"
+        tip_layergroup = "Themengruppe hinzufügen"
+        def _create_action(name: str, parent: QMenu, path: str) -> QAction:
+            action = QAction(name, parent)
+            action.setObjectName(name)
+            action.setStatusTip(tip_layer)
+            action.setToolTip(tip_layer)
+            action.setData(path)
+            action.triggered.connect(self.add_topic)
+            return action
+        
+        menu = custom_widgets.ComplexMenu(topic_abbreviation)
         menu.setObjectName('loader-' + topic_abbreviation)
-        for key, baseLayer in topic_dict.items():
+        menu.triggered.connect(self.add_topic)
+        menu.setToolTipsVisible(True)
+        
+        for baseLayer in topic_dict.values():
             if not baseLayer[config.InternalProperties.VISIBILITY]:
                 continue
-            action = QAction(baseLayer['name'], menu)
-            action.setObjectName(baseLayer['name'])
-            action.setData({
-                "group_key": topic_abbreviation,
-                "topic_key": key
-            })
-            action.triggered.connect(self.add_topic)
-            menu.addAction(action)
+            
+            if isinstance(baseLayer.get("layers", []), dict):
+                layergroup_menu = QMenu(baseLayer["name"], menu)
+                layergroup_menu_action = layergroup_menu.menuAction()
+                if not layergroup_menu_action:
+                    continue
+                
+                layergroup_menu_action.setData(baseLayer[config.InternalProperties.PATH])
+                layergroup_menu_action.setToolTip(tip_layergroup)
+                layergroup_menu_action.setStatusTip(tip_layergroup)
+                layergroup_menu.setToolTipsVisible(True)
+                
+                filter = custom_widgets.MenuTooltipFilter(layergroup_menu)
+                layergroup_menu.installEventFilter(filter)
+
+                for _, layer in baseLayer["layers"].items():
+                    if not layer[config.InternalProperties.VISIBILITY]:
+                        continue
+                    
+                    sublayer_action = _create_action(layer["name"], layergroup_menu, layer[config.InternalProperties.PATH])
+                    layergroup_menu.addAction(sublayer_action)
+
+                menu.add_clickable_menu(layergroup_menu)
+            else:        
+                action = _create_action(baseLayer['name'], menu, baseLayer[config.InternalProperties.PATH])            
+                menu.addAction(action)
+                
             if "seperator" in baseLayer:
                 menu.addSeparator()
-        return menu     
+        return menu
     
 #===================================================================================
 
@@ -178,7 +212,7 @@ class GeoBasis_Loader(QObject):
         version = re.findall(r'v\d+', name)[0]
         self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, 'Lese '+ titel + ", Version " + version + ' ...', 3, 3)
         
-        self.services = services       
+        self.services = services
         self.initGui()
     
     # Get crs from user
@@ -196,16 +230,21 @@ class GeoBasis_Loader(QObject):
         
         return current_crs
     
-    def add_topic(self, catalog_title: Optional[str] = None, group_key: Optional[str] = None, topic_key: Optional[str] = None):
-        sender: QAction = self.sender()
+    def add_topic(self, catalog_title: Optional[str] = None, path: str = ""):
+        sender = self.sender()
+        if not sender:
+            return
+        
         if sender is not None:
-            data = sender.data()
+            path = sender.data() # type: ignore
+            if not isinstance(path, str):
+                raise TypeError("Path is unknown")
             catalog_title = self.qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)["titel"]
-            group_key = data["group_key"]
-            topic_key = data["topic_key"]
 
-        catalog = dict(CatalogManager.get_catalog(catalog_title))
-        topic = catalog[group_key]["themen"][topic_key]
+        catalog: dict = dict(CatalogManager.get_catalog(catalog_title)) # type: ignore
+        topic = catalog
+        for key in path.split("/"):
+            topic = topic[key]
         
         if "layers" not in topic:
             self.addLayer(topic, None)
@@ -214,6 +253,7 @@ class GeoBasis_Loader(QObject):
         layers = topic["layers"]
         if type(layers) == list:
             combination_layers = []
+            group_key = path.split("/")[0]
             for layer in layers:
                 sub_topic = catalog[group_key]["themen"][layer]
                 combination_layers.append(sub_topic)
@@ -221,10 +261,10 @@ class GeoBasis_Loader(QObject):
         else:
             self.addLayerGroup(None, layers, topic["name"])
     
-    def addLayer(self, attributes: Dict, crs: str, standalone: bool = True):
+    def addLayer(self, attributes: Dict, crs: str | None, standalone: bool = True):
         uri: str = attributes.get('uri', "n.n.")
         layerType = attributes.get('type', 'ogc_wms')
-        valid_epsg_codes = attributes.get('valid_epsg', None)
+        valid_epsg_codes: list[str] = attributes.get('valid_epsg', [])
        
         if crs not in valid_epsg_codes or crs is None:       
             crs = self.get_crs(valid_epsg_codes, attributes.get('name', "Fehler"))
