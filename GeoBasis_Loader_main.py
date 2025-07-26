@@ -368,6 +368,8 @@ class GeoBasis_Loader(QObject):
     def addLayerGroup(self, preferred_crs: Union[str, None], layers: dict, name: str) -> None:
         layerTreeRoot = QgsProject.instance().layerTreeRoot()
         newLayerGroup = layerTreeRoot.insertGroup(0, name)
+        if newLayerGroup is None:
+            return
         
         if preferred_crs is None:
             first_layer = next(iter(layers.values()))
@@ -380,11 +382,16 @@ class GeoBasis_Loader(QObject):
         
         root: QgsLayerTree = QgsProject.instance().layerTreeRoot() # type: ignore
         for layerKey in layers:
-            subLayer: QgsMapLayer = self.addLayer(layers[layerKey], preferred_crs, False)
+            subLayer = self.addLayer(layers[layerKey], preferred_crs, False)
+            if subLayer is None:
+                continue
             newLayerGroup.addLayer(subLayer)
+            
             # Legende kollabieren
             ltl: QgsLayerTreeLayer = root.findLayer(subLayer) # type: ignore
             ltl.setExpanded(False)
+            visibile = layers[layerKey].get("is_visibile", True)
+            ltl.setItemVisibilityChecked(visibile)
             
     def addLayerCombination(self, layers) -> None:
         preferred_crs = None
