@@ -178,7 +178,7 @@ class GeoBasis_Loader(QObject):
         version = re.findall(r'v\d+', name)[0]
         self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, 'Lese '+ titel + ", Version " + version + ' ...', 3, 3)
         
-        self.services = services       
+        self.services = services
         self.initGui()
     
     # Get crs from user
@@ -221,10 +221,10 @@ class GeoBasis_Loader(QObject):
         else:
             self.addLayerGroup(None, layers, topic["name"])
     
-    def addLayer(self, attributes: Dict, crs: str, standalone: bool = True):
+    def addLayer(self, attributes: Dict, crs: str | None, standalone: bool = True):
         uri: str = attributes.get('uri', "n.n.")
         layerType = attributes.get('type', 'ogc_wms')
-        valid_epsg_codes = attributes.get('valid_epsg', None)
+        valid_epsg_codes: list[str] = attributes.get('valid_epsg', [])
        
         if crs not in valid_epsg_codes or crs is None:       
             crs = self.get_crs(valid_epsg_codes, attributes.get('name', "Fehler"))
