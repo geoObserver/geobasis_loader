@@ -12,6 +12,7 @@ from qgis._gui import QgisInterface
 from typing import Dict, Union
 from .topic_search import SearchFilter
 from . import config
+from .ui import custom_widgets
 from .catalog_manager import CatalogManager
 
 class GeoBasis_Loader(QObject):
@@ -112,22 +113,57 @@ class GeoBasis_Loader(QObject):
         # self.mainMenu.addAction("Status ...", partial(self.openWebSite, 'https://geoobserver.de/qgis-plugin-geobasis-loader/#statustabelle'))
         
     def gui_for_one_topic(self, topic_dict: dict, topic_abbreviation: str) -> QMenu:
-        menu = QMenu(topic_abbreviation)
+        menu = custom_widgets.ComplexMenu(topic_abbreviation)
         menu.setObjectName('loader-' + topic_abbreviation)
-        for key, baseLayer in topic_dict.items():
+        menu.triggered.connect(self.add_topic)
+        menu.setToolTipsVisible(True)
+
+        tip_layer = "Thema hinzufügen"
+        tip_layergroup = "Themengruppe hinzufügen"
+        
+        for baseLayer in topic_dict.values():
             if not baseLayer[config.InternalProperties.VISIBILITY]:
                 continue
-            action = QAction(baseLayer['name'], menu)
-            action.setObjectName(baseLayer['name'])
-            action.setData({
-                "group_key": topic_abbreviation,
-                "topic_key": key
-            })
-            action.triggered.connect(self.add_topic)
-            menu.addAction(action)
+            
+            if isinstance(baseLayer.get("layers", []), dict):
+                layergroup_menu = QMenu(baseLayer["name"], menu)
+                layergroup_menu_action = layergroup_menu.menuAction()
+                if not layergroup_menu_action:
+                    continue
+                
+                layergroup_menu_action.setData(baseLayer[config.InternalProperties.PATH])
+                layergroup_menu_action.setToolTip(tip_layergroup)
+                layergroup_menu_action.setStatusTip(tip_layergroup)
+                layergroup_menu.setToolTipsVisible(True)
+                
+                filter = custom_widgets.MenuTooltipFilter(layergroup_menu)
+                layergroup_menu.installEventFilter(filter)
+
+                for _, layer in baseLayer["layers"].items():
+                    if not layer[config.InternalProperties.VISIBILITY]:
+                        continue
+                    
+                    sublayer_action = QAction(layer["name"], layergroup_menu)
+                    sublayer_action.setObjectName(layer['name'])
+                    sublayer_action.setStatusTip(tip_layer)
+                    sublayer_action.setToolTip(tip_layer)
+                    sublayer_action.setData(layer[config.InternalProperties.PATH])
+                    sublayer_action.triggered.connect(self.add_topic)
+                    layergroup_menu.addAction(sublayer_action)
+
+                menu.add_clickable_menu(layergroup_menu)
+            else:        
+                action = QAction(baseLayer['name'], menu)
+                action.setObjectName(baseLayer['name'])
+                action.setStatusTip(tip_layer)
+                action.setToolTip(tip_layer)
+                action.setData(baseLayer[config.InternalProperties.PATH])
+                action.triggered.connect(self.add_topic)
+            
+                menu.addAction(action)
             if "seperator" in baseLayer:
                 menu.addSeparator()
-        return menu     
+        return menu
     
 #===================================================================================
 
