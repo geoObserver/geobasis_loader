@@ -339,9 +339,11 @@ class GeoBasis_Loader(QObject):
         QgsProject.instance().addMapLayer(layer, standalone) # type: ignore
         
         if standalone:
+            # Legende kollabieren
             ltl: QgsLayerTreeLayer = root.findLayer(layer) # type: ignore
             ltl.setExpanded(False)
             
+            # Ebene nach ganz oben im Ebenenbaum verschieben
             _ltl = ltl.clone()
             root.insertChildNode(0, _ltl)
             root.removeChildNode(ltl)
@@ -365,6 +367,7 @@ class GeoBasis_Loader(QObject):
         for layerKey in layers:
             subLayer: QgsMapLayer = self.addLayer(layers[layerKey], preferred_crs, False)
             newLayerGroup.addLayer(subLayer)
+            # Legende kollabieren
             ltl: QgsLayerTreeLayer = root.findLayer(subLayer) # type: ignore
             ltl.setExpanded(False)
             

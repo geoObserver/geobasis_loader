@@ -19,8 +19,11 @@ class NetworkHandler(QObject):
     finished = pyqtSignal(str, str, float)
     error_occurred = pyqtSignal(str, str)
     
-    def __init__(self, manager: QgsNetworkAccessManager) -> None:
+    def __init__(self, manager: QgsNetworkAccessManager | None) -> None:
         super().__init__()
+        if not manager:
+            return
+        
         self.__manager = manager
         
     def __fetch_data(self, url: str = '') -> QNetworkReply:
@@ -68,6 +71,10 @@ class NetworkHandler(QObject):
             self.successful = True
             self.done = True
             self.finished.emit(json_string, catalog_title, networkLastModified)
+            
+            server_list = config.ServerHosts.get_servers()
+            index = server_list.index(self._server)
+            print(f"Katalog '{catalog_name}' erfolgreich von Server {index + 1} geladen")
             return
         
         server_list = config.ServerHosts.get_servers()
@@ -75,6 +82,7 @@ class NetworkHandler(QObject):
         if curr_server_index == len(server_list) - 1:
             self.error_occurred.emit("Netzwerkfehler beim Laden der URL's", catalog_title)
             self.done = True
+            print(f"Katalog '{catalog_name}' konnte nicht von einem Server geladen werden")
         else:
             self._server = server_list[curr_server_index + 1]
             if is_overview_response:
