@@ -113,13 +113,21 @@ class GeoBasis_Loader(QObject):
         # self.mainMenu.addAction("Status ...", partial(self.openWebSite, 'https://geoobserver.de/qgis-plugin-geobasis-loader/#statustabelle'))
         
     def gui_for_one_topic(self, topic_dict: dict, topic_abbreviation: str) -> QMenu:
+        tip_layer = "Thema hinzufügen"
+        tip_layergroup = "Themengruppe hinzufügen"
+        def _create_action(name: str, parent: QMenu, path: str) -> QAction:
+            action = QAction(name, parent)
+            action.setObjectName(name)
+            action.setStatusTip(tip_layer)
+            action.setToolTip(tip_layer)
+            action.setData(path)
+            action.triggered.connect(self.add_topic)
+            return action
+        
         menu = custom_widgets.ComplexMenu(topic_abbreviation)
         menu.setObjectName('loader-' + topic_abbreviation)
         menu.triggered.connect(self.add_topic)
         menu.setToolTipsVisible(True)
-
-        tip_layer = "Thema hinzufügen"
-        tip_layergroup = "Themengruppe hinzufügen"
         
         for baseLayer in topic_dict.values():
             if not baseLayer[config.InternalProperties.VISIBILITY]:
@@ -143,24 +151,14 @@ class GeoBasis_Loader(QObject):
                     if not layer[config.InternalProperties.VISIBILITY]:
                         continue
                     
-                    sublayer_action = QAction(layer["name"], layergroup_menu)
-                    sublayer_action.setObjectName(layer['name'])
-                    sublayer_action.setStatusTip(tip_layer)
-                    sublayer_action.setToolTip(tip_layer)
-                    sublayer_action.setData(layer[config.InternalProperties.PATH])
-                    sublayer_action.triggered.connect(self.add_topic)
+                    sublayer_action = _create_action(layer["name"], layergroup_menu, layer[config.InternalProperties.PATH])
                     layergroup_menu.addAction(sublayer_action)
 
                 menu.add_clickable_menu(layergroup_menu)
             else:        
-                action = QAction(baseLayer['name'], menu)
-                action.setObjectName(baseLayer['name'])
-                action.setStatusTip(tip_layer)
-                action.setToolTip(tip_layer)
-                action.setData(baseLayer[config.InternalProperties.PATH])
-                action.triggered.connect(self.add_topic)
-            
+                action = _create_action(baseLayer['name'], menu, baseLayer[config.InternalProperties.PATH])            
                 menu.addAction(action)
+                
             if "seperator" in baseLayer:
                 menu.addSeparator()
         return menu
