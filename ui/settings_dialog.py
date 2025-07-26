@@ -1,4 +1,5 @@
 import os
+from typing import Union
 from PyQt5 import uic, QtWidgets
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QShowEvent
@@ -31,13 +32,13 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         self.visibility_tree.setColumnWidth(1, checkbox_col_width)
         self.visibility_tree.setHeaderLabels(["Thema", "Sichtbarkeit"])
     
-    def showEvent(self, a0: QShowEvent | None) -> None:
+    def showEvent(self, a0: Union[QShowEvent, None]) -> None:
         super().showEvent(a0)
         self.setup()
         self.set_visibility_tree_data()
        
     def set_visibility_tree_data(self):
-        def _add_visibility_entry(data: dict, parent: QtWidgets.QTreeWidgetItem | None = None):
+        def _add_visibility_entry(data: dict, parent: Union[QtWidgets.QTreeWidgetItem, None] = None):
             name_key = "name"
             if parent is None:
                 parent = self.visibility_tree

@@ -19,7 +19,7 @@ class NetworkHandler(QObject):
     finished = pyqtSignal(str, str, float)
     error_occurred = pyqtSignal(str, str)
     
-    def __init__(self, manager: QgsNetworkAccessManager | None) -> None:
+    def __init__(self, manager: Union[QgsNetworkAccessManager, None]) -> None:
         super().__init__()
         if not manager:
             return
@@ -292,7 +292,7 @@ class CatalogManager:
         return properties
     
     @classmethod
-    def update_internal_properties(cls, values: Union[list[tuple[str, bool]], dict[config.InternalProperties, dict[str, bool]]], property: config.InternalProperties | None = None) -> None:
+    def update_internal_properties(cls, values: Union[list[tuple[str, bool]], dict[config.InternalProperties, dict[str, bool]]], property: Union[config.InternalProperties, None] = None) -> None:
         if isinstance(values, list):
             if property is None:
                 raise ValueError("No property given")
@@ -343,7 +343,7 @@ class CatalogManager:
         cls.write_json(data, file_path)
 
     @classmethod
-    def write_json(cls, data: dict | str, file_path: pathlib.Path) -> None:        
+    def write_json(cls, data: Union[dict, str], file_path: pathlib.Path) -> None:        
         file_path.parent.mkdir(mode=0o777, parents=True, exist_ok=True)
         mode = "w" if file_path.exists() else "x"
         

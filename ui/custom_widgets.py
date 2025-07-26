@@ -1,4 +1,5 @@
-from PyQt5.QtWidgets import QMenu, QWidget, QToolTip, QAction
+from typing import Union
+from PyQt5.QtWidgets import QMenu, QToolTip, QWidget
 from PyQt5.QtCore import pyqtSignal, QEvent, QObject, QTimer
 from PyQt5.QtGui import QMouseEvent, QCursor
         
@@ -6,7 +7,7 @@ class ComplexMenu(QMenu):
     triggered = pyqtSignal()
     menu_data = ""
     
-    def __init__(self, title: str, parent: QWidget | None = None):
+    def __init__(self, title: str, parent: Union[QWidget, None] = None):
         super().__init__(title, parent)
         filter = MenuTooltipFilter(self)
         self.installEventFilter(filter)
@@ -27,7 +28,7 @@ class ComplexMenu(QMenu):
         self.menu_data = menu_action.data()
         self.triggered.emit()
     
-    def mousePressEvent(self, a0: QMouseEvent | None) -> None:
+    def mousePressEvent(self, a0: Union[QMouseEvent, None]) -> None:
         super().mousePressEvent(a0)
         if not a0:
             return

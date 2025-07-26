@@ -276,7 +276,7 @@ class GeoBasis_Loader(QObject):
         else:
             self.addLayerGroup(None, layers, topic["name"])
     
-    def addLayer(self, attributes: Dict, crs: str | None, standalone: bool = True):
+    def addLayer(self, attributes: Dict, crs: Union[str, None], standalone: bool = True):
         uri: str = attributes.get('uri', "n.n.")
         layerType = attributes.get('type', 'ogc_wms')
         valid_epsg_codes: list[str] = attributes.get('valid_epsg', [])
