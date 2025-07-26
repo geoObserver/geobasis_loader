@@ -232,16 +232,21 @@ class GeoBasis_Loader(QObject):
         
         return current_crs
     
-    def add_topic(self, catalog_title: Optional[str] = None, group_key: Optional[str] = None, topic_key: Optional[str] = None):
-        sender: QAction = self.sender()
+    def add_topic(self, catalog_title: Optional[str] = None, path: str = ""):
+        sender = self.sender()
+        if not sender:
+            return
+        
         if sender is not None:
-            data = sender.data()
+            path = sender.data() # type: ignore
+            if not isinstance(path, str):
+                raise TypeError("Path is unknown")
             catalog_title = self.qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)["titel"]
-            group_key = data["group_key"]
-            topic_key = data["topic_key"]
 
-        catalog = dict(CatalogManager.get_catalog(catalog_title))
-        topic = catalog[group_key]["themen"][topic_key]
+        catalog: dict = dict(CatalogManager.get_catalog(catalog_title)) # type: ignore
+        topic = catalog
+        for key in path.split("/"):
+            topic = topic[key]
         
         if "layers" not in topic:
             self.addLayer(topic, None)
@@ -250,6 +255,7 @@ class GeoBasis_Loader(QObject):
         layers = topic["layers"]
         if type(layers) == list:
             combination_layers = []
+            group_key = path.split("/")[0]
             for layer in layers:
                 sub_topic = catalog[group_key]["themen"][layer]
                 combination_layers.append(sub_topic)
