@@ -1508,11 +1508,18 @@
         "layers": ["nutzung_layergroup", "flurstuecke", "gebaeude"],
         "seperator": true
       },
-      "bodenrichtwerte": {
-        "name": "BB: Bodenrichtwerte Bauland 2024 (WMS)",
+      "bodenrichtwerte1": {
+        "name": "BB: Bodenrichtwerte Bauland zonal 2025 (WMS)",
         "type": "ogc_wms",
         "valid_epsg": ["EPSG:25833", "EPSG:25832","EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839"],
-        "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&layers=bbv_pg_zobau_2024&styles&url=https://isk.geobasis-bb.de/ows/brw_wms",
+        "uri": "crs=EPSG:placeholder&dpiMode=7&format=image/png&layers=bbv_pg_zobau_2025&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/ows/boris_wms",
+        "opacity": 0.75
+      },
+      "bodenrichtwerte3": {
+        "name": "BB: Bodenrichtwerte Landwirtschaft zonal 2025 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:25833", "EPSG:25832","EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&format=image/png&layers=bbv_pg_zolf_2025&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/ows/boris_wms",
         "seperator": true,
         "opacity": 0.75
       },
