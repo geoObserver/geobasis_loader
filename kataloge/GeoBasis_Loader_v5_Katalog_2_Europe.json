@@ -215,6 +215,57 @@
         "seperator": true,
         "opacity": 0.75
       },
+      "tk_farbig_layergroup": {
+        "name": "LU: Landeskarten farbig (WMTS)",
+        "layers": {
+          "tk_5_farbig": {
+            "name": "LU: Landeskarten TK 1:5000 farbig (WMS)",
+            "type": "ogc_wmts",
+            "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+            "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=topo_5k&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0",
+            "opacity": 0.75,
+            "minScale": 7500.0,
+            "maxScale": 1
+          },
+          "tk_20_farbig": {
+            "name": "LU: Landeskarten TK 1:20000 (WMS)",
+            "type": "ogc_wmts",
+            "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+            "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=topo_20k&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0",
+            "opacity": 0.75,
+            "minScale": 30000.0,
+            "maxScale": 7500.0
+          },
+          "tk_50_farbig": {
+            "name": "LU: Landeskarten TK 1:50000 (WMS)",
+            "type": "ogc_wmts",
+            "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+            "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=topo_50k&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0",
+            "opacity": 0.75,
+            "minScale": 75000.0,
+            "maxScale": 30000.0
+          },
+          "tk_100_farbig": {
+            "name": "LU: Landeskarten TK 1:100000 (WMS)",
+            "type": "ogc_wmts",
+            "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+            "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=topo_100k&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0",
+            "opacity": 0.75,
+            "minScale": 175000.0,
+            "maxScale": 75000.0
+          },
+          "tk_250_farbig": {
+            "name": "LU: Landeskarten TK 1:250000 (WMS)",
+            "type": "ogc_wmts",
+            "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+            "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=topo_250k&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0",
+            "opacity": 0.75,
+            "minScale": 1000000.0,
+            "maxScale": 175000.0
+          }
+        },
+        "seperator": true
+      },
       "dop20": {
         "name": "LU: Orthophotos (WMTS)",
         "type": "ogc_wmts",
