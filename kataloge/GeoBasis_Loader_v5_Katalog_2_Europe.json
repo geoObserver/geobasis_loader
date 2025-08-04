@@ -196,5 +196,37 @@
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=0&styles=default&tilePixelRatio=0&url=https://ags.cuzk.cz/arcgis1/services/ORTOFOTO/MapServer/WMSServer"
       }
     }
+  },
+  "LU": {
+    "menu": "Luxemburg",
+    "themen": {
+      "basiskarte": {
+        "name": "LU: Basiskarte (WMTS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=basemap&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "strassenkarte": {
+        "name": "LU: Straßenkarte (WMTS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=roadmap_luxonly&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0",
+        "seperator": true,
+        "opacity": 0.75
+      },
+      "dop20": {
+        "name": "LU: Orthophotos (WMTS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=ortho_latest&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0"
+      },
+      "dop20h": {
+        "name": "LU: Orthophotos hybrid (WMTS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=hybrid&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0"
+      }
+    }
   }
 }
