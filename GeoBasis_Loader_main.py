@@ -276,6 +276,9 @@ class GeoBasis_Loader(QObject):
             self.addLayerGroup(None, layers, topic["name"])
     
     def addLayer(self, attributes: Dict, crs: Union[str, None], standalone: bool = True):
+        if not attributes.get(config.InternalProperties.LOADING, True):
+            return None
+        
         uri: str = attributes.get('uri', "n.n.")
         layerType = attributes.get('type', 'ogc_wms')
         valid_epsg_codes: list[str] = attributes.get('valid_epsg', [])
@@ -356,6 +359,8 @@ class GeoBasis_Loader(QObject):
             # Legende kollabieren
             ltl: QgsLayerTreeLayer = root.findLayer(layer) # type: ignore
             ltl.setExpanded(False)
+            visibile = attributes.get(config.InternalProperties.VISIBILITY, True)
+            ltl.setItemVisibilityChecked(visibile)
             
             # Ebene nach ganz oben im Ebenenbaum verschieben
             _ltl = ltl.clone()
@@ -389,7 +394,7 @@ class GeoBasis_Loader(QObject):
             # Legende kollabieren
             ltl: QgsLayerTreeLayer = root.findLayer(subLayer) # type: ignore
             ltl.setExpanded(False)
-            visibile = layers[layerKey].get("is_visibile", True)
+            visibile = layers[layerKey].get(config.InternalProperties.VISIBILITY, True)
             ltl.setItemVisibilityChecked(visibile)
             
     def addLayerCombination(self, layers) -> None:
