@@ -11,7 +11,6 @@ from . import config
 class NetworkHandler(QObject):
     __manager: QgsNetworkAccessManager
     __reply: QNetworkReply
-    _server: str = config.ServerHosts.get_servers()[0]
     
     done = False
     successful = False
@@ -19,12 +18,14 @@ class NetworkHandler(QObject):
     finished = pyqtSignal(str, str, float)
     error_occurred = pyqtSignal(str, str)
     
-    def __init__(self, manager: Union[QgsNetworkAccessManager, None]) -> None:
+    def __init__(self, manager: Union[QgsNetworkAccessManager, None], server_list: list[str]) -> None:
         super().__init__()
         if not manager:
             return
         
         self.__manager = manager
+        self._server_list = server_list
+        self._server = server_list[0]
         
     def __fetch_data(self, url: str = '') -> QNetworkReply:
         q_url = QUrl(url)
@@ -72,19 +73,18 @@ class NetworkHandler(QObject):
             self.done = True
             self.finished.emit(json_string, catalog_title, networkLastModified)
             
-            server_list = config.ServerHosts.get_servers()
+            server_list = config.ServerHosts.get_all_servers()
             index = server_list.index(self._server)
             print(f"Katalog '{catalog_name}' erfolgreich von Server {index + 1} geladen")
             return
         
-        server_list = config.ServerHosts.get_servers()
-        curr_server_index = server_list.index(self._server)
-        if curr_server_index == len(server_list) - 1:
+        curr_server_index = self._server_list.index(self._server)
+        if curr_server_index == len(self._server_list) - 1:
             self.error_occurred.emit("Netzwerkfehler beim Laden der URL's", catalog_title)
             self.done = True
             print(f"Katalog '{catalog_name}' konnte nicht von einem Server geladen werden")
         else:
-            self._server = server_list[curr_server_index + 1]
+            self._server = self._server_list[curr_server_index + 1]
             if is_overview_response:
                 self.fetch_catalog_overview()
             else:
@@ -110,7 +110,8 @@ class CatalogManager:
         if cls.catalog_network_handlers.get(catalog_title, None) is not None:
             handler = cls.catalog_network_handlers[catalog_title]
         else:
-            handler = NetworkHandler(QgsNetworkAccessManager.instance())
+            servers = config.ServerHosts.get_enabled_servers()
+            handler = NetworkHandler(QgsNetworkAccessManager.instance(), servers)
             handler.finished.connect(cls.add_catalog)
             handler.error_occurred.connect(cls.handle_fetch_error)
             cls.catalog_network_handlers[catalog_title] = handler
@@ -154,7 +155,8 @@ class CatalogManager:
     @classmethod
     def get_overview(cls, callback: Optional[callable] = None) -> None:
         # ------- Network Handler für die Katalog Übersicht erstellen --------------
-        cls.overview_network_handler = NetworkHandler(QgsNetworkAccessManager.instance())
+        servers = config.ServerHosts.get_enabled_servers()
+        cls.overview_network_handler = NetworkHandler(QgsNetworkAccessManager.instance(), servers)
         cls.overview_network_handler.finished.connect(cls.set_overview)
         cls.overview_network_handler.error_occurred.connect(cls.handle_fetch_error)
         cls.overview_network_handler.fetch_catalog_overview()
