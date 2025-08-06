@@ -1,8 +1,8 @@
 import os
 from typing import Union
-from PyQt5 import uic, QtWidgets
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QShowEvent
+from qgis.PyQt import uic, QtWidgets
+from qgis.PyQt.QtCore import Qt
+from qgis.PyQt.QtGui import QShowEvent
 from ..catalog_manager import CatalogManager
 from .. import config
 

@@ -1,7 +1,7 @@
 from typing import Union
-from PyQt5.QtWidgets import QMenu, QToolTip, QWidget
-from PyQt5.QtCore import pyqtSignal, QEvent, QObject, QTimer
-from PyQt5.QtGui import QMouseEvent, QCursor
+from qgis.PyQt.QtWidgets import QMenu, QToolTip, QWidget
+from qgis.PyQt.QtCore import pyqtSignal, QEvent, QObject, QTimer
+from qgis.PyQt.QtGui import QMouseEvent, QCursor
         
 class ComplexMenu(QMenu):
     triggered = pyqtSignal()

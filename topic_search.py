@@ -32,13 +32,13 @@ class SearchFilter(QgsLocatorFilter):
         return self.__class__(self.gbl)
     
     # @override
-    def fetchResults(self, string: Optional[str], context: QgsLocatorContext, feedback: QgsFeedback) -> None:
+    def fetchResults(self, string: Optional[str], context: QgsLocatorContext, feedback: Optional[QgsFeedback]) -> None:
         if string is None:
             return
         
         string = string.lower()
         string = string.removeprefix(self.prefix())
-        if len(string) < 3 or feedback.isCanceled():
+        if len(string) < 3 or not feedback or feedback.isCanceled():
             return
         
         for catalog_name, catalog in CatalogManager.catalogs.items():

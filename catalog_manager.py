@@ -2,10 +2,10 @@ import json, os, re, pathlib
 from functools import partial
 import email.utils
 from typing import Optional, Union
-from PyQt5.QtNetwork import QNetworkRequest, QNetworkReply
-from PyQt5.QtCore import QUrl, QObject, pyqtSignal
+from qgis.PyQt.QtNetwork import QNetworkRequest, QNetworkReply
+from qgis.PyQt.QtCore import QUrl, QObject, pyqtSignal
 from qgis.core import QgsNetworkAccessManager, QgsSettings
-from qgis._gui import QgisInterface
+from qgis.gui import QgisInterface
 from . import config
 
 class NetworkHandler(QObject):

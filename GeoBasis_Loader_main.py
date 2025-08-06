@@ -1,15 +1,14 @@
-import re, os
+import re
 from functools import partial
-from PyQt5.QtWidgets import QMenu, QAction
-from PyQt5.QtGui import QIcon, QColor
-from PyQt5.QtCore import QUrl, QObject
-# from PyQt5.QtWebKitWidgets import QWebView # type: ignore
+from qgis.PyQt.QtWidgets import QMenu, QAction
+from qgis.PyQt.QtGui import QIcon, QColor, QDesktopServices
+from qgis.PyQt.QtCore import QUrl, QObject
+# from qgis.PyQt.QtWebKitWidgets import QWebView # type: ignore
 from .dialog import EpsgDialog
 from .ui.settings_dialog import SettingsDialog
 from qgis.core import QgsSettings, QgsProject, QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer, QgsMapLayer, QgsLayerTree, QgsLayerTreeLayer
-from qgis.utils import *
 from qgis._gui import QgisInterface
-from typing import Dict, Union
+from typing import Dict, Union, Optional
 from .topic_search import SearchFilter
 from . import config
 from .ui import custom_widgets
@@ -201,7 +200,7 @@ class GeoBasis_Loader(QObject):
 
     def open_web_site(self):
         sender = self.sender()
-        if not isinstance(sender, QAction):
+        if isinstance(sender, QAction):
             return
         
         data = sender.data()

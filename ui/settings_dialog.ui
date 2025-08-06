@@ -126,7 +126,7 @@
           <bool>true</bool>
          </property>
          <property name="columnCount">
-          <number>2</number>
+          <number>3</number>
          </property>
          <attribute name="headerVisible">
           <bool>true</bool>
@@ -141,6 +141,11 @@
            <string notr="true">2</string>
           </property>
          </column>
+         <column>
+          <property name="text">
+           <string notr="true">3</string>
+          </property>
+         </column>
         </widget>
        </item>
       </layout>
@@ -150,7 +155,7 @@
        <bool>false</bool>
       </property>
       <attribute name="title">
-       <string>Einstellungen</string>
+       <string>Globale Einstellungen</string>
       </attribute>
      </widget>
     </widget>

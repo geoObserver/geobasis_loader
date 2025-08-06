@@ -1,6 +1,6 @@
 import os
 from qgis.core import QgsCoordinateReferenceSystem
-from PyQt5 import uic, QtWidgets
+from qgis.PyQt import uic, QtWidgets
 
 EPSG_DIALOG = uic.loadUiType(os.path.join(os.path.dirname(__file__), f"ui{os.path.sep}epsg_selector.ui"))[0]
 
@@ -33,7 +33,7 @@ class EpsgDialog(QtWidgets.QDialog, EPSG_DIALOG):
         
         # Vorhandene Einträge löschen
         self.table.clearContents()
-        for row in range(self.table.rowCount()):
+        for _ in range(self.table.rowCount()):
             self.table.removeRow(0)
         
         # CRS84 in Tabelle einfügen, wenn nicht in unterstützten Koordinatensystemen
