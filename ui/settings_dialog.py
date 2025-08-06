@@ -3,6 +3,7 @@ from typing import Union
 from qgis.PyQt import uic, QtWidgets
 from qgis.PyQt.QtCore import Qt
 from qgis.PyQt.QtGui import QShowEvent
+from qgis.core import QgsSettings
 from ..catalog_manager import CatalogManager
 from .. import config
 
@@ -31,6 +32,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         
         # IntelliSense
         self.visibility_tree: QtWidgets.QTreeWidget = self.visibility_tree
+        self.server_button_group: QtWidgets.QButtonGroup = self.server_button_group
     
     def setup(self):
         available_width = self.visibility_tree.width()
@@ -43,9 +45,9 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
     def showEvent(self, a0: Union[QShowEvent, None]) -> None:
         super().showEvent(a0)
         self.setup()
-        self.set_visibility_tree_data()
+        self.set_settings()
        
-    def set_visibility_tree_data(self):
+    def set_settings(self):
         def _add_visibility_entry(data: dict, parent: Union[QtWidgets.QTreeWidgetItem, None] = None):
             name_key = "name"
             if parent is None:
@@ -76,8 +78,18 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         if current_catalog is None:
             return
         
+        # Visibility Tree
         self._current_catalog = dict(current_catalog)
         _add_visibility_entry(self._current_catalog)
+        
+        # Global Settings
+        qgs_settings = QgsSettings()
+        server = qgs_settings.value(config.SERVERS_SETTINGS_KEY, 0)
+        for button in self.server_button_group.buttons():
+            if button.property("server") == server:
+                button.setChecked(True)
+            else:
+                button.setChecked(False)
         
     def set_check_state_all_items(self, state: Qt.CheckState) -> None:
         for item in self._items:
@@ -96,8 +108,20 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         self.set_check_state_all_items(Qt.CheckState.Checked)
         
         # Global Settings
+        # Server Select
+        for button in self.server_button_group.buttons():
+            if button.property("server") == 0:
+                button.setChecked(True)
+            else:
+                button.setChecked(False)
     
     def confirm_settings(self) -> None:
+        qgs_settings = QgsSettings()
+        checked_button = self.server_button_group.checkedButton()
+        if checked_button:
+            server = checked_button.property("server")
+            qgs_settings.setValue(config.SERVERS_SETTINGS_KEY, server)
+        
         check_status = {
             config.InternalProperties.VISIBILITY: {},
             config.InternalProperties.LOADING: {},
