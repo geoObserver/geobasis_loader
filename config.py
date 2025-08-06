@@ -25,6 +25,7 @@ class ServerHosts(str, Enum):
     
 class InternalProperties(str, Enum):
     VISIBILITY = "__visible__"
+    LOADING = "__loading__"
     PATH = "__path__"
     
     @classmethod
