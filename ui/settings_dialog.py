@@ -17,7 +17,11 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
     def __init__(self, parent = None):
         QtWidgets.QDialog.__init__(self, parent)
         self.setupUi(self)
-        self._want_to_close = False
+        
+        self.expand_button.clicked.connect(self.visibility_tree.expandAll)
+        self.collapse_button.clicked.connect(self.visibility_tree.collapseAll)
+        self.check_button.clicked.connect(lambda: self.set_check_state_all_items(Qt.CheckState.Checked))
+        self.uncheck_button.clicked.connect(lambda: self.set_check_state_all_items(Qt.CheckState.Unchecked))
         
         self.button_box.accepted.connect(self.confirm_settings)
         
@@ -27,10 +31,11 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
     def setup(self):
         available_width = self.visibility_tree.width()
         checkbox_col_width = 80
-        name_col_width = available_width - self.visibility_tree.verticalScrollBar().width() - checkbox_col_width                               # type: ignore
+        name_col_width = available_width - self.visibility_tree.verticalScrollBar().width() - 2 * checkbox_col_width                               # type: ignore
         self.visibility_tree.setColumnWidth(0, name_col_width)
         self.visibility_tree.setColumnWidth(1, checkbox_col_width)
-        self.visibility_tree.setHeaderLabels(["Thema", "Sichtbarkeit"])
+        self.visibility_tree.setColumnWidth(2, checkbox_col_width)
+        # self.visibility_tree.setHeaderLabels(["Thema", "Sichtbarkeit", "Laden"])
     
     def showEvent(self, a0: Union[QShowEvent, None]) -> None:
         super().showEvent(a0)
@@ -66,6 +71,13 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         
         self._current_catalog = dict(current_catalog)
         _add_visibility_entry(self._current_catalog)
+        
+    def set_check_state_all_items(self, state: Qt.CheckState) -> None:
+        for item in self._items:
+            item.setCheckState(VISIBILITY_CHECKBOX_COL, state)
+        viewport = self.visibility_tree.viewport()
+        if viewport:
+            viewport.update()
     
     def confirm_settings(self) -> None:
         check_status = []

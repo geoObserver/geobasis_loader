@@ -65,18 +65,15 @@
       <attribute name="title">
        <string>Sichtbarkeit</string>
       </attribute>
-      <layout class="QHBoxLayout" name="horizontalLayout">
+      <layout class="QVBoxLayout" name="verticalLayout_2">
        <property name="spacing">
-        <number>0</number>
-       </property>
-       <property name="sizeConstraint">
-        <enum>QLayout::SetNoConstraint</enum>
+        <number>6</number>
        </property>
        <property name="leftMargin">
         <number>0</number>
        </property>
        <property name="topMargin">
-        <number>0</number>
+        <number>6</number>
        </property>
        <property name="rightMargin">
         <number>0</number>
@@ -85,12 +82,44 @@
         <number>0</number>
        </property>
        <item>
+        <layout class="QHBoxLayout" name="visibility_tree_buttons">
+         <item>
+          <widget class="QPushButton" name="expand_button">
+           <property name="text">
+            <string>Alles Aufklappen</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="collapse_button">
+           <property name="text">
+            <string>Alles Zusammenklappen</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="check_button">
+           <property name="text">
+            <string>Alles Selektieren</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="uncheck_button">
+           <property name="text">
+            <string>Alles Deselektieren</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
         <widget class="QTreeWidget" name="visibility_tree">
          <property name="enabled">
           <bool>true</bool>
          </property>
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -133,17 +162,17 @@
          </attribute>
          <column>
           <property name="text">
-           <string notr="true">1</string>
+           <string notr="true">Thema</string>
           </property>
          </column>
          <column>
           <property name="text">
-           <string notr="true">2</string>
+           <string notr="true">Sichtbarkeit</string>
           </property>
          </column>
          <column>
           <property name="text">
-           <string notr="true">3</string>
+           <string notr="true">Laden</string>
           </property>
          </column>
         </widget>

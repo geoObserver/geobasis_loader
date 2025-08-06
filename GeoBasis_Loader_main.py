@@ -99,7 +99,7 @@ class GeoBasis_Loader(QObject):
         action.toggled.connect(self.toggle_automatic_crs)
         self.main_menu.addAction(action)
         
-        self.main_menu.addAction("Einstellungen", self.open_settigs)
+        self.main_menu.addAction("Einstellungen (Aktueller Katalog)", self.open_settigs)
         self.main_menu.addSeparator()
         
         # ------- Spenden-Schaltfläche für #geoObserver ------------------------
