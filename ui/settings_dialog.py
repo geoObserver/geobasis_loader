@@ -27,6 +27,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         
         # Button box
         self.button_box.accepted.connect(self.confirm_settings)
+        self.reset_button.clicked.connect(self.restore_defaults)
         
         # IntelliSense
         self.visibility_tree: QtWidgets.QTreeWidget = self.visibility_tree
@@ -85,6 +86,16 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         viewport = self.visibility_tree.viewport()
         if viewport:
             viewport.update()
+    
+    def restore_defaults(self) -> None:
+        prompt_reply = QtWidgets.QMessageBox.question(self, "Werkseinstellungen", "Sollen alle Einstellungen zurückgesetzt werden?")
+        if prompt_reply != QtWidgets.QMessageBox.StandardButton.Yes:
+            return
+        
+        # Visibility Tree
+        self.set_check_state_all_items(Qt.CheckState.Checked)
+        
+        # Global Settings
     
     def confirm_settings(self) -> None:
         check_status = {
