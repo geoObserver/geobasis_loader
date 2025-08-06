@@ -323,10 +323,12 @@ class CatalogManager:
                 path = f"{path_prefix}/{key}" if path_prefix else key
                 # Default visible if not in map
                 visible = cls.properties[config.InternalProperties.VISIBILITY].get(path, True)
+                loadable = cls.properties[config.InternalProperties.LOADING].get(path, True)
                 
                 if isinstance(value, dict):
                     if key != "themen" and key != "layers":
                         data[key][config.InternalProperties.VISIBILITY] = visible
+                        data[key][config.InternalProperties.LOADING] = loadable  
                         data[key][config.InternalProperties.PATH] = path
                     _apply_visibility_flag(value, path)
         
