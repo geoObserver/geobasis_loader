@@ -29,7 +29,7 @@ class ServerHosts(str, Enum):
     def get_enabled_servers(cls) -> list[str]:
         servers = []
         qgs_settings = QgsSettings()
-        server_index = qgs_settings.value(SERVERS_SETTINGS_KEY, 0)
+        server_index = qgs_settings.value(SERVERS_SETTINGS_KEY, 0, type=int)
         if server_index == 0:
             servers = cls.get_all_servers()
         else:

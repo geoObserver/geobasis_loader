@@ -11,6 +11,7 @@ from . import config
 class NetworkHandler(QObject):
     __manager: QgsNetworkAccessManager
     __reply: QNetworkReply
+    _server_list = config.ServerHosts.get_enabled_servers()
     
     done = False
     successful = False
@@ -18,14 +19,13 @@ class NetworkHandler(QObject):
     finished = pyqtSignal(str, str, float)
     error_occurred = pyqtSignal(str, str)
     
-    def __init__(self, manager: Union[QgsNetworkAccessManager, None], server_list: list[str]) -> None:
+    def __init__(self, manager: Union[QgsNetworkAccessManager, None]) -> None:
         super().__init__()
         if not manager:
             return
         
         self.__manager = manager
-        self._server_list = server_list
-        self._server = server_list[0]
+        self._server = self._server_list[0]
         
     def __fetch_data(self, url: str = '') -> QNetworkReply:
         q_url = QUrl(url)
@@ -110,8 +110,7 @@ class CatalogManager:
         if cls.catalog_network_handlers.get(catalog_title, None) is not None:
             handler = cls.catalog_network_handlers[catalog_title]
         else:
-            servers = config.ServerHosts.get_enabled_servers()
-            handler = NetworkHandler(QgsNetworkAccessManager.instance(), servers)
+            handler = NetworkHandler(QgsNetworkAccessManager.instance())
             handler.finished.connect(cls.add_catalog)
             handler.error_occurred.connect(cls.handle_fetch_error)
             cls.catalog_network_handlers[catalog_title] = handler
@@ -155,8 +154,7 @@ class CatalogManager:
     @classmethod
     def get_overview(cls, callback: Optional[callable] = None) -> None:
         # ------- Network Handler für die Katalog Übersicht erstellen --------------
-        servers = config.ServerHosts.get_enabled_servers()
-        cls.overview_network_handler = NetworkHandler(QgsNetworkAccessManager.instance(), servers)
+        cls.overview_network_handler = NetworkHandler(QgsNetworkAccessManager.instance())
         cls.overview_network_handler.finished.connect(cls.set_overview)
         cls.overview_network_handler.error_occurred.connect(cls.handle_fetch_error)
         cls.overview_network_handler.fetch_catalog_overview()

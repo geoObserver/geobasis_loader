@@ -84,7 +84,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         
         # Global Settings
         qgs_settings = QgsSettings()
-        server = qgs_settings.value(config.SERVERS_SETTINGS_KEY, 0)
+        server = qgs_settings.value(config.SERVERS_SETTINGS_KEY, 0, type=int)
         for button in self.server_button_group.buttons():
             if button.property("server") == server:
                 button.setChecked(True)
@@ -119,8 +119,8 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         qgs_settings = QgsSettings()
         checked_button = self.server_button_group.checkedButton()
         if checked_button:
-            server = checked_button.property("server")
-            qgs_settings.setValue(config.SERVERS_SETTINGS_KEY, server)
+            server_index = checked_button.property("server")
+            qgs_settings.setValue(config.SERVERS_SETTINGS_KEY, server_index)
         
         check_status = {
             config.InternalProperties.VISIBILITY: {},
