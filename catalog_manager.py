@@ -11,7 +11,7 @@ from . import config
 class NetworkHandler(QObject):
     __manager: QgsNetworkAccessManager
     __reply: QNetworkReply
-    _server: str = config.ServerHosts.get_servers()[0]
+    _server_list = config.ServerHosts.get_enabled_servers()
     
     done = False
     successful = False
@@ -25,6 +25,7 @@ class NetworkHandler(QObject):
             return
         
         self.__manager = manager
+        self._server = self._server_list[0]
         
     def __fetch_data(self, url: str = '') -> QNetworkReply:
         q_url = QUrl(url)
@@ -72,19 +73,18 @@ class NetworkHandler(QObject):
             self.done = True
             self.finished.emit(json_string, catalog_title, networkLastModified)
             
-            server_list = config.ServerHosts.get_servers()
+            server_list = config.ServerHosts.get_all_servers()
             index = server_list.index(self._server)
             print(f"Katalog '{catalog_name}' erfolgreich von Server {index + 1} geladen")
             return
         
-        server_list = config.ServerHosts.get_servers()
-        curr_server_index = server_list.index(self._server)
-        if curr_server_index == len(server_list) - 1:
+        curr_server_index = self._server_list.index(self._server)
+        if curr_server_index == len(self._server_list) - 1:
             self.error_occurred.emit("Netzwerkfehler beim Laden der URL's", catalog_title)
             self.done = True
             print(f"Katalog '{catalog_name}' konnte nicht von einem Server geladen werden")
         else:
-            self._server = server_list[curr_server_index + 1]
+            self._server = self._server_list[curr_server_index + 1]
             if is_overview_response:
                 self.fetch_catalog_overview()
             else:
@@ -323,10 +323,12 @@ class CatalogManager:
                 path = f"{path_prefix}/{key}" if path_prefix else key
                 # Default visible if not in map
                 visible = cls.properties[config.InternalProperties.VISIBILITY].get(path, True)
+                loadable = cls.properties[config.InternalProperties.LOADING].get(path, True)
                 
                 if isinstance(value, dict):
                     if key != "themen" and key != "layers":
                         data[key][config.InternalProperties.VISIBILITY] = visible
+                        data[key][config.InternalProperties.LOADING] = loadable  
                         data[key][config.InternalProperties.PATH] = path
                     _apply_visibility_flag(value, path)
         
