@@ -23,8 +23,10 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         # Visibility tree buttons/actions
         self.expand_button.clicked.connect(self.visibility_tree.expandAll)
         self.collapse_button.clicked.connect(self.visibility_tree.collapseAll)
-        self.check_button.clicked.connect(lambda: self.set_check_state_all_items(Qt.CheckState.Checked))
-        self.uncheck_button.clicked.connect(lambda: self.set_check_state_all_items(Qt.CheckState.Unchecked))
+        self.check_visibility_button.clicked.connect(lambda: self.set_check_state_all_items(VISIBILITY_CHECKBOX_COL, Qt.CheckState.Checked))
+        self.uncheck_visibility_button.clicked.connect(lambda: self.set_check_state_all_items(VISIBILITY_CHECKBOX_COL, Qt.CheckState.Unchecked))
+        self.check_loading_button.clicked.connect(lambda: self.set_check_state_all_items(LOADING_CHECKBOX_COL, Qt.CheckState.Checked))
+        self.uncheck_loading_button.clicked.connect(lambda: self.set_check_state_all_items(LOADING_CHECKBOX_COL, Qt.CheckState.Unchecked))
         
         # Button box
         self.button_box.accepted.connect(self.confirm_settings)
@@ -91,10 +93,9 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
             else:
                 button.setChecked(False)
         
-    def set_check_state_all_items(self, state: Qt.CheckState) -> None:
+    def set_check_state_all_items(self, column: int, state: Qt.CheckState) -> None:
         for item in self._items:
-            item.setCheckState(VISIBILITY_CHECKBOX_COL, state)
-            item.setCheckState(LOADING_CHECKBOX_COL, state)
+            item.setCheckState(column, state)
         viewport = self.visibility_tree.viewport()
         if viewport:
             viewport.update()
@@ -105,7 +106,8 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
             return
         
         # Visibility Tree
-        self.set_check_state_all_items(Qt.CheckState.Checked)
+        self.set_check_state_all_items(VISIBILITY_CHECKBOX_COL, Qt.CheckState.Checked)
+        self.set_check_state_all_items(LOADING_CHECKBOX_COL, Qt.CheckState.Checked)
         
         # Global Settings
         # Server Select

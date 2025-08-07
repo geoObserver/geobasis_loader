@@ -104,16 +104,46 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="check_button">
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Expanding</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="check_visibility_button">
            <property name="text">
-            <string>Alles Selektieren</string>
+            <string>Alle Sichtbar</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="uncheck_button">
+          <widget class="QPushButton" name="uncheck_visibility_button">
            <property name="text">
-            <string>Alles Deselektieren</string>
+            <string>Keine Sichtbar</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="check_loading_button">
+           <property name="text">
+            <string>Alle Laden</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="uncheck_loading_button">
+           <property name="text">
+            <string>Keine Laden</string>
            </property>
           </widget>
          </item>
