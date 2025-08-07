@@ -4,14 +4,12 @@ from qgis.PyQt.QtWidgets import QMenu, QAction
 from qgis.PyQt.QtGui import QIcon, QColor, QDesktopServices
 from qgis.PyQt.QtCore import QUrl, QObject
 # from qgis.PyQt.QtWebKitWidgets import QWebView # type: ignore
-from .dialog import EpsgDialog
-from .ui.settings_dialog import SettingsDialog
-from qgis.core import QgsSettings, QgsProject, QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer, QgsMapLayer, QgsLayerTree, QgsLayerTreeLayer
-from qgis._gui import QgisInterface
+from . import ui as custom_ui
+from qgis.core import QgsSettings, QgsProject, QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer, QgsLayerTree, QgsLayerTreeLayer
+from qgis.gui import QgisInterface
 from typing import Dict, Union, Optional
 from .topic_search import SearchFilter
 from . import config
-from .ui import custom_widgets
 from .catalog_manager import CatalogManager
 
 class GeoBasis_Loader(QObject):
@@ -27,10 +25,10 @@ class GeoBasis_Loader(QObject):
         CatalogManager.get_overview(callback=self.initGui)
         
         # ------- Dialog für die EPSG-Auswahl erstellen
-        self.epsg_dialog = EpsgDialog(parent=iface.mainWindow())
+        self.epsg_dialog = custom_ui.EpsgDialog(parent=iface.mainWindow())
         
         # ------- Dialog für die Einstellungen erstellen
-        self.settings_dialog = SettingsDialog(parent=iface.mainWindow())
+        self.settings_dialog = custom_ui.SettingsDialog(parent=iface.mainWindow())
 
         # ------- Letzten Katalog laden --------------------------------------------
         current_catalog = self.qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)
@@ -127,7 +125,7 @@ class GeoBasis_Loader(QObject):
             action.triggered.connect(slot)
             return action
         
-        menu = custom_widgets.ComplexMenu(topic_abbreviation)
+        menu = custom_ui.ComplexMenu(topic_abbreviation)
         menu.setObjectName('loader-' + topic_abbreviation)
         menu.triggered.connect(self.add_topic)
         menu.setToolTipsVisible(True)
@@ -153,7 +151,7 @@ class GeoBasis_Loader(QObject):
                 layergroup_menu_action.setStatusTip(tip_layergroup)
                 layergroup_menu.setToolTipsVisible(True)
                 
-                filter = custom_widgets.MenuTooltipFilter(layergroup_menu)
+                filter = custom_ui.MenuTooltipFilter(layergroup_menu)
                 layergroup_menu.installEventFilter(filter)
 
                 for _, layer in baseLayer["layers"].items():

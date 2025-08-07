@@ -7,7 +7,7 @@ from qgis.core import QgsSettings
 from ..catalog_manager import CatalogManager
 from .. import config
 
-SETTINGS_DIALOG = uic.loadUiType(os.path.join(os.path.dirname(__file__), f"settings_dialog.ui"))[0]
+SETTINGS_DIALOG = uic.loadUiType(os.path.join(os.path.dirname(__file__), "design_files", "settings_dialog.ui"))[0]
 VISIBILITY_CHECKBOX_COL = 1
 LOADING_CHECKBOX_COL = 2
 
