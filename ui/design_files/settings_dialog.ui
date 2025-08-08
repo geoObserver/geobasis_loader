@@ -63,7 +63,7 @@
      </property>
      <widget class="QWidget" name="visibility">
       <attribute name="title">
-       <string>Sichtbarkeit</string>
+       <string>Themen</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <property name="spacing">
@@ -113,7 +113,7 @@
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>40</width>
+             <width>20</width>
              <height>20</height>
             </size>
            </property>
@@ -256,7 +256,7 @@
           </sizepolicy>
          </property>
          <property name="title">
-          <string>Serverauswahl</string>
+          <string>Katalogserverauswahl</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignHCenter|Qt::AlignTop</set>
@@ -274,7 +274,7 @@
           <item>
            <widget class="QRadioButton" name="radioButton_3">
             <property name="text">
-             <string>Server 1</string>
+             <string>Katalog-Server 1</string>
             </property>
             <property name="server" stdset="0">
              <number>1</number>
@@ -287,7 +287,7 @@
           <item>
            <widget class="QRadioButton" name="radioButton_2">
             <property name="text">
-             <string>Server 2</string>
+             <string>Katalog-Server 2</string>
             </property>
             <property name="server" stdset="0">
              <number>2</number>
@@ -300,7 +300,7 @@
           <item>
            <widget class="QRadioButton" name="radioButton">
             <property name="text">
-             <string>Alle Server</string>
+             <string>Alle Katalog-Server</string>
             </property>
             <property name="server" stdset="0">
              <number>0</number>

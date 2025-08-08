@@ -198,10 +198,10 @@ class GeoBasis_Loader(QObject):
 
     def open_web_site(self):
         sender = self.sender()
-        if isinstance(sender, QAction):
+        if not sender or type(sender) != QAction:
             return
         
-        data = sender.data()
+        data = sender.data() # type: ignore
         url = QUrl(data)
         
         # Opens webpage in the standard browser
