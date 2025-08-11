@@ -243,11 +243,11 @@ class GeoBasis_Loader(QObject):
         return current_crs
     
     def add_topic(self, catalog_title: Optional[str] = None, path: str = ""):
-        sender = self.sender()
-        if not sender:
-            return
-        
-        if sender is not None:
+        if path == "":
+            sender = self.sender()
+            if not sender:
+                return
+
             path = sender.data() # type: ignore
             if not isinstance(path, str):
                 raise TypeError("Path is unknown")
