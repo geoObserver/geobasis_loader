@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+   <sizepolicy hsizetype="Maximum" vsizetype="Minimum">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -56,7 +56,7 @@
       <enum>QTabWidget::Rounded</enum>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <property name="elideMode">
       <enum>Qt::ElideNone</enum>
@@ -240,26 +240,38 @@
       <attribute name="title">
        <string>Globale Einstellungen</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_2" rowstretch="0">
+      <layout class="QFormLayout" name="formLayout">
        <property name="sizeConstraint">
-        <enum>QLayout::SetMinimumSize</enum>
+        <enum>QLayout::SetDefaultConstraint</enum>
        </property>
-       <item row="0" column="1" alignment="Qt::AlignLeft|Qt::AlignTop">
+       <property name="fieldGrowthPolicy">
+        <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+       </property>
+       <property name="labelAlignment">
+        <set>Qt::AlignJustify|Qt::AlignVCenter</set>
+       </property>
+       <item row="0" column="0">
         <widget class="QGroupBox" name="server_selection">
          <property name="enabled">
           <bool>true</bool>
          </property>
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
          </property>
          <property name="title">
           <string>Katalogserverauswahl</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignHCenter|Qt::AlignTop</set>
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
          </property>
          <property name="flat">
           <bool>false</bool>
@@ -267,12 +279,15 @@
          <property name="checkable">
           <bool>false</bool>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_4">
-          <property name="sizeConstraint">
-           <enum>QLayout::SetMinimumSize</enum>
-          </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
            <widget class="QRadioButton" name="radioButton_3">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="text">
              <string>Katalog-Server 1</string>
             </property>
@@ -286,6 +301,12 @@
           </item>
           <item>
            <widget class="QRadioButton" name="radioButton_2">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="text">
              <string>Katalog-Server 2</string>
             </property>
@@ -299,8 +320,14 @@
           </item>
           <item>
            <widget class="QRadioButton" name="radioButton">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="text">
-             <string>Alle Katalog-Server</string>
+             <string>Alle Katalog-Server (Automatikmodus)</string>
             </property>
             <property name="server" stdset="0">
              <number>0</number>
@@ -311,6 +338,43 @@
            </widget>
           </item>
          </layout>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="label_help_server_selection">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>602</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="mouseTracking">
+          <bool>true</bool>
+         </property>
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die Katalogdateien des „GeoBasis_Loader&amp;quot; liegen redundant auf zwei Servern mit identischem und&lt;br/&gt;aktuellem Datenbestand.&lt;br/&gt;Im &lt;span style=&quot; font-weight:600;&quot;&gt;Automatikmodus&lt;/span&gt; wird primär Server 1 verwendet.&lt;br/&gt;Bei Ausfall erfolgt automatisch der Wechsel zu Server 2.&lt;br/&gt;Eine &lt;span style=&quot; font-weight:600;&quot;&gt;manuelle Serverauswahl&lt;/span&gt; ist nur in Sonderfällen (z. B. Entwicklung, Aktualisierung) erforderlich.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="textFormat">
+          <enum>Qt::RichText</enum>
+         </property>
+         <property name="scaledContents">
+          <bool>false</bool>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+         <property name="indent">
+          <number>0</number>
+         </property>
         </widget>
        </item>
       </layout>
@@ -363,8 +427,8 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
+     <x>362</x>
+     <y>794</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -379,8 +443,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
+     <x>430</x>
+     <y>794</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
