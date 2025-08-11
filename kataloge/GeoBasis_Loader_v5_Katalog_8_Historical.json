@@ -1,62 +1,81 @@
 {
-  "BE:": {
-    "menu": "Berlin",
+  "BE/BB:": {
+    "menu": "Berlin/Brandenburg",
     "themen": {
       "schmett": {
-        "name": "BE: Schmettausches Kartenwerk 1767-1787 (WMS)",
+        "name": "BE/BB: Schmettausches Kartenwerk 1767-1787 (WMS)",
         "type": "ogc_wms",
         "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=schmettau&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/schmettau/service/wms",
         "seperator": true
       },
       "dop20_2009-2012f": {
-        "name": "BE: Histor. Digitale Orthophotos - DOP20 - 2009-2012 (WMS)",
+        "name": "BE/BB: Histor. Digitale Orthophotos - DOP20 - 2009-2012 (WMS)",
         "type": "ogc_wms",
         "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "OGC:CRS84"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2009_2012_farbe&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2009_2012/service/wms"
       },
       "dop20_2013-2015f": {
-        "name": "BE: Histor. Digitale Orthophotos - DOP20 - 2013-2015 (WMS)",
+        "name": "BE/BB: Histor. Digitale Orthophotos - DOP20 - 2013-2015 (WMS)",
         "type": "ogc_wms",
         "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "OGC:CRS84"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2013_2015_farbe&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2013_2015/service/wms"
       },
       "dop20_2016-2018f": {
-        "name": "BE: Histor. Digitale Orthophotos - DOP20 - 2016-2018 (WMS)",
+        "name": "BE/BB: Histor. Digitale Orthophotos - DOP20 - 2016-2018 (WMS)",
         "type": "ogc_wms",
         "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "OGC:CRS84"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2016_2018_farbe&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2016_2018/service/wms"
       },
       "dop20_2019-2021f": {
-        "name": "BE: Histor. Digitale Orthophotos - DOP20 - 2019-2021 (WMS)",
+        "name": "BE/BB: Histor. Digitale Orthophotos - DOP20 - 2019-2021 (WMS)",
         "type": "ogc_wms",
         "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "OGC:CRS84"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2019_2021_farbe&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2019_2021/service/wms",
         "seperator": true
       },
       "dop20_2009-2012g": {
-        "name": "BE: Histor. Digitale Orthophotos monochrom - DOP20 - 2009-2012 (WMS)",
+        "name": "BE/BB: Histor. Digitale Orthophotos monochrom - DOP20 - 2009-2012 (WMS)",
         "type": "ogc_wms",
         "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "OGC:CRS84"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2009_2012_graustufen&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2009_2012/service/wms"
       },
       "dop20_2013-2015g": {
-        "name": "BE: Histor. Digitale Orthophotos monochrom - DOP20 - 2013-2015 (WMS)",
+        "name": "BE/BB: Histor. Digitale Orthophotos monochrom - DOP20 - 2013-2015 (WMS)",
         "type": "ogc_wms",
         "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "OGC:CRS84"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2013_2015_grau&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2013_2015/service/wms"
       },
       "dop20_2016-2018g": {
-        "name": "BE: Histor. Digitale Orthophotos monochrom - DOP20 - 2016-2018 (WMS)",
+        "name": "BE/BB: Histor. Digitale Orthophotos monochrom - DOP20 - 2016-2018 (WMS)",
         "type": "ogc_wms",
         "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "OGC:CRS84"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2016_2018_graustufen&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2016_2018/service/wms"
       },
       "dop20_2019-2021g": {
-        "name": "BE: Histor. Digitale Orthophotos monochrom - DOP20 - 2019-2021 (WMS)",
+        "name": "BE/BB: Histor. Digitale Orthophotos monochrom - DOP20 - 2019-2021 (WMS)",
         "type": "ogc_wms",
         "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "OGC:CRS84"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2019_2021_graustufen&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2019_2021/service/wms",
+        "seperator": true
+      }
+    }
+  },
+  "ST:": {
+    "menu": "Sachsen-Anhalt",
+    "themen": {
+      "dop100_2009": {
+        "name": "ST: DOP100 InVeKoS RGB 2009 - 100 cm (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:31468", "EPSG:31467", "EPSG:31469", "EPSG:25833", "EPSG:25832", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:4326", "EPSG:900913"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/jpeg&layers=mlu_invekos09_rgb&styles&tilePixelRatio=0&url=http://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/f4bc7441-e2ce-d0a3/GDI-LSA_MLU_DOP/ows.wms",
+        "seperator": true
+      },
+      "dop100_2009_cir": {
+        "name": "ST: DOP100 InVeKoS CIR 2009 - 100 cm (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:31468", "EPSG:31467", "EPSG:31469", "EPSG:25833", "EPSG:25832", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:4326", "EPSG:900913"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/jpeg&layers=mlu_invekos09_cir&styles&tilePixelRatio=0&url=http://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/f4bc7441-e2ce-d0a3/GDI-LSA_MLU_DOP/ows.wms",
         "seperator": true
       }
     }
