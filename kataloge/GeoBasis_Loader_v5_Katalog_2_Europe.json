@@ -277,7 +277,21 @@
         "type": "ogc_wmts",
         "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=hybrid&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0"
+      },
+      "dom2019": {
+        "name": "LU: DOM LIDAR 2019 (WMTS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=lidar_2019_mns_public&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0",
+        "seperator": true
+      },
+      "hoehenlinien": {
+        "name": "LU: Höhenlinien 10m (WMTS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=courbes_de_niveau_10m&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0"
       }
+
     }
   }
 }
