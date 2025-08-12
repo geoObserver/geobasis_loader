@@ -266,6 +266,37 @@
         },
         "seperator": true
       },
+      "tk100000": {
+        "name": "LU: Topographische Karte 1:100.000 S/W-Version (WMTS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=topo_100k_bw&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0"
+      },
+      "tk_auto": {
+        "name": "LU: Topographische Karte automatisch (WMTS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=topo&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0"
+      },
+      "tk_auto_sw": {
+        "name": "LU: Topographische Karte automatisch S/W (WMTS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=topo_bw&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0"
+      },
+      "tk_vek": {
+        "name": "LU: Topographische Karte Vektor (WMTS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=topomap&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0"
+      },
+      "tk_vek_grau": {
+        "name": "LU: Topographische Karte Vektor grau (WMTS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=topomap_gray&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0",
+        "seperator": true
+      },
       "dop20": {
         "name": "LU: Orthophotos (WMTS)",
         "type": "ogc_wmts",
