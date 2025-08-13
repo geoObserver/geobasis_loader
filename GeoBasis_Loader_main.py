@@ -363,7 +363,14 @@ class GeoBasis_Loader(QObject):
             # Ebene nach ganz oben im Ebenenbaum verschieben
             _ltl = ltl.clone()
             root.insertChildNode(0, _ltl)
-            root.removeChildNode(ltl)
+            parent = ltl.parent()
+            if parent:
+                # parent.insertChildrenPrivate(0, [_ltl])
+                for i, child in enumerate(parent.children()[0::]):
+                    if child == ltl:
+                        parent.removeChildrenPrivate(i, 1, True)
+            else:
+                root.removeChildNode(ltl)
         else:
             return layer
     
