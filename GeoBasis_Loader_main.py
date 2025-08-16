@@ -350,29 +350,25 @@ class GeoBasis_Loader(QObject):
             self.iface.layerTreeView().refreshLayerSymbology(layer.id())
         
         self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, config.MY_INFO_1 + attributes['name'] + config.MY_INFO_2, 3, 1) # type: ignore
-        root: QgsLayerTree = QgsProject.instance().layerTreeRoot()
-        QgsProject.instance().addMapLayer(layer, standalone) # type: ignore
+        # Ebene zum Projekt hinzufügen aber nicht zum Ebenenbaum
+        QgsProject.instance().addMapLayer(layer, False) # type: ignore
         
+        ltl = QgsLayerTreeLayer(layer)
+        if not ltl:
+            return
+        
+        # Legende kollabieren
+        ltl.setExpanded(False)
+        # Sichtbarkeit einstellen
+        visibile = attributes.get(config.InternalProperties.VISIBILITY, True)
+        ltl.setItemVisibilityChecked(visibile)
+
         if standalone:
-            # Legende kollabieren
-            ltl: QgsLayerTreeLayer = root.findLayer(layer) # type: ignore
-            ltl.setExpanded(False)
-            visibile = attributes.get(config.InternalProperties.VISIBILITY, True)
-            ltl.setItemVisibilityChecked(visibile)
+            # Ebene ganz oben zum Ebenenbaum hinzufügen, wenn Ebene in keiner Gruppe
+            root: QgsLayerTree = QgsProject.instance().layerTreeRoot()
+            root.insertChildNode(0, ltl)
             
-            # Ebene nach ganz oben im Ebenenbaum verschieben
-            _ltl = ltl.clone()
-            root.insertChildNode(0, _ltl)
-            parent = ltl.parent()
-            if parent:
-                # parent.insertChildrenPrivate(0, [_ltl])
-                for i, child in enumerate(parent.children()[0::]):
-                    if child == ltl:
-                        parent.removeChildrenPrivate(i, 1, True)
-            else:
-                root.removeChildNode(ltl)
-        else:
-            return layer
+        return ltl
     
     def addLayerGroup(self, preferred_crs: Union[str, None], layers: dict, name: str) -> None:
         layerTreeRoot = QgsProject.instance().layerTreeRoot()
@@ -389,18 +385,11 @@ class GeoBasis_Loader(QObject):
             if preferred_crs is None:
                 return
         
-        root: QgsLayerTree = QgsProject.instance().layerTreeRoot() # type: ignore
         for layerKey in layers:
-            subLayer = self.addLayer(layers[layerKey], preferred_crs, False)
-            if subLayer is None:
+            subLayer_ltl = self.addLayer(layers[layerKey], preferred_crs, False)
+            if subLayer_ltl is None:
                 continue
-            newLayerGroup.addLayer(subLayer)
-            
-            # Legende kollabieren
-            ltl: QgsLayerTreeLayer = root.findLayer(subLayer) # type: ignore
-            ltl.setExpanded(False)
-            visibile = layers[layerKey].get(config.InternalProperties.VISIBILITY, True)
-            ltl.setItemVisibilityChecked(visibile)
+            newLayerGroup.insertChildNode(0, subLayer_ltl)
             
     def addLayerCombination(self, layers) -> None:
         preferred_crs = None
