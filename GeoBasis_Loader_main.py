@@ -4,7 +4,6 @@ from qgis.PyQt.QtWidgets import QMenu, QAction
 from qgis.PyQt.QtGui import QIcon, QColor, QDesktopServices
 from qgis.PyQt.QtCore import QUrl, QObject
 # from qgis.PyQt.QtWebKitWidgets import QWebView # type: ignore
-from . import ui as custom_ui
 from qgis.core import QgsSettings, QgsProject, QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer, QgsLayerTree, QgsLayerTreeLayer
 from qgis.gui import QgisInterface
 from typing import Dict, Union, Optional
@@ -125,9 +124,8 @@ class GeoBasis_Loader(QObject):
             action.triggered.connect(slot)
             return action
         
-        menu = custom_ui.ComplexMenu(topic_abbreviation)
+        menu = QMenu(topic_abbreviation, self.main_menu)
         menu.setObjectName('loader-' + topic_abbreviation)
-        menu.triggered.connect(self.add_topic)
         menu.setToolTipsVisible(True)
         
         for baseLayer in topic_dict.values():
@@ -135,24 +133,17 @@ class GeoBasis_Loader(QObject):
                 continue
             
             if baseLayer.get("type", "") == "web":
-                print(baseLayer)
                 action = _create_action(baseLayer["name"], menu, baseLayer["uri"], "Informationen öffnen", self.open_web_site)
                 menu.addAction(action)
                 continue
             
             if isinstance(baseLayer.get("layers", []), dict):
                 layergroup_menu = QMenu(baseLayer["name"], menu)
-                layergroup_menu_action = layergroup_menu.menuAction()
-                if not layergroup_menu_action:
-                    continue
-                
-                layergroup_menu_action.setData(baseLayer[config.InternalProperties.PATH])
-                layergroup_menu_action.setToolTip(tip_layergroup)
-                layergroup_menu_action.setStatusTip(tip_layergroup)
                 layergroup_menu.setToolTipsVisible(True)
                 
-                filter = custom_ui.MenuTooltipFilter(layergroup_menu)
-                layergroup_menu.installEventFilter(filter)
+                add_all_action = _create_action("Alle laden", layergroup_menu, baseLayer[config.InternalProperties.PATH], "Alle Themen der Gruppe laden")
+                layergroup_menu.addAction(add_all_action)
+                layergroup_menu.addSeparator()
 
                 for _, layer in baseLayer["layers"].items():
                     if not layer[config.InternalProperties.VISIBILITY]:
@@ -161,7 +152,7 @@ class GeoBasis_Loader(QObject):
                     sublayer_action = _create_action(layer["name"], layergroup_menu, layer[config.InternalProperties.PATH])
                     layergroup_menu.addAction(sublayer_action)
 
-                menu.add_clickable_menu(layergroup_menu)
+                menu.addMenu(layergroup_menu)
             else:        
                 action = _create_action(baseLayer['name'], menu, baseLayer[config.InternalProperties.PATH])            
                 menu.addAction(action)
