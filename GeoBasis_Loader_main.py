@@ -113,9 +113,7 @@ class GeoBasis_Loader(QObject):
         # self.mainMenu.addAction("Status ...", partial(self.openWebSite, 'https://geoobserver.de/qgis-plugin-geobasis-loader/#statustabelle'))
         
     def gui_for_one_topic(self, topic_dict: dict, topic_abbreviation: str) -> QMenu:
-        tip_layer = "Thema hinzufügen"
-        tip_layergroup = "Themengruppe hinzufügen"
-        def _create_action(name: str, parent: QMenu, path: str, tip: str = tip_layer, slot = self.add_topic) -> QAction:
+        def _create_action(name: str, parent: QMenu, path: str, tip: str = "Thema hinzufügen", slot = self.add_topic) -> QAction:
             action = QAction(name, parent)
             action.setObjectName(name)
             action.setStatusTip(tip)
