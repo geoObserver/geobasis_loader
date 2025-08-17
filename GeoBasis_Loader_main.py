@@ -177,6 +177,8 @@ class GeoBasis_Loader(QObject):
         if status == 0:
             return
         
+        self.automatic_crs = self.qgs_settings.value(config.AUTOMATIC_CRS_SETTINGS_KEY, False, bool)
+        
         self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, 'Einstellungen erfolgreich gespeichert', 3, 3)
         self.initGui()
 

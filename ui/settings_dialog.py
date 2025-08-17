@@ -35,6 +35,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         # IntelliSense
         self.visibility_tree: QtWidgets.QTreeWidget = self.visibility_tree
         self.server_button_group: QtWidgets.QButtonGroup = self.server_button_group
+        self.automatic_crs_checkbox: QtWidgtes.QCheckBox = self.automatic_crs_checkbox
     
     def setup(self):
         available_width = self.visibility_tree.width()
@@ -92,6 +93,9 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
                 button.setChecked(True)
             else:
                 button.setChecked(False)
+        automatic_crs = qgs_settings.value(config.AUTOMATIC_CRS_SETTINGS_KEY, False, bool)
+        print(automatic_crs)
+        self.automatic_crs_checkbox.setChecked(automatic_crs)
         
     def set_check_state_all_items(self, column: int, state: Qt.CheckState) -> None:
         for item in self._items:
@@ -116,14 +120,23 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
                 button.setChecked(True)
             else:
                 button.setChecked(False)
+                
+        # Automatic CRS
+        qgs_settings = QgsSettings()        
+        qgs_settings.setValue(config.AUTOMATIC_CRS_SETTINGS_KEY, False)
     
     def confirm_settings(self) -> None:
+        # Global settings
         qgs_settings = QgsSettings()
         checked_button = self.server_button_group.checkedButton()
         if checked_button:
             server_index = checked_button.property("server")
             qgs_settings.setValue(config.SERVERS_SETTINGS_KEY, server_index)
         
+        automatic_crs = self.automatic_crs_checkbox.isChecked()
+        qgs_settings.setValue(config.AUTOMATIC_CRS_SETTINGS_KEY, automatic_crs)
+        
+        # Layer settings
         check_status = {
             config.InternalProperties.VISIBILITY: {},
             config.InternalProperties.LOADING: {},
