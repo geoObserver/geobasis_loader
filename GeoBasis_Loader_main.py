@@ -1,14 +1,15 @@
 import re
 from functools import partial
+from typing import Dict, Union, Optional
 from qgis.PyQt.QtWidgets import QMenu, QAction
 from qgis.PyQt.QtGui import QIcon, QColor, QDesktopServices
 from qgis.PyQt.QtCore import QUrl, QObject
 # from qgis.PyQt.QtWebKitWidgets import QWebView # type: ignore
 from qgis.core import QgsSettings, QgsProject, QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer, QgsLayerTree, QgsLayerTreeLayer
 from qgis.gui import QgisInterface
-from typing import Dict, Union, Optional
 from .topic_search import SearchFilter
 from . import config
+from . import ui as custom_ui
 from .catalog_manager import CatalogManager
 
 class GeoBasis_Loader(QObject):
