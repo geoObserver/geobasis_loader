@@ -169,25 +169,25 @@
       "TopPlusOpen_farbig": {
         "name": "DE: TopPlusOpen farbig (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:3857","EPSG:25832"],
+        "valid_epsg": ["EPSG:25832"],
         "uri": "&type=ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=web&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_topplus_open"
       },
       "TopPlusOpen_grau": {
         "name": "DE: TopPlusOpen grau (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:3857","EPSG:25832"],
+        "valid_epsg": ["EPSG:25832"],
         "uri": "&type=ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=web_grau&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_topplus_open"
       },
       "TopPlusOpen_light_farbig": {
         "name": "DE: TopPlusOpen light farbig (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:3857","EPSG:25832"],
+        "valid_epsg": ["EPSG:25832"],
         "uri": "&type=ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=web_light&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_topplus_open"
       },
       "TopPlusOpen_light_grau": {
         "name": "DE: TopPlusOpen light grau (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:3857","EPSG:25832"],
+        "valid_epsg": ["EPSG:25832"],
         "uri": "&type=ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=web_light_grau&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_topplus_open",
         "seperator": true
       },
@@ -1454,14 +1454,14 @@
       "bodenrichtwerte1": {
         "name": "BB: Bodenrichtwerte Bauland zonal 2025 (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25833", "EPSG:25832","EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839"],
+        "valid_epsg": ["EPSG:25833", "EPSG:25832","EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "EPSG:4647"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&format=image/png&layers=bbv_pg_zobau_2025&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/ows/boris_wms",
         "opacity": 0.75
       },
       "bodenrichtwerte3": {
         "name": "BB: Bodenrichtwerte Landwirtschaft zonal 2025 (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25833", "EPSG:25832","EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839"],
+        "valid_epsg": ["EPSG:25833", "EPSG:25832","EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "EPSG:4647"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&format=image/png&layers=bbv_pg_zolf_2025&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/ows/boris_wms",
         "seperator": true,
         "opacity": 0.75
@@ -1654,7 +1654,7 @@
       "flurstuecke": {
         "name": "HB: ALKIS Flurstücke (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25832", "EPSG:31467", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3857", "OGC:CRS84"],
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:31467", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3857", "OGC:CRS84"],
         "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Flurstuecke&styles=Flurstuecke&tilePixelRatio=1&url=https://geodienste.bremen.de/wms_flurstuecke"
       },
