@@ -3390,6 +3390,111 @@
         },
         "seperator": true
       },
+      "alris_layergroup": {
+        "name": "ST: ALRIS - Amtl. Landes-Radverkehrsinfrastruktur-Informationssystem (WMS)",
+        "layers": {
+          "alris_11": {
+            "name": "ST: ALRIS - Fördergebiet EFRE-RL Mobiltät (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832"],
+            "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "ALRIS - Amtl. Landes-Radverkehrsinfrastruktur-Informationssystem", "WMS: Fördergebiet EFRE-RL Mobiltät"],
+            "komgis_priority": "84200",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Fördergebiet_EFRE-RL_Mobiltät&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ALRIS_OpenData_WMS/guest?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "alris_1": {
+            "name": "ST: ALRIS - Bestandsradwege Kommunal (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832"],
+            "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "ALRIS - Amtl. Landes-Radverkehrsinfrastruktur-Informationssystem", "WMS: Bestandsradwege Kommunal"],
+            "komgis_priority": "84100",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Bestandsradwege_Kommunal&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ALRIS_OpenData_WMS/guest?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "alris_2": {
+            "name": "ST: ALRIS - Bestandsradwege Land (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832"],
+            "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "ALRIS - Amtl. Landes-Radverkehrsinfrastruktur-Informationssystem", "WMS: Bestandsradwege Land"],
+            "komgis_priority": "84200",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Bestandsradwege_Land&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ALRIS_OpenData_WMS/guest?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "alris_3": {
+            "name": "ST: ALRIS - Überregionale touristische Radrouten (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832"],
+            "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "ALRIS - Amtl. Landes-Radverkehrsinfrastruktur-Informationssystem", "WMS: Überregionale touristische Radrouten"],
+            "komgis_priority": "84200",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=überregionale_touristische_Radrouten&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ALRIS_OpenData_WMS/guest?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "alris_4": {
+            "name": "ST: ALRIS - Regionale touristische Radrouten (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832"],
+            "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "ALRIS - Amtl. Landes-Radverkehrsinfrastruktur-Informationssystem", "WMS: Regionale touristische Radrouten"],
+            "komgis_priority": "84200",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=regionale_touristische_Radrouten&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ALRIS_OpenData_WMS/guest?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "alris_5": {
+            "name": "ST: ALRIS - Sonstige touristische Radrouten (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832"],
+            "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "ALRIS - Amtl. Landes-Radverkehrsinfrastruktur-Informationssystem", "WMS: Sonstige touristische Radrouten"],
+            "komgis_priority": "84200",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=sonstige_touristische_Radrouten&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ALRIS_OpenData_WMS/guest?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "alris_6": {
+            "name": "ST: ALRIS - Konzepte LRVN 2020 (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832"],
+            "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "ALRIS - Amtl. Landes-Radverkehrsinfrastruktur-Informationssystem", "WMS: Konzepte LRVN 2020"],
+            "komgis_priority": "84200",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Konzepte_LRVN_2020&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ALRIS_OpenData_WMS/guest?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "alris_7": {
+            "name": "ST: ALRIS - Radverkehrskonzepte Landkreis (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832"],
+            "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "ALRIS - Amtl. Landes-Radverkehrsinfrastruktur-Informationssystem", "WMS: Radverkehrskonzepte Landkreis"],
+            "komgis_priority": "84200",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Radverkehrskonzepte_Landkreis&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ALRIS_OpenData_WMS/guest?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "alris_8": {
+            "name": "ST: ALRIS - Radverkehrskonzepte Gemeinde (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832"],
+            "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "ALRIS - Amtl. Landes-Radverkehrsinfrastruktur-Informationssystem", "WMS: Radverkehrskonzepte Gemeinde"],
+            "komgis_priority": "84200",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Radverkehrskonzepte_Gemeinde&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ALRIS_OpenData_WMS/guest?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "alris_9": {
+            "name": "ST: ALRIS - Radverkehrskonzepte sonstige (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832"],
+            "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "ALRIS - Amtl. Landes-Radverkehrsinfrastruktur-Informationssystem", "WMS: Radverkehrskonzepte Sonstige"],
+            "komgis_priority": "84200",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Radverkehrskonzepte_sonstige&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ALRIS_OpenData_WMS/guest?version%3D1.3.0",
+            "opacity": 0.75
+          },
+          "alris_10": {
+            "name": "ST: ALRIS - Ländliches Wegenetz (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832"],
+            "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "ALRIS - Amtl. Landes-Radverkehrsinfrastruktur-Informationssystem", "WMS: Ländliches Wegenetz"],
+            "komgis_priority": "84200",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Ländliches_Wegenetz&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ALRIS_OpenData_WMS/guest?version%3D1.3.0",
+            "opacity": 0.75
+          }
+        },
+        "seperator": true
+      },
       "howa_layergroup": {
         "name": "ST: Hochwasserschutzanlagen (WMS)",
         "layers": {
