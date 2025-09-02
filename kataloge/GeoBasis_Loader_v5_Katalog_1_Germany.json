@@ -3492,6 +3492,23 @@
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Ländliches_Wegenetz&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ALRIS_OpenData_WMS/guest?version%3D1.3.0",
             "opacity": 0.75
           }
+        }
+      },
+      "alris_layergroup2": {
+        "name": "ST: ALRIS - Amtl. Landes-Radverkehrsinfrastruktur-Informationssystem (WFS)",
+        "layers": {
+          "alris_11": {
+            "name": "ST: ALRIS - Fördergebiet EFRE-RL Mobiltät (WFS)",
+            "type": "ogc_wfs",
+            "valid_epsg": ["EPSG:25832"],
+            "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "ALRIS - Amtl. Landes-Radverkehrsinfrastruktur-Informationssystem", "WMS: Fördergebiet EFRE-RL Mobiltät"],
+            "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='ALRIS_OpenData__WFS:Fördergebiet_EFRE-RL_Mobiltät' url='https://www.geodatenportal.sachsen-anhalt.de/wss/service/ALRIS_OpenData_WFS/guest' url='https://www.geodatenportal.sachsen-anhalt.de/wss/service/ALRIS_OpenData_WFS/guest?version=2.0.0' version='auto'",
+            "opacity": 0.75,
+            "minScale": 250000.0,
+            "maxScale": 1.0,
+            "fillColor": [255, 128, 128],
+            "strokeWidth": 0.25
+          }
         },
         "seperator": true
       },
