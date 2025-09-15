@@ -11,7 +11,6 @@ from . import config
 class NetworkHandler(QObject):
     __manager: QgsNetworkAccessManager
     __reply: QNetworkReply
-    _server_list = config.ServerHosts.get_enabled_servers()
     
     done = False
     successful = False
@@ -25,6 +24,7 @@ class NetworkHandler(QObject):
             return
         
         self.__manager = manager
+        self._server_list = config.ServerHosts.get_enabled_servers()
         self._server = self._server_list[0]
         
     def __fetch_data(self, url: str = '') -> QNetworkReply:
@@ -73,8 +73,8 @@ class NetworkHandler(QObject):
             self.done = True
             self.finished.emit(json_string, catalog_title, networkLastModified)
             
-            server_list = config.ServerHosts.get_all_servers()
-            index = server_list.index(self._server)
+            total_server_list = config.ServerHosts.get_all_servers()
+            index = total_server_list.index(self._server)
             print(f"Katalog '{catalog_name}' erfolgreich von Server {index + 1} geladen")
             return
         
