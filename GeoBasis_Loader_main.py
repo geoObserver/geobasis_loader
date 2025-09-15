@@ -131,7 +131,7 @@ class GeoBasis_Loader(QObject):
             if not baseLayer[config.InternalProperties.VISIBILITY]:
                 continue
             
-            if baseLayer.get("type", "") == "web":
+            if baseLayer.get("type", "").lower() == "web":
                 action = _create_action(baseLayer["name"], menu, baseLayer["uri"], "Informationen öffnen", self.open_web_site)
                 menu.addAction(action)
                 continue
@@ -270,7 +270,7 @@ class GeoBasis_Loader(QObject):
             return None
         
         uri: str = attributes.get('uri', "n.n.")
-        layerType = attributes.get('type', 'ogc_wms')
+        layerType = attributes.get('type', 'ogc_wms').lower()
         valid_epsg_codes: list[str] = attributes.get('valid_epsg', [])
        
         if crs not in valid_epsg_codes or crs is None:       
@@ -313,7 +313,7 @@ class GeoBasis_Loader(QObject):
             return
         
         if hasattr(layer, 'setOpacity'):
-            layer.setOpacity(opacity)             
+            layer.setOpacity(opacity)
             
         if layerType == 'ogc_wfs':
             if maxScale is None:
