@@ -198,6 +198,12 @@
         "opacity": 1.0,
         "seperator": true
       },
+      "amt_stadtplan_grau": {
+        "name": "Amtl. Stadtplan Grau (XYZ)",
+        "valid_epsg": ["EPSG:3857"],
+        "uri": "crs=EPSG:placeholder&type=xyz&zmin=0&zmax=20&url=http://geodienste.halle.de/tiles/stadtplan/grau/{z}/{x}/{y}.png",
+        "type": "ogc_wmts"
+      },    
       "3.5": {
         "name": "Digitale Stadtgrundkarte (WMS)",
         "type": "ogc_wms",
