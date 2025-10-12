@@ -320,7 +320,7 @@ class GeoBasis_Loader(QObject):
         if hasattr(layer, 'setOpacity'):
             layer.setOpacity(opacity)
             
-        if layerType == 'ogc_wfs':
+        if isinstance(layer, QgsVectorLayer):
             if maxScale is None:
                 maxScale = 1.0
             if minScale is None:
