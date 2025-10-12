@@ -286,7 +286,7 @@ class GeoBasis_Loader(QObject):
         
         uri = re.sub(r'EPSG:placeholder', crs, uri)
 
-        if layerType != "ogc_wfs":
+        if layerType != "ogc_wfs" and layerType != "ogc_api_festures":
             uri += "&stepHeight=3000&stepWidth=3000"
         
         opacity = attributes.get('opacity', 1)
@@ -302,7 +302,9 @@ class GeoBasis_Loader(QObject):
             return
         
         if layerType == "ogc_wfs":
-            layer = QgsVectorLayer(uri, attributes['name'], 'WFS')
+            layer = QgsVectorLayer(uri, attributes['name'], 'wfs')
+        elif layerType == "ogc_fapi":
+            layer = QgsVectorLayer(uri, attributes['name'], 'oapif')
         elif layerType == "ogc_vectorTiles":
             layer = QgsVectorTileLayer(uri, attributes['name'])
             layer.loadDefaultStyle()
@@ -333,8 +335,9 @@ class GeoBasis_Loader(QObject):
                 layer.setMinimumScale(minScale)
                 layer.setMaximumScale(maxScale)
                 layer.setScaleBasedVisibility(True)
-                
-        if layerType == 'ogc_wfs':         
+        
+        if isinstance(layer, QgsVectorLayer):
+            symbol_layer: QgsSymbolLayer = layer.renderer().symbol().symbolLayer(0)
             color = QColor(int(fillColor[0]), int(fillColor[1]), int(fillColor[2])) if type(fillColor) == list else QColor(fillColor)
             layer.renderer().symbol().setColor(color)
             color = QColor(int(strokeColor[0]), int(strokeColor[1]), int(strokeColor[2])) if type(strokeColor) == list else QColor(strokeColor)
