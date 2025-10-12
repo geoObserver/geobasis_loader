@@ -1,6 +1,5 @@
-import json, os, re, pathlib
+import json, os, re, pathlib, datetime
 from functools import partial
-import email.utils
 from typing import Optional, Union
 from qgis.PyQt.QtNetwork import QNetworkRequest, QNetworkReply
 from qgis.PyQt.QtCore import QUrl, QObject, pyqtSignal
@@ -68,7 +67,8 @@ class NetworkHandler(QObject):
             # (Über-)Schreibt dann die loakle JSON-Datei, wenn die Datei im Internet neuer ist
             # Sozusagen eigene Cache-Implementation             
             networkLastModifiedRawValue = self.__reply.rawHeader(bytearray('Last-Modified', "utf-8")).data().decode()
-            networkLastModified = email.utils.parsedate_to_datetime(networkLastModifiedRawValue).timestamp()
+            networkLastModified = datetime.datetime.strptime(networkLastModifiedRawValue, "%a, %d %b %Y %H:%M:%S GMT")
+            networkLastModified = networkLastModified.replace(tzinfo=datetime.timezone.utc).timestamp()
             self.successful = True
             self.done = True
             self.finished.emit(json_string, catalog_title, networkLastModified)
