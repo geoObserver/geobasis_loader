@@ -15,7 +15,7 @@ CURRENT_CATALOG_SETTINGS_KEY = 'geobasis_loader/current_catalog'
 AUTOMATIC_CRS_SETTINGS_KEY = 'geobasis_loader/automatic_crs'
 SERVERS_SETTINGS_KEY = 'geobasis_loader/servers'
 
-CATALOG_OVERVIEW = "GeoBasis_Loader_v5_Kataloge.json"
+CATALOG_OVERVIEW = "GeoBasis_Loader_v6_Kataloge.json"
 CATALOG_OVERVIEW_NAME = "catalog_overview"
 class ServerHosts(str, Enum):
     GEOOBSERVER = "https://geoobserver.de/download/GeoBasis_Loader/{name}"
