@@ -148,7 +148,10 @@ class GeoBasis_Loader(QObject):
                     if not layer[config.InternalProperties.VISIBILITY]:
                         continue
                     
-                    sublayer_action = _create_action(layer["name"], layergroup_menu, layer[config.InternalProperties.PATH])
+                    if layer.get("type", "").lower() == "web":
+                        sublayer_action = _create_action(layer["name"], layergroup_menu, layer["uri"], "Informationen öffnen", self.open_web_site)
+                    else:
+                        sublayer_action = _create_action(layer["name"], layergroup_menu, layer[config.InternalProperties.PATH])
                     layergroup_menu.addAction(sublayer_action)
 
                 menu.addMenu(layergroup_menu)
