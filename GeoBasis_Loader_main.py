@@ -3,14 +3,19 @@ from functools import partial
 from typing import Dict, Union, Optional
 from qgis.PyQt.QtWidgets import QMenu, QAction
 from qgis.PyQt.QtGui import QIcon, QColor, QColor, QDesktopServices
-from qgis.PyQt.QtCore import QUrl, QObject, Qt
+from qgis.PyQt.QtCore import QUrl, QObject
 # from qgis.PyQt.QtWebKitWidgets import QWebView # type: ignore
-from qgis.core import QgsSettings, QgsProject, QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer, QgsLayerTree, QgsLayerTreeLayer, QgsSymbolLayer
+from qgis.core import QgsSettings, QgsProject, QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer, QgsLayerTree, QgsLayerTreeLayer, QgsSymbolLayer, QgsWkbTypes, Qgis
 from qgis.gui import QgisInterface
 from .topic_search import SearchFilter
 from . import config
 from . import ui as custom_ui
 from .catalog_manager import CatalogManager
+
+if Qgis.versionInt() < 33000:   # Breaking chnage in Version 3.30 -> Geometry types now in Qgis instead of QgsWkbTypes
+    geometry_types = QgsWkbTypes.Type
+else:
+    geometry_types = Qgis.WkbType
 
 class GeoBasis_Loader(QObject):
     services = None
@@ -337,28 +342,23 @@ class GeoBasis_Loader(QObject):
                 layer.setScaleBasedVisibility(True)
         
         if isinstance(layer, QgsVectorLayer):
+            fill_color: QColor = QColor(*[int(c) for c in fillColor]) if type(fillColor) == list else QColor(fillColor)
+            strokeColor: QColor = QColor(*[int(c) for c in strokeColor]) if type(strokeColor) == list else QColor(strokeColor)
+            
             symbol_layer: QgsSymbolLayer = layer.renderer().symbol().symbolLayer(0)
-            color = QColor(int(fillColor[0]), int(fillColor[1]), int(fillColor[2])) if type(fillColor) == list else QColor(fillColor)
+            symbol_layer.setColor(fill_color)
             
-            symbol_layer.setColor(color)
-            try:                # Polygon und Punkte (Da nur diese Arten eine Umrandung haben)
-                color = QColor(int(strokeColor[0]), int(strokeColor[1]), int(strokeColor[2])) if type(strokeColor) == list else QColor(strokeColor)
-                symbol_layer.setStrokeColor(color)
+            geom_type = QgsWkbTypes.singleType(QgsWkbTypes.flatType(layer.wkbType()))
+            if geom_type == geometry_types.LineString:
+                symbol_layer.setWidth(strokeWidth)  
+            elif geom_type == geometry_types.Polygon:
+                symbol_layer.setStrokeColor(strokeColor)
                 symbol_layer.setStrokeWidth(strokeWidth)
-            except AttributeError:
-                pass
-            
-            try:                # Linien, da nur die eine Breite haben (Andere Arten brechen ab)
-                symbol_layer.setWidth(strokeWidth)
-            except AttributeError:
-                pass
-            
-            try:                # Punkte, da nur die eine Größe haben (andere Arten brechen ab)
+            elif geom_type == geometry_types.Point:
                 symbol_layer.setSize(strokeWidth)
-                symbol_layer.setStrokeWidth(0)
-            except AttributeError:
-                pass
-            
+            else:
+                print("Fehler bei Bestimmung der Geometrieart; Bestimmte Geometrie " + QgsWkbTypes.displayString(geom_type))
+                        
             layer.triggerRepaint()
             self.iface.layerTreeView().refreshLayerSymbology(layer.id())
         
