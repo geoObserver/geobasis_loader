@@ -3,7 +3,7 @@
     "menu": "Deutschland",
     "themen": {
       "verwaltung": {
-        "name": "DE: Verwaltungsgebiete 1:2 500 000 (WMS) xyz",
+        "name": "DE: Verwaltungsgebiete 1:2 500 000 (WMS)",
         "type": "ogc_wms",
         "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","WMS: Verwaltungsgebiete 1:2 500 000"],
         "komgis_priority": "87500",
