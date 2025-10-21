@@ -3,7 +3,7 @@
     "menu": "Deutschland",
     "themen": {
       "verwaltung": {
-        "name": "DE: Verwaltungsgebiete 1:2 500 000 (WMS)",
+        "name": "DE: Verwaltungsgebiete 1:2 500 000 (WMS) xyz",
         "type": "ogc_wms",
         "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","WMS: Verwaltungsgebiete 1:2 500 000"],
         "komgis_priority": "87500",
@@ -194,25 +194,25 @@
       "TopPlusOpen_farbig_wmts": {
         "name": "DE: TopPlusOpen farbig (WMTS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25832"],
+        "valid_epsg": ["EPSG:25832", "EPSG:3857"],
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=web&styles=default&tileMatrixSet=EU_EPSG_25832_TOPPLUS&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wmts_topplus_open/1.0.0/WMTSCapabilities.xml"
       },
       "TopPlusOpen_grau_wmts": {
         "name": "DE: TopPlusOpen grau (WMTS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25832"],
+        "valid_epsg": ["EPSG:25832", "EPSG:3857"],
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=web_grau&styles=default&tileMatrixSet=EU_EPSG_25832_TOPPLUS&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wmts_topplus_open/1.0.0/WMTSCapabilities.xml"
       },
       "TopPlusOpen_light_farbig_wmts": {
         "name": "DE: TopPlusOpen light farbig (WMTS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25832"],
+        "valid_epsg": ["EPSG:25832", "EPSG:3857"],
         "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=web_light&styles=default&tileMatrixSet=EU_EPSG_25832_TOPPLUS&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wmts_topplus_open/1.0.0/WMTSCapabilities.xml"
       },
       "TopPlusOpen_light_grau_wmts": {
         "name": "DE: TopPlusOpen light grau (WMST)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25832"],
+        "valid_epsg": ["EPSG:25832", "EPSG:3857"],
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=web_light_grau&styles=default&tileMatrixSet=EU_EPSG_25832_TOPPLUS&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wmts_topplus_open/1.0.0/WMTSCapabilities.xml",
         "seperator": true
       },
@@ -315,6 +315,48 @@
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Pegelwasserstand&styles&tilePixelRatio=0&url=https://www.pegelonline.wsv.de/webservices/gis/wms?VERSION%3D1.3.0",
             "minScale": 100000.0,
             "maxScale": 1.0
+          }
+        }
+      },
+      "ienc_layergroup": {
+        "name": "DE: Inland Elektronische Navigationskarten ENC - WSV (WMS)",
+        "layers": {
+          "ienc1": {
+            "name": "DE: IENC Karten (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","IENC - WSV", "WMS: Inland Elektronische Navigationskarten ENC Karten"],
+            "komgis_priority": "74803",
+            "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=IENC&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/ienc/wms?VERSION%3D1.3.0"
+          },
+          "ienc2": {
+            "name": "DE: IENC Blattschnitte (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","IENC - WSV", "WMS: Inland Elektronische Navigationskarten ENC Blattschnitte"],
+            "komgis_priority": "74804",
+            "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Blattschnitte&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/ienc/wms?VERSION%3D1.3.0"
+          }
+        }
+      },
+      "dbwk_layergroup": {
+        "name": "DE: Digitale Bundeswasserstraßenkarte M 1:1.000.000 - WSV (WMS)",
+        "layers": {
+          "dbwk1": {
+            "name": "DE: DBWK1000 Karte (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","DBWK - WSV", "WMS: Digitale Bundeswasserstraßenkarte M 1:1.000.000"],
+            "komgis_priority": "74803",
+            "valid_epsg": ["EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:3857", "EPSG:4019", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:104258"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=DBWK1000&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/dbwk1000/wms?VERSION%3D1.3.0"
+          },
+          "dbwk2": {
+            "name": "DE: DBWK1000 Karte inkl. Gliederung WSV (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","DBWK - WSV", "WMS: Digitale Bundeswasserstraßenkarte M 1:1.000.000 inkl. Gliederung WSV"],
+            "komgis_priority": "74804",
+            "valid_epsg": ["EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:3857", "EPSG:4019", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:104258"],
+            "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=DBWK1000GliederungWSV&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/dbwk1000/wms?VERSION%3D1.3.0"
           }
         }
       },
