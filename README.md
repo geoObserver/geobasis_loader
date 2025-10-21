@@ -18,3 +18,6 @@ The availability, the symbolisation of the content and the visibility by scale d
 The links (URLs) to the providers' services used in this plugin are researched and implemented with the greatest possible care. However, errors in the editing process cannot be ruled out. Please send any comments and corrections to news@geoobserver.de
 Despite careful checking, no liability can be accepted for the availability, accuracy, completeness and topicality of these links. This also applies to any damage or consequences arising from the direct or indirect use of the content provided.
 
+------------------------
+
+Support this QGIS-Plugin &#8230; <a href="https://download.geoobserver.de/donate.html" target="_blank"></a><a href="https://download.geoobserver.de/donate.html" target="_blank"><img decoding="async" src="https://geoobserver.de/wp-content/uploads/2022/02/btn_donate_pp_142x27.png"></a>
