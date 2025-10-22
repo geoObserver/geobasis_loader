@@ -339,6 +339,67 @@
           }
         }
       },
+      "WInD_layergroup": {
+        "name": "DE: WInD - Wasserstraßen Infrastruktur Daten der WSV (WMS)",
+        "layers": {
+          "wind100": {
+            "name": "DE: WInD-100 Objekte f. Wasserabfluss und Schiffbarkeit (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","asserstraßen Infrastruktur Daten der WSV", "WMS: InD-100 - Objekte f. Wasserabfluss und Schiffbarkeit"],
+            "komgis_priority": "74803",
+            "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "EPSG:2397", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:4647", "EPSG:5650"],
+            "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=100&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/wind/www/wms/capabilities/"
+          },
+          "wind200": {
+            "name": "DE: WInD-200 Objekte f. Regeln/Sichern des Wasserspiegels/hydrol. Messwesen (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","asserstraßen Infrastruktur Daten der WSV", "WMS: InD-100 - Objekte f. Wasserabfluss und Schiffbarkeit"],
+            "komgis_priority": "74803",
+            "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "EPSG:2397", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:4647", "EPSG:5650"],
+            "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=200&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/wind/www/wms/capabilities/"
+          },
+          "wind400": {
+            "name": "DE: WInD-300 Objekte f. Schiffsverkehr (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","asserstraßen Infrastruktur Daten der WSV", "WMS: InD-100 - Objekte f. Wasserabfluss und Schiffbarkeit"],
+            "komgis_priority": "74803",
+            "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "EPSG:2397", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:4647", "EPSG:5650"],
+            "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=300&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/wind/www/wms/capabilities/"
+          },
+          "wind400": {
+            "name": "DE: WInD-400 Objekte f. Sicherung/Erleichterung Schiffsverkehr (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","asserstraßen Infrastruktur Daten der WSV", "WMS: InD-100 - Objekte f. Wasserabfluss und Schiffbarkeit"],
+            "komgis_priority": "74803",
+            "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "EPSG:2397", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:4647", "EPSG:5650"],
+            "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=400&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/wind/www/wms/capabilities/"
+          },
+          "wind500": {
+            "name": "DE: WInD-500 Objekte f. Aufrechterhalten Kreuzungsverkehr (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","asserstraßen Infrastruktur Daten der WSV", "WMS: InD-100 - Objekte f. Wasserabfluss und Schiffbarkeit"],
+            "komgis_priority": "74803",
+            "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "EPSG:2397", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:4647", "EPSG:5650"],
+            "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=500&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/wind/www/wms/capabilities/"
+          },
+          "wind600": {
+            "name": "DE: WInD-600 Objekte f. sonstige unmittelbare Aufgaben (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","asserstraßen Infrastruktur Daten der WSV", "WMS: InD-100 - Objekte f. Wasserabfluss und Schiffbarkeit"],
+            "komgis_priority": "74803",
+            "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "EPSG:2397", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:4647", "EPSG:5650"],
+            "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=600&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/wind/www/wms/capabilities/"
+          },
+          "wind700": {
+            "name": "DE: WInD-700 Anlagen f. mittelbare Aufgaben (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","asserstraßen Infrastruktur Daten der WSV", "WMS: InD-100 - Objekte f. Wasserabfluss und Schiffbarkeit"],
+            "komgis_priority": "74803",
+            "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "EPSG:2397", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:4647", "EPSG:5650"],
+            "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=700&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/wind/www/wms/capabilities/"
+          }
+        }
+      },
       "dbwk_layergroup": {
         "name": "DE: Digitale Bundeswasserstraßenkarte M 1:1.000.000 - WSV (WMS)",
         "layers": {
