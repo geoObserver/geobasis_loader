@@ -358,7 +358,7 @@
             "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "EPSG:2397", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:4647", "EPSG:5650"],
             "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=200&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/wind/www/wms/capabilities/"
           },
-          "wind400": {
+          "wind300": {
             "name": "DE: WInD-300 Objekte f. Schiffsverkehr (WMS)",
             "type": "ogc_wms",
             "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","asserstraßen Infrastruktur Daten der WSV", "WMS: InD-100 - Objekte f. Wasserabfluss und Schiffbarkeit"],
