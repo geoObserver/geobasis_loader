@@ -581,13 +581,13 @@
             "fillColor": [140, 81, 10],
             "strokeWidth": 0.2
           },
-          "poi_bkg": {
-            "name": "DE: Seehäfen (WFS)",
+            "poi_bkg7": {
+            "name": "DE: Häfen (WFS)",
             "type": "ogc_wfs",
             "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:3857", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045"],
             "minScale": 1000000.0,
             "maxScale": 1.0,
-            "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='poi-open:seehaefen' url='https://sgx.geodatenzentrum.de/wfs_poi_open' version='auto'",
+            "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='poi-open:haefen' url='https://sgx.geodatenzentrum.de/wfs_poi_open' version='auto'",
             "fillColor": [67,147,195],
             "strokeWidth": 0.2
           }
