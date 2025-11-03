@@ -1,0 +1,34 @@
+[
+  {
+    "titel": "Katalog 1: Deutschland / Germany",
+    "name": "GeoBasis_Loader_v6_Katalog_1_Germany"
+  },
+  {
+    "titel": "Katalog 2: Europa / Europe",
+    "name": "GeoBasis_Loader_v5_Katalog_2_Europe"
+  },
+  {
+    "titel": "Katalog 3: Welt / World",
+    "name": "GeoBasis_Loader_v5_Katalog_3_World"
+  },
+  {
+    "titel": "Katalog 4: ST LAU Schutzgebiete",
+    "name": "GeoBasis_Loader_v5_Katalog_4_ST_LAU_Schutzgebiete"
+  },
+  {
+    "titel": "Katalog 5: BONUS Halle (Saale) - im Aufbau",
+    "name": "GeoBasis_Loader_v5_Katalog_5_Halle_Saale"
+  },
+  {
+    "titel": "Katalog 6: Deutschland Schutzgebiete",
+    "name": "GeoBasis_Loader_v5_Katalog_6_DE_Schutzgebiete"
+  },
+  {
+    "titel": "Katalog 7: Deutschland Zensus 2022 (15.05.2022)",
+    "name": "GeoBasis_Loader_v5_Katalog_7_Deutschland_Zensus_2022"
+  },
+  {
+    "titel": "Katalog 8: Historisch / Historical",
+    "name": "GeoBasis_Loader_v5_Katalog_8_Historical"
+  }
+]
