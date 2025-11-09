@@ -1,0 +1,328 @@
+{
+  "a": {
+    "menu": "Österreich",
+    "themen": {
+      "basemap1": {
+        "name": "A: Geoland Basemap (WMTS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:3857"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=geolandbasemap&styles=normal&tileMatrixSet=google3857&tilePixelRatio=0&url=https://basemap.at/wmts/1.0.0/WMTSCapabilities.xml"
+      },
+      "basemap2": {
+        "name": "A: Geoland Basemap grau (WMTS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:3857"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=bmapgrau&styles=normal&tileMatrixSet=google3857&tilePixelRatio=0&url=https://basemap.at/wmts/1.0.0/WMTSCapabilities.xml"
+      },
+      "basemap3": {
+        "name": "A: Geoland Basemap High DPI (WMTS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:3857"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/jpeg&layers=bmaphidpi&styles=normal&tileMatrixSet=google3857&tilePixelRatio=0&url=https://basemap.at/wmts/1.0.0/WMTSCapabilities.xml",
+        "seperator": true
+      },
+      "dop10": {
+        "name": "A: Geoland Basemap Orthofoto - DOP10 (WMTS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:3857"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/jpeg&layers=bmaporthofoto30cm&styles=normal&tileMatrixSet=google3857&tilePixelRatio=0&url=https://basemap.at/wmts/1.0.0/WMTSCapabilities.xml"
+      },
+      "overlay": {
+        "name": "A: Geoland Basemap Overlay (WMTS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:3857"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=bmapoverlay&styles=normal&tileMatrixSet=google3857&tilePixelRatio=0&url=https://basemap.at/wmts/1.0.0/WMTSCapabilities.xml", 
+        "seperator": true
+      },
+      "oberfl": {
+        "name": "A: Geoland Basemap Oberfläche DOM (WMTS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:3857"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/jpeg&layers=bmapoberflaeche&styles=grau&tileMatrixSet=google3857_0-17&tilePixelRatio=0&url=https://basemap.at/wmts/1.0.0/WMTSCapabilities.xml"
+      },
+      "gelaende": {
+        "name": "A: Geoland Basemap Gelände DGM (WMTS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:3857"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/jpeg&layers=bmapgelaende&styles=grau&tileMatrixSet=google3857_0-17&tilePixelRatio=0&url=https://basemap.at/wmts/1.0.0/WMTSCapabilities.xml"
+      }
+    }
+  },
+  "ch": {
+    "menu": "Schweiz",
+    "themen": {
+      "flurstuecke": {
+        "name": "CH: Flurstücke (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2056", "EPSG:21781", "EPSG:4326", "EPSG:3857", "EPSG:31287" , "EPSG:3034", "EPSG:3035", "EPSG:4258", "EPSG:25832", "EPSG:25833", "EPSG:31467", "EPSG:32632", "EPSG:32633", "EPSG:900913"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:2056&dpiMode=7&featureCount=10&format=image/jpeg&layers=ch.swisstopo-vd.amtliche-vermessung&styles&url=https://wms.geo.admin.ch/",
+        "seperator": true,
+        "opacity": 0.75
+      },
+      "tk_farbig_layergroup": {
+        "name": "CH: Landeskarten farbig (WMTS)",
+        "layers": {
+          "tk_10_farbig": {
+            "name": "CH: Landeskarten 10 farbig (WMTS)",
+            "type": "ogc_wmts",
+            "valid_epsg": ["EPSG:2056"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:2056&dpiMode=7&featureCount=10&format=image/jpeg&layers=ch.swisstopo.pixelkarte-farbe&styles=ch.swisstopo.pixelkarte-farbe&tileDimensions=Time%3Dcurrent&tileMatrixSet=2056_27&url=https://wmts.geo.admin.ch/EPSG/2056/1.0.0/WMTSCapabilities.xml",
+            "opacity": 0.75,
+            "minScale": 17500.0,
+            "maxScale": 1
+          },
+          "tk_25_farbig": {
+            "name": "CH: Landeskarten 25 farbig (WMTS)",
+            "type": "ogc_wmts",
+            "valid_epsg": ["EPSG:2056"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:2056&dpiMode=7&featureCount=10&format=image/jpeg&layers=ch.swisstopo.pixelkarte-farbe-pk25.noscale&styles=ch.swisstopo.pixelkarte-farbe-pk25.noscale&tileDimensions=Time%3Dcurrent&tileMatrixSet=2056_26&url=https://wmts.geo.admin.ch/EPSG/2056/1.0.0/WMTSCapabilities.xml",
+            "opacity": 0.75,
+            "minScale": 37500.0,
+            "maxScale": 17500.0
+          },
+          "tk_50_farbig": {
+            "name": "CH: Landeskarten 50 farbig (WMTS)",
+            "type": "ogc_wmts",
+            "valid_epsg": ["EPSG:2056"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:2056&dpiMode=7&featureCount=10&format=image/jpeg&layers=ch.swisstopo.pixelkarte-farbe-pk50.noscale&styles=ch.swisstopo.pixelkarte-farbe-pk50.noscale&tileDimensions=Time%3Dcurrent&tileMatrixSet=2056_26&url=https://wmts.geo.admin.ch/EPSG/2056/1.0.0/WMTSCapabilities.xml",
+            "opacity": 0.75,
+            "minScale": 750000.0,
+            "maxScale": 37500.0
+          }
+        },
+        "seperator": true
+      },
+      "dop10": {
+        "name": "CH: SWISSIMAGE - Digitale Orthophotos - DOP10 (WMTS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2056"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:2056&dpiMode=7&featureCount=10&format=image/jpeg&layers=ch.swisstopo.swissimage&styles=ch.swisstopo.swissimage&tileDimensions=Time%3Dcurrent&tileMatrixSet=2056_28&url=https://wmts.geo.admin.ch/EPSG/2056/1.0.0/WMTSCapabilities.xml"
+      }
+    }
+  },
+  "cz": {
+    "menu": "Tschechien",
+    "themen": {
+      "flurstuecke": {
+        "name": "CZ: Flurstücke/Gebäude (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:5514", "EPSG:5221", "EPSG:4258", "EPSG:4326", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3046", "EPSG:3857", "EPSG:3835", "EPSG:3836", "EPSG:32633", "EPSG:32634", "EPSG:900913", "EPSG:102066", "EPSG:102067"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=KN&styles&tilePixelRatio=0&url=https://services.cuzk.cz/wms/wms.asp",
+        "seperator": true,
+        "opacity": 0.75
+      },
+      "tk_farbig_layergroup": {
+        "name": "CZ: TK farbig (WMS)",
+        "layers": {
+          "tk_5_farbig": {
+            "name": "CZ: DTK 5 farbig (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:5514", "EPSG:102067", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3046", "EPSG:3333", "EPSG:28403", "EPSG:3334", "EPSG:28404", "EPSG:3857", "EPSG:102100", "EPSG:4258", "EPSG:5221", "EPSG:102066", "EPSG:32633", "EPSG:32634"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=0&styles=default&tilePixelRatio=0&url=https://ags.cuzk.cz/arcgis1/services/ZTM/ZTM5/MapServer/WMSServer",
+            "opacity": 0.75,
+            "minScale": 7500.0,
+            "maxScale": 1
+          },
+          "tk_10_farbig": {
+            "name": "CZ: TK 10 farbig (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:5514", "EPSG:102067", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3046", "EPSG:3333", "EPSG:28403", "EPSG:3334", "EPSG:28404", "EPSG:3857", "EPSG:102100", "EPSG:4258", "EPSG:5221", "EPSG:102066", "EPSG:32633", "EPSG:32634"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=0&styles=default&tilePixelRatio=0&url=https://ags.cuzk.cz/arcgis1/services/ZTM/ZTM10/MapServer/WMSServer",
+            "opacity": 0.75,
+            "minScale": 17500.0,
+            "maxScale": 7500.0
+          },
+          "tk_25_farbig": {
+            "name": "CZ: TK 25 farbig (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:5514", "EPSG:102067", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3046", "EPSG:3333", "EPSG:28403", "EPSG:3334", "EPSG:28404", "EPSG:3857", "EPSG:102100", "EPSG:4258", "EPSG:5221", "EPSG:102066", "EPSG:32633", "EPSG:32634"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=0&styles=default&tilePixelRatio=0&url=https://ags.cuzk.cz/arcgis1/services/ZTM/ZTM25/MapServer/WMSServer",
+            "opacity": 0.75,
+            "minScale": 37500.0,
+            "maxScale": 17500.0
+          },
+          "tk_50_farbig": {
+            "name": "CZ: TK 50 farbig (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:5514", "EPSG:102067", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3046", "EPSG:3333", "EPSG:28403", "EPSG:3334", "EPSG:28404", "EPSG:3857", "EPSG:102100", "EPSG:4258", "EPSG:5221", "EPSG:102066", "EPSG:32633", "EPSG:32634"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=0&styles=default&tilePixelRatio=0&url=https://ags.cuzk.cz/arcgis1/services/ZTM/ZTM50/MapServer/WMSServer",
+            "opacity": 0.75,
+            "minScale": 75000.0,
+            "maxScale": 37500
+          },
+          "tk_100_farbig": {
+            "name": "CZ: TK 100 farbig (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:5514", "EPSG:102067", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3046", "EPSG:3333", "EPSG:28403", "EPSG:3334", "EPSG:28404", "EPSG:3857", "EPSG:102100", "EPSG:4258", "EPSG:5221", "EPSG:102066", "EPSG:32633", "EPSG:32634"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=0&styles=default&tilePixelRatio=0&url=https://ags.cuzk.cz/arcgis1/services/ZTM/ZTM100/MapServer/WMSServer",
+            "opacity": 0.75,
+            "minScale": 175000.0,
+            "maxScale": 75000.0
+          },
+          "tk_250_farbig": {
+            "name": "CZ: TK 250 farbig (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:5514", "EPSG:102067", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3046", "EPSG:3333", "EPSG:28403", "EPSG:3334", "EPSG:28404", "EPSG:3857", "EPSG:102100", "EPSG:4258", "EPSG:5221", "EPSG:102066", "EPSG:32633", "EPSG:32634"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=0&styles=default&tilePixelRatio=0&url=https://ags.cuzk.cz/arcgis1/services/ZTM/ZTM250/MapServer/WMSServer",
+            "opacity": 0.75,
+            "minScale": 375000.0,
+            "maxScale": 175000.0
+          },
+          "tk_500_farbig": {
+            "name": "CZ: TÜK 500 farbig (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:5514", "EPSG:102067", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3046", "EPSG:3333", "EPSG:28403", "EPSG:3334", "EPSG:28404", "EPSG:3857", "EPSG:102100", "EPSG:4258", "EPSG:5221", "EPSG:102066", "EPSG:32633", "EPSG:32634"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=0&styles=default&tilePixelRatio=0&url=https://ags.cuzk.cz/arcgis1/services/ZTM/MCR500/MapServer/WMSServer",
+            "opacity": 0.75,
+            "minScale": 750000.0,
+            "maxScale": 375000.0
+          },
+          "tk_1000_farbig": {
+            "name": "CZ: TÜK 1000 farbig (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:5514", "EPSG:102067", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3046", "EPSG:3333", "EPSG:28403", "EPSG:3334", "EPSG:28404", "EPSG:3857", "EPSG:102100", "EPSG:4258", "EPSG:5221", "EPSG:102066", "EPSG:32633", "EPSG:32634"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=0&styles=default&tilePixelRatio=0&url=https://ags.cuzk.cz/arcgis1/services/ZTM/MCR1M/MapServer/WMSServer",
+            "opacity": 0.75,
+            "minScale": 5000000.0,
+            "maxScale": 750000.0
+          }
+        },
+        "seperator": true
+      },
+      "dop10": {
+        "name": "CZ: Orthophotos  (WMS)",
+        "type": "ogc_wms",
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:5514", "EPSG:102067", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3046", "EPSG:3333", "EPSG:28403", "EPSG:3334", "EPSG:28404", "EPSG:3857", "EPSG:102100", "EPSG:4258", "EPSG:5221", "EPSG:102066", "EPSG:32633", "EPSG:32634"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=0&styles=default&tilePixelRatio=0&url=https://ags.cuzk.cz/arcgis1/services/ORTOFOTO/MapServer/WMSServer"
+      }
+    }
+  },
+  "LU": {
+    "menu": "Luxemburg",
+    "themen": {
+      "basiskarte": {
+        "name": "LU: Basiskarte (WMTS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=basemap&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0",
+        "opacity": 0.75
+      },
+      "strassenkarte": {
+        "name": "LU: Straßenkarte (WMTS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=roadmap_luxonly&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0",
+        "seperator": true,
+        "opacity": 0.75
+      },
+      "tk_farbig_layergroup": {
+        "name": "LU: Landeskarten farbig (WMTS)",
+        "layers": {
+          "tk_5_farbig": {
+            "name": "LU: Landeskarten TK 1:5000 farbig (WMS)",
+            "type": "ogc_wmts",
+            "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+            "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=topo_5k&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0",
+            "opacity": 0.75,
+            "minScale": 7500.0,
+            "maxScale": 1
+          },
+          "tk_20_farbig": {
+            "name": "LU: Landeskarten TK 1:20000 (WMS)",
+            "type": "ogc_wmts",
+            "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+            "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=topo_20k&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0",
+            "opacity": 0.75,
+            "minScale": 30000.0,
+            "maxScale": 7500.0
+          },
+          "tk_50_farbig": {
+            "name": "LU: Landeskarten TK 1:50000 (WMS)",
+            "type": "ogc_wmts",
+            "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+            "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=topo_50k&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0",
+            "opacity": 0.75,
+            "minScale": 75000.0,
+            "maxScale": 30000.0
+          },
+          "tk_100_farbig": {
+            "name": "LU: Landeskarten TK 1:100000 (WMS)",
+            "type": "ogc_wmts",
+            "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+            "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=topo_100k&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0",
+            "opacity": 0.75,
+            "minScale": 175000.0,
+            "maxScale": 75000.0
+          },
+          "tk_250_farbig": {
+            "name": "LU: Landeskarten TK 1:250000 (WMS)",
+            "type": "ogc_wmts",
+            "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+            "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=topo_250k&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0",
+            "opacity": 0.75,
+            "minScale": 1000000.0,
+            "maxScale": 175000.0
+          }
+        },
+        "seperator": true
+      },
+      "tk100000": {
+        "name": "LU: Topographische Karte 1:100.000 S/W-Version (WMTS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=topo_100k_bw&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0"
+      },
+      "tk_auto": {
+        "name": "LU: Topographische Karte automatisch (WMTS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=topo&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0"
+      },
+      "tk_auto_sw": {
+        "name": "LU: Topographische Karte automatisch S/W (WMTS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=topo_bw&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0"
+      },
+      "tk_vek": {
+        "name": "LU: Topographische Karte Vektor (WMTS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=topomap&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0"
+      },
+      "tk_vek_grau": {
+        "name": "LU: Topographische Karte Vektor grau (WMTS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=topomap_gray&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0",
+        "seperator": true
+      },
+      "dop20": {
+        "name": "LU: Orthophotos (WMTS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=ortho_latest&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0"
+      },
+      "dop20h": {
+        "name": "LU: Orthophotos hybrid (WMTS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=hybrid&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0"
+      },
+      "dom2019": {
+        "name": "LU: DOM LIDAR 2019 (WMTS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=lidar_2019_mns_public&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0",
+        "seperator": true
+      },
+      "hoehenlinien": {
+        "name": "LU: Höhenlinien 10m (WMTS)",
+        "type": "ogc_wmts",
+        "valid_epsg": ["EPSG:2169", "EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25831"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=courbes_de_niveau_10m&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0"
+      }
+
+    }
+  }
+}
