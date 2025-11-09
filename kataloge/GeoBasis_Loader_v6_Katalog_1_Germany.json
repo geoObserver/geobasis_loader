@@ -167,10 +167,10 @@
         "uri": "&type=xyz&styleUrl=https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/styles/bm_web_gry.json&zmin=0&zmax=15&url=https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/tiles/v2/bm_web_de_3857/{z}/{x}/{y}.pbf"
       },
       "farbig-wfs": {
-        "name": "DE: basemap.de farbig (WFS)",
+        "name": "DE: basemap.de farbig (WFS)b",
         "type": "ogc_vectorTiles",
         "valid_epsg": ["EPSG:3857"],
-        "uri": "&type=xyz&styleUrl=https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/styles/bm_web_col.json&zmin=0&zmax=15&url=https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/tiles/v2/bm_web_de_3857/{z}/{x}/{y}.pbf",
+        "uri": "styleUrl=https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/styles/bm_web_col.json&type=xyz&url=https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/tiles/v2/bm_web_de_3857/{z}/{x}/{y}.pbf&zmax=24&zmin=0&http-header:referer=",
         "seperator": true
       },
       "TopPlusOpen_farbig": {
@@ -224,19 +224,19 @@
         "seperator": true
       },
       "sentinel_rgb": {
-        "name": "DE: Sentinal-2 RGB (WMS)",
+        "name": "DE: Sentinel-2 RGB (WMS)",
         "type": "ogc_wms",
         "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:32632"],
         "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=rgb&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2018-01-01T00:00:00.000Z,2019-01-01T00:00:00.000Z,2020-01-01T00:00:00.000Z,2021-01-01T00:00:00.000Z&type=wmst&url=https://sgx.geodatenzentrum.de/wms_sentinel2_de"
       },
       "sentinel_nir": {
-        "name": "DE: Sentinal-2 NIR (WMS)",
+        "name": "DE: Sentinel-2 NIR (WMS)",
         "type": "ogc_wms",
         "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:32632"],
         "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=nir&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2018-01-01T00:00:00.000Z,2019-01-01T00:00:00.000Z,2020-01-01T00:00:00.000Z,2021-01-01T00:00:00.000Z&type=wmst&url=https://sgx.geodatenzentrum.de/wms_sentinel2_de"
       },
       "sentinel_nir_rer": {
-        "name": "DE: Sentinal-2 NIR RER (WMS)",
+        "name": "DE: Sentinel-2 NIR RER (WMS)",
         "type": "ogc_wms",
         "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:32632"],
         "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=nirrer&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2018-01-01T00:00:00.000Z,2019-01-01T00:00:00.000Z,2020-01-01T00:00:00.000Z,2021-01-01T00:00:00.000Z&type=wmst&url=https://sgx.geodatenzentrum.de/wms_sentinel2_de",
@@ -322,6 +322,109 @@
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Pegelwasserstand&styles&tilePixelRatio=0&url=https://www.pegelonline.wsv.de/webservices/gis/wms?VERSION%3D1.3.0",
             "minScale": 100000.0,
             "maxScale": 1.0
+          }
+        }
+      },
+      "ienc_layergroup": {
+        "name": "DE: Inland Elektronische Navigationskarten ENC - WSV (WMS)",
+        "layers": {
+          "ienc1": {
+            "name": "DE: IENC Karten (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","IENC - WSV", "WMS: Inland Elektronische Navigationskarten ENC Karten"],
+            "komgis_priority": "74803",
+            "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "EPSG:2397", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:4647", "EPSG:5650"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=IENC&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/ienc/wms?VERSION%3D1.3.0"
+          },
+          "ienc2": {
+            "name": "DE: IENC Blattschnitte (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","IENC - WSV", "WMS: Inland Elektronische Navigationskarten ENC Blattschnitte"],
+            "komgis_priority": "74804",
+            "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "EPSG:2397", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:4647", "EPSG:5650"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Blattschnitte&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/ienc/wms?VERSION%3D1.3.0"
+          }
+        }
+      },
+      "WInD_layergroup": {
+        "name": "DE: WInD - Wasserstraßen Infrastruktur Daten der WSV (WMS)",
+        "layers": {
+          "wind100": {
+            "name": "DE: WInD-100 Objekte f. Wasserabfluss und Schiffbarkeit (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","asserstraßen Infrastruktur Daten der WSV", "WMS: InD-100 - Objekte f. Wasserabfluss und Schiffbarkeit"],
+            "komgis_priority": "74803",
+            "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "EPSG:2397", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:4647", "EPSG:5650"],
+            "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=100&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/wind/www/wms/capabilities/"
+          },
+          "wind200": {
+            "name": "DE: WInD-200 Objekte f. Regeln/Sichern des Wasserspiegels/hydrol. Messwesen (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","asserstraßen Infrastruktur Daten der WSV", "WMS: InD-100 - Objekte f. Wasserabfluss und Schiffbarkeit"],
+            "komgis_priority": "74803",
+            "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "EPSG:2397", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:4647", "EPSG:5650"],
+            "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=200&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/wind/www/wms/capabilities/"
+          },
+          "wind300": {
+            "name": "DE: WInD-300 Objekte f. Schiffsverkehr (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","asserstraßen Infrastruktur Daten der WSV", "WMS: InD-100 - Objekte f. Wasserabfluss und Schiffbarkeit"],
+            "komgis_priority": "74803",
+            "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "EPSG:2397", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:4647", "EPSG:5650"],
+            "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=300&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/wind/www/wms/capabilities/"
+          },
+          "wind400": {
+            "name": "DE: WInD-400 Objekte f. Sicherung/Erleichterung Schiffsverkehr (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","asserstraßen Infrastruktur Daten der WSV", "WMS: InD-100 - Objekte f. Wasserabfluss und Schiffbarkeit"],
+            "komgis_priority": "74803",
+            "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "EPSG:2397", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:4647", "EPSG:5650"],
+            "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=400&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/wind/www/wms/capabilities/"
+          },
+          "wind500": {
+            "name": "DE: WInD-500 Objekte f. Aufrechterhalten Kreuzungsverkehr (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","asserstraßen Infrastruktur Daten der WSV", "WMS: InD-100 - Objekte f. Wasserabfluss und Schiffbarkeit"],
+            "komgis_priority": "74803",
+            "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "EPSG:2397", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:4647", "EPSG:5650"],
+            "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=500&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/wind/www/wms/capabilities/"
+          },
+          "wind600": {
+            "name": "DE: WInD-600 Objekte f. sonstige unmittelbare Aufgaben (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","asserstraßen Infrastruktur Daten der WSV", "WMS: InD-100 - Objekte f. Wasserabfluss und Schiffbarkeit"],
+            "komgis_priority": "74803",
+            "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "EPSG:2397", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:4647", "EPSG:5650"],
+            "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=600&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/wind/www/wms/capabilities/"
+          },
+          "wind700": {
+            "name": "DE: WInD-700 Anlagen f. mittelbare Aufgaben (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","asserstraßen Infrastruktur Daten der WSV", "WMS: InD-100 - Objekte f. Wasserabfluss und Schiffbarkeit"],
+            "komgis_priority": "74803",
+            "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "EPSG:2397", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:4647", "EPSG:5650"],
+            "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=700&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/wind/www/wms/capabilities/"
+          }
+        }
+      },
+      "dbwk_layergroup": {
+        "name": "DE: Digitale Bundeswasserstraßenkarte M 1:1.000.000 - WSV (WMS)",
+        "layers": {
+          "dbwk1": {
+            "name": "DE: DBWK1000 Karte (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","DBWK - WSV", "WMS: Digitale Bundeswasserstraßenkarte M 1:1.000.000"],
+            "komgis_priority": "74803",
+            "valid_epsg": ["EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:3857", "EPSG:4019", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:104258"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=DBWK1000&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/dbwk1000/wms?VERSION%3D1.3.0"
+          },
+          "dbwk2": {
+            "name": "DE: DBWK1000 Karte inkl. Gliederung WSV (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","DBWK - WSV", "WMS: Digitale Bundeswasserstraßenkarte M 1:1.000.000 inkl. Gliederung WSV"],
+            "komgis_priority": "74804",
+            "valid_epsg": ["EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:3857", "EPSG:4019", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:104258"],
+            "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=DBWK1000GliederungWSV&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/dbwk1000/wms?VERSION%3D1.3.0"
           }
         }
       },
@@ -3905,7 +4008,7 @@
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=th_dop&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/DOP"
       },
       "dop200": {
-        "name": "TH: Digitale Orthophotos - DOP200 (WMS)",
+        "name": "TH: Digitale Orthophotos - DOP200 (WMS)c",
         "type": "ogc_wms",
         "komgis_node": ["Externe Geodienste", "Land Thüringen", "Digitale Orthophotos (DOP)", "WMS: DOP 200"],
         "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:31467", "EPSG:31468", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3038", "EPSG:3039", "EPSG:3040", "EPSG:3041", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3857"],
