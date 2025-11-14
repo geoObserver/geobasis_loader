@@ -313,7 +313,7 @@ class GeoBasis_Loader(QObject):
             layer = QgsVectorLayer(uri, attributes['name'], 'wfs')
         elif layerType == "ogc_api_features":
             layer = QgsVectorLayer(uri, attributes['name'], 'oapif')
-        elif layerType == "ogc_vectorTiles":
+        elif layerType == "ogc_vectortiles":
             layer = QgsVectorTileLayer(uri, attributes['name'])
             layer.loadDefaultStyle()
         elif layerType == "ogc_wcs":
