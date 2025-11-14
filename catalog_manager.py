@@ -1,17 +1,15 @@
-import json, os, re, pathlib
+import json, os, re, pathlib, datetime
 from functools import partial
-import email.utils
 from typing import Optional, Union
-from PyQt5.QtNetwork import QNetworkRequest, QNetworkReply
-from PyQt5.QtCore import QUrl, QObject, pyqtSignal
+from qgis.PyQt.QtNetwork import QNetworkRequest, QNetworkReply
+from qgis.PyQt.QtCore import QUrl, QObject, pyqtSignal
 from qgis.core import QgsNetworkAccessManager, QgsSettings
-from qgis._gui import QgisInterface
+from qgis.gui import QgisInterface
 from . import config
 
 class NetworkHandler(QObject):
     __manager: QgsNetworkAccessManager
     __reply: QNetworkReply
-    _server: str = config.ServerHosts.get_servers()[0]
     
     done = False
     successful = False
@@ -19,9 +17,14 @@ class NetworkHandler(QObject):
     finished = pyqtSignal(str, str, float)
     error_occurred = pyqtSignal(str, str)
     
-    def __init__(self, manager: QgsNetworkAccessManager) -> None:
+    def __init__(self, manager: Union[QgsNetworkAccessManager, None]) -> None:
         super().__init__()
+        if not manager:
+            return
+        
         self.__manager = manager
+        self._server_list = config.ServerHosts.get_enabled_servers()
+        self._server = self._server_list[0]
         
     def __fetch_data(self, url: str = '') -> QNetworkReply:
         q_url = QUrl(url)
@@ -64,19 +67,24 @@ class NetworkHandler(QObject):
             # (Über-)Schreibt dann die loakle JSON-Datei, wenn die Datei im Internet neuer ist
             # Sozusagen eigene Cache-Implementation             
             networkLastModifiedRawValue = self.__reply.rawHeader(bytearray('Last-Modified', "utf-8")).data().decode()
-            networkLastModified = email.utils.parsedate_to_datetime(networkLastModifiedRawValue).timestamp()
+            networkLastModified = datetime.datetime.strptime(networkLastModifiedRawValue, "%a, %d %b %Y %H:%M:%S GMT")
+            networkLastModified = networkLastModified.replace(tzinfo=datetime.timezone.utc).timestamp()
             self.successful = True
             self.done = True
             self.finished.emit(json_string, catalog_title, networkLastModified)
+            
+            total_server_list = config.ServerHosts.get_all_servers()
+            index = total_server_list.index(self._server)
+            print(f"Katalog '{catalog_name}' erfolgreich von Server {index + 1} geladen")
             return
         
-        server_list = config.ServerHosts.get_servers()
-        curr_server_index = server_list.index(self._server)
-        if curr_server_index == len(server_list) - 1:
+        curr_server_index = self._server_list.index(self._server)
+        if curr_server_index == len(self._server_list) - 1:
             self.error_occurred.emit("Netzwerkfehler beim Laden der URL's", catalog_title)
             self.done = True
+            print(f"Katalog '{catalog_name}' konnte nicht von einem Server geladen werden")
         else:
-            self._server = server_list[curr_server_index + 1]
+            self._server = self._server_list[curr_server_index + 1]
             if is_overview_response:
                 self.fetch_catalog_overview()
             else:
@@ -85,6 +93,7 @@ class NetworkHandler(QObject):
 class CatalogManager:
     overview = None
     catalogs = {}
+    properties: dict[config.InternalProperties, dict[str, bool]] = {}
     catalog_path = f'{config.PLUGIN_DIR}/catalogs/'
     
     catalog_network_handlers: dict[str, NetworkHandler] = {}
@@ -94,6 +103,7 @@ class CatalogManager:
     @classmethod
     def setup(cls, iface: QgisInterface) -> None:
         cls.iface = iface
+        cls.properties = cls.load_internal_properties()
     
     @classmethod
     def add_network_handler(cls, catalog_title: str) -> NetworkHandler:
@@ -189,11 +199,21 @@ class CatalogManager:
                 handler.fetch_catalog(catalog_info["name"], catalog_info["titel"])
     
         return None
+    
+    @classmethod
+    def get_current_catalog(cls, callback: Optional[callable] = None) -> Union[None, dict, list]:
+        qgs_settings = QgsSettings()
+        current_catalog = qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)
+        if current_catalog is None or "name" not in current_catalog:
+            return None
+        
+        return cls.get_catalog(current_catalog["titel"], current_catalog["name"], callback)
         
     @classmethod
     def add_catalog(cls, catalog: str, catalog_name: str, last_modified: float) -> None:
         catalog = json.loads(catalog)
         if type(catalog) == dict:
+            catalog = cls.set_internal_properties(catalog)
             cls.catalogs[catalog_name] = list(catalog.items())
         
         file_name = re.sub(r'\ ', '_', catalog_name.split(':')[0].lower())
@@ -232,6 +252,7 @@ class CatalogManager:
 
         services = cls.read_json(file_path)
         if not is_overview_response and type(services) == dict:
+            catalog = cls.set_internal_properties(services)
             services = list(services.items())
             cls.catalogs = cls.catalogs
             cls.catalogs[catalog_name] = services
@@ -256,18 +277,88 @@ class CatalogManager:
         cls.clear_network_handlers()
     
     @classmethod
-    def write_json(cls, data: str, file_path: pathlib.Path) -> None:        
+    def load_internal_properties(cls) -> dict[config.InternalProperties, dict[str, bool]]:
+        props = config.InternalProperties.get_properties()
+        properties = {}
+        
+        file_path = pathlib.Path(cls.catalog_path + "settings.json")
+        data = cls.read_json(file_path)
+        if isinstance(data, dict):
+            for prop in props:
+                properties[prop] = {}
+                if "properties" in data:
+                    properties[prop] = data["properties"].get(prop.value, {})
+        
+        return properties
+    
+    @classmethod
+    def update_internal_properties(cls, values: Union[list[tuple[str, bool]], dict[config.InternalProperties, dict[str, bool]]], property: Union[config.InternalProperties, None] = None) -> None:
+        if isinstance(values, list):
+            if property is None:
+                raise ValueError("No property given")
+            for path, state in values:
+                cls.properties[property][path] = state
+        else:
+            for property, value in values.items():
+                for path, state in value.items():
+                    cls.properties[property][path] = state
+                    
+        current_catalog = cls.get_current_catalog()
+        if current_catalog is None:
+            return
+        
+        current_catalog = dict(current_catalog)
+        current_catalog = cls.set_internal_properties(current_catalog)
+        
+        qgs_settings = QgsSettings()
+        metadata = qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)
+        cls.catalogs[metadata["name"]] = current_catalog
+        
+        cls.save_internal_properties()
+    
+    @classmethod
+    def set_internal_properties(cls, catalog: dict) -> dict:
+        def _apply_visibility_flag(data: dict, path_prefix: str = ""):
+            for key, value in data.items():
+                path = f"{path_prefix}/{key}" if path_prefix else key
+                # Default visible if not in map
+                visible = cls.properties[config.InternalProperties.VISIBILITY].get(path, True)
+                loadable = cls.properties[config.InternalProperties.LOADING].get(path, True)
+                
+                if isinstance(value, dict):
+                    if key != "themen" and key != "layers":
+                        data[key][config.InternalProperties.VISIBILITY] = visible
+                        data[key][config.InternalProperties.LOADING] = loadable  
+                        data[key][config.InternalProperties.PATH] = path
+                    _apply_visibility_flag(value, path)
+        
+        _apply_visibility_flag(catalog)
+        
+        return catalog
+    
+    @classmethod
+    def save_internal_properties(cls) -> None:
+        file_path = pathlib.Path(cls.catalog_path + "settings.json")
+        data = {
+            "properties": cls.properties
+        }
+        cls.write_json(data, file_path)
+
+    @classmethod
+    def write_json(cls, data: Union[dict, str], file_path: pathlib.Path) -> None:        
         file_path.parent.mkdir(mode=0o777, parents=True, exist_ok=True)
-        mode = "w" if os.path.exists(file_path) else "x"
+        mode = "w" if file_path.exists() else "x"
         
         with open(file_path, mode, encoding="utf-8", newline="\n") as file:
-            data = json.dumps(data)
+            data = json.dumps(data, indent=2)
             file.write(data)
 
     @classmethod
     def read_json(cls, file_path: pathlib.Path) -> Union[dict, list]:
+        if not file_path.exists():
+            return {}
+        
         services: Union[dict, list]
         with open(file_path, "r", encoding="utf-8") as file:
-            data = file.read()
-            services = json.loads(data)
+            services = json.load(file)
         return services
