@@ -277,8 +277,11 @@ class GeoBasis_Loader(QObject):
         if not attributes.get(config.InternalProperties.LOADING, True):
             return None
         
-        uri: str = attributes.get('uri', "n.n.")
         layerType = attributes.get('type', 'ogc_wms').lower()
+        if layerType == "web":
+            return None
+        
+        uri: str = attributes.get('uri', "n.n.")
         valid_epsg_codes: list[str] = attributes.get('valid_epsg', [])
        
         if crs not in valid_epsg_codes or crs is None:       
@@ -310,7 +313,7 @@ class GeoBasis_Loader(QObject):
             layer = QgsVectorLayer(uri, attributes['name'], 'wfs')
         elif layerType == "ogc_api_features":
             layer = QgsVectorLayer(uri, attributes['name'], 'oapif')
-        elif layerType == "ogc_vectorTiles":
+        elif layerType == "ogc_vectortiles":
             layer = QgsVectorTileLayer(uri, attributes['name'])
             layer.loadDefaultStyle()
         elif layerType == "ogc_wcs":
@@ -390,7 +393,21 @@ class GeoBasis_Loader(QObject):
             return
         
         if preferred_crs is None:
-            first_layer = next(iter(layers.values()))
+            # Get first non-web layer for crs information
+            layers_iter = iter(layers.values())
+            first_layer = next(layers_iter, None)
+            while True:
+                if first_layer is None:
+                    return
+                
+                layer_type = first_layer.get('type', 'ogc_wms')
+                
+                if layer_type == 'web':
+                    first_layer = next(layers_iter, None)
+                    continue
+                
+                break
+            
             supported_auth_ids = first_layer.get('valid_epsg', None)
             layer_name = first_layer.get('name', "Fehler")
             
@@ -415,7 +432,21 @@ class GeoBasis_Loader(QObject):
             preferred_crs = self.get_crs(supported_auth_ids, layer_name)
         else:
             temp_layers = layers[0]['layers']
-            first_layer = next(iter(temp_layers.values()))
+            # Get first non-web layer for crs information
+            layers_iter = iter(temp_layers.values())
+            first_layer = next(layers_iter, None)
+            while True:
+                if first_layer is None:
+                    return
+                
+                layer_type = first_layer.get('type', 'ogc_wms')
+                
+                if layer_type == 'web':
+                    first_layer = next(layers_iter, None)
+                    continue
+                
+                break
+            
             supported_auth_ids = first_layer.get('valid_epsg', None)
             layer_name = first_layer.get('name', "Fehler")
             
