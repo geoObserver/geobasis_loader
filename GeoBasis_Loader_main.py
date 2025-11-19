@@ -1,17 +1,21 @@
-import re, os
+import re
 from functools import partial
-from PyQt5.QtWidgets import QMenu, QAction
-from PyQt5.QtGui import QIcon, QColor
-from PyQt5.QtCore import QUrl, QObject
-# from PyQt5.QtWebKitWidgets import QWebView # type: ignore
-from .dialog import EpsgDialog
-from qgis.core import QgsSettings, QgsProject, QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer
-from qgis.utils import *
-from qgis._gui import QgisInterface
-from typing import Dict, Union
+from typing import Dict, Union, Optional
+from qgis.PyQt.QtWidgets import QMenu, QAction
+from qgis.PyQt.QtGui import QIcon, QColor, QColor, QDesktopServices
+from qgis.PyQt.QtCore import QUrl, QObject
+# from qgis.PyQt.QtWebKitWidgets import QWebView # type: ignore
+from qgis.core import QgsSettings, QgsProject, QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer, QgsLayerTree, QgsLayerTreeLayer, QgsSymbolLayer, QgsWkbTypes, Qgis
+from qgis.gui import QgisInterface
 from .topic_search import SearchFilter
 from . import config
+from . import ui as custom_ui
 from .catalog_manager import CatalogManager
+
+if Qgis.versionInt() < 33000:   # Breaking chnage in Version 3.30 -> Geometry types now in Qgis instead of QgsWkbTypes
+    geometry_types = QgsWkbTypes.Type
+else:
+    geometry_types = Qgis.WkbType
 
 class GeoBasis_Loader(QObject):
     services = None
@@ -26,7 +30,10 @@ class GeoBasis_Loader(QObject):
         CatalogManager.get_overview(callback=self.initGui)
         
         # ------- Dialog für die EPSG-Auswahl erstellen
-        self.epsg_dialog = EpsgDialog(parent=iface.mainWindow())
+        self.epsg_dialog = custom_ui.EpsgDialog(parent=iface.mainWindow())
+        
+        # ------- Dialog für die Einstellungen erstellen
+        self.settings_dialog = custom_ui.SettingsDialog(parent=iface.mainWindow())
 
         # ------- Letzten Katalog laden --------------------------------------------
         current_catalog = self.qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)
@@ -57,7 +64,7 @@ class GeoBasis_Loader(QObject):
             # ------- Menübaum bauen und einfügen ------------------------
             for state in self.services:
                 # Falls der zweite Eintrag kein Dictionary ist, überspringen, da es Metadata ist
-                if type(state[1]) != dict:
+                if type(state[1]) != dict or not state[1][config.InternalProperties.VISIBILITY]:
                     continue
                 menu = self.gui_for_one_topic(state[1]['themen'], state[0])
                 
@@ -94,32 +101,72 @@ class GeoBasis_Loader(QObject):
         action = QAction(text="Wenn möglich, Dienste autom. im KBS laden", parent=self.main_menu, checkable=True, checked=self.automatic_crs)
         action.toggled.connect(self.toggle_automatic_crs)
         self.main_menu.addAction(action)
+        
+        self.main_menu.addAction("Einstellungen (Aktueller Katalog)", self.open_settigs)
         self.main_menu.addSeparator()
         
         # ------- Spenden-Schaltfläche für #geoObserver ------------------------
-        self.main_menu.addAction("GeoBasis_Loader per Spende unterstützen ...", partial(self.open_web_site, 'https://geoobserver.de/support_geobasis_loader/'))
+        action = self.main_menu.addAction("GeoBasis_Loader per Spende unterstützen ...", self.open_web_site)
+        if action:
+            action.setData('https://geoobserver.de/support_geobasis_loader/')
         
         # ------- Über-Schaltfläche für #geoObserver ------------------------
-        self.main_menu.addAction("Über ...", partial(self.open_web_site, 'https://geoobserver.de/qgis-plugin-geobasis-loader/'))
+        action = self.main_menu.addAction("Über ...", self.open_web_site)
+        if action:
+            action.setData('https://geoobserver.de/qgis-plugin-geobasis-loader/')
 
         # ------- Status-Schaltfläche für #geoObserver ------------------------
-        # self.mainMenu.addAction("Status ...", partial(self.openWebSite, 'https://geoobserver.de/qgis-plugin-geobasis-loader/#statustabelle'))        
+        # self.mainMenu.addAction("Status ...", partial(self.openWebSite, 'https://geoobserver.de/qgis-plugin-geobasis-loader/#statustabelle'))
         
     def gui_for_one_topic(self, topic_dict: dict, topic_abbreviation: str) -> QMenu:
-        menu = QMenu(topic_abbreviation)
+        def _create_action(name: str, parent: QMenu, path: str, tip: str = "Thema hinzufügen", slot = self.add_topic) -> QAction:
+            action = QAction(name, parent)
+            action.setObjectName(name)
+            action.setStatusTip(tip)
+            action.setToolTip(tip)
+            action.setData(path)
+            action.triggered.connect(slot)
+            return action
+        
+        menu = QMenu(topic_abbreviation, self.main_menu)
         menu.setObjectName('loader-' + topic_abbreviation)
-        for baseLayer in topic_dict:
-            action = QAction(topic_dict[baseLayer]['name'], menu)
-            action.setObjectName(topic_dict[baseLayer]['name'])
-            action.setData({
-                "group_key": topic_abbreviation,
-                "topic_key": baseLayer
-            })
-            action.triggered.connect(self.add_topic)
-            menu.addAction(action)
-            if "seperator" in topic_dict[baseLayer]:
+        menu.setToolTipsVisible(True)
+        
+        for baseLayer in topic_dict.values():
+            if not baseLayer[config.InternalProperties.VISIBILITY]:
+                continue
+            
+            if baseLayer.get("type", "").lower() == "web":
+                action = _create_action(baseLayer["name"], menu, baseLayer["uri"], "Informationen öffnen", self.open_web_site)
+                menu.addAction(action)
+                continue
+            
+            if isinstance(baseLayer.get("layers", []), dict):
+                layergroup_menu = QMenu(baseLayer["name"], menu)
+                layergroup_menu.setToolTipsVisible(True)
+                
+                add_all_action = _create_action("Alle laden", layergroup_menu, baseLayer[config.InternalProperties.PATH], "Alle Themen der Gruppe laden")
+                layergroup_menu.addAction(add_all_action)
+                layergroup_menu.addSeparator()
+
+                for _, layer in baseLayer["layers"].items():
+                    if not layer[config.InternalProperties.VISIBILITY]:
+                        continue
+                    
+                    if layer.get("type", "").lower() == "web":
+                        sublayer_action = _create_action(layer["name"], layergroup_menu, layer["uri"], "Informationen öffnen", self.open_web_site)
+                    else:
+                        sublayer_action = _create_action(layer["name"], layergroup_menu, layer[config.InternalProperties.PATH])
+                    layergroup_menu.addAction(sublayer_action)
+
+                menu.addMenu(layergroup_menu)
+            else:        
+                action = _create_action(baseLayer['name'], menu, baseLayer[config.InternalProperties.PATH])            
+                menu.addAction(action)
+                
+            if "seperator" in baseLayer:
                 menu.addSeparator()
-        return menu     
+        return menu
     
 #===================================================================================
 
@@ -132,14 +179,30 @@ class GeoBasis_Loader(QObject):
 
 #=================================================================================== 
 
+    def open_settigs(self) -> None:
+        status = self.settings_dialog.exec_()
+        # Abbruch
+        if status == 0:
+            return
+        
+        self.automatic_crs = self.qgs_settings.value(config.AUTOMATIC_CRS_SETTINGS_KEY, False, bool)
+        
+        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, 'Einstellungen erfolgreich gespeichert', 3, 3)
+        self.initGui()
+
     def toggle_automatic_crs(self) -> None:
         new_state = not self.automatic_crs
         
         self.automatic_crs = new_state
         self.qgs_settings.setValue(config.AUTOMATIC_CRS_SETTINGS_KEY, new_state)
 
-    def open_web_site(self, url):
-        url = QUrl(url)
+    def open_web_site(self):
+        sender = self.sender()
+        if not sender or type(sender) != QAction:
+            return
+        
+        data = sender.data() # type: ignore
+        url = QUrl(data)
         
         # Opens webpage in the standard browser
         QDesktopServices.openUrl(url)
@@ -159,9 +222,9 @@ class GeoBasis_Loader(QObject):
         titel = current_catalog["titel"]
         name = current_catalog["name"]
         version = re.findall(r'v\d+', name)[0]
-        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, u'Lese '+ titel + ", Version " + version + ' ...', 3, 3)   
+        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, 'Lese '+ titel + ", Version " + version + ' ...', 3, 3)
         
-        self.services = services       
+        self.services = services
         self.initGui()
     
     # Get crs from user
@@ -179,16 +242,21 @@ class GeoBasis_Loader(QObject):
         
         return current_crs
     
-    def add_topic(self, catalog_title: Optional[str] = None, group_key: Optional[str] = None, topic_key: Optional[str] = None):
-        sender: QAction = self.sender()
-        if sender is not None:
-            data = sender.data()
-            catalog_title = self.qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)["titel"]
-            group_key = data["group_key"]
-            topic_key = data["topic_key"]
+    def add_topic(self, catalog_title: Optional[str] = None, path: str = ""):
+        if path == "":
+            sender = self.sender()
+            if not sender:
+                return
 
-        catalog = dict(CatalogManager.get_catalog(catalog_title))
-        topic = catalog[group_key]["themen"][topic_key]
+            path = sender.data() # type: ignore
+            if not isinstance(path, str):
+                raise TypeError("Path is unknown")
+            catalog_title = self.qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)["titel"]
+
+        catalog: dict = dict(CatalogManager.get_catalog(catalog_title)) # type: ignore
+        topic = catalog
+        for key in path.split("/"):
+            topic = topic[key]
         
         if "layers" not in topic:
             self.addLayer(topic, None)
@@ -197,6 +265,7 @@ class GeoBasis_Loader(QObject):
         layers = topic["layers"]
         if type(layers) == list:
             combination_layers = []
+            group_key = path.split("/")[0]
             for layer in layers:
                 sub_topic = catalog[group_key]["themen"][layer]
                 combination_layers.append(sub_topic)
@@ -204,10 +273,16 @@ class GeoBasis_Loader(QObject):
         else:
             self.addLayerGroup(None, layers, topic["name"])
     
-    def addLayer(self, attributes: Dict, crs: str, standalone: bool = True):
+    def addLayer(self, attributes: Dict, crs: Union[str, None], standalone: bool = True):
+        if not attributes.get(config.InternalProperties.LOADING, True):
+            return None
+        
+        layerType = attributes.get('type', 'ogc_wms').lower()
+        if layerType == "web":
+            return None
+        
         uri: str = attributes.get('uri', "n.n.")
-        layerType = attributes.get('type', 'ogc_wms')
-        valid_epsg_codes = attributes.get('valid_epsg', None)
+        valid_epsg_codes: list[str] = attributes.get('valid_epsg', [])
        
         if crs not in valid_epsg_codes or crs is None:       
             crs = self.get_crs(valid_epsg_codes, attributes.get('name', "Fehler"))
@@ -219,7 +294,7 @@ class GeoBasis_Loader(QObject):
         
         uri = re.sub(r'EPSG:placeholder', crs, uri)
 
-        if layerType != "ogc_wfs":
+        if layerType != "ogc_wfs" and layerType != "ogc_api_festures":
             uri += "&stepHeight=3000&stepWidth=3000"
         
         opacity = attributes.get('opacity', 1)
@@ -235,8 +310,10 @@ class GeoBasis_Loader(QObject):
             return
         
         if layerType == "ogc_wfs":
-            layer = QgsVectorLayer(uri, attributes['name'], 'WFS')
-        elif layerType == "ogc_vectorTiles":
+            layer = QgsVectorLayer(uri, attributes['name'], 'wfs')
+        elif layerType == "ogc_api_features":
+            layer = QgsVectorLayer(uri, attributes['name'], 'oapif')
+        elif layerType == "ogc_vectortiles":
             layer = QgsVectorTileLayer(uri, attributes['name'])
             layer.loadDefaultStyle()
         elif layerType == "ogc_wcs":
@@ -249,9 +326,9 @@ class GeoBasis_Loader(QObject):
             return
         
         if hasattr(layer, 'setOpacity'):
-            layer.setOpacity(opacity)             
+            layer.setOpacity(opacity)
             
-        if layerType == 'ogc_wfs':
+        if isinstance(layer, QgsVectorLayer):
             if maxScale is None:
                 maxScale = 1.0
             if minScale is None:
@@ -266,28 +343,71 @@ class GeoBasis_Loader(QObject):
                 layer.setMinimumScale(minScale)
                 layer.setMaximumScale(maxScale)
                 layer.setScaleBasedVisibility(True)
-                
-        if layerType == 'ogc_wfs':         
-            color = QColor(int(fillColor[0]), int(fillColor[1]), int(fillColor[2])) if type(fillColor) == list else QColor(fillColor)
-            layer.renderer().symbol().setColor(color)
-            color = QColor(int(strokeColor[0]), int(strokeColor[1]), int(strokeColor[2])) if type(strokeColor) == list else QColor(strokeColor)
-            layer.renderer().symbol().symbolLayer(0).setStrokeColor(color)
-            layer.renderer().symbol().symbolLayer(0).setStrokeWidth(strokeWidth)
+        
+        if isinstance(layer, QgsVectorLayer):
+            fill_color: QColor = QColor(*[int(c) for c in fillColor]) if type(fillColor) == list else QColor(fillColor)
+            strokeColor: QColor = QColor(*[int(c) for c in strokeColor]) if type(strokeColor) == list else QColor(strokeColor)
             
+            symbol_layer: QgsSymbolLayer = layer.renderer().symbol().symbolLayer(0)
+            symbol_layer.setColor(fill_color)
+            
+            geom_type = QgsWkbTypes.singleType(QgsWkbTypes.flatType(layer.wkbType()))
+            if geom_type == geometry_types.LineString:
+                symbol_layer.setWidth(strokeWidth)  
+            elif geom_type == geometry_types.Polygon:
+                symbol_layer.setStrokeColor(strokeColor)
+                symbol_layer.setStrokeWidth(strokeWidth)
+            elif geom_type == geometry_types.Point:
+                symbol_layer.setSize(strokeWidth)
+            else:
+                print("Fehler bei Bestimmung der Geometrieart; Bestimmte Geometrie " + QgsWkbTypes.displayString(geom_type))
+                        
             layer.triggerRepaint()
             self.iface.layerTreeView().refreshLayerSymbology(layer.id())
         
-        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, config.MY_INFO_1 + attributes['name'] + config.MY_INFO_2, 3, 1)
-        QgsProject.instance().addMapLayer(layer, standalone)
-        if not standalone:
-            return layer
+        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, config.MY_INFO_1 + attributes['name'] + config.MY_INFO_2, 3, 1) # type: ignore
+        # Ebene zum Projekt hinzufügen aber nicht zum Ebenenbaum
+        QgsProject.instance().addMapLayer(layer, False) # type: ignore
+        
+        ltl = QgsLayerTreeLayer(layer)
+        if not ltl:
+            return
+        
+        # Legende kollabieren
+        ltl.setExpanded(False)
+        # Sichtbarkeit einstellen
+        visibile = attributes.get(config.InternalProperties.VISIBILITY, True)
+        ltl.setItemVisibilityChecked(visibile)
+
+        if standalone:
+            # Ebene ganz oben zum Ebenenbaum hinzufügen, wenn Ebene in keiner Gruppe
+            root: QgsLayerTree = QgsProject.instance().layerTreeRoot()
+            root.insertChildNode(0, ltl)
+            
+        return ltl
     
     def addLayerGroup(self, preferred_crs: Union[str, None], layers: dict, name: str) -> None:
         layerTreeRoot = QgsProject.instance().layerTreeRoot()
         newLayerGroup = layerTreeRoot.insertGroup(0, name)
+        if newLayerGroup is None:
+            return
         
         if preferred_crs is None:
-            first_layer = next(iter(layers.values()))
+            # Get first non-web layer for crs information
+            layers_iter = iter(layers.values())
+            first_layer = next(layers_iter, None)
+            while True:
+                if first_layer is None:
+                    return
+                
+                layer_type = first_layer.get('type', 'ogc_wms')
+                
+                if layer_type == 'web':
+                    first_layer = next(layers_iter, None)
+                    continue
+                
+                break
+            
             supported_auth_ids = first_layer.get('valid_epsg', None)
             layer_name = first_layer.get('name', "Fehler")
             
@@ -296,8 +416,10 @@ class GeoBasis_Loader(QObject):
                 return
         
         for layerKey in layers:
-            subLayer = self.addLayer(layers[layerKey], preferred_crs, False)
-            newLayerGroup.addLayer(subLayer)
+            subLayer_ltl = self.addLayer(layers[layerKey], preferred_crs, False)
+            if subLayer_ltl is None:
+                continue
+            newLayerGroup.insertChildNode(0, subLayer_ltl)
             
     def addLayerCombination(self, layers) -> None:
         preferred_crs = None
@@ -310,7 +432,21 @@ class GeoBasis_Loader(QObject):
             preferred_crs = self.get_crs(supported_auth_ids, layer_name)
         else:
             temp_layers = layers[0]['layers']
-            first_layer = next(iter(temp_layers.values()))
+            # Get first non-web layer for crs information
+            layers_iter = iter(temp_layers.values())
+            first_layer = next(layers_iter, None)
+            while True:
+                if first_layer is None:
+                    return
+                
+                layer_type = first_layer.get('type', 'ogc_wms')
+                
+                if layer_type == 'web':
+                    first_layer = next(layers_iter, None)
+                    continue
+                
+                break
+            
             supported_auth_ids = first_layer.get('valid_epsg', None)
             layer_name = first_layer.get('name', "Fehler")
             
