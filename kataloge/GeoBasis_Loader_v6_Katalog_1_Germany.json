@@ -161,16 +161,16 @@
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=de_basemapde_web_raster_farbe&url=https://sgx.geodatenzentrum.de/wms_basemapde?"
       },
       "grau-wfs": {
-        "name": "DE: basemap.de grau (WFS)",
+        "name": "DE: basemap.de grau (WFS) - derzeit ohne exakte Symbolisierung",
         "type": "ogc_vectorTiles",
         "valid_epsg": ["EPSG:3857"],
-        "uri": "&type=xyz&styleUrl=https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/styles/bm_web_gry.json&zmin=0&zmax=15&url=https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/tiles/v2/bm_web_de_3857/{z}/{x}/{y}.pbf"
+        "uri": "&type=xyz&styleUrl=https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/tiles/v2/bm_web_de_3857/bm_web_de_3857.json&zmin=0&zmax=24&url=https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/tiles/v2/bm_web_de_3857/{z}/{x}/{y}.pbf"
       },
       "farbig-wfs": {
-        "name": "DE: basemap.de farbig (WFS)b",
+        "name": "DE: basemap.de farbig (WFS) - derzeit ohne exakte Symbolisierung",
         "type": "ogc_vectorTiles",
         "valid_epsg": ["EPSG:3857"],
-        "uri": "styleUrl=https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/styles/bm_web_col.json&type=xyz&url=https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/tiles/v2/bm_web_de_3857/{z}/{x}/{y}.pbf&zmax=24&zmin=0&http-header:referer=",
+        "uri": "styleUrl=https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/tiles/v2/bm_web_de_3857/bm_web_de_3857.json&type=xyz&url=https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/tiles/v2/bm_web_de_3857/{z}/{x}/{y}.pbf&zmax=24&zmin=0&http-header:referer=",
         "seperator": true
       },
       "TopPlusOpen_farbig": {
