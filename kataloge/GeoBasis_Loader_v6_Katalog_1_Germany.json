@@ -160,17 +160,11 @@
         "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:25833", "EPSG:32632", "EPSG:32633", "EPSG:4647", "EPSG:5650", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3857", "EPSG:900913", "EPSG:102100", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4839", "EPSG:3068", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:3035", "EPSG:3034", "EPSG:3044", "EPSG:3045", "EPSG:4647", "EPSG:5650"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=de_basemapde_web_raster_farbe&url=https://sgx.geodatenzentrum.de/wms_basemapde?"
       },
-      "grau-wfs": {
-        "name": "DE: basemap.de grau (WFS) - derzeit ohne exakte Symbolisierung",
-        "type": "ogc_vectorTiles",
-        "valid_epsg": ["EPSG:3857"],
-        "uri": "&type=xyz&styleUrl=https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/tiles/v2/bm_web_de_3857/bm_web_de_3857.json&zmin=0&zmax=24&url=https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/tiles/v2/bm_web_de_3857/{z}/{x}/{y}.pbf"
-      },
       "farbig-wfs": {
-        "name": "DE: basemap.de farbig (WFS) - derzeit ohne exakte Symbolisierung",
+        "name": "DE: basemap.de farbig (WFS)",
         "type": "ogc_vectorTiles",
         "valid_epsg": ["EPSG:3857"],
-        "uri": "styleUrl=https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/tiles/v2/bm_web_de_3857/bm_web_de_3857.json&type=xyz&url=https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/tiles/v2/bm_web_de_3857/{z}/{x}/{y}.pbf&zmax=24&zmin=0&http-header:referer=",
+        "uri": "styleUrl=https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/styles/bm_web_top.json&type=xyz&url=https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/tiles/v2/bm_web_de_3857/%7Bz%7D/%7Bx%7D/%7By%7D.pbf&zmax=24&zmin=0&http-header:referer=",
         "seperator": true
       },
       "TopPlusOpen_farbig": {
