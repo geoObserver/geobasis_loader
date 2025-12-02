@@ -1347,6 +1347,31 @@
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=by_alkis_parzellarkarte_farbe&styles&tilePixelRatio=0&url=https://geoservices.bayern.de/od/wms/alkis/v1/parzellarkarte",
         "seperator": true
       },
+      "VG_1": {
+        "name": "BY: Regierungsbezirke (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:5678", "EPSG:31468", "EPSG:4258", "EPSG:4326", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=by_alkis_regbez_komplett&styles&tilePixelRatio=0&url=https://geoservices.bayern.de/od/wms/alkis/v1/verwaltungsgrenzen"
+      },
+      "VG_2": {
+        "name": "BY: Landkreise (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:5678", "EPSG:31468", "EPSG:4258", "EPSG:4326", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=by_alkis_kreis_komplett&styles&tilePixelRatio=0&url=https://geoservices.bayern.de/od/wms/alkis/v1/verwaltungsgrenzen"
+      },
+      "VG_3": {
+        "name": "BY: Gemeinden (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:5678", "EPSG:31468", "EPSG:4258", "EPSG:4326", "EPSG:3857"],
+        "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=by_alkis_gmd_komplett&styles&tilePixelRatio=0&url=https://geoservices.bayern.de/od/wms/alkis/v1/verwaltungsgrenzen"
+      },
+      "VG_4": {
+        "name": "BY: Gemarkungen (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:5678", "EPSG:31468", "EPSG:4258", "EPSG:4326", "EPSG:3857"],
+        "uri": "ccontextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=by_alkis_gmkg_komplett&styles&tilePixelRatio=0&url=https://geoservices.bayern.de/od/wms/alkis/v1/verwaltungsgrenzen",
+        "seperator": true
+      },
       "webkarte_farbig": {
         "name": "BY: Webkarte farbig (WMTS)",
         "type": "ogc_wmts",
