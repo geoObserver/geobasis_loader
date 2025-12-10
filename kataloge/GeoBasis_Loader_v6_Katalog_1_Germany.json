@@ -3780,15 +3780,27 @@
       },
       "flurstuecke_wfs": {
         "name": "SH: ALKIS Flurstücke (WFS)",
-        "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='cp:CadastralParcel' url='https://service.gdi-sh.de/SH_INSPIREDOWNLOAD_AI_CP_ALKIS' url='https://service.gdi-sh.de/SH_INSPIREDOWNLOAD_AI_CP_ALKIS?version=2.0.0' version='auto'",
-        "seperator": true,
+        "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='ave:Flurstueck' url='https://dienste.gdi-sh.de/WFS_SH_ALKIS_VWG_OpenGBD' url='https://dienste.gdi-sh.de/WFS_SH_ALKIS_VWG_OpenGBD?version=2.0.0' version='auto'",
         "type": "ogc_wfs",
-        "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:900913"],
+        "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:31463", "EPSG:31464", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:900913"],
         "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "opacity": 0.75,
         "minScale": 25000.0,
         "maxScale": 1.0,
         "fillColor": "transparent"
+      },
+      "gebaeude_wfs": {
+        "name": "SH: ALKIS Gebäude (WFS)",
+        "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='ave:GebaeudeBauwerk' url='https://dienste.gdi-sh.de/WFS_SH_ALKIS_VWG_OpenGBD' url='https://dienste.gdi-sh.de/WFS_SH_ALKIS_VWG_OpenGBD?version=2.0.0' version='auto'",
+        "seperator": true,
+        "type": "ogc_wfs",
+        "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:31463", "EPSG:31464", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:900913"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "opacity": 0.75,
+        "minScale": 25000.0,
+        "maxScale": 1.0,
+        "fillColor": [220, 220, 220],
+        "strokeWidth": 0.1
       },
       "tk_farbig_layergroup": {
         "name": "SH: Topograf. Karten farbig (WMS)",
