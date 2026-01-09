@@ -1858,7 +1858,7 @@
             "opacity": 0.75
           },
           "HB_Flure": {
-            "name": "HB Flure (WMS)",
+            "name": "HB: Flure (WMS)",
             "type": "ogc_wms",
             "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["OGC:CRS84", "EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:31467", "EPSG:3857", "EPSG:3044", "EPSG:3034", "EPSG:3035"],
@@ -2660,6 +2660,92 @@
       "alkis_alles": {
         "name": "NW: \u25b6\ufe0e ALKIS Flurstücke, Gebäude, Nutzung (WMS)",
         "layers": ["nutzung_layergroup", "flurstuecke", "gebaeude"],
+        "seperator": true
+      },
+      "hb_kat_vg_layergroup": {
+        "name": "NW: Kataster/Verwaltunggrenzen (WMS)",
+        "layers": {
+          "NW_dvg4_text": {
+            "name": "NW: Regierungsbezirke Namen (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5649", "EPSG:5650", "EPSG:5651", "EPSG:5652", "EPSG:5653", "EPSG:25831", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=nw_dvg_rbz_namen&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/geobasis/wms_nw_dvg",
+            "opacity": 0.75
+          },
+          "NW_dvg4": {
+            "name": "NW: Regierungsbezirke (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5649", "EPSG:5650", "EPSG:5651", "EPSG:5652", "EPSG:5653", "EPSG:25831", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=nw_dvg_rbz&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/geobasis/wms_nw_dvg",
+            "opacity": 0.75
+          },
+          "NW_dvg3_text": {
+            "name": "NW: Kreise und kreisfreie Städte Namen (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5649", "EPSG:5650", "EPSG:5651", "EPSG:5652", "EPSG:5653", "EPSG:25831", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=nw_dvg_krs_namen&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/geobasis/wms_nw_dvg",
+            "opacity": 0.75
+          },
+          "NW_dvg3": {
+            "name": "NW: Kreise und kreisfreie Städte (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5649", "EPSG:5650", "EPSG:5651", "EPSG:5652", "EPSG:5653", "EPSG:25831", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=nw_dvg_krs&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/geobasis/wms_nw_dvg",
+            "opacity": 0.75
+          },
+          "NW_dvg2_text": {
+            "name": "NW: Kreisangehörige Kommunen Namen (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5649", "EPSG:5650", "EPSG:5651", "EPSG:5652", "EPSG:5653", "EPSG:25831", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=nw_dvg_gem_namen&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/geobasis/wms_nw_dvg",
+            "opacity": 0.75
+          },
+          "NW_dvg2": {
+            "name": "NW: Kreisangehörige Kommunen (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5649", "EPSG:5650", "EPSG:5651", "EPSG:5652", "EPSG:5653", "EPSG:25831", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=nw_dvg_gem&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/geobasis/wms_nw_dvg",
+            "opacity": 0.75
+          },
+          "NW_dvg1_text": {
+            "name": "NW: Kreisangehörige Kommunen und kreisfreie Städte Namen (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5649", "EPSG:5650", "EPSG:5651", "EPSG:5652", "EPSG:5653", "EPSG:25831", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=nw_dvg_gem_gesamt_namen&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/geobasis/wms_nw_dvg",
+            "opacity": 0.75
+          },
+          "NW_dvg1": {
+            "name": "NW: Kreisangehörige Kommunen und kreisfreie Städte (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5649", "EPSG:5650", "EPSG:5651", "EPSG:5652", "EPSG:5653", "EPSG:25831", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=nw_dvg_gem_gesamt&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/geobasis/wms_nw_dvg",
+            "opacity": 0.75
+          },
+          "NW_Gemarkungen": {
+            "name": "NW: Gemarkungen (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5649", "EPSG:5650", "EPSG:5651", "EPSG:5652", "EPSG:5653", "EPSG:25831", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=nw_gemarkungen_fluren_gemarkungen&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/geobasis/wms_nw_gemarkungen_fluren",
+            "opacity": 0.75
+          },
+          "NW_Flure": {
+            "name": "NW: Flure (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5649", "EPSG:5650", "EPSG:5651", "EPSG:5652", "EPSG:5653", "EPSG:25831", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=nw_gemarkungen_fluren_fluren&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/geobasis/wms_nw_gemarkungen_fluren",
+            "opacity": 0.75
+          }
+        },
         "seperator": true
       },
       "bodenrichtwerte": {
