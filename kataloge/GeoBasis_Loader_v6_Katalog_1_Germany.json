@@ -1783,9 +1783,9 @@
       "flurstuecke": {
         "name": "HB: ALKIS Flurstücke (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:31467", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3857", "OGC:CRS84"],
+        "valid_epsg": ["OGC:CRS84", "EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:31467", "EPSG:3857", "EPSG:3044", "EPSG:3034", "EPSG:3035"],
         "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
-        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Flurstuecke&styles=Flurstuecke&tilePixelRatio=1&url=https://geodienste.bremen.de/wms_flurstuecke"
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=flurstuecke&styles&tilePixelRatio=0&url=https://geodienste.bremen.de/wms_flurstuecke"
       },
       "flurstuecke2": {
         "name": "HB: ALKIS Flurstücke, Gebäude, Nutzung (WMS)",
@@ -1797,9 +1797,9 @@
       },
       "flustuecke_wfs": {
         "name": "HB: ALKIS Flurstücke (WFS)",
-        "uri": "IgnoreAxisOrientation='1' pageSize='0' pagingEnabled='disabled' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='app:Flurstuecke' url='https://geodienste.bremen.de/wfs_hduk2958loah3976niun' version='2.0.0'",
+        "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='app:flurstuecke' url='https://geodienste.bremen.de/wfs_hduk2958loah3976niun' url='https://geodienste.bremen.de/wfs_hduk2958loah3976niun?VERSION=1.1.0' version='auto'",
         "type": "ogc_wfs",
-        "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:31467", "EPSG:3857", "EPSG:3044", "EPSG:3034", "EPSG:3035"],
+        "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:31467", "EPSG:3857", "EPSG:3044", "EPSG:3034", "EPSG:3035"],
         "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "opacity": 0.75,
         "minScale": 25000.0,
