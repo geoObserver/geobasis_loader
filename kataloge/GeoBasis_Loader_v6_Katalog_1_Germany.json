@@ -1865,6 +1865,59 @@
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=flure_bremen&styles&tilePixelRatio=0&url=https://geodienste.bremen.de/wms_katasterbezirk",
             "opacity": 0.75
           }
+        }
+      },
+      "bhv_kat_vg_layergroup": {
+        "name": "BHV: Kataster/Verwaltunggrenzen (WMS)",
+        "layers": {
+          "BHV_Landesflaeche": {
+            "name": "BHV: Landesfläche (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["OGC:CRS84", "EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:31467", "EPSG:3857", "EPSG:3044", "EPSG:3034", "EPSG:3035"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Landesflaeche_Bremerhaven&styles&tilePixelRatio=0&url=https://geodienste.bremen.de/wms_verwaltungsgrenzen",
+            "opacity": 0.75
+          },
+          "BHV_Stadtbezirke": {
+            "name": "BHV: Stadtbezirke (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["OGC:CRS84", "EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:31467", "EPSG:3857", "EPSG:3044", "EPSG:3034", "EPSG:3035"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Stadtbezirke_Bremerhaven&styles&tilePixelRatio=0&url=https://geodienste.bremen.de/wms_verwaltungsgrenzen",
+            "opacity": 0.75
+          },
+          "BHV_Stadtteile": {
+            "name": "BHV: Stadtteile (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["OGC:CRS84", "EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:31467", "EPSG:3857", "EPSG:3044", "EPSG:3034", "EPSG:3035"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Stadtteile_Bremerhaven&styles&tilePixelRatio=0&url=https://geodienste.bremen.de/wms_verwaltungsgrenzen",
+            "opacity": 0.75
+          },
+          "BHV_Ortsteile": {
+            "name": "BHV: Ortsteile (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["OGC:CRS84", "EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:31467", "EPSG:3857", "EPSG:3044", "EPSG:3034", "EPSG:3035"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Ortsteile_Bremerhaven&styles&tilePixelRatio=0&url=https://geodienste.bremen.de/wms_verwaltungsgrenzen",
+            "opacity": 0.75
+          },
+          "BHV_Gemarkungen": {
+            "name": "BHV: Gemarkungen (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["OGC:CRS84", "EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:31467", "EPSG:3857", "EPSG:3044", "EPSG:3034", "EPSG:3035"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gemarkungen_bremerhaven&styles&tilePixelRatio=0&url=https://geodienste.bremen.de/wms_katasterbezirk",
+            "opacity": 0.75
+          },
+          "BHV_Flure": {
+            "name": "BHV Flure (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["OGC:CRS84", "EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:31467", "EPSG:3857", "EPSG:3044", "EPSG:3034", "EPSG:3035"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=flure_bremerhaven&styles&tilePixelRatio=0&url=https://geodienste.bremen.de/wms_katasterbezirk",
+            "opacity": 0.75
+          }
         },
         "seperator": true
       },
