@@ -1239,6 +1239,60 @@
         "fillColor": [220, 220, 220],
         "strokeWidth": 0.1
       },
+      "BW_kat_vg_layergroup": {
+        "name": "BW: Kataster/Verwaltunggrenzen (WMS)",
+        "layers": {
+          "BW_Regierungsbezirke": {
+            "name": "BW: Regierungsbezirke (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:4326", "EPSG:4258", "EPSG:3857", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:25832", "EPSG:25833"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ALKIS_VGr_KatGr_E&layers=nora:v_al_regierungsbezirk_vertrieb&layers=nora:v_al_regierungsbezirk_label&styles=&styles=",
+            "opacity": 0.75
+          },
+          "BW_Regionen": {
+            "name": "BW: Regionen (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:4326", "EPSG:4258", "EPSG:3857", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:25832", "EPSG:25833"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ALKIS_VGr_KatGr_E&layers=nora:v_al_region_vertrieb&layers=nora:v_al_region_label&styles=&styles=",
+            "opacity": 0.75
+          },
+          "BW_StadtUndLandkreise": {
+            "name": "BW: Stadt- und Landkreise (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:4326", "EPSG:4258", "EPSG:3857", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:25832", "EPSG:25833"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ALKIS_VGr_KatGr_E&layers=nora:v_al_kreis_vertrieb&layers=nora:v_al_kreis_label&styles=&styles=",
+            "opacity": 0.75
+          },
+          "BW_Gemeindegrenzen": {
+            "name": "BW: Gemeindegrenzen (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:4326", "EPSG:4258", "EPSG:3857", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:25832", "EPSG:25833"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ALKIS_VGr_KatGr_E&layers=nora:v_al_gemeinde_vertrieb&layers=nora:v_al_gemeinde_label&styles=&styles=",
+            "opacity": 0.75
+          },
+          "BW_Gemarkungsgrenzen": {
+            "name": "BW: Gemarkungsgrenzen (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:4326", "EPSG:4258", "EPSG:3857", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:25832", "EPSG:25833"],
+            "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ALKIS_VGr_KatGr_E&layers=nora:v_al_gemarkung_label&layers=nora:v_al_gemarkung_vertrieb&styles=&styles=",
+            "opacity": 0.75
+          },
+          "BW_Flurgrenzen": {
+            "name": "BW: Flurgrenzen(WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:4326", "EPSG:4258", "EPSG:3857", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:25832", "EPSG:25833"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ALKIS_VGr_KatGr_E&layers=nora:v_al_flur_label&layers=nora:v_al_flur_vertrieb&styles=&styles=",
+            "opacity": 0.75
+          }
+        },
+        "seperator": true
+      },
       "tk_farbig_layergroup": {
         "name": "BW: Topograf. Karten farbig (WMS)",
         "layers": {
