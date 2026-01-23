@@ -79,5 +79,28 @@
         "seperator": true
       }
     }
+  },
+  "RLP:": {
+    "menu": "Reinland-Pfalz",
+    "themen": {
+      "1": {
+        "name": "RP: Kartenaufnahme der Rheinlande durch Tranchot und von Müffling (1803 - 1820)(WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:4326", "EPSG:25832", "EPSG:3857", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:4647", "EPSG:25831"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&format=image/png&layers=rp_hktm&styles=&url=http://www.geoportal.rlp.de/mapbender/php/mod_showMetadata.php/../wms.php?layer_id%3D49370%26PHPSESSID%3Deb191d409bd6163b78cdf44b2462088e%26VERSION%3D1.1.1"
+      },
+      "2": {
+        "name": "RP: Preußische Kartenaufnahme (1843-1878) Uraufnahme-Urmesstischblätter (1843-1879) (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:4326", "EPSG:25832", "EPSG:3857", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:4647", "EPSG:25831"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&format=image/png&layers=rp_hkpk&styles=&url=http://www.geoportal.rlp.de/mapbender/php/mod_showMetadata.php/../wms.php?layer_id%3D49367%26PHPSESSID%3Deb191d409bd6163b78cdf44b2462088e%26VERSION%3D1.1.1%26withChilds%3D1"
+      },
+      "3": {
+        "name": "RP: Topopgraphische Aufnahme der Pfalz (1836-1841) (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:4326", "EPSG:25832", "EPSG:3857", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:4647", "EPSG:25831"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=rp_hkpb&styles&url=https://geo4.service24.rlp.de/wms/hkpb.fcgi"
+      }
+    }
   }
 }
