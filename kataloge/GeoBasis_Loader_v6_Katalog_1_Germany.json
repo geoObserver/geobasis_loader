@@ -2475,6 +2475,67 @@
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&layers=ALKIS&styles=Farbe&url=https://opendata.lgln.niedersachsen.de/doorman/noauth/alkis_wms",
         "seperator": true
       },
+      "ni_kat_vg_layergroup": {
+        "name": "NI: Kataster/Verwaltunggrenzen (WMS)",
+        "layers": {
+          "NI_Landesgrenze": {
+            "name": "NI: Landesgrenze (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:3035", "EPSG:3034", "EPSG:3044", "EPSG:3045", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:32632", "EPSG:32633", "EPSG:4647"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=ni_landesgrenze_umring&styles&tilePixelRatio=0&url=https://opendata.lgln.niedersachsen.de/doorman/noauth/verwaltungsgrenzen_wms",
+            "opacity": 0.75
+          },
+          "NI_Katasterbereiche": {
+            "name": "NI: Katasterbereiche (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:3035", "EPSG:3034", "EPSG:3044", "EPSG:3045", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:32632", "EPSG:32633", "EPSG:4647"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://opendata.lgln.niedersachsen.de/doorman/noauth/verwaltungsgrenzen_wms&layers=ni_kataster_umringe&layers=ni_kataster_bezeichnungen&styles=&styles=",
+            "opacity": 0.75
+          },
+          "NI_Landkreise": {
+            "name": "NI: Landkreise (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:3035", "EPSG:3034", "EPSG:3044", "EPSG:3045", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:32632", "EPSG:32633", "EPSG:4647"],
+            "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://opendata.lgln.niedersachsen.de/doorman/noauth/verwaltungsgrenzen_wms&layers=ni_landkreise_umringe&layers=ni_landkreise_bezeichnungen&styles=&styles=",
+            "opacity": 0.75
+          },
+          "NI_Samtgemeinden": {
+            "name": "NI: Samtgemeinden (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:3035", "EPSG:3034", "EPSG:3044", "EPSG:3045", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:32632", "EPSG:32633", "EPSG:4647"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://opendata.lgln.niedersachsen.de/doorman/noauth/verwaltungsgrenzen_wms&layers=ni_samtgemeinden_umringe&layers=ni_samtgemeinden_bezeichnungen&styles=&styles=",
+            "opacity": 0.75
+          },
+          "NI_Gemeinden": {
+            "name": "NI: Gemeinden (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:3035", "EPSG:3034", "EPSG:3044", "EPSG:3045", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:32632", "EPSG:32633", "EPSG:4647"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://opendata.lgln.niedersachsen.de/doorman/noauth/verwaltungsgrenzen_wms&layers=ni_gemeinden_umringe&layers=ni_gemeinden_bezeichnungen&styles=&styles=",
+            "opacity": 0.75
+          },
+          "NI_Gemarkungen": {
+            "name": "NI: Gemarkungen (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:3035", "EPSG:3034", "EPSG:3044", "EPSG:3045", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:32632", "EPSG:32633", "EPSG:4647"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://opendata.lgln.niedersachsen.de/doorman/noauth/verwaltungsgrenzen_wms&layers=ni_gemarkungen_umringe&layers=ni_gemarkungen_bezeichnungen&styles=&styles=",
+            "opacity": 0.75
+          },
+          "NI_Flure": {
+            "name": "NI: Flure (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:3035", "EPSG:3034", "EPSG:3044", "EPSG:3045", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:32632", "EPSG:32633", "EPSG:4647"],
+            "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://opendata.lgln.niedersachsen.de/doorman/noauth/verwaltungsgrenzen_wms&layers=ni_fluren_umringe&layers=ni_fluren_bezeichnung&styles=&styles=",
+            "opacity": 0.75
+          }
+        }
+      },
       "bodenrichtwerte": {
         "name": "NI: Bodenrichtwerte Bauland 2024 (WMS)",
         "type": "ogc_wms",
