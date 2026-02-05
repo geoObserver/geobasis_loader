@@ -1240,7 +1240,7 @@
         "strokeWidth": 0.1
       },
       "BW_kat_vg_layergroup": {
-        "name": "BW: Kataster/Verwaltunggrenzen (WMS)",
+        "name": "BW: Kataster/Verwaltungsgrenzen (WMS)",
         "layers": {
           "BW_Regierungsbezirke": {
             "name": "BW: Regierungsbezirke (WMS)",
@@ -1283,7 +1283,7 @@
             "opacity": 0.75
           },
           "BW_Flurgrenzen": {
-            "name": "BW: Flurgrenzen(WMS)",
+            "name": "BW: Flurgrenzen (WMS)",
             "type": "ogc_wms",
             "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:4326", "EPSG:4258", "EPSG:3857", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:25832", "EPSG:25833"],
@@ -1653,13 +1653,13 @@
         "name": "BB: Digitale Verwaltungsgrenzen (WMS)",
         "layers": {
           "vgn": {
-            "name": "BB: Namen Verwaltunggrenzen (WMS)",
+            "name": "BB: Namen Verwaltungsgrenzen (WMS)",
             "type": "ogc_wms",
             "valid_epsg": ["EPSG:4326", "EPSG:35833", "EPSG:31468", "EPSG:31469", "EPSG:25832", "EPSG:25833", "EPSG:325833", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4258", "EPSG:3857"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=nvgrz&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/ows/vg_wms"
           },
           "vg": {
-            "name": "BB: Verwaltunggrenzen (WMS)",
+            "name": "BB: Verwaltungsgrenzen (WMS)",
             "type": "ogc_wms",
             "valid_epsg": ["EPSG:4326", "EPSG:35833", "EPSG:31468", "EPSG:31469", "EPSG:25832", "EPSG:25833", "EPSG:325833", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4258", "EPSG:3857"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=vgrz&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/ows/vg_wms"
@@ -1869,7 +1869,7 @@
         "seperator": true
       },
       "hb_kat_vg_layergroup": {
-        "name": "HB: Kataster/Verwaltunggrenzen (WMS)",
+        "name": "HB: Kataster/Verwaltungsgrenzen (WMS)",
         "layers": {
           "HB_Landesflaeche": {
             "name": "HB: Landesfläche (WMS)",
@@ -1922,7 +1922,7 @@
         }
       },
       "bhv_kat_vg_layergroup": {
-        "name": "BHV: Kataster/Verwaltunggrenzen (WMS)",
+        "name": "BHV: Kataster/Verwaltungsgrenzen (WMS)",
         "layers": {
           "BHV_Landesflaeche": {
             "name": "BHV: Landesfläche (WMS)",
@@ -2476,7 +2476,7 @@
         "seperator": true
       },
       "ni_kat_vg_layergroup": {
-        "name": "NI: Kataster/Verwaltunggrenzen (WMS)",
+        "name": "NI: Kataster/Verwaltungsgrenzen (WMS)",
         "layers": {
           "NI_Landesgrenze": {
             "name": "NI: Landesgrenze (WMS)",
@@ -2778,7 +2778,7 @@
         "seperator": true
       },
       "hb_kat_vg_layergroup": {
-        "name": "NW: Kataster/Verwaltunggrenzen (WMS)",
+        "name": "NW: Kataster/Verwaltungsgrenzen (WMS)",
         "layers": {
           "NW_dvg4_text": {
             "name": "NW: Regierungsbezirke Namen (WMS)",
@@ -3394,6 +3394,60 @@
         "maxScale": 1.0,
         "fillColor": [220, 220, 220],
         "strokeWidth": 0.1
+      },
+      "SN_kat_vg_layergroup": {
+        "name": "SN: Kataster/Verwaltungsgrenzen (WMS)",
+        "layers": {
+          "SN_Landesgrenze": {
+            "name": "SN: Landesgrenze (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:2180", "EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3398", "EPSG:3399", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5514", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:900913"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://geodienste.sachsen.de/wms_geosn_verwaltungseinheiten/guest&layers=Landesgrenze_Beschriftung&layers=Landesgrenze&styles=&styles=",
+            "opacity": 0.75
+          },
+          "SN_Landkreise_und_kreisfreie_Staedte": {
+            "name": "SN: Landkreise und kreisfreie_Städte (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:2180", "EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3398", "EPSG:3399", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5514", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:900913"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://geodienste.sachsen.de/wms_geosn_verwaltungseinheiten/guest&layers=Landkreis_Kreisfreie_Stadt_Beschriftung&layers=Landkreis_Kreisfreie_Stadt&styles=&styles=",
+            "opacity": 0.75
+          },
+          "SN_Gemeindegrenzen": {
+            "name": "SN: Gemeindegrenzen (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:2180", "EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3398", "EPSG:3399", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5514", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:900913"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://geodienste.sachsen.de/wms_geosn_verwaltungseinheiten/guest&layers=Gemeinde&layers=Gemeinde_Beschriftung&styles=&styles=",
+            "opacity": 0.75
+          },
+          "SN_Ortsteile": {
+            "name": "SN: Ortsteile (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:2180", "EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3398", "EPSG:3399", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5514", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:900913"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=ortsteile&styles&tilePixelRatio=0&url=https://geodienste.sachsen.de/wms_geosn_ortsteile/guest",
+            "opacity": 0.75
+          },
+          "SN_Gemarkungsgrenzen": {
+            "name": "SN: Gemarkungsgrenzen (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:2180", "EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3398", "EPSG:3399", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5514", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:900913"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://geodienste.sachsen.de/wms_geosn_flurstuecke/guest&layers=Gemarkung&layers=Gemarkungsname&styles=&styles=",
+            "opacity": 0.75
+          },
+          "SN_Adressen": {
+            "name": "SN: Adressen (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:2180", "EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3398", "EPSG:3399", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5514", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:900913"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=AD.Address&styles&tilePixelRatio=0&url=https://geodienste.sachsen.de/iwms_geosn_adressen/guest?VERSION%3D1.3.0",
+            "opacity": 0.75
+          }
+        },
+        "seperator": true
       },
       "dtk farbe": {
         "name": "SN: Topograf. Karten farbig (WMS)",
