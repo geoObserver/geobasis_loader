@@ -61,7 +61,7 @@
       }
     }
   },
-  "ST:": {
+    "ST:": {
     "menu": "Sachsen-Anhalt",
     "themen": {
       "dop100_2009": {
@@ -80,6 +80,40 @@
       }
     }
   },
+  "BY:": {
+    "menu": "Bayern",
+    "themen": {
+      "dop2024 Süd": {
+        "name": "BY: DOP 2024 Süd (WMS)",
+        "type": "ogc_wms",
+        "keywords": ["DOP", "Orthophoto", "Orthophotox", "Luftbilder"],
+        "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2024_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
+      },
+      "dop2023 Nord": {
+        "name": "BY: DOP 2023 Nord (WMS)",
+        "type": "ogc_wms",
+        "keywords": ["DOP", "Orthophoto", "Orthophotox", "Luftbilder"],
+        "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2023_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
+      },
+      "dop2022 Süd": {
+        "name": "BY: DOP 2022 Süd (WMS)",
+        "type": "ogc_wms",
+        "keywords": ["DOP", "Orthophoto", "Orthophotox", "Luftbilder"],
+        "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
+        "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2022_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
+      },
+      "dop2021 Nord": {
+        "name": "BY: DOP 2021 Nord (WMS)",
+        "type": "ogc_wms",
+        "keywords": ["DOP", "Orthophoto", "Orthophotox", "Luftbilder"],
+        "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:25832&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2021_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
+      }
+    }
+  },
+  
   "RLP:": {
     "menu": "Rheinland-Pfalz",
     "themen": {
