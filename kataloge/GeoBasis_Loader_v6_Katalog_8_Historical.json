@@ -86,34 +86,61 @@
       "dop2024 Süd": {
         "name": "BY: DOP 2024 Süd (WMS)",
         "type": "ogc_wms",
-        "keywords": ["DOP", "Orthophoto", "Orthophotox", "Luftbilder"],
+        "keywords": ["DOP", "Orthophoto", "Orthophotos", "Luftbilder"],
         "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2024_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
       },
       "dop2023 Nord": {
         "name": "BY: DOP 2023 Nord (WMS)",
         "type": "ogc_wms",
-        "keywords": ["DOP", "Orthophoto", "Orthophotox", "Luftbilder"],
+        "keywords": ["DOP", "Orthophoto", "Orthophotos", "Luftbilder"],
         "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2023_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
       },
       "dop2022 Süd": {
         "name": "BY: DOP 2022 Süd (WMS)",
         "type": "ogc_wms",
-        "keywords": ["DOP", "Orthophoto", "Orthophotox", "Luftbilder"],
+        "keywords": ["DOP", "Orthophoto", "Orthophotos", "Luftbilder"],
         "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
         "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2022_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
       },
       "dop2021 Nord": {
         "name": "BY: DOP 2021 Nord (WMS)",
         "type": "ogc_wms",
-        "keywords": ["DOP", "Orthophoto", "Orthophotox", "Luftbilder"],
+        "keywords": ["DOP", "Orthophoto", "Orthophotos", "Luftbilder"],
         "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
         "uri": "contextualWMSLegend=0&crs=EPSG:25832&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2021_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
+      },
+      "dop2020 Süd": {
+        "name": "BY: DOP 2020 Süd (WMS)",
+        "type": "ogc_wms",
+        "keywords": ["DOP", "Orthophoto", "Orthophotos", "Luftbilder"],
+        "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2020_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
+      },
+      "dop2019 Nord": {
+        "name": "BY: DOP 2019 Nord (WMS)",
+        "type": "ogc_wms",
+        "keywords": ["DOP", "Orthophoto", "Orthophotos", "Luftbilder"],
+        "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2019_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
+      },
+      "dop2018 Süd": {
+        "name": "BY: DOP 2018 Süd (WMS)",
+        "type": "ogc_wms",
+        "keywords": ["DOP", "Orthophoto", "Orthophotos", "Luftbilder"],
+        "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2018_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
+      },
+      "dop2017 Nord": {
+        "name": "BY: DOP 2017 Nord (WMS)",
+        "type": "ogc_wms",
+        "keywords": ["DOP", "Orthophoto", "Orthophotos", "Luftbilder"],
+        "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2017_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
       }
     }
   },
-  
   "RLP:": {
     "menu": "Rheinland-Pfalz",
     "themen": {
