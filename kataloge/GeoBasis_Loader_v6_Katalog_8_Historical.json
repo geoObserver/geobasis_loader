@@ -83,61 +83,159 @@
   "BY:": {
     "menu": "Bayern",
     "themen": {
-      "dop2024 Süd": {
+      "dop2024_Süd": {
         "name": "BY: DOP 2024 Süd (WMS)",
         "type": "ogc_wms",
         "keywords": ["DOP", "Orthophoto", "Orthophotos", "Luftbilder"],
         "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2024_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
       },
-      "dop2023 Nord": {
+      "dop2023_Nord": {
         "name": "BY: DOP 2023 Nord (WMS)",
         "type": "ogc_wms",
         "keywords": ["DOP", "Orthophoto", "Orthophotos", "Luftbilder"],
         "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2023_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
       },
-      "dop2022 Süd": {
+      "dop2022_Süd": {
         "name": "BY: DOP 2022 Süd (WMS)",
         "type": "ogc_wms",
         "keywords": ["DOP", "Orthophoto", "Orthophotos", "Luftbilder"],
         "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
         "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2022_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
       },
-      "dop2021 Nord": {
+      "dop2021_Nord": {
         "name": "BY: DOP 2021 Nord (WMS)",
         "type": "ogc_wms",
         "keywords": ["DOP", "Orthophoto", "Orthophotos", "Luftbilder"],
         "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
         "uri": "contextualWMSLegend=0&crs=EPSG:25832&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2021_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
       },
-      "dop2020 Süd": {
+      "dop2020_Süd": {
         "name": "BY: DOP 2020 Süd (WMS)",
         "type": "ogc_wms",
         "keywords": ["DOP", "Orthophoto", "Orthophotos", "Luftbilder"],
         "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2020_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
       },
-      "dop2019 Nord": {
+      "dop2019_Nord": {
         "name": "BY: DOP 2019 Nord (WMS)",
         "type": "ogc_wms",
         "keywords": ["DOP", "Orthophoto", "Orthophotos", "Luftbilder"],
         "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2019_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
       },
-      "dop2018 Süd": {
+      "dop2018_Süd": {
         "name": "BY: DOP 2018 Süd (WMS)",
         "type": "ogc_wms",
         "keywords": ["DOP", "Orthophoto", "Orthophotos", "Luftbilder"],
         "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2018_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
       },
-      "dop2017 Nord": {
+      "dop2017_Nord": {
         "name": "BY: DOP 2017 Nord (WMS)",
         "type": "ogc_wms",
         "keywords": ["DOP", "Orthophoto", "Orthophotos", "Luftbilder"],
         "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2017_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
+      },
+      "dop2016_Niederbayern_Oberpfalz": {
+        "name": "BY: DOP 2016 Niederbayern/Oberpfalz (WMS)",
+        "type": "ogc_wms",
+        "keywords": ["DOP", "Orthophoto", "Orthophotos", "Luftbilder"],
+        "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2016_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
+      },
+      "dop2015_Oberbayern_Schwaben": {
+        "name": "BY: DOP 2015 Oberbayern/Schwaben (WMS)",
+        "type": "ogc_wms",
+        "keywords": ["DOP", "Orthophoto", "Orthophotos", "Luftbilder"],
+        "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2015_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
+      },
+      "dop2014_Franken": {
+        "name": "BY: DOP 2014 Franken (WMS)",
+        "type": "ogc_wms",
+        "keywords": ["DOP", "Orthophoto", "Orthophotos", "Luftbilder"],
+        "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2014_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
+      },
+      "dop2013_Niederbayern_Oberpfalz": {
+        "name": "BY: DOP 2013 Niederbayern/Oberpfalz (WMS)",
+        "type": "ogc_wms",
+        "keywords": ["DOP", "Orthophoto", "Orthophotos", "Luftbilder"],
+        "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2013_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
+      },
+      "dop2012_Oberbayern_Schwaben": {
+        "name": "BY: DOP 2012 Oberbayern/Schwaben (WMS)",
+        "type": "ogc_wms",
+        "keywords": ["DOP", "Orthophoto", "Orthophotos", "Luftbilder"],
+        "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2012_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
+      },  
+      "dop2011_Franken": {
+        "name": "BY: DOP 2011 Franken (WMS)",
+        "type": "ogc_wms",
+        "keywords": ["DOP", "Orthophoto", "Orthophotos", "Luftbilder"],
+        "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2011_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
+      },  
+      "dop2010_Niederbayern_Oberpfalz": {
+        "name": "BY: DOP 2010 Niederbayern/Oberpfalz (WMS)",
+        "type": "ogc_wms",
+        "keywords": ["DOP", "Orthophoto", "Orthophotos", "Luftbilder"],
+        "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2010_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
+      },  
+      "dop2009_Oberbayern_Schwaben_TeilFranken": {
+        "name": "BY: DOP 2009 Oberbayern/Schwaben/Teil Franken (WMS)",
+        "type": "ogc_wms",
+        "keywords": ["DOP", "Orthophoto", "Orthophotos", "Luftbilder"],
+        "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2009_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
+      },  
+      "dop2008_Teil_Franken": {
+        "name": "BY: DOP 2008 Teil Franken (WMS)",
+        "type": "ogc_wms",
+        "keywords": ["DOP", "Orthophoto", "Orthophotos", "Luftbilder"],
+        "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2008_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
+      },  
+      "dop2007_Niederbayern_Oberpfalz": {
+        "name": "BY: DOP 2007 Niederbayern/Oberpfalz (WMS)",
+        "type": "ogc_wms",
+        "keywords": ["DOP", "Orthophoto", "Orthophotos", "Luftbilder"],
+        "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2007_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
+      },  
+      "dop2006_Oberbayern_Schwaben": {
+        "name": "BY: DOP 2006 Oberbayern/Schwaben (WMS)",
+        "type": "ogc_wms",
+        "keywords": ["DOP", "Orthophoto", "Orthophotos", "Luftbilder"],
+        "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2006_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
+      },  
+      "dop2005_Franken": {
+        "name": "BY: DOP 2005 Franken (WMS)",
+        "type": "ogc_wms",
+        "keywords": ["DOP", "Orthophoto", "Orthophotos", "Luftbilder"],
+        "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2005_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
+      },  
+      "dop2004_Niederbayern_Oberpfalz": {
+        "name": "BY: DOP 2004 Niederbayern/Oberpfalz (WMS)",
+        "type": "ogc_wms",
+        "keywords": ["DOP", "Orthophoto", "Orthophotos", "Luftbilder"],
+        "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2004_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
+      },  
+      "dop2003_Oberbayern_Schwaben": {
+        "name": "BY: DOP 2003 Oberbayern/Schwaben (WMS)",
+        "type": "ogc_wms",
+        "keywords": ["DOP", "Orthophoto", "Orthophotos", "Luftbilder"],
+        "valid_epsg": ["EPSG:25832", "EPSG:31468", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:5678"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2003_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
       }
     }
   },
