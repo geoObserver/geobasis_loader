@@ -2245,6 +2245,131 @@
         "fillColor": [220, 220, 220],
         "strokeWidth": 0.1
       },
+      "HE_kat_vg_layergroup": {
+        "name": "HE: Kataster/Verwaltungsgrenzen (WMS)",
+        "layers": {
+          "HE_Landesgrenze": {
+            "name": "HE: Landesgrenze (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=landHE&styles&tilePixelRatio=0&url=https://basisdienste.geoportal.hessen.de/ogc/borders",
+            "opacity": 0.75
+          },
+          "HE_Regierungsbezirke": {
+            "name": "HE: Regierungsbezirke (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=regierungsbezirkeHE&styles&tilePixelRatio=0&url=https://basisdienste.geoportal.hessen.de/ogc/borders",
+            "opacity": 0.75
+          },
+          "HE_Landkreise": {
+            "name": "HE: Landkreise (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=landkreiseHE&styles&tilePixelRatio=0&url=https://basisdienste.geoportal.hessen.de/ogc/borders",
+            "opacity": 0.75
+          },
+          "HE_Gemeindegrenzen": {
+            "name": "HE: Gemeinden (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gemeindenHE&styles&tilePixelRatio=0&url=https://basisdienste.geoportal.hessen.de/ogc/borders",
+            "opacity": 0.75
+          },
+          "HE_Gemarkungsgrenzen": {
+            "name": "HE: Gemarkungen (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gemarkungenHE&styles&tilePixelRatio=0&url=https://basisdienste.geoportal.hessen.de/ogc/borders",
+            "opacity": 0.75
+          },
+          "HE_Flurgrenzen": {
+            "name": "HE: Fluren (WMS)",
+            "type": "ogc_wms",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=flurenHE&styles&tilePixelRatio=0&url=https://basisdienste.geoportal.hessen.de/ogc/borders",
+            "opacity": 0.75
+          }
+        }
+      },
+      "HE_kat_vg_layergroup_wfs": {
+        "name": "HE: Kataster/Verwaltungsgrenzen (WFS)",
+        "layers": {
+          "HE_Landesgrenze": {
+            "name": "HE: Landesgrenze (WFS)",
+            "type": "ogc_wfs",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468"],
+            "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='borders:landHE_wfs' url='https://basisdienste.geoportal.hessen.de/ogc/borders' version='auto'",
+            "opacity": 0.75,
+            "minScale": 1100000.0,
+            "maxScale": 1.0,
+            "fillColor": [225, 157, 156]
+          },
+          "HE_Regierungsbezirke": {
+            "name": "HE: Regierungsbezirke (WFS)",
+            "type": "ogc_wfs",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468"],
+            "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='borders:regierungsbezirkeHE_wfs' url='https://basisdienste.geoportal.hessen.de/ogc/borders' version='auto'",
+            "opacity": 0.75,
+            "minScale": 1100000.0,
+            "maxScale": 1.0,
+            "fillColor": [234, 217, 157]
+          },
+          "HE_Landkreise": {
+            "name": "HE: Landkreise (WFS)",
+            "type": "ogc_wfs",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468"],
+            "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='borders:landkreiseHE_wfs' url='https://basisdienste.geoportal.hessen.de/ogc/borders' version='auto'",
+            "opacity": 0.75,
+            "minScale": 1100000.0,
+            "maxScale": 1.0,
+            "fillColor": [190, 197, 199]
+          },
+          "HE_Gemeindegrenzen": {
+            "name": "HE: Gemeinden (WFS)",
+            "type": "ogc_wfs",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468"],
+            "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='borders:gemeindenHE_wfs' url='https://basisdienste.geoportal.hessen.de/ogc/borders' version='auto'",
+            "opacity": 0.75,
+            "minScale": 1100000.0,
+            "maxScale": 1.0,
+            "fillColor": [222, 231, 167]
+          },
+          "HE_Gemarkungsgrenzen": {
+            "name": "HE: Gemarkungen (WFS)",
+            "type": "ogc_wfs",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468"],
+            "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='borders:gemarkungenHE_wfs' url='https://basisdienste.geoportal.hessen.de/ogc/borders' version='auto'",
+            "opacity": 0.75,
+            "minScale": 1100000.0,
+            "maxScale": 1.0,
+            "fillColor": [219, 163, 165]
+          },
+          "HE_Flurgrenzen": {
+            "name": "HE: Fluren (WFS)",
+            "type": "ogc_wfs",
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468"],
+            "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='borders:flurenHE_wfs' url='https://basisdienste.geoportal.hessen.de/ogc/borders' version='auto'",
+            "opacity": 0.75,
+            "minScale": 1100000.0,
+            "maxScale": 1.0,
+            "fillColor":  [215, 208, 216]
+          }
+        },
+        "seperator": true
+      },
       "tk_farbig_layergroup": {
         "name": "HE: Topograf. Karten farbig (WMS)",
         "layers": {
