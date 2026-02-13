@@ -4450,8 +4450,8 @@
         "opacity": 0.75
       },
       "flustuecke_wfs": {
-        "name": "TH: ALKIS Flurstücke (WFS)",
-        "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='ave:Flurstueck' url='https://www.geoproxy.geoportal-th.de/geoproxy/services/adv_alkis_wfs' url='https://www.geoproxy.geoportal-th.de/geoproxy/services/adv_alkis_wfs?version=2.0.0' version='auto'",
+        "name": "TH: ALKIS Flurstücke (WFS) v2",
+        "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='ave:Flurstueck' url='https://www.geoproxy.geoportal-th.de/geoproxy/services/adv_alkis_v2_wfs' url='https://www.geoproxy.geoportal-th.de/geoproxy/services/adv_alkis_wfs?version=2.0.0' version='auto'",
         "type": "ogc_wfs",
         "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:25833", "EPSG:31467", "EPSG:31468", "EPSG:4258", "EPSG:3038", "EPSG:3039", "EPSG:3040", "EPSG:3041", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3857"],
         "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
@@ -4461,8 +4461,8 @@
         "fillColor": "transparent"
       },
       "gebaeude_wfs": {
-        "name": "TH: ALKIS Gebäude (WFS)",
-        "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='ave:GebaeudeBauwerk' url='https://www.geoproxy.geoportal-th.de/geoproxy/services/adv_alkis_wfs' url='https://www.geoproxy.geoportal-th.de/geoproxy/services/adv_alkis_wfs?version=2.0.0' version='auto'",
+        "name": "TH: ALKIS Gebäude (WFS) v2",
+        "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='ave:GebaeudeBauwerk' url='https://www.geoproxy.geoportal-th.de/geoproxy/services/adv_alkis_v2_wfs' url='https://www.geoproxy.geoportal-th.de/geoproxy/services/adv_alkis_wfs?version=2.0.0' version='auto'",
         "seperator": true,
         "type": "ogc_wfs",
         "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:25833", "EPSG:31467", "EPSG:31468", "EPSG:4258", "EPSG:3038", "EPSG:3039", "EPSG:3040", "EPSG:3041", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3857"],
