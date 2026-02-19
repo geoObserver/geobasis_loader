@@ -5,7 +5,7 @@
       "verwaltung": {
         "name": "DE: Verwaltungsgebiete 1:2 500 000 (WMS)",
         "type": "ogc_wms",
-        "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","WMS: Verwaltungsgebiete 1:2 500 000"],
+        "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "WMS: Verwaltungsgebiete 1:2 500 000"],
         "komgis_priority": "87500",
         "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=vg2500_lan&url=https://sgx.geodatenzentrum.de/wms_vg2500",
@@ -17,7 +17,7 @@
           "vg250_staat": {
             "name": "DE: VG 250 Staat (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Verwaltungsgebiete 1: 250 000", "WMS: VG 250 Staat"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Verwaltungsgebiete 1: 250 000", "WMS: VG 250 Staat"],
             "komgis_priority": "78006",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:31466", "EPSG:31467", "EPSG:5650", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=vg250_sta&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_vg250",
@@ -26,7 +26,7 @@
           "vg250_bundesland": {
             "name": "DE: VG 250 Bundesländer (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Verwaltungsgebiete 1: 250 000", "WMS: VG 250 Bundesländer"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Verwaltungsgebiete 1: 250 000", "WMS: VG 250 Bundesländer"],
             "komgis_priority": "78005",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:31466", "EPSG:31467", "EPSG:5650", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=vg250_lan&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_vg250",
@@ -35,7 +35,7 @@
           "vg250_regbez": {
             "name": "DE: VG 250 Regierungsbezirke (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Verwaltungsgebiete 1: 250 000", "WMS: VG 250 Regierungsbezirke"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Verwaltungsgebiete 1: 250 000", "WMS: VG 250 Regierungsbezirke"],
             "komgis_priority": "78004",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:31466", "EPSG:31467", "EPSG:5650", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=vg250_rbz&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_vg250",
@@ -44,7 +44,7 @@
           "vg250_kreis": {
             "name": "DE: VG 250 Kreise (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Verwaltungsgebiete 1: 250 000", "WMS: VG 250 Kreise"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Verwaltungsgebiete 1: 250 000", "WMS: VG 250 Kreise"],
             "komgis_priority": "78003",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=vg250_krs&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_vg250",
@@ -53,7 +53,7 @@
           "vg250_vwg": {
             "name": "DE: VG 250 Verwaltungsgebiete (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Verwaltungsgebiete 1: 250 000", "WMS: VG 250 Verwaltungsgebiete"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Verwaltungsgebiete 1: 250 000", "WMS: VG 250 Verwaltungsgebiete"],
             "komgis_priority": "78002",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:31466", "EPSG:31467", "EPSG:5650", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=vg250_vwg&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_vg250",
@@ -62,7 +62,7 @@
           "vg250_gem": {
             "name": "DE: VG 250 Gemeinden (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Verwaltungsgebiete 1: 250 000", "WMS: VG 250 Gemeinden"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Verwaltungsgebiete 1: 250 000", "WMS: VG 250 Gemeinden"],
             "komgis_priority": "78001",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:31466", "EPSG:31467", "EPSG:5650", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=vg250_gem&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_vg250",
@@ -84,7 +84,7 @@
           "gradnetz": {
             "name": "DE: Gradnetz - WSV (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Gradnetze", "WMS: Gradnetz - WSV"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Gradnetze", "WMS: Gradnetz - WSV"],
             "komgis_priority": "77900",
             "valid_epsg": ["EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:3857", "EPSG:4019", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:104258"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=GN&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/netze/wms?VERSION%3D1.3.0"
@@ -93,7 +93,7 @@
             "name": "DE: Gradnetz Beschriftung - WSV (WMS)",
             "komgis_priority": "74801",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Gradnetze", "WMS: Gradnetz Beschriftung - WSV"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Gradnetze", "WMS: Gradnetz Beschriftung - WSV"],
             "valid_epsg": ["EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:3857", "EPSG:4019", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:104258"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=GNB&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/netze/wms?VERSION%3D1.3.0"
           }
@@ -105,7 +105,7 @@
           "gk_beschriftung": {
             "name": "DE: Gauss Krüger Streifen Beschriftung - WSV (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Gauss Krüger Streifen", "WMS: Gauss Krüger Streifen Beschriftung - WSV"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Gauss Krüger Streifen", "WMS: Gauss Krüger Streifen Beschriftung - WSV"],
             "komgis_priority": "74802",
             "valid_epsg": ["EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:3857", "EPSG:4019", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:104258"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gkzonen_text&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/zonen/wms?VERSION%3D1.3.0"
@@ -113,7 +113,7 @@
           "gk": {
             "name": "DE: Gauss Krüger Streifen - WSV (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Gauss Krüger Streifen", "WMS: Gauss Krüger Streifen - WSV"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Gauss Krüger Streifen", "WMS: Gauss Krüger Streifen - WSV"],
             "komgis_priority": "87001",
             "valid_epsg": ["EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:3857", "EPSG:4019", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:104258"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gkzonen&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/zonen/wms?VERSION%3D1.3.0",
@@ -127,7 +127,7 @@
           "utm_beschriftung": {
             "name": "DE: UTM Zonen Beschriftung - WSV (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","UTM Zonen", "WMS: UTM Zonen Beschriftung - WSV"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "UTM Zonen", "WMS: UTM Zonen Beschriftung - WSV"],
             "komgis_priority": "74803",
             "valid_epsg": ["EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:3857", "EPSG:4019", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:104258"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=utmzonen_text&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/zonen/wms?VERSION%3D1.3.0"
@@ -135,7 +135,7 @@
           "utm": {
             "name": "DE: UTM Zonen - WSV (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","UTM Zonen", "WMS: UTM Zonen - WSV"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "UTM Zonen", "WMS: UTM Zonen - WSV"],
             "komgis_priority": "87002",
             "valid_epsg": ["EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:3857", "EPSG:4019", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:104258"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=utmzonen&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/zonen/wms?VERSION%3D1.3.0",
@@ -147,7 +147,7 @@
       "grau": {
         "name": "DE: basemap.de grau (WMS)",
         "type": "ogc_wms",
-        "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Basemap.de", "WMS: Basemap.de (Grau)"],
+        "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Basemap.de", "WMS: Basemap.de (Grau)"],
         "komgis_priority": "95001",
         "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:25833", "EPSG:32632", "EPSG:32633", "EPSG:4647", "EPSG:5650", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3857", "EPSG:900913", "EPSG:102100", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4839", "EPSG:3068", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:3035", "EPSG:3034", "EPSG:3044", "EPSG:3045", "EPSG:4647", "EPSG:5650"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=de_basemapde_web_raster_grau&url=https://sgx.geodatenzentrum.de/wms_basemapde?"
@@ -155,7 +155,7 @@
       "farbig": {
         "name": "DE: basemap.de farbig (WMS)",
         "type": "ogc_wms",
-        "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Basemap.de", "WMS: Basemap.de (Farbe)"],
+        "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Basemap.de", "WMS: Basemap.de (Farbe)"],
         "komgis_priority": "95002",
         "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:25833", "EPSG:32632", "EPSG:32633", "EPSG:4647", "EPSG:5650", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3857", "EPSG:900913", "EPSG:102100", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4839", "EPSG:3068", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:3035", "EPSG:3034", "EPSG:3044", "EPSG:3045", "EPSG:4647", "EPSG:5650"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=de_basemapde_web_raster_farbe&url=https://sgx.geodatenzentrum.de/wms_basemapde?"
@@ -255,7 +255,7 @@
           "bsw1": {
             "name": "DE: Kilometermarken - WSV (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Bundeswasserstraßen", "WMS: Kilometermarken"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Bundeswasserstraßen", "WMS: Kilometermarken"],
             "komgis_priority": "74813",
             "valid_epsg": ["EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:3857", "EPSG:4019", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:104258"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://via.bund.de/wsv/bwastr/wms&layers=Kilometermarken&styles="
@@ -263,7 +263,7 @@
           "bsw2": {
             "name": "DE: Gewaessernamen - WSV (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Bundeswasserstraßen", "WMS: Gewaessernamen"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Bundeswasserstraßen", "WMS: Gewaessernamen"],
             "komgis_priority": "74814",
             "valid_epsg": ["EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:3857", "EPSG:4019", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:104258"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://via.bund.de/wsv/bwastr/wms&layers=Gewaessernamen&styles="
@@ -271,7 +271,7 @@
           "bsw3": {
             "name": "DE: Fliessrichtung - WSV (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Bundeswasserstraßen", "WMS: Fliessrichtung"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Bundeswasserstraßen", "WMS: Fliessrichtung"],
             "komgis_priority": "74815",
             "valid_epsg": ["EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:3857", "EPSG:4019", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:104258"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://via.bund.de/wsv/bwastr/wms&layers=Fliessrichtung&styles="
@@ -279,7 +279,7 @@
           "bsw4": {
             "name": "DE: Gewaessernetz (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Bundeswasserstraßen", "WMS: Gewaessernetz"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Bundeswasserstraßen", "WMS: Gewaessernetz"],
             "komgis_priority": "74816",
             "valid_epsg": ["EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:3857", "EPSG:4019", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:104258"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://via.bund.de/wsv/bwastr/wms&layers=Gewaessernetz&styles="
@@ -292,7 +292,7 @@
           "pegel1": {
             "name": "DE: Pegelmesstelle (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Pegel Online - WSV", "WMS: Pegelmesstelle"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Pegel Online - WSV", "WMS: Pegelmesstelle"],
             "komgis_priority": "74803",
             "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Pegelpunkte&styles&tilePixelRatio=0&url=https://www.pegelonline.wsv.de/webservices/gis/wms?VERSION%3D1.3.0"
@@ -300,7 +300,7 @@
           "pegel2": {
             "name": "DE: Pegelname - WSV (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Pegel Online - WSV", "WMS: Pegelname"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Pegel Online - WSV", "WMS: Pegelname"],
             "komgis_priority": "74804",
             "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Pegelnamen&styles&tilePixelRatio=0&url=https://www.pegelonline.wsv.de/webservices/gis/wms?VERSION%3D1.3.0",
@@ -310,7 +310,7 @@
           "pegel3": {
             "name": "DE: Wasserstand - WSV (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Pegel Online - WSV", "WMS: Wasserstand"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Pegel Online - WSV", "WMS: Wasserstand"],
             "komgis_priority": "74805",
             "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Pegelwasserstand&styles&tilePixelRatio=0&url=https://www.pegelonline.wsv.de/webservices/gis/wms?VERSION%3D1.3.0",
@@ -325,7 +325,7 @@
           "ienc1": {
             "name": "DE: IENC Karten (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","IENC - WSV", "WMS: Inland Elektronische Navigationskarten ENC Karten"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Inland Electronic Navigational Chart (IENC) - WSV", "WMS: Inland Elektronische Navigationskarten ENC Karten"],
             "komgis_priority": "74803",
             "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "EPSG:2397", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:4647", "EPSG:5650"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=IENC&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/ienc/wms?VERSION%3D1.3.0"
@@ -333,7 +333,7 @@
           "ienc2": {
             "name": "DE: IENC Blattschnitte (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","IENC - WSV", "WMS: Inland Elektronische Navigationskarten ENC Blattschnitte"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Inland Electronic Navigational Chart (IENC) - WSV", "WMS: Inland Elektronische Navigationskarten ENC Blattschnitte"],
             "komgis_priority": "74804",
             "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "EPSG:2397", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:4647", "EPSG:5650"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Blattschnitte&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/ienc/wms?VERSION%3D1.3.0"
@@ -346,7 +346,7 @@
           "wind100": {
             "name": "DE: WInD-100 Objekte f. Wasserabfluss und Schiffbarkeit (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","asserstraßen Infrastruktur Daten der WSV", "WMS: InD-100 - Objekte f. Wasserabfluss und Schiffbarkeit"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Wasserstraßen Infrastruktur Daten der WSV", "WMS: InD-100 - Objekte f. Wasserabfluss und Schiffbarkeit"],
             "komgis_priority": "74803",
             "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "EPSG:2397", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:4647", "EPSG:5650"],
             "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=100&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/wind/www/wms/capabilities/"
@@ -354,7 +354,7 @@
           "wind200": {
             "name": "DE: WInD-200 Objekte f. Regeln/Sichern des Wasserspiegels/hydrol. Messwesen (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","asserstraßen Infrastruktur Daten der WSV", "WMS: InD-100 - Objekte f. Wasserabfluss und Schiffbarkeit"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Wasserstraßen Infrastruktur Daten der WSV", "WMS: InD-100 - Objekte f. Wasserabfluss und Schiffbarkeit"],
             "komgis_priority": "74803",
             "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "EPSG:2397", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:4647", "EPSG:5650"],
             "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=200&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/wind/www/wms/capabilities/"
@@ -362,7 +362,7 @@
           "wind300": {
             "name": "DE: WInD-300 Objekte f. Schiffsverkehr (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","asserstraßen Infrastruktur Daten der WSV", "WMS: InD-100 - Objekte f. Wasserabfluss und Schiffbarkeit"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Wasserstraßen Infrastruktur Daten der WSV", "WMS: InD-100 - Objekte f. Wasserabfluss und Schiffbarkeit"],
             "komgis_priority": "74803",
             "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "EPSG:2397", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:4647", "EPSG:5650"],
             "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=300&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/wind/www/wms/capabilities/"
@@ -370,7 +370,7 @@
           "wind400": {
             "name": "DE: WInD-400 Objekte f. Sicherung/Erleichterung Schiffsverkehr (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","asserstraßen Infrastruktur Daten der WSV", "WMS: InD-100 - Objekte f. Wasserabfluss und Schiffbarkeit"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Wasserstraßen Infrastruktur Daten der WSV", "WMS: InD-100 - Objekte f. Wasserabfluss und Schiffbarkeit"],
             "komgis_priority": "74803",
             "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "EPSG:2397", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:4647", "EPSG:5650"],
             "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=400&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/wind/www/wms/capabilities/"
@@ -378,7 +378,7 @@
           "wind500": {
             "name": "DE: WInD-500 Objekte f. Aufrechterhalten Kreuzungsverkehr (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","asserstraßen Infrastruktur Daten der WSV", "WMS: InD-100 - Objekte f. Wasserabfluss und Schiffbarkeit"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Wasserstraßen Infrastruktur Daten der WSV", "WMS: InD-100 - Objekte f. Wasserabfluss und Schiffbarkeit"],
             "komgis_priority": "74803",
             "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "EPSG:2397", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:4647", "EPSG:5650"],
             "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=500&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/wind/www/wms/capabilities/"
@@ -386,7 +386,7 @@
           "wind600": {
             "name": "DE: WInD-600 Objekte f. sonstige unmittelbare Aufgaben (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","asserstraßen Infrastruktur Daten der WSV", "WMS: InD-100 - Objekte f. Wasserabfluss und Schiffbarkeit"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Wasserstraßen Infrastruktur Daten der WSV", "WMS: InD-100 - Objekte f. Wasserabfluss und Schiffbarkeit"],
             "komgis_priority": "74803",
             "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "EPSG:2397", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:4647", "EPSG:5650"],
             "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=600&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/wind/www/wms/capabilities/"
@@ -394,7 +394,7 @@
           "wind700": {
             "name": "DE: WInD-700 Anlagen f. mittelbare Aufgaben (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","asserstraßen Infrastruktur Daten der WSV", "WMS: InD-100 - Objekte f. Wasserabfluss und Schiffbarkeit"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Wasserstraßen Infrastruktur Daten der WSV", "WMS: InD-100 - Objekte f. Wasserabfluss und Schiffbarkeit"],
             "komgis_priority": "74803",
             "valid_epsg": ["EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:4326", "EPSG:2398", "EPSG:2399", "EPSG:4258", "EPSG:4019", "EPSG:25832", "EPSG:25833", "EPSG:3857", "EPSG:900913", "EPSG:2397", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:4647", "EPSG:5650"],
             "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=700&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/wind/www/wms/capabilities/"
@@ -407,7 +407,7 @@
           "dbwk1": {
             "name": "DE: DBWK1000 Karte (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","DBWK - WSV", "WMS: Digitale Bundeswasserstraßenkarte M 1:1.000.000"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Digitale Bundeswasserstraßenkarte (DBWK) WSV", "WMS: Digitale Bundeswasserstraßenkarte M 1:1.000.000"],
             "komgis_priority": "74803",
             "valid_epsg": ["EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:3857", "EPSG:4019", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:104258"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=DBWK1000&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/dbwk1000/wms?VERSION%3D1.3.0"
@@ -415,7 +415,7 @@
           "dbwk2": {
             "name": "DE: DBWK1000 Karte inkl. Gliederung WSV (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","DBWK - WSV", "WMS: Digitale Bundeswasserstraßenkarte M 1:1.000.000 inkl. Gliederung WSV"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Digitale Bundeswasserstraßenkarte (DBWK) WSV", "WMS: Digitale Bundeswasserstraßenkarte M 1:1.000.000 inkl. Gliederung WSV"],
             "komgis_priority": "74804",
             "valid_epsg": ["EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:3857", "EPSG:4019", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:104258"],
             "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=DBWK1000GliederungWSV&styles&tilePixelRatio=0&url=https://via.bund.de/wsv/dbwk1000/wms?VERSION%3D1.3.0"
@@ -458,7 +458,7 @@
           "starkregen3": {
             "name": "DE: Fliessrichtung extremes Ereignis (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Starkregen", "Extremes Ereignis", "WMS: Fliessrichtung extremes Ereignis"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Starkregen", "Extremes Ereignis", "WMS: Fliessrichtung extremes Ereignis"],
             "komgis_priority": "79901",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=richtung_extrem&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_starkregen",
@@ -467,7 +467,7 @@
           "starkregen4": {
             "name": "DE: Fliessrichtung aussergewöhnliches Ereignis (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Starkregen", "Aussergewöhnliches Ereignis", "WMS: Fliessrichtung aussergewöhnliches Ereignis"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Starkregen", "Aussergewöhnliches Ereignis", "WMS: Fliessrichtung aussergewöhnliches Ereignis"],
             "komgis_priority": "84102",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
             "is_visible": "false",
@@ -477,7 +477,7 @@
           "starkregen1": {
             "name": "DE: Fliessgeschwindigkeit extremes Ereignis (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Starkregen", "Extremes Ereignis", "WMS: Fliessgeschwindigkeit extremes Ereignis"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Starkregen", "Extremes Ereignis", "WMS: Fliessgeschwindigkeit extremes Ereignis"],
             "komgis_priority": "84101",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=geschwindigkeit_extrem&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_starkregen",
@@ -486,7 +486,7 @@
           "starkregen2": {
             "name": "DE: Fliessgeschwindigkeit aussergewöhnliches Ereignis (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Starkregen", "Aussergewöhnliches Ereignis", "WMS: Fliessgeschwindigkeit aussergewöhnliches Ereignis"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Starkregen", "Aussergewöhnliches Ereignis", "WMS: Fliessgeschwindigkeit aussergewöhnliches Ereignis"],
             "komgis_priority": "79902",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=geschwindigkeit_agw&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_starkregen",
@@ -495,7 +495,7 @@
           "starkregen5": {
             "name": "DE: Überflutungstiefe extremes Ereignis (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Starkregen", "Extremes Ereignis", "WMS: Überflutungstiefe extremes Ereignis"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Starkregen", "Extremes Ereignis", "WMS: Überflutungstiefe extremes Ereignis"],
             "komgis_priority": "84104",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=tiefe_extrem&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_starkregen",
@@ -504,7 +504,7 @@
           "starkregen6": {
             "name": "DE: Überflutungstiefe aussergewöhnliches Ereignis (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Starkregen", "Aussergewöhnliches Ereignis", "WMS: Überflutungstiefe aussergewöhnliches Ereignis"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Starkregen", "Aussergewöhnliches Ereignis", "WMS: Überflutungstiefe aussergewöhnliches Ereignis"],
             "komgis_priority": "84103",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=tiefe_agw&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_starkregen",
@@ -595,291 +595,291 @@
         }
       },
       "dipul_layergroup": {
-        "name": "DE: Dipul - Einschränkungen für Drohnenbetrieb (WMS)",
+        "name": "DE: dipul - Einschränkungen für Drohnenbetrieb (WMS)",
         "layers": {
           "dipul_1": {
-            "name": "DE: Dipul - Bahnanlagen (WMS)",
+            "name": "DE: dipul - Bahnanlagen (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Bahnanlagen"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - Bahnanlagen"],
             "komgis_priority": "83032",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=bahnanlagen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
           },
           "dipul_3": {
-            "name": "DE: Dipul - Oberste Bundes- und Landesbehörden und Verfassungsorgane (WMS)",
+            "name": "DE: dipul - Oberste Bundes- und Landesbehörden und Verfassungsorgane (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Oberste Bundes- und Landesbehörden und Verfassungsorgane"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - Oberste Bundes- und Landesbehörden und Verfassungsorgane"],
             "komgis_priority": "83031",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=behoerden&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
           },
           "dipul_5": {
-            "name": "DE: Dipul - Binnenwasserstraßen (WMS)",
+            "name": "DE: dipul - Binnenwasserstraßen (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Binnenwasserstraßen"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - Binnenwasserstraßen"],
             "komgis_priority": "83030",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=binnenwasserstrassen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
           },
           "dipul_7": {
-            "name": "DE: Dipul - Bundesautobahnen (WMS)",
+            "name": "DE: dipul - Bundesautobahnen (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Bundesautobahnen"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - Bundesautobahnen"],
             "komgis_priority": "83029",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=bundesautobahnen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
           },
           "dipul_9": {
-            "name": "DE: Dipul - Bundesstraßen (WMS)",
+            "name": "DE: dipul - Bundesstraßen (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Bundesstraßen"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - Bundesstraßen"],
             "komgis_priority": "83028",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=bundesstrassen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
           },
           "dipul_11": {
-            "name": "DE: Dipul - Diplomatische und konsularische Vertretungen (WMS)",
+            "name": "DE: dipul - Diplomatische und konsularische Vertretungen (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Diplomatische und konsularische Vertretungen"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - Diplomatische und konsularische Vertretungen"],
             "komgis_priority": "83027",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=diplomatische_vertretungen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
           },
           "dipul_13": {
-            "name": "DE: Dipul - FFH-Gebiete (WMS)",
+            "name": "DE: dipul - FFH-Gebiete (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - FFH-Gebiete"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - FFH-Gebiete"],
             "komgis_priority": "83026",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=ffh-gebiete&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
           },
           "dipul_15": {
-            "name": "DE: Dipul - Flugbeschränkungsgebiete (WMS)",
+            "name": "DE: dipul - Flugbeschränkungsgebiete (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Flugbeschränkungsgebiete"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - Flugbeschränkungsgebiete"],
             "komgis_priority": "83025",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=flugbeschraenkungsgebiete&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
           },
           "dipul_17": {
-            "name": "DE: Dipul - Flughäfen (WMS)",
+            "name": "DE: dipul - Flughäfen (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Flughäfen"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - Flughäfen"],
             "komgis_priority": "83024",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=flughaefen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
           },
           "dipul_19": {
-            "name": "DE: Dipul - Flugplätze (WMS)",
+            "name": "DE: dipul - Flugplätze (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Flugplätze"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - Flugplätze"],
             "komgis_priority": "83023",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=flugplaetze&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
           },
           "dipul_21": {
-            "name": "DE: Dipul - Freibäder und Badestrände (WMS)",
+            "name": "DE: dipul - Freibäder und Badestrände (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Freibäder und Badestrände"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - Freibäder und Badestrände"],
             "komgis_priority": "83022",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=freibaeder&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
           },
           "dipul_23": {
-            "name": "DE: Dipul - Industrieanlagen (WMS)",
+            "name": "DE: dipul - Industrieanlagen (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Industrieanlagen"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - Industrieanlagen"],
             "komgis_priority": "83021",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=industrieanlagen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
           },
           "dipul_25": {
-            "name": "DE: Dipul - Internationale Organisationen im Sinne des Völkerrechts (WMS)",
+            "name": "DE: dipul - Internationale Organisationen im Sinne des Völkerrechts (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Internationale Organisationen im Sinne des Völkerrechts"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - Internationale Organisationen im Sinne des Völkerrechts"],
             "komgis_priority": "83020",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=internationale_organisationen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
           },
           "dipul_27": {
-            "name": "DE: Dipul - JVA und Einrichtungen des Maßregelvollzugs (WMS)",
+            "name": "DE: dipul - JVA und Einrichtungen des Maßregelvollzugs (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - JVA und Einrichtungen des Maßregelvollzugs"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - JVA und Einrichtungen des Maßregelvollzugs"],
             "komgis_priority": "83019",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=justizvollzugsanstalten&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
           },
           "dipul_29": {
-            "name": "DE: Dipul - Kontrollzonen (WMS)",
+            "name": "DE: dipul - Kontrollzonen (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Kontrollzonen"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - Kontrollzonen"],
             "komgis_priority": "83019",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=kontrollzonen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
           },
           "dipul_31": {
-            "name": "DE: Dipul - Kraftwerke (WMS)",
+            "name": "DE: dipul - Kraftwerke (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Kraftwerke"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - Kraftwerke"],
             "komgis_priority": "83017",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=kraftwerke&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
           },
           "dipul_33": {
-            "name": "DE: Dipul - Krankenhäuser (WMS)",
+            "name": "DE: dipul - Krankenhäuser (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Krankenhäuser"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - Krankenhäuser"],
             "komgis_priority": "83016",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=krankenhaeuser&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
           },
           "dipul_35": {
-            "name": "DE: Dipul - Einrichtungen BSL-4 (WMS)",
+            "name": "DE: dipul - Einrichtungen BSL-4 (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Einrichtungen BSL-4"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - Einrichtungen BSL-4"],
             "komgis_priority": "83015",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=labore&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
           },
           "dipul_37": {
-            "name": "DE: Dipul - Militärische Anlagen und Organisationen (WMS)",
+            "name": "DE: dipul - Militärische Anlagen und Organisationen (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Militärische Anlagen und Organisationen"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - Militärische Anlagen und Organisationen"],
             "komgis_priority": "83014",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=militaerische_anlagen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
           },
           "dipul_39": {
-            "name": "DE: Dipul - Modellflugplätze (WMS)",
+            "name": "DE: dipul - Modellflugplätze (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Modellflugplätze"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - Modellflugplätze"],
             "komgis_priority": "83013",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=modellflugplaetze&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
           },
           "dipul_41": {
-            "name": "DE: Dipul - Nationalparks (WMS)",
+            "name": "DE: dipul - Nationalparks (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Nationalparks"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - Nationalparks"],
             "komgis_priority": "83012",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=nationalparks&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
           },
           "dipul_43": {
-            "name": "DE: Dipul - Naturschutzgebiete (WMS)",
+            "name": "DE: dipul - Naturschutzgebiete (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Naturschutzgebiete"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - Naturschutzgebiete"],
             "komgis_priority": "83011",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=naturschutzgebiete&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
           },
           "dipul_45": {
-            "name": "DE: Dipul - Liegenschaften der Polizei (WMS)",
+            "name": "DE: dipul - Liegenschaften der Polizei (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Liegenschaften der Polizei"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - Liegenschaften der Polizei"],
             "komgis_priority": "83010",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=polizei&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
           },
           "dipul_47": {
-            "name": "DE: Dipul - Schifffahrtsanlagen (WMS)",
+            "name": "DE: dipul - Schifffahrtsanlagen (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Schifffahrtsanlagen"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - Schifffahrtsanlagen"],
             "komgis_priority": "83009",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=schifffahrtsanlagen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
           },
           "dipul_49": {
-            "name": "DE: Dipul - Seewasserstraßen (WMS)",
+            "name": "DE: dipul - Seewasserstraßen (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Seewasserstraßen"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - Seewasserstraßen"],
             "komgis_priority": "83008",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=seewasserstrassen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
           },
           "dipul_51": {
-            "name": "DE: Dipul - Andere Sicherheitsbehörden (WMS)",
+            "name": "DE: dipul - Andere Sicherheitsbehörden (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Andere Sicherheitsbehörden"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - Andere Sicherheitsbehörden"],
             "komgis_priority": "83007",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=sicherheitsbehoerden&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
           },
           "dipul_53": {
-            "name": "DE: Dipul - Stromleitungen (WMS)",
+            "name": "DE: dipul - Stromleitungen (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Stromleitungen"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - Stromleitungen"],
             "komgis_priority": "83006",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=stromleitungen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
           },
           "dipul_55": {
-            "name": "DE: Dipul - Temporäre Betriebseinschränkungen (WMS)",
+            "name": "DE: dipul - Temporäre Betriebseinschränkungen (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Temporäre Betriebseinschränkungen"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - Temporäre Betriebseinschränkungen"],
             "komgis_priority": "83005",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=temporaere_betriebseinschraenkungen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
           },
           "dipul_57": {
-            "name": "DE: Dipul - Umspannwerke (WMS)",
+            "name": "DE: dipul - Umspannwerke (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Umspannwerke"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - Umspannwerke"],
             "komgis_priority": "83004",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=umspannwerke&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
           },
           "dipul_59": {
-            "name": "DE: Dipul - Vogelschutzgebiete (WMS)",
+            "name": "DE: dipul - Vogelschutzgebiete (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Vogelschutzgebiete"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - Vogelschutzgebiete"],
             "komgis_priority": "83003",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=vogelschutzgebiete&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
           },
           "dipul_61": {
-            "name": "DE: Dipul - Windkraftanlagen (WMS)",
+            "name": "DE: dipul - Windkraftanlagen (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Windkraftanlagen"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - Windkraftanlagen"],
             "komgis_priority": "83002",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=windkraftanlagen&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
             "opacity": 0.75
           },
           "dipul_63": {
-            "name": "DE: Dipul - Wohngrundstücke (WMS)",
+            "name": "DE: dipul - Wohngrundstücke (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Dipul - Einschränkungen für Drohnenbetrieb", "WMS: Dipul - Wohngrundstücke"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "dipul - Einschränkungen für Drohnenbetrieb", "WMS: dipul - Wohngrundstücke"],
             "komgis_priority": "83001",
             "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:7789", "OGC:CRS84"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=wohngrundstuecke&styles&tilePixelRatio=0&url=https://uas-betrieb.de/geoservices/dipul/wms?version%3D1.3.0",
@@ -890,7 +890,7 @@
       "kfz": {
         "name": "DE: KFZ-Kennzeichen (WMS)",
         "type": "ogc_wms",
-        "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland", "WMS: KFZ-Kennzeichen"],
+        "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "WMS: KFZ-Kennzeichen"],
             "komgis_priority": "74000",
         "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=kfz250&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_kfz250"
@@ -901,7 +901,7 @@
           "unfall_1": {
             "name": "DE: Route DLM1000 (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Route DLM1000"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Unfallatlas", "WMS: Route DLM1000"],
             "komgis_priority": "75016",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=route_DLM1000&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
@@ -909,7 +909,7 @@
           "unfall_2": {
             "name": "DE: Route BasisDLM (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Route BasisDLM"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Unfallatlas", "WMS: Route BasisDLM"],
             "komgis_priority": "75015",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=route_BasisDLM&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
@@ -917,7 +917,7 @@
           "unfall_3": {
             "name": "DE: Beteiligung GKFZ 5000 (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Beteiligung GKFZ 5000"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Unfallatlas", "WMS: Beteiligung GKFZ 5000"],
             "komgis_priority": "75014",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Beteiligung_GKFZ_5000&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
@@ -925,7 +925,7 @@
           "unfall_4": {
             "name": "DE: Beteiligung GKFZ 250 (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Beteiligung  GKFZ 250"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Unfallatlas", "WMS: Beteiligung  GKFZ 250"],
             "komgis_priority": "75013",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Beteiligung_GKFZ_250&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
@@ -933,7 +933,7 @@
           "unfall_5": {
             "name": "DE: Beteiligung Fussgaenger 5000 (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Beteiligung Fussgaenger 5000"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Unfallatlas", "WMS: Beteiligung Fussgaenger 5000"],
             "komgis_priority": "75012",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Beteiligung_Fussgaenger_5000&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
@@ -941,7 +941,7 @@
           "unfall_6": {
             "name": "DE: Beteiligung Fussgaenger 250 (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Beteiligung Fussgaenger 250"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Unfallatlas", "WMS: Beteiligung Fussgaenger 250"],
             "komgis_priority": "75011",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Beteiligung_Fussgaenger_250&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
@@ -949,7 +949,7 @@
           "unfall_7": {
             "name": "DE: Beteiligung Fahrrad 5000 (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Beteiligung Fahrrad 5000"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Unfallatlas", "WMS: Beteiligung Fahrrad 5000"],
             "komgis_priority": "75010",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Beteiligung_Fahrrad_5000&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
@@ -957,7 +957,7 @@
           "unfall_8": {
             "name": "DE: Beteiligung Fahrrad 250 (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Beteiligung Fahrrad 250"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Unfallatlas", "WMS: Beteiligung Fahrrad 250"],
             "komgis_priority": "75009",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Beteiligung_Fahrrad_250&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
@@ -965,7 +965,7 @@
           "unfall_9": {
             "name": "DE: Beteiligung Motorrad 5000 (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Beteiligung Motorrad 5000"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Unfallatlas", "WMS: Beteiligung Motorrad 5000"],
             "komgis_priority": "75008",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Beteiligung_Motorrad_5000&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
@@ -973,7 +973,7 @@
           "unfall_10": {
             "name": "DE: Beteiligung Motorrad 250 (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Beteiligung Motorrad 250"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Unfallatlas", "WMS: Beteiligung Motorrad 250"],
             "komgis_priority": "75007",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Beteiligung_Motorrad_250&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
@@ -981,7 +981,7 @@
           "unfall_11": {
             "name": "DE: Beteiligung PKW 5000 (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Beteiligung PKW 5000"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Unfallatlas", "WMS: Beteiligung PKW 5000"],
             "komgis_priority": "75006",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Beteiligung_PKW_5000&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
@@ -989,7 +989,7 @@
           "unfall_12": {
             "name": "DE: Beteiligung PKW 250 (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Beteiligung PKW 250"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Unfallatlas", "WMS: Beteiligung PKW 250"],
             "komgis_priority": "75005",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Beteiligung_PKW_250&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
@@ -997,7 +997,7 @@
           "unfall_13": {
             "name": "DE: Getötete 5000 (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Getötete 5000"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Unfallatlas", "WMS: Getötete 5000"],
             "komgis_priority": "75004",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Getoetete_5000&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
@@ -1005,7 +1005,7 @@
           "unfall_14": {
             "name": "DE: Getötete 250 (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Getötete 250"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Unfallatlas", "WMS: Getötete 250"],
             "komgis_priority": "75003",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Getoetete_250&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
@@ -1013,7 +1013,7 @@
           "unfall_15": {
             "name": "DE: Personenschaden 5000 (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Personenschaden 5000"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Unfallatlas", "WMS: Personenschaden 5000"],
             "komgis_priority": "75002",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Personenschaden_5000&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
@@ -1021,7 +1021,7 @@
           "unfall_16": {
             "name": "DE: Personenschaden 250 (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Personenschaden 250"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Unfallatlas", "WMS: Personenschaden 250"],
             "komgis_priority": "75001",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Personenschaden_250&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
@@ -1029,7 +1029,7 @@
           "unfall_200": {
             "name": "DE: Unfallorte (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste","Bundesrepublik Deutschland","Unfallatlas", "WMS: Unfallorte"],
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Unfallatlas", "WMS: Unfallorte"],
             "komgis_priority": "74530",
             "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:25830", "EPSG:25831", "EPSG:25833", "EPSG:25834", "EPSG:25835", "EPSG:25836", "EPSG:25837", "EPSG:25838", "EPSG:3034", "EPSG:3035", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3857", "EPSG:102100", "EPSG:3875", "EPSG:4248", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:32632"],
             "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Unfallorte&styles&temporalSource=provider&tilePixelRatio=0&timeDimensionExtent=2016-01-01T00:00:00.000Z/2024-01-01T00:00:00.000Z/P1Y&type=wmst&url=https://www.wms.nrw.de/wms/unfallatlas?version%3D1.3.0"
@@ -1045,7 +1045,7 @@
         "name": "BE: ALKIS Flurstücke (WMS)",
         "type": "ogc_wms",
         "valid_epsg": ["EPSG:25833", "EPSG:3068", "EPSG:4258", "EPSG:25832", "EPSG:4326"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&url=https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_alkis&layers=25&layers=28&styles=&styles="
       },
       "gebaeude": {
@@ -1075,7 +1075,7 @@
       },
       "flustuecke_wfs": {
         "name": "BE: ALKIS Flurstücke (WFS)",
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='alkis_flurstuecke:flurstuecke' url='https://gdi.berlin.de/services/wfs/alkis_flurstuecke' version='auto'",
         "type": "ogc_wfs",
         "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:3857", "EPSG:4258"],
@@ -1204,14 +1204,14 @@
             "name": "BW: ALKIS Flurstücke, Gebäude, Nutzung Beschriftung (WMTS)",
             "type": "ogc_wms",
             "valid_epsg": ["EPSG:31467", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3857"],
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=ALKIS_Beschriftung&styles=default&tileMatrixSet=ADV_25832_Quad&tilePixelRatio=0&url=https://owsproxy.lgl-bw.de/owsproxy/ows/WMTS_LGL-BW_ALKIS_Basis"
           },
           "alkis_alles3": {
             "name": "BW: ALKIS Flurstücke, Gebäude, Nutzung (WMTS)",
             "type": "ogc_wms",
             "valid_epsg": ["EPSG:31467", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3857"],
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=ALKIS_Basis&styles=default&tileMatrixSet=ADV_25832_Quad&tilePixelRatio=0&url=https://owsproxy.lgl-bw.de/owsproxy/ows/WMTS_LGL-BW_ALKIS_Basis"
           }
         }
@@ -1221,7 +1221,7 @@
         "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='nora:v_al_flurstueck' url='https://owsproxy.lgl-bw.de/owsproxy/wfs/WFS_LGL-BW_ALKIS' url='https://owsproxy.lgl-bw.de/owsproxy/wfs/WFS_LGL-BW_ALKIS?version=2.0.0' version='auto'",
         "type": "ogc_wfs",
         "valid_epsg": ["EPSG:25832", "EPSG:4258", "EPSG:5649", "EPSG:4647", "EPSG:5650", "EPSG:4326", "EPSG:3857", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:25833"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "opacity": 0.75,
         "minScale": 25000.0,
         "maxScale": 1.0,
@@ -1245,7 +1245,7 @@
           "BW_Regierungsbezirke": {
             "name": "BW: Regierungsbezirke (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:4326", "EPSG:4258", "EPSG:3857", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:25832", "EPSG:25833"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ALKIS_VGr_KatGr_E&layers=nora:v_al_regierungsbezirk_vertrieb&layers=nora:v_al_regierungsbezirk_label&styles=&styles=",
             "opacity": 0.75
@@ -1253,7 +1253,7 @@
           "BW_Regionen": {
             "name": "BW: Regionen (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:4326", "EPSG:4258", "EPSG:3857", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:25832", "EPSG:25833"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ALKIS_VGr_KatGr_E&layers=nora:v_al_region_vertrieb&layers=nora:v_al_region_label&styles=&styles=",
             "opacity": 0.75
@@ -1261,7 +1261,7 @@
           "BW_StadtUndLandkreise": {
             "name": "BW: Stadt- und Landkreise (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:4326", "EPSG:4258", "EPSG:3857", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:25832", "EPSG:25833"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ALKIS_VGr_KatGr_E&layers=nora:v_al_kreis_vertrieb&layers=nora:v_al_kreis_label&styles=&styles=",
             "opacity": 0.75
@@ -1269,7 +1269,7 @@
           "BW_Gemeindegrenzen": {
             "name": "BW: Gemeindegrenzen (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:4326", "EPSG:4258", "EPSG:3857", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:25832", "EPSG:25833"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ALKIS_VGr_KatGr_E&layers=nora:v_al_gemeinde_vertrieb&layers=nora:v_al_gemeinde_label&styles=&styles=",
             "opacity": 0.75
@@ -1277,7 +1277,7 @@
           "BW_Gemarkungsgrenzen": {
             "name": "BW: Gemarkungsgrenzen (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:4326", "EPSG:4258", "EPSG:3857", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:25832", "EPSG:25833"],
             "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ALKIS_VGr_KatGr_E&layers=nora:v_al_gemarkung_label&layers=nora:v_al_gemarkung_vertrieb&styles=&styles=",
             "opacity": 0.75
@@ -1285,7 +1285,7 @@
           "BW_Flurgrenzen": {
             "name": "BW: Flurgrenzen (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:4326", "EPSG:4258", "EPSG:3857", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:25832", "EPSG:25833"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ALKIS_VGr_KatGr_E&layers=nora:v_al_flur_label&layers=nora:v_al_flur_vertrieb&styles=&styles=",
             "opacity": 0.75
@@ -1443,7 +1443,7 @@
         "name": "BY: Topograf. Karte  inkl. Flurstücke (WMTS)",
         "type": "ogc_wmts",
         "valid_epsg": ["EPSG:31468", "EPSG:3857", "EPSG:25832"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&layers=by_amtl_karte&styles=default&tileMatrixSet=adv_utm32&url=https://geoservices.bayern.de/od/wmts/geobasis/v1/1.0.0/WMTSCapabilities.xml",
         "seperator": true
       },
@@ -1586,14 +1586,14 @@
       "flurstuecke": {
         "name": "BB: ALKIS Flurstücke (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25833", "EPSG:25832","EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "EPSG:4647"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "EPSG:4647"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&layers=adv_alkis_flurstuecke&styles=Farbe&url=https://isk.geobasis-bb.de/ows/alkis_wms"
       },
       "gebaeude": {
         "name": "BB: ALKIS Gebäude (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25833", "EPSG:25832","EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "EPSG:4647"],
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "EPSG:4647"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&layers=adv_alkis_gebaeude&styles=Farbe&url=https://isk.geobasis-bb.de/ows/alkis_wms"
       },
       "nutzung_layergroup": {
@@ -1602,28 +1602,28 @@
           "gewaesser": {
             "name": "Gewässer",
             "type": "ogc_wms",
-            "valid_epsg": ["EPSG:25833", "EPSG:25832","EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "EPSG:4647"],
+            "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "EPSG:4647"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&layers=adv_alkis_gewaesser&styles=Farbe&url=https://isk.geobasis-bb.de/ows/alkis_wms",
             "opacity": 0.75
           },
           "siedlung": {
             "name": "Siedlung",
             "type": "ogc_wms",
-            "valid_epsg": ["EPSG:25833", "EPSG:25832","EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "EPSG:4647"],
+            "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "EPSG:4647"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&layers=adv_alkis_siedlung&styles=Farbe&url=https://isk.geobasis-bb.de/ows/alkis_wms",
             "opacity": 0.75
           },
           "vegetation": {
             "name": "Vegetation",
             "type": "ogc_wms",
-            "valid_epsg": ["EPSG:25833", "EPSG:25832","EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "EPSG:4647"],
+            "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "EPSG:4647"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&layers=adv_alkis_vegetation&styles=Farbe&url=https://isk.geobasis-bb.de/ows/alkis_wms",
             "opacity": 0.75
           },
           "verkehr": {
             "name": "Verkehr",
             "type": "ogc_wms",
-            "valid_epsg": ["EPSG:25833", "EPSG:25832","EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "EPSG:4647"],
+            "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "EPSG:4647"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&layers=adv_alkis_verkehr&styles=Farbe&url=https://isk.geobasis-bb.de/ows/alkis_wms",
             "opacity": 0.75
           }
@@ -1637,14 +1637,14 @@
       "bodenrichtwerte1": {
         "name": "BB: Bodenrichtwerte Bauland zonal 2025 (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25833", "EPSG:25832","EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "EPSG:4647"],
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "EPSG:4647"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&format=image/png&layers=bbv_pg_zobau_2025&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/ows/boris_wms",
         "opacity": 0.75
       },
       "bodenrichtwerte3": {
         "name": "BB: Bodenrichtwerte Landwirtschaft zonal 2025 (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25833", "EPSG:25832","EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "EPSG:4647"],
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839", "EPSG:5650", "EPSG:4647"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&format=image/png&layers=bbv_pg_zolf_2025&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/ows/boris_wms",
         "seperator": true,
         "opacity": 0.75
@@ -1714,7 +1714,7 @@
         "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='ave:Flurstueck' url='https://isk.geobasis-bb.de/ows/alkis_vereinf_wfs' version='auto'",
         "type": "ogc_wfs",
         "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:4839", "EPSG:5650"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "opacity": 0.75,
         "minScale": 25000.0,
         "maxScale": 1.0,
@@ -1838,14 +1838,14 @@
         "name": "HB: ALKIS Flurstücke (WMS)",
         "type": "ogc_wms",
         "valid_epsg": ["OGC:CRS84", "EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:31467", "EPSG:3857", "EPSG:3044", "EPSG:3034", "EPSG:3035"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=flurstuecke&styles&tilePixelRatio=0&url=https://geodienste.bremen.de/wms_flurstuecke"
       },
       "flurstuecke2": {
         "name": "HB: ALKIS Flurstücke, Gebäude, Nutzung (WMS)",
         "type": "ogc_wms",
         "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4258", "EPSG:4326", "EPSG:3034", "EPSG:3035", "EPSG:3038", "EPSG:3039", "EPSG:3040", "EPSG:3041", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:3857", "EPSG:900913"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=ALKIS&styles=Farbe&tilePixelRatio=0&url=https://opendata.lgln.niedersachsen.de/doorman/noauth/alkishb_wms",
         "seperator": true
       },
@@ -1854,7 +1854,7 @@
         "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='app:flurstuecke' url='https://geodienste.bremen.de/wfs_hduk2958loah3976niun' url='https://geodienste.bremen.de/wfs_hduk2958loah3976niun?VERSION=1.1.0' version='auto'",
         "type": "ogc_wfs",
         "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:31467", "EPSG:3857", "EPSG:3044", "EPSG:3034", "EPSG:3035"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "opacity": 0.75,
         "minScale": 25000.0,
         "maxScale": 1.0,
@@ -1874,7 +1874,7 @@
           "HB_Landesflaeche": {
             "name": "HB: Landesfläche (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["OGC:CRS84", "EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:31467", "EPSG:3857", "EPSG:3044", "EPSG:3034", "EPSG:3035"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Landesflaeche_Bremen&styles&tilePixelRatio=0&url=https://geodienste.bremen.de/wms_verwaltungsgrenzen",
             "opacity": 0.75
@@ -1882,7 +1882,7 @@
           "HB_Stadtbezirke": {
             "name": "HB: Stadtbezirke (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["OGC:CRS84", "EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:31467", "EPSG:3857", "EPSG:3044", "EPSG:3034", "EPSG:3035"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Stadtbezirke_Bremen&styles&tilePixelRatio=0&url=https://geodienste.bremen.de/wms_verwaltungsgrenzen",
             "opacity": 0.75
@@ -1890,7 +1890,7 @@
           "HB_Stadtteile": {
             "name": "HB: Stadtteile (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["OGC:CRS84", "EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:31467", "EPSG:3857", "EPSG:3044", "EPSG:3034", "EPSG:3035"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Stadtteile_Bremen&styles&tilePixelRatio=0&url=https://geodienste.bremen.de/wms_verwaltungsgrenzen",
             "opacity": 0.75
@@ -1898,7 +1898,7 @@
           "HB_Ortsteile": {
             "name": "HB: Ortsteile (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["OGC:CRS84", "EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:31467", "EPSG:3857", "EPSG:3044", "EPSG:3034", "EPSG:3035"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Ortsteile_Bremen&styles&tilePixelRatio=0&url=https://geodienste.bremen.de/wms_verwaltungsgrenzen",
             "opacity": 0.75
@@ -1906,7 +1906,7 @@
           "HB_Gemarkungen": {
             "name": "HB: Gemarkungen (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["OGC:CRS84", "EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:31467", "EPSG:3857", "EPSG:3044", "EPSG:3034", "EPSG:3035"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gemarkungen_bremen&styles&tilePixelRatio=0&url=https://geodienste.bremen.de/wms_katasterbezirk",
             "opacity": 0.75
@@ -1914,7 +1914,7 @@
           "HB_Flure": {
             "name": "HB: Flure (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["OGC:CRS84", "EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:31467", "EPSG:3857", "EPSG:3044", "EPSG:3034", "EPSG:3035"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=flure_bremen&styles&tilePixelRatio=0&url=https://geodienste.bremen.de/wms_katasterbezirk",
             "opacity": 0.75
@@ -1927,7 +1927,7 @@
           "BHV_Landesflaeche": {
             "name": "BHV: Landesfläche (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["OGC:CRS84", "EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:31467", "EPSG:3857", "EPSG:3044", "EPSG:3034", "EPSG:3035"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Landesflaeche_Bremerhaven&styles&tilePixelRatio=0&url=https://geodienste.bremen.de/wms_verwaltungsgrenzen",
             "opacity": 0.75
@@ -1935,7 +1935,7 @@
           "BHV_Stadtbezirke": {
             "name": "BHV: Stadtbezirke (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["OGC:CRS84", "EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:31467", "EPSG:3857", "EPSG:3044", "EPSG:3034", "EPSG:3035"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Stadtbezirke_Bremerhaven&styles&tilePixelRatio=0&url=https://geodienste.bremen.de/wms_verwaltungsgrenzen",
             "opacity": 0.75
@@ -1943,7 +1943,7 @@
           "BHV_Stadtteile": {
             "name": "BHV: Stadtteile (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["OGC:CRS84", "EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:31467", "EPSG:3857", "EPSG:3044", "EPSG:3034", "EPSG:3035"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Stadtteile_Bremerhaven&styles&tilePixelRatio=0&url=https://geodienste.bremen.de/wms_verwaltungsgrenzen",
             "opacity": 0.75
@@ -1951,7 +1951,7 @@
           "BHV_Ortsteile": {
             "name": "BHV: Ortsteile (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["OGC:CRS84", "EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:31467", "EPSG:3857", "EPSG:3044", "EPSG:3034", "EPSG:3035"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Ortsteile_Bremerhaven&styles&tilePixelRatio=0&url=https://geodienste.bremen.de/wms_verwaltungsgrenzen",
             "opacity": 0.75
@@ -1959,7 +1959,7 @@
           "BHV_Gemarkungen": {
             "name": "BHV: Gemarkungen (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["OGC:CRS84", "EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:31467", "EPSG:3857", "EPSG:3044", "EPSG:3034", "EPSG:3035"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gemarkungen_bremerhaven&styles&tilePixelRatio=0&url=https://geodienste.bremen.de/wms_katasterbezirk",
             "opacity": 0.75
@@ -1967,7 +1967,7 @@
           "BHV_Flure": {
             "name": "BHV Flure (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["OGC:CRS84", "EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:31467", "EPSG:3857", "EPSG:3044", "EPSG:3034", "EPSG:3035"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=flure_bremerhaven&styles&tilePixelRatio=0&url=https://geodienste.bremen.de/wms_katasterbezirk",
             "opacity": 0.75
@@ -2086,7 +2086,7 @@
         "name": "HH: ALKIS Flurstücke (WMS)",
         "type": "ogc_wms",
         "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25832", "EPSG:3857", "EPSG:102100"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://geodienste.hamburg.de/HH_WMS_ALKIS_Basiskarte&layers=21&layers=25&layers=19&styles=&styles=&styles="
       },
       "gebaeude": {
@@ -2152,7 +2152,7 @@
         "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='ave:Flurstueck' url='https://geodienste.hamburg.de/WFS_HH_ALKIS_vereinfacht' version='auto'",
         "type": "ogc_wfs",
         "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:31467", "EPSG:3857", "EPSG:3044", "EPSG:3034", "EPSG:3035"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "opacity": 0.75,
         "minScale": 25000.0,
         "maxScale": 1.0,
@@ -2210,7 +2210,7 @@
         "name": "HE: ALKIS Flurstücke, Gebäude, Nutzung (WMS)",
         "type": "ogc_wms",
         "valid_epsg": ["EPSG:4326", "EPSG:25832", "EPSG:25833", "EPSG:31467", "EPSG:31466", "EPSG:31468", "EPSG:31469", "EPSG:4258", "EPSG:900913", "EPSG:3857", "EPSG:3038", "EPSG:3039", "EPSG:3040", "EPSG:3041", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&layers=he_alk&styles&url=https://www.geoportal.hessen.de/mapbender/php/wms.php?inspire%3D1%26layer_id%3D52063%26withChilds%3D1",
         "seperator": true
       },
@@ -2227,7 +2227,7 @@
         "uri": "pageSize='10000' pagingEnabled='disabled' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='ave:Flurstueck' url='https://www.gds.hessen.de/wfs2/aaa-suite/cgi-bin/alkis/vereinf/wfs' version='1.0.0'",
         "type": "ogc_wfs",
         "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "opacity": 0.75,
         "minScale": 25000.0,
         "maxScale": 1.0,
@@ -2251,7 +2251,7 @@
           "HE_Landesgrenze": {
             "name": "HE: Landesgrenze (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=landHE&styles&tilePixelRatio=0&url=https://basisdienste.geoportal.hessen.de/ogc/borders",
             "opacity": 0.75
@@ -2259,7 +2259,7 @@
           "HE_Regierungsbezirke": {
             "name": "HE: Regierungsbezirke (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=regierungsbezirkeHE&styles&tilePixelRatio=0&url=https://basisdienste.geoportal.hessen.de/ogc/borders",
             "opacity": 0.75
@@ -2267,7 +2267,7 @@
           "HE_Landkreise": {
             "name": "HE: Landkreise (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=landkreiseHE&styles&tilePixelRatio=0&url=https://basisdienste.geoportal.hessen.de/ogc/borders",
             "opacity": 0.75
@@ -2275,7 +2275,7 @@
           "HE_Gemeindegrenzen": {
             "name": "HE: Gemeinden (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gemeindenHE&styles&tilePixelRatio=0&url=https://basisdienste.geoportal.hessen.de/ogc/borders",
             "opacity": 0.75
@@ -2283,7 +2283,7 @@
           "HE_Gemarkungsgrenzen": {
             "name": "HE: Gemarkungen (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gemarkungenHE&styles&tilePixelRatio=0&url=https://basisdienste.geoportal.hessen.de/ogc/borders",
             "opacity": 0.75
@@ -2291,7 +2291,7 @@
           "HE_Flurgrenzen": {
             "name": "HE: Fluren (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=flurenHE&styles&tilePixelRatio=0&url=https://basisdienste.geoportal.hessen.de/ogc/borders",
             "opacity": 0.75
@@ -2304,7 +2304,7 @@
           "HE_Landesgrenze": {
             "name": "HE: Landesgrenze (WFS)",
             "type": "ogc_wfs",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468"],
             "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='borders:landHE_wfs' url='https://basisdienste.geoportal.hessen.de/ogc/borders' version='auto'",
             "opacity": 0.75,
@@ -2315,7 +2315,7 @@
           "HE_Regierungsbezirke": {
             "name": "HE: Regierungsbezirke (WFS)",
             "type": "ogc_wfs",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468"],
             "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='borders:regierungsbezirkeHE_wfs' url='https://basisdienste.geoportal.hessen.de/ogc/borders' version='auto'",
             "opacity": 0.75,
@@ -2326,7 +2326,7 @@
           "HE_Landkreise": {
             "name": "HE: Landkreise (WFS)",
             "type": "ogc_wfs",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468"],
             "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='borders:landkreiseHE_wfs' url='https://basisdienste.geoportal.hessen.de/ogc/borders' version='auto'",
             "opacity": 0.75,
@@ -2337,7 +2337,7 @@
           "HE_Gemeindegrenzen": {
             "name": "HE: Gemeinden (WFS)",
             "type": "ogc_wfs",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468"],
             "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='borders:gemeindenHE_wfs' url='https://basisdienste.geoportal.hessen.de/ogc/borders' version='auto'",
             "opacity": 0.75,
@@ -2348,7 +2348,7 @@
           "HE_Gemarkungsgrenzen": {
             "name": "HE: Gemarkungen (WFS)",
             "type": "ogc_wfs",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468"],
             "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='borders:gemarkungenHE_wfs' url='https://basisdienste.geoportal.hessen.de/ogc/borders' version='auto'",
             "opacity": 0.75,
@@ -2359,7 +2359,7 @@
           "HE_Flurgrenzen": {
             "name": "HE: Fluren (WFS)",
             "type": "ogc_wfs",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468"],
             "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='borders:flurenHE_wfs' url='https://basisdienste.geoportal.hessen.de/ogc/borders' version='auto'",
             "opacity": 0.75,
@@ -2425,7 +2425,7 @@
         "name": "MV: ALKIS Flurstücke (WMS)",
         "type": "ogc_wms",
         "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:31468", "EPSG:31469", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:5652", "EPSG:5674", "EPSG:5675", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4937", "EPSG:7409", "EPSG:7423", "EPSG:9422", "EPSG:4979"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&layers=adv_alkis_flurstuecke&styles&url=https://www.geodaten-mv.de/dienste/alkis_wms"
       },
       "gebaeude": {
@@ -2458,7 +2458,7 @@
         "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='cp:CadastralParcel' url='https://www.geodaten-mv.de/dienste/inspire_cp_alkis_download' version='auto'",
         "type": "ogc_wfs",
         "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:900913"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "opacity": 0.75,
         "minScale": 25000.0,
         "maxScale": 1.0,
@@ -2469,7 +2469,7 @@
         "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='ave:Flurstueck' url='https://www.geodaten-mv.de/dienste/alkis_wfs_einfach' version='auto'",
         "type": "ogc_wfs",
         "valid_epsg": ["EPSG:25833", "EPSG:5650"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "opacity": 0.75,
         "minScale": 25000.0,
         "maxScale": 1.0,
@@ -2596,7 +2596,7 @@
         "name": "NI: ALKIS Flurstücke, Gebäude, Nutzung (WMS)",
         "type": "ogc_wms",
         "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3038", "EPSG:3039", "EPSG:3040", "EPSG:3041", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:3857", "EPSG:900913"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&layers=ALKIS&styles=Farbe&url=https://opendata.lgln.niedersachsen.de/doorman/noauth/alkis_wms",
         "seperator": true
       },
@@ -2606,7 +2606,7 @@
           "NI_Landesgrenze": {
             "name": "NI: Landesgrenze (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:3035", "EPSG:3034", "EPSG:3044", "EPSG:3045", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:32632", "EPSG:32633", "EPSG:4647"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=ni_landesgrenze_umring&styles&tilePixelRatio=0&url=https://opendata.lgln.niedersachsen.de/doorman/noauth/verwaltungsgrenzen_wms",
             "opacity": 0.75
@@ -2614,7 +2614,7 @@
           "NI_Katasterbereiche": {
             "name": "NI: Katasterbereiche (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:3035", "EPSG:3034", "EPSG:3044", "EPSG:3045", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:32632", "EPSG:32633", "EPSG:4647"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://opendata.lgln.niedersachsen.de/doorman/noauth/verwaltungsgrenzen_wms&layers=ni_kataster_umringe&layers=ni_kataster_bezeichnungen&styles=&styles=",
             "opacity": 0.75
@@ -2622,7 +2622,7 @@
           "NI_Landkreise": {
             "name": "NI: Landkreise (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:3035", "EPSG:3034", "EPSG:3044", "EPSG:3045", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:32632", "EPSG:32633", "EPSG:4647"],
             "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://opendata.lgln.niedersachsen.de/doorman/noauth/verwaltungsgrenzen_wms&layers=ni_landkreise_umringe&layers=ni_landkreise_bezeichnungen&styles=&styles=",
             "opacity": 0.75
@@ -2630,7 +2630,7 @@
           "NI_Samtgemeinden": {
             "name": "NI: Samtgemeinden (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:3035", "EPSG:3034", "EPSG:3044", "EPSG:3045", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:32632", "EPSG:32633", "EPSG:4647"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://opendata.lgln.niedersachsen.de/doorman/noauth/verwaltungsgrenzen_wms&layers=ni_samtgemeinden_umringe&layers=ni_samtgemeinden_bezeichnungen&styles=&styles=",
             "opacity": 0.75
@@ -2638,7 +2638,7 @@
           "NI_Gemeinden": {
             "name": "NI: Gemeinden (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:3035", "EPSG:3034", "EPSG:3044", "EPSG:3045", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:32632", "EPSG:32633", "EPSG:4647"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://opendata.lgln.niedersachsen.de/doorman/noauth/verwaltungsgrenzen_wms&layers=ni_gemeinden_umringe&layers=ni_gemeinden_bezeichnungen&styles=&styles=",
             "opacity": 0.75
@@ -2646,7 +2646,7 @@
           "NI_Gemarkungen": {
             "name": "NI: Gemarkungen (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:3035", "EPSG:3034", "EPSG:3044", "EPSG:3045", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:32632", "EPSG:32633", "EPSG:4647"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://opendata.lgln.niedersachsen.de/doorman/noauth/verwaltungsgrenzen_wms&layers=ni_gemarkungen_umringe&layers=ni_gemarkungen_bezeichnungen&styles=&styles=",
             "opacity": 0.75
@@ -2654,7 +2654,7 @@
           "NI_Flure": {
             "name": "NI: Flure (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:3035", "EPSG:3034", "EPSG:3044", "EPSG:3045", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:32632", "EPSG:32633", "EPSG:4647"],
             "uri": "ontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://opendata.lgln.niedersachsen.de/doorman/noauth/verwaltungsgrenzen_wms&layers=ni_fluren_umringe&layers=ni_fluren_bezeichnung&styles=&styles=",
             "opacity": 0.75
@@ -2674,7 +2674,7 @@
         "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='ave:Flurstueck' url='https://opendata.lgln.niedersachsen.de/doorman/noauth/alkis_wfs_einfach' version='auto'",
         "type": "ogc_wfs",
         "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:900913"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "opacity": 0.75,
         "minScale": 25000.0,
         "maxScale": 1.0,
@@ -2854,8 +2854,8 @@
       "flurstuecke": {
         "name": "NW: ALKIS Flurstücke (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5649", "EPSG:5650", "EPSG:5651", "EPSG:5652", "EPSG:5653", "EPSG:25831", "EPSG:25832", "EPSG:25833", "EPSG:28992","EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "valid_epsg": ["EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5649", "EPSG:5650", "EPSG:5651", "EPSG:5652", "EPSG:5653", "EPSG:25831", "EPSG:25832", "EPSG:25833", "EPSG:28992", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&layers=adv_alkis_flurstuecke&styles&url=https://www.wms.nrw.de/geobasis/wms_nw_alkis"
       },
       "gebaeude": {
@@ -2908,7 +2908,7 @@
           "NW_dvg4_text": {
             "name": "NW: Regierungsbezirke Namen (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5649", "EPSG:5650", "EPSG:5651", "EPSG:5652", "EPSG:5653", "EPSG:25831", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=nw_dvg_rbz_namen&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/geobasis/wms_nw_dvg",
             "opacity": 0.75
@@ -2916,7 +2916,7 @@
           "NW_dvg4": {
             "name": "NW: Regierungsbezirke (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5649", "EPSG:5650", "EPSG:5651", "EPSG:5652", "EPSG:5653", "EPSG:25831", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=nw_dvg_rbz&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/geobasis/wms_nw_dvg",
             "opacity": 0.75
@@ -2924,7 +2924,7 @@
           "NW_dvg3_text": {
             "name": "NW: Kreise und kreisfreie Städte Namen (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5649", "EPSG:5650", "EPSG:5651", "EPSG:5652", "EPSG:5653", "EPSG:25831", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=nw_dvg_krs_namen&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/geobasis/wms_nw_dvg",
             "opacity": 0.75
@@ -2932,7 +2932,7 @@
           "NW_dvg3": {
             "name": "NW: Kreise und kreisfreie Städte (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5649", "EPSG:5650", "EPSG:5651", "EPSG:5652", "EPSG:5653", "EPSG:25831", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=nw_dvg_krs&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/geobasis/wms_nw_dvg",
             "opacity": 0.75
@@ -2940,7 +2940,7 @@
           "NW_dvg2_text": {
             "name": "NW: Kreisangehörige Kommunen Namen (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5649", "EPSG:5650", "EPSG:5651", "EPSG:5652", "EPSG:5653", "EPSG:25831", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=nw_dvg_gem_namen&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/geobasis/wms_nw_dvg",
             "opacity": 0.75
@@ -2948,7 +2948,7 @@
           "NW_dvg2": {
             "name": "NW: Kreisangehörige Kommunen (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5649", "EPSG:5650", "EPSG:5651", "EPSG:5652", "EPSG:5653", "EPSG:25831", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=nw_dvg_gem&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/geobasis/wms_nw_dvg",
             "opacity": 0.75
@@ -2956,7 +2956,7 @@
           "NW_dvg1_text": {
             "name": "NW: Kreisangehörige Kommunen und kreisfreie Städte Namen (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5649", "EPSG:5650", "EPSG:5651", "EPSG:5652", "EPSG:5653", "EPSG:25831", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=nw_dvg_gem_gesamt_namen&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/geobasis/wms_nw_dvg",
             "opacity": 0.75
@@ -2964,7 +2964,7 @@
           "NW_dvg1": {
             "name": "NW: Kreisangehörige Kommunen und kreisfreie Städte (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5649", "EPSG:5650", "EPSG:5651", "EPSG:5652", "EPSG:5653", "EPSG:25831", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=nw_dvg_gem_gesamt&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/geobasis/wms_nw_dvg",
             "opacity": 0.75
@@ -2972,7 +2972,7 @@
           "NW_Gemarkungen": {
             "name": "NW: Gemarkungen (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5649", "EPSG:5650", "EPSG:5651", "EPSG:5652", "EPSG:5653", "EPSG:25831", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=nw_gemarkungen_fluren_gemarkungen&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/geobasis/wms_nw_gemarkungen_fluren",
             "opacity": 0.75
@@ -2980,7 +2980,7 @@
           "NW_Flure": {
             "name": "NW: Flure (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5649", "EPSG:5650", "EPSG:5651", "EPSG:5652", "EPSG:5653", "EPSG:25831", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=nw_gemarkungen_fluren_fluren&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/geobasis/wms_nw_gemarkungen_fluren",
             "opacity": 0.75
@@ -3001,7 +3001,7 @@
         "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='ave:Flurstueck' url='https://www.wfs.nrw.de/geobasis/wfs_nw_alkis_vereinfacht' version='auto'",
         "type": "ogc_wfs",
         "valid_epsg": ["EPSG:25831", "EPSG:25832", "EPSG:25833", "EPSG:28992", "EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:31466", "EPSG:31467", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5649", "EPSG:5650", "EPSG:5651", "EPSG:5652", "EPSG:5653"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "opacity": 0.75,
         "minScale": 25000.0,
         "maxScale": 1.0,
@@ -3117,7 +3117,7 @@
         "name": "RP: ALKIS Flurstücke (WMS)",
         "type": "ogc_wms",
         "valid_epsg": ["EPSG:4326", "EPSG:25832", "EPSG:3857", "EPSG:4258", "EPSG:25831", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:9935832", "EPSG:5651", "EPSG:5652", "EPSG:5653", "EPSG:5649", "EPSG:4647", "EPSG:5650", "EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=Flurstueck&url=https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id%3D61680%26withChilds%3D1%26VERSION%3D1.1.1"
       },
       "gebaeude": {
@@ -3157,7 +3157,7 @@
         "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='ave:Flurstueck' url='https://www.geoportal.rlp.de/registry/wfs/519' url='https://www.geoportal.rlp.de/registry/wfs/519?VERSION=2.0.0' version='auto'",
         "type": "ogc_wfs",
         "valid_epsg": ["EPSG:25832", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:25831", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:9935832", "EPSG:5651", "EPSG:5652", "EPSG:5653", "EPSG:5649", "EPSG:4647", "EPSG:5650", "EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "opacity": 0.75,
         "minScale": 25000.0,
         "maxScale": 1.0,
@@ -3347,14 +3347,14 @@
         "name": "SL: ALKIS Flurstücke/Gebäude Schwarzweiß (WMS)",
         "type": "ogc_wms",
         "valid_epsg": ["EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:3034", "EPSG:3857"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=adv_alkis&styles&tilePixelRatio=0&url=https://geoportal.saarland.de/mapbender/php/wms.php?layer_id%3D38960%26VERSION%3D1.1.1%26withChilds%3D1"
       },
       "flurstuecke_wms": {
         "name": "SL: ALKIS Flurstücke (WMS)",
         "type": "ogc_wms",
         "valid_epsg": ["EPSG:4326", "EPSG:25832", "EPSG:4258", "EPSG:3857", "EPSG:3035", "EPSG:25833"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "uri": "&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=CP.CadastralParcel&styles&tilePixelRatio=0&url=https://geoportal.saarland.de/mapbender/php/wms.php?inspire%3D1%26layer_id%3D42092%26withChilds%3D1"
       },
       "gebaeude_wms": {
@@ -3369,7 +3369,7 @@
         "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='ALKIS_ALKIS_WFS_ohne_Eig:Flurstueck' url='https://geoportal.saarland.de/registry/wfs/414' version='auto'",
         "type": "ogc_wfs",
         "valid_epsg": ["EPSG:25832"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "opacity": 0.75,
         "minScale": 25000.0,
         "maxScale": 1.0,
@@ -3435,7 +3435,7 @@
         "type": "ogc_wms",
         "komgis_node": ["Externe Geodienste", "Land Sachsen", "ALKIS", "WMS: ALKIS Flurstücke"],
         "valid_epsg": ["EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:25832", "EPSG:31469", "EPSG:31468", "EPSG:31467", "EPSG:31466", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3398", "EPSG:3399", "EPSG:5650", "EPSG:4647"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_flurstuecke&url=https://geodienste.sachsen.de/wms_geosn_alkis-adv/guest"
       },
       "gebaeude": {
@@ -3502,7 +3502,7 @@
         "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='ave:Flurstueck' url='https://geodienste.sachsen.de/aaa/public_alkis/vereinf/wfs' url='https://geodienste.sachsen.de/aaa/public_alkis/vereinf/wfs?VERSION=1.1.0' version='auto'",
         "type": "ogc_wfs",
         "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "opacity": 0.75,
         "minScale": 25000.0,
         "maxScale": 1.0,
@@ -3526,7 +3526,7 @@
           "SN_Landesgrenze": {
             "name": "SN: Landesgrenze (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:2180", "EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3398", "EPSG:3399", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5514", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:900913"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://geodienste.sachsen.de/wms_geosn_verwaltungseinheiten/guest&layers=Landesgrenze_Beschriftung&layers=Landesgrenze&styles=&styles=",
             "opacity": 0.75
@@ -3534,7 +3534,7 @@
           "SN_Landkreise_und_kreisfreie_Staedte": {
             "name": "SN: Landkreise und kreisfreie_Städte (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:2180", "EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3398", "EPSG:3399", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5514", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:900913"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://geodienste.sachsen.de/wms_geosn_verwaltungseinheiten/guest&layers=Landkreis_Kreisfreie_Stadt_Beschriftung&layers=Landkreis_Kreisfreie_Stadt&styles=&styles=",
             "opacity": 0.75
@@ -3542,7 +3542,7 @@
           "SN_Gemeindegrenzen": {
             "name": "SN: Gemeindegrenzen (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:2180", "EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3398", "EPSG:3399", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5514", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:900913"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://geodienste.sachsen.de/wms_geosn_verwaltungseinheiten/guest&layers=Gemeinde&layers=Gemeinde_Beschriftung&styles=&styles=",
             "opacity": 0.75
@@ -3550,7 +3550,7 @@
           "SN_Ortsteile": {
             "name": "SN: Ortsteile (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:2180", "EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3398", "EPSG:3399", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5514", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:900913"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=ortsteile&styles&tilePixelRatio=0&url=https://geodienste.sachsen.de/wms_geosn_ortsteile/guest",
             "opacity": 0.75
@@ -3558,7 +3558,7 @@
           "SN_Gemarkungsgrenzen": {
             "name": "SN: Gemarkungsgrenzen (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:2180", "EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3398", "EPSG:3399", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5514", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:900913"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://geodienste.sachsen.de/wms_geosn_flurstuecke/guest&layers=Gemarkung&layers=Gemarkungsname&styles=&styles=",
             "opacity": 0.75
@@ -3566,7 +3566,7 @@
           "SN_Adressen": {
             "name": "SN: Adressen (WMS)",
             "type": "ogc_wms",
-            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+            "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
             "valid_epsg": ["EPSG:2180", "EPSG:3034", "EPSG:3035", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3398", "EPSG:3399", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5514", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:900913"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=AD.Address&styles&tilePixelRatio=0&url=https://geodienste.sachsen.de/iwms_geosn_adressen/guest?VERSION%3D1.3.0",
             "opacity": 0.75
@@ -3608,8 +3608,8 @@
         "type": "ogc_wms",
         "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "ALKIS", "WMS: ALKIS Flurstücke"],
         "komgis_priority": "75000",
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
-        "valid_epsg": ["EPSG:3857", "EPSG:4326","EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4839"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "valid_epsg": ["EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4839"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_flurstuecke&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_ALKIS_WMS_AdV_konform_App/guest"
       },
       "gebaeude_wms": {
@@ -3618,7 +3618,7 @@
         "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "ALKIS", "WMS: ALKIS Gebäude"],
         "komgis_priority": "85000",
         "keywords": ["ALKIS", "ALK", "AAA", "Gebäude", "Hausnummern"], 
-        "valid_epsg": ["EPSG:3857", "EPSG:4326","EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4839"],
+        "valid_epsg": ["EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4839"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_gebaeude&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_ALKIS_WMS_AdV_konform_App/guest",
         "opacity": 0.75
       },
@@ -3631,7 +3631,7 @@
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "ALKIS", "ALKIS Tatsächliche Nutzung", "WMS: Gewässer"],
             "komgis_priority": "87200",
             "keywords": ["ALKIS", "ALK", "Nutzung", "Gewässer"], 
-            "valid_epsg": ["EPSG:3857", "EPSG:4326","EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4839"],
+            "valid_epsg": ["EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4839"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_gewaesser&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_ALKIS_WMS_AdV_konform_App/guest",
             "opacity": 0.75
           },
@@ -3641,7 +3641,7 @@
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "ALKIS", "ALKIS Tatsächliche Nutzung", "WMS: Siedlung"],
             "komgis_priority": "87100",
             "keywords": ["ALKIS", "ALK", "Nutzung", "Siedlung"], 
-            "valid_epsg": ["EPSG:3857", "EPSG:4326","EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4839"],
+            "valid_epsg": ["EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4839"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_siedlung&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_ALKIS_WMS_AdV_konform_App/guest",
             "opacity": 0.75
           },
@@ -3651,13 +3651,13 @@
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "ALKIS", "ALKIS Tatsächliche Nutzung", "WMS: Vegetation"],
             "komgis_priority": "87400",
             "keywords": ["ALKIS", "ALK", "Nutzung", "Vegetation"], 
-            "valid_epsg": ["EPSG:3857", "EPSG:4326","EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4839"],
+            "valid_epsg": ["EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4839"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_vegetation&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_ALKIS_WMS_AdV_konform_App/guest",
             "opacity": 0.75
           },
           "verkehr": {
             "type": "ogc_wms",
-            "valid_epsg": ["EPSG:3857", "EPSG:4326","EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4839"],
+            "valid_epsg": ["EPSG:3857", "EPSG:4326", "EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:4839"],
             "name": "Verkehr",
             "keywords": ["ALKIS", "ALK", "Nutzung", "Verkehr"], 
             "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "ALKIS", "ALKIS Tatsächliche Nutzung", "WMS: Verkehr"],
@@ -3779,7 +3779,7 @@
         "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='ave:Flurstueck' url='https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_ALKIS_WFS_OpenData/guest' url='https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_ALKIS_WFS_OpenData/guest?VERSION=2.0.0' version='auto'",
         "type": "ogc_wfs",
         "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "opacity": 0.75,
         "minScale": 25000.0,
         "maxScale": 1.0,
@@ -4261,7 +4261,7 @@
         "name": "SH: ALKIS Flurstücke, Gebäude, Nutzung (WMS)",
         "type": "ogc_wms",
         "valid_epsg": ["EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4326", "EPSG:4258", "EPSG:25832", "EPSG:25833", "EPSG:31467", "EPSG:31468", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:3857", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:31467", "EPSG:31468", "EPSG:31469"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=SH_ALKIS&url=https://service.gdi-sh.de/WMS_SH_ALKIS_OpenGBD",
         "seperator": true
       },
@@ -4270,7 +4270,7 @@
         "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='ave:Flurstueck' url='https://dienste.gdi-sh.de/WFS_SH_ALKIS_VWG_OpenGBD' url='https://dienste.gdi-sh.de/WFS_SH_ALKIS_VWG_OpenGBD?version=2.0.0' version='auto'",
         "type": "ogc_wfs",
         "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:31463", "EPSG:31464", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:900913"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "opacity": 0.75,
         "minScale": 25000.0,
         "maxScale": 1.0,
@@ -4282,7 +4282,7 @@
         "seperator": true,
         "type": "ogc_wfs",
         "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:31463", "EPSG:31464", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:900913"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "opacity": 0.75,
         "minScale": 25000.0,
         "maxScale": 1.0,
@@ -4388,7 +4388,7 @@
         "type": "ogc_wms",
         "komgis_node": ["Externe Geodienste", "Land Thüringen", "ALKIS", "WMS: ALKIS Flurstücke"],
         "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:4839", "EPSG:3857"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_flurstuecke&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/adv_alkis_wms_th"
       },
       "gebaeude": {
@@ -4454,7 +4454,7 @@
         "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='ave:Flurstueck' url='https://www.geoproxy.geoportal-th.de/geoproxy/services/adv_alkis_v2_wfs' url='https://www.geoproxy.geoportal-th.de/geoproxy/services/adv_alkis_wfs?version=2.0.0' version='auto'",
         "type": "ogc_wfs",
         "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:25833", "EPSG:31467", "EPSG:31468", "EPSG:4258", "EPSG:3038", "EPSG:3039", "EPSG:3040", "EPSG:3041", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3857"],
-        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke","Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
+        "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "opacity": 0.75,
         "minScale": 25000.0,
         "maxScale": 1.0,
