@@ -591,6 +591,69 @@
             "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='poi-open:haefen' url='https://sgx.geodatenzentrum.de/wfs_poi_open' version='auto'",
             "fillColor": [67,147,195],
             "strokeWidth": 2
+          },
+          "poi_bkg8": {
+            "name": "DE: Welterbestätten (WFS)",
+            "type": "ogc_wfs",
+            "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:3857", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045"],
+            "minScale": 1000000.0,
+            "maxScale": 1.0,
+            "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='poi-open:welterbe' url='https://sgx.geodatenzentrum.de/wfs_poi_open' version='auto'",
+            "fillColor": [255,128,0],
+            "strokeWidth": 2
+          }
+        }
+      },
+      "poi_bkg_layergroup_2": {
+        "name": "DE: POIs BKG (WMS)",
+        "layers": {
+          "poi_bkg1": {
+            "name": "DE: Haltestellen (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=7&format=image/png&http-header:referer=We&layers=haltestellen&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_poi_open?LAYERS%3Dwelterbe%26VERSION%3D1.3.0%26STYLES%3D%26CRS%3DEPSG%3A25832%26TRANSPARENT%3Dtrue%26CACHEID%3D6056567%26SINGLETILE%3Dfalse"
+          },
+          "poi_bkg2": {
+            "name": "DE: Kilometrierungen BAB (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=7&format=image/png&http-header:referer=We&layers=kilometrierungen_bab&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_poi_open?LAYERS%3Dwelterbe%26VERSION%3D1.3.0%26STYLES%3D%26CRS%3DEPSG%3A25832%26TRANSPARENT%3Dtrue%26CACHEID%3D6056567%26SINGLETILE%3Dfalse"
+          },
+          "poi_bkg3": {
+            "name": "DE: Grenzübergänge (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=7&format=image/png&http-header:referer=We&layers=grenzuebergaenge&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_poi_open?LAYERS%3Dwelterbe%26VERSION%3D1.3.0%26STYLES%3D%26CRS%3DEPSG%3A25832%26TRANSPARENT%3Dtrue%26CACHEID%3D6056567%26SINGLETILE%3Dfalse"
+          },
+          "poi_bkg4": {
+            "name": "DE: Traumazentren (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=7&format=image/png&http-header:referer=We&layers=traumazentren&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_poi_open?LAYERS%3Dwelterbe%26VERSION%3D1.3.0%26STYLES%3D%26CRS%3DEPSG%3A25832%26TRANSPARENT%3Dtrue%26CACHEID%3D6056567%26SINGLETILE%3Dfalse"
+          },
+          "poi_bkg5": {
+            "name": "DE: Flughäfen (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=7&format=image/png&http-header:referer=We&layers=flughaefen&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_poi_open?LAYERS%3Dwelterbe%26VERSION%3D1.3.0%26STYLES%3D%26CRS%3DEPSG%3A25832%26TRANSPARENT%3Dtrue%26CACHEID%3D6056567%26SINGLETILE%3Dfalse"
+          },
+          "poi_bkg6": {
+            "name": "DE: Heliports (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=7&format=image/png&http-header:referer=We&layers=heliports&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_poi_open?LAYERS%3Dwelterbe%26VERSION%3D1.3.0%26STYLES%3D%26CRS%3DEPSG%3A25832%26TRANSPARENT%3Dtrue%26CACHEID%3D6056567%26SINGLETILE%3Dfalse"
+          },
+          "poi_bkg7": {
+            "name": "DE: Häfen (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=7&format=image/png&http-header:referer=We&layers=haefen&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_poi_open?LAYERS%3Dwelterbe%26VERSION%3D1.3.0%26STYLES%3D%26CRS%3DEPSG%3A25832%26TRANSPARENT%3Dtrue%26CACHEID%3D6056567%26SINGLETILE%3Dfalse"
+          },
+          "poi_bkg8": {
+            "name": "DE: Welterbestätten (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["EPSG:4326", "EPSG:3857", "EPSG:25832", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "OGC:CRS84"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=7&format=image/png&http-header:referer=We&layers=welterbe&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_poi_open?LAYERS%3Dwelterbe%26VERSION%3D1.3.0%26STYLES%3D%26CRS%3DEPSG%3A25832%26TRANSPARENT%3Dtrue%26CACHEID%3D6056567%26SINGLETILE%3Dfalse"
           }
         }
       },
