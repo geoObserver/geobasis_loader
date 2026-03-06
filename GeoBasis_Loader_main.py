@@ -13,7 +13,7 @@ from . import ui as custom_ui
 from .catalog_manager import CatalogManager
 
 if Qgis.versionInt() < 33000:   # Breaking chnage in Version 3.30 -> Geometry types now in Qgis instead of QgsWkbTypes
-    geometry_types = QgsWkbTypes.Type
+    geometry_types = QgsWkbTypes.Type       # type: ignore
 else:
     geometry_types = Qgis.WkbType
 
@@ -26,6 +26,7 @@ class GeoBasis_Loader(QObject):
 # =========================================================================
     def __init__(self, iface: QgisInterface, parent = None) -> None:
         super().__init__(parent)
+        self.iface = iface
         CatalogManager.setup(iface)
         CatalogManager.get_overview(callback=self.initGui)
         
@@ -44,7 +45,6 @@ class GeoBasis_Loader(QObject):
         saved_option = self.qgs_settings.value(config.AUTOMATIC_CRS_SETTINGS_KEY, "false")
         self.automatic_crs = False if saved_option == "false" else True
 
-        self.iface = iface
         icon = QIcon(config.PLUGIN_DIR + "/GeoBasis_Loader_icon.png")
         self.main_menu = QMenu(config.PLUGIN_NAME_AND_VERSION)
         self.main_menu.setIcon(icon)
@@ -187,7 +187,7 @@ class GeoBasis_Loader(QObject):
         
         self.automatic_crs = self.qgs_settings.value(config.AUTOMATIC_CRS_SETTINGS_KEY, False, bool)
         
-        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, 'Einstellungen erfolgreich gespeichert', 3, 3)
+        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, 'Einstellungen erfolgreich gespeichert', Qgis.MessageLevel.Success, 3)
         self.initGui()
 
     def toggle_automatic_crs(self) -> None:
@@ -206,12 +206,6 @@ class GeoBasis_Loader(QObject):
         
         # Opens webpage in the standard browser
         QDesktopServices.openUrl(url)
-       
-        # ------ Öffne QGIS Fenster mit WebPage ---------------- 
-        # self.webWindow = QWebView(None)
-        # self.webWindow.setWindowTitle("GeoObserver")
-        # self.webWindow.load(url)
-        # self.webWindow.show()
         
     def change_current_catalog(self, catalog: dict):
         self.qgs_settings.setValue(config.CURRENT_CATALOG_SETTINGS_KEY, catalog)
@@ -222,7 +216,7 @@ class GeoBasis_Loader(QObject):
         titel = current_catalog["titel"]
         name = current_catalog["name"]
         version = re.findall(r'v\d+', name)[0]
-        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, 'Lese '+ titel + ", Version " + version + ' ...', 3, 3)
+        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, 'Lese '+ titel + ", Version " + version + ' ...', Qgis.MessageLevel.Success, 3)
         
         self.services = services
         self.initGui()
@@ -365,7 +359,7 @@ class GeoBasis_Loader(QObject):
             layer.triggerRepaint()
             self.iface.layerTreeView().refreshLayerSymbology(layer.id())
         
-        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, config.MY_INFO_1 + attributes['name'] + config.MY_INFO_2, 3, 1) # type: ignore
+        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, config.MY_INFO_1 + attributes['name'] + config.MY_INFO_2, Qgis.MessageLevel.Success, 1)
         # Ebene zum Projekt hinzufügen aber nicht zum Ebenenbaum
         QgsProject.instance().addMapLayer(layer, False) # type: ignore
         
