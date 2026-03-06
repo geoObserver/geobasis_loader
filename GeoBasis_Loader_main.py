@@ -81,17 +81,14 @@ class GeoBasis_Loader(QObject):
             
         if CatalogManager.overview is not None:
             # ------- Katalogmenü erstellen ------------------------------------
-            menu = QMenu('catalogs')
-            menu.setObjectName('catalog-overview')
+            catalogs_menu = self.main_menu.addMenu("Katalog wechseln (Change Catalogs)")
+            catalogs_menu.setObjectName('catalog-overview')
             
             # ------- Einträge im Katalogmenü erstellen ------------------------
             for catalog in CatalogManager.overview:
-                action = menu.addAction(catalog["titel"], partial(self.change_current_catalog, catalog))
-                action.setObjectName("open-" + catalog["titel"])
-                
-            # ------- Katalogmenü tum Hauptmenü hinzufügen ---------------------
-            action = self.main_menu.addAction("Katalog wechseln (Change Catalogs)")
-            action.setMenu(menu)
+                catalog_action = catalogs_menu.addAction(catalog["titel"], partial(self.change_current_catalog, catalog))
+                catalog_action.setObjectName("open-" + catalog["titel"])
+            
             action = self.main_menu.addAction("Kataloge neu laden (Reload Catalogs)")
             action.triggered.connect(lambda: CatalogManager.get_overview(callback=self.initGui))
             
