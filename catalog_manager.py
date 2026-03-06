@@ -29,7 +29,7 @@ class NetworkHandler(QObject):
     def __fetch_data(self, url: str = '') -> QNetworkReply:
         q_url = QUrl(url)
         request = QNetworkRequest(q_url)
-        request.setAttribute(QNetworkRequest.CacheLoadControlAttribute, QNetworkRequest.AlwaysNetwork)
+        request.setAttribute(QNetworkRequest.Attribute.CacheLoadControlAttribute, QNetworkRequest.CacheLoadControl.AlwaysNetwork)
         if self._server == config.ServerHosts.GITHUB:
             mediatype = "application/vnd.github.raw+json"
         else:
@@ -52,7 +52,7 @@ class NetworkHandler(QObject):
     def __handle_response(self, catalog_name: str, catalog_title: str, is_overview_response: bool):
         error = self.__reply.error()
         
-        if error == 0:
+        if error == QNetworkReply.NetworkError.NoError:
             json_string = self.__reply.readAll().data().decode('utf-8')
             
             if is_overview_response:

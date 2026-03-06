@@ -14,8 +14,8 @@ class EpsgDialog(QtWidgets.QDialog, EPSG_DIALOG):
         
         self.table: QtWidgets.QTableWidget = self.tableWidget
         header = self.table.horizontalHeader()       
-        header.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
-        header.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
+        header.setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeMode.Stretch)
+        header.setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeMode.Stretch)
         
         # Layout auf das vorhandene setzen
         layout = self.verticalLayout_2

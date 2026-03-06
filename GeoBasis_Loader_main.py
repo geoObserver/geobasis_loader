@@ -180,7 +180,7 @@ class GeoBasis_Loader(QObject):
 #=================================================================================== 
 
     def open_settigs(self) -> None:
-        status = self.settings_dialog.exec_()
+        status = self.settings_dialog.exec()
         # Abbruch
         if status == 0:
             return
@@ -235,7 +235,7 @@ class GeoBasis_Loader(QObject):
         current_crs = QgsProject.instance().crs().authid()          
         if current_crs not in supported_auth_ids or not self.automatic_crs:
             self.epsg_dialog.set_table_data(supported_auth_ids, layer_name)
-            self.epsg_dialog.exec_()
+            self.epsg_dialog.exec()
             if self.epsg_dialog.selected_coord is None:
                 return None
             current_crs = self.epsg_dialog.selected_coord
