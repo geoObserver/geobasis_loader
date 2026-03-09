@@ -8,8 +8,9 @@ from ..catalog_manager import CatalogManager
 from .. import config
 
 SETTINGS_DIALOG = uic.loadUiType(os.path.join(os.path.dirname(__file__), "design_files", "settings_dialog.ui"))[0]
-VISIBILITY_CHECKBOX_COL = 1
-LOADING_CHECKBOX_COL = 2
+FAVORITE_CHECKBOX_COL = 1
+VISIBILITY_CHECKBOX_COL = 2
+LOADING_CHECKBOX_COL = 3
 
 class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
     # Store all tree view items for each exec_ -> Dont go through tree recursively to get check status of each item
@@ -40,10 +41,11 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
     def setup(self):
         available_width = self.visibility_tree.width()
         checkbox_col_width = 80
-        name_col_width = available_width - self.visibility_tree.verticalScrollBar().width() - 2 * checkbox_col_width                               # type: ignore
+        name_col_width = available_width - self.visibility_tree.verticalScrollBar().width() - 3 * checkbox_col_width                               # type: ignore
         self.visibility_tree.setColumnWidth(0, name_col_width)
-        self.visibility_tree.setColumnWidth(1, checkbox_col_width)
-        self.visibility_tree.setColumnWidth(2, checkbox_col_width)
+        self.visibility_tree.setColumnWidth(FAVORITE_CHECKBOX_COL, checkbox_col_width)
+        self.visibility_tree.setColumnWidth(VISIBILITY_CHECKBOX_COL, checkbox_col_width)
+        self.visibility_tree.setColumnWidth(LOADING_CHECKBOX_COL, checkbox_col_width)
 
     def showEvent(self, a0: Union[QShowEvent, None]) -> None:
         super().showEvent(a0)
@@ -65,6 +67,9 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
                         item = QtWidgets.QTreeWidgetItem(parent)
                         item.setText(0, value[name_key])
                         item.setFlags(item.flags() | Qt.ItemFlag.ItemIsAutoTristate | Qt.ItemFlag.ItemIsUserCheckable)
+                        # Favorite
+                        checked = Qt.CheckState.Checked if value.get(config.InternalProperties.FAVORITE, True) else Qt.CheckState.Unchecked
+                        item.setCheckState(FAVORITE_CHECKBOX_COL, checked)
                         # Visibility
                         checked = Qt.CheckState.Checked if value.get(config.InternalProperties.VISIBILITY, True) else Qt.CheckState.Unchecked
                         item.setCheckState(VISIBILITY_CHECKBOX_COL, checked)
@@ -94,7 +99,6 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
             else:
                 button.setChecked(False)
         automatic_crs = qgs_settings.value(config.AUTOMATIC_CRS_SETTINGS_KEY, False, bool)
-        print(automatic_crs)
         self.automatic_crs_checkbox.setChecked(automatic_crs)
         
     def set_check_state_all_items(self, column: int, state: Qt.CheckState) -> None:
@@ -110,6 +114,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
             return
         
         # Visibility Tree
+        self.set_check_state_all_items(FAVORITE_CHECKBOX_COL, Qt.CheckState.Unchecked)
         self.set_check_state_all_items(VISIBILITY_CHECKBOX_COL, Qt.CheckState.Checked)
         self.set_check_state_all_items(LOADING_CHECKBOX_COL, Qt.CheckState.Checked)
         
@@ -138,12 +143,19 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         
         # Layer settings
         check_status = {
+            config.InternalProperties.FAVORITE: {},
             config.InternalProperties.VISIBILITY: {},
             config.InternalProperties.LOADING: {},
         }
                 
         for item in self._items:
             path: str = item.data(0, Qt.ItemDataRole.UserRole)
+            favorite_state = item.checkState(FAVORITE_CHECKBOX_COL)
+            if favorite_state == Qt.CheckState.Unchecked:
+                check_status[config.InternalProperties.FAVORITE][path] = False
+            else:
+                check_status[config.InternalProperties.FAVORITE][path] = True
+            
             visibility_state = item.checkState(VISIBILITY_CHECKBOX_COL)
             if visibility_state == Qt.CheckState.Unchecked:
                 check_status[config.InternalProperties.VISIBILITY][path] = False
