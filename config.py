@@ -38,6 +38,7 @@ class ServerHosts(str, Enum):
         return servers
     
 class InternalProperties(str, Enum):
+    FAVORITE = "__favorite__"
     VISIBILITY = "__visible__"
     LOADING = "__loading__"
     PATH = "__path__"
