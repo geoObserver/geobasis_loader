@@ -317,21 +317,23 @@ class CatalogManager:
     
     @classmethod
     def set_internal_properties(cls, catalog: dict) -> dict:
-        def _apply_visibility_flag(data: dict, path_prefix: str = ""):
+        def _apply_properties_flags(data: dict, path_prefix: str = ""):
             for key, value in data.items():
                 path = f"{path_prefix}/{key}" if path_prefix else key
                 # Default visible if not in map
                 visible = cls.properties[config.InternalProperties.VISIBILITY].get(path, True)
                 loadable = cls.properties[config.InternalProperties.LOADING].get(path, True)
+                favorite = cls.properties[config.InternalProperties.FAVORITE].get(path, False)
                 
                 if isinstance(value, dict):
                     if key != "themen" and key != "layers":
                         data[key][config.InternalProperties.VISIBILITY] = visible
-                        data[key][config.InternalProperties.LOADING] = loadable  
+                        data[key][config.InternalProperties.LOADING] = loadable
+                        data[key][config.InternalProperties.FAVORITE] = favorite
                         data[key][config.InternalProperties.PATH] = path
-                    _apply_visibility_flag(value, path)
+                    _apply_properties_flags(value, path)
         
-        _apply_visibility_flag(catalog)
+        _apply_properties_flags(catalog)
         
         return catalog
     
