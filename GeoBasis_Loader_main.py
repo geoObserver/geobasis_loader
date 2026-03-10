@@ -285,7 +285,7 @@ class GeoBasis_Loader(QObject):
         
         uri = re.sub(r'EPSG:placeholder', crs, uri)
 
-        if layerType != "ogc_wfs" and layerType != "ogc_api_festures":
+        if layerType != "ogc_wfs" and layerType != "ogc_api_features":
             uri += "&stepHeight=3000&stepWidth=3000"
         
         opacity = attributes.get('opacity', 1)
