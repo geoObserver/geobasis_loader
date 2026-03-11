@@ -1,9 +1,15 @@
 import os
 from qgis.core import QgsCoordinateReferenceSystem
-from qgis.PyQt import uic, QtWidgets
+from qgis.PyQt import uic, QtWidgets, QtCore
 
 EPSG_DIALOG = uic.loadUiType(os.path.join(os.path.dirname(__file__), "design_files", "epsg_selector.ui"))[0]
 
+if QtCore.QVersionNumber(6) > QtCore.QVersionNumber.fromString(QtCore.QT_VERSION_STR)[0]:
+    resize_mode = QtWidgets.QHeaderView
+else:
+    resize_mode = QtWidgets.QHeaderView.ResizeMode
+    
+print(QtCore.QVersionNumber(5) > QtCore.QVersionNumber.fromString(QtCore.QT_VERSION_STR)[0])
 class EpsgDialog(QtWidgets.QDialog, EPSG_DIALOG):
     selected_coord = None
 
@@ -14,8 +20,8 @@ class EpsgDialog(QtWidgets.QDialog, EPSG_DIALOG):
         
         self.table: QtWidgets.QTableWidget = self.tableWidget
         header = self.table.horizontalHeader()       
-        header.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
-        header.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
+        header.setSectionResizeMode(0, resize_mode.Stretch)
+        header.setSectionResizeMode(1, resize_mode.Stretch)
         
         # Layout auf das vorhandene setzen
         layout = self.verticalLayout_2

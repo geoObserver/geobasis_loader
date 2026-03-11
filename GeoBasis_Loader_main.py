@@ -5,7 +5,7 @@ from qgis.PyQt.QtWidgets import QMenu, QAction
 from qgis.PyQt.QtGui import QIcon, QColor, QColor, QDesktopServices
 from qgis.PyQt.QtCore import QUrl, QObject
 # from qgis.PyQt.QtWebKitWidgets import QWebView # type: ignore
-from qgis.core import QgsSettings, QgsProject, QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer, QgsLayerTree, QgsLayerTreeLayer, QgsSymbolLayer, QgsWkbTypes, Qgis
+from qgis.core import QgsSettings, QgsProject, QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer, QgsLayerTree, QgsSymbolLayer, QgsWkbTypes, Qgis
 from qgis.gui import QgisInterface
 from .topic_search import SearchFilter
 from . import config
@@ -13,7 +13,7 @@ from . import ui as custom_ui
 from .catalog_manager import CatalogManager
 
 if Qgis.versionInt() < 33000:   # Breaking chnage in Version 3.30 -> Geometry types now in Qgis instead of QgsWkbTypes
-    geometry_types = QgsWkbTypes.Type
+    geometry_types = QgsWkbTypes.Type       # type: ignore
 else:
     geometry_types = Qgis.WkbType
 
@@ -26,6 +26,7 @@ class GeoBasis_Loader(QObject):
 # =========================================================================
     def __init__(self, iface: QgisInterface, parent = None) -> None:
         super().__init__(parent)
+        self.iface = iface
         CatalogManager.setup(iface)
         CatalogManager.get_overview(callback=self.initGui)
         
@@ -44,7 +45,6 @@ class GeoBasis_Loader(QObject):
         saved_option = self.qgs_settings.value(config.AUTOMATIC_CRS_SETTINGS_KEY, "false")
         self.automatic_crs = False if saved_option == "false" else True
 
-        self.iface = iface
         icon = QIcon(config.PLUGIN_DIR + "/GeoBasis_Loader_icon.png")
         self.main_menu = QMenu(config.PLUGIN_NAME_AND_VERSION)
         self.main_menu.setIcon(icon)
@@ -81,17 +81,14 @@ class GeoBasis_Loader(QObject):
             
         if CatalogManager.overview is not None:
             # ------- Katalogmenü erstellen ------------------------------------
-            menu = QMenu('catalogs')
-            menu.setObjectName('catalog-overview')
+            catalogs_menu = self.main_menu.addMenu("Katalog wechseln (Change Catalogs)")
+            catalogs_menu.setObjectName('catalog-overview')
             
             # ------- Einträge im Katalogmenü erstellen ------------------------
             for catalog in CatalogManager.overview:
-                action = menu.addAction(catalog["titel"], partial(self.change_current_catalog, catalog))
-                action.setObjectName("open-" + catalog["titel"])
-                
-            # ------- Katalogmenü tum Hauptmenü hinzufügen ---------------------
-            action = self.main_menu.addAction("Katalog wechseln (Change Catalogs)")
-            action.setMenu(menu)
+                catalog_action = catalogs_menu.addAction(catalog["titel"], partial(self.change_current_catalog, catalog))
+                catalog_action.setObjectName("open-" + catalog["titel"])
+            
             action = self.main_menu.addAction("Kataloge neu laden (Reload Catalogs)")
             action.triggered.connect(lambda: CatalogManager.get_overview(callback=self.initGui))
             
@@ -180,14 +177,14 @@ class GeoBasis_Loader(QObject):
 #=================================================================================== 
 
     def open_settigs(self) -> None:
-        status = self.settings_dialog.exec_()
+        status = self.settings_dialog.exec()
         # Abbruch
         if status == 0:
             return
         
         self.automatic_crs = self.qgs_settings.value(config.AUTOMATIC_CRS_SETTINGS_KEY, False, bool)
         
-        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, 'Einstellungen erfolgreich gespeichert', 3, 3)
+        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, 'Einstellungen erfolgreich gespeichert', Qgis.MessageLevel.Success, 3)
         self.initGui()
 
     def toggle_automatic_crs(self) -> None:
@@ -206,12 +203,6 @@ class GeoBasis_Loader(QObject):
         
         # Opens webpage in the standard browser
         QDesktopServices.openUrl(url)
-       
-        # ------ Öffne QGIS Fenster mit WebPage ---------------- 
-        # self.webWindow = QWebView(None)
-        # self.webWindow.setWindowTitle("GeoObserver")
-        # self.webWindow.load(url)
-        # self.webWindow.show()
         
     def change_current_catalog(self, catalog: dict):
         self.qgs_settings.setValue(config.CURRENT_CATALOG_SETTINGS_KEY, catalog)
@@ -222,7 +213,7 @@ class GeoBasis_Loader(QObject):
         titel = current_catalog["titel"]
         name = current_catalog["name"]
         version = re.findall(r'v\d+', name)[0]
-        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, 'Lese '+ titel + ", Version " + version + ' ...', 3, 3)
+        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, 'Lese '+ titel + ", Version " + version + ' ...', Qgis.MessageLevel.Success, 3)
         
         self.services = services
         self.initGui()
@@ -235,7 +226,7 @@ class GeoBasis_Loader(QObject):
         current_crs = QgsProject.instance().crs().authid()          
         if current_crs not in supported_auth_ids or not self.automatic_crs:
             self.epsg_dialog.set_table_data(supported_auth_ids, layer_name)
-            self.epsg_dialog.exec_()
+            self.epsg_dialog.exec()
             if self.epsg_dialog.selected_coord is None:
                 return None
             current_crs = self.epsg_dialog.selected_coord
@@ -294,7 +285,7 @@ class GeoBasis_Loader(QObject):
         
         uri = re.sub(r'EPSG:placeholder', crs, uri)
 
-        if layerType != "ogc_wfs" and layerType != "ogc_api_festures":
+        if layerType != "ogc_wfs" and layerType != "ogc_api_features":
             uri += "&stepHeight=3000&stepWidth=3000"
         
         opacity = attributes.get('opacity', 1)
@@ -365,26 +356,19 @@ class GeoBasis_Loader(QObject):
             layer.triggerRepaint()
             self.iface.layerTreeView().refreshLayerSymbology(layer.id())
         
-        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, config.MY_INFO_1 + attributes['name'] + config.MY_INFO_2, 3, 1) # type: ignore
-        # Ebene zum Projekt hinzufügen aber nicht zum Ebenenbaum
+        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, config.MY_INFO_1 + attributes['name'] + config.MY_INFO_2, Qgis.MessageLevel.Success, 1)
+        # Ebene zum Projekt hinzufügen aber nicht automatisch zum Ebenenbaum
         QgsProject.instance().addMapLayer(layer, False) # type: ignore
-        
-        ltl = QgsLayerTreeLayer(layer)
-        if not ltl:
-            return
-        
-        # Legende kollabieren
-        ltl.setExpanded(False)
-        # Sichtbarkeit einstellen
-        visibile = attributes.get(config.InternalProperties.VISIBILITY, True)
-        ltl.setItemVisibilityChecked(visibile)
 
         if standalone:
-            # Ebene ganz oben zum Ebenenbaum hinzufügen, wenn Ebene in keiner Gruppe
             root: QgsLayerTree = QgsProject.instance().layerTreeRoot()
-            root.insertChildNode(0, ltl)
-            
-        return ltl
+            ltl = root.insertLayer(0, layer)
+            if ltl:
+                ltl.setExpanded(False)
+                visible = attributes.get(config.InternalProperties.VISIBILITY, True)
+                ltl.setItemVisibilityChecked(visible)
+
+        return layer
     
     def addLayerGroup(self, preferred_crs: Union[str, None], layers: dict, name: str) -> None:
         layerTreeRoot = QgsProject.instance().layerTreeRoot()
@@ -416,10 +400,14 @@ class GeoBasis_Loader(QObject):
                 return
         
         for layerKey in layers:
-            subLayer_ltl = self.addLayer(layers[layerKey], preferred_crs, False)
-            if subLayer_ltl is None:
+            sub_layer = self.addLayer(layers[layerKey], preferred_crs, False)
+            if sub_layer is None:
                 continue
-            newLayerGroup.insertChildNode(0, subLayer_ltl)
+            ltl = newLayerGroup.insertLayer(0, sub_layer)
+            if ltl:
+                ltl.setExpanded(False)
+                visible = layers[layerKey].get(config.InternalProperties.VISIBILITY, True)
+                ltl.setItemVisibilityChecked(visible)
             
     def addLayerCombination(self, layers) -> None:
         preferred_crs = None
