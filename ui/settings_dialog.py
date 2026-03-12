@@ -52,7 +52,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         self.set_settings()
        
     def set_settings(self):
-        def _add_entry(data: dict, parent: Optional[QtWidgets.QTreeWidgetItem] = None):
+        def _add_entry(data: dict, parent: Optional[Union[QtWidgets.QTreeWidgetItem, QtWidgets.QTreeWidget]] = None):
             name_key = "name"
             if parent is None:
                 parent = self.layer_settings_tree
