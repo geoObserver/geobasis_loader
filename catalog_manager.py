@@ -6,6 +6,7 @@ from qgis.PyQt.QtCore import QUrl, QObject, QDateTime, pyqtSignal, QVersionNumbe
 from qgis.core import QgsNetworkAccessManager, QgsSettings
 from qgis.gui import QgisInterface
 from . import config
+from .topic_search import SearchFilter
 
 if QVersionNumber(6) > QVersionNumber.fromString(QT_VERSION_STR)[0]:
     no_error = 0
@@ -233,6 +234,7 @@ class CatalogManager:
         if isinstance(catalog, dict):
             catalog = cls.set_internal_properties(catalog)
             cls.catalogs[catalog_name] = list(catalog.items())
+            SearchFilter.build_search_index(cls.catalogs)
         
         file_name = re.sub(r'\ ', '_', catalog_name.split(':')[0].lower())
         file_path = pathlib.Path(cls.catalog_path + file_name + '.json')
@@ -273,6 +275,7 @@ class CatalogManager:
             catalog = cls.set_internal_properties(services)
             services = list(services.items())
             cls.catalogs[catalog_name] = services
+            SearchFilter.build_search_index(cls.catalogs)
         else:
             cls.overview = services
             for catalog in cls.overview:
