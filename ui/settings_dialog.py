@@ -1,5 +1,5 @@
 import os
-from typing import Union
+from typing import Union, Optional
 from qgis.PyQt import uic, QtWidgets
 from qgis.PyQt.QtCore import Qt
 from qgis.PyQt.QtGui import QShowEvent
@@ -22,8 +22,8 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         self.setupUi(self)
         
         # Visibility tree buttons/actions
-        self.expand_button.clicked.connect(self.visibility_tree.expandAll)
-        self.collapse_button.clicked.connect(self.visibility_tree.collapseAll)
+        self.expand_button.clicked.connect(self.layer_settings_tree.expandAll)
+        self.collapse_button.clicked.connect(self.layer_settings_tree.collapseAll)
         self.check_visibility_button.clicked.connect(lambda: self.set_check_state_all_items(VISIBILITY_CHECKBOX_COL, Qt.CheckState.Checked))
         self.uncheck_visibility_button.clicked.connect(lambda: self.set_check_state_all_items(VISIBILITY_CHECKBOX_COL, Qt.CheckState.Unchecked))
         self.check_loading_button.clicked.connect(lambda: self.set_check_state_all_items(LOADING_CHECKBOX_COL, Qt.CheckState.Checked))
@@ -34,51 +34,53 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         self.reset_button.clicked.connect(self.restore_defaults)
         
         # IntelliSense
-        self.visibility_tree: QtWidgets.QTreeWidget = self.visibility_tree
+        self.layer_settings_tree: QtWidgets.QTreeWidget = self.layer_settings_tree
         self.server_button_group: QtWidgets.QButtonGroup = self.server_button_group
         self.automatic_crs_checkbox: QtWidgets.QCheckBox = self.automatic_crs_checkbox
     
     def setup(self):
-        available_width = self.visibility_tree.width()
+        available_width = self.layer_settings_tree.width()
         checkbox_col_width = 80
-        name_col_width = available_width - self.visibility_tree.verticalScrollBar().width() - 2 * checkbox_col_width                               # type: ignore
-        self.visibility_tree.setColumnWidth(0, name_col_width)
-        self.visibility_tree.setColumnWidth(1, checkbox_col_width)
-        self.visibility_tree.setColumnWidth(2, checkbox_col_width)
+        name_col_width = available_width - self.layer_settings_tree.verticalScrollBar().width() - 2 * checkbox_col_width                               # type: ignore
+        self.layer_settings_tree.setColumnWidth(0, name_col_width)
+        self.layer_settings_tree.setColumnWidth(1, checkbox_col_width)
+        self.layer_settings_tree.setColumnWidth(2, checkbox_col_width)
 
-    def showEvent(self, a0: Union[QShowEvent, None]) -> None:
+    def showEvent(self, a0: Optional[QShowEvent]) -> None:
         super().showEvent(a0)
         self.setup()
         self.set_settings()
        
     def set_settings(self):
-        def _add_entry(data: dict, parent: Union[QtWidgets.QTreeWidgetItem, None] = None):
+        def _add_entry(data: dict, parent: Optional[QtWidgets.QTreeWidgetItem] = None):
             name_key = "name"
             if parent is None:
-                parent = self.visibility_tree
+                parent = self.layer_settings_tree
                 name_key = "menu"
             
             for key, value in data.items():   
-                if isinstance(value, dict):
-                    if key == "themen" or key == "layers":
-                        item = parent
-                    else:
-                        item = QtWidgets.QTreeWidgetItem(parent)
-                        item.setText(0, value[name_key])
-                        item.setFlags(item.flags() | Qt.ItemFlag.ItemIsAutoTristate | Qt.ItemFlag.ItemIsUserCheckable)
-                        
-                        properties = PropertyManager[value.get(config.InternalProperties.PATH, None)]
-                        # Visibility
-                        checked = Qt.CheckState.Checked if properties[PropertyManager.Property.VISIBLE] else Qt.CheckState.Unchecked
-                        item.setCheckState(VISIBILITY_CHECKBOX_COL, checked)
-                        # Loading
-                        checked = Qt.CheckState.Checked if properties[PropertyManager.Property.ENABLED] else Qt.CheckState.Unchecked
-                        item.setCheckState(LOADING_CHECKBOX_COL, checked)
-                        
-                        item.setData(0, Qt.ItemDataRole.UserRole, value.get(config.InternalProperties.PATH, None))
-                        self._items.append(item)
+                if not isinstance(value, dict):
+                    continue
+                
+                if key == "themen" or key == "layers":
+                    item = parent
+                else:
+                    item = QtWidgets.QTreeWidgetItem(parent)
+                    item.setText(0, value[name_key])
+                    item.setFlags(item.flags() | Qt.ItemFlag.ItemIsAutoTristate | Qt.ItemFlag.ItemIsUserCheckable)
                     
-                    _add_entry(value, item)                    
+                    properties = PropertyManager[value.get(config.InternalProperties.PATH, None)]
+                    # Visibility
+                    checked = Qt.CheckState.Checked if properties[PropertyManager.Property.VISIBLE] else Qt.CheckState.Unchecked
+                    item.setCheckState(VISIBILITY_CHECKBOX_COL, checked)
+                    # Loading
+                    checked = Qt.CheckState.Checked if properties[PropertyManager.Property.ENABLED] else Qt.CheckState.Unchecked
+                    item.setCheckState(LOADING_CHECKBOX_COL, checked)
+                    
+                    item.setData(0, Qt.ItemDataRole.UserRole, value.get(config.InternalProperties.PATH, None))
+                    self._items.append(item)
+                
+                _add_entry(value, item)                    
         
         self.clear_data()
         current_catalog = CatalogManager.get_current_catalog()
@@ -103,7 +105,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
     def set_check_state_all_items(self, column: int, state: Qt.CheckState) -> None:
         for item in self._items:
             item.setCheckState(column, state)
-        viewport = self.visibility_tree.viewport()
+        viewport = self.layer_settings_tree.viewport()
         if viewport:
             viewport.update()
     
@@ -158,4 +160,4 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
     def clear_data(self) -> None:
         self._current_catalog = {}
         self._items = []
-        self.visibility_tree.clear()
+        self.layer_settings_tree.clear()

@@ -150,7 +150,7 @@
         </layout>
        </item>
        <item>
-        <widget class="QTreeWidget" name="visibility_tree">
+        <widget class="QTreeWidget" name="layer_settings_tree">
          <property name="enabled">
           <bool>true</bool>
          </property>
