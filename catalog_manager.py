@@ -101,7 +101,6 @@ class NetworkHandler(QObject):
 class CatalogManager:
     overview = None
     catalogs = {}
-    properties: dict[config.InternalProperties, dict[str, bool]] = {}
     catalog_path = f'{config.PLUGIN_DIR}/catalogs/'
     
     catalog_network_handlers: dict[str, NetworkHandler] = {}
@@ -111,7 +110,6 @@ class CatalogManager:
     @classmethod
     def setup(cls, iface: QgisInterface) -> None:
         cls.iface = iface
-        cls.properties = cls.load_internal_properties()
     
     @classmethod
     def add_network_handler(cls, catalog_title: str) -> NetworkHandler:
@@ -285,72 +283,19 @@ class CatalogManager:
         cls.clear_network_handlers()
     
     @classmethod
-    def load_internal_properties(cls) -> dict[config.InternalProperties, dict[str, bool]]:
-        props = config.InternalProperties.get_properties()
-        properties = {}
-        
-        file_path = pathlib.Path(cls.catalog_path + "settings.json")
-        data = cls.read_json(file_path)
-        if isinstance(data, dict):
-            for prop in props:
-                properties[prop] = {}
-                if "properties" in data:
-                    properties[prop] = data["properties"].get(prop.value, {})
-        
-        return properties
-    
-    @classmethod
-    def update_internal_properties(cls, values: Union[list[tuple[str, bool]], dict[config.InternalProperties, dict[str, bool]]], property: Union[config.InternalProperties, None] = None) -> None:
-        if isinstance(values, list):
-            if property is None:
-                raise ValueError("No property given")
-            for path, state in values:
-                cls.properties[property][path] = state
-        else:
-            for property, value in values.items():
-                for path, state in value.items():
-                    cls.properties[property][path] = state
-                    
-        current_catalog = cls.get_current_catalog()
-        if current_catalog is None:
-            return
-        
-        current_catalog = dict(current_catalog)
-        current_catalog = cls.set_internal_properties(current_catalog)
-        
-        qgs_settings = QgsSettings()
-        metadata = qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
-        cls.catalogs[metadata["name"]] = current_catalog
-        
-        cls.save_internal_properties()
-    
-    @classmethod
     def set_internal_properties(cls, catalog: dict) -> dict:
-        def _apply_visibility_flag(data: dict, path_prefix: str = ""):
+        def _apply_path_flag(data: dict, path_prefix: str = ""):
             for key, value in data.items():
                 path = f"{path_prefix}/{key}" if path_prefix else key
-                # Default visible if not in map
-                visible = cls.properties[config.InternalProperties.VISIBILITY].get(path, True)
-                loadable = cls.properties[config.InternalProperties.LOADING].get(path, True)
                 
                 if isinstance(value, dict):
                     if key != "themen" and key != "layers":
-                        data[key][config.InternalProperties.VISIBILITY] = visible
-                        data[key][config.InternalProperties.LOADING] = loadable  
                         data[key][config.InternalProperties.PATH] = path
-                    _apply_visibility_flag(value, path)
+                    _apply_path_flag(value, path)
         
-        _apply_visibility_flag(catalog)
+        _apply_path_flag(catalog)
         
         return catalog
-    
-    @classmethod
-    def save_internal_properties(cls) -> None:
-        file_path = pathlib.Path(cls.catalog_path + "settings.json")
-        data = {
-            "properties": cls.properties
-        }
-        cls.write_json(data, file_path)
 
     @classmethod
     def write_json(cls, data: Union[dict, str], file_path: pathlib.Path) -> None:        

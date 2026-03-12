@@ -10,6 +10,7 @@ from .topic_search import SearchFilter
 from . import config
 from . import ui as custom_ui
 from .catalog_manager import CatalogManager
+from .property_manager import singleton as PropertyManager
 
 if Qgis.versionInt() < 33000:   # Breaking change in Version 3.30 -> Geometry types now in Qgis instead of QgsWkbTypes
     geometry_types = QgsWkbTypes.Type       # type: ignore
@@ -58,19 +59,15 @@ class GeoBasis_Loader(QObject):
             action = self.main_menu.addAction(self.qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)["titel"])
             self.main_menu.addSeparator()
             # ------- Menübaum bauen und einfügen ------------------------
-            for state in self.services:
-                # Falls der zweite Eintrag kein Dictionary ist, überspringen, da es Metadata ist
-                if type(state[1]) != dict or not state[1][config.InternalProperties.VISIBILITY]:
+            for abr, region in self.services:
+                # Falls der zweite Eintrag kein Dictionary ist, überspringen, da es Metadaten sind
+                if type(region) != dict or not PropertyManager.is_visible(region[config.InternalProperties.PATH]):
                     continue
-                menu = self.gui_for_one_topic(state[1]['themen'], state[0])
                 
-                # Compatibility, can be removed later
-                if "menu" in state[1]:
-                    action = self.main_menu.addAction(state[1]['menu'])
-                else:
-                    action = self.main_menu.addAction(state[1]['bundeslandname'])
-                action.setMenu(menu)
-                if state[0] == 'de':
+                region_menu = self.gui_for_one_region(region['themen'], region['menu'])
+                self.main_menu.addMenu(region_menu)
+                
+                if abr == 'de' or "seperator" in region:
                     self.main_menu.addSeparator()
             
             self.main_menu.addSeparator()
@@ -111,7 +108,7 @@ class GeoBasis_Loader(QObject):
         # ------- Status-Schaltfläche für #geoObserver ------------------------
         # self.mainMenu.addAction("Status ...", partial(self.openWebSite, 'https://geoobserver.de/qgis-plugin-geobasis-loader/#statustabelle'))
         
-    def gui_for_one_topic(self, topic_dict: dict, topic_abbreviation: str) -> QMenu:
+    def gui_for_one_region(self, topic_dict: dict, topic_abbreviation: str) -> QMenu:
         def _create_action(name: str, parent: QMenu, path: str, tip: str = "Thema hinzufügen", slot = self.add_topic) -> QAction:
             action = QAction(name, parent)
             action.setObjectName(name)
@@ -125,39 +122,39 @@ class GeoBasis_Loader(QObject):
         menu.setObjectName('loader-' + topic_abbreviation)
         menu.setToolTipsVisible(True)
         
-        for baseLayer in topic_dict.values():
-            if not baseLayer[config.InternalProperties.VISIBILITY]:
+        for topic in topic_dict.values():
+            if not PropertyManager.is_visible(topic[config.InternalProperties.PATH]):
                 continue
             
-            if baseLayer.get("type", "").lower() == "web":
-                action = _create_action(baseLayer["name"], menu, baseLayer["uri"], "Informationen öffnen", self.open_web_site)
+            if topic.get("type", "").lower() == "web":
+                action = _create_action(topic["name"], menu, topic["uri"], "Informationen öffnen", self.open_web_site)
                 menu.addAction(action)
                 continue
             
-            if isinstance(baseLayer.get("layers", []), dict):
-                layergroup_menu = QMenu(baseLayer["name"], menu)
-                layergroup_menu.setToolTipsVisible(True)
+            if isinstance(topic.get("layers", []), dict):
+                topic_group_menu = QMenu(topic["name"], menu)
+                topic_group_menu.setToolTipsVisible(True)
                 
-                add_all_action = _create_action("Alle laden", layergroup_menu, baseLayer[config.InternalProperties.PATH], "Alle Themen der Gruppe laden")
-                layergroup_menu.addAction(add_all_action)
-                layergroup_menu.addSeparator()
+                add_all_action = _create_action("Alle laden", topic_group_menu, topic[config.InternalProperties.PATH], "Alle Themen der Gruppe laden")
+                topic_group_menu.addAction(add_all_action)
+                topic_group_menu.addSeparator()
 
-                for _, layer in baseLayer["layers"].items():
-                    if not layer[config.InternalProperties.VISIBILITY]:
+                for _, subtopic in topic["layers"].items():
+                    if not PropertyManager.is_visible(subtopic[config.InternalProperties.PATH]):
                         continue
                     
-                    if layer.get("type", "").lower() == "web":
-                        sublayer_action = _create_action(layer["name"], layergroup_menu, layer["uri"], "Informationen öffnen", self.open_web_site)
+                    if subtopic.get("type", "").lower() == "web":
+                        subtopic_action = _create_action(subtopic["name"], topic_group_menu, subtopic["uri"], "Informationen öffnen", self.open_web_site)
                     else:
-                        sublayer_action = _create_action(layer["name"], layergroup_menu, layer[config.InternalProperties.PATH])
-                    layergroup_menu.addAction(sublayer_action)
+                        subtopic_action = _create_action(subtopic["name"], topic_group_menu, subtopic[config.InternalProperties.PATH])
+                    topic_group_menu.addAction(subtopic_action)
 
-                menu.addMenu(layergroup_menu)
+                menu.addMenu(topic_group_menu)
             else:        
-                action = _create_action(baseLayer['name'], menu, baseLayer[config.InternalProperties.PATH])            
+                action = _create_action(topic['name'], menu, topic[config.InternalProperties.PATH])            
                 menu.addAction(action)
                 
-            if "seperator" in baseLayer:
+            if "seperator" in topic:
                 menu.addSeparator()
         return menu
     
@@ -273,7 +270,7 @@ class GeoBasis_Loader(QObject):
             self.add_layer_group(None, layers, topic["name"])
     
     def add_layer(self, attributes: dict, crs: Union[str, None], standalone: bool = True):
-        if not attributes.get(config.InternalProperties.LOADING, True):
+        if not PropertyManager.is_enabled(attributes[config.InternalProperties.PATH]):
             return None
         
         layer_type = attributes.get('type', 'ogc_wms').lower()
@@ -373,7 +370,7 @@ class GeoBasis_Loader(QObject):
             ltl = root.insertLayer(0, layer)
             if ltl:
                 ltl.setExpanded(False)
-                visible = attributes.get(config.InternalProperties.VISIBILITY, True)
+                visible = PropertyManager.is_visible(attributes[config.InternalProperties.PATH])
                 ltl.setItemVisibilityChecked(visible)
 
         return layer
@@ -407,14 +404,14 @@ class GeoBasis_Loader(QObject):
             if preferred_crs is None:
                 return
         
-        for layerKey in layers:
-            sub_layer = self.add_layer(layers[layerKey], preferred_crs, False)
+        for layer in layers.values():
+            sub_layer = self.add_layer(layer, preferred_crs, False)
             if sub_layer is None:
                 continue
             ltl = new_layer_group.insertLayer(0, sub_layer)
             if ltl:
                 ltl.setExpanded(False)
-                visible = layers[layerKey].get(config.InternalProperties.VISIBILITY, True)
+                visible = PropertyManager.is_visible(layer[config.InternalProperties.PATH])
                 ltl.setItemVisibilityChecked(visible)
             
     def add_layer_combination(self, layers) -> None:

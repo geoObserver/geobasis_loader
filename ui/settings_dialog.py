@@ -6,6 +6,7 @@ from qgis.PyQt.QtGui import QShowEvent
 from qgis.core import QgsSettings
 from ..catalog_manager import CatalogManager
 from .. import config
+from ..property_manager import singleton as PropertyManager
 
 SETTINGS_DIALOG = uic.loadUiType(os.path.join(os.path.dirname(__file__), "design_files", "settings_dialog.ui"))[0]
 VISIBILITY_CHECKBOX_COL = 1
@@ -51,7 +52,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         self.set_settings()
        
     def set_settings(self):
-        def _add_visibility_entry(data: dict, parent: Union[QtWidgets.QTreeWidgetItem, None] = None):
+        def _add_entry(data: dict, parent: Union[QtWidgets.QTreeWidgetItem, None] = None):
             name_key = "name"
             if parent is None:
                 parent = self.visibility_tree
@@ -65,16 +66,19 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
                         item = QtWidgets.QTreeWidgetItem(parent)
                         item.setText(0, value[name_key])
                         item.setFlags(item.flags() | Qt.ItemFlag.ItemIsAutoTristate | Qt.ItemFlag.ItemIsUserCheckable)
+                        
+                        properties = PropertyManager[value.get(config.InternalProperties.PATH, None)]
                         # Visibility
-                        checked = Qt.CheckState.Checked if value.get(config.InternalProperties.VISIBILITY, True) else Qt.CheckState.Unchecked
+                        checked = Qt.CheckState.Checked if properties[PropertyManager.Property.VISIBLE] else Qt.CheckState.Unchecked
                         item.setCheckState(VISIBILITY_CHECKBOX_COL, checked)
                         # Loading
-                        checked = Qt.CheckState.Checked if value.get(config.InternalProperties.LOADING, True) else Qt.CheckState.Unchecked
+                        checked = Qt.CheckState.Checked if properties[PropertyManager.Property.ENABLED] else Qt.CheckState.Unchecked
                         item.setCheckState(LOADING_CHECKBOX_COL, checked)
+                        
                         item.setData(0, Qt.ItemDataRole.UserRole, value.get(config.InternalProperties.PATH, None))
                         self._items.append(item)
                     
-                    _add_visibility_entry(value, item)                    
+                    _add_entry(value, item)                    
         
         self.clear_data()
         current_catalog = CatalogManager.get_current_catalog()
@@ -83,7 +87,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         
         # Visibility Tree
         self._current_catalog = dict(current_catalog)
-        _add_visibility_entry(self._current_catalog)
+        _add_entry(self._current_catalog)
         
         # Global Settings
         qgs_settings = QgsSettings()
@@ -94,7 +98,6 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
             else:
                 button.setChecked(False)
         automatic_crs = qgs_settings.value(config.QgsSettingsKeys.AUTOMATIC_CRS, False, bool)
-        print(automatic_crs)
         self.automatic_crs_checkbox.setChecked(automatic_crs)
         
     def set_check_state_all_items(self, column: int, state: Qt.CheckState) -> None:
@@ -136,27 +139,20 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         automatic_crs = self.automatic_crs_checkbox.isChecked()
         qgs_settings.setValue(config.QgsSettingsKeys.AUTOMATIC_CRS, automatic_crs)
         
-        # Layer settings
-        check_status = {
-            config.InternalProperties.VISIBILITY: {},
-            config.InternalProperties.LOADING: {},
-        }
-                
+        # Layer settings                
         for item in self._items:
             path: str = item.data(0, Qt.ItemDataRole.UserRole)
             visibility_state = item.checkState(VISIBILITY_CHECKBOX_COL)
-            if visibility_state == Qt.CheckState.Unchecked:
-                check_status[config.InternalProperties.VISIBILITY][path] = False
-            else:
-                check_status[config.InternalProperties.VISIBILITY][path] = True
+            # Check whether it's unchecked or not due to tristate -> Negate it
+            is_visible = not visibility_state == Qt.CheckState.Unchecked
+            PropertyManager.set_visibility(path, is_visible)
                 
             loading_state = item.checkState(LOADING_CHECKBOX_COL)
-            if loading_state == Qt.CheckState.Unchecked:
-                check_status[config.InternalProperties.LOADING][path] = False
-            else:
-                check_status[config.InternalProperties.LOADING][path] = True
+            # Check whether it's unchecked or not due to tristate -> Negate it
+            is_enabled = not loading_state == Qt.CheckState.Unchecked
+            PropertyManager.set_enabled(path, is_enabled)
         
-        CatalogManager.update_internal_properties(check_status)
+        PropertyManager.save()
         self.clear_data()
         
     def clear_data(self) -> None:
