@@ -61,7 +61,7 @@ class GeoBasis_Loader(QObject):
             # ------- Menübaum bauen und einfügen ------------------------
             for abr, region in self.services:
                 # Falls der zweite Eintrag kein Dictionary ist, überspringen, da es Metadaten sind
-                if type(region) != dict or not PropertyManager.is_visible(region[config.InternalProperties.PATH]):
+                if not isinstance(region, dict) or not PropertyManager.is_visible(region[config.InternalProperties.PATH]):
                     continue
                 
                 region_menu = self.gui_for_one_region(region['themen'], region['menu'])
@@ -200,7 +200,7 @@ class GeoBasis_Loader(QObject):
 
     def open_web_site(self):
         sender = self.sender()
-        if not sender or type(sender) != QAction:
+        if not sender or not isinstance(sender, QAction):
             return
         
         data = sender.data() # type: ignore
@@ -275,7 +275,7 @@ class GeoBasis_Loader(QObject):
             return
         
         layers = topic["layers"]
-        if type(layers) == list:
+        if isinstance(layers, list):
             combination_layers = []
             group_key = path.split("/")[0]
             for layer in layers:
@@ -296,7 +296,7 @@ class GeoBasis_Loader(QObject):
         uri: str = attributes.get('uri', "n.n.")
         valid_epsg_codes: list[str] = attributes.get('valid_epsg', [])
        
-        if crs not in valid_epsg_codes or crs is None:       
+        if crs is None or crs not in valid_epsg_codes:
             crs = self.get_crs(valid_epsg_codes, attributes.get('name', "Fehler"))
             if crs is None:
                 return
@@ -357,8 +357,8 @@ class GeoBasis_Loader(QObject):
                 layer.setScaleBasedVisibility(True)
         
         if isinstance(layer, QgsVectorLayer):
-            fill_color: QColor = QColor(*[int(c) for c in fill_color]) if type(fill_color) == list else QColor(fill_color)
-            stroke_color: QColor = QColor(*[int(c) for c in stroke_color]) if type(stroke_color) == list else QColor(stroke_color)
+            fill_color: QColor = QColor(*[int(c) for c in fill_color]) if isinstance(fill_color, list) else QColor(fill_color)
+            stroke_color: QColor = QColor(*[int(c) for c in stroke_color]) if isinstance(stroke_color, list) else QColor(stroke_color)
             
             symbol_layer: QgsSymbolLayer = layer.renderer().symbol().symbolLayer(0)
             symbol_layer.setColor(fill_color)
