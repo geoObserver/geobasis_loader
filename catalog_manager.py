@@ -20,20 +20,21 @@ class NetworkHandler(QObject):
     _manager: QgsNetworkAccessManager
     _reply: QNetworkReply
     
-    done = False
-    successful = False
-    
     finished = pyqtSignal(str, str, float)
     error_occurred = pyqtSignal(str, str)
     
     def __init__(self, manager: Union[QgsNetworkAccessManager, None]) -> None:
         super().__init__()
         if not manager:
-            return
+            # LOGGING
+            
+            raise ValueError("No QgsNetworkAccessManager recieved")
         
         self._manager = manager
         self._server_list = config.ServerHosts.get_enabled_servers()
         self._server = self._server_list[0]
+        self.done = False
+        self.successful = False
         
     def _fetch_data(self, url: str = '') -> QNetworkReply:
         q_url = QUrl(url)
