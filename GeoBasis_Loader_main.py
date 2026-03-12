@@ -37,13 +37,12 @@ class GeoBasis_Loader(QObject):
         self.settings_dialog = custom_ui.SettingsDialog(parent=iface.mainWindow())
 
         # ------- Letzten Katalog laden --------------------------------------------
-        current_catalog = self.qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)
+        current_catalog = self.qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
         if current_catalog is not None and "name" in current_catalog:
             CatalogManager.get_catalog(current_catalog["titel"], current_catalog["name"], self.set_services)
             
         # ------- Letzte Einstellung für automatisches Koordinatensystem laden -----
-        saved_option = self.qgs_settings.value(config.AUTOMATIC_CRS_SETTINGS_KEY, "false")
-        self.automatic_crs = False if saved_option == "false" else True
+        self.automatic_crs = self.qgs_settings.value(config.QgsSettingsKeys.AUTOMATIC_CRS, False, type=bool)
 
         icon = QIcon(config.PLUGIN_DIR + "/GeoBasis_Loader_icon.png")
         self.main_menu = QMenu(config.PLUGIN_NAME_AND_VERSION)
@@ -59,7 +58,7 @@ class GeoBasis_Loader(QObject):
         
         if self.services is not None:
             # ------- Name des Katalogs einfügen -------------------------
-            action = self.main_menu.addAction(self.qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)["titel"])
+            action = self.main_menu.addAction(self.qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)["titel"])
             self.main_menu.addSeparator()
             # ------- Menübaum bauen und einfügen ------------------------
             for state in self.services:
@@ -182,7 +181,7 @@ class GeoBasis_Loader(QObject):
         if status == 0:
             return
         
-        self.automatic_crs = self.qgs_settings.value(config.AUTOMATIC_CRS_SETTINGS_KEY, False, bool)
+        self.automatic_crs = self.qgs_settings.value(config.QgsSettingsKeys.AUTOMATIC_CRS, False, bool)
         
         self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, 'Einstellungen erfolgreich gespeichert', Qgis.MessageLevel.Success, 3)
         self.initGui()
@@ -191,7 +190,7 @@ class GeoBasis_Loader(QObject):
         new_state = not self.automatic_crs
         
         self.automatic_crs = new_state
-        self.qgs_settings.setValue(config.AUTOMATIC_CRS_SETTINGS_KEY, new_state)
+        self.qgs_settings.setValue(config.QgsSettingsKeys.AUTOMATIC_CRS, new_state)
 
     def open_web_site(self):
         sender = self.sender()
@@ -205,11 +204,11 @@ class GeoBasis_Loader(QObject):
         QDesktopServices.openUrl(url)
         
     def change_current_catalog(self, catalog: dict):
-        self.qgs_settings.setValue(config.CURRENT_CATALOG_SETTINGS_KEY, catalog)
+        self.qgs_settings.setValue(config.QgsSettingsKeys.CURRENT_CATALOG, catalog)
         CatalogManager.get_catalog(catalog["titel"], callback=self.set_services)
         
     def set_services(self, services: Dict):
-        current_catalog = self.qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)
+        current_catalog = self.qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
         titel = current_catalog["titel"]
         name = current_catalog["name"]
         version = re.findall(r'v\d+', name)[0]
@@ -242,7 +241,7 @@ class GeoBasis_Loader(QObject):
             path = sender.data() # type: ignore
             if not isinstance(path, str):
                 raise TypeError("Path is unknown")
-            catalog_title = self.qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)["titel"]
+            catalog_title = self.qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)["titel"]
 
         catalog: dict = dict(CatalogManager.get_catalog(catalog_title)) # type: ignore
         topic = catalog

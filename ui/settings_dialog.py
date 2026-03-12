@@ -87,13 +87,13 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         
         # Global Settings
         qgs_settings = QgsSettings()
-        server = qgs_settings.value(config.SERVERS_SETTINGS_KEY, 0, type=int)
+        server = qgs_settings.value(config.QgsSettingsKeys.SERVERS, 0, type=int)
         for button in self.server_button_group.buttons():
             if button.property("server") == server:
                 button.setChecked(True)
             else:
                 button.setChecked(False)
-        automatic_crs = qgs_settings.value(config.AUTOMATIC_CRS_SETTINGS_KEY, False, bool)
+        automatic_crs = qgs_settings.value(config.QgsSettingsKeys.AUTOMATIC_CRS, False, bool)
         print(automatic_crs)
         self.automatic_crs_checkbox.setChecked(automatic_crs)
         
@@ -123,7 +123,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
                 
         # Automatic CRS
         qgs_settings = QgsSettings()        
-        qgs_settings.setValue(config.AUTOMATIC_CRS_SETTINGS_KEY, False)
+        qgs_settings.setValue(config.QgsSettingsKeys.AUTOMATIC_CRS, False)
     
     def confirm_settings(self) -> None:
         # Global settings
@@ -131,10 +131,10 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         checked_button = self.server_button_group.checkedButton()
         if checked_button:
             server_index = checked_button.property("server")
-            qgs_settings.setValue(config.SERVERS_SETTINGS_KEY, server_index)
+            qgs_settings.setValue(config.QgsSettingsKeys.SERVERS, server_index)
         
         automatic_crs = self.automatic_crs_checkbox.isChecked()
-        qgs_settings.setValue(config.AUTOMATIC_CRS_SETTINGS_KEY, automatic_crs)
+        qgs_settings.setValue(config.QgsSettingsKeys.AUTOMATIC_CRS, automatic_crs)
         
         # Layer settings
         check_status = {

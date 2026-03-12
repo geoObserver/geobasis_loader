@@ -11,9 +11,6 @@ MY_INFO_1 = 'Layer '
 MY_INFO_2 = ' erfolgreich geladen.'
 
 PLUGIN_DIR = os.path.dirname(__file__)
-CURRENT_CATALOG_SETTINGS_KEY = 'geobasis_loader/current_catalog'
-AUTOMATIC_CRS_SETTINGS_KEY = 'geobasis_loader/automatic_crs'
-SERVERS_SETTINGS_KEY = 'geobasis_loader/servers'
 
 CATALOG_OVERVIEW = "GeoBasis_Loader_v6_Kataloge.json"
 CATALOG_OVERVIEW_NAME = "catalog_overview"
@@ -29,7 +26,7 @@ class ServerHosts(str, Enum):
     def get_enabled_servers(cls) -> list[str]:
         servers = []
         qgs_settings = QgsSettings()
-        server_index = qgs_settings.value(SERVERS_SETTINGS_KEY, 0, type=int)
+        server_index = qgs_settings.value(QgsSettingsKeys.SERVERS, 0, type=int)
         if server_index == 0:
             servers = cls.get_all_servers()
         else:
@@ -45,3 +42,12 @@ class InternalProperties(str, Enum):
     @classmethod
     def get_properties(cls) -> list["InternalProperties"]:
         return [a for a in cls if a != cls.PATH]
+    
+class QgsSettingsKeys(str, Enum):
+    CURRENT_CATALOG = 'geobasis_loader/current_catalog'
+    AUTOMATIC_CRS = 'geobasis_loader/automatic_crs'
+    SERVERS = 'geobasis_loader/servers'
+    PROPERTY_INIT = 'geobasis_loader/properties/init'
+    PROPERTY_FAVORITE = 'geobasis_loader/properties/favorite'
+    PROPERTY_INVISIBLE = 'geobasis_loader/properties/invisible'
+    PROPERTY_DISABLED = 'geobasis_loader/properties/disabled'

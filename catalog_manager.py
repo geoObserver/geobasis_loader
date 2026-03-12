@@ -211,7 +211,7 @@ class CatalogManager:
     @classmethod
     def get_current_catalog(cls, callback: Optional[callable] = None) -> Union[None, dict, list]:
         qgs_settings = QgsSettings()
-        current_catalog = qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)
+        current_catalog = qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
         if current_catalog is None or "name" not in current_catalog:
             return None
         
@@ -319,7 +319,7 @@ class CatalogManager:
         current_catalog = cls.set_internal_properties(current_catalog)
         
         qgs_settings = QgsSettings()
-        metadata = qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)
+        metadata = qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
         cls.catalogs[metadata["name"]] = current_catalog
         
         cls.save_internal_properties()
