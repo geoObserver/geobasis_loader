@@ -17,8 +17,8 @@ else:
     network_request_cache = QNetworkRequest.CacheLoadControl
 
 class NetworkHandler(QObject):
-    __manager: QgsNetworkAccessManager
-    __reply: QNetworkReply
+    _manager: QgsNetworkAccessManager
+    _reply: QNetworkReply
     
     done = False
     successful = False
@@ -31,11 +31,11 @@ class NetworkHandler(QObject):
         if not manager:
             return
         
-        self.__manager = manager
+        self._manager = manager
         self._server_list = config.ServerHosts.get_enabled_servers()
         self._server = self._server_list[0]
         
-    def __fetch_data(self, url: str = '') -> QNetworkReply:
+    def _fetch_data(self, url: str = '') -> QNetworkReply:
         q_url = QUrl(url)
         request = QNetworkRequest(q_url)
         request.setAttribute(netowrk_request_attributes.CacheLoadControlAttribute, network_request_cache.AlwaysNetwork)
@@ -44,25 +44,25 @@ class NetworkHandler(QObject):
         else:
             mediatype = "application/json"
         request.setRawHeader(bytearray("Accept", "utf-8"), bytearray(mediatype, "utf-8"))
-        return self.__manager.get(request)
+        return self._manager.get(request)
   
     def fetch_catalog_overview(self) -> None:
         url = self._server.format(name=config.CATALOG_OVERVIEW)
-        self.__reply = self.__fetch_data(url=url)
-        self.__reply.finished.connect(partial(self.__handle_response, config.CATALOG_OVERVIEW, config.CATALOG_OVERVIEW_NAME, True))
+        self._reply = self._fetch_data(url=url)
+        self._reply.finished.connect(partial(self._handle_response, config.CATALOG_OVERVIEW, config.CATALOG_OVERVIEW_NAME, True))
   
     def fetch_catalog(self, catalog_name: str, catalog_title: str) -> None:
         if not catalog_name.endswith(".json"):
             catalog_name += ".json"
         url = self._server.format(name=catalog_name)
-        self.__reply = self.__fetch_data(url=url)
-        self.__reply.finished.connect(partial(self.__handle_response, catalog_name, catalog_title, False))
+        self._reply = self._fetch_data(url=url)
+        self._reply.finished.connect(partial(self._handle_response, catalog_name, catalog_title, False))
         
-    def __handle_response(self, catalog_name: str, catalog_title: str, is_overview_response: bool):
-        error = self.__reply.error()
+    def _handle_response(self, catalog_name: str, catalog_title: str, is_overview_response: bool):
+        error = self._reply.error()
         
         if error == no_error:
-            json_string = self.__reply.readAll().data().decode('utf-8')
+            json_string = self._reply.readAll().data().decode('utf-8')
             
             if is_overview_response:
                 ################################################################### Temporär
@@ -75,11 +75,11 @@ class NetworkHandler(QObject):
             # Holt sich die Timestamps der letzten Modifikationen der lokalen JSON-Datei und der JSON-Datei aus dem Internet
             # (Über-)Schreibt dann die loakle JSON-Datei, wenn die Datei im Internet neuer ist
             # Sozusagen eigene Cache-Implementation
-            networkLastModifiedRawValue = self.__reply.rawHeader(bytearray('Last-Modified', "utf-8")).data().decode()
-            networkLastModified = email.utils.parsedate_to_datetime(networkLastModifiedRawValue).timestamp()
+            network_last_modified_raw_value = self._reply.rawHeader(bytearray('Last-Modified', "utf-8")).data().decode()
+            network_last_modified = email.utils.parsedate_to_datetime(network_last_modified_raw_value).timestamp()
             self.successful = True
             self.done = True
-            self.finished.emit(json_string, catalog_title, networkLastModified)
+            self.finished.emit(json_string, catalog_title, network_last_modified)
             
             total_server_list = config.ServerHosts.get_all_servers()
             index = total_server_list.index(self._server)

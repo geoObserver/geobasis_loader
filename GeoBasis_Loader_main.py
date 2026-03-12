@@ -249,7 +249,7 @@ class GeoBasis_Loader(QObject):
             topic = topic[key]
         
         if "layers" not in topic:
-            self.addLayer(topic, None)
+            self.add_layer(topic, None)
             return
         
         layers = topic["layers"]
@@ -259,16 +259,16 @@ class GeoBasis_Loader(QObject):
             for layer in layers:
                 sub_topic = catalog[group_key]["themen"][layer]
                 combination_layers.append(sub_topic)
-            self.addLayerCombination(combination_layers)
+            self.add_layer_combination(combination_layers)
         else:
-            self.addLayerGroup(None, layers, topic["name"])
+            self.add_layer_group(None, layers, topic["name"])
     
-    def addLayer(self, attributes: Dict, crs: Union[str, None], standalone: bool = True):
+    def add_layer(self, attributes: Dict, crs: Union[str, None], standalone: bool = True):
         if not attributes.get(config.InternalProperties.LOADING, True):
             return None
         
-        layerType = attributes.get('type', 'ogc_wms').lower()
-        if layerType == "web":
+        layer_type = attributes.get('type', 'ogc_wms').lower()
+        if layer_type == "web":
             return None
         
         uri: str = attributes.get('uri', "n.n.")
@@ -284,29 +284,29 @@ class GeoBasis_Loader(QObject):
         
         uri = re.sub(r'EPSG:placeholder', crs, uri)
 
-        if layerType != "ogc_wfs" and layerType != "ogc_api_features":
+        if layer_type != "ogc_wfs" and layer_type != "ogc_api_features":
             uri += "&stepHeight=3000&stepWidth=3000"
         
         opacity = attributes.get('opacity', 1)
-        maxScale = attributes.get('maxScale', None)
-        minScale = attributes.get('minScale', None)
+        max_scale = attributes.get('maxScale', None)
+        min_scale = attributes.get('minScale', None)
 
-        fillColor = attributes.get('fillColor', [220,220,220])
-        strokeColor = attributes.get('strokeColor', 'black')
-        strokeWidth = attributes.get('strokeWidth', 0.3)
+        fill_color = attributes.get('fillColor', [220,220,220])
+        stroke_color = attributes.get('strokeColor', 'black')
+        stroke_width = attributes.get('strokeWidth', 0.3)
         
         if uri == "n.n.":
             self.iface.messageBar().pushCritical(config.PLUGIN_NAME_AND_VERSION, config.MY_CRITICAL_1 + attributes['name'] + f", URL des Themas derzeit unbekannt.{'&nbsp;'}Falls gültige/aktuelle URL bekannt,{'&nbsp;'}bitte dem Autor melden.")
             return
         
-        if layerType == "ogc_wfs":
+        if layer_type == "ogc_wfs":
             layer = QgsVectorLayer(uri, attributes['name'], 'wfs')
-        elif layerType == "ogc_api_features":
+        elif layer_type == "ogc_api_features":
             layer = QgsVectorLayer(uri, attributes['name'], 'oapif')
-        elif layerType == "ogc_vectortiles":
+        elif layer_type == "ogc_vectortiles":
             layer = QgsVectorTileLayer(uri, attributes['name'])
             layer.loadDefaultStyle()
-        elif layerType == "ogc_wcs":
+        elif layer_type == "ogc_wcs":
             layer = QgsRasterLayer(uri, attributes['name'], 'wcs')
         else:
             layer = QgsRasterLayer(uri, attributes['name'], 'wms')
@@ -319,36 +319,36 @@ class GeoBasis_Loader(QObject):
             layer.setOpacity(opacity)
             
         if isinstance(layer, QgsVectorLayer):
-            if maxScale is None:
-                maxScale = 1.0
-            if minScale is None:
-                minScale = 25000
+            if max_scale is None:
+                max_scale = 1.0
+            if min_scale is None:
+                min_scale = 25000
         
-        if minScale is not None and maxScale is not None:
-            if minScale < maxScale:
+        if min_scale is not None and max_scale is not None:
+            if min_scale < max_scale:
                 self.iface.messageBar().pushCritical(config.PLUGIN_NAME_AND_VERSION, config.MY_CRITICAL_1 + attributes['name'] + "; Skalenwerte vertauscht oder fehlerhaft")
-            elif minScale == maxScale: 
+            elif min_scale == max_scale: 
                 self.iface.messageBar().pushCritical(config.PLUGIN_NAME_AND_VERSION, config.MY_CRITICAL_1 + attributes['name'] + "; Skalenwerte gleich")   
-            elif minScale > maxScale:
-                layer.setMinimumScale(minScale)
-                layer.setMaximumScale(maxScale)
+            elif min_scale > max_scale:
+                layer.setMinimumScale(min_scale)
+                layer.setMaximumScale(max_scale)
                 layer.setScaleBasedVisibility(True)
         
         if isinstance(layer, QgsVectorLayer):
-            fill_color: QColor = QColor(*[int(c) for c in fillColor]) if type(fillColor) == list else QColor(fillColor)
-            strokeColor: QColor = QColor(*[int(c) for c in strokeColor]) if type(strokeColor) == list else QColor(strokeColor)
+            fill_color: QColor = QColor(*[int(c) for c in fill_color]) if type(fill_color) == list else QColor(fill_color)
+            stroke_color: QColor = QColor(*[int(c) for c in stroke_color]) if type(stroke_color) == list else QColor(stroke_color)
             
             symbol_layer: QgsSymbolLayer = layer.renderer().symbol().symbolLayer(0)
             symbol_layer.setColor(fill_color)
             
             geom_type = QgsWkbTypes.singleType(QgsWkbTypes.flatType(layer.wkbType()))
             if geom_type == geometry_types.LineString:
-                symbol_layer.setWidth(strokeWidth)  
+                symbol_layer.setWidth(stroke_width)  
             elif geom_type == geometry_types.Polygon:
-                symbol_layer.setStrokeColor(strokeColor)
-                symbol_layer.setStrokeWidth(strokeWidth)
+                symbol_layer.setStrokeColor(stroke_color)
+                symbol_layer.setStrokeWidth(stroke_width)
             elif geom_type == geometry_types.Point:
-                symbol_layer.setSize(strokeWidth)
+                symbol_layer.setSize(stroke_width)
             else:
                 print("Fehler bei Bestimmung der Geometrieart; Bestimmte Geometrie " + QgsWkbTypes.displayString(geom_type))
                         
@@ -369,10 +369,10 @@ class GeoBasis_Loader(QObject):
 
         return layer
     
-    def addLayerGroup(self, preferred_crs: Union[str, None], layers: dict, name: str) -> None:
-        layerTreeRoot = QgsProject.instance().layerTreeRoot()
-        newLayerGroup = layerTreeRoot.insertGroup(0, name)
-        if newLayerGroup is None:
+    def add_layer_group(self, preferred_crs: Union[str, None], layers: dict, name: str) -> None:
+        layer_tree_root = QgsProject.instance().layerTreeRoot()
+        new_layer_group = layer_tree_root.insertGroup(0, name)
+        if new_layer_group is None:
             return
         
         if preferred_crs is None:
@@ -399,16 +399,16 @@ class GeoBasis_Loader(QObject):
                 return
         
         for layerKey in layers:
-            sub_layer = self.addLayer(layers[layerKey], preferred_crs, False)
+            sub_layer = self.add_layer(layers[layerKey], preferred_crs, False)
             if sub_layer is None:
                 continue
-            ltl = newLayerGroup.insertLayer(0, sub_layer)
+            ltl = new_layer_group.insertLayer(0, sub_layer)
             if ltl:
                 ltl.setExpanded(False)
                 visible = layers[layerKey].get(config.InternalProperties.VISIBILITY, True)
                 ltl.setItemVisibilityChecked(visible)
             
-    def addLayerCombination(self, layers) -> None:
+    def add_layer_combination(self, layers) -> None:
         preferred_crs = None
         
         if "layers" not in layers[0]:
@@ -444,6 +444,6 @@ class GeoBasis_Loader(QObject):
         
         for layer in layers:
             if "layers" not in layer:
-                self.addLayer(layer, preferred_crs)
+                self.add_layer(layer, preferred_crs)
             else:
-                self.addLayerGroup(preferred_crs, layer['layers'], layer['name'])
+                self.add_layer_group(preferred_crs, layer['layers'], layer['name'])
