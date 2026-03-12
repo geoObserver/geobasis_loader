@@ -216,7 +216,7 @@ class GeoBasis_Loader(QObject):
     def set_services(self, services: dict):
         current_catalog = self.qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
         if current_catalog is None or "titel" not in current_catalog:
-            # LOGGING
+            # TODO: LOGGING
             
             return
         
@@ -257,7 +257,7 @@ class GeoBasis_Loader(QObject):
             # Explicitly checking the value makes sense but seems unnecessary, since the code is unreachable without it (unless QGIS doesnt reset plugins after reseting settings)
             current_catalog = self.qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
             if current_catalog is None or "titel" not in current_catalog:
-                # LOGGING
+                # TODO: LOGGING
                 self.iface.messageBar().pushWarning(
                     config.PLUGIN_NAME_AND_VERSION,
                     "Kein Katalog ausgewaehlt. Bitte waehlen Sie zuerst einen Katalog."

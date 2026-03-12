@@ -26,7 +26,7 @@ class NetworkHandler(QObject):
     def __init__(self, manager: Union[QgsNetworkAccessManager, None]) -> None:
         super().__init__()
         if not manager:
-            # LOGGING
+            # TODO: LOGGING
             
             raise ValueError("No QgsNetworkAccessManager recieved")
         
@@ -85,6 +85,9 @@ class NetworkHandler(QObject):
             index = total_server_list.index(self._server)
             print(f"Katalog '{catalog_name}' erfolgreich von Server {index + 1} geladen")
             return
+        
+        # TODO: LOGGING
+        # Different code per status code
         
         curr_server_index = self._server_list.index(self._server)
         if curr_server_index == len(self._server_list) - 1:
@@ -194,7 +197,7 @@ class CatalogManager:
             if cls.overview is not None:
                 matching_catalogs = [x for x in cls.overview if x.get("titel") == catalog_title]
                 if not matching_catalogs:
-                    # LOGGING
+                    # TODO: LOGGING
                     print("Error")
                     if callback:
                         callback(None)
