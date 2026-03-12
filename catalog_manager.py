@@ -313,13 +313,12 @@ class CatalogManager:
         return catalog
 
     @classmethod
-    def write_json(cls, data: Union[dict, str], file_path: pathlib.Path) -> None:        
+    def write_json(cls, data: Union[dict, str], file_path: pathlib.Path) -> None:
+        # Permissions to high (maybe 755) -> 777 used due to access problems on MacOs (I think, already some time ago), tried a few combinations
         file_path.parent.mkdir(mode=0o777, parents=True, exist_ok=True)
-        mode = "w" if file_path.exists() else "x"
         
-        with open(file_path, mode, encoding="utf-8", newline="\n") as file:
-            data = json.dumps(data, indent=2)
-            file.write(data)
+        with open(file_path, "w", encoding="utf-8", newline="\n") as file:
+            json.dump(data, file, indent=2)
 
     @classmethod
     def read_json(cls, file_path: pathlib.Path) -> Union[dict, list]:
