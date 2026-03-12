@@ -13,12 +13,13 @@ VISIBILITY_CHECKBOX_COL = 1
 LOADING_CHECKBOX_COL = 2
 
 class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
-    # Store all tree view items for each exec_ -> Dont go through tree recursively to get check status of each item
-    _items: list[QtWidgets.QTreeWidgetItem] = []
-    _current_catalog = {}
-    
     def __init__(self, parent = None):
         QtWidgets.QDialog.__init__(self, parent)
+        
+        # Store all tree view items for each exec -> Dont go through tree recursively to get check status of each item
+        _items: list[QtWidgets.QTreeWidgetItem] = []
+        _current_catalog = {}
+        
         self.setupUi(self)
         
         # Visibility tree buttons/actions
