@@ -17,8 +17,8 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         QtWidgets.QDialog.__init__(self, parent)
         
         # Store all tree view items for each exec -> Dont go through tree recursively to get check status of each item
-        _items: list[QtWidgets.QTreeWidgetItem] = []
-        _current_catalog = {}
+        self._items: list[QtWidgets.QTreeWidgetItem] = []
+        self._current_catalog = {}
         
         self.setupUi(self)
         
