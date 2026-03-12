@@ -65,14 +65,6 @@ class NetworkHandler(QObject):
         
         if error == no_error:
             json_string = self._reply.readAll().data().decode('utf-8')
-            
-            if is_overview_response:
-                ################################################################### Temporär
-                json_string = json_string.replace('\r\n', '')
-                json_string = re.sub(r'^{', '[', json_string)
-                json_string = re.sub(r",}$", ']', json_string)
-                json_string = re.sub(r"}$", ']', json_string)
-                ###################################################################        
      
             # Holt sich die Timestamps der letzten Modifikationen der lokalen JSON-Datei und der JSON-Datei aus dem Internet
             # (Über-)Schreibt dann die loakle JSON-Datei, wenn die Datei im Internet neuer ist
