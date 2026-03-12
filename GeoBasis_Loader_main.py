@@ -11,7 +11,7 @@ from . import config
 from . import ui as custom_ui
 from .catalog_manager import CatalogManager
 
-if Qgis.versionInt() < 33000:   # Breaking chnage in Version 3.30 -> Geometry types now in Qgis instead of QgsWkbTypes
+if Qgis.versionInt() < 33000:   # Breaking change in Version 3.30 -> Geometry types now in Qgis instead of QgsWkbTypes
     geometry_types = QgsWkbTypes.Type       # type: ignore
 else:
     geometry_types = Qgis.WkbType
@@ -29,11 +29,9 @@ class GeoBasis_Loader(QObject):
         CatalogManager.setup(iface)
         CatalogManager.get_overview(callback=self.initGui)
         
-        # ------- Dialog für die EPSG-Auswahl erstellen
-        self.epsg_dialog = custom_ui.EpsgDialog(parent=iface.mainWindow())
-        
-        # ------- Dialog für die Einstellungen erstellen
-        self.settings_dialog = custom_ui.SettingsDialog(parent=iface.mainWindow())
+        # ------- Create dialog variables, create dialogs lazily
+        self._epsg_dialog: Optional[custom_ui.EpsgDialog] = None
+        self._settings_dialog: Optional[custom_ui.SettingsDialog] = None
 
         # ------- Letzten Katalog laden --------------------------------------------
         current_catalog = self.qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
@@ -97,7 +95,7 @@ class GeoBasis_Loader(QObject):
         action.toggled.connect(self.toggle_automatic_crs)
         self.main_menu.addAction(action)
         
-        self.main_menu.addAction("Einstellungen (Aktueller Katalog)", self.open_settigs)
+        self.main_menu.addAction("Einstellungen (Aktueller Katalog)", self.open_settings)
         self.main_menu.addSeparator()
         
         # ------- Spenden-Schaltfläche für #geoObserver ------------------------
@@ -172,9 +170,21 @@ class GeoBasis_Loader(QObject):
         if self.main_menu:
             self.iface.pluginMenu().removeAction(self.main_menu.menuAction())
 
-#=================================================================================== 
+#===================================================================================
 
-    def open_settigs(self) -> None:
+    @property
+    def epsg_dialog(self):
+        if self._epsg_dialog is None:
+            self._epsg_dialog = custom_ui.EpsgDialog(self.iface.mainWindow())
+        return self._epsg_dialog
+    
+    @property
+    def settings_dialog(self):
+        if self._settings_dialog is None:
+            self._settings_dialog = custom_ui.SettingsDialog(self.iface.mainWindow())
+        return self._settings_dialog
+
+    def open_settings(self) -> None:
         status = self.settings_dialog.exec()
         # Abbruch
         if status == 0:
