@@ -56,6 +56,9 @@ class SearchFilter(QgsLocatorFilter):
                 topics = group.get("themen", {})
                 
                 for topic_key, topic in topics.items():
+                    if feedback.isCanceled():
+                        return
+                    
                     hit = False
                     if string in topic["name"].lower():
                         hit = True
@@ -71,9 +74,13 @@ class SearchFilter(QgsLocatorFilter):
                             "path": topic[config.InternalProperties.PATH],
                         }
                         result = QgsLocatorResult(self, topic["name"], data)
+                        result.group = group.get("menu", group_key)
+                        result.score = 1.0 if string == topic["name"].lower() else 0.5
+                        result.description = f"Katalog: {catalog_name}"
                         self.resultFetched.emit(result)
-    
+
     # @override
     def triggerResult(self, result: QgsLocatorResult):
+        # FIXME: Currently private method -> just result.userData according to doc, but property not found in Python or C++
         data = result._userData()
         self.gbl.add_topic(data["catalog_name"], data["path"])
