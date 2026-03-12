@@ -1,10 +1,9 @@
 import re
 from functools import partial
-from typing import Dict, Union, Optional
+from typing import Union, Optional
 from qgis.PyQt.QtWidgets import QMenu, QAction
-from qgis.PyQt.QtGui import QIcon, QColor, QColor, QDesktopServices
+from qgis.PyQt.QtGui import QIcon, QColor, QDesktopServices
 from qgis.PyQt.QtCore import QUrl, QObject
-# from qgis.PyQt.QtWebKitWidgets import QWebView # type: ignore
 from qgis.core import QgsSettings, QgsProject, QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer, QgsLayerTree, QgsSymbolLayer, QgsWkbTypes, Qgis
 from qgis.gui import QgisInterface
 from .topic_search import SearchFilter
@@ -207,7 +206,7 @@ class GeoBasis_Loader(QObject):
         self.qgs_settings.setValue(config.QgsSettingsKeys.CURRENT_CATALOG, catalog)
         CatalogManager.get_catalog(catalog["titel"], callback=self.set_services)
         
-    def set_services(self, services: Dict):
+    def set_services(self, services: dict):
         current_catalog = self.qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
         titel = current_catalog["titel"]
         name = current_catalog["name"]
@@ -263,7 +262,7 @@ class GeoBasis_Loader(QObject):
         else:
             self.add_layer_group(None, layers, topic["name"])
     
-    def add_layer(self, attributes: Dict, crs: Union[str, None], standalone: bool = True):
+    def add_layer(self, attributes: dict, crs: Union[str, None], standalone: bool = True):
         if not attributes.get(config.InternalProperties.LOADING, True):
             return None
         
