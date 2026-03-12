@@ -2,7 +2,7 @@ import json, os, re, pathlib, email.utils
 from functools import partial
 from typing import Optional, Union
 from qgis.PyQt.QtNetwork import QNetworkRequest, QNetworkReply
-from qgis.PyQt.QtCore import QUrl, QObject, pyqtSignal, QVersionNumber, QT_VERSION_STR
+from qgis.PyQt.QtCore import QUrl, QObject, QDateTime, pyqtSignal, QVersionNumber, QT_VERSION_STR
 from qgis.core import QgsNetworkAccessManager, QgsSettings
 from qgis.gui import QgisInterface
 from . import config
@@ -65,19 +65,17 @@ class NetworkHandler(QObject):
         
     def _handle_response(self, catalog_name: str, catalog_title: str, is_overview_response: bool):
         error = self._reply.error()
+        status_code: int = self._reply.attribute(QNetworkRequest.Attribute.HttpStatusCodeAttribute)
         
-        if error == no_error:
+        if error == no_error and status_code == 200:
             json_string = self._reply.readAll().data().decode('utf-8')
      
             # Holt sich die Timestamps der letzten Modifikationen der lokalen JSON-Datei und der JSON-Datei aus dem Internet
             # (Über-)Schreibt dann die loakle JSON-Datei, wenn die Datei im Internet neuer ist
             # Sozusagen eigene Cache-Implementation
-            network_last_modified_raw_value = self._reply.rawHeader(bytearray('Last-Modified', "utf-8")).data().decode()
-            if network_last_modified_raw_value:
-                try:
-                    network_last_modified = email.utils.parsedate_to_datetime(network_last_modified_raw_value).timestamp()
-                except (TypeError, ValueError):
-                    network_last_modified = 0.0
+            network_last_modified_raw_value: QDateTime = self._reply.header(QNetworkRequest.KnownHeaders.LastModifiedHeader)
+            if network_last_modified_raw_value.isValid():
+                network_last_modified = network_last_modified_raw_value.toMSecsSinceEpoch() / 1000      # ??????????
             else:
                 network_last_modified = 0.0
             self.successful = True
