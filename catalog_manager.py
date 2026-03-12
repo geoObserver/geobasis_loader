@@ -41,11 +41,14 @@ class NetworkHandler(QObject):
         request = QNetworkRequest(q_url)
         request.setAttribute(netowrk_request_attributes.CacheLoadControlAttribute, network_request_cache.AlwaysNetwork)
         request.setTransferTimeout(config.REQUEST_TIMEOUT_MS)
-        if self._server == config.ServerHosts.GITHUB:
-            mediatype = "application/vnd.github.raw+json"
-        else:
-            mediatype = "application/json"
-        request.setRawHeader(bytearray("Accept", "utf-8"), bytearray(mediatype, "utf-8"))
+        # if self._server == config.ServerHosts.GITHUB:
+        #     mediatype = "application/vnd.github.raw+json"
+        # else:
+        #     mediatype = "application/json"
+        request.setRawHeader(
+            bytearray("Accept", "utf-8"),  
+            bytearray("gzip, deflate", "utf-8")
+        )
         return self._manager.get(request)
   
     def fetch_catalog_overview(self) -> None:
@@ -132,7 +135,7 @@ class CatalogManager:
             handler_count = len(cls.catalog_network_handlers)
             message = f"Es wurden {successful_count} von {handler_count} Kataloge neu geladen"
             
-            if successful_count / handler_count >= 0.5:
+            if handler_count > 0 and successful_count / handler_count >= 0.5:
                 cls.iface.messageBar().pushSuccess(config.PLUGIN_NAME_AND_VERSION, message)
             else:
                 cls.iface.messageBar().pushWarning(config.PLUGIN_NAME_AND_VERSION, message)
