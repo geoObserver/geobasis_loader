@@ -76,7 +76,13 @@ class NetworkHandler(QObject):
             # (Über-)Schreibt dann die loakle JSON-Datei, wenn die Datei im Internet neuer ist
             # Sozusagen eigene Cache-Implementation
             network_last_modified_raw_value = self._reply.rawHeader(bytearray('Last-Modified', "utf-8")).data().decode()
-            network_last_modified = email.utils.parsedate_to_datetime(network_last_modified_raw_value).timestamp()
+            if network_last_modified_raw_value:
+                try:
+                    network_last_modified = email.utils.parsedate_to_datetime(network_last_modified_raw_value).timestamp()
+                except (TypeError, ValueError):
+                    network_last_modified = 0.0
+            else:
+                network_last_modified = 0.0
             self.successful = True
             self.done = True
             self.finished.emit(json_string, catalog_title, network_last_modified)
@@ -192,7 +198,15 @@ class CatalogManager:
                 cls._pending_callbacks[catalog_title].append(callback)
             
             if cls.overview is not None:
-                catalog_info: dict[str, str] = list(filter(lambda x: x["titel"] == catalog_title, cls.overview))[0] # type: ignore
+                matching_catalogs = [x for x in cls.overview if x.get("titel") == catalog_title]
+                if not matching_catalogs:
+                    # LOGGING
+                    print("Error")
+                    if callback:
+                        callback(None)
+                    return None
+                
+                catalog_info: dict[str, str] = matching_catalogs[0]
             else:
                 if catalog_name is None:
                     raise ValueError("No catalog name provided")

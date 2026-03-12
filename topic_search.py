@@ -43,11 +43,19 @@ class SearchFilter(QgsLocatorFilter):
             return
         
         for catalog_name, catalog in CatalogManager.catalogs.items():
+            if not catalog:
+                continue
+            
             for group_key, group in catalog:
                 if feedback.isCanceled():
                     return
                 
-                for topic_key, topic in group["themen"].items():
+                if not isinstance(group, dict) or "themen" not in group:
+                    continue
+                
+                topics = group.get("themen", {})
+                
+                for topic_key, topic in topics.items():
                     hit = False
                     if string in topic["name"].lower():
                         hit = True

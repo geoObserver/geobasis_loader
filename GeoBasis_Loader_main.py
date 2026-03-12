@@ -56,7 +56,7 @@ class GeoBasis_Loader(QObject):
         
         if self.services is not None:
             # ------- Name des Katalogs einfügen -------------------------
-            action = self.main_menu.addAction(self.qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)["titel"])
+            self.main_menu.addAction(self.qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)["titel"])
             self.main_menu.addSeparator()
             # ------- Menübaum bauen und einfügen ------------------------
             for abr, region in self.services:
@@ -215,9 +215,15 @@ class GeoBasis_Loader(QObject):
         
     def set_services(self, services: dict):
         current_catalog = self.qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
+        if current_catalog is None or "titel" not in current_catalog:
+            # LOGGING
+            
+            return
+        
         titel = current_catalog["titel"]
         name = current_catalog["name"]
-        version = re.findall(r'v\d+', name)[0]
+        version_matches = re.findall(r'v\d+', name)
+        version = version_matches[0] if version_matches else "unbekannt"
         self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, 'Lese '+ titel + ", Version " + version + ' ...', Qgis.MessageLevel.Success, 3)
         
         self.services = services
@@ -247,7 +253,17 @@ class GeoBasis_Loader(QObject):
             path = sender.data() # type: ignore
             if not isinstance(path, str):
                 raise TypeError("Path is unknown")
-            catalog_title = self.qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)["titel"]
+            
+            # Explicitly checking the value makes sense but seems unnecessary, since the code is unreachable without it (unless QGIS doesnt reset plugins after reseting settings)
+            current_catalog = self.qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
+            if current_catalog is None or "titel" not in current_catalog:
+                # LOGGING
+                self.iface.messageBar().pushWarning(
+                    config.PLUGIN_NAME_AND_VERSION,
+                    "Kein Katalog ausgewaehlt. Bitte waehlen Sie zuerst einen Katalog."
+                )
+                return
+            catalog_title = current_catalog["titel"]
 
         catalog: dict = dict(CatalogManager.get_catalog(catalog_title)) # type: ignore
         topic = catalog
