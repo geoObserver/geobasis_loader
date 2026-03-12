@@ -11,6 +11,7 @@ MY_INFO_1 = 'Layer '
 MY_INFO_2 = ' erfolgreich geladen.'
 
 PLUGIN_DIR = os.path.dirname(__file__)
+REQUEST_TIMEOUT_MS = 30000
 
 CATALOG_OVERVIEW = "GeoBasis_Loader_v6_Kataloge.json"
 CATALOG_OVERVIEW_NAME = "catalog_overview"

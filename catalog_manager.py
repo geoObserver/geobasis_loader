@@ -40,6 +40,7 @@ class NetworkHandler(QObject):
         q_url = QUrl(url)
         request = QNetworkRequest(q_url)
         request.setAttribute(netowrk_request_attributes.CacheLoadControlAttribute, network_request_cache.AlwaysNetwork)
+        request.setTransferTimeout(config.REQUEST_TIMEOUT_MS)
         if self._server == config.ServerHosts.GITHUB:
             mediatype = "application/vnd.github.raw+json"
         else:
