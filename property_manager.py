@@ -80,7 +80,7 @@ class PropertyManager:
         qgs_settings = QgsSettings()
         if not qgs_settings.contains(config.QgsSettingsKeys.PROPERTY_INIT):
             pathlib.Path()
-            path = pathlib.Path(__file__).parent / "catalogs" / "settings.json"
+            path = pathlib.Path(config.PLUGIN_DIR) / "catalogs" / "settings.json"
             self._convert_old_properties(path)
             self.save()
             return
