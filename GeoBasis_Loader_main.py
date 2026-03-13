@@ -309,6 +309,7 @@ class GeoBasis_Loader(QObject):
         if layer_type != "ogc_wfs" and layer_type != "ogc_api_features":
             uri += "&stepHeight=3000&stepWidth=3000"
         
+        layer_name = attributes.get("name", "")
         opacity = attributes.get('opacity', 1)
         max_scale = attributes.get('maxScale', None)
         min_scale = attributes.get('minScale', None)
@@ -322,16 +323,18 @@ class GeoBasis_Loader(QObject):
             return
         
         if layer_type == "ogc_wfs":
-            layer = QgsVectorLayer(uri, attributes['name'], 'wfs')
+            layer = QgsVectorLayer(uri, layer_name, 'wfs')
         elif layer_type == "ogc_api_features":
-            layer = QgsVectorLayer(uri, attributes['name'], 'oapif')
+            layer = QgsVectorLayer(uri, layer_name, 'oapif')
         elif layer_type == "ogc_vectortiles":
-            layer = QgsVectorTileLayer(uri, attributes['name'])
+            layer = QgsVectorTileLayer(uri, layer_name)
             layer.loadDefaultStyle()
         elif layer_type == "ogc_wcs":
-            layer = QgsRasterLayer(uri, attributes['name'], 'wcs')
+            layer = QgsRasterLayer(uri, layer_name, 'wcs')
+        elif layer_type == "ogc_wms":
+            layer = QgsRasterLayer(uri, layer_name, 'wms')
         else:
-            layer = QgsRasterLayer(uri, attributes['name'], 'wms')
+            raise ValueError(f"Unknown layer type: {layer_type}")
 
         if not layer.isValid():
             self.iface.messageBar().pushCritical(config.PLUGIN_NAME_AND_VERSION, config.MY_CRITICAL_1 + attributes['name'] + config.MY_CRITICAL_2)
