@@ -6,7 +6,10 @@ from qgis.PyQt.QtCore import QUrl, QObject, QDateTime, pyqtSignal, QVersionNumbe
 from qgis.core import QgsNetworkAccessManager, QgsSettings
 from qgis.gui import QgisInterface
 from . import config
+from . import custom_logger
 from .topic_search import SearchFilter
+
+logger = custom_logger.get_logger(__file__)
 
 if QVersionNumber(6) > QVersionNumber.fromString(QT_VERSION_STR)[0]:
     no_error = 0
@@ -16,6 +19,7 @@ else:
     no_error = QNetworkReply.NetworkError.NoError
     netowrk_request_attributes = QNetworkRequest.Attribute
     network_request_cache = QNetworkRequest.CacheLoadControl
+
 
 class NetworkHandler(QObject):
     _manager: QgsNetworkAccessManager
@@ -37,7 +41,7 @@ class NetworkHandler(QObject):
         self.done = False
         self.successful = False
         
-    def _fetch_data(self, url: str = '') -> QNetworkReply:
+    def _fetch_data(self, url: str = '') -> Optional[QNetworkReply]:
         q_url = QUrl(url)
         request = QNetworkRequest(q_url)
         request.setAttribute(netowrk_request_attributes.CacheLoadControlAttribute, network_request_cache.AlwaysNetwork)
@@ -54,14 +58,24 @@ class NetworkHandler(QObject):
   
     def fetch_catalog_overview(self) -> None:
         url = self._server.format(name=config.CATALOG_OVERVIEW)
-        self._reply = self._fetch_data(url=url)
+        reply = self._fetch_data(url=url)
+        if not reply:
+            logger.critical("Die Netzwerkantwort für die Katalogübersicht konnte nicht erstellt werden")
+            return
+        
+        self._reply = reply
         self._reply.finished.connect(partial(self._handle_response, config.CATALOG_OVERVIEW, config.CATALOG_OVERVIEW_NAME, True))
   
     def fetch_catalog(self, catalog_name: str, catalog_title: str) -> None:
         if not catalog_name.endswith(".json"):
             catalog_name += ".json"
         url = self._server.format(name=catalog_name)
-        self._reply = self._fetch_data(url=url)
+        reply = self._fetch_data(url=url)
+        if not reply:
+            logger.critical(f"Die Netzwerkantwort für den Katalog '{catalog_name}' konnte nicht erstellt werden")
+            return
+        
+        self._reply = reply
         self._reply.finished.connect(partial(self._handle_response, catalog_name, catalog_title, False))
         
     def _handle_response(self, catalog_name: str, catalog_title: str, is_overview_response: bool):
@@ -85,7 +99,7 @@ class NetworkHandler(QObject):
             
             total_server_list = config.ServerHosts.get_all_servers()
             index = total_server_list.index(self._server)
-            print(f"Katalog '{catalog_name}' erfolgreich von Server {index + 1} geladen")
+            logger.info(f"Katalog '{catalog_name}' erfolgreich von Server {index + 1} geladen")
             return
         
         # TODO: LOGGING
@@ -95,13 +109,14 @@ class NetworkHandler(QObject):
         if curr_server_index == len(self._server_list) - 1:
             self.error_occurred.emit("Netzwerkfehler beim Laden der URL's", catalog_title)
             self.done = True
-            print(f"Katalog '{catalog_name}' konnte nicht von einem Server geladen werden")
+            logger.warning(f"Katalog '{catalog_name}' konnte nicht von einem Server geladen werden")
         else:
             self._server = self._server_list[curr_server_index + 1]
             if is_overview_response:
                 self.fetch_catalog_overview()
             else:
                 self.fetch_catalog(catalog_name, catalog_title)
+
 
 class CatalogManager:
     overview = None
@@ -135,9 +150,9 @@ class CatalogManager:
             message = f"Es wurden {successful_count} von {handler_count} Kataloge neu geladen"
             
             if handler_count > 0 and successful_count / handler_count >= 0.5:
-                cls.iface.messageBar().pushSuccess(config.PLUGIN_NAME_AND_VERSION, message)
+                logger.success(message, extra={"show_banner": True})
             else:
-                cls.iface.messageBar().pushWarning(config.PLUGIN_NAME_AND_VERSION, message)
+                logger.warning(message, extra={"show_banner": True})
             
             cls.catalog_network_handlers.clear()
     
@@ -189,7 +204,7 @@ class CatalogManager:
             return cls.catalogs[catalog_title]
             
         if cls.overview_network_handler.done:
-            cls.iface.messageBar().pushWarning(config.PLUGIN_NAME_AND_VERSION, "Katalog Übersicht ist nicht geladen, Bitte warten Sie oder kontaktieren Sie den Author")
+            logger.warning("Katalog Übersicht ist nicht geladen, Bitte warten Sie oder kontaktieren Sie den Author")
         else:
             if callback:
                 if catalog_title not in cls._pending_callbacks:
@@ -199,8 +214,7 @@ class CatalogManager:
             if cls.overview is not None:
                 matching_catalogs = [x for x in cls.overview if x.get("titel") == catalog_title]
                 if not matching_catalogs:
-                    # TODO: LOGGING
-                    print("Error")
+                    logger.error(f"Kein Katalog mit dem Namen {catalog_title} gefunden, Starten Sie QGIS neu oder kontaktieren Sie den Autor")
                     if callback:
                         callback(None)
                     return None
@@ -258,7 +272,7 @@ class CatalogManager:
         file_path = pathlib.Path(cls.catalog_path + file_name + '.json')
         if not file_path.exists():
             error += ", Überprüfen Sie die Internetverbindung oder kontaktieren Sie den Autor"
-            cls.iface.messageBar().pushWarning(config.PLUGIN_NAME_AND_VERSION, error)
+            logger.warning(error, extra={"show_banner": True})
             
             # Notify callbacks with None result for the failed catalog
             if catalog_name in cls._pending_callbacks:
@@ -284,7 +298,7 @@ class CatalogManager:
                 handler.fetch_catalog(catalog["name"], catalog["titel"])
         
         error += ", Verwendung der gecachten Daten"
-        cls.iface.messageBar().pushWarning(config.PLUGIN_NAME_AND_VERSION, error)
+        logger.warning(error, extra={"show_banner": True})
         
         if catalog_name in cls._pending_callbacks:
             for callback in cls._pending_callbacks[catalog_name]:
