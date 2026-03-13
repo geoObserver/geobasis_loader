@@ -31,8 +31,7 @@ class NetworkHandler(QObject):
     def __init__(self, manager: Union[QgsNetworkAccessManager, None]) -> None:
         super().__init__()
         if not manager:
-            # TODO: LOGGING
-            
+            logger.critical(f"Netzwerkanfrage hat keinen Netzwerkmanager, Bitte starten Sie QGIS neu oder kontaktieren Sie den Autor")
             raise ValueError("No QgsNetworkAccessManager recieved")
         
         self._manager = manager

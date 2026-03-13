@@ -221,8 +221,7 @@ class GeoBasis_Loader(QObject):
     def set_services(self, services: dict):
         current_catalog = self.qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
         if current_catalog is None or "titel" not in current_catalog:
-            # TODO: LOGGING
-            
+            logger.warning(f"Momentan ist kein valider Katalog ausgewählt, Bitten wählen Sie einen aus", extra={"show_banner": True})
             return
         
         titel = current_catalog["titel"]
