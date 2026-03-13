@@ -157,7 +157,13 @@ class CatalogManager:
     
     @classmethod
     def set_overview(cls, overview: str, catalog_name: str, last_modified: float, fetch_catalogs: bool = True) -> None:
-        cls.overview = json.loads(overview)
+        try:
+            cls.overview = json.loads(overview)
+        except json.JSONDecodeError as e:
+            logger.critical(f"Fehler beim Parsen der Katalogübersicht: {e}")
+            logger.critical("Die Katalog-Übersicht enthält ungültiges JSON. Bitte prüfen Sie die Internetverbindung", extra={"show_banner": True})
+            return
+        
         file_name = 'katalog_overview'
         file_path = pathlib.Path(cls.catalog_path + file_name + '.json')
         
@@ -243,7 +249,13 @@ class CatalogManager:
         
     @classmethod
     def add_catalog(cls, raw_catalog: str, catalog_name: str, last_modified: float) -> None:
-        catalog = json.loads(raw_catalog)
+        try:
+            catalog = json.loads(raw_catalog)
+        except json.JSONDecodeError as e:
+            logger.critical(f"Fehler beim Parsen des Katalogs '{catalog_name}': {e}")
+            logger.critical(f"Der Katalog '{catalog_name}' enthält ungültiges JSON. Bitte prüfen Sie die Internetverbindung", extra={"show_banner": True})
+            return
+        
         if isinstance(catalog, dict):
             catalog = cls.set_internal_properties(catalog)
             cls.catalogs[catalog_name] = list(catalog.items())
@@ -326,18 +338,29 @@ class CatalogManager:
 
     @classmethod
     def write_json(cls, data: Union[dict, str], file_path: pathlib.Path) -> None:
-        # Permissions to high (maybe 755) -> 777 used due to access problems on MacOs (I think, already some time ago), tried a few combinations
+        # FIXME: Permissions to high (maybe 755) -> 777 used due to access problems on MacOs (I think, already some time ago), tried a few combinations
         file_path.parent.mkdir(mode=0o777, parents=True, exist_ok=True)
         
-        with open(file_path, "w", encoding="utf-8", newline="\n") as file:
-            json.dump(data, file, indent=2)
+        try:
+            with open(file_path, "w", encoding="utf-8", newline="\n") as file:
+                json.dump(data, file, indent=2)
+        except (OSError, PermissionError) as e:
+            logger.critical(f"Fehler beim Schreiben der Datei {file_path}: {e}")
+        except TypeError as e:
+            logger.critical(f"Nicht-serialisierbares Objekt für {file_path}: {e}")
 
     @classmethod
     def read_json(cls, file_path: pathlib.Path) -> Union[dict, list]:
         if not file_path.exists():
             return {}
         
-        services: Union[dict, list]
-        with open(file_path, "r", encoding="utf-8") as file:
-            services = json.load(file)
-        return services
+        try:
+            with open(file_path, "r", encoding="utf-8") as file:
+                services = json.load(file)
+            return services
+        except json.JSONDecodeError as e:
+            logger.critical(f"Ungültiges JSON in Datei {file_path}: {e}")
+            return {}
+        except OSError as e:
+            logger.critical(f"Fehler beim Lesen der Datei {file_path}: {e}")
+            return {}
