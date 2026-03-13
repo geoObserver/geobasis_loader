@@ -5,13 +5,11 @@ from qgis.core import QgsSettings
 PLUGIN_VERSION = '2.0.0'
 PLUGIN_NAME = 'GeoBasis Loader'
 PLUGIN_NAME_AND_VERSION = PLUGIN_NAME + ' (v' + PLUGIN_VERSION + ')'
-MY_CRITICAL_1 = 'Layerladefehler '
-MY_CRITICAL_2 = ', Dienst nicht verfügbar (URL?)'
-MY_INFO_1 = 'Layer '
-MY_INFO_2 = ' erfolgreich geladen.'
 
 PLUGIN_DIR = os.path.dirname(__file__)
 REQUEST_TIMEOUT_MS = 30000
+PLUGIN_LOGGER_NAME = "geobasis_loader"
+LOGGING_SUCCESS_LEVEL = 25
 
 CATALOG_OVERVIEW = "GeoBasis_Loader_v6_Kataloge.json"
 CATALOG_OVERVIEW_NAME = "catalog_overview"

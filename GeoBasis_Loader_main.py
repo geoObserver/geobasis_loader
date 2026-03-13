@@ -8,14 +8,18 @@ from qgis.core import QgsSettings, QgsProject, QgsVectorLayer, QgsRasterLayer, Q
 from qgis.gui import QgisInterface
 from .topic_search import SearchFilter
 from . import config
+from . import custom_logger
 from . import ui as custom_ui
 from .catalog_manager import CatalogManager
 from .property_manager import singleton as PropertyManager
+
+logger = custom_logger.get_logger(__file__)
 
 if Qgis.versionInt() < 33000:   # Breaking change in Version 3.30 -> Geometry types now in Qgis instead of QgsWkbTypes
     geometry_types = QgsWkbTypes.Type       # type: ignore
 else:
     geometry_types = Qgis.WkbType
+
 
 class GeoBasis_Loader(QObject):
     services = None
@@ -166,6 +170,7 @@ class GeoBasis_Loader(QObject):
         self.search_filter = None
         if self.main_menu:
             self.iface.pluginMenu().removeAction(self.main_menu.menuAction())
+        custom_logger.remove_logging()
 
 #===================================================================================
 
@@ -189,7 +194,7 @@ class GeoBasis_Loader(QObject):
         
         self.automatic_crs = self.qgs_settings.value(config.QgsSettingsKeys.AUTOMATIC_CRS, False, bool)
         
-        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, 'Einstellungen erfolgreich gespeichert', Qgis.MessageLevel.Success, 3)
+        logger.success("Einstellungen erfolgreich gespeichert", extra={"show_banner": True})
         self.initGui()
 
     def toggle_automatic_crs(self) -> None:
@@ -224,7 +229,7 @@ class GeoBasis_Loader(QObject):
         name = current_catalog["name"]
         version_matches = re.findall(r'v\d+', name)
         version = version_matches[0] if version_matches else "unbekannt"
-        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, 'Lese '+ titel + ", Version " + version + ' ...', Qgis.MessageLevel.Success, 3)
+        logger.success('Lese '+ titel + ", Version " + version + ' ...', extra={"show_banner": True})
         
         self.services = services
         self.initGui()
@@ -257,11 +262,7 @@ class GeoBasis_Loader(QObject):
             # Explicitly checking the value makes sense but seems unnecessary, since the code is unreachable without it (unless QGIS doesnt reset plugins after reseting settings)
             current_catalog = self.qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
             if current_catalog is None or "titel" not in current_catalog:
-                # TODO: LOGGING
-                self.iface.messageBar().pushWarning(
-                    config.PLUGIN_NAME_AND_VERSION,
-                    "Kein Katalog ausgewaehlt. Bitte waehlen Sie zuerst einen Katalog."
-                )
+                logger.warning("Kein Katalog ausgewaehlt. Bitte waehlen Sie zuerst einen Katalog.", extra={"show_banner": True})
                 return
             catalog_title = current_catalog["titel"]
 
@@ -319,7 +320,7 @@ class GeoBasis_Loader(QObject):
         stroke_width = attributes.get('strokeWidth', 0.3)
         
         if uri == "n.n.":
-            self.iface.messageBar().pushCritical(config.PLUGIN_NAME_AND_VERSION, config.MY_CRITICAL_1 + attributes['name'] + f", URL des Themas derzeit unbekannt.{'&nbsp;'}Falls gültige/aktuelle URL bekannt,{'&nbsp;'}bitte dem Autor melden.")
+            logger.critical(f"Layerladefehler {layer_name}, URL des Themas derzeit unbekannt.{'&nbsp;'}Falls gültige/aktuelle URL bekannt,{'&nbsp;'}bitte dem Autor melden.", extra={"show_banner": True})
             return
         
         if layer_type == "ogc_wfs":
@@ -337,7 +338,7 @@ class GeoBasis_Loader(QObject):
             raise ValueError(f"Unknown layer type: {layer_type}")
 
         if not layer.isValid():
-            self.iface.messageBar().pushCritical(config.PLUGIN_NAME_AND_VERSION, config.MY_CRITICAL_1 + attributes['name'] + config.MY_CRITICAL_2)
+            logger.critical(f"Layerladefehler {layer_name}, Dienst nicht verfügbar (URL?)", extra={"show_banner": True})
             return
         
         if hasattr(layer, 'setOpacity'):
@@ -351,9 +352,9 @@ class GeoBasis_Loader(QObject):
         
         if min_scale is not None and max_scale is not None:
             if min_scale < max_scale:
-                self.iface.messageBar().pushCritical(config.PLUGIN_NAME_AND_VERSION, config.MY_CRITICAL_1 + attributes['name'] + "; Skalenwerte vertauscht oder fehlerhaft")
+                logger.critical(f"Layerladefehler {layer_name}, Skalenwerte vertauscht oder fehlerhaft", extra={"show_banner": True})
             elif min_scale == max_scale: 
-                self.iface.messageBar().pushCritical(config.PLUGIN_NAME_AND_VERSION, config.MY_CRITICAL_1 + attributes['name'] + "; Skalenwerte gleich")   
+                logger.critical(f"Layerladefehler {layer_name}, Skalenwerte gleich", extra={"show_banner": True})
             elif min_scale > max_scale:
                 layer.setMinimumScale(min_scale)
                 layer.setMaximumScale(max_scale)
@@ -375,12 +376,12 @@ class GeoBasis_Loader(QObject):
             elif geom_type == geometry_types.Point:
                 symbol_layer.setSize(stroke_width)
             else:
-                print("Fehler bei Bestimmung der Geometrieart; Bestimmte Geometrie " + QgsWkbTypes.displayString(geom_type))
+                logger.critical(f"Fehler bei Bestimmung der Geometrieart, Bestimmte Geometrie: {QgsWkbTypes.displayString(geom_type)}")
                         
             layer.triggerRepaint()
             self.iface.layerTreeView().refreshLayerSymbology(layer.id())
         
-        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, config.MY_INFO_1 + attributes['name'] + config.MY_INFO_2, Qgis.MessageLevel.Success, 1)
+        logger.success(f"Ebene {layer_name} erfolgreich geladen")
         # Ebene zum Projekt hinzufügen aber nicht automatisch zum Ebenenbaum
         QgsProject.instance().addMapLayer(layer, False) # type: ignore
 
