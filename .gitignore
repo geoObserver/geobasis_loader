@@ -8,3 +8,10 @@ GeoBasis_Loader_Network_doc.py
 GeoBasis_Loader_main_doc.py
 .DS_Store
 GeoBasis_Loader_icon_.png
+
+# uv/dev dependencies
+.venv
+.vscode
+.python-version
+pyproject.toml
+uv.lock

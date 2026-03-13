@@ -2,7 +2,7 @@ from enum import Enum
 import os
 from qgis.core import QgsSettings
 
-PLUGIN_VERSION = '1.4'
+PLUGIN_VERSION = '2.0.0'
 PLUGIN_NAME = 'GeoBasis Loader'
 PLUGIN_NAME_AND_VERSION = PLUGIN_NAME + ' (v' + PLUGIN_VERSION + ')'
 MY_CRITICAL_1 = 'Layerladefehler '

@@ -2,10 +2,19 @@ import json, os, re, pathlib, email.utils
 from functools import partial
 from typing import Optional, Union
 from qgis.PyQt.QtNetwork import QNetworkRequest, QNetworkReply
-from qgis.PyQt.QtCore import QUrl, QObject, pyqtSignal
+from qgis.PyQt.QtCore import QUrl, QObject, pyqtSignal, QVersionNumber, QT_VERSION_STR
 from qgis.core import QgsNetworkAccessManager, QgsSettings
 from qgis.gui import QgisInterface
 from . import config
+
+if QVersionNumber(6) > QVersionNumber.fromString(QT_VERSION_STR)[0]:
+    no_error = 0
+    netowrk_request_attributes = QNetworkRequest
+    network_request_cache = QNetworkRequest
+else:
+    no_error = QNetworkReply.NetworkError.NoError
+    netowrk_request_attributes = QNetworkRequest.Attribute
+    network_request_cache = QNetworkRequest.CacheLoadControl
 
 class NetworkHandler(QObject):
     __manager: QgsNetworkAccessManager
@@ -29,7 +38,7 @@ class NetworkHandler(QObject):
     def __fetch_data(self, url: str = '') -> QNetworkReply:
         q_url = QUrl(url)
         request = QNetworkRequest(q_url)
-        request.setAttribute(QNetworkRequest.CacheLoadControlAttribute, QNetworkRequest.AlwaysNetwork)
+        request.setAttribute(netowrk_request_attributes.CacheLoadControlAttribute, network_request_cache.AlwaysNetwork)
         if self._server == config.ServerHosts.GITHUB:
             mediatype = "application/vnd.github.raw+json"
         else:
@@ -52,7 +61,7 @@ class NetworkHandler(QObject):
     def __handle_response(self, catalog_name: str, catalog_title: str, is_overview_response: bool):
         error = self.__reply.error()
         
-        if error == 0:
+        if error == no_error:
             json_string = self.__reply.readAll().data().decode('utf-8')
             
             if is_overview_response:

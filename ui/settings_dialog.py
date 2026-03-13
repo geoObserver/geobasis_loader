@@ -35,7 +35,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         # IntelliSense
         self.visibility_tree: QtWidgets.QTreeWidget = self.visibility_tree
         self.server_button_group: QtWidgets.QButtonGroup = self.server_button_group
-        self.automatic_crs_checkbox: QtWidgtes.QCheckBox = self.automatic_crs_checkbox
+        self.automatic_crs_checkbox: QtWidgets.QCheckBox = self.automatic_crs_checkbox
     
     def setup(self):
         available_width = self.visibility_tree.width()
