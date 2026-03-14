@@ -101,9 +101,16 @@ class NetworkHandler(QObject):
             logger.info(f"Katalog '{catalog_name}' erfolgreich von Server {index + 1} geladen")
             return
         
-        # TODO: LOGGING
-        # Different code per status code
-        
+        # Differenzierte Fehlerbehandlung
+        if status_code == 404:
+            logger.warning(f"404 Not Found: {catalog_name} auf Server {self._server}")
+        elif status_code == 429:
+            logger.warning(f"429 Rate Limit: Server {self._server}")
+        elif status_code >= 500:
+            logger.warning(f"Server-Fehler {status_code}: {catalog_name}")
+        else:
+            logger.warning(f"Unbekannter Statuscode: {status_code} für {catalog_name} auf {self._server}")
+
         curr_server_index = self._server_list.index(self._server)
         if curr_server_index == len(self._server_list) - 1:
             self.error_occurred.emit("Netzwerkfehler beim Laden der URL's", catalog_title)
