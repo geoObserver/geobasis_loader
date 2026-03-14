@@ -64,6 +64,9 @@ class PropertyManager:
         return key not in self._disabled
     
     def _convert_old_properties(self, path: pathlib.Path):
+        if not path.exists():
+            return
+        
         with open(path, encoding="utf-8") as f:
             data = json.load(f)
             properties = data["properties"]
@@ -79,7 +82,6 @@ class PropertyManager:
     def load(self):
         qgs_settings = QgsSettings()
         if not qgs_settings.contains(config.QgsSettingsKeys.PROPERTY_INIT):
-            pathlib.Path()
             path = pathlib.Path(config.PLUGIN_DIR) / "catalogs" / "settings.json"
             self._convert_old_properties(path)
             self.save()
