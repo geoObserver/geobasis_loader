@@ -2,6 +2,9 @@ import pathlib, json
 from enum import Enum
 from qgis.core import QgsSettings
 from . import config
+from . import custom_logger
+
+logger = custom_logger.get_logger(__file__)
 
 class PropertyManager:
     class Property(str, Enum):
@@ -65,6 +68,7 @@ class PropertyManager:
     
     def _convert_old_properties(self, path: pathlib.Path):
         if not path.exists():
+            logger.info(f"Alte Konfigurationsdatei nicht gefunden. Werkseinstellungen wiederhergestellt")
             return
         
         with open(path, encoding="utf-8") as f:
