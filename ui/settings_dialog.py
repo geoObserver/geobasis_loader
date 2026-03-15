@@ -155,7 +155,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
             is_enabled = not loading_state == Qt.CheckState.Unchecked
             PropertyManager.set_enabled(path, is_enabled)
         
-        PropertyManager.save()
+        PropertyManager.save_all()
         self.clear_data()
         
     def clear_data(self) -> None:
