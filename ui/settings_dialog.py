@@ -7,6 +7,7 @@ from qgis.core import QgsSettings
 from ..catalog_manager import CatalogManager
 from .. import config
 from ..property_manager import singleton as PropertyManager
+from ..utils import catalog_types
 
 SETTINGS_DIALOG = uic.loadUiType(os.path.join(os.path.dirname(__file__), "design_files", "settings_dialog.ui"))[0]
 VISIBILITY_CHECKBOX_COL = 1
@@ -53,44 +54,36 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         self.set_settings()
        
     def set_settings(self):
-        def _add_entry(data: dict, parent: Optional[Union[QtWidgets.QTreeWidgetItem, QtWidgets.QTreeWidget]] = None):
-            name_key = "name"
-            if parent is None:
-                parent = self.layer_settings_tree
-                name_key = "menu"
+        def _add_entry(data: catalog_types.BasicEntry, parent: Union[QtWidgets.QTreeWidgetItem, QtWidgets.QTreeWidget]) -> QtWidgets.QTreeWidgetItem:            
+            item = QtWidgets.QTreeWidgetItem(parent)
+            item.setText(0, data.name)
+            item.setFlags(item.flags() | Qt.ItemFlag.ItemIsAutoTristate | Qt.ItemFlag.ItemIsUserCheckable)
             
-            for key, value in data.items():   
-                if not isinstance(value, dict):
-                    continue
-                
-                if key == "themen" or key == "layers":
-                    item = parent
-                else:
-                    item = QtWidgets.QTreeWidgetItem(parent)
-                    item.setText(0, value[name_key])
-                    item.setFlags(item.flags() | Qt.ItemFlag.ItemIsAutoTristate | Qt.ItemFlag.ItemIsUserCheckable)
-                    
-                    properties = PropertyManager[value.get(config.InternalProperties.PATH, None)]
-                    # Visibility
-                    checked = Qt.CheckState.Checked if properties[PropertyManager.Property.VISIBLE] else Qt.CheckState.Unchecked
-                    item.setCheckState(VISIBILITY_CHECKBOX_COL, checked)
-                    # Loading
-                    checked = Qt.CheckState.Checked if properties[PropertyManager.Property.ENABLED] else Qt.CheckState.Unchecked
-                    item.setCheckState(LOADING_CHECKBOX_COL, checked)
-                    
-                    item.setData(0, Qt.ItemDataRole.UserRole, value.get(config.InternalProperties.PATH, None))
-                    self._items.append(item)
-                
-                _add_entry(value, item)                    
+            # Visibility
+            checked = Qt.CheckState.Checked if data.properties.visible else Qt.CheckState.Unchecked
+            item.setCheckState(VISIBILITY_CHECKBOX_COL, checked)
+            # Loading
+            checked = Qt.CheckState.Checked if data.properties.enabled else Qt.CheckState.Unchecked
+            item.setCheckState(LOADING_CHECKBOX_COL, checked)
+            
+            item.setData(0, Qt.ItemDataRole.UserRole, data.path)
+            self._items.append(item)
+        
+            return item
         
         self.clear_data()
-        current_catalog = CatalogManager.get_current_catalog()
-        if current_catalog is None:
+        self._current_catalog = CatalogManager.get_current_catalog()
+        if self._current_catalog is None or isinstance(self._current_catalog, list):
             return
         
-        # Visibility Tree
-        self._current_catalog = dict(current_catalog)
-        _add_entry(self._current_catalog)
+        # Properties Tree
+        for region in self._current_catalog.get_regions():
+            region_item = _add_entry(region, self.layer_settings_tree)
+            for topic in region.get_topics():
+                topic_item = _add_entry(topic, region_item)
+                if isinstance(topic, catalog_types.TopicGroup):
+                    for subtopic in topic.get_subtopics():
+                        subtopic_item = _add_entry(subtopic, topic_item)
         
         # Global Settings
         qgs_settings = QgsSettings()
@@ -142,7 +135,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         automatic_crs = self.automatic_crs_checkbox.isChecked()
         qgs_settings.setValue(config.QgsSettingsKeys.AUTOMATIC_CRS, automatic_crs)
         
-        # Layer settings                
+        # Layer settings
         for item in self._items:
             path: str = item.data(0, Qt.ItemDataRole.UserRole)
             visibility_state = item.checkState(VISIBILITY_CHECKBOX_COL)

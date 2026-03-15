@@ -8,6 +8,7 @@ from qgis.gui import QgisInterface
 from . import config
 from . import custom_logger
 from .topic_search import SearchFilter
+from .utils import catalog_types
 
 logger = custom_logger.get_logger(__file__)
 
@@ -125,8 +126,8 @@ class NetworkHandler(QObject):
 
 
 class CatalogManager:
-    overview = None
-    catalogs = {}
+    overview: Optional[list[dict[str, str]]] = None
+    catalogs: dict[str, catalog_types.Catalog] = {}
     catalog_path = f'{config.PLUGIN_DIR}/catalogs/'
     
     catalog_network_handlers: dict[str, NetworkHandler] = {}
@@ -171,6 +172,10 @@ class CatalogManager:
             logger.critical("Die Katalog-Übersicht enthält ungültiges JSON. Bitte prüfen Sie die Internetverbindung", extra={"show_banner": True})
             return
         
+        if not cls.overview:
+            logger.critical(f"Katalogübersicht fehlerhaft, Bitte starten Sie QGIS neu oder kontaktieren Sie den Autor")
+            return
+        
         file_name = 'katalog_overview'
         file_path = pathlib.Path(cls.catalog_path + file_name + '.json')
         
@@ -203,7 +208,7 @@ class CatalogManager:
             cls._pending_callbacks[config.CATALOG_OVERVIEW_NAME].append(callback)
     
     @classmethod
-    def get_catalog(cls, catalog_title: str, catalog_name: Optional[str] = None, callback: Optional[Callable] = None) -> Union[None, dict, list]:        
+    def get_catalog(cls, catalog_title: str, catalog_name: Optional[str] = None, callback: Optional[Callable] = None) -> Union[None, catalog_types.Catalog, list]:        
         if catalog_title == config.CATALOG_OVERVIEW_NAME:
             if cls.overview is not None:
                 if callback:
@@ -246,7 +251,7 @@ class CatalogManager:
         return None
     
     @classmethod
-    def get_current_catalog(cls, callback: Optional[Callable] = None) -> Union[None, dict, list]:
+    def get_current_catalog(cls, callback: Optional[Callable] = None) -> Union[None, catalog_types.Catalog, list]:
         qgs_settings = QgsSettings()
         current_catalog = qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
         if current_catalog is None or "name" not in current_catalog:
@@ -257,15 +262,16 @@ class CatalogManager:
     @classmethod
     def add_catalog(cls, raw_catalog: str, catalog_name: str, last_modified: float) -> None:
         try:
-            catalog = json.loads(raw_catalog)
+            parsed_catalog = json.loads(raw_catalog)
         except json.JSONDecodeError as e:
             logger.critical(f"Fehler beim Parsen des Katalogs '{catalog_name}': {e}")
             logger.critical(f"Der Katalog '{catalog_name}' enthält ungültiges JSON. Bitte prüfen Sie die Internetverbindung", extra={"show_banner": True})
             return
         
-        if isinstance(catalog, dict):
-            catalog = cls.set_internal_properties(catalog)
-            cls.catalogs[catalog_name] = list(catalog.items())
+        if isinstance(parsed_catalog, dict):
+            catalog = catalog_types.Catalog.from_dict(parsed_catalog)
+            catalog.build_index()
+            cls.catalogs[catalog_name] = catalog
             SearchFilter.build_search_index(cls.catalogs)
         
         file_name = re.sub(r'\ ', '_', catalog_name.split(':')[0].lower())
@@ -273,7 +279,7 @@ class CatalogManager:
         
         localLastModified = os.path.getmtime(file_path) if file_path.exists() else 0.0
         if localLastModified < last_modified:
-            cls.write_json(catalog, file_path)
+            cls.write_json(parsed_catalog, file_path)
         
         if catalog_name in cls._pending_callbacks:
             for callback in cls._pending_callbacks[catalog_name]:
@@ -302,14 +308,19 @@ class CatalogManager:
                 del cls._pending_callbacks[catalog_name]
             return
 
-        services = cls.read_json(file_path)
-        if not is_overview_response and isinstance(services, dict):
-            catalog = cls.set_internal_properties(services)
-            services = list(services.items())
-            cls.catalogs[catalog_name] = services
+        parsed_services = cls.read_json(file_path)
+        if not is_overview_response and isinstance(parsed_services, dict):
+            catalog = catalog_types.Catalog.from_dict(parsed_services)
+            catalog.build_index()
+            cls.catalogs[catalog_name] = catalog
             SearchFilter.build_search_index(cls.catalogs)
         else:
-            cls.overview = services
+            if not isinstance(parsed_services, list):
+                error += "Katalogübersicht nicht korrekt geparst"
+                logger.warning(error, extra={"show_banner": True})
+                return
+            
+            cls.overview = parsed_services
             for catalog in cls.overview:
                 # ------- Network Handler für die einzelnen Kataloge erstellen -------------
                 handler = cls.add_network_handler(catalog["titel"])
@@ -323,28 +334,13 @@ class CatalogManager:
                 if is_overview_response:
                     callback()
                 else:
-                    callback(services)
+                    callback(parsed_services)
             del cls._pending_callbacks[catalog_name]
         
         cls.clear_network_handlers()
-    
-    @classmethod
-    def set_internal_properties(cls, catalog: dict) -> dict:
-        def _apply_path_flag(data: dict, path_prefix: str = ""):
-            for key, value in data.items():
-                path = f"{path_prefix}/{key}" if path_prefix else key
-                
-                if isinstance(value, dict):
-                    if key != "themen" and key != "layers":
-                        data[key][config.InternalProperties.PATH] = path
-                    _apply_path_flag(value, path)
-        
-        _apply_path_flag(catalog)
-        
-        return catalog
 
     @classmethod
-    def write_json(cls, data: Union[dict, str], file_path: pathlib.Path) -> None:
+    def write_json(cls, data: Union[dict, list, str], file_path: pathlib.Path) -> None:
         # FIXME: Permissions to high (maybe 755) -> 777 used due to access problems on MacOs (I think, already some time ago), tried a few combinations
         file_path.parent.mkdir(mode=0o777, parents=True, exist_ok=True)
         

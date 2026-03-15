@@ -1,7 +1,8 @@
 from typing import Optional
 
 from . import config
-from qgis.core import QgsLocatorFilter, QgsLocatorResult, QgsLocatorContext, QgsFeedback, QgsMessageLog
+from qgis.core import QgsLocatorFilter, QgsLocatorResult, QgsLocatorContext, QgsFeedback
+from .utils import catalog_types
 # Strings wie Beschreibung und Name werden nicht übersetzt und sind momentan nur in Deutsch 
 
 class SearchFilter(QgsLocatorFilter):
@@ -61,39 +62,27 @@ class SearchFilter(QgsLocatorFilter):
 
     # @override
     def triggerResult(self, result: QgsLocatorResult):
-        # FIXME: Currently private method -> just result.userData according to doc, but property not found in Python or C++
+        # FIXME: Currently private method -> just result.userData according to doc, but property not found in Python or C++/SIP
         data = result._userData()
         self.gbl.add_topic(data["catalog_name"], data["path"])
     
     @classmethod
-    def build_search_index(cls, catalogs: dict) -> None:
+    def build_search_index(cls, catalogs: dict[str, catalog_types.Catalog]) -> None:
         search_index = []
         
         for catalog_name, catalog in catalogs.items():
             if not catalog:
                 continue
             
-            for _, region in catalog:
-                if not isinstance(region, dict) or "themen" not in region:
-                    continue
-            
-                topics = region.get("themen", {})
-                for _, topic in topics.items():
-                    if not isinstance(topic, dict):
-                        continue
-                    
-                    name = topic.get("name", "")
-                    keywords = topic.get("keywords", [])
-                    if not isinstance(keywords, list):
-                        keywords = []
-                    
+            for region in catalog.get_regions():
+                for topic in region.get_topics():
                     search_index.append({
-                        "name": name,
-                        "name_lower": name.lower(),
-                        "region": region["menu"],
-                        "keywords_lower": [kw.lower() for kw in keywords if isinstance(kw, str)],
+                        "name": topic.name,
+                        "name_lower": topic.name.lower(),
+                        "region": region.name,
+                        "keywords_lower": [kw.lower() for kw in topic.keywords if isinstance(kw, str)],
                         "catalog_name": catalog_name,
-                        "path": topic.get(config.InternalProperties.PATH, ""),
+                        "path": topic.path,
                     })
         
         cls.search_index = search_index

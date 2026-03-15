@@ -12,6 +12,7 @@ from . import custom_logger
 from . import ui as custom_ui
 from .catalog_manager import CatalogManager
 from .property_manager import singleton as PropertyManager
+from .utils import catalog_types
 
 logger = custom_logger.get_logger(__file__)
 
@@ -22,7 +23,7 @@ else:
 
 
 class GeoBasis_Loader(QObject):
-    services = None
+    services: Optional[catalog_types.Catalog] = None
     
     search_filter = None
     qgs_settings = QgsSettings()
@@ -63,15 +64,14 @@ class GeoBasis_Loader(QObject):
             self.main_menu.addAction(self.qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)["titel"])
             self.main_menu.addSeparator()
             # ------- Menübaum bauen und einfügen ------------------------
-            for abr, region in self.services:
-                # Falls der zweite Eintrag kein Dictionary ist, überspringen, da es Metadaten sind
-                if not isinstance(region, dict) or not PropertyManager.is_visible(region[config.InternalProperties.PATH]):
+            for region in self.services.get_regions():
+                if not region.properties.visible:
                     continue
                 
-                region_menu = self.gui_for_one_region(region['themen'], region['menu'])
+                region_menu = self.gui_for_one_region(region.get_topics(), region.name)
                 self.main_menu.addMenu(region_menu)
                 
-                if abr == 'de' or "seperator" in region:
+                if region.separator:
                     self.main_menu.addSeparator()
             
             self.main_menu.addSeparator()
@@ -112,7 +112,7 @@ class GeoBasis_Loader(QObject):
         # ------- Status-Schaltfläche für #geoObserver ------------------------
         # self.mainMenu.addAction("Status ...", partial(self.openWebSite, 'https://geoobserver.de/qgis-plugin-geobasis-loader/#statustabelle'))
         
-    def gui_for_one_region(self, topic_dict: dict, region_title: str) -> QMenu:
+    def gui_for_one_region(self, topics: list[catalog_types.TopicLike], region_title: str) -> QMenu:
         def _create_action(name: str, parent: QMenu, path: str, tip: str = "Thema hinzufügen", slot = self.add_topic) -> QAction:
             action = QAction(name, parent)
             action.setObjectName(name)
@@ -126,39 +126,39 @@ class GeoBasis_Loader(QObject):
         menu.setObjectName('region-' + region_title)
         menu.setToolTipsVisible(True)
         
-        for topic in topic_dict.values():
-            if not PropertyManager.is_visible(topic[config.InternalProperties.PATH]):
+        for topic in topics:
+            if not topic.properties.visible:
                 continue
             
-            if topic.get("type", "").lower() == "web":
-                action = _create_action(topic["name"], menu, topic["uri"], "Informationen öffnen", self.open_web_site)
+            if isinstance(topic, catalog_types.Topic) and topic.topic_type == catalog_types.TopicType.WEB:
+                action = _create_action(topic.name, menu, topic.uri, "Informationen öffnen", self.open_web_site)
                 menu.addAction(action)
                 continue
             
-            if isinstance(topic.get("layers", []), dict):
-                topic_group_menu = QMenu(topic["name"], menu)
+            if isinstance(topic, catalog_types.TopicGroup):
+                topic_group_menu = QMenu(topic.name, menu)
                 topic_group_menu.setToolTipsVisible(True)
                 
-                add_all_action = _create_action("Alle laden", topic_group_menu, topic[config.InternalProperties.PATH], "Alle Themen der Gruppe laden")
+                add_all_action = _create_action("Alle laden", topic_group_menu, topic.path, "Alle Themen der Gruppe laden")
                 topic_group_menu.addAction(add_all_action)
                 topic_group_menu.addSeparator()
 
-                for _, subtopic in topic["layers"].items():
-                    if not PropertyManager.is_visible(subtopic[config.InternalProperties.PATH]):
+                for subtopic in topic.get_subtopics():
+                    if not subtopic.properties.visible:
                         continue
                     
-                    if subtopic.get("type", "").lower() == "web":
-                        subtopic_action = _create_action(subtopic["name"], topic_group_menu, subtopic["uri"], "Informationen öffnen", self.open_web_site)
+                    if subtopic.topic_type == catalog_types.TopicType.WEB:
+                        subtopic_action = _create_action(subtopic.name, topic_group_menu, subtopic.uri, "Informationen öffnen", self.open_web_site)
                     else:
-                        subtopic_action = _create_action(subtopic["name"], topic_group_menu, subtopic[config.InternalProperties.PATH])
+                        subtopic_action = _create_action(subtopic.name, topic_group_menu, subtopic.path)
                     topic_group_menu.addAction(subtopic_action)
 
                 menu.addMenu(topic_group_menu)
-            else:        
-                action = _create_action(topic['name'], menu, topic[config.InternalProperties.PATH])            
+            else:
+                action = _create_action(topic.name, menu, topic.path)            
                 menu.addAction(action)
                 
-            if "seperator" in topic:
+            if topic.separator:
                 menu.addSeparator()
         return menu
     
@@ -218,7 +218,7 @@ class GeoBasis_Loader(QObject):
         self.qgs_settings.setValue(config.QgsSettingsKeys.CURRENT_CATALOG, catalog)
         CatalogManager.get_catalog(catalog["titel"], callback=self.set_services)
         
-    def set_services(self, services: dict):
+    def set_services(self, services: catalog_types.Catalog):
         current_catalog = self.qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
         if current_catalog is None or "titel" not in current_catalog:
             logger.warning(f"Momentan ist kein valider Katalog ausgewählt, Bitten wählen Sie einen aus", extra={"show_banner": True})
@@ -248,90 +248,76 @@ class GeoBasis_Loader(QObject):
         
         return current_crs
     
-    def add_topic(self, catalog_title: Optional[str] = None, path: str = ""):
-        if path == "":
+    def add_topic(self, path: str):
+        if not self.services:
+            logger.error(f"No catalog selected")
+            return
+
+        if not path:
             sender = self.sender()
             if not sender:
                 return
 
             path = sender.data() # type: ignore
-            if not isinstance(path, str):
-                raise TypeError("Path is unknown")
-            
-            # Explicitly checking the value makes sense but seems unnecessary, since the code is unreachable without it (unless QGIS doesnt reset plugins after reseting settings)
-            current_catalog = self.qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
-            if current_catalog is None or "titel" not in current_catalog:
-                logger.warning("Kein Katalog ausgewaehlt. Bitte waehlen Sie zuerst einen Katalog.", extra={"show_banner": True})
-                return
-            catalog_title = current_catalog["titel"]
 
-        catalog: dict = dict(CatalogManager.get_catalog(catalog_title)) # type: ignore
-        topic = catalog
-        for key in path.split("/"):
-            topic = topic[key]
+        topic = self.services.get_entry(path)
+        if not topic:
+            logger.error(f"Topic with path '{path}' not found")
+            return
         
-        if "layers" not in topic:
+        if isinstance(topic, catalog_types.Region):
+            logger.warning(f"Can't add a region to the project")
+            return
+        
+        if isinstance(topic, catalog_types.Topic):
             self.add_layer(topic, None)
             return
         
-        layers = topic["layers"]
-        if isinstance(layers, list):
-            combination_layers = []
-            group_key = path.split("/")[0]
-            for layer in layers:
-                sub_topic = catalog[group_key]["themen"][layer]
-                combination_layers.append(sub_topic)
-            self.add_layer_combination(combination_layers)
+        if isinstance(topic, catalog_types.TopicCombination):
+            self.add_layer_combination(topic)
         else:
-            self.add_layer_group(None, layers, topic["name"])
+            self.add_layer_group(topic, None, topic.name)
     
-    def add_layer(self, attributes: dict, crs: Union[str, None], standalone: bool = True):
-        if not PropertyManager.is_enabled(attributes[config.InternalProperties.PATH]):
+    def add_layer(self, topic: catalog_types.Topic, crs: Union[str, None], standalone: bool = True):
+        if not topic.properties.enabled:
             return None
         
-        layer_type = attributes.get('type', 'ogc_wms').lower()
-        if layer_type == "web":
+        if topic.topic_type == catalog_types.TopicType.WEB:
             return None
-        
-        uri: str = attributes.get('uri', "n.n.")
-        valid_epsg_codes: list[str] = attributes.get('valid_epsg', [])
        
-        if crs is None or crs not in valid_epsg_codes:
-            crs = self.get_crs(valid_epsg_codes, attributes.get('name', "Fehler"))
+        if crs is None or crs not in topic.valid_epsg_codes:
+            crs = self.get_crs(topic.valid_epsg_codes, topic.name)
             if crs is None:
                 return
         
         # if crs == "OGC:CRS84":
         #     crs = "CRS:84"
-        
-        uri = re.sub(r'EPSG:placeholder', crs, uri)
 
-        if layer_type != "ogc_wfs" and layer_type != "ogc_api_features":
-            uri += "&stepHeight=3000&stepWidth=3000"
-        
-        layer_name = attributes.get("name", "")
-        opacity = attributes.get('opacity', 1)
-        max_scale = attributes.get('maxScale', None)
-        min_scale = attributes.get('minScale', None)
+        uri = topic.uri
+        layer_type = topic.topic_type
+        layer_name = topic.name
+        max_scale = topic.max_scale
+        min_scale = topic.min_scale
 
-        fill_color = attributes.get('fillColor', [220,220,220])
-        stroke_color = attributes.get('strokeColor', 'black')
-        stroke_width = attributes.get('strokeWidth', 0.3)
-        
         if uri == "n.n.":
-            logger.critical(f"Layerladefehler {layer_name}, URL des Themas derzeit unbekannt.{'&nbsp;'}Falls gültige/aktuelle URL bekannt,{'&nbsp;'}bitte dem Autor melden.", extra={"show_banner": True})
+            logger.critical(f"Ladefehler Thema '{layer_name}': URL des Themas derzeit unbekannt.{'&nbsp;'}Falls gültige/aktuelle URL bekannt,{'&nbsp;'}bitte dem Autor melden.", extra={"show_banner": True})
             return
         
-        if layer_type == "ogc_wfs":
+        uri = uri.replace("EPSG:placeholder", crs, 1)
+        
+        if not topic.is_vector():
+            uri += "&stepHeight=3000&stepWidth=3000"
+        
+        if layer_type == catalog_types.TopicType.WFS:
             layer = QgsVectorLayer(uri, layer_name, 'wfs')
-        elif layer_type == "ogc_api_features":
+        elif layer_type == catalog_types.TopicType.APIF:
             layer = QgsVectorLayer(uri, layer_name, 'oapif')
-        elif layer_type == "ogc_vectortiles":
+        elif layer_type == catalog_types.TopicType.VECTORTILES:
             layer = QgsVectorTileLayer(uri, layer_name)
             layer.loadDefaultStyle()
-        elif layer_type == "ogc_wcs":
+        elif layer_type == catalog_types.TopicType.WCS:
             layer = QgsRasterLayer(uri, layer_name, 'wcs')
-        elif layer_type == "ogc_wms":
+        elif layer_type == catalog_types.TopicType.WMS:
             layer = QgsRasterLayer(uri, layer_name, 'wms')
         else:
             raise ValueError(f"Unknown layer type: {layer_type}")
@@ -341,7 +327,7 @@ class GeoBasis_Loader(QObject):
             return
         
         if hasattr(layer, 'setOpacity'):
-            layer.setOpacity(opacity)
+            layer.setOpacity(topic.opacity)
             
         if isinstance(layer, QgsVectorLayer):
             if max_scale is None:
@@ -360,20 +346,20 @@ class GeoBasis_Loader(QObject):
                 layer.setScaleBasedVisibility(True)
         
         if isinstance(layer, QgsVectorLayer):
-            fill_color: QColor = QColor(*[int(c) for c in fill_color]) if isinstance(fill_color, list) else QColor(fill_color)
-            stroke_color: QColor = QColor(*[int(c) for c in stroke_color]) if isinstance(stroke_color, list) else QColor(stroke_color)
+            fill_color: QColor = QColor(*[int(c) for c in topic.fill_color]) if isinstance(topic.fill_color, list) else QColor(topic.fill_color)
+            stroke_color: QColor = QColor(*[int(c) for c in topic.stroke_color]) if isinstance(topic.stroke_color, list) else QColor(topic.stroke_color)
             
             symbol_layer: QgsSymbolLayer = layer.renderer().symbol().symbolLayer(0)
             symbol_layer.setColor(fill_color)
             
             geom_type = QgsWkbTypes.singleType(QgsWkbTypes.flatType(layer.wkbType()))
             if geom_type == geometry_types.LineString:
-                symbol_layer.setWidth(stroke_width)  
+                symbol_layer.setWidth(topic.stroke_width)  
             elif geom_type == geometry_types.Polygon:
                 symbol_layer.setStrokeColor(stroke_color)
-                symbol_layer.setStrokeWidth(stroke_width)
+                symbol_layer.setStrokeWidth(topic.stroke_width)
             elif geom_type == geometry_types.Point:
-                symbol_layer.setSize(stroke_width)
+                symbol_layer.setSize(topic.stroke_width)
             else:
                 logger.critical(f"Fehler bei Bestimmung der Geometrieart, Bestimmte Geometrie: {QgsWkbTypes.displayString(geom_type)}")
                         
@@ -389,12 +375,11 @@ class GeoBasis_Loader(QObject):
             ltl = root.insertLayer(0, layer)
             if ltl:
                 ltl.setExpanded(False)
-                visible = PropertyManager.is_visible(attributes[config.InternalProperties.PATH])
-                ltl.setItemVisibilityChecked(visible)
+                ltl.setItemVisibilityChecked(topic.properties.visible)
 
         return layer
     
-    def add_layer_group(self, preferred_crs: Union[str, None], layers: dict, name: str) -> None:
+    def add_layer_group(self, topic_group: catalog_types.TopicGroup, preferred_crs: Union[str, None], name: str) -> None:
         layer_tree_root = QgsProject.instance().layerTreeRoot()
         new_layer_group = layer_tree_root.insertGroup(0, name)
         if new_layer_group is None:
@@ -402,73 +387,77 @@ class GeoBasis_Loader(QObject):
         
         if preferred_crs is None:
             # Get first non-web layer for crs information
-            layers_iter = iter(layers.values())
-            first_layer = next(layers_iter, None)
+            subtopic_iter = iter(topic_group.get_subtopics())
+            priority_subtopic = next(subtopic_iter, None)
             while True:
-                if first_layer is None:
+                if priority_subtopic is None:
                     return
                 
-                layer_type = first_layer.get('type', 'ogc_wms')
-                
-                if layer_type == 'web':
-                    first_layer = next(layers_iter, None)
+                if priority_subtopic.topic_type == catalog_types.TopicType.WEB:
+                    priority_subtopic = next(subtopic_iter, None)
                     continue
                 
                 break
             
-            supported_auth_ids = first_layer.get('valid_epsg', None)
-            layer_name = first_layer.get('name', "Fehler")
-            
-            preferred_crs = self.get_crs(supported_auth_ids, layer_name)
+            preferred_crs = self.get_crs(priority_subtopic.valid_epsg_codes, priority_subtopic.name)
             if preferred_crs is None:
                 return
         
-        for layer in layers.values():
-            sub_layer = self.add_layer(layer, preferred_crs, False)
+        for subtopic in topic_group.get_subtopics():
+            sub_layer = self.add_layer(subtopic, preferred_crs, False)
             if sub_layer is None:
                 continue
             ltl = new_layer_group.insertLayer(0, sub_layer)
             if ltl:
                 ltl.setExpanded(False)
-                visible = PropertyManager.is_visible(layer[config.InternalProperties.PATH])
-                ltl.setItemVisibilityChecked(visible)
+                ltl.setItemVisibilityChecked(subtopic.properties.visible)
             
-    def add_layer_combination(self, layers) -> None:
+    def add_layer_combination(self, topic_combination: catalog_types.TopicCombination) -> None:
         preferred_crs = None
+        if not self.services:
+            logger.error(f"No catalog selected")
+            return
         
-        if "layers" not in layers[0]:
-            layer = layers[0]
-            supported_auth_ids = layer.get('valid_epsg', None)
-            layer_name = layer.get('name', "Fehler")
-            
-            preferred_crs = self.get_crs(supported_auth_ids, layer_name)
-        else:
-            temp_layers = layers[0]['layers']
-            # Get first non-web layer for crs information
-            layers_iter = iter(temp_layers.values())
-            first_layer = next(layers_iter, None)
-            while True:
-                if first_layer is None:
-                    return
+        referenced_topics: list[Union[catalog_types.Topic, catalog_types.TopicGroup]] = []
+        for references in topic_combination.topic_paths:
+            topic = self.services.get_entry(references)
+            # FIXME: If reference points towards region, nothing or another topic combination, ignore them
+            if not topic or isinstance(topic, (catalog_types.Region, catalog_types.TopicCombination)):
+                continue
+            referenced_topics.append(topic)
+        
+        if len(referenced_topics) < 1:
+            logger.warning(f"Themenkombination '{topic_combination.name}' besitzt keine validen Einträge. Kontaktieren Sie den Autor", extra={"show_banner": True})
+            return
+        
+        for topic in referenced_topics:
+            if isinstance(topic, catalog_types.Topic):               
+                preferred_crs = self.get_crs(topic.valid_epsg_codes, topic.name)
+                break
+            else:
+                subtopic_iter = iter(topic.get_subtopics())
+                priority_subtopic = next(subtopic_iter, None)
+                while True:
+                    if priority_subtopic is None:
+                        break
+                    
+                    if priority_subtopic.topic_type == catalog_types.TopicType.WEB:
+                        priority_subtopic = next(subtopic_iter, None)
+                        continue
+                    
+                    break
                 
-                layer_type = first_layer.get('type', 'ogc_wms')
-                
-                if layer_type == 'web':
-                    first_layer = next(layers_iter, None)
+                if not priority_subtopic:
                     continue
                 
+                preferred_crs = self.get_crs(priority_subtopic.valid_epsg_codes, priority_subtopic.name)
                 break
-            
-            supported_auth_ids = first_layer.get('valid_epsg', None)
-            layer_name = first_layer.get('name', "Fehler")
-            
-            preferred_crs = self.get_crs(supported_auth_ids, layer_name)
         
         if preferred_crs is None:
             return
         
-        for layer in layers:
-            if "layers" not in layer:
-                self.add_layer(layer, preferred_crs)
+        for topic in referenced_topics:
+            if isinstance(topic, catalog_types.Topic):
+                self.add_layer(topic, preferred_crs)
             else:
-                self.add_layer_group(preferred_crs, layer['layers'], layer['name'])
+                self.add_layer_group(topic, preferred_crs, topic.name)
