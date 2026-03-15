@@ -112,7 +112,7 @@ class GeoBasis_Loader(QObject):
         # ------- Status-Schaltfläche für #geoObserver ------------------------
         # self.mainMenu.addAction("Status ...", partial(self.openWebSite, 'https://geoobserver.de/qgis-plugin-geobasis-loader/#statustabelle'))
         
-    def gui_for_one_region(self, topic_dict: dict, topic_abbreviation: str) -> QMenu:
+    def gui_for_one_region(self, topic_dict: dict, region_title: str) -> QMenu:
         def _create_action(name: str, parent: QMenu, path: str, tip: str = "Thema hinzufügen", slot = self.add_topic) -> QAction:
             action = QAction(name, parent)
             action.setObjectName(name)
@@ -122,8 +122,8 @@ class GeoBasis_Loader(QObject):
             action.triggered.connect(slot)
             return action
         
-        menu = QMenu(topic_abbreviation, self.main_menu)
-        menu.setObjectName('loader-' + topic_abbreviation)
+        menu = QMenu(region_title, self.main_menu)
+        menu.setObjectName('region-' + region_title)
         menu.setToolTipsVisible(True)
         
         for topic in topic_dict.values():
