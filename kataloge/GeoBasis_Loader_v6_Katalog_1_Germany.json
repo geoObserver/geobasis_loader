@@ -75,6 +75,77 @@
             "type": "web",
             "uri": "https://geobasisloader.de"
           }
+        }
+      },
+      "vg25_wfs_layergroup": {
+        "name": "DE: Verwaltungsgebiete 1: 25 000 (WFS)",
+        "layers": {
+          "vg25_staat": {
+            "name": "DE: VG 25 Staat (WFS)",
+            "type": "ogc_wfs",
+            "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:3857", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045"],
+            "uri": "pagingEnabled='true' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:25832' typename='vg25:vg25_sta' url='https://sgx.geodatenzentrum.de/wfs_vg25' version='auto'",
+            "minScale": 1000000000.0,
+            "maxScale": 1.0,
+            "opacity": 0.75,
+            "fillColor": [255, 200, 100],
+            "strokeWidth": 0.25
+          },
+          "vg25_bundesland": {
+            "name": "DE: VG 25 Bundesländer (WFS)",
+            "type": "ogc_wfs",
+            "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:3857", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045"],
+            "uri": "pagingEnabled='true' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:25832' typename='vg25:vg25_lan' url='https://sgx.geodatenzentrum.de/wfs_vg25' version='auto'",
+            "minScale": 1000000000.0,
+            "maxScale": 1.0,
+            "opacity": 0.75,
+            "fillColor": [255, 180, 120],
+            "strokeWidth": 0.25
+          },
+          "vg25_regbez": {
+            "name": "DE: VG 25 Regierungsbezirke (WFS)",
+            "type": "ogc_wfs",
+            "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:3857", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045"],
+            "uri": "pagingEnabled='true' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:25832' typename='vg25:vg25_rbz' url='https://sgx.geodatenzentrum.de/wfs_vg25' version='auto'",
+            "minScale": 1000000000.0,
+            "maxScale": 1.0,
+            "opacity": 0.75,
+            "fillColor": [255, 160, 140],
+            "strokeWidth": 0.25
+          },
+          "vg25_kreis": {
+            "name": "DE: VG 25 Kreise (WFS)",
+            "type": "ogc_wfs",
+            "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:3857", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045"],
+            "uri": "pagingEnabled='true' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:25832' typename='vg25:vg25_krs' url='https://sgx.geodatenzentrum.de/wfs_vg25' version='auto'",
+            "minScale": 1000000000.0,
+            "maxScale": 1.0,
+            "opacity": 0.75,
+            "fillColor": [255, 140, 160],
+            "strokeWidth": 0.25
+          },
+          "vg25_vwg": {
+            "name": "DE: VG 25 Verwaltungsgebiete (WFS)",
+            "type": "ogc_wfs",
+            "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:3857", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045"],
+            "uri": "pagingEnabled='true' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:25832' typename='vg25:vg25_vwg' url='https://sgx.geodatenzentrum.de/wfs_vg25' version='auto'",
+            "minScale": 1000000000.0,
+            "maxScale": 1.0,
+            "opacity": 0.75,
+            "fillColor": [255, 120, 180],
+            "strokeWidth": 0.25
+          },
+          "vg25_gem": {
+            "name": "DE: VG 25 Gemeinden (WFS)",
+            "type": "ogc_wfs",
+            "valid_epsg": ["EPSG:25832", "EPSG:4326", "EPSG:3857", "EPSG:25833", "EPSG:4647", "EPSG:5650", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:5676", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4839", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045"],
+            "uri": "pagingEnabled='true' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:25832' typename='vg25:vg25_gem' url='https://sgx.geodatenzentrum.de/wfs_vg25' version='auto'",
+            "minScale": 1000000000.0,
+            "maxScale": 1.0,
+            "opacity": 0.75,
+            "fillColor": [255, 100, 200],
+            "strokeWidth": 0.25
+          }
         },
         "seperator": true
       },
