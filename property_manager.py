@@ -63,33 +63,41 @@ class PropertyManager:
     def get_properties(self, key: str) -> Properties:
         return self[key]
     
-    def set_initialisation(self, key: str, init: bool):
+    def set_initialisation(self, key: str, init: bool, save_change: bool = False):
         if init:
             self._init.add(key)
         else:
             self._init.discard(key)
-        self.save(config.QgsSettingsKeys.PROPERTY_INIT)
+        
+        if save_change:
+            self.save(config.QgsSettingsKeys.PROPERTY_INIT)
     
-    def set_favorite(self, key: str, favorite: bool):
+    def set_favorite(self, key: str, favorite: bool, save_change: bool = False):
         if favorite:
             self._favorite.add(key)
         else:
             self._favorite.discard(key)
-        self.save(config.QgsSettingsKeys.PROPERTY_FAVORITE)
+            
+        if save_change:
+            self.save(config.QgsSettingsKeys.PROPERTY_FAVORITE)
     
-    def set_visibility(self, key: str, visible: bool):
+    def set_visibility(self, key: str, visible: bool, save_change: bool = False):
         if not visible:
             self._invisible.add(key)
         else:
             self._invisible.discard(key)
-        self.save(config.QgsSettingsKeys.PROPERTY_INVISIBLE)
+            
+        if save_change:
+            self.save(config.QgsSettingsKeys.PROPERTY_INVISIBLE)
     
-    def set_enabled(self, key: str, enabled: bool):
+    def set_enabled(self, key: str, enabled: bool, save_change: bool = False):
         if not enabled:
             self._disabled.add(key)
         else:
             self._disabled.discard(key)
-        self.save(config.QgsSettingsKeys.PROPERTY_DISABLED)
+            
+        if save_change:
+            self.save(config.QgsSettingsKeys.PROPERTY_DISABLED)
     
     def is_init(self, key: str) -> bool:
         return key in self._init
