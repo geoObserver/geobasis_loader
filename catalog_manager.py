@@ -6,7 +6,7 @@ from qgis.PyQt.QtCore import QUrl, QObject, QDateTime, pyqtSignal, QVersionNumbe
 from qgis.core import QgsNetworkAccessManager, QgsSettings
 from qgis.gui import QgisInterface
 from . import config
-from . import custom_logger
+from .utils import custom_logger
 from .topic_search import SearchFilter
 from .topic_handlers import catalog_types
 
@@ -51,7 +51,7 @@ class NetworkHandler(QObject):
         # else:
         #     mediatype = "application/json"
         request.setRawHeader(
-            bytearray("Accept", "utf-8"),  
+            bytearray("Accept", "utf-8"),
             bytearray("gzip, deflate", "utf-8")
         )
         return self._manager.get(request)

@@ -3,7 +3,7 @@ from types import TracebackType
 from typing import Mapping
 from qgis.core import QgsMessageLog, Qgis
 from qgis.utils import iface
-from . import config
+from .. import config
 
 
 class GeoBasisLoaderLoggingHandler(logging.Handler):

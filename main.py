@@ -8,7 +8,7 @@ from qgis.core import QgsSettings, QgsProject, QgsVectorLayer, QgsRasterLayer, Q
 from qgis.gui import QgisInterface
 from .topic_search import SearchFilter
 from . import config
-from . import custom_logger
+from .utils import custom_logger
 from . import ui as custom_ui
 from .catalog_manager import CatalogManager
 from .topic_handlers import catalog_types
