@@ -50,7 +50,9 @@ class GeoBasis_Loader(QObject):
         icon = QIcon(config.PLUGIN_DIR + "/GeoBasis_Loader_icon.png")
         self.main_menu = QMenu(config.PLUGIN_NAME_AND_VERSION)
         self.main_menu.setIcon(icon)
-        self.iface.pluginMenu().addMenu(self.main_menu)
+        plugin_menu = self.iface.pluginMenu()
+        if plugin_menu:
+            plugin_menu.addMenu(self.main_menu)
         
         self.search_filter = SearchFilter(self)
         self.iface.registerLocatorFilter(self.search_filter)    
@@ -79,20 +81,29 @@ class GeoBasis_Loader(QObject):
         if CatalogManager.overview is not None:
             # ------- Katalogmenü erstellen ------------------------------------
             catalogs_menu = self.main_menu.addMenu("Katalog wechseln (Change Catalogs)")
+            if not catalogs_menu:
+                logger.error("Menü 'Katalog wechseln' nicht vorhanden")
+                return
+            
             catalogs_menu.setObjectName('catalog-overview')
             
             # ------- Einträge im Katalogmenü erstellen ------------------------
             for catalog in CatalogManager.overview:
                 catalog_action = catalogs_menu.addAction(catalog["titel"], partial(self.change_current_catalog, catalog))
+                if not catalog_action:
+                    logger.warning(f"Eintrag für Katalog '{catalog["titel"]}' nicht vorhanden")
+                    continue
+                
                 catalog_action.setObjectName("open-" + catalog["titel"])
             
             action = self.main_menu.addAction("Kataloge neu laden (Reload Catalogs)")
-            action.triggered.connect(lambda: CatalogManager.get_overview(callback=self.initGui))
+            if action:
+                action.triggered.connect(lambda: CatalogManager.get_overview(callback=self.initGui))
             
             self.main_menu.addSeparator()
                 
         # ------- Über-Schaltfläche für die JSON-Datei ------------------------
-        action = QAction(text="Wenn möglich, Dienste autom. im KBS laden", parent=self.main_menu, checkable=True, checked=self.automatic_crs)
+        action = QAction(text="Wenn möglich, Dienste autom. im KBS laden", parent=self.main_menu, checkable=True, checked=self.automatic_crs) # type: ignore
         action.toggled.connect(self.toggle_automatic_crs)
         self.main_menu.addAction(action)
         
@@ -168,8 +179,9 @@ class GeoBasis_Loader(QObject):
         self.iface.invalidateLocatorResults()
         self.iface.deregisterLocatorFilter(self.search_filter)
         self.search_filter = None
-        if self.main_menu:
-            self.iface.pluginMenu().removeAction(self.main_menu.menuAction())
+        plugin_menu = self.iface.pluginMenu()
+        if self.main_menu and plugin_menu:
+            plugin_menu.removeAction(self.main_menu.menuAction())
         custom_logger.remove_logging()
 
 #===================================================================================
@@ -238,7 +250,12 @@ class GeoBasis_Loader(QObject):
         if supported_auth_ids is None:
             return None
         
-        current_crs = QgsProject.instance().crs().authid()          
+        current_qgis_project = QgsProject.instance()
+        if not current_qgis_project:
+            logger.error(f"Das aktuelle Projekt kann nicht geladen werden")    
+            return None
+        
+        current_crs = current_qgis_project.crs().authid()          
         if current_crs not in supported_auth_ids or not self.automatic_crs:
             self.epsg_dialog.set_table_data(supported_auth_ids, layer_name)
             self.epsg_dialog.exec()
@@ -346,45 +363,73 @@ class GeoBasis_Loader(QObject):
                 layer.setScaleBasedVisibility(True)
         
         if isinstance(layer, QgsVectorLayer):
-            fill_color: QColor = QColor(*[int(c) for c in topic.fill_color]) if isinstance(topic.fill_color, list) else QColor(topic.fill_color)
-            stroke_color: QColor = QColor(*[int(c) for c in topic.stroke_color]) if isinstance(topic.stroke_color, list) else QColor(topic.stroke_color)
+            try:
+                fill_color: QColor = QColor(*[int(c) for c in topic.fill_color]) if isinstance(topic.fill_color, list) else QColor(topic.fill_color)
+            except (TypeError, ValueError):
+                logger.warning(f"Ungültiger fillColor-Wert '{topic.fill_color}' für Layer '{layer_name}', verwende Grau")
+                fill_color = QColor(220, 220, 220)
             
-            symbol_layer: QgsSymbolLayer = layer.renderer().symbol().symbolLayer(0)
-            symbol_layer.setColor(fill_color)
+            try:
+                stroke_color: QColor = QColor(*[int(c) for c in topic.stroke_color]) if isinstance(topic.stroke_color, list) else QColor(topic.stroke_color)
+            except (ValueError, TypeError):
+                logger.warning(f"Ungültiger strokeColor-Wert '{topic.stroke_color}' für Layer '{layer_name}', verwende Schwarz")
+                stroke_color = QColor(0, 0, 0)
             
-            geom_type = QgsWkbTypes.singleType(QgsWkbTypes.flatType(layer.wkbType()))
-            if geom_type == geometry_types.LineString:
-                symbol_layer.setWidth(topic.stroke_width)  
-            elif geom_type == geometry_types.Polygon:
-                symbol_layer.setStrokeColor(stroke_color)
-                symbol_layer.setStrokeWidth(topic.stroke_width)
-            elif geom_type == geometry_types.Point:
-                symbol_layer.setSize(topic.stroke_width)
+            renderer = layer.renderer()
+            if renderer is None:
+                logger.warning("Renderer ist None für Layer: " + layer_name)
             else:
-                logger.critical(f"Fehler bei Bestimmung der Geometrieart, Bestimmte Geometrie: {QgsWkbTypes.displayString(geom_type)}")
+                symbol = renderer.symbol() # type: ignore
+                if symbol is None or symbol.symbolLayerCount() == 0:
+                    logger.warning("Symbol ist None oder leer für Layer: " + layer_name)
+                else:
+                    symbol_layer: QgsSymbolLayer = symbol.symbolLayer(0)
+                    try:
+                        symbol_layer.setColor(fill_color)
+
+                        geom_type = QgsWkbTypes.singleType(QgsWkbTypes.flatType(layer.wkbType()))
+                        if geom_type == geometry_types.LineString:
+                            symbol_layer.setWidth(topic.stroke_width)
+                        elif geom_type == geometry_types.Polygon:
+                            symbol_layer.setStrokeColor(stroke_color)
+                            symbol_layer.setStrokeWidth(topic.stroke_width)
+                        elif geom_type == geometry_types.Point:
+                            symbol_layer.setSize(topic.stroke_width)
+                        else:
+                            logger.critical(f"Fehler bei Bestimmung der Geometrieart, Bestimmte Geometrie: {QgsWkbTypes.displayString(geom_type)}")
+                    except AttributeError as e:
+                        logger.warning(f"Styling für '{layer_name}' fehlgeschlagen: {e}")
                         
             layer.triggerRepaint()
-            self.iface.layerTreeView().refreshLayerSymbology(layer.id())
+            layer_tree_view =  self.iface.layerTreeView()
+            if not layer_tree_view:
+                logger.critical(f"")
+                return layer
+                
+            layer_tree_view.refreshLayerSymbology(layer.id())
         
         logger.success(f"Ebene {layer_name} erfolgreich geladen")
-        # Ebene zum Projekt hinzufügen aber nicht automatisch zum Ebenenbaum
-        QgsProject.instance().addMapLayer(layer, False) # type: ignore
+        current_qgis_project = QgsProject.instance()
+        if not current_qgis_project:
+            logger.critical(f"Thema '{layer_name}' kann nicht zum Projekt hinzugefügt werden")
+            return layer
+        
+        current_qgis_project.addMapLayer(layer, False)
 
-        if standalone:
-            root: QgsLayerTree = QgsProject.instance().layerTreeRoot()
-            ltl = root.insertLayer(0, layer)
-            if ltl:
-                ltl.setExpanded(False)
-                ltl.setItemVisibilityChecked(topic.properties.visible)
+        # Ebene zum Projekt hinzufügen aber nicht automatisch zum Ebenenbaum
+        if standalone and current_qgis_project:
+            root = current_qgis_project.layerTreeRoot()
+            if not root:
+                logger.error(f"Thema '{layer_name}' kann nicht zum Ebenenbaum hinzugefügt werden")    
+            else:    
+                ltl = root.insertLayer(0, layer)
+                if ltl:
+                    ltl.setExpanded(False)
+                    ltl.setItemVisibilityChecked(topic.properties.visible)
 
         return layer
     
     def add_layer_group(self, topic_group: catalog_types.TopicGroup, preferred_crs: Union[str, None], name: str) -> None:
-        layer_tree_root = QgsProject.instance().layerTreeRoot()
-        new_layer_group = layer_tree_root.insertGroup(0, name)
-        if new_layer_group is None:
-            return
-        
         if preferred_crs is None:
             # Get first non-web layer for crs information
             subtopic_iter = iter(topic_group.get_subtopics())
@@ -402,6 +447,20 @@ class GeoBasis_Loader(QObject):
             preferred_crs = self.get_crs(priority_subtopic.valid_epsg_codes, priority_subtopic.name)
             if preferred_crs is None:
                 return
+            
+        current_qgis_project = QgsProject.instance()
+        if not current_qgis_project:
+            logger.error(f"Das aktuelle Projekt kann nicht geladen werden")    
+            return
+        
+        layer_tree_root = current_qgis_project.layerTreeRoot()
+        if not layer_tree_root:
+            logger.error("Ebenenbaum kann nicht geladen werden")
+            return
+        
+        new_layer_group = layer_tree_root.insertGroup(0, name)
+        if new_layer_group is None:
+            return
         
         for subtopic in topic_group.get_subtopics():
             sub_layer = self.add_layer(subtopic, preferred_crs, False)
@@ -411,6 +470,10 @@ class GeoBasis_Loader(QObject):
             if ltl:
                 ltl.setExpanded(False)
                 ltl.setItemVisibilityChecked(subtopic.properties.visible)
+        
+        # Leere Gruppe entfernen (wenn alle Sub-Layer fehlgeschlagen)
+        if not new_layer_group.children():
+            layer_tree_root.removeChildNode(new_layer_group)
             
     def add_layer_combination(self, topic_combination: catalog_types.TopicCombination) -> None:
         preferred_crs = None
