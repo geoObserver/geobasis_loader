@@ -6,7 +6,7 @@ from qgis.PyQt.QtGui import QShowEvent
 from qgis.core import QgsSettings
 from ..catalog_manager import CatalogManager
 from .. import config
-from ..property_manager import singleton as PropertyManager
+from ..topic_handlers.property_manager import singleton as PropertyManager
 from ..topic_handlers import catalog_types
 
 SETTINGS_DIALOG = uic.loadUiType(os.path.join(os.path.dirname(__file__), "design_files", "settings_dialog.ui"))[0]

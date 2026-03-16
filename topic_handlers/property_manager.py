@@ -7,8 +7,8 @@ access.
 
 import pathlib, json
 from qgis.core import QgsSettings
-from . import config
-from . import custom_logger
+from .. import config
+from .. import custom_logger
 
 logger = custom_logger.get_logger(__file__)
 

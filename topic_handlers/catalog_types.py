@@ -2,7 +2,7 @@ from dataclasses import dataclass, field
 from functools import cached_property
 from typing import Optional, Union
 from enum import Enum
-from ..property_manager import Properties
+from .property_manager import Properties
 
 
 class TopicType(str, Enum):
