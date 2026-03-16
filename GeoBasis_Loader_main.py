@@ -12,7 +12,7 @@ from . import custom_logger
 from . import ui as custom_ui
 from .catalog_manager import CatalogManager
 from .property_manager import singleton as PropertyManager
-from .utils import catalog_types
+from .topic_handlers import catalog_types
 
 logger = custom_logger.get_logger(__file__)
 

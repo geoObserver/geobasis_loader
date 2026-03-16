@@ -8,7 +8,7 @@ from qgis.gui import QgisInterface
 from . import config
 from . import custom_logger
 from .topic_search import SearchFilter
-from .utils import catalog_types
+from .topic_handlers import catalog_types
 
 logger = custom_logger.get_logger(__file__)
 
