@@ -323,21 +323,13 @@
       "bsw_layergroup": {
         "name": "DE: Bundeswasserstraßen - WSV (WMS)",
         "layers": {
-          "bsw1": {
-            "name": "DE: Kilometermarken - WSV (WMS)",
+          "bsw4": {
+            "name": "DE: Gewaessernetz (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Bundeswasserstraßen", "WMS: Kilometermarken"],
-            "komgis_priority": "74813",
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Bundeswasserstraßen", "WMS: Gewaessernetz"],
+            "komgis_priority": "74816",
             "valid_epsg": ["EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:3857", "EPSG:4019", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:104258"],
-            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://via.bund.de/wsv/bwastr/wms&layers=Kilometermarken&styles="
-          },
-          "bsw2": {
-            "name": "DE: Gewaessernamen - WSV (WMS)",
-            "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Bundeswasserstraßen", "WMS: Gewaessernamen"],
-            "komgis_priority": "74814",
-            "valid_epsg": ["EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:3857", "EPSG:4019", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:104258"],
-            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://via.bund.de/wsv/bwastr/wms&layers=Gewaessernamen&styles="
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://via.bund.de/wsv/bwastr/wms&layers=Gewaessernetz&styles="
           },
           "bsw3": {
             "name": "DE: Fliessrichtung - WSV (WMS)",
@@ -347,13 +339,21 @@
             "valid_epsg": ["EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:3857", "EPSG:4019", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:104258"],
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://via.bund.de/wsv/bwastr/wms&layers=Fliessrichtung&styles="
           },
-          "bsw4": {
-            "name": "DE: Gewaessernetz (WMS)",
+          "bsw2": {
+            "name": "DE: Gewaessernamen - WSV (WMS)",
             "type": "ogc_wms",
-            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Bundeswasserstraßen", "WMS: Gewaessernetz"],
-            "komgis_priority": "74816",
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Bundeswasserstraßen", "WMS: Gewaessernamen"],
+            "komgis_priority": "74814",
             "valid_epsg": ["EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:3857", "EPSG:4019", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:104258"],
-            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://via.bund.de/wsv/bwastr/wms&layers=Gewaessernetz&styles="
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://via.bund.de/wsv/bwastr/wms&layers=Gewaessernamen&styles="
+          },
+          "bsw1": {
+            "name": "DE: Kilometermarken - WSV (WMS)",
+            "type": "ogc_wms",
+            "komgis_node": ["Externe Geodienste", "Bundesrepublik Deutschland", "Bundeswasserstraßen", "WMS: Kilometermarken"],
+            "komgis_priority": "74813",
+            "valid_epsg": ["EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:3034", "EPSG:3035", "EPSG:3395", "EPSG:3857", "EPSG:4019", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:25832", "EPSG:25833", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:104258"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://via.bund.de/wsv/bwastr/wms&layers=Kilometermarken&styles="
           }
         }
       },
