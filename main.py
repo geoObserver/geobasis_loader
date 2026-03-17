@@ -305,9 +305,6 @@ class GeoBasis_Loader(QObject):
             crs = self.get_crs(topic.valid_epsg_codes, topic.name)
             if crs is None:
                 return
-        
-        # if crs == "OGC:CRS84":
-        #     crs = "CRS:84"
 
         uri = topic.uri
         layer_type = topic.topic_type
