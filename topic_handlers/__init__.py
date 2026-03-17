@@ -1,0 +1,1 @@
+from .property_manager import singleton as PropertyManager
