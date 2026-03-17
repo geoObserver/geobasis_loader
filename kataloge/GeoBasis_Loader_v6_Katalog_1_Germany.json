@@ -1176,34 +1176,29 @@
     "menu": "Berlin",
     "themen": {
       "flurstuecke": {
-        "name": "BE: ALKIS Flurstücke (WMS)",
+        "name": "BE: ALKIS farbig (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25833", "EPSG:3068", "EPSG:4258", "EPSG:25832", "EPSG:4326"],
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3857", "OGC:CRS84"],
         "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
-        "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&url=https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_alkis&layers=25&layers=28&styles=&styles="
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=a_alkis_raster&styles&tilePixelRatio=0&url=https://gdi.berlin.de/services/wms/alkis"
       },
       "gebaeude": {
-        "name": "BE: ALKIS Gebäude (WMS)",
+        "name": "BE: ALKIS S/W (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25833", "EPSG:3068", "EPSG:4258", "EPSG:25832", "EPSG:4326"],
-        "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&url=https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_alkis&layers=9&layers=12&styles=&styles="
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3857", "OGC:CRS84"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=a_alkis_raster_sw&styles&tilePixelRatio=0&url=https://gdi.berlin.de/services/wms/alkis"
       },
-      "nutzung": {
+      "liegenschaftsplan": {
+        "name": "BE: Liegenschaftsplan (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25833", "EPSG:3068", "EPSG:4258", "EPSG:25832", "EPSG:4326"],
-        "name": "BE: ALKIS Tatsächliche Nutzung (WMS)",
-        "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&url=https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_alkis&layers=5&layers=7&styles=&styles="
-      },
-      "alkis_alles": {
-        "name": "BE: \u25b6\ufe0e ALKIS Flurstücke, Gebäude, Nutzung (WMS)",
-        "layers": ["nutzung", "flurstuecke", "gebaeude"],
-        "seperator": true
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3857", "OGC:CRS84"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:25832&dpiMode=7&featureCount=10&format=image/png&layers=liegenschaftsplan&styles=liegenschaftsplan&tilePixelRatio=0&url=https://gdi.berlin.de/services/wms/liegenschaftsplan"
       },
       "bodenrichtwerte": {
-        "name": "BE: Bodenrichtwerte Bauland 2024 (WMS)",
+        "name": "BE: Bodenrichtwerte 2025 (WMS)",
         "type": "ogc_wms",
-        "valid_epsg": ["EPSG:25833", "EPSG:4326"],
-        "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&url=https://fbinter.stadt-berlin.de/fb/wms/senstadt/brw_2024_amtlich&layers=2&layers=3&styles=&styles=",
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:4326", "EPSG:4258", "EPSG:3857", "OGC:CRS84"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=brw2025&styles&tilePixelRatio=0&url=https://gdi.berlin.de/services/wms/brw2025",
         "seperator": true,
         "opacity": 0.75
       },
