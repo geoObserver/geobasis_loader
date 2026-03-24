@@ -3703,6 +3703,116 @@
         },
         "seperator": true
       },
+      "SN_hoene_layergroup": {
+        "name": "SN: Höheninformationen (WMS)",
+        "layers": {
+          "5fdd2c1fd58c4202980f3d7861b40641": {
+            "name": "SN: Schummerung - Relief (WMS)",
+            "type": "ogc_wms",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=relief_standard&styles&tilePixelRatio=0&url=https://geodienste.sachsen.de/wms_geosn_hoehe/guest",
+            "valid_epsg": ["EPSG:4326", "EPSG:25833", "EPSG:4258", "EPSG:25832", "EPSG:31469", "EPSG:31468", "EPSG:31467", "EPSG:31466", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3398", "EPSG:3399", "EPSG:2180", "EPSG:5514", "EPSG:5650"]
+          },
+          "9da33abbaee444b695d3ac971e32c167": {
+            "name": "SN: Schummerung - Relief Oberfläche (WMS)",
+            "type": "ogc_wms",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=relief_dom&styles&tilePixelRatio=0&url=https://geodienste.sachsen.de/wms_geosn_hoehe/guest",
+            "valid_epsg": ["EPSG:4326", "EPSG:25833", "EPSG:4258", "EPSG:25832", "EPSG:31469", "EPSG:31468", "EPSG:31467", "EPSG:31466", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3398", "EPSG:3399", "EPSG:2180", "EPSG:5514", "EPSG:5650"]
+          },
+          "0df12ea7ed524f94aa2b423c50967d1e": {
+            "name": "SN: Schummerung - Relief überhöht (WMS)",
+            "type": "ogc_wms",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=relief&styles&tilePixelRatio=0&url=https://geodienste.sachsen.de/wms_geosn_hoehe/guest",
+            "valid_epsg": ["EPSG:4326", "EPSG:25833", "EPSG:4258", "EPSG:25832", "EPSG:31469", "EPSG:31468", "EPSG:31467", "EPSG:31466", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3398", "EPSG:3399", "EPSG:2180", "EPSG:5514", "EPSG:5650"]
+          },
+          "ee02556c884c4f4f868efacf61cd7521": {
+            "name": "SN Höhenlinien 2,5m (WMS)",
+            "type": "ogc_wms",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=hoehenlinien_2_5m&styles&tilePixelRatio=0&url=https://geodienste.sachsen.de/wms_geosn_hoehe/guest",
+            "valid_epsg": ["EPSG:4326", "EPSG:25833", "EPSG:4258", "EPSG:25832", "EPSG:31469", "EPSG:31468", "EPSG:31467", "EPSG:31466", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3398", "EPSG:3399", "EPSG:2180", "EPSG:5514", "EPSG:5650"],
+            "minScale": 4724.7
+          },
+          "b0c8b9ec56694f2898b6a12691f72d37": {
+            "name": "SN: Höhenlinien 5m (WMS)",
+            "type": "ogc_wms",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=hoehenlinien_5m&styles&tilePixelRatio=0&url=https://geodienste.sachsen.de/wms_geosn_hoehe/guest",
+            "valid_epsg": ["EPSG:4326", "EPSG:25833", "EPSG:4258", "EPSG:25832", "EPSG:31469", "EPSG:31468", "EPSG:31467", "EPSG:31466", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3398", "EPSG:3399", "EPSG:2180", "EPSG:5514", "EPSG:5650"],
+            "minScale": 9449.4,
+            "maxScale": 4725.65
+          },
+          "a10a6ebaac364ff2b1e9f82d1a2aa8a0": {
+            "name": "SN: Höhenlinien 20m (WMS)",
+            "type": "ogc_wms",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=hoehenlinien_20m&styles&tilePixelRatio=0&url=https://geodienste.sachsen.de/wms_geosn_hoehe/guest",
+            "valid_epsg": ["EPSG:4326", "EPSG:25833", "EPSG:4258", "EPSG:25832", "EPSG:31469", "EPSG:31468", "EPSG:31467", "EPSG:31466", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3398", "EPSG:3399", "EPSG:2180", "EPSG:5514", "EPSG:5650"],
+            "minScale": 47247.02,
+            "maxScale": 9450.35
+          },
+          "d17647ad345545138cc45e8ca77ab05f": {
+            "name": "SN: Höhenlinien 25m (WMS)",
+            "type": "ogc_wms",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=hoehenlinien_25m&styles&tilePixelRatio=0&url=https://geodienste.sachsen.de/wms_geosn_hoehe/guest",
+            "valid_epsg": ["EPSG:4326", "EPSG:25833", "EPSG:4258", "EPSG:25832", "EPSG:31469", "EPSG:31468", "EPSG:31467", "EPSG:31466", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3398", "EPSG:3399", "EPSG:2180", "EPSG:5514", "EPSG:5650"],
+            "minScale": 94494.05,
+            "maxScale": 47247.97
+          },
+          "5ebe343511774aff899212a4a57582f8": {
+            "name": "SN: Höhenlinien 50m (WMS)",
+            "type": "ogc_wms",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=hoehenlinien_50m&styles&tilePixelRatio=0&url=https://geodienste.sachsen.de/wms_geosn_hoehe/guest",
+            "valid_epsg": ["EPSG:4326", "EPSG:25833", "EPSG:4258", "EPSG:25832", "EPSG:31469", "EPSG:31468", "EPSG:31467", "EPSG:31466", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3398", "EPSG:3399", "EPSG:2180", "EPSG:5514", "EPSG:5650"],
+            "minScale": 188988.1,
+            "maxScale": 94494.99
+          },
+          "b890ce3054814fe7aeefa3d9380907a7": {
+            "name": "SN: Geländehöhen Beschriftung 20m (WMS)",
+            "type": "ogc_wms",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=beschriftung_20m&styles&tilePixelRatio=0&url=https://geodienste.sachsen.de/wms_geosn_hoehe/guest",
+            "valid_epsg": ["EPSG:4326", "EPSG:25833", "EPSG:4258", "EPSG:25832", "EPSG:31469", "EPSG:31468", "EPSG:31467", "EPSG:31466", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3398", "EPSG:3399", "EPSG:2180", "EPSG:5514", "EPSG:5650"],
+            "minScale": 1417.41
+          },
+          "080c01f694f84dfbb50891ad746d9a5a": {
+            "name": "SN: Geländehöhen Beschriftung 50m (WMS)",
+            "type": "ogc_wms",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=beschriftung_50m&styles&tilePixelRatio=0&url=https://geodienste.sachsen.de/wms_geosn_hoehe/guest",
+            "valid_epsg": ["EPSG:4326", "EPSG:25833", "EPSG:4258", "EPSG:25832", "EPSG:31469", "EPSG:31468", "EPSG:31467", "EPSG:31466", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3398", "EPSG:3399", "EPSG:2180", "EPSG:5514", "EPSG:5650"],
+            "minScale": 3779.76,
+            "maxScale": 1417.41
+          },
+          "4ba755d95bfc43999f44a64774c8abb8": {
+            "name": "SN: Geländehöhen Beschriftung 100m (WMS)",
+            "type": "ogc_wms",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=beschriftung_100m&styles&tilePixelRatio=0&url=https://geodienste.sachsen.de/wms_geosn_hoehe/guest",
+            "valid_epsg": ["EPSG:4326", "EPSG:25833", "EPSG:4258", "EPSG:25832", "EPSG:31469", "EPSG:31468", "EPSG:31467", "EPSG:31466", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3398", "EPSG:3399", "EPSG:2180", "EPSG:5514", "EPSG:5650"],
+            "minScale": 9449.4,
+            "maxScale": 3779.76
+          },
+          "116d8639e23940289fd3a9f7a851bc97": {
+            "name": "SN: DHM Geländehöhe (WMS)",
+            "type": "ogc_wms",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gelaendehoehe&styles&tilePixelRatio=0&url=https://geodienste.sachsen.de/wms_geosn_hoehe/guest",
+            "valid_epsg": ["EPSG:4326", "EPSG:25833", "EPSG:4258", "EPSG:25832", "EPSG:31469", "EPSG:31468", "EPSG:31467", "EPSG:31466", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3398", "EPSG:3399", "EPSG:2180", "EPSG:5514", "EPSG:5650"]
+          },
+          "e7279f7c65c144cb8002190a488f5a60": {
+            "name": "SN: DHM Oberflächenhöhe (WMS)",
+            "type": "ogc_wms",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=hoehe_oberflaeche&styles&tilePixelRatio=0&url=https://geodienste.sachsen.de/wms_geosn_hoehe/guest",
+            "valid_epsg": ["EPSG:4326", "EPSG:25833", "EPSG:4258", "EPSG:25832", "EPSG:31469", "EPSG:31468", "EPSG:31467", "EPSG:31466", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3398", "EPSG:3399", "EPSG:2180", "EPSG:5514", "EPSG:5650"]
+          },
+          "b8cbbbf1cc654a39add565846f8669cb": {
+            "name": "SN: DHM Geländeveränderungen (WMS)",
+            "type": "ogc_wms",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gelaendeveraenderungen&styles&tilePixelRatio=0&url=https://geodienste.sachsen.de/wms_geosn_hoehe/guest",
+            "valid_epsg": ["EPSG:4326", "EPSG:25833", "EPSG:4258", "EPSG:25832", "EPSG:31469", "EPSG:31468", "EPSG:31467", "EPSG:31466", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3398", "EPSG:3399", "EPSG:2180", "EPSG:5514", "EPSG:5650"]
+          },
+          "171686342ae64191b393676c39d16654": {
+            "name": "SN: DHM Höhendifferenz (nDOM) (WMS)",
+            "type": "ogc_wms",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=hoehendifferenz&styles&tilePixelRatio=0&url=https://geodienste.sachsen.de/wms_geosn_hoehe/guest",
+            "valid_epsg": ["EPSG:4326", "EPSG:25833", "EPSG:4258", "EPSG:25832", "EPSG:31469", "EPSG:31468", "EPSG:31467", "EPSG:31466", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:3398", "EPSG:3399", "EPSG:2180", "EPSG:5514", "EPSG:5650"]
+          }
+        },
+        "seperator": true
+      },
       "dtk farbe": {
         "name": "SN: Topograf. Karten farbig (WMS)",
         "type": "ogc_wms",
