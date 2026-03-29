@@ -3,7 +3,7 @@ from functools import partial
 from typing import Optional, Union
 from qgis.PyQt.QtNetwork import QNetworkRequest, QNetworkReply
 from qgis.PyQt.QtCore import QUrl, QObject, pyqtSignal
-from qgis.core import QgsNetworkAccessManager, QgsSettings
+from qgis.core import QgsNetworkAccessManager, QgsSettings, QgsMessageLog, Qgis
 from qgis.gui import QgisInterface
 from . import config
 
@@ -74,14 +74,14 @@ class NetworkHandler(QObject):
             
             total_server_list = config.ServerHosts.get_all_servers()
             index = total_server_list.index(self._server)
-            print(f"Katalog '{catalog_name}' erfolgreich von Server {index + 1} geladen")
+            QgsMessageLog.logMessage(f"Katalog '{catalog_name}' erfolgreich von Server {index + 1} geladen", config.PLUGIN_NAME, level=Qgis.MessageLevel.Info)
             return
         
         curr_server_index = self._server_list.index(self._server)
         if curr_server_index == len(self._server_list) - 1:
             self.error_occurred.emit("Netzwerkfehler beim Laden der URL's", catalog_title)
             self.done = True
-            print(f"Katalog '{catalog_name}' konnte nicht von einem Server geladen werden")
+            QgsMessageLog.logMessage(f"Katalog '{catalog_name}' konnte nicht von einem Server geladen werden", config.PLUGIN_NAME, level=Qgis.MessageLevel.Warning)
         else:
             self._server = self._server_list[curr_server_index + 1]
             if is_overview_response:

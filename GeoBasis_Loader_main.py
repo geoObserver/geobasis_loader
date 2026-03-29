@@ -5,7 +5,7 @@ from qgis.PyQt.QtWidgets import QMenu, QAction
 from qgis.PyQt.QtGui import QIcon, QColor, QDesktopServices
 from qgis.PyQt.QtCore import QUrl, QObject
 # from qgis.PyQt.QtWebKitWidgets import QWebView # type: ignore
-from qgis.core import QgsSettings, QgsProject, QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer, QgsLayerTree, QgsLayerTreeLayer, QgsSymbolLayer, QgsWkbTypes, Qgis
+from qgis.core import QgsSettings, QgsProject, QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer, QgsLayerTree, QgsLayerTreeLayer, QgsSymbolLayer, QgsWkbTypes, QgsMessageLog, Qgis
 from qgis.gui import QgisInterface
 from .topic_search import SearchFilter
 from . import config
@@ -44,8 +44,7 @@ class GeoBasis_Loader(QObject):
             CatalogManager.get_catalog(current_catalog["titel"], current_catalog["name"], self.set_services)
             
         # ------- Letzte Einstellung für automatisches Koordinatensystem laden -----
-        saved_option = self.qgs_settings.value(config.AUTOMATIC_CRS_SETTINGS_KEY, "false")
-        self.automatic_crs = False if saved_option == "false" else True
+        self.automatic_crs = self.qgs_settings.value(config.AUTOMATIC_CRS_SETTINGS_KEY, False, bool)
 
         icon = QIcon(config.PLUGIN_DIR + "/GeoBasis_Loader_icon.png")
         self.main_menu = QMenu(config.PLUGIN_NAME_AND_VERSION)
@@ -401,7 +400,7 @@ class GeoBasis_Loader(QObject):
             elif geom_type == geometry_types.Point:
                 symbol_layer.setSize(strokeWidth)
             else:
-                print("Fehler bei Bestimmung der Geometrieart; Bestimmte Geometrie " + QgsWkbTypes.displayString(geom_type))
+                QgsMessageLog.logMessage("Fehler bei Bestimmung der Geometrieart; Bestimmte Geometrie " + QgsWkbTypes.displayString(geom_type), config.PLUGIN_NAME, level=Qgis.MessageLevel.Warning)
                         
             layer.triggerRepaint()
             self.iface.layerTreeView().refreshLayerSymbology(layer.id())
