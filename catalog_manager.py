@@ -279,7 +279,7 @@ class CatalogManager:
     def load_internal_properties(cls) -> dict[config.InternalProperties, dict[str, bool]]:
         props = config.InternalProperties.get_properties()
         properties = {}
-        
+
         file_path = pathlib.Path(cls.catalog_path + "settings.json")
         data = cls.read_json(file_path)
         if isinstance(data, dict):
@@ -287,7 +287,22 @@ class CatalogManager:
                 properties[prop] = {}
                 if "properties" in data:
                     properties[prop] = data["properties"].get(prop.value, {})
-        
+
+        # Favoriten aus QgsSettings laden
+        qgs_settings = QgsSettings()
+        favorites = qgs_settings.value(config.FAVORITES_SETTINGS_KEY, {})
+        if not isinstance(favorites, dict):
+            favorites = {}
+
+        # Einmalige Migration: alte Favoriten aus settings.json übernehmen
+        if not favorites and isinstance(data, dict) and "properties" in data:
+            old_favorites = data["properties"].get(config.InternalProperties.FAVORITE.value, {})
+            if old_favorites:
+                favorites = old_favorites
+                qgs_settings.setValue(config.FAVORITES_SETTINGS_KEY, favorites)
+
+        properties[config.InternalProperties.FAVORITE] = favorites
+
         return properties
     
     @classmethod
@@ -339,9 +354,15 @@ class CatalogManager:
     
     @classmethod
     def save_internal_properties(cls) -> None:
+        # Favoriten in QgsSettings speichern
+        qgs_settings = QgsSettings()
+        qgs_settings.setValue(config.FAVORITES_SETTINGS_KEY, cls.properties.get(config.InternalProperties.FAVORITE, {}))
+
+        # Restliche Properties (Sichtbarkeit, Laden) in settings.json
         file_path = pathlib.Path(cls.catalog_path + "settings.json")
+        file_properties = {k.value: v for k, v in cls.properties.items() if k != config.InternalProperties.FAVORITE}
         data = {
-            "properties": cls.properties
+            "properties": file_properties
         }
         cls.write_json(data, file_path)
 
