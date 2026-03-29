@@ -137,7 +137,7 @@ class GeoBasis_Loader(QObject):
                     continue
                 path = f"{path_prefix}/{key}" if path_prefix else key
                 if key in ("themen", "layers"):
-                    _collect(value, path_prefix)
+                    _collect(value, path)
                     continue
                 if favorites.get(path, False) and "name" in value:
                     entries.append((value["name"], path))
@@ -229,7 +229,7 @@ class GeoBasis_Loader(QObject):
         
         self.automatic_crs = self.qgs_settings.value(config.AUTOMATIC_CRS_SETTINGS_KEY, False, bool)
         
-        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, 'Einstellungen erfolgreich gespeichert', Qgis.MessageLevel.Success, 3)
+        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, 'Einstellungen erfolgreich gespeichert', level=Qgis.MessageLevel.Success, duration=3)
         self.initGui()
 
     def toggle_automatic_crs(self) -> None:
@@ -258,7 +258,7 @@ class GeoBasis_Loader(QObject):
         titel = current_catalog["titel"]
         name = current_catalog["name"]
         version = re.findall(r'v\d+', name)[0]
-        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, 'Lese '+ titel + ", Version " + version + ' ...', Qgis.MessageLevel.Success, 3)
+        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, 'Lese '+ titel + ", Version " + version + ' ...', level=Qgis.MessageLevel.Success, duration=3)
         
         self.services = services
         self.initGui()
@@ -401,7 +401,7 @@ class GeoBasis_Loader(QObject):
             layer.triggerRepaint()
             self.iface.layerTreeView().refreshLayerSymbology(layer.id())
         
-        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, config.MY_INFO_1 + attributes['name'] + config.MY_INFO_2, Qgis.MessageLevel.Success, 1)
+        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, config.MY_INFO_1 + attributes['name'] + config.MY_INFO_2, level=Qgis.MessageLevel.Success, duration=1)
         # Ebene zum Projekt hinzufügen aber nicht zum Ebenenbaum
         QgsProject.instance().addMapLayer(layer, False) # type: ignore
         
