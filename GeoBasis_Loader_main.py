@@ -2,7 +2,7 @@ import re
 from functools import partial
 from typing import Dict, Union, Optional
 from qgis.PyQt.QtWidgets import QMenu, QAction
-from qgis.PyQt.QtGui import QIcon, QColor, QColor, QDesktopServices
+from qgis.PyQt.QtGui import QIcon, QColor, QDesktopServices
 from qgis.PyQt.QtCore import QUrl, QObject
 # from qgis.PyQt.QtWebKitWidgets import QWebView # type: ignore
 from qgis.core import QgsSettings, QgsProject, QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer, QgsLayerTree, QgsLayerTreeLayer, QgsSymbolLayer, QgsWkbTypes, Qgis
@@ -17,9 +17,11 @@ if Qgis.versionInt() < 33000:   # Breaking chnage in Version 3.30 -> Geometry ty
 else:
     geometry_types = Qgis.WkbType
 
+STAR_PREFIX = "\u2605 "  # ★
+
 class GeoBasis_Loader(QObject):
     services = None
-    
+
     search_filter = None
     qgs_settings = QgsSettings()
 
@@ -148,12 +150,12 @@ class GeoBasis_Loader(QObject):
         if not entries:
             return None
 
-        menu = QMenu("Favoriten", self.main_menu)
+        menu = QMenu(STAR_PREFIX + "Favoriten", self.main_menu)
         menu.setObjectName("favorites-menu")
         menu.setToolTipsVisible(True)
 
         for name, path in entries:
-            action = QAction(name, menu)
+            action = QAction(STAR_PREFIX + name, menu)
             action.setData(path)
             action.triggered.connect(self.add_topic)
             menu.addAction(action)
@@ -161,8 +163,11 @@ class GeoBasis_Loader(QObject):
         return menu
 
     def gui_for_one_topic(self, topic_dict: dict, topic_abbreviation: str) -> QMenu:
+        favorites = CatalogManager.properties.get(config.InternalProperties.FAVORITE, {})
+
         def _create_action(name: str, parent: QMenu, path: str, tip: str = "Thema hinzufügen", slot = self.add_topic) -> QAction:
-            action = QAction(name, parent)
+            display_name = STAR_PREFIX + name if favorites.get(path, False) else name
+            action = QAction(display_name, parent)
             action.setObjectName(name)
             action.setStatusTip(tip)
             action.setToolTip(tip)
