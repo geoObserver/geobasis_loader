@@ -61,6 +61,13 @@ class GeoBasis_Loader(QObject):
             # ------- Name des Katalogs einfügen -------------------------
             action = self.main_menu.addAction(self.qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)["titel"])
             self.main_menu.addSeparator()
+
+            # ------- Favoriten-Menü erstellen ---------------------------
+            favorites_menu = self._build_favorites_menu()
+            if favorites_menu is not None:
+                self.main_menu.addMenu(favorites_menu)
+                self.main_menu.addSeparator()
+
             # ------- Menübaum bauen und einfügen ------------------------
             for state in self.services:
                 # Falls der zweite Eintrag kein Dictionary ist, überspringen, da es Metadata ist
@@ -115,6 +122,44 @@ class GeoBasis_Loader(QObject):
         # ------- Status-Schaltfläche für #geoObserver ------------------------
         # self.mainMenu.addAction("Status ...", partial(self.openWebSite, 'https://geoobserver.de/qgis-plugin-geobasis-loader/#statustabelle'))
         
+    def _build_favorites_menu(self) -> Union[QMenu, None]:
+        """Collect all favorited entries from the current catalog into a menu."""
+        favorites = CatalogManager.properties.get(config.InternalProperties.FAVORITE, {})
+        if not any(favorites.values()):
+            return None
+
+        catalog_dict = dict(self.services)
+        entries: list[tuple[str, str]] = []  # (name, path)
+
+        def _collect(data: dict, path_prefix: str = ""):
+            for key, value in data.items():
+                if not isinstance(value, dict):
+                    continue
+                path = f"{path_prefix}/{key}" if path_prefix else key
+                if key in ("themen", "layers"):
+                    _collect(value, path_prefix)
+                    continue
+                if favorites.get(path, False) and "name" in value:
+                    entries.append((value["name"], path))
+                _collect(value, path)
+
+        _collect(catalog_dict)
+
+        if not entries:
+            return None
+
+        menu = QMenu("Favoriten", self.main_menu)
+        menu.setObjectName("favorites-menu")
+        menu.setToolTipsVisible(True)
+
+        for name, path in entries:
+            action = QAction(name, menu)
+            action.setData(path)
+            action.triggered.connect(self.add_topic)
+            menu.addAction(action)
+
+        return menu
+
     def gui_for_one_topic(self, topic_dict: dict, topic_abbreviation: str) -> QMenu:
         def _create_action(name: str, parent: QMenu, path: str, tip: str = "Thema hinzufügen", slot = self.add_topic) -> QAction:
             action = QAction(name, parent)
