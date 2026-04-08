@@ -11,7 +11,6 @@
 <p align="center">
   <img src="https://img.shields.io/badge/QGIS-%E2%89%A5_3.44-93b023?logo=qgis" alt="QGIS Version">
   <img src="https://img.shields.io/github/license/geoObserver/geobasis_loader" alt="License">
-  <img src="https://img.shields.io/github/v/release/geoObserver/geobasis_loader" alt="Release">
   <img src="https://img.shields.io/badge/dynamic/json?color=green&label=Downloads&query=$.GeoBasis_Loader.downloads&url=https://raw.githubusercontent.com/Mariosmsk/qgis-plugins-downloads/main/data/plugins.json" alt="Downloads">
   <img src="https://img.shields.io/badge/Qt5_%7C_Qt6-compatible-41cd52" alt="Qt Compatibility">
 </p>
