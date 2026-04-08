@@ -1,0 +1,84 @@
+# .github/ISSUE_TEMPLATE/katalog-eintrag.yml
+name: Katalogeintrag einreichen
+description: Einen neuen Datensatz oder Dienst für den Geobasis Loader Katalog vorschlagen
+title: "[Katalog] "
+labels: ["katalog", "triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Danke für deinen Beitrag zum Geobasis Loader Katalog.
+        Bitte fülle alle Pflichtfelder aus - unvollständige Einreichungen verzögern die Prüfung.
+
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      description: Die URL des Dienstes oder der Ressource, die aufgenommen werden soll.
+      placeholder: "https://example.com/dienst/wms"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Diensttyp
+      description: Welches Protokoll oder Format liegt vor?
+      options:
+        - WMS
+        - WFS
+        - WMTS
+        - OGC API Features
+        - OGC API Tiles
+        - GeoJSON
+        - GeoPackage
+        - XYZ-Tiles
+        - Sonstiges
+    validations:
+      required: true
+
+  - type: input
+    id: title
+    attributes:
+      label: Bezeichnung
+      description: Kurzer, beschreibender Name für den Katalogeintrag.
+      placeholder: "Digitales Geländemodell Bayern 1m"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Beschreibung
+      description: Was enthält der Datensatz? Welchen Verwendungszweck hat er?
+      placeholder: "Hochaufgelöstes Geländemodell aus Laserscandaten, geeignet für …"
+    validations:
+      required: true
+
+  - type: input
+    id: provider
+    attributes:
+      label: Anbieter / Herausgeber
+      description: Organisation oder Behörde, die den Dienst betreibt.
+      placeholder: "Landesamt für Digitalisierung, Breitband und Vermessung Bayern"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: accessibility
+    attributes:
+      label: Verfügbarkeit
+      description: Bitte bestätigen, soweit bekannt.
+      options:
+        - label: Der Dienst ist öffentlich zugänglich (keine Authentifizierung erforderlich)
+        - label: Ich habe die URL manuell geprüft und sie war zum Zeitpunkt der Einreichung erreichbar
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Hinweise
+      description: Besonderheiten, bekannte Einschränkungen, relevante Dokumentation oder ähnliches.
+    validations:
+      required: false
