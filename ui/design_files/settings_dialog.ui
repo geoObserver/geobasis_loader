@@ -53,13 +53,13 @@
       <bool>false</bool>
      </property>
      <property name="tabShape">
-      <enum>QTabWidget::TabShape::Rounded</enum>
+      <enum>QTabWidget::Rounded</enum>
      </property>
      <property name="currentIndex">
       <number>0</number>
      </property>
      <property name="elideMode">
-      <enum>Qt::TextElideMode::ElideNone</enum>
+      <enum>Qt::ElideNone</enum>
      </property>
      <widget class="QWidget" name="visibility">
       <attribute name="title">
@@ -106,10 +106,10 @@
          <item>
           <spacer name="horizontalSpacer">
            <property name="orientation">
-            <enum>Qt::Orientation::Horizontal</enum>
+            <enum>Qt::Horizontal</enum>
            </property>
            <property name="sizeType">
-            <enum>QSizePolicy::Policy::Expanding</enum>
+            <enum>QSizePolicy::Expanding</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
@@ -161,31 +161,31 @@
           </sizepolicy>
          </property>
          <property name="frameShape">
-          <enum>QFrame::Shape::NoFrame</enum>
+          <enum>QFrame::NoFrame</enum>
          </property>
          <property name="frameShadow">
-          <enum>QFrame::Shadow::Plain</enum>
+          <enum>QFrame::Plain</enum>
          </property>
          <property name="lineWidth">
           <number>0</number>
          </property>
          <property name="verticalScrollBarPolicy">
-          <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
+          <enum>Qt::ScrollBarAlwaysOn</enum>
          </property>
          <property name="horizontalScrollBarPolicy">
-          <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+          <enum>Qt::ScrollBarAsNeeded</enum>
          </property>
          <property name="sizeAdjustPolicy">
-          <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustIgnored</enum>
+          <enum>QAbstractScrollArea::AdjustIgnored</enum>
          </property>
          <property name="alternatingRowColors">
           <bool>true</bool>
          </property>
          <property name="selectionMode">
-          <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
+          <enum>QAbstractItemView::SingleSelection</enum>
          </property>
          <property name="textElideMode">
-          <enum>Qt::TextElideMode::ElideNone</enum>
+          <enum>Qt::ElideNone</enum>
          </property>
          <property name="rootIsDecorated">
           <bool>true</bool>
@@ -243,20 +243,20 @@
        </sizepolicy>
       </property>
       <property name="layoutDirection">
-       <enum>Qt::LayoutDirection::LeftToRight</enum>
+       <enum>Qt::LeftToRight</enum>
       </property>
       <attribute name="title">
        <string>Globale Einstellungen</string>
       </attribute>
       <layout class="QFormLayout" name="formLayout">
        <property name="sizeConstraint">
-        <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+        <enum>QLayout::SetDefaultConstraint</enum>
        </property>
        <property name="fieldGrowthPolicy">
-        <enum>QFormLayout::FieldGrowthPolicy::AllNonFixedFieldsGrow</enum>
+        <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
        </property>
        <property name="labelAlignment">
-        <set>Qt::AlignmentFlag::AlignJustify|Qt::AlignmentFlag::AlignVCenter</set>
+        <set>Qt::AlignJustify|Qt::AlignVCenter</set>
        </property>
        <item row="0" column="0">
         <widget class="QGroupBox" name="server_selection">
@@ -279,7 +279,7 @@
           <string>Katalogserverauswahl</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
          </property>
          <property name="flat">
           <bool>false</bool>
@@ -369,13 +369,13 @@
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die Katalogdateien des „GeoBasis_Loader&amp;quot; liegen redundant auf zwei Servern mit identischem und&lt;br/&gt;aktuellem Datenbestand.&lt;br/&gt;Im &lt;span style=&quot; font-weight:600;&quot;&gt;Automatikmodus&lt;/span&gt; wird primär Server 1 verwendet.&lt;br/&gt;Bei Ausfall erfolgt automatisch der Wechsel zu Server 2.&lt;br/&gt;Eine &lt;span style=&quot; font-weight:600;&quot;&gt;manuelle Serverauswahl&lt;/span&gt; ist nur in Sonderfällen (z. B. Entwicklung, Aktualisierung) erforderlich.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="textFormat">
-          <enum>Qt::TextFormat::RichText</enum>
+          <enum>Qt::RichText</enum>
          </property>
          <property name="scaledContents">
           <bool>false</bool>
          </property>
          <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
@@ -427,10 +427,10 @@
       <item>
        <widget class="QDialogButtonBox" name="button_box">
         <property name="orientation">
-         <enum>Qt::Orientation::Horizontal</enum>
+         <enum>Qt::Horizontal</enum>
         </property>
         <property name="standardButtons">
-         <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
+         <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
         </property>
        </widget>
       </item>

@@ -2,7 +2,7 @@ from enum import Enum
 import os
 from qgis.core import QgsSettings
 
-PLUGIN_VERSION = '1.4'
+PLUGIN_VERSION = '2.1'
 PLUGIN_NAME = 'GeoBasis Loader'
 PLUGIN_NAME_AND_VERSION = PLUGIN_NAME + ' (v' + PLUGIN_VERSION + ')'
 MY_CRITICAL_1 = 'Layerladefehler '
@@ -14,6 +14,8 @@ PLUGIN_DIR = os.path.dirname(__file__)
 CURRENT_CATALOG_SETTINGS_KEY = 'geobasis_loader/current_catalog'
 AUTOMATIC_CRS_SETTINGS_KEY = 'geobasis_loader/automatic_crs'
 SERVERS_SETTINGS_KEY = 'geobasis_loader/servers'
+
+FAVORITES_SETTINGS_KEY = 'geobasis_loader/favorites'
 
 CATALOG_OVERVIEW = "GeoBasis_Loader_v6_Kataloge.json"
 CATALOG_OVERVIEW_NAME = "catalog_overview"
@@ -45,4 +47,4 @@ class InternalProperties(str, Enum):
     
     @classmethod
     def get_properties(cls) -> list["InternalProperties"]:
-        return [a for a in cls if a != cls.PATH]
+        return [a for a in cls if a not in (cls.PATH, cls.FAVORITE)]

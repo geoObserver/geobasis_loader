@@ -68,7 +68,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
                         item.setText(0, value[name_key])
                         item.setFlags(item.flags() | Qt.ItemFlag.ItemIsAutoTristate | Qt.ItemFlag.ItemIsUserCheckable)
                         # Favorite
-                        checked = Qt.CheckState.Checked if value.get(config.InternalProperties.FAVORITE, True) else Qt.CheckState.Unchecked
+                        checked = Qt.CheckState.Checked if value.get(config.InternalProperties.FAVORITE, False) else Qt.CheckState.Unchecked
                         item.setCheckState(FAVORITE_CHECKBOX_COL, checked)
                         # Visibility
                         checked = Qt.CheckState.Checked if value.get(config.InternalProperties.VISIBILITY, True) else Qt.CheckState.Unchecked

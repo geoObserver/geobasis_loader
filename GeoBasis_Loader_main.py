@@ -2,10 +2,10 @@ import re
 from functools import partial
 from typing import Dict, Union, Optional
 from qgis.PyQt.QtWidgets import QMenu, QAction
-from qgis.PyQt.QtGui import QIcon, QColor, QColor, QDesktopServices
+from qgis.PyQt.QtGui import QIcon, QColor, QDesktopServices
 from qgis.PyQt.QtCore import QUrl, QObject
 # from qgis.PyQt.QtWebKitWidgets import QWebView # type: ignore
-from qgis.core import QgsSettings, QgsProject, QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer, QgsLayerTree, QgsLayerTreeLayer, QgsSymbolLayer, QgsWkbTypes, Qgis
+from qgis.core import QgsSettings, QgsProject, QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer, QgsLayerTree, QgsSymbolLayer, QgsWkbTypes, QgsMessageLog, Qgis
 from qgis.gui import QgisInterface
 from .topic_search import SearchFilter
 from . import config
@@ -17,9 +17,11 @@ if Qgis.versionInt() < 33000:   # Breaking chnage in Version 3.30 -> Geometry ty
 else:
     geometry_types = Qgis.WkbType
 
+STAR_PREFIX = "\u2605 "  # ★
+
 class GeoBasis_Loader(QObject):
     services = None
-    
+
     search_filter = None
     qgs_settings = QgsSettings()
 
@@ -42,8 +44,7 @@ class GeoBasis_Loader(QObject):
             CatalogManager.get_catalog(current_catalog["titel"], current_catalog["name"], self.set_services)
             
         # ------- Letzte Einstellung für automatisches Koordinatensystem laden -----
-        saved_option = self.qgs_settings.value(config.AUTOMATIC_CRS_SETTINGS_KEY, "false")
-        self.automatic_crs = False if saved_option == "false" else True
+        self.automatic_crs = self.qgs_settings.value(config.AUTOMATIC_CRS_SETTINGS_KEY, False, bool)
 
         icon = QIcon(config.PLUGIN_DIR + "/GeoBasis_Loader_icon.png")
         self.main_menu = QMenu(config.PLUGIN_NAME_AND_VERSION)
@@ -61,6 +62,13 @@ class GeoBasis_Loader(QObject):
             # ------- Name des Katalogs einfügen -------------------------
             action = self.main_menu.addAction(self.qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)["titel"])
             self.main_menu.addSeparator()
+
+            # ------- Favoriten-Menü erstellen ---------------------------
+            favorites_menu = self._build_favorites_menu()
+            if favorites_menu is not None:
+                self.main_menu.addMenu(favorites_menu)
+                self.main_menu.addSeparator()
+
             # ------- Menübaum bauen und einfügen ------------------------
             for state in self.services:
                 # Falls der zweite Eintrag kein Dictionary ist, überspringen, da es Metadata ist
@@ -115,9 +123,50 @@ class GeoBasis_Loader(QObject):
         # ------- Status-Schaltfläche für #geoObserver ------------------------
         # self.mainMenu.addAction("Status ...", partial(self.openWebSite, 'https://geoobserver.de/qgis-plugin-geobasis-loader/#statustabelle'))
         
+    def _build_favorites_menu(self) -> Union[QMenu, None]:
+        """Collect all favorited entries from the current catalog into a menu."""
+        favorites = CatalogManager.properties.get(config.InternalProperties.FAVORITE, {})
+        if not any(favorites.values()):
+            return None
+
+        catalog_dict = dict(self.services)
+        entries: list[tuple[str, str]] = []  # (name, path)
+
+        def _collect(data: dict, path_prefix: str = ""):
+            for key, value in data.items():
+                if not isinstance(value, dict):
+                    continue
+                path = f"{path_prefix}/{key}" if path_prefix else key
+                if key in ("themen", "layers"):
+                    _collect(value, path)
+                    continue
+                if favorites.get(path, False) and "name" in value:
+                    entries.append((value["name"], path))
+                _collect(value, path)
+
+        _collect(catalog_dict)
+
+        if not entries:
+            return None
+
+        menu = QMenu(STAR_PREFIX + "Favoriten", self.main_menu)
+        menu.setObjectName("favorites-menu")
+        menu.setToolTipsVisible(True)
+
+        for name, path in entries:
+            action = QAction(STAR_PREFIX + name, menu)
+            action.setData(path)
+            action.triggered.connect(self.add_topic)
+            menu.addAction(action)
+
+        return menu
+
     def gui_for_one_topic(self, topic_dict: dict, topic_abbreviation: str) -> QMenu:
+        favorites = CatalogManager.properties.get(config.InternalProperties.FAVORITE, {})
+
         def _create_action(name: str, parent: QMenu, path: str, tip: str = "Thema hinzufügen", slot = self.add_topic) -> QAction:
-            action = QAction(name, parent)
+            display_name = STAR_PREFIX + name if favorites.get(path, False) else name
+            action = QAction(display_name, parent)
             action.setObjectName(name)
             action.setStatusTip(tip)
             action.setToolTip(tip)
@@ -184,7 +233,7 @@ class GeoBasis_Loader(QObject):
         
         self.automatic_crs = self.qgs_settings.value(config.AUTOMATIC_CRS_SETTINGS_KEY, False, bool)
         
-        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, 'Einstellungen erfolgreich gespeichert', Qgis.MessageLevel.Success, 3)
+        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, 'Einstellungen erfolgreich gespeichert', level=Qgis.MessageLevel.Success, duration=3)
         self.initGui()
 
     def toggle_automatic_crs(self) -> None:
@@ -213,7 +262,7 @@ class GeoBasis_Loader(QObject):
         titel = current_catalog["titel"]
         name = current_catalog["name"]
         version = re.findall(r'v\d+', name)[0]
-        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, 'Lese '+ titel + ", Version " + version + ' ...', Qgis.MessageLevel.Success, 3)
+        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, 'Lese '+ titel + ", Version " + version + ' ...', level=Qgis.MessageLevel.Success, duration=3)
         
         self.services = services
         self.initGui()
@@ -351,31 +400,24 @@ class GeoBasis_Loader(QObject):
             elif geom_type == geometry_types.Point:
                 symbol_layer.setSize(strokeWidth)
             else:
-                print("Fehler bei Bestimmung der Geometrieart; Bestimmte Geometrie " + QgsWkbTypes.displayString(geom_type))
+                QgsMessageLog.logMessage("Fehler bei Bestimmung der Geometrieart; Bestimmte Geometrie " + QgsWkbTypes.displayString(geom_type), config.PLUGIN_NAME, level=Qgis.MessageLevel.Warning)
                         
             layer.triggerRepaint()
             self.iface.layerTreeView().refreshLayerSymbology(layer.id())
         
-        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, config.MY_INFO_1 + attributes['name'] + config.MY_INFO_2, Qgis.MessageLevel.Success, 1)
-        # Ebene zum Projekt hinzufügen aber nicht zum Ebenenbaum
+        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, config.MY_INFO_1 + attributes['name'] + config.MY_INFO_2, level=Qgis.MessageLevel.Success, duration=1)
+        # Ebene zum Projekt hinzufügen aber nicht automatisch zum Ebenenbaum
         QgsProject.instance().addMapLayer(layer, False) # type: ignore
-        
-        ltl = QgsLayerTreeLayer(layer)
-        if not ltl:
-            return
-        
-        # Legende kollabieren
-        ltl.setExpanded(False)
-        # Sichtbarkeit einstellen
-        visibile = attributes.get(config.InternalProperties.VISIBILITY, True)
-        ltl.setItemVisibilityChecked(visibile)
 
         if standalone:
-            # Ebene ganz oben zum Ebenenbaum hinzufügen, wenn Ebene in keiner Gruppe
             root: QgsLayerTree = QgsProject.instance().layerTreeRoot()
-            root.insertChildNode(0, ltl)
-            
-        return ltl
+            ltl = root.insertLayer(0, layer)
+            if ltl:
+                ltl.setExpanded(False)
+                visible = attributes.get(config.InternalProperties.VISIBILITY, True)
+                ltl.setItemVisibilityChecked(visible)
+
+        return layer
     
     def addLayerGroup(self, preferred_crs: Union[str, None], layers: dict, name: str) -> None:
         layerTreeRoot = QgsProject.instance().layerTreeRoot()
@@ -407,10 +449,14 @@ class GeoBasis_Loader(QObject):
                 return
         
         for layerKey in layers:
-            subLayer_ltl = self.addLayer(layers[layerKey], preferred_crs, False)
-            if subLayer_ltl is None:
+            sub_layer = self.addLayer(layers[layerKey], preferred_crs, False)
+            if sub_layer is None:
                 continue
-            newLayerGroup.insertChildNode(0, subLayer_ltl)
+            ltl = newLayerGroup.insertLayer(0, sub_layer)
+            if ltl:
+                ltl.setExpanded(False)
+                visible = layers[layerKey].get(config.InternalProperties.VISIBILITY, True)
+                ltl.setItemVisibilityChecked(visible)
             
     def addLayerCombination(self, layers) -> None:
         preferred_crs = None
