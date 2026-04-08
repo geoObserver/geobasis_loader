@@ -5,11 +5,11 @@
 <h1 align="center">GeoBasis Loader</h1>
 
 <p align="center">
-  Geodaten aus ganz Deutschland mit einem Klick in QGIS laden.
+  Open-Data-Geodienste mit einem Klick in QGIS laden &mdash; Schwerpunkt Deutschland.
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/QGIS-%E2%89%A5_3.44-93b023?logo=qgis" alt="QGIS Version">
+  <img src="https://img.shields.io/badge/QGIS-%E2%89%A5_3.40-93b023?logo=qgis" alt="QGIS Version">
   <img src="https://img.shields.io/github/license/geoObserver/geobasis_loader" alt="License">
   <img src="https://img.shields.io/badge/dynamic/json?color=green&label=Downloads&query=$.GeoBasis_Loader.downloads&url=https://raw.githubusercontent.com/Mariosmsk/qgis-plugins-downloads/main/data/plugins.json" alt="Downloads">
   <img src="https://img.shields.io/badge/Qt5_%7C_Qt6-compatible-41cd52" alt="Qt Compatibility">
@@ -25,7 +25,7 @@
 
 ## Was ist GeoBasis Loader?
 
-Das QGIS-Plugin vereinfacht den Zugang zu **WMS-, WMTS-, WFS-, WCS- und VectorTiles-Diensten** aus den Open-Data-Portalen der deutschen Landesvermessungsämter sowie zu Hintergrundkarten wie OSM und Basemap.de. Statt URLs manuell zusammenzusuchen, reicht ein Klick im Plugin-Menü.
+Das QGIS-Plugin vereinfacht den Zugang zu **WMS-, WMTS-, WFS-, WCS- und VectorTiles-Diensten** aus den Open-Data-Portalen der Landesvermessungsämter (Schwerpunkt Deutschland) und weiterer Anbieter sowie zu Hintergrundkarten wie OSM und Basemap.de. Statt URLs manuell zusammenzusuchen, reicht ein Klick im Plugin-Menü.
 
 ## Features
 
@@ -89,8 +89,8 @@ Im Zweifelsfall passt EPSG:25832 (UTM Zone 32N) für den Großteil Deutschlands.
 **Wie aktualisiere ich die Katalogdaten?**
 Im Plugin-Menü den Eintrag **Kataloge neu laden** wählen. Die Kataloge werden von redundanten Servern geladen; bei Ausfall eines Servers erfolgt automatisch ein Fallback.
 
-**Unterstützt das Plugin QGIS < 3.44?**
-Ab Version 2.0 wird QGIS 3.44+ (Qt6) vorausgesetzt. Für ältere QGIS-Versionen steht die Plugin-Version 1.3 zur Verfügung.
+**Unterstützt das Plugin QGIS < 3.40?**
+Ab Version 2.0 wird QGIS 3.40+ (Qt6-kompatibel) vorausgesetzt. Für ältere QGIS-Versionen steht die Plugin-Version 1.3 zur Verfügung.
 
 ## Mitwirken
 

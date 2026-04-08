@@ -5,11 +5,11 @@
 <h1 align="center">GeoBasis Loader</h1>
 
 <p align="center">
-  Load geodata from all across Germany into QGIS with a single click.
+  Load open-data geo services into QGIS with a single click &mdash; focused on Germany.
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/QGIS-%E2%89%A5_3.44-93b023?logo=qgis" alt="QGIS Version">
+  <img src="https://img.shields.io/badge/QGIS-%E2%89%A5_3.40-93b023?logo=qgis" alt="QGIS Version">
   <img src="https://img.shields.io/github/license/geoObserver/geobasis_loader" alt="License">
   <img src="https://img.shields.io/badge/dynamic/json?color=green&label=Downloads&query=$.GeoBasis_Loader.downloads&url=https://raw.githubusercontent.com/Mariosmsk/qgis-plugins-downloads/main/data/plugins.json" alt="Downloads">
   <img src="https://img.shields.io/badge/Qt5_%7C_Qt6-compatible-41cd52" alt="Qt Compatibility">
@@ -25,7 +25,7 @@
 
 ## What is GeoBasis Loader?
 
-This QGIS plugin simplifies access to **WMS, WMTS, WFS, WCS, and VectorTiles services** from the open data portals of German state surveying offices, as well as background maps like OSM and Basemap.de. Instead of manually assembling URLs, just pick a layer from the plugin menu.
+This QGIS plugin simplifies access to **WMS, WMTS, WFS, WCS, and VectorTiles services** from the open data portals of state surveying offices (focused on Germany) and other providers, as well as background maps like OSM and Basemap.de. Instead of manually assembling URLs, just pick a layer from the plugin menu.
 
 ## Features
 
@@ -89,8 +89,8 @@ When in doubt, EPSG:25832 (UTM Zone 32N) works for most of Germany. The *Automat
 **How do I update the catalog data?**
 Select **Reload Catalogs** from the plugin menu. Catalogs are loaded from redundant servers; if one fails, an automatic fallback occurs.
 
-**Does the plugin support QGIS < 3.44?**
-Version 2.0+ requires QGIS 3.44+ (Qt6). For older QGIS versions, plugin version 1.3 is available.
+**Does the plugin support QGIS < 3.40?**
+Version 2.0+ requires QGIS 3.40+ (Qt6-compatible). For older QGIS versions, plugin version 1.3 is available.
 
 ## Contributing
 
