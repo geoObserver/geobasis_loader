@@ -5,7 +5,7 @@ from qgis.PyQt.QtWidgets import QMenu, QAction
 from qgis.PyQt.QtGui import QIcon, QColor, QDesktopServices
 from qgis.PyQt.QtCore import QUrl, QObject
 # from qgis.PyQt.QtWebKitWidgets import QWebView # type: ignore
-from qgis.core import QgsSettings, QgsProject, QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer, QgsLayerTree, QgsLayerTreeLayer, QgsSymbolLayer, QgsWkbTypes, QgsMessageLog, Qgis
+from qgis.core import QgsSettings, QgsProject, QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer, QgsLayerTree, QgsSymbolLayer, QgsWkbTypes, QgsMessageLog, Qgis
 from qgis.gui import QgisInterface
 from .topic_search import SearchFilter
 from . import config
@@ -406,25 +406,18 @@ class GeoBasis_Loader(QObject):
             self.iface.layerTreeView().refreshLayerSymbology(layer.id())
         
         self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, config.MY_INFO_1 + attributes['name'] + config.MY_INFO_2, level=Qgis.MessageLevel.Success, duration=1)
-        # Ebene zum Projekt hinzufügen aber nicht zum Ebenenbaum
+        # Ebene zum Projekt hinzufügen aber nicht automatisch zum Ebenenbaum
         QgsProject.instance().addMapLayer(layer, False) # type: ignore
-        
-        ltl = QgsLayerTreeLayer(layer)
-        if not ltl:
-            return
-        
-        # Legende kollabieren
-        ltl.setExpanded(False)
-        # Sichtbarkeit einstellen
-        visibile = attributes.get(config.InternalProperties.VISIBILITY, True)
-        ltl.setItemVisibilityChecked(visibile)
 
         if standalone:
-            # Ebene ganz oben zum Ebenenbaum hinzufügen, wenn Ebene in keiner Gruppe
             root: QgsLayerTree = QgsProject.instance().layerTreeRoot()
-            root.insertChildNode(0, ltl)
-            
-        return ltl
+            ltl = root.insertLayer(0, layer)
+            if ltl:
+                ltl.setExpanded(False)
+                visible = attributes.get(config.InternalProperties.VISIBILITY, True)
+                ltl.setItemVisibilityChecked(visible)
+
+        return layer
     
     def addLayerGroup(self, preferred_crs: Union[str, None], layers: dict, name: str) -> None:
         layerTreeRoot = QgsProject.instance().layerTreeRoot()
@@ -456,10 +449,14 @@ class GeoBasis_Loader(QObject):
                 return
         
         for layerKey in layers:
-            subLayer_ltl = self.addLayer(layers[layerKey], preferred_crs, False)
-            if subLayer_ltl is None:
+            sub_layer = self.addLayer(layers[layerKey], preferred_crs, False)
+            if sub_layer is None:
                 continue
-            newLayerGroup.insertChildNode(0, subLayer_ltl)
+            ltl = newLayerGroup.insertLayer(0, sub_layer)
+            if ltl:
+                ltl.setExpanded(False)
+                visible = layers[layerKey].get(config.InternalProperties.VISIBILITY, True)
+                ltl.setItemVisibilityChecked(visible)
             
     def addLayerCombination(self, layers) -> None:
         preferred_crs = None
