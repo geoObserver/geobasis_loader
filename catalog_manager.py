@@ -292,7 +292,10 @@ class CatalogManager:
         file_path = pathlib.Path(cls.catalog_path + file_name + '.json')
         if not file_path.exists():
             error += ", Überprüfen Sie die Internetverbindung oder kontaktieren Sie den Autor"
-            cls.iface.messageBar().pushWarning(config.PLUGIN_NAME_AND_VERSION, error)
+            cls.iface.messageBar().pushMessage(
+                config.PLUGIN_NAME_AND_VERSION, error,
+                level=Qgis.MessageLevel.Warning, duration=8,
+            )
 
             # Notify callbacks with None result for the failed catalog
             if catalog_name in cls._pending_callbacks:
