@@ -410,10 +410,11 @@ class GeoBasis_Loader(QObject):
             layer = QgsRasterLayer(uri, attributes['name'], 'wms')
 
         if not layer.isValid():
-            self.iface.messageBar().pushCritical(
+            self.iface.messageBar().pushMessage(
                 config.PLUGIN_NAME_AND_VERSION,
                 config.MY_CRITICAL_1 + attributes['name']
                 + config.MY_CRITICAL_2,
+                level=Qgis.MessageLevel.Critical, duration=5,
             )
             return
 
