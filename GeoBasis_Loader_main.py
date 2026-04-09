@@ -387,12 +387,13 @@ class GeoBasis_Loader(QObject):
         stroke_width = attributes.get('strokeWidth', 0.3)
 
         if uri == "n.n.":
-            self.iface.messageBar().pushCritical(
+            self.iface.messageBar().pushMessage(
                 config.PLUGIN_NAME_AND_VERSION,
                 config.MY_CRITICAL_1 + attributes['name']
                 + f", URL des Themas derzeit unbekannt.{'&nbsp;'}"
                 + f"Falls gültige/aktuelle URL bekannt,{'&nbsp;'}"
                 + "bitte dem Autor melden.",
+                level=Qgis.MessageLevel.Critical, duration=5,
             )
             return
 
