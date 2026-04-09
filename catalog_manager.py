@@ -258,7 +258,6 @@ class CatalogManager:
         if not is_overview_response and isinstance(services, dict):
             catalog = cls.set_internal_properties(services)
             services = list(services.items())
-            cls.catalogs = cls.catalogs
             cls.catalogs[catalog_name] = services
         else:
             cls.overview = services
