@@ -159,9 +159,15 @@ class CatalogManager:
             message = f"Es wurden {successful_count} von {handler_count} Kataloge neu geladen"
 
             if successful_count / handler_count >= 0.5:
-                cls.iface.messageBar().pushSuccess(config.PLUGIN_NAME_AND_VERSION, message)
+                cls.iface.messageBar().pushMessage(
+                    config.PLUGIN_NAME_AND_VERSION, message,
+                    level=Qgis.MessageLevel.Success, duration=5,
+                )
             else:
-                cls.iface.messageBar().pushWarning(config.PLUGIN_NAME_AND_VERSION, message)
+                cls.iface.messageBar().pushMessage(
+                    config.PLUGIN_NAME_AND_VERSION, message,
+                    level=Qgis.MessageLevel.Warning, duration=8,
+                )
 
             cls.catalog_network_handlers.clear()
 
