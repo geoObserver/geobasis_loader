@@ -403,9 +403,6 @@ class GeoBasis_Loader(QObject):
             else:
                 QgsMessageLog.logMessage("Fehler bei Bestimmung der Geometrieart; Bestimmte Geometrie " + QgsWkbTypes.displayString(geom_type), config.PLUGIN_NAME, level=Qgis.MessageLevel.Warning)
                         
-            layer.triggerRepaint()
-            self.iface.layerTreeView().refreshLayerSymbology(layer.id())
-        
         self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, config.MY_INFO_1 + attributes['name'] + config.MY_INFO_2, level=Qgis.MessageLevel.Success, duration=1)
         # Ebene zum Projekt hinzufügen aber nicht automatisch zum Ebenenbaum
         QgsProject.instance().addMapLayer(layer, False) # type: ignore
@@ -417,6 +414,10 @@ class GeoBasis_Loader(QObject):
                 ltl.setExpanded(False)
                 visible = attributes.get(config.InternalProperties.VISIBILITY, True)
                 ltl.setItemVisibilityChecked(visible)
+
+        if isinstance(layer, QgsVectorLayer):
+            layer.triggerRepaint()
+            self.iface.layerTreeView().refreshLayerSymbology(layer.id())
 
         return layer
     
