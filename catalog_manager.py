@@ -5,7 +5,7 @@ import re
 import pathlib
 import email.utils
 from functools import partial
-from typing import Callable, Optional, Union
+from typing import Callable
 from qgis.PyQt.QtNetwork import QNetworkRequest, QNetworkReply
 from qgis.PyQt.QtCore import QUrl, QObject, pyqtSignal
 from qgis.core import QgsNetworkAccessManager, QgsSettings, QgsMessageLog, Qgis
@@ -22,7 +22,7 @@ class NetworkHandler(QObject):
     finished = pyqtSignal(str, str, float)
     error_occurred = pyqtSignal(str, str)
 
-    def __init__(self, manager: Union[QgsNetworkAccessManager, None]) -> None:
+    def __init__(self, manager: QgsNetworkAccessManager | None) -> None:
         super().__init__()
         if not manager:
             return
@@ -161,7 +161,7 @@ class CatalogManager:
             del cls._pending_callbacks[config.CATALOG_OVERVIEW_NAME]
 
     @classmethod
-    def get_overview(cls, callback: Optional[Callable] = None) -> None:
+    def get_overview(cls, callback: Callable | None = None) -> None:
         # ------- Network Handler für die Katalog Übersicht erstellen --------------
         cls.overview_network_handler = NetworkHandler(QgsNetworkAccessManager.instance())
         cls.overview_network_handler.finished.connect(cls.set_overview)
@@ -174,7 +174,7 @@ class CatalogManager:
             cls._pending_callbacks[config.CATALOG_OVERVIEW_NAME].append(callback)
 
     @classmethod
-    def get_catalog(cls, catalog_title: str, catalog_name: Optional[str] = None, callback: Optional[Callable] = None) -> Union[None, dict, list]:
+    def get_catalog(cls, catalog_title: str, catalog_name: str | None = None, callback: Callable | None = None) -> None | dict | list:
         if catalog_title == config.CATALOG_OVERVIEW_NAME:
             if cls.overview is not None:
                 if callback:
@@ -210,7 +210,7 @@ class CatalogManager:
         return None
 
     @classmethod
-    def get_current_catalog(cls, callback: Optional[Callable] = None) -> Union[None, dict, list]:
+    def get_current_catalog(cls, callback: Callable | None = None) -> None | dict | list:
         qgs_settings = QgsSettings()
         current_catalog = qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)
         if current_catalog is None or "name" not in current_catalog:
@@ -315,7 +315,7 @@ class CatalogManager:
         return properties
 
     @classmethod
-    def update_internal_properties(cls, values: Union[list[tuple[str, bool]], dict[config.InternalProperties, dict[str, bool]]], property: Union[config.InternalProperties, None] = None) -> None:
+    def update_internal_properties(cls, values: list[tuple[str, bool]] | dict[config.InternalProperties, dict[str, bool]], property: config.InternalProperties | None = None) -> None:
         if isinstance(values, list):
             if property is None:
                 raise ValueError("No property given")
@@ -376,18 +376,18 @@ class CatalogManager:
         cls.write_json(data, file_path)
 
     @classmethod
-    def write_json(cls, data: Union[dict, str], file_path: pathlib.Path) -> None:
+    def write_json(cls, data: dict | str, file_path: pathlib.Path) -> None:
         file_path.parent.mkdir(mode=0o755, parents=True, exist_ok=True)
         with open(file_path, "w", encoding="utf-8", newline="\n") as file:
             data = json.dumps(data, indent=2)
             file.write(data)
 
     @classmethod
-    def read_json(cls, file_path: pathlib.Path) -> Union[dict, list]:
+    def read_json(cls, file_path: pathlib.Path) -> dict | list:
         if not file_path.exists():
             return {}
 
-        services: Union[dict, list]
+        services: dict | list
         with open(file_path, encoding="utf-8") as file:
             services = json.load(file)
         return services

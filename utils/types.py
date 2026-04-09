@@ -1,6 +1,5 @@
 from __future__ import annotations
 from dataclasses import dataclass
-from typing import Optional, Union
 
 #
 # Diese Datei und die enthaltenen Klassen werden noch nicht verwendet
@@ -16,12 +15,12 @@ class Layer:
     valid_epsg: list[str]
     uri: str
 
-    opacity: Optional[float] = None
-    minScale: Optional[float] = None
-    maxScale: Optional[float] = None
-    fillColor: Optional[Union[str, list[int]]] = None
-    strokeWidth: Optional[float] = None
-    separator: Optional[bool] = False
+    opacity: float | None = None
+    minScale: float | None = None
+    maxScale: float | None = None
+    fillColor: str | list[int] | None = None
+    strokeWidth: float | None = None
+    separator: bool | None = False
 
 @dataclass
 class LayerGroup:
@@ -30,7 +29,7 @@ class LayerGroup:
     name: str
     layers: dict[str, Layer]
 
-    separator: Optional[bool] = False
+    separator: bool | None = False
 
 @dataclass
 class LayerCombination:
@@ -39,11 +38,11 @@ class LayerCombination:
     name: str
     layers: list[str]
 
-    separator: Optional[bool] = False
+    separator: bool | None = False
 
 @dataclass
 class LayerTheme:
     """A data class to represent a LayerTheme with various attributes. A LayerTheme is a collection of Layers, LayerGroups and LayerCombinations."""
 
     kategorie: str
-    themen: dict[str, Union[Layer, LayerGroup, LayerCombination]]
+    themen: dict[str, Layer | LayerGroup | LayerCombination]

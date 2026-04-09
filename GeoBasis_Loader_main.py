@@ -1,7 +1,6 @@
 from __future__ import annotations
 import re
 from functools import partial
-from typing import Dict, Union, Optional
 from qgis.PyQt.QtWidgets import QMenu, QAction
 from qgis.PyQt.QtGui import QIcon, QColor, QDesktopServices
 from qgis.PyQt.QtCore import QUrl, QObject
@@ -123,7 +122,7 @@ class GeoBasis_Loader(QObject):
         # ------- Status-Schaltfläche für #geoObserver ------------------------
         # self.mainMenu.addAction("Status ...", partial(self.openWebSite, 'https://geoobserver.de/qgis-plugin-geobasis-loader/#statustabelle'))
 
-    def _build_favorites_menu(self) -> Union[QMenu, None]:
+    def _build_favorites_menu(self) -> QMenu | None:
         """Collect all favorited entries from the current catalog into a menu."""
         favorites = CatalogManager.properties.get(config.InternalProperties.FAVORITE, {})
         if not any(favorites.values()):
@@ -257,7 +256,7 @@ class GeoBasis_Loader(QObject):
         self.qgs_settings.setValue(config.CURRENT_CATALOG_SETTINGS_KEY, catalog)
         CatalogManager.get_catalog(catalog["titel"], callback=self.set_services)
 
-    def set_services(self, services: Dict):
+    def set_services(self, services: dict):
         current_catalog = self.qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)
         titel = current_catalog["titel"]
         name = current_catalog["name"]
@@ -268,7 +267,7 @@ class GeoBasis_Loader(QObject):
         self.initGui()
 
     # Get crs from user
-    def get_crs(self, supported_auth_ids: list[str], layer_name: str) -> Union[str, None]:
+    def get_crs(self, supported_auth_ids: list[str], layer_name: str) -> str | None:
         if supported_auth_ids is None:
             return None
 
@@ -282,7 +281,7 @@ class GeoBasis_Loader(QObject):
 
         return current_crs
 
-    def add_topic(self, catalog_title: Optional[str] = None, path: str = ""):
+    def add_topic(self, catalog_title: str | None = None, path: str = ""):
         if path == "":
             sender = self.sender()
             if not sender:
@@ -313,7 +312,7 @@ class GeoBasis_Loader(QObject):
         else:
             self.addLayerGroup(None, layers, topic["name"])
 
-    def addLayer(self, attributes: Dict, crs: Union[str, None], standalone: bool = True):
+    def addLayer(self, attributes: dict, crs: str | None, standalone: bool = True):
         if not attributes.get(config.InternalProperties.LOADING, True):
             return None
 
@@ -420,21 +419,21 @@ class GeoBasis_Loader(QObject):
 
         return layer
 
-    def _first_non_web_layer(self, layers: dict) -> Union[dict, None]:
+    def _first_non_web_layer(self, layers: dict) -> dict | None:
         """Return the first layer entry whose type is not 'web', or None."""
         for layer in layers.values():
             if layer.get('type', config.LayerType.WMS) != config.LayerType.WEB:
                 return layer
         return None
 
-    def _resolve_crs(self, layers: dict) -> Union[str, None]:
+    def _resolve_crs(self, layers: dict) -> str | None:
         """Determine CRS from the first non-web layer via user dialog."""
         first_layer = self._first_non_web_layer(layers)
         if first_layer is None:
             return None
         return self.get_crs(first_layer.get('valid_epsg', None), first_layer.get('name', "Fehler"))
 
-    def addLayerGroup(self, preferred_crs: Union[str, None], layers: dict, name: str) -> None:
+    def addLayerGroup(self, preferred_crs: str | None, layers: dict, name: str) -> None:
         layerTreeRoot = QgsProject.instance().layerTreeRoot()
         newLayerGroup = layerTreeRoot.insertGroup(0, name)
         if newLayerGroup is None:

@@ -1,6 +1,5 @@
 from __future__ import annotations
 import os
-from typing import Union
 from qgis.PyQt import uic, QtWidgets
 from qgis.PyQt.QtCore import Qt
 from qgis.PyQt.QtGui import QShowEvent
@@ -47,13 +46,13 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         self.visibility_tree.setColumnWidth(VISIBILITY_CHECKBOX_COL, checkbox_col_width)
         self.visibility_tree.setColumnWidth(LOADING_CHECKBOX_COL, checkbox_col_width)
 
-    def showEvent(self, a0: Union[QShowEvent, None]) -> None:
+    def showEvent(self, a0: QShowEvent | None) -> None:
         super().showEvent(a0)
         self.setup()
         self.set_settings()
 
     def set_settings(self):
-        def _add_visibility_entry(data: dict, parent: Union[QtWidgets.QTreeWidgetItem, None] = None):
+        def _add_visibility_entry(data: dict, parent: QtWidgets.QTreeWidgetItem | None = None):
             name_key = "name"
             if parent is None:
                 parent = self.visibility_tree
