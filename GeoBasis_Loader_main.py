@@ -420,35 +420,31 @@ class GeoBasis_Loader(QObject):
 
         return layer
     
+    def _first_non_web_layer(self, layers: dict) -> Union[dict, None]:
+        """Return the first layer entry whose type is not 'web', or None."""
+        for layer in layers.values():
+            if layer.get('type', 'ogc_wms') != 'web':
+                return layer
+        return None
+
+    def _resolve_crs(self, layers: dict) -> Union[str, None]:
+        """Determine CRS from the first non-web layer via user dialog."""
+        first_layer = self._first_non_web_layer(layers)
+        if first_layer is None:
+            return None
+        return self.get_crs(first_layer.get('valid_epsg', None), first_layer.get('name', "Fehler"))
+
     def addLayerGroup(self, preferred_crs: Union[str, None], layers: dict, name: str) -> None:
         layerTreeRoot = QgsProject.instance().layerTreeRoot()
         newLayerGroup = layerTreeRoot.insertGroup(0, name)
         if newLayerGroup is None:
             return
-        
+
         if preferred_crs is None:
-            # Get first non-web layer for crs information
-            layers_iter = iter(layers.values())
-            first_layer = next(layers_iter, None)
-            while True:
-                if first_layer is None:
-                    return
-                
-                layer_type = first_layer.get('type', 'ogc_wms')
-                
-                if layer_type == 'web':
-                    first_layer = next(layers_iter, None)
-                    continue
-                
-                break
-            
-            supported_auth_ids = first_layer.get('valid_epsg', None)
-            layer_name = first_layer.get('name', "Fehler")
-            
-            preferred_crs = self.get_crs(supported_auth_ids, layer_name)
+            preferred_crs = self._resolve_crs(layers)
             if preferred_crs is None:
                 return
-        
+
         for layerKey in layers:
             sub_layer = self.addLayer(layers[layerKey], preferred_crs, False)
             if sub_layer is None:
@@ -458,41 +454,19 @@ class GeoBasis_Loader(QObject):
                 ltl.setExpanded(False)
                 visible = layers[layerKey].get(config.InternalProperties.VISIBILITY, True)
                 ltl.setItemVisibilityChecked(visible)
-            
+
     def addLayerCombination(self, layers) -> None:
         preferred_crs = None
-        
+
         if "layers" not in layers[0]:
             layer = layers[0]
-            supported_auth_ids = layer.get('valid_epsg', None)
-            layer_name = layer.get('name', "Fehler")
-            
-            preferred_crs = self.get_crs(supported_auth_ids, layer_name)
+            preferred_crs = self.get_crs(layer.get('valid_epsg', None), layer.get('name', "Fehler"))
         else:
-            temp_layers = layers[0]['layers']
-            # Get first non-web layer for crs information
-            layers_iter = iter(temp_layers.values())
-            first_layer = next(layers_iter, None)
-            while True:
-                if first_layer is None:
-                    return
-                
-                layer_type = first_layer.get('type', 'ogc_wms')
-                
-                if layer_type == 'web':
-                    first_layer = next(layers_iter, None)
-                    continue
-                
-                break
-            
-            supported_auth_ids = first_layer.get('valid_epsg', None)
-            layer_name = first_layer.get('name', "Fehler")
-            
-            preferred_crs = self.get_crs(supported_auth_ids, layer_name)
-        
+            preferred_crs = self._resolve_crs(layers[0]['layers'])
+
         if preferred_crs is None:
             return
-        
+
         for layer in layers:
             if "layers" not in layer:
                 self.addLayer(layer, preferred_crs)
