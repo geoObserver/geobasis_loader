@@ -57,12 +57,13 @@ class NetworkHandler(QObject):
             json_string = self.__reply.readAll().data().decode('utf-8')
             
             if is_overview_response:
-                ################################################################### Temporär
+                # WORKAROUND: Server liefert Overview als {…} mit trailing comma
+                # statt als valides JSON-Array […]. Kann entfernt werden, sobald
+                # das serverseitige Format korrigiert ist.
                 json_string = json_string.replace('\r\n', '')
                 json_string = re.sub(r'^{', '[', json_string)
                 json_string = re.sub(r",}$", ']', json_string)
                 json_string = re.sub(r"}$", ']', json_string)
-                ###################################################################        
      
             # Holt sich die Timestamps der letzten Modifikationen der lokalen JSON-Datei und der JSON-Datei aus dem Internet
             # (Über-)Schreibt dann die loakle JSON-Datei, wenn die Datei im Internet neuer ist
