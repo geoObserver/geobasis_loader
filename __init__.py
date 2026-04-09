@@ -14,5 +14,6 @@ def classFactory(iface):
 
     Returns:
         A ``GeoBasis_Loader`` plugin object bound to *iface*.
+
     """
     return GeoBasis_Loader(iface)

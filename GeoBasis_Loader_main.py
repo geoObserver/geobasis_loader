@@ -46,6 +46,7 @@ class GeoBasis_Loader(QObject):
         Args:
             iface: The QGIS interface instance providing access to the application.
             parent: Optional parent QObject for Qt ownership.
+
         """
         super().__init__(parent)
         self.iface = iface
@@ -205,6 +206,7 @@ class GeoBasis_Loader(QObject):
 
         Returns:
             A QMenu populated with actions for each layer in the topic.
+
         """
         favorites = CatalogManager.properties.get(config.InternalProperties.FAVORITE, {})
 
@@ -327,6 +329,7 @@ class GeoBasis_Loader(QObject):
 
         Args:
             catalog: Catalog metadata dict containing at least 'titel' and 'name'.
+
         """
         self.qgs_settings.setValue(config.CURRENT_CATALOG_SETTINGS_KEY, catalog)
         CatalogManager.get_catalog(catalog["titel"], callback=self.set_services)
@@ -336,6 +339,7 @@ class GeoBasis_Loader(QObject):
 
         Args:
             services: Parsed catalog data (list of state/topic tuples).
+
         """
         current_catalog = self.qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)
         titel = current_catalog["titel"]
@@ -362,6 +366,7 @@ class GeoBasis_Loader(QObject):
 
         Returns:
             The selected CRS authority ID, or None if the user cancelled.
+
         """
         if supported_auth_ids is None:
             return None
@@ -387,6 +392,7 @@ class GeoBasis_Loader(QObject):
             catalog_title: Title of the catalog to look up. Defaults to the
                 current catalog from settings.
             path: Slash-separated path to the topic within the catalog.
+
         """
         if path == "":
             sender = self.sender()
@@ -437,6 +443,7 @@ class GeoBasis_Loader(QObject):
         Returns:
             The created QgsMapLayer instance, or None if loading failed or
             was cancelled.
+
         """
         if not attributes.get(config.InternalProperties.LOADING, True):
             return None
@@ -607,6 +614,7 @@ class GeoBasis_Loader(QObject):
                 the CRS is resolved from the first non-web layer via user dialog.
             layers: Dictionary of layer attribute dicts to add.
             name: Display name for the layer group in the layer tree.
+
         """
         layerTreeRoot = QgsProject.instance().layerTreeRoot()
         newLayerGroup = layerTreeRoot.insertGroup(0, name)
@@ -643,6 +651,7 @@ class GeoBasis_Loader(QObject):
         Args:
             layers: List of topic dicts. Each entry is either a single layer
                 dict or a group dict containing a 'layers' key.
+
         """
         preferred_crs = None
 

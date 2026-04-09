@@ -42,6 +42,7 @@ class EpsgDialog(QtWidgets.QDialog, EPSG_DIALOG):
             supported_auth_ids: Authority IDs of the supported coordinate
                 reference systems (e.g. ``["EPSG:25832", "EPSG:4326"]``).
             layer_name: Name of the layer, shown in the dialog title.
+
         """
         # Gespeichertes Koordinatensystem zurücksetzen
         self.selected_coord = None

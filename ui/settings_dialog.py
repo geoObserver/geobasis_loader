@@ -31,6 +31,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
 
         Args:
             parent: Optional parent widget for the dialog.
+
         """
         QtWidgets.QDialog.__init__(self, parent)
         self.setupUi(self)
@@ -78,6 +79,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
 
         Args:
             a0: The show event provided by Qt.
+
         """
         super().showEvent(a0)
         self.setup()
@@ -151,6 +153,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         Args:
             column: Column index of the checkbox to update.
             state: The desired ``Qt.CheckState`` (Checked or Unchecked).
+
         """
         for item in self._items:
             item.setCheckState(column, state)

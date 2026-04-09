@@ -25,6 +25,7 @@ class SearchFilter(QgsLocatorFilter):
         Args:
             gbl: The main ``GeoBasis_Loader`` plugin instance, used to
                 trigger topic loading on result selection.
+
         """
         super().__init__()
         self.setUseWithoutPrefix(True)
@@ -39,6 +40,7 @@ class SearchFilter(QgsLocatorFilter):
 
         Returns:
             The filter's internal identifier string.
+
         """
         return "GeoBasis_Loader Suche"
 
@@ -50,6 +52,7 @@ class SearchFilter(QgsLocatorFilter):
 
         Returns:
             The display name (delegates to ``name``).
+
         """
         return self.name()
 
@@ -61,6 +64,7 @@ class SearchFilter(QgsLocatorFilter):
 
         Returns:
             A user-facing description string (in German).
+
         """
         return "Nach einem Thema im GeoBasis_Loader suchen"
 
@@ -72,6 +76,7 @@ class SearchFilter(QgsLocatorFilter):
 
         Returns:
             The prefix string ``"gbl"``.
+
         """
         return "gbl"
 
@@ -83,6 +88,7 @@ class SearchFilter(QgsLocatorFilter):
 
         Returns:
             A new ``SearchFilter`` instance sharing the same plugin reference.
+
         """
         return self.__class__(self.gbl)
 
@@ -98,6 +104,7 @@ class SearchFilter(QgsLocatorFilter):
             string: The user's search query from the locator bar.
             context: The locator context (unused but required by API).
             feedback: Feedback object used to check for cancellation.
+
         """
         if string is None:
             return
@@ -143,6 +150,7 @@ class SearchFilter(QgsLocatorFilter):
 
         Args:
             result: The locator result the user selected.
+
         """
         data = result.userData()
         self.gbl.add_topic(data["catalog_name"], data["path"])

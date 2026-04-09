@@ -43,6 +43,7 @@ class NetworkHandler(QObject):
         Args:
             manager: The shared ``QgsNetworkAccessManager`` instance.
                 If ``None``, the handler is left in an inert state.
+
         """
         super().__init__()
         if not manager:
@@ -82,6 +83,7 @@ class NetworkHandler(QObject):
         Args:
             catalog_name: File name of the catalog (with or without ``.json``).
             catalog_title: Human-readable title used for signal callbacks.
+
         """
         if not catalog_name.endswith(".json"):
             catalog_name += ".json"
@@ -177,6 +179,7 @@ class CatalogManager:
 
         Args:
             iface: The running QGIS application interface.
+
         """
         cls.iface = iface
         cls.properties = cls.load_internal_properties()
@@ -190,6 +193,7 @@ class CatalogManager:
 
         Returns:
             A ``NetworkHandler`` wired to ``add_catalog`` and ``handle_fetch_error``.
+
         """
         if cls.catalog_network_handlers.get(catalog_title, None) is not None:
             handler = cls.catalog_network_handlers[catalog_title]
@@ -230,6 +234,7 @@ class CatalogManager:
             catalog_name: Identifier used for cache file naming.
             last_modified: Server-side timestamp for cache comparison.
             fetch_catalogs: If ``True``, immediately fetch every catalog listed in the overview.
+
         """
         cls.overview = json.loads(overview)
         file_name = 'katalog_overview'
@@ -256,6 +261,7 @@ class CatalogManager:
 
         Args:
             callback: Optional callable invoked (with no arguments) once the overview is available.
+
         """
         # ------- Network Handler für die Katalog Übersicht erstellen --------------
         cls.overview_network_handler = NetworkHandler(QgsNetworkAccessManager.instance())
@@ -284,6 +290,7 @@ class CatalogManager:
         Returns:
             The catalog data if already cached, otherwise ``None`` (result
             delivered later via *callback*).
+
         """
         if catalog_title == config.CATALOG_OVERVIEW_NAME:
             if cls.overview is not None:
@@ -333,6 +340,7 @@ class CatalogManager:
 
         Returns:
             Catalog data, or ``None`` if no catalog is selected or data is not yet available.
+
         """
         qgs_settings = QgsSettings()
         current_catalog = qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)
@@ -349,6 +357,7 @@ class CatalogManager:
             catalog: Raw JSON string of the catalog.
             catalog_name: Human-readable title (used as dict key and for the cache file name).
             last_modified: Server-side timestamp for cache comparison.
+
         """
         catalog = json.loads(catalog)
         if isinstance(catalog, dict):
@@ -376,6 +385,7 @@ class CatalogManager:
         Args:
             error: Human-readable error description.
             catalog_name: Title of the catalog that failed to load.
+
         """
         is_overview_response = catalog_name == config.CATALOG_OVERVIEW_NAME
 
@@ -439,6 +449,7 @@ class CatalogManager:
 
         Returns:
             Mapping of each ``InternalProperties`` member to its per-path boolean state.
+
         """
         props = config.InternalProperties.get_properties()
         properties = {}
@@ -481,6 +492,7 @@ class CatalogManager:
             values: Either a list of ``(path, state)`` tuples for a single property,
                 or a dict mapping multiple ``InternalProperties`` to their updates.
             property: Required when *values* is a list; identifies which property to update.
+
         """
         if isinstance(values, list):
             if property is None:
@@ -514,6 +526,7 @@ class CatalogManager:
 
         Returns:
             The same *catalog* dict with ``InternalProperties`` keys injected.
+
         """
         def _apply_properties_flags(data: dict, path_prefix: str = ""):
             for key, value in data.items():
@@ -557,6 +570,7 @@ class CatalogManager:
         Args:
             data: Python object (or already-serialized string) to persist.
             file_path: Destination path; parent directories are created if needed.
+
         """
         file_path.parent.mkdir(mode=0o755, parents=True, exist_ok=True)
         with open(file_path, "w", encoding="utf-8", newline="\n") as file:
@@ -572,6 +586,7 @@ class CatalogManager:
 
         Returns:
             Parsed JSON content, or an empty dict if the file does not exist.
+
         """
         if not file_path.exists():
             return {}
