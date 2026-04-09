@@ -216,7 +216,7 @@ class CatalogManager:
     @classmethod
     def add_catalog(cls, catalog: str, catalog_name: str, last_modified: float) -> None:
         catalog = json.loads(catalog)
-        if type(catalog) == dict:
+        if isinstance(catalog, dict):
             catalog = cls.set_internal_properties(catalog)
             cls.catalogs[catalog_name] = list(catalog.items())
         
@@ -255,7 +255,7 @@ class CatalogManager:
             return
 
         services = cls.read_json(file_path)
-        if not is_overview_response and type(services) == dict:
+        if not is_overview_response and isinstance(services, dict):
             catalog = cls.set_internal_properties(services)
             services = list(services.items())
             cls.catalogs = cls.catalogs

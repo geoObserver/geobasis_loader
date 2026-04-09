@@ -72,7 +72,7 @@ class GeoBasis_Loader(QObject):
             # ------- Menübaum bauen und einfügen ------------------------
             for state in self.services:
                 # Falls der zweite Eintrag kein Dictionary ist, überspringen, da es Metadata ist
-                if type(state[1]) != dict or not state[1][config.InternalProperties.VISIBILITY]:
+                if not isinstance(state[1], dict) or not state[1][config.InternalProperties.VISIBILITY]:
                     continue
                 menu = self.gui_for_one_topic(state[1]['themen'], state[0])
                 
@@ -244,7 +244,7 @@ class GeoBasis_Loader(QObject):
 
     def open_web_site(self):
         sender = self.sender()
-        if not sender or type(sender) != QAction:
+        if not sender or not isinstance(sender, QAction):
             return
         
         data = sender.data() # type: ignore
@@ -303,7 +303,7 @@ class GeoBasis_Loader(QObject):
             return
         
         layers = topic["layers"]
-        if type(layers) == list:
+        if isinstance(layers, list):
             combination_layers = []
             group_key = path.split("/")[0]
             for layer in layers:
@@ -385,8 +385,8 @@ class GeoBasis_Loader(QObject):
                 layer.setScaleBasedVisibility(True)
         
         if isinstance(layer, QgsVectorLayer):
-            fill_color: QColor = QColor(*[int(c) for c in fillColor]) if type(fillColor) == list else QColor(fillColor)
-            strokeColor: QColor = QColor(*[int(c) for c in strokeColor]) if type(strokeColor) == list else QColor(strokeColor)
+            fill_color: QColor = QColor(*[int(c) for c in fillColor]) if isinstance(fillColor, list) else QColor(fillColor)
+            strokeColor: QColor = QColor(*[int(c) for c in strokeColor]) if isinstance(strokeColor, list) else QColor(strokeColor)
             
             symbol_layer: QgsSymbolLayer = layer.renderer().symbol().symbolLayer(0)
             symbol_layer.setColor(fill_color)
