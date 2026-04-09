@@ -34,7 +34,10 @@ class NetworkHandler(QObject):
     def __fetch_data(self, url: str = '') -> QNetworkReply:
         q_url = QUrl(url)
         request = QNetworkRequest(q_url)
-        request.setAttribute(QNetworkRequest.Attribute.CacheLoadControlAttribute, QNetworkRequest.CacheLoadControl.AlwaysNetwork)
+        request.setAttribute(
+            QNetworkRequest.Attribute.CacheLoadControlAttribute,
+            QNetworkRequest.CacheLoadControl.AlwaysNetwork,
+        )
         if self._server == config.ServerHosts.GITHUB:
             mediatype = "application/vnd.github.raw+json"
         else:
@@ -45,7 +48,11 @@ class NetworkHandler(QObject):
     def fetch_catalog_overview(self) -> None:
         url = self._server.format(name=config.CATALOG_OVERVIEW)
         self.__reply = self.__fetch_data(url=url)
-        self.__reply.finished.connect(partial(self.__handle_response, config.CATALOG_OVERVIEW, config.CATALOG_OVERVIEW_NAME, True))
+        self.__reply.finished.connect(
+            partial(self.__handle_response,
+                    config.CATALOG_OVERVIEW,
+                    config.CATALOG_OVERVIEW_NAME, True),
+        )
 
     def fetch_catalog(self, catalog_name: str, catalog_title: str) -> None:
         if not catalog_name.endswith(".json"):
@@ -69,29 +76,48 @@ class NetworkHandler(QObject):
                 json_string = re.sub(r",}$", ']', json_string)
                 json_string = re.sub(r"}$", ']', json_string)
 
-            # Holt sich die Timestamps der letzten Modifikationen der lokalen JSON-Datei und der JSON-Datei aus dem Internet
-            # (Über-)Schreibt dann die loakle JSON-Datei, wenn die Datei im Internet neuer ist
-            # Sozusagen eigene Cache-Implementation
-            networkLastModifiedRawValue = self.__reply.rawHeader(bytearray('Last-Modified', "utf-8")).data().decode()
+            # Timestamps der letzten Modifikationen (lokal vs. Internet)
+            # vergleichen und lokale Datei ueberschreiben, wenn Internet
+            # neuer ist (eigene Cache-Implementation)
+            networkLastModifiedRawValue = (
+                self.__reply.rawHeader(
+                    bytearray('Last-Modified', "utf-8"),
+                ).data().decode()
+            )
             try:
                 networkLastModified = email.utils.parsedate_to_datetime(networkLastModifiedRawValue).timestamp()
             except (ValueError, TypeError):
                 networkLastModified = 0.0
-                QgsMessageLog.logMessage(f"Invalid Last-Modified header: '{networkLastModifiedRawValue}'", config.PLUGIN_NAME, level=Qgis.MessageLevel.Warning)
+                QgsMessageLog.logMessage(
+                    f"Invalid Last-Modified header: "
+                    f"'{networkLastModifiedRawValue}'",
+                    config.PLUGIN_NAME,
+                    level=Qgis.MessageLevel.Warning,
+                )
             self.successful = True
             self.done = True
             self.finished.emit(json_string, catalog_title, networkLastModified)
 
             total_server_list = config.ServerHosts.get_all_servers()
             index = total_server_list.index(self._server)
-            QgsMessageLog.logMessage(f"Katalog '{catalog_name}' erfolgreich von Server {index + 1} geladen", config.PLUGIN_NAME, level=Qgis.MessageLevel.Info)
+            QgsMessageLog.logMessage(
+                f"Katalog '{catalog_name}' erfolgreich von "
+                f"Server {index + 1} geladen",
+                config.PLUGIN_NAME,
+                level=Qgis.MessageLevel.Info,
+            )
             return
 
         curr_server_index = self._server_list.index(self._server)
         if curr_server_index == len(self._server_list) - 1:
             self.error_occurred.emit("Netzwerkfehler beim Laden der URL's", catalog_title)
             self.done = True
-            QgsMessageLog.logMessage(f"Katalog '{catalog_name}' konnte nicht von einem Server geladen werden", config.PLUGIN_NAME, level=Qgis.MessageLevel.Warning)
+            QgsMessageLog.logMessage(
+                f"Katalog '{catalog_name}' konnte nicht von "
+                "einem Server geladen werden",
+                config.PLUGIN_NAME,
+                level=Qgis.MessageLevel.Warning,
+            )
         else:
             self._server = self._server_list[curr_server_index + 1]
             if is_overview_response:
@@ -174,7 +200,11 @@ class CatalogManager:
             cls._pending_callbacks[config.CATALOG_OVERVIEW_NAME].append(callback)
 
     @classmethod
-    def get_catalog(cls, catalog_title: str, catalog_name: str | None = None, callback: Callable | None = None) -> None | dict | list:
+    def get_catalog(
+        cls, catalog_title: str,
+        catalog_name: str | None = None,
+        callback: Callable | None = None,
+    ) -> None | dict | list:
         if catalog_title == config.CATALOG_OVERVIEW_NAME:
             if cls.overview is not None:
                 if callback:
@@ -187,7 +217,11 @@ class CatalogManager:
             return cls.catalogs[catalog_title]
 
         if cls.overview_network_handler.done:
-            cls.iface.messageBar().pushWarning(config.PLUGIN_NAME_AND_VERSION, "Katalog Übersicht ist nicht geladen, Bitte warten Sie oder kontaktieren Sie den Author")
+            cls.iface.messageBar().pushWarning(
+                config.PLUGIN_NAME_AND_VERSION,
+                "Katalog Übersicht ist nicht geladen, "
+                "Bitte warten Sie oder kontaktieren Sie den Author",
+            )
         else:
             if callback:
                 if catalog_title not in cls._pending_callbacks:
@@ -243,7 +277,11 @@ class CatalogManager:
     def handle_fetch_error(cls, error: str, catalog_name: str) -> None:
         is_overview_response = catalog_name == config.CATALOG_OVERVIEW_NAME
 
-        file_name = re.sub(r'\ ', '_', catalog_name.split(':')[0].lower()) if not is_overview_response else 'katalog_overview'
+        file_name = (
+            re.sub(r'\ ', '_', catalog_name.split(':')[0].lower())
+            if not is_overview_response
+            else 'katalog_overview'
+        )
         file_path = pathlib.Path(cls.catalog_path + file_name + '.json')
         if not file_path.exists():
             error += ", Überprüfen Sie die Internetverbindung oder kontaktieren Sie den Autor"
@@ -315,7 +353,12 @@ class CatalogManager:
         return properties
 
     @classmethod
-    def update_internal_properties(cls, values: list[tuple[str, bool]] | dict[config.InternalProperties, dict[str, bool]], property: config.InternalProperties | None = None) -> None:
+    def update_internal_properties(
+        cls,
+        values: (list[tuple[str, bool]]
+                 | dict[config.InternalProperties, dict[str, bool]]),
+        property: config.InternalProperties | None = None,
+    ) -> None:
         if isinstance(values, list):
             if property is None:
                 raise ValueError("No property given")

@@ -23,10 +23,18 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         # Visibility tree buttons/actions
         self.expand_button.clicked.connect(self.visibility_tree.expandAll)
         self.collapse_button.clicked.connect(self.visibility_tree.collapseAll)
-        self.check_visibility_button.clicked.connect(lambda: self.set_check_state_all_items(VISIBILITY_CHECKBOX_COL, Qt.CheckState.Checked))
-        self.uncheck_visibility_button.clicked.connect(lambda: self.set_check_state_all_items(VISIBILITY_CHECKBOX_COL, Qt.CheckState.Unchecked))
-        self.check_loading_button.clicked.connect(lambda: self.set_check_state_all_items(LOADING_CHECKBOX_COL, Qt.CheckState.Checked))
-        self.uncheck_loading_button.clicked.connect(lambda: self.set_check_state_all_items(LOADING_CHECKBOX_COL, Qt.CheckState.Unchecked))
+        self.check_visibility_button.clicked.connect(
+            lambda: self.set_check_state_all_items(
+                VISIBILITY_CHECKBOX_COL, Qt.CheckState.Checked))
+        self.uncheck_visibility_button.clicked.connect(
+            lambda: self.set_check_state_all_items(
+                VISIBILITY_CHECKBOX_COL, Qt.CheckState.Unchecked))
+        self.check_loading_button.clicked.connect(
+            lambda: self.set_check_state_all_items(
+                LOADING_CHECKBOX_COL, Qt.CheckState.Checked))
+        self.uncheck_loading_button.clicked.connect(
+            lambda: self.set_check_state_all_items(
+                LOADING_CHECKBOX_COL, Qt.CheckState.Unchecked))
 
         # Button box
         self.button_box.accepted.connect(self.confirm_settings)
@@ -67,13 +75,25 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
                         item.setText(0, value[name_key])
                         item.setFlags(item.flags() | Qt.ItemFlag.ItemIsAutoTristate | Qt.ItemFlag.ItemIsUserCheckable)
                         # Favorite
-                        checked = Qt.CheckState.Checked if value.get(config.InternalProperties.FAVORITE, False) else Qt.CheckState.Unchecked
+                        checked = (
+                            Qt.CheckState.Checked
+                            if value.get(config.InternalProperties.FAVORITE, False)
+                            else Qt.CheckState.Unchecked
+                        )
                         item.setCheckState(FAVORITE_CHECKBOX_COL, checked)
                         # Visibility
-                        checked = Qt.CheckState.Checked if value.get(config.InternalProperties.VISIBILITY, True) else Qt.CheckState.Unchecked
+                        checked = (
+                            Qt.CheckState.Checked
+                            if value.get(config.InternalProperties.VISIBILITY, True)
+                            else Qt.CheckState.Unchecked
+                        )
                         item.setCheckState(VISIBILITY_CHECKBOX_COL, checked)
                         # Loading
-                        checked = Qt.CheckState.Checked if value.get(config.InternalProperties.LOADING, True) else Qt.CheckState.Unchecked
+                        checked = (
+                            Qt.CheckState.Checked
+                            if value.get(config.InternalProperties.LOADING, True)
+                            else Qt.CheckState.Unchecked
+                        )
                         item.setCheckState(LOADING_CHECKBOX_COL, checked)
                         item.setData(0, Qt.ItemDataRole.UserRole, value.get(config.InternalProperties.PATH, None))
                         self._items.append(item)
@@ -108,7 +128,10 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
             viewport.update()
 
     def restore_defaults(self) -> None:
-        prompt_reply = QtWidgets.QMessageBox.question(self, "Werkseinstellungen", "Sollen alle Einstellungen zurückgesetzt werden?")
+        prompt_reply = QtWidgets.QMessageBox.question(
+            self, "Werkseinstellungen",
+            "Sollen alle Einstellungen zurückgesetzt werden?",
+        )
         if prompt_reply != QtWidgets.QMessageBox.StandardButton.Yes:
             return
 

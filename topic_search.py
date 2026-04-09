@@ -55,7 +55,10 @@ class SearchFilter(QgsLocatorFilter):
                         if any(string in keyword.lower() for keyword in topic["keywords"]):
                             hit = True
 
-                    # Momentan werden nur Knoten zurückgegeben aber nicht die Ebenen darin. So lassen oder wirklich alle Ebenen anzeigen? Kann halt bei Knoten die Resultate stark vergrößern (bspw. bei Verwaltungsgrenzen)
+                    # Momentan werden nur Knoten zurueckgegeben aber nicht
+                    # die Ebenen darin. So lassen oder wirklich alle Ebenen
+                    # anzeigen? Kann bei Knoten die Resultate stark
+                    # vergroessern (bspw. bei Verwaltungsgrenzen)
 
                     if hit:
                         data = {

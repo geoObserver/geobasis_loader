@@ -33,7 +33,10 @@ class LayerGroup:
 
 @dataclass
 class LayerCombination:
-    """A data class to represent a LayerCombination with various attributes. A LayerCombination references existing Layers."""
+    """A data class to represent a LayerCombination.
+
+    A LayerCombination references existing Layers.
+    """
 
     name: str
     layers: list[str]
@@ -42,7 +45,11 @@ class LayerCombination:
 
 @dataclass
 class LayerTheme:
-    """A data class to represent a LayerTheme with various attributes. A LayerTheme is a collection of Layers, LayerGroups and LayerCombinations."""
+    """A data class to represent a LayerTheme.
+
+    A LayerTheme is a collection of Layers, LayerGroups
+    and LayerCombinations.
+    """
 
     kategorie: str
     themen: dict[str, Layer | LayerGroup | LayerCombination]

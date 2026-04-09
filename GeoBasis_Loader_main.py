@@ -5,7 +5,11 @@ from qgis.PyQt.QtWidgets import QMenu, QAction
 from qgis.PyQt.QtGui import QIcon, QColor, QDesktopServices
 from qgis.PyQt.QtCore import QUrl, QObject
 # from qgis.PyQt.QtWebKitWidgets import QWebView # type: ignore
-from qgis.core import QgsSettings, QgsProject, QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer, QgsLayerTree, QgsSymbolLayer, QgsWkbTypes, QgsMessageLog, Qgis
+from qgis.core import (
+    QgsSettings, QgsProject, QgsVectorLayer, QgsRasterLayer,
+    QgsVectorTileLayer, QgsLayerTree, QgsSymbolLayer, QgsWkbTypes,
+    QgsMessageLog, Qgis,
+)
 from qgis.gui import QgisInterface
 from .topic_search import SearchFilter
 from . import config
@@ -52,7 +56,12 @@ class GeoBasis_Loader(QObject):
 
         self.search_filter = SearchFilter(self)
         self.iface.registerLocatorFilter(self.search_filter)
-        #self.iface.messageBar().pushMessage(self.myPluginV,f'Sollte Euch das Plugin gefallen,{"&nbsp;"}könnt Ihr es gern mit Eurer Mitarbeit,{"&nbsp;"}einem Voting und ggf.{"&nbsp;"}einem kleinen Betrag unterstützen ...{"&nbsp;"}Danke!!', 3, 8)
+        # self.iface.messageBar().pushMessage(
+        #     self.myPluginV,
+        #     f'Sollte Euch das Plugin gefallen,{"&nbsp;"}könnt Ihr es gern '
+        #     f'mit Eurer Mitarbeit,{"&nbsp;"}einem Voting und ggf.{"&nbsp;"}'
+        #     f'einem kleinen Betrag unterstützen ...{"&nbsp;"}Danke!!',
+        #     3, 8)
 
     def initGui(self) -> None:
         self.main_menu.clear()
@@ -93,7 +102,10 @@ class GeoBasis_Loader(QObject):
 
             # ------- Einträge im Katalogmenü erstellen ------------------------
             for catalog in CatalogManager.overview:
-                catalog_action = catalogs_menu.addAction(catalog["titel"], partial(self.change_current_catalog, catalog))
+                catalog_action = catalogs_menu.addAction(
+                    catalog["titel"],
+                    partial(self.change_current_catalog, catalog),
+                )
                 catalog_action.setObjectName("open-" + catalog["titel"])
 
             action = self.main_menu.addAction("Kataloge neu laden (Reload Catalogs)")
@@ -102,7 +114,12 @@ class GeoBasis_Loader(QObject):
             self.main_menu.addSeparator()
 
         # ------- Über-Schaltfläche für die JSON-Datei ------------------------
-        action = QAction(text="Wenn möglich, Dienste autom. im KBS laden", parent=self.main_menu, checkable=True, checked=self.automatic_crs)
+        action = QAction(
+            text="Wenn möglich, Dienste autom. im KBS laden",
+            parent=self.main_menu,
+            checkable=True,
+            checked=self.automatic_crs,
+        )
         action.toggled.connect(self.toggle_automatic_crs)
         self.main_menu.addAction(action)
 
@@ -163,7 +180,10 @@ class GeoBasis_Loader(QObject):
     def gui_for_one_topic(self, topic_dict: dict, topic_abbreviation: str) -> QMenu:
         favorites = CatalogManager.properties.get(config.InternalProperties.FAVORITE, {})
 
-        def _create_action(name: str, parent: QMenu, path: str, tip: str = "Thema hinzufügen", slot = self.add_topic) -> QAction:
+        def _create_action(
+            name: str, parent: QMenu, path: str,
+            tip: str = "Thema hinzufügen", slot=self.add_topic,
+        ) -> QAction:
             display_name = STAR_PREFIX + name if favorites.get(path, False) else name
             action = QAction(display_name, parent)
             action.setObjectName(name)
@@ -182,7 +202,10 @@ class GeoBasis_Loader(QObject):
                 continue
 
             if baseLayer.get("type", "").lower() == config.LayerType.WEB:
-                action = _create_action(baseLayer["name"], menu, baseLayer["uri"], "Informationen öffnen", self.open_web_site)
+                action = _create_action(
+                    baseLayer["name"], menu, baseLayer["uri"],
+                    "Informationen öffnen", self.open_web_site,
+                )
                 menu.addAction(action)
                 continue
 
@@ -190,7 +213,11 @@ class GeoBasis_Loader(QObject):
                 layergroup_menu = QMenu(baseLayer["name"], menu)
                 layergroup_menu.setToolTipsVisible(True)
 
-                add_all_action = _create_action("Alle laden", layergroup_menu, baseLayer[config.InternalProperties.PATH], "Alle Themen der Gruppe laden")
+                add_all_action = _create_action(
+                    "Alle laden", layergroup_menu,
+                    baseLayer[config.InternalProperties.PATH],
+                    "Alle Themen der Gruppe laden",
+                )
                 layergroup_menu.addAction(add_all_action)
                 layergroup_menu.addSeparator()
 
@@ -199,9 +226,16 @@ class GeoBasis_Loader(QObject):
                         continue
 
                     if layer.get("type", "").lower() == config.LayerType.WEB:
-                        sublayer_action = _create_action(layer["name"], layergroup_menu, layer["uri"], "Informationen öffnen", self.open_web_site)
+                        sublayer_action = _create_action(
+                            layer["name"], layergroup_menu,
+                            layer["uri"], "Informationen öffnen",
+                            self.open_web_site,
+                        )
                     else:
-                        sublayer_action = _create_action(layer["name"], layergroup_menu, layer[config.InternalProperties.PATH])
+                        sublayer_action = _create_action(
+                            layer["name"], layergroup_menu,
+                            layer[config.InternalProperties.PATH],
+                        )
                     layergroup_menu.addAction(sublayer_action)
 
                 menu.addMenu(layergroup_menu)
@@ -232,7 +266,11 @@ class GeoBasis_Loader(QObject):
 
         self.automatic_crs = self.qgs_settings.value(config.AUTOMATIC_CRS_SETTINGS_KEY, False, bool)
 
-        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, 'Einstellungen erfolgreich gespeichert', level=Qgis.MessageLevel.Success, duration=3)
+        self.iface.messageBar().pushMessage(
+            config.PLUGIN_NAME_AND_VERSION,
+            'Einstellungen erfolgreich gespeichert',
+            level=Qgis.MessageLevel.Success, duration=3,
+        )
         self.initGui()
 
     def toggle_automatic_crs(self) -> None:
@@ -261,7 +299,11 @@ class GeoBasis_Loader(QObject):
         titel = current_catalog["titel"]
         name = current_catalog["name"]
         version = re.findall(r'v\d+', name)[0]
-        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, 'Lese '+ titel + ", Version " + version + ' ...', level=Qgis.MessageLevel.Success, duration=3)
+        self.iface.messageBar().pushMessage(
+            config.PLUGIN_NAME_AND_VERSION,
+            'Lese ' + titel + ", Version " + version + ' ...',
+            level=Qgis.MessageLevel.Success, duration=3,
+        )
 
         self.services = services
         self.initGui()
@@ -345,7 +387,13 @@ class GeoBasis_Loader(QObject):
         stroke_width = attributes.get('strokeWidth', 0.3)
 
         if uri == "n.n.":
-            self.iface.messageBar().pushCritical(config.PLUGIN_NAME_AND_VERSION, config.MY_CRITICAL_1 + attributes['name'] + f", URL des Themas derzeit unbekannt.{'&nbsp;'}Falls gültige/aktuelle URL bekannt,{'&nbsp;'}bitte dem Autor melden.")
+            self.iface.messageBar().pushCritical(
+                config.PLUGIN_NAME_AND_VERSION,
+                config.MY_CRITICAL_1 + attributes['name']
+                + f", URL des Themas derzeit unbekannt.{'&nbsp;'}"
+                + f"Falls gültige/aktuelle URL bekannt,{'&nbsp;'}"
+                + "bitte dem Autor melden.",
+            )
             return
 
         if layer_type == config.LayerType.WFS:
@@ -361,7 +409,11 @@ class GeoBasis_Loader(QObject):
             layer = QgsRasterLayer(uri, attributes['name'], 'wms')
 
         if not layer.isValid():
-            self.iface.messageBar().pushCritical(config.PLUGIN_NAME_AND_VERSION, config.MY_CRITICAL_1 + attributes['name'] + config.MY_CRITICAL_2)
+            self.iface.messageBar().pushCritical(
+                config.PLUGIN_NAME_AND_VERSION,
+                config.MY_CRITICAL_1 + attributes['name']
+                + config.MY_CRITICAL_2,
+            )
             return
 
         if hasattr(layer, 'setOpacity'):
@@ -375,17 +427,33 @@ class GeoBasis_Loader(QObject):
 
         if min_scale is not None and max_scale is not None:
             if min_scale < max_scale:
-                self.iface.messageBar().pushCritical(config.PLUGIN_NAME_AND_VERSION, config.MY_CRITICAL_1 + attributes['name'] + "; Skalenwerte vertauscht oder fehlerhaft")
+                self.iface.messageBar().pushCritical(
+                    config.PLUGIN_NAME_AND_VERSION,
+                    config.MY_CRITICAL_1 + attributes['name']
+                    + "; Skalenwerte vertauscht oder fehlerhaft",
+                )
             elif min_scale == max_scale:
-                self.iface.messageBar().pushCritical(config.PLUGIN_NAME_AND_VERSION, config.MY_CRITICAL_1 + attributes['name'] + "; Skalenwerte gleich")
+                self.iface.messageBar().pushCritical(
+                    config.PLUGIN_NAME_AND_VERSION,
+                    config.MY_CRITICAL_1 + attributes['name']
+                    + "; Skalenwerte gleich",
+                )
             elif min_scale > max_scale:
                 layer.setMinimumScale(min_scale)
                 layer.setMaximumScale(max_scale)
                 layer.setScaleBasedVisibility(True)
 
         if isinstance(layer, QgsVectorLayer):
-            fill_color: QColor = QColor(*[int(c) for c in fill_color_val]) if isinstance(fill_color_val, list) else QColor(fill_color_val)
-            stroke_color: QColor = QColor(*[int(c) for c in stroke_color_val]) if isinstance(stroke_color_val, list) else QColor(stroke_color_val)
+            fill_color: QColor = (
+                QColor(*[int(c) for c in fill_color_val])
+                if isinstance(fill_color_val, list)
+                else QColor(fill_color_val)
+            )
+            stroke_color: QColor = (
+                QColor(*[int(c) for c in stroke_color_val])
+                if isinstance(stroke_color_val, list)
+                else QColor(stroke_color_val)
+            )
 
             symbol_layer: QgsSymbolLayer = layer.renderer().symbol().symbolLayer(0)
             symbol_layer.setColor(fill_color)
@@ -399,9 +467,19 @@ class GeoBasis_Loader(QObject):
             elif geom_type == geometry_types.Point:
                 symbol_layer.setSize(stroke_width)
             else:
-                QgsMessageLog.logMessage("Fehler bei Bestimmung der Geometrieart; Bestimmte Geometrie " + QgsWkbTypes.displayString(geom_type), config.PLUGIN_NAME, level=Qgis.MessageLevel.Warning)
+                QgsMessageLog.logMessage(
+                    "Fehler bei Bestimmung der Geometrieart; "
+                    "Bestimmte Geometrie "
+                    + QgsWkbTypes.displayString(geom_type),
+                    config.PLUGIN_NAME,
+                    level=Qgis.MessageLevel.Warning,
+                )
 
-        self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, config.MY_INFO_1 + attributes['name'] + config.MY_INFO_2, level=Qgis.MessageLevel.Success, duration=1)
+        self.iface.messageBar().pushMessage(
+            config.PLUGIN_NAME_AND_VERSION,
+            config.MY_INFO_1 + attributes['name'] + config.MY_INFO_2,
+            level=Qgis.MessageLevel.Success, duration=1,
+        )
         # Ebene zum Projekt hinzufügen aber nicht automatisch zum Ebenenbaum
         QgsProject.instance().addMapLayer(layer, False) # type: ignore
 
