@@ -1,3 +1,10 @@
+"""Async catalog fetching and caching for the GeoBasis Loader plugin.
+
+Provides ``NetworkHandler`` for non-blocking HTTP requests with server
+fallback and ``CatalogManager`` as a singleton-style registry that
+stores, caches and enriches catalog data.
+"""
+
 from __future__ import annotations
 import json
 import os
@@ -12,7 +19,15 @@ from qgis.core import QgsNetworkAccessManager, QgsSettings, QgsMessageLog, Qgis
 from qgis.gui import QgisInterface
 from . import config
 
+
 class NetworkHandler(QObject):
+    """Performs async HTTP fetches for catalog JSON files.
+
+    Tries each enabled server in order and falls back to the next one on
+    failure. Emits ``finished`` on success or ``error_occurred`` when all
+    servers have been exhausted.
+    """
+
     __manager: QgsNetworkAccessManager
     __reply: QNetworkReply
 
@@ -23,6 +38,12 @@ class NetworkHandler(QObject):
     error_occurred = pyqtSignal(str, str)
 
     def __init__(self, manager: QgsNetworkAccessManager | None) -> None:
+        """Initialize the handler with a QGIS network access manager.
+
+        Args:
+            manager: The shared ``QgsNetworkAccessManager`` instance.
+                If ``None``, the handler is left in an inert state.
+        """
         super().__init__()
         if not manager:
             return
@@ -46,6 +67,7 @@ class NetworkHandler(QObject):
         return self.__manager.get(request)
 
     def fetch_catalog_overview(self) -> None:
+        """Fetch the catalog overview file from the current server."""
         url = self._server.format(name=config.CATALOG_OVERVIEW)
         self.__reply = self.__fetch_data(url=url)
         self.__reply.finished.connect(
@@ -55,6 +77,12 @@ class NetworkHandler(QObject):
         )
 
     def fetch_catalog(self, catalog_name: str, catalog_title: str) -> None:
+        """Fetch a single regional catalog by name.
+
+        Args:
+            catalog_name: File name of the catalog (with or without ``.json``).
+            catalog_title: Human-readable title used for signal callbacks.
+        """
         if not catalog_name.endswith(".json"):
             catalog_name += ".json"
         url = self._server.format(name=catalog_name)
@@ -62,6 +90,7 @@ class NetworkHandler(QObject):
         self.__reply.finished.connect(partial(self.__handle_response, catalog_name, catalog_title, False))
 
     def __handle_response(self, catalog_name: str, catalog_title: str, is_overview_response: bool):
+        """Process the network reply: cache-compare via Last-Modified, emit signals, or retry next server."""
         error = self.__reply.error()
 
         if error == QNetworkReply.NetworkError.NoError:
@@ -126,6 +155,13 @@ class NetworkHandler(QObject):
                 self.fetch_catalog(catalog_name, catalog_title)
 
 class CatalogManager:
+    """Singleton-style registry that manages catalog data, caching and internal properties.
+
+    All methods are classmethods; state is kept on the class itself.
+    Coordinates ``NetworkHandler`` instances for async fetching and
+    persists catalogs as JSON files for offline/fallback use.
+    """
+
     overview = None
     catalogs = {}
     properties: dict[config.InternalProperties, dict[str, bool]] = {}
@@ -137,11 +173,24 @@ class CatalogManager:
 
     @classmethod
     def setup(cls, iface: QgisInterface) -> None:
+        """Initialize the manager with the QGIS interface and load persisted properties.
+
+        Args:
+            iface: The running QGIS application interface.
+        """
         cls.iface = iface
         cls.properties = cls.load_internal_properties()
 
     @classmethod
     def add_network_handler(cls, catalog_title: str) -> NetworkHandler:
+        """Return an existing handler for *catalog_title* or create a new one.
+
+        Args:
+            catalog_title: Human-readable catalog title used as lookup key.
+
+        Returns:
+            A ``NetworkHandler`` wired to ``add_catalog`` and ``handle_fetch_error``.
+        """
         if cls.catalog_network_handlers.get(catalog_title, None) is not None:
             handler = cls.catalog_network_handlers[catalog_title]
         else:
@@ -153,6 +202,7 @@ class CatalogManager:
 
     @classmethod
     def clear_network_handlers(cls) -> None:
+        """Clear all handlers once every fetch has completed and show a summary message."""
         if all(handler.done for handler in cls.catalog_network_handlers.values()):
             successful_count = sum(handler.successful for handler in cls.catalog_network_handlers.values())
             handler_count = len(cls.catalog_network_handlers)
@@ -173,6 +223,14 @@ class CatalogManager:
 
     @classmethod
     def set_overview(cls, overview: str, catalog_name: str, last_modified: float, fetch_catalogs: bool = True) -> None:
+        """Parse and store the catalog overview, optionally triggering individual catalog fetches.
+
+        Args:
+            overview: Raw JSON string of the overview.
+            catalog_name: Identifier used for cache file naming.
+            last_modified: Server-side timestamp for cache comparison.
+            fetch_catalogs: If ``True``, immediately fetch every catalog listed in the overview.
+        """
         cls.overview = json.loads(overview)
         file_name = 'katalog_overview'
         file_path = pathlib.Path(cls.catalog_path + file_name + '.json')
@@ -194,6 +252,11 @@ class CatalogManager:
 
     @classmethod
     def get_overview(cls, callback: Callable | None = None) -> None:
+        """Start an async fetch of the catalog overview.
+
+        Args:
+            callback: Optional callable invoked (with no arguments) once the overview is available.
+        """
         # ------- Network Handler für die Katalog Übersicht erstellen --------------
         cls.overview_network_handler = NetworkHandler(QgsNetworkAccessManager.instance())
         cls.overview_network_handler.finished.connect(cls.set_overview)
@@ -211,6 +274,17 @@ class CatalogManager:
         catalog_name: str | None = None,
         callback: Callable | None = None,
     ) -> None | dict | list:
+        """Return a catalog by title, fetching it asynchronously if not yet loaded.
+
+        Args:
+            catalog_title: Human-readable title of the catalog.
+            catalog_name: File name of the catalog (required when overview is not yet loaded).
+            callback: Optional callable receiving the catalog data once available.
+
+        Returns:
+            The catalog data if already cached, otherwise ``None`` (result
+            delivered later via *callback*).
+        """
         if catalog_title == config.CATALOG_OVERVIEW_NAME:
             if cls.overview is not None:
                 if callback:
@@ -252,6 +326,14 @@ class CatalogManager:
 
     @classmethod
     def get_current_catalog(cls, callback: Callable | None = None) -> None | dict | list:
+        """Return the catalog selected in QgsSettings, or ``None`` if none is configured.
+
+        Args:
+            callback: Optional callable forwarded to ``get_catalog``.
+
+        Returns:
+            Catalog data, or ``None`` if no catalog is selected or data is not yet available.
+        """
         qgs_settings = QgsSettings()
         current_catalog = qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)
         if current_catalog is None or "name" not in current_catalog:
@@ -261,6 +343,13 @@ class CatalogManager:
 
     @classmethod
     def add_catalog(cls, catalog: str, catalog_name: str, last_modified: float) -> None:
+        """Parse, enrich and cache a fetched catalog. Connected as slot to ``NetworkHandler.finished``.
+
+        Args:
+            catalog: Raw JSON string of the catalog.
+            catalog_name: Human-readable title (used as dict key and for the cache file name).
+            last_modified: Server-side timestamp for cache comparison.
+        """
         catalog = json.loads(catalog)
         if isinstance(catalog, dict):
             catalog = cls.set_internal_properties(catalog)
@@ -282,6 +371,12 @@ class CatalogManager:
 
     @classmethod
     def handle_fetch_error(cls, error: str, catalog_name: str) -> None:
+        """Handle a failed catalog fetch by falling back to the local cache.
+
+        Args:
+            error: Human-readable error description.
+            catalog_name: Title of the catalog that failed to load.
+        """
         is_overview_response = catalog_name == config.CATALOG_OVERVIEW_NAME
 
         file_name = (
@@ -337,6 +432,14 @@ class CatalogManager:
 
     @classmethod
     def load_internal_properties(cls) -> dict[config.InternalProperties, dict[str, bool]]:
+        """Load internal properties (visibility, loading, favorites) from disk and QgsSettings.
+
+        Performs a one-time migration of legacy favorites from ``settings.json``
+        into ``QgsSettings``.
+
+        Returns:
+            Mapping of each ``InternalProperties`` member to its per-path boolean state.
+        """
         props = config.InternalProperties.get_properties()
         properties = {}
 
@@ -372,6 +475,13 @@ class CatalogManager:
                  | dict[config.InternalProperties, dict[str, bool]]),
         property: config.InternalProperties | None = None,
     ) -> None:
+        """Merge new property values into the current state and persist them.
+
+        Args:
+            values: Either a list of ``(path, state)`` tuples for a single property,
+                or a dict mapping multiple ``InternalProperties`` to their updates.
+            property: Required when *values* is a list; identifies which property to update.
+        """
         if isinstance(values, list):
             if property is None:
                 raise ValueError("No property given")
@@ -397,6 +507,14 @@ class CatalogManager:
 
     @classmethod
     def set_internal_properties(cls, catalog: dict) -> dict:
+        """Enrich a catalog dict with visibility, loading, favorite and path flags.
+
+        Args:
+            catalog: Raw catalog dictionary to annotate in-place.
+
+        Returns:
+            The same *catalog* dict with ``InternalProperties`` keys injected.
+        """
         def _apply_properties_flags(data: dict, path_prefix: str = ""):
             for key, value in data.items():
                 path = f"{path_prefix}/{key}" if path_prefix else key
@@ -419,6 +537,7 @@ class CatalogManager:
 
     @classmethod
     def save_internal_properties(cls) -> None:
+        """Persist current properties: favorites to QgsSettings, the rest to ``settings.json``."""
         # Favoriten in QgsSettings speichern
         qgs_settings = QgsSettings()
         qgs_settings.setValue(config.FAVORITES_SETTINGS_KEY, cls.properties.get(config.InternalProperties.FAVORITE, {}))
@@ -433,6 +552,12 @@ class CatalogManager:
 
     @classmethod
     def write_json(cls, data: dict | str, file_path: pathlib.Path) -> None:
+        """Serialize *data* as pretty-printed JSON and write it to *file_path*.
+
+        Args:
+            data: Python object (or already-serialized string) to persist.
+            file_path: Destination path; parent directories are created if needed.
+        """
         file_path.parent.mkdir(mode=0o755, parents=True, exist_ok=True)
         with open(file_path, "w", encoding="utf-8", newline="\n") as file:
             data = json.dumps(data, indent=2)
@@ -440,6 +565,14 @@ class CatalogManager:
 
     @classmethod
     def read_json(cls, file_path: pathlib.Path) -> dict | list:
+        """Read and parse a JSON file.
+
+        Args:
+            file_path: Path to the JSON file.
+
+        Returns:
+            Parsed JSON content, or an empty dict if the file does not exist.
+        """
         if not file_path.exists():
             return {}
 
