@@ -372,7 +372,7 @@ class CatalogManager:
 
     @classmethod
     def write_json(cls, data: Union[dict, str], file_path: pathlib.Path) -> None:        
-        file_path.parent.mkdir(mode=0o777, parents=True, exist_ok=True)
+        file_path.parent.mkdir(mode=0o755, parents=True, exist_ok=True)
         mode = "w" if file_path.exists() else "x"
         
         with open(file_path, mode, encoding="utf-8", newline="\n") as file:
