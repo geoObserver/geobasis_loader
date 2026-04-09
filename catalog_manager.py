@@ -191,7 +191,7 @@ class CatalogManager:
                 cls._pending_callbacks[catalog_title].append(callback)
             
             if cls.overview is not None:
-                catalog_info: dict[str, str] = list(filter(lambda x: x["titel"] == catalog_title, cls.overview))[0] # type: ignore
+                catalog_info: dict[str, str] = next(x for x in cls.overview if x["titel"] == catalog_title)  # type: ignore
             else:
                 if catalog_name is None:
                     raise ValueError("No catalog name provided")
