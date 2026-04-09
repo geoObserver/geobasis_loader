@@ -144,7 +144,7 @@ class NetworkHandler(QObject):
 
         curr_server_index = self._server_list.index(self._server)
         if curr_server_index == len(self._server_list) - 1:
-            self.error_occurred.emit("Netzwerkfehler beim Laden der URL's", catalog_title)
+            self.error_occurred.emit(config.tr("Network error loading URLs"), catalog_title)
             self.done = True
             QgsMessageLog.logMessage(
                 f"Katalog '{catalog_name}' konnte nicht von "
@@ -213,7 +213,7 @@ class CatalogManager:
         if all(handler.done for handler in cls.catalog_network_handlers.values()):
             successful_count = sum(handler.successful for handler in cls.catalog_network_handlers.values())
             handler_count = len(cls.catalog_network_handlers)
-            message = f"Es wurden {successful_count} von {handler_count} Kataloge neu geladen"
+            message = config.tr("{} of {} catalogs reloaded").format(successful_count, handler_count)
 
             if successful_count / handler_count >= 0.5:
                 cls.iface.messageBar().pushMessage(
@@ -308,8 +308,8 @@ class CatalogManager:
         if cls.overview_network_handler.done:
             cls.iface.messageBar().pushMessage(
                 config.PLUGIN_NAME_AND_VERSION,
-                "Katalog Übersicht ist nicht geladen, "
-                "Bitte warten Sie oder kontaktieren Sie den Author",
+                config.tr("Catalog overview not loaded. "
+                          "Please wait or contact the author."),
                 level=Qgis.MessageLevel.Warning, duration=8,
             )
         else:
@@ -398,7 +398,7 @@ class CatalogManager:
         )
         file_path = pathlib.Path(cls.catalog_path + file_name + '.json')
         if not file_path.exists():
-            error += ", Überprüfen Sie die Internetverbindung oder kontaktieren Sie den Autor"
+            error += config.tr(", check your internet connection or contact the author")
             cls.iface.messageBar().pushMessage(
                 config.PLUGIN_NAME_AND_VERSION, error,
                 level=Qgis.MessageLevel.Warning, duration=8,
@@ -426,7 +426,7 @@ class CatalogManager:
                 handler = cls.add_network_handler(catalog["titel"])
                 handler.fetch_catalog(catalog["name"], catalog["titel"])
 
-        error += ", Verwendung der gecachten Daten"
+        error += config.tr(", using cached data")
         cls.iface.messageBar().pushMessage(
             config.PLUGIN_NAME_AND_VERSION, error,
             level=Qgis.MessageLevel.Warning, duration=5,
