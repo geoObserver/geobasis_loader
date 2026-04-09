@@ -44,7 +44,7 @@ class SearchFilter(QgsLocatorFilter):
             The filter's internal identifier string.
 
         """
-        return "GeoBasis_Loader Suche"
+        return self.tr("GeoBasis_Loader Search")
 
     # @override
     def displayName(self) -> str:
@@ -68,7 +68,7 @@ class SearchFilter(QgsLocatorFilter):
             A user-facing description string (in German).
 
         """
-        return "Nach einem Thema im GeoBasis_Loader suchen"
+        return self.tr("Search for a topic in GeoBasis_Loader")
 
     # @override
     def prefix(self) -> str:
