@@ -22,14 +22,13 @@ STAR_PREFIX = "\u2605 "  # ★
 
 class GeoBasis_Loader(QObject):
     services = None
-
     search_filter = None
-    qgs_settings = QgsSettings()
 
 # =========================================================================
     def __init__(self, iface: QgisInterface, parent = None) -> None:
         super().__init__(parent)
         self.iface = iface
+        self.qgs_settings = QgsSettings()
         CatalogManager.setup(iface)
         CatalogManager.get_overview(callback=self.initGui)
         
