@@ -292,11 +292,10 @@ class CatalogManager:
             delivered later via *callback*).
 
         """
-        if catalog_title == config.CATALOG_OVERVIEW_NAME:
-            if cls.overview is not None:
-                if callback:
-                    callback(cls.overview)
-                return cls.overview
+        if catalog_title == config.CATALOG_OVERVIEW_NAME and cls.overview is not None:
+            if callback:
+                callback(cls.overview)
+            return cls.overview
 
         if catalog_title in cls.catalogs:
             if callback:

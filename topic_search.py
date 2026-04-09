@@ -120,12 +120,12 @@ class SearchFilter(QgsLocatorFilter):
                     return
 
                 for topic_key, topic in group["themen"].items():
-                    hit = False
-                    if string in topic["name"].lower():
-                        hit = True
-                    elif "keywords" in topic:
-                        if any(string in keyword.lower() for keyword in topic["keywords"]):
-                            hit = True
+                    hit = (
+                        string in topic["name"].lower()
+                        or ("keywords" in topic and any(
+                            string in keyword.lower() for keyword in topic["keywords"]
+                        ))
+                    )
 
                     # Momentan werden nur Knoten zurueckgegeben aber nicht
                     # die Ebenen darin. So lassen oder wirklich alle Ebenen

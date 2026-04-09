@@ -21,7 +21,7 @@ from . import config
 from . import ui as custom_ui
 from .catalog_manager import CatalogManager
 
-if Qgis.versionInt() < 33000:   # Breaking chnage in Version 3.30 -> Geometry types now in Qgis instead of QgsWkbTypes
+if Qgis.versionInt() < 33000:   # noqa: SIM108 — keep explicit for type: ignore and readability
     geometry_types = QgsWkbTypes.Type       # type: ignore
 else:
     geometry_types = Qgis.WkbType
@@ -458,7 +458,7 @@ class GeoBasis_Loader(QObject):
         if crs not in valid_epsg_codes or crs is None:
             crs = self.get_crs(valid_epsg_codes, attributes.get('name', "Fehler"))
             if crs is None:
-                return
+                return None
 
         # if crs == "OGC:CRS84":
         #     crs = "CRS:84"
@@ -469,8 +469,8 @@ class GeoBasis_Loader(QObject):
             uri += "&stepHeight=3000&stepWidth=3000"
 
         opacity = attributes.get('opacity', 1)
-        max_scale = attributes.get('maxScale', None)
-        min_scale = attributes.get('minScale', None)
+        max_scale = attributes.get('maxScale')
+        min_scale = attributes.get('minScale')
 
         fill_color_val = attributes.get('fillColor', [220,220,220])
         stroke_color_val = attributes.get('strokeColor', 'black')
@@ -485,7 +485,7 @@ class GeoBasis_Loader(QObject):
                 + "bitte dem Autor melden.",
                 level=Qgis.MessageLevel.Critical, duration=5,
             )
-            return
+            return None
 
         if layer_type == config.LayerType.WFS:
             layer = QgsVectorLayer(uri, attributes['name'], 'wfs')
@@ -506,7 +506,7 @@ class GeoBasis_Loader(QObject):
                 + config.MY_CRITICAL_2,
                 level=Qgis.MessageLevel.Critical, duration=5,
             )
-            return
+            return None
 
         if hasattr(layer, 'setOpacity'):
             layer.setOpacity(opacity)
