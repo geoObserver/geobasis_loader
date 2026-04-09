@@ -167,8 +167,8 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
     def restore_defaults(self) -> None:
         """Reset all settings to factory defaults after user confirmation."""
         prompt_reply = QtWidgets.QMessageBox.question(
-            self, "Werkseinstellungen",
-            "Sollen alle Einstellungen zurückgesetzt werden?",
+            self, self.tr("Factory Defaults"),
+            self.tr("Reset all settings to defaults?"),
         )
         if prompt_reply != QtWidgets.QMessageBox.StandardButton.Yes:
             return
