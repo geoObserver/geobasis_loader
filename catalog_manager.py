@@ -320,7 +320,10 @@ class CatalogManager:
                 handler.fetch_catalog(catalog["name"], catalog["titel"])
 
         error += ", Verwendung der gecachten Daten"
-        cls.iface.messageBar().pushWarning(config.PLUGIN_NAME_AND_VERSION, error)
+        cls.iface.messageBar().pushMessage(
+            config.PLUGIN_NAME_AND_VERSION, error,
+            level=Qgis.MessageLevel.Warning, duration=5,
+        )
 
         if catalog_name in cls._pending_callbacks:
             for callback in cls._pending_callbacks[catalog_name]:
