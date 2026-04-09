@@ -1,3 +1,5 @@
+"""Dialog for selecting a coordinate reference system (EPSG) from a list of supported CRS options."""
+
 import os
 from qgis.core import QgsCoordinateReferenceSystem
 from qgis.PyQt import uic, QtWidgets
@@ -5,6 +7,12 @@ from qgis.PyQt import uic, QtWidgets
 EPSG_DIALOG = uic.loadUiType(os.path.join(os.path.dirname(__file__), "design_files", "epsg_selector.ui"))[0]
 
 class EpsgDialog(QtWidgets.QDialog, EPSG_DIALOG):
+    """Dialog that lets the user pick a coordinate reference system from a table.
+
+    Displays supported CRS authority IDs with their descriptions and stores
+    the user's selection in ``selected_coord``.
+    """
+
     selected_coord = None
 
     def __init__(self, parent = None):
@@ -25,6 +33,16 @@ class EpsgDialog(QtWidgets.QDialog, EPSG_DIALOG):
         self.table.cellDoubleClicked.connect(self.confirm_selected_coord)
 
     def set_table_data(self, supported_auth_ids: list[str], layer_name: str) -> None:
+        """Populate the table with the given coordinate reference systems.
+
+        Resets any previous selection, updates the dialog title to include the
+        layer name, and fills the table with CRS descriptions and authority IDs.
+
+        Args:
+            supported_auth_ids: Authority IDs of the supported coordinate
+                reference systems (e.g. ``["EPSG:25832", "EPSG:4326"]``).
+            layer_name: Name of the layer, shown in the dialog title.
+        """
         # Gespeichertes Koordinatensystem zurücksetzen
         self.selected_coord = None
 
@@ -55,6 +73,12 @@ class EpsgDialog(QtWidgets.QDialog, EPSG_DIALOG):
             self.table.setItem(row_pos, 1, QtWidgets.QTableWidgetItem(auth_id))
 
     def confirm_selected_coord(self) -> None:
+        """Store the currently selected CRS authority ID and close the dialog.
+
+        Does nothing if no row is selected or the selected cell is empty.
+        On success, sets ``selected_coord`` to the authority ID string
+        (e.g. ``"EPSG:25832"``) and closes the dialog.
+        """
         row = self.table.currentRow()
         if row < 0:
             return
