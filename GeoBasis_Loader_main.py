@@ -1,3 +1,8 @@
+"""Main plugin module for GeoBasis_Loader.
+
+Provides the GeoBasis_Loader class that integrates German geodata services
+(WMS, WMTS, WFS, VectorTiles) into the QGIS layer menu.
+"""
 from __future__ import annotations
 import re
 from functools import partial
@@ -24,11 +29,24 @@ else:
 STAR_PREFIX = "\u2605 "  # ★
 
 class GeoBasis_Loader(QObject):
+    """Core QGIS plugin class for loading German geodata services.
+
+    Manages the plugin lifecycle (init, GUI build, unload), constructs the
+    catalog-driven menu tree, and creates map layers from catalog entries.
+    Instantiated by classFactory() in __init__.py via the QGIS plugin API.
+    """
+
     services = None
     search_filter = None
 
 # =========================================================================
     def __init__(self, iface: QgisInterface, parent = None) -> None:
+        """Initialize the plugin, load catalogs, and register the locator filter.
+
+        Args:
+            iface: The QGIS interface instance providing access to the application.
+            parent: Optional parent QObject for Qt ownership.
+        """
         super().__init__(parent)
         self.iface = iface
         self.qgs_settings = QgsSettings()
@@ -64,6 +82,7 @@ class GeoBasis_Loader(QObject):
         #     3, 8)
 
     def initGui(self) -> None:
+        """Build or rebuild the plugin menu from the current catalog data."""
         self.main_menu.clear()
 
         if self.services is not None:
@@ -178,6 +197,15 @@ class GeoBasis_Loader(QObject):
         return menu
 
     def gui_for_one_topic(self, topic_dict: dict, topic_abbreviation: str) -> QMenu:
+        """Create a QMenu for a single federal state or topic group.
+
+        Args:
+            topic_dict: Dictionary of topic entries from the catalog.
+            topic_abbreviation: Short identifier for the topic (e.g. state code).
+
+        Returns:
+            A QMenu populated with actions for each layer in the topic.
+        """
         favorites = CatalogManager.properties.get(config.InternalProperties.FAVORITE, {})
 
         def _create_action(
@@ -250,6 +278,7 @@ class GeoBasis_Loader(QObject):
 #===================================================================================
 
     def unload(self):
+        """Remove the plugin menu and deregister the locator filter from QGIS."""
         self.iface.invalidateLocatorResults()
         self.iface.deregisterLocatorFilter(self.search_filter)
         self.search_filter = None
@@ -259,6 +288,7 @@ class GeoBasis_Loader(QObject):
 #===================================================================================
 
     def open_settigs(self) -> None:
+        """Open the settings dialog and apply changes on accept."""
         status = self.settings_dialog.exec()
         # Abbruch
         if status == 0:
@@ -274,12 +304,14 @@ class GeoBasis_Loader(QObject):
         self.initGui()
 
     def toggle_automatic_crs(self) -> None:
+        """Toggle the automatic CRS setting and persist it to QgsSettings."""
         new_state = not self.automatic_crs
 
         self.automatic_crs = new_state
         self.qgs_settings.setValue(config.AUTOMATIC_CRS_SETTINGS_KEY, new_state)
 
     def open_web_site(self):
+        """Open the URL stored in the triggering QAction's data in the default browser."""
         sender = self.sender()
         if not sender or not isinstance(sender, QAction):
             return
@@ -291,10 +323,20 @@ class GeoBasis_Loader(QObject):
         QDesktopServices.openUrl(url)
 
     def change_current_catalog(self, catalog: dict):
+        """Switch to a different regional catalog and trigger a reload.
+
+        Args:
+            catalog: Catalog metadata dict containing at least 'titel' and 'name'.
+        """
         self.qgs_settings.setValue(config.CURRENT_CATALOG_SETTINGS_KEY, catalog)
         CatalogManager.get_catalog(catalog["titel"], callback=self.set_services)
 
     def set_services(self, services: dict):
+        """Store loaded catalog services and rebuild the menu.
+
+        Args:
+            services: Parsed catalog data (list of state/topic tuples).
+        """
         current_catalog = self.qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)
         titel = current_catalog["titel"]
         name = current_catalog["name"]
@@ -308,8 +350,19 @@ class GeoBasis_Loader(QObject):
         self.services = services
         self.initGui()
 
-    # Get crs from user
     def get_crs(self, supported_auth_ids: list[str], layer_name: str) -> str | None:
+        """Determine the CRS to use, prompting the user if necessary.
+
+        If automatic CRS is enabled and the project CRS is supported, it is
+        used directly. Otherwise, a dialog lets the user pick a CRS.
+
+        Args:
+            supported_auth_ids: List of valid authority IDs (e.g. 'EPSG:25832').
+            layer_name: Display name shown in the CRS selection dialog.
+
+        Returns:
+            The selected CRS authority ID, or None if the user cancelled.
+        """
         if supported_auth_ids is None:
             return None
 
@@ -324,6 +377,17 @@ class GeoBasis_Loader(QObject):
         return current_crs
 
     def add_topic(self, catalog_title: str | None = None, path: str = ""):
+        """Load a topic (single layer, layer group, or combination) by catalog path.
+
+        When called without arguments, the path is read from the triggering
+        QAction's data. Resolves the topic in the catalog and delegates to
+        addLayer, addLayerGroup, or addLayerCombination.
+
+        Args:
+            catalog_title: Title of the catalog to look up. Defaults to the
+                current catalog from settings.
+            path: Slash-separated path to the topic within the catalog.
+        """
         if path == "":
             sender = self.sender()
             if not sender:
@@ -355,6 +419,25 @@ class GeoBasis_Loader(QObject):
             self.addLayerGroup(None, layers, topic["name"])
 
     def addLayer(self, attributes: dict, crs: str | None, standalone: bool = True):
+        """Create and add a single map layer to the QGIS project.
+
+        Builds the appropriate layer type (WMS, WMTS, WFS, WCS, VectorTile)
+        from catalog attributes, applies styling, and inserts it into the
+        layer tree.
+
+        Args:
+            attributes: Layer definition dict from the catalog (keys: uri,
+                type, name, valid_epsg, opacity, etc.).
+            crs: Preferred CRS authority ID. If None or not in valid_epsg,
+                the user is prompted to select one.
+            standalone: If True, the layer is inserted at the root of the
+                layer tree and a success message is shown. If False, the
+                caller manages tree insertion (used for group layers).
+
+        Returns:
+            The created QgsMapLayer instance, or None if loading failed or
+            was cancelled.
+        """
         if not attributes.get(config.InternalProperties.LOADING, True):
             return None
 
@@ -517,6 +600,14 @@ class GeoBasis_Loader(QObject):
         return self.get_crs(first_layer.get('valid_epsg', None), first_layer.get('name', "Fehler"))
 
     def addLayerGroup(self, preferred_crs: str | None, layers: dict, name: str) -> None:
+        """Create a layer group and add multiple sub-layers into it.
+
+        Args:
+            preferred_crs: CRS authority ID to use for all sub-layers. If None,
+                the CRS is resolved from the first non-web layer via user dialog.
+            layers: Dictionary of layer attribute dicts to add.
+            name: Display name for the layer group in the layer tree.
+        """
         layerTreeRoot = QgsProject.instance().layerTreeRoot()
         newLayerGroup = layerTreeRoot.insertGroup(0, name)
         if newLayerGroup is None:
@@ -547,6 +638,12 @@ class GeoBasis_Loader(QObject):
             )
 
     def addLayerCombination(self, layers) -> None:
+        """Load a combination of layers and/or layer groups with a shared CRS.
+
+        Args:
+            layers: List of topic dicts. Each entry is either a single layer
+                dict or a group dict containing a 'layers' key.
+        """
         preferred_crs = None
 
         if "layers" not in layers[0]:
