@@ -49,7 +49,7 @@ class EpsgDialog(QtWidgets.QDialog, EPSG_DIALOG):
         self.selected_coord = None
 
         # Dialog Titel setzen
-        self.setWindowTitle(f"Koordinatensystem für Layer '{layer_name}'")
+        self.setWindowTitle(self.tr("Coordinate system for layer '{}'").format(layer_name))
 
         # Vorhandene Einträge löschen
         self.table.clearContents()
