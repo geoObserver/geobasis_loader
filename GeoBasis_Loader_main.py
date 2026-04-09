@@ -429,16 +429,18 @@ class GeoBasis_Loader(QObject):
 
         if min_scale is not None and max_scale is not None:
             if min_scale < max_scale:
-                self.iface.messageBar().pushCritical(
+                self.iface.messageBar().pushMessage(
                     config.PLUGIN_NAME_AND_VERSION,
                     config.MY_CRITICAL_1 + attributes['name']
                     + "; Skalenwerte vertauscht oder fehlerhaft",
+                    level=Qgis.MessageLevel.Critical, duration=5,
                 )
             elif min_scale == max_scale:
-                self.iface.messageBar().pushCritical(
+                self.iface.messageBar().pushMessage(
                     config.PLUGIN_NAME_AND_VERSION,
                     config.MY_CRITICAL_1 + attributes['name']
                     + "; Skalenwerte gleich",
+                    level=Qgis.MessageLevel.Critical, duration=5,
                 )
             elif min_scale > max_scale:
                 layer.setMinimumScale(min_scale)
