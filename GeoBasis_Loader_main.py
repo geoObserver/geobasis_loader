@@ -182,15 +182,15 @@ class GeoBasis_Loader(QObject):
             if not baseLayer[config.InternalProperties.VISIBILITY]:
                 continue
             
-            if baseLayer.get("type", "").lower() == "web":
+            if baseLayer.get("type", "").lower() == config.LayerType.WEB:
                 action = _create_action(baseLayer["name"], menu, baseLayer["uri"], "Informationen öffnen", self.open_web_site)
                 menu.addAction(action)
                 continue
-            
+
             if isinstance(baseLayer.get("layers", []), dict):
                 layergroup_menu = QMenu(baseLayer["name"], menu)
                 layergroup_menu.setToolTipsVisible(True)
-                
+
                 add_all_action = _create_action("Alle laden", layergroup_menu, baseLayer[config.InternalProperties.PATH], "Alle Themen der Gruppe laden")
                 layergroup_menu.addAction(add_all_action)
                 layergroup_menu.addSeparator()
@@ -198,8 +198,8 @@ class GeoBasis_Loader(QObject):
                 for _, layer in baseLayer["layers"].items():
                     if not layer[config.InternalProperties.VISIBILITY]:
                         continue
-                    
-                    if layer.get("type", "").lower() == "web":
+
+                    if layer.get("type", "").lower() == config.LayerType.WEB:
                         sublayer_action = _create_action(layer["name"], layergroup_menu, layer["uri"], "Informationen öffnen", self.open_web_site)
                     else:
                         sublayer_action = _create_action(layer["name"], layergroup_menu, layer[config.InternalProperties.PATH])
@@ -317,8 +317,8 @@ class GeoBasis_Loader(QObject):
         if not attributes.get(config.InternalProperties.LOADING, True):
             return None
 
-        layer_type = attributes.get('type', 'ogc_wms').lower()
-        if layer_type == "web":
+        layer_type = attributes.get('type', config.LayerType.WMS).lower()
+        if layer_type == config.LayerType.WEB:
             return None
 
         uri: str = attributes.get('uri', "n.n.")
@@ -334,7 +334,7 @@ class GeoBasis_Loader(QObject):
 
         uri = re.sub(r'EPSG:placeholder', crs, uri)
 
-        if layer_type != "ogc_wfs" and layer_type != "ogc_api_features":
+        if layer_type != config.LayerType.WFS and layer_type != config.LayerType.OGC_API_FEATURES:
             uri += "&stepHeight=3000&stepWidth=3000"
 
         opacity = attributes.get('opacity', 1)
@@ -349,14 +349,14 @@ class GeoBasis_Loader(QObject):
             self.iface.messageBar().pushCritical(config.PLUGIN_NAME_AND_VERSION, config.MY_CRITICAL_1 + attributes['name'] + f", URL des Themas derzeit unbekannt.{'&nbsp;'}Falls gültige/aktuelle URL bekannt,{'&nbsp;'}bitte dem Autor melden.")
             return
 
-        if layer_type == "ogc_wfs":
+        if layer_type == config.LayerType.WFS:
             layer = QgsVectorLayer(uri, attributes['name'], 'wfs')
-        elif layer_type == "ogc_api_features":
+        elif layer_type == config.LayerType.OGC_API_FEATURES:
             layer = QgsVectorLayer(uri, attributes['name'], 'oapif')
-        elif layer_type == "ogc_vectortiles":
+        elif layer_type == config.LayerType.VECTOR_TILES:
             layer = QgsVectorTileLayer(uri, attributes['name'])
             layer.loadDefaultStyle()
-        elif layer_type == "ogc_wcs":
+        elif layer_type == config.LayerType.WCS:
             layer = QgsRasterLayer(uri, attributes['name'], 'wcs')
         else:
             layer = QgsRasterLayer(uri, attributes['name'], 'wms')
@@ -423,7 +423,7 @@ class GeoBasis_Loader(QObject):
     def _first_non_web_layer(self, layers: dict) -> Union[dict, None]:
         """Return the first layer entry whose type is not 'web', or None."""
         for layer in layers.values():
-            if layer.get('type', 'ogc_wms') != 'web':
+            if layer.get('type', config.LayerType.WMS) != config.LayerType.WEB:
                 return layer
         return None
 

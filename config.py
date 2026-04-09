@@ -20,6 +20,16 @@ FAVORITES_SETTINGS_KEY = 'geobasis_loader/favorites'
 
 CATALOG_OVERVIEW = "GeoBasis_Loader_v6_Kataloge.json"
 CATALOG_OVERVIEW_NAME = "catalog_overview"
+
+class LayerType(str, Enum):
+    WMS = "ogc_wms"
+    WFS = "ogc_wfs"
+    WCS = "ogc_wcs"
+    WMTS = "ogc_wmts"
+    VECTOR_TILES = "ogc_vectortiles"
+    OGC_API_FEATURES = "ogc_api_features"
+    WEB = "web"
+
 class ServerHosts(str, Enum):
     GEOOBSERVER = "https://geoobserver.de/download/GeoBasis_Loader/{name}"
     GITHUB = "https://api.github.com/repos/geoObserver/geobasis_loader/contents/kataloge/{name}?ref=main"
