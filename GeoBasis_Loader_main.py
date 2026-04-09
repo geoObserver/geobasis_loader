@@ -127,7 +127,7 @@ class GeoBasis_Loader(QObject):
 
         if CatalogManager.overview is not None:
             # ------- Katalogmenü erstellen ------------------------------------
-            catalogs_menu = self.main_menu.addMenu("Katalog wechseln (Change Catalogs)")
+            catalogs_menu = self.main_menu.addMenu(self.tr("Change Catalog"))
             catalogs_menu.setObjectName('catalog-overview')
 
             # ------- Einträge im Katalogmenü erstellen ------------------------
@@ -138,14 +138,14 @@ class GeoBasis_Loader(QObject):
                 )
                 catalog_action.setObjectName("open-" + catalog["titel"])
 
-            action = self.main_menu.addAction("Kataloge neu laden (Reload Catalogs)")
+            action = self.main_menu.addAction(self.tr("Reload Catalogs"))
             action.triggered.connect(lambda: CatalogManager.get_overview(callback=self.initGui))
 
             self.main_menu.addSeparator()
 
         # ------- Über-Schaltfläche für die JSON-Datei ------------------------
         action = QAction(
-            text="Wenn möglich, Dienste autom. im KBS laden",
+            text=self.tr("Load services in project CRS when possible"),
             parent=self.main_menu,
             checkable=True,
             checked=self.automatic_crs,
@@ -153,16 +153,16 @@ class GeoBasis_Loader(QObject):
         action.toggled.connect(self.toggle_automatic_crs)
         self.main_menu.addAction(action)
 
-        self.main_menu.addAction("Einstellungen (Aktueller Katalog)", self.open_settigs)
+        self.main_menu.addAction(self.tr("Settings (Current Catalog)"), self.open_settigs)
         self.main_menu.addSeparator()
 
         # ------- Spenden-Schaltfläche für #geoObserver ------------------------
-        action = self.main_menu.addAction("GeoBasis_Loader per Spende unterstützen ...", self.open_web_site)
+        action = self.main_menu.addAction(self.tr("Support GeoBasis_Loader with a donation ..."), self.open_web_site)
         if action:
             action.setData('https://geoobserver.de/support_geobasis_loader/')
 
         # ------- Über-Schaltfläche für #geoObserver ------------------------
-        action = self.main_menu.addAction("Über ...", self.open_web_site)
+        action = self.main_menu.addAction(self.tr("About ..."), self.open_web_site)
         if action:
             action.setData('https://geoobserver.de/qgis-plugin-geobasis-loader/')
 
@@ -195,7 +195,7 @@ class GeoBasis_Loader(QObject):
         if not entries:
             return None
 
-        menu = QMenu(STAR_PREFIX + "Favoriten", self.main_menu)
+        menu = QMenu(STAR_PREFIX + self.tr("Favorites"), self.main_menu)
         menu.setObjectName("favorites-menu")
         menu.setToolTipsVisible(True)
 
@@ -222,8 +222,10 @@ class GeoBasis_Loader(QObject):
 
         def _create_action(
             name: str, parent: QMenu, path: str,
-            tip: str = "Thema hinzufügen", slot=self.add_topic,
+            tip: str | None = None, slot=self.add_topic,
         ) -> QAction:
+            if tip is None:
+                tip = self.tr("Add topic")
             display_name = STAR_PREFIX + name if favorites.get(path, False) else name
             action = QAction(display_name, parent)
             action.setObjectName(name)
@@ -244,7 +246,7 @@ class GeoBasis_Loader(QObject):
             if baseLayer.get("type", "").lower() == config.LayerType.WEB:
                 action = _create_action(
                     baseLayer["name"], menu, baseLayer["uri"],
-                    "Informationen öffnen", self.open_web_site,
+                    self.tr("Open information"), self.open_web_site,
                 )
                 menu.addAction(action)
                 continue
@@ -254,9 +256,9 @@ class GeoBasis_Loader(QObject):
                 layergroup_menu.setToolTipsVisible(True)
 
                 add_all_action = _create_action(
-                    "Alle laden", layergroup_menu,
+                    self.tr("Load all"), layergroup_menu,
                     baseLayer[config.InternalProperties.PATH],
-                    "Alle Themen der Gruppe laden",
+                    self.tr("Load all topics in this group"),
                 )
                 layergroup_menu.addAction(add_all_action)
                 layergroup_menu.addSeparator()
@@ -268,7 +270,7 @@ class GeoBasis_Loader(QObject):
                     if layer.get("type", "").lower() == config.LayerType.WEB:
                         sublayer_action = _create_action(
                             layer["name"], layergroup_menu,
-                            layer["uri"], "Informationen öffnen",
+                            layer["uri"], self.tr("Open information"),
                             self.open_web_site,
                         )
                     else:
@@ -310,7 +312,7 @@ class GeoBasis_Loader(QObject):
 
         self.iface.messageBar().pushMessage(
             config.PLUGIN_NAME_AND_VERSION,
-            'Einstellungen erfolgreich gespeichert',
+            self.tr('Settings saved successfully'),
             level=Qgis.MessageLevel.Success, duration=3,
         )
         self.initGui()
@@ -357,7 +359,7 @@ class GeoBasis_Loader(QObject):
         version = re.findall(r'v\d+', name)[0]
         self.iface.messageBar().pushMessage(
             config.PLUGIN_NAME_AND_VERSION,
-            'Lese ' + titel + ", Version " + version + ' ...',
+            self.tr('Loading {}, Version {} ...').format(titel, version),
             level=Qgis.MessageLevel.Success, duration=3,
         )
 
@@ -489,10 +491,8 @@ class GeoBasis_Loader(QObject):
         if uri == "n.n.":
             self.iface.messageBar().pushMessage(
                 config.PLUGIN_NAME_AND_VERSION,
-                config.MY_CRITICAL_1 + attributes['name']
-                + f", URL des Themas derzeit unbekannt.{'&nbsp;'}"
-                + f"Falls gültige/aktuelle URL bekannt,{'&nbsp;'}"
-                + "bitte dem Autor melden.",
+                self.tr("Layer loading error for '{}': URL currently unknown. "
+                        "Please report if a valid URL is known.").format(attributes['name']),
                 level=Qgis.MessageLevel.Critical, duration=5,
             )
             return None
@@ -512,8 +512,7 @@ class GeoBasis_Loader(QObject):
         if not layer.isValid():
             self.iface.messageBar().pushMessage(
                 config.PLUGIN_NAME_AND_VERSION,
-                config.MY_CRITICAL_1 + attributes['name']
-                + config.MY_CRITICAL_2,
+                self.tr("Layer loading error for '{}', service unavailable (URL?)").format(attributes['name']),
                 level=Qgis.MessageLevel.Critical, duration=5,
             )
             return None
@@ -531,15 +530,13 @@ class GeoBasis_Loader(QObject):
             if min_scale < max_scale:
                 self.iface.messageBar().pushMessage(
                     config.PLUGIN_NAME_AND_VERSION,
-                    config.MY_CRITICAL_1 + attributes['name']
-                    + "; Skalenwerte vertauscht oder fehlerhaft",
+                    self.tr("Layer loading error for '{}': scale values swapped or invalid").format(attributes['name']),
                     level=Qgis.MessageLevel.Critical, duration=5,
                 )
             elif min_scale == max_scale:
                 self.iface.messageBar().pushMessage(
                     config.PLUGIN_NAME_AND_VERSION,
-                    config.MY_CRITICAL_1 + attributes['name']
-                    + "; Skalenwerte gleich",
+                    self.tr("Layer loading error for '{}': scale values are equal").format(attributes['name']),
                     level=Qgis.MessageLevel.Critical, duration=5,
                 )
             elif min_scale > max_scale:
@@ -582,7 +579,7 @@ class GeoBasis_Loader(QObject):
         if standalone:
             self.iface.messageBar().pushMessage(
                 config.PLUGIN_NAME_AND_VERSION,
-                config.MY_INFO_1 + attributes['name'] + config.MY_INFO_2,
+                self.tr("Layer '{}' loaded successfully.").format(attributes['name']),
                 level=Qgis.MessageLevel.Success, duration=1,
             )
         # Ebene zum Projekt hinzufügen aber nicht automatisch zum Ebenenbaum
@@ -651,7 +648,7 @@ class GeoBasis_Loader(QObject):
         if loaded_count > 0:
             self.iface.messageBar().pushMessage(
                 config.PLUGIN_NAME_AND_VERSION,
-                f"Gruppe '{name}': {loaded_count} Layer erfolgreich geladen.",
+                self.tr("Group '{}': {} layers loaded successfully.").format(name, loaded_count),
                 level=Qgis.MessageLevel.Success, duration=3,
             )
 

@@ -10,14 +10,27 @@ import os
 from enum import Enum
 
 from qgis.core import QgsSettings
+from qgis.PyQt.QtCore import QCoreApplication
 
 PLUGIN_VERSION = '2.1'
 PLUGIN_NAME = 'GeoBasis Loader'
 PLUGIN_NAME_AND_VERSION = PLUGIN_NAME + ' (v' + PLUGIN_VERSION + ')'
-MY_CRITICAL_1 = 'Layerladefehler '
-MY_CRITICAL_2 = ', Dienst nicht verfügbar (URL?)'
-MY_INFO_1 = 'Layer '
-MY_INFO_2 = ' erfolgreich geladen.'
+
+
+def tr(message: str) -> str:
+    """Translate a string using the plugin's translation context.
+
+    Use this for modules that are not QObject subclasses.
+    QObject subclasses should use ``self.tr()`` instead.
+
+    Args:
+        message: The source string to translate.
+
+    Returns:
+        The translated string, or the original if no translation is found.
+
+    """
+    return QCoreApplication.translate('GeoBasis_Loader', message)
 
 PLUGIN_DIR = os.path.dirname(__file__)
 CURRENT_CATALOG_SETTINGS_KEY = 'geobasis_loader/current_catalog'
