@@ -1,3 +1,4 @@
+from __future__ import annotations
 import os
 from typing import Union
 from qgis.PyQt import uic, QtWidgets
@@ -13,13 +14,12 @@ VISIBILITY_CHECKBOX_COL = 2
 LOADING_CHECKBOX_COL = 3
 
 class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
-    # Store all tree view items for each exec_ -> Dont go through tree recursively to get check status of each item
-    _items: list[QtWidgets.QTreeWidgetItem] = []
-    _current_catalog = {}
-    
     def __init__(self, parent = None):
         QtWidgets.QDialog.__init__(self, parent)
         self.setupUi(self)
+        # Store all tree view items for each exec_ -> Dont go through tree recursively to get check status of each item
+        self._items: list[QtWidgets.QTreeWidgetItem] = []
+        self._current_catalog: dict = {}
         
         # Visibility tree buttons/actions
         self.expand_button.clicked.connect(self.visibility_tree.expandAll)
