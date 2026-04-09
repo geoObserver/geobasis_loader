@@ -223,10 +223,11 @@ class CatalogManager:
             return cls.catalogs[catalog_title]
 
         if cls.overview_network_handler.done:
-            cls.iface.messageBar().pushWarning(
+            cls.iface.messageBar().pushMessage(
                 config.PLUGIN_NAME_AND_VERSION,
                 "Katalog Übersicht ist nicht geladen, "
                 "Bitte warten Sie oder kontaktieren Sie den Author",
+                level=Qgis.MessageLevel.Warning, duration=8,
             )
         else:
             if callback:
