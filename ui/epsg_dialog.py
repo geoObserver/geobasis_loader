@@ -55,8 +55,11 @@ class EpsgDialog(QtWidgets.QDialog, EPSG_DIALOG):
             self.table.setItem(row_pos, 1, QtWidgets.QTableWidgetItem(auth_id))
     
     def confirm_selected_coord(self) -> None:
-        selected_items = self.table.selectedItems()
-        if len(selected_items) > 0:
-            auth_id = selected_items[1].text()            
-            self.selected_coord = auth_id
-            self.close()
+        row = self.table.currentRow()
+        if row < 0:
+            return
+        item = self.table.item(row, 1)
+        if item is None:
+            return
+        self.selected_coord = item.text()
+        self.close()
