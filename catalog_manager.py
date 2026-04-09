@@ -6,17 +6,20 @@ stores, caches and enriches catalog data.
 """
 
 from __future__ import annotations
+
+import email.utils
 import json
 import os
-import re
 import pathlib
-import email.utils
+import re
 from functools import partial
 from typing import Callable
-from qgis.PyQt.QtNetwork import QNetworkRequest, QNetworkReply
-from qgis.PyQt.QtCore import QUrl, QObject, pyqtSignal
-from qgis.core import QgsNetworkAccessManager, QgsSettings, QgsMessageLog, Qgis
+
+from qgis.core import Qgis, QgsMessageLog, QgsNetworkAccessManager, QgsSettings
 from qgis.gui import QgisInterface
+from qgis.PyQt.QtCore import QObject, QUrl, pyqtSignal
+from qgis.PyQt.QtNetwork import QNetworkReply, QNetworkRequest
+
 from . import config
 
 

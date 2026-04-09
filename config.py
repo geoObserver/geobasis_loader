@@ -5,8 +5,10 @@ throughout the GeoBasis Loader plugin.
 """
 
 from __future__ import annotations
-from enum import Enum
+
 import os
+from enum import Enum
+
 from qgis.core import QgsSettings
 
 PLUGIN_VERSION = '2.1'

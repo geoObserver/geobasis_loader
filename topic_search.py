@@ -6,9 +6,11 @@ topics by name or keyword across all loaded catalogs.
 
 from typing import Optional
 
-from .catalog_manager import CatalogManager
+from qgis.core import QgsFeedback, QgsLocatorContext, QgsLocatorFilter, QgsLocatorResult
+
 from . import config
-from qgis.core import QgsLocatorFilter, QgsLocatorResult, QgsLocatorContext, QgsFeedback
+from .catalog_manager import CatalogManager
+
 # Strings wie Beschreibung und Name werden nicht übersetzt und sind momentan nur in Deutsch
 
 class SearchFilter(QgsLocatorFilter):

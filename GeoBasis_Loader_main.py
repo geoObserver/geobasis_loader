@@ -4,22 +4,32 @@ Provides the GeoBasis_Loader class that integrates German geodata services
 (WMS, WMTS, WFS, VectorTiles) into the QGIS layer menu.
 """
 from __future__ import annotations
+
 import re
 from functools import partial
-from qgis.PyQt.QtWidgets import QMenu, QAction
-from qgis.PyQt.QtGui import QIcon, QColor, QDesktopServices
-from qgis.PyQt.QtCore import QUrl, QObject
+
 # from qgis.PyQt.QtWebKitWidgets import QWebView # type: ignore
 from qgis.core import (
-    QgsSettings, QgsProject, QgsVectorLayer, QgsRasterLayer,
-    QgsVectorTileLayer, QgsLayerTree, QgsSymbolLayer, QgsWkbTypes,
-    QgsMessageLog, Qgis,
+    Qgis,
+    QgsLayerTree,
+    QgsMessageLog,
+    QgsProject,
+    QgsRasterLayer,
+    QgsSettings,
+    QgsSymbolLayer,
+    QgsVectorLayer,
+    QgsVectorTileLayer,
+    QgsWkbTypes,
 )
 from qgis.gui import QgisInterface
-from .topic_search import SearchFilter
+from qgis.PyQt.QtCore import QObject, QUrl
+from qgis.PyQt.QtGui import QColor, QDesktopServices, QIcon
+from qgis.PyQt.QtWidgets import QAction, QMenu
+
 from . import config
 from . import ui as custom_ui
 from .catalog_manager import CatalogManager
+from .topic_search import SearchFilter
 
 if Qgis.versionInt() < 33000:   # noqa: SIM108 — keep explicit for type: ignore and readability
     geometry_types = QgsWkbTypes.Type       # type: ignore

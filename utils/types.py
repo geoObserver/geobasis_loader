@@ -6,7 +6,9 @@ but prepared for future type annotations throughout the codebase.
 """
 
 from __future__ import annotations
+
 from dataclasses import dataclass
+
 
 @dataclass
 class Layer:

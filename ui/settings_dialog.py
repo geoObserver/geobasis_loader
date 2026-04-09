@@ -5,13 +5,16 @@ and per-layer visibility, loading, and favorite properties.
 """
 
 from __future__ import annotations
+
 import os
-from qgis.PyQt import uic, QtWidgets
+
+from qgis.core import QgsSettings
+from qgis.PyQt import QtWidgets, uic
 from qgis.PyQt.QtCore import Qt
 from qgis.PyQt.QtGui import QShowEvent
-from qgis.core import QgsSettings
-from ..catalog_manager import CatalogManager
+
 from .. import config
+from ..catalog_manager import CatalogManager
 
 SETTINGS_DIALOG = uic.loadUiType(os.path.join(os.path.dirname(__file__), "design_files", "settings_dialog.ui"))[0]
 FAVORITE_CHECKBOX_COL = 1

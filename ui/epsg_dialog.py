@@ -1,8 +1,9 @@
 """Dialog for selecting a coordinate reference system (EPSG) from a list of supported CRS options."""
 
 import os
+
 from qgis.core import QgsCoordinateReferenceSystem
-from qgis.PyQt import uic, QtWidgets
+from qgis.PyQt import QtWidgets, uic
 
 EPSG_DIALOG = uic.loadUiType(os.path.join(os.path.dirname(__file__), "design_files", "epsg_selector.ui"))[0]
 
