@@ -33,11 +33,11 @@ class LayerType(str, Enum):
 class ServerHosts(str, Enum):
     GEOOBSERVER = "https://geoobserver.de/download/GeoBasis_Loader/{name}"
     GITHUB = "https://api.github.com/repos/geoObserver/geobasis_loader/contents/kataloge/{name}?ref=main"
-    
+
     @classmethod
     def get_all_servers(cls) -> list[str]:
         return [a.value for a in cls]
-    
+
     @classmethod
     def get_enabled_servers(cls) -> list[str]:
         servers = []
@@ -47,15 +47,15 @@ class ServerHosts(str, Enum):
             servers = cls.get_all_servers()
         else:
             servers.append(cls.get_all_servers()[server_index - 1])
-            
+
         return servers
-    
+
 class InternalProperties(str, Enum):
     FAVORITE = "__favorite__"
     VISIBILITY = "__visible__"
     LOADING = "__loading__"
     PATH = "__path__"
-    
+
     @classmethod
-    def get_properties(cls) -> list["InternalProperties"]:
+    def get_properties(cls) -> list[InternalProperties]:
         return [a for a in cls if a not in (cls.PATH, cls.FAVORITE)]

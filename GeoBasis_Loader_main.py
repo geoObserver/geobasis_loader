@@ -31,10 +31,10 @@ class GeoBasis_Loader(QObject):
         self.qgs_settings = QgsSettings()
         CatalogManager.setup(iface)
         CatalogManager.get_overview(callback=self.initGui)
-        
+
         # ------- Dialog für die EPSG-Auswahl erstellen
         self.epsg_dialog = custom_ui.EpsgDialog(parent=iface.mainWindow())
-        
+
         # ------- Dialog für die Einstellungen erstellen
         self.settings_dialog = custom_ui.SettingsDialog(parent=iface.mainWindow())
 
@@ -42,7 +42,7 @@ class GeoBasis_Loader(QObject):
         current_catalog = self.qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)
         if current_catalog is not None and "name" in current_catalog:
             CatalogManager.get_catalog(current_catalog["titel"], current_catalog["name"], self.set_services)
-            
+
         # ------- Letzte Einstellung für automatisches Koordinatensystem laden -----
         self.automatic_crs = self.qgs_settings.value(config.AUTOMATIC_CRS_SETTINGS_KEY, False, bool)
 
@@ -50,14 +50,14 @@ class GeoBasis_Loader(QObject):
         self.main_menu = QMenu(config.PLUGIN_NAME_AND_VERSION)
         self.main_menu.setIcon(icon)
         self.iface.pluginMenu().addMenu(self.main_menu)
-        
+
         self.search_filter = SearchFilter(self)
-        self.iface.registerLocatorFilter(self.search_filter)    
-        #self.iface.messageBar().pushMessage(self.myPluginV,f'Sollte Euch das Plugin gefallen,{"&nbsp;"}könnt Ihr es gern mit Eurer Mitarbeit,{"&nbsp;"}einem Voting und ggf.{"&nbsp;"}einem kleinen Betrag unterstützen ...{"&nbsp;"}Danke!!', 3, 8)     
-    
+        self.iface.registerLocatorFilter(self.search_filter)
+        #self.iface.messageBar().pushMessage(self.myPluginV,f'Sollte Euch das Plugin gefallen,{"&nbsp;"}könnt Ihr es gern mit Eurer Mitarbeit,{"&nbsp;"}einem Voting und ggf.{"&nbsp;"}einem kleinen Betrag unterstützen ...{"&nbsp;"}Danke!!', 3, 8)
+
     def initGui(self) -> None:
         self.main_menu.clear()
-        
+
         if self.services is not None:
             # ------- Name des Katalogs einfügen -------------------------
             action = self.main_menu.addAction(self.qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)["titel"])
@@ -75,7 +75,7 @@ class GeoBasis_Loader(QObject):
                 if not isinstance(state[1], dict) or not state[1][config.InternalProperties.VISIBILITY]:
                     continue
                 menu = self.gui_for_one_topic(state[1]['themen'], state[0])
-                
+
                 # Compatibility, can be removed later
                 if "menu" in state[1]:
                     action = self.main_menu.addAction(state[1]['menu'])
@@ -84,37 +84,37 @@ class GeoBasis_Loader(QObject):
                 action.setMenu(menu)
                 if state[0] == 'de':
                     self.main_menu.addSeparator()
-            
+
             self.main_menu.addSeparator()
-            
+
         if CatalogManager.overview is not None:
             # ------- Katalogmenü erstellen ------------------------------------
             catalogs_menu = self.main_menu.addMenu("Katalog wechseln (Change Catalogs)")
             catalogs_menu.setObjectName('catalog-overview')
-            
+
             # ------- Einträge im Katalogmenü erstellen ------------------------
             for catalog in CatalogManager.overview:
                 catalog_action = catalogs_menu.addAction(catalog["titel"], partial(self.change_current_catalog, catalog))
                 catalog_action.setObjectName("open-" + catalog["titel"])
-            
+
             action = self.main_menu.addAction("Kataloge neu laden (Reload Catalogs)")
             action.triggered.connect(lambda: CatalogManager.get_overview(callback=self.initGui))
-            
+
             self.main_menu.addSeparator()
-                
+
         # ------- Über-Schaltfläche für die JSON-Datei ------------------------
         action = QAction(text="Wenn möglich, Dienste autom. im KBS laden", parent=self.main_menu, checkable=True, checked=self.automatic_crs)
         action.toggled.connect(self.toggle_automatic_crs)
         self.main_menu.addAction(action)
-        
+
         self.main_menu.addAction("Einstellungen (Aktueller Katalog)", self.open_settigs)
         self.main_menu.addSeparator()
-        
+
         # ------- Spenden-Schaltfläche für #geoObserver ------------------------
         action = self.main_menu.addAction("GeoBasis_Loader per Spende unterstützen ...", self.open_web_site)
         if action:
             action.setData('https://geoobserver.de/support_geobasis_loader/')
-        
+
         # ------- Über-Schaltfläche für #geoObserver ------------------------
         action = self.main_menu.addAction("Über ...", self.open_web_site)
         if action:
@@ -122,7 +122,7 @@ class GeoBasis_Loader(QObject):
 
         # ------- Status-Schaltfläche für #geoObserver ------------------------
         # self.mainMenu.addAction("Status ...", partial(self.openWebSite, 'https://geoobserver.de/qgis-plugin-geobasis-loader/#statustabelle'))
-        
+
     def _build_favorites_menu(self) -> Union[QMenu, None]:
         """Collect all favorited entries from the current catalog into a menu."""
         favorites = CatalogManager.properties.get(config.InternalProperties.FAVORITE, {})
@@ -173,15 +173,15 @@ class GeoBasis_Loader(QObject):
             action.setData(path)
             action.triggered.connect(slot)
             return action
-        
+
         menu = QMenu(topic_abbreviation, self.main_menu)
         menu.setObjectName('loader-' + topic_abbreviation)
         menu.setToolTipsVisible(True)
-        
+
         for baseLayer in topic_dict.values():
             if not baseLayer[config.InternalProperties.VISIBILITY]:
                 continue
-            
+
             if baseLayer.get("type", "").lower() == config.LayerType.WEB:
                 action = _create_action(baseLayer["name"], menu, baseLayer["uri"], "Informationen öffnen", self.open_web_site)
                 menu.addAction(action)
@@ -206,14 +206,14 @@ class GeoBasis_Loader(QObject):
                     layergroup_menu.addAction(sublayer_action)
 
                 menu.addMenu(layergroup_menu)
-            else:        
-                action = _create_action(baseLayer['name'], menu, baseLayer[config.InternalProperties.PATH])            
+            else:
+                action = _create_action(baseLayer['name'], menu, baseLayer[config.InternalProperties.PATH])
                 menu.addAction(action)
-                
+
             if "seperator" in baseLayer:
                 menu.addSeparator()
         return menu
-    
+
 #===================================================================================
 
     def unload(self):
@@ -223,22 +223,22 @@ class GeoBasis_Loader(QObject):
         if self.main_menu:
             self.iface.pluginMenu().removeAction(self.main_menu.menuAction())
 
-#=================================================================================== 
+#===================================================================================
 
     def open_settigs(self) -> None:
         status = self.settings_dialog.exec()
         # Abbruch
         if status == 0:
             return
-        
+
         self.automatic_crs = self.qgs_settings.value(config.AUTOMATIC_CRS_SETTINGS_KEY, False, bool)
-        
+
         self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, 'Einstellungen erfolgreich gespeichert', level=Qgis.MessageLevel.Success, duration=3)
         self.initGui()
 
     def toggle_automatic_crs(self) -> None:
         new_state = not self.automatic_crs
-        
+
         self.automatic_crs = new_state
         self.qgs_settings.setValue(config.AUTOMATIC_CRS_SETTINGS_KEY, new_state)
 
@@ -246,42 +246,42 @@ class GeoBasis_Loader(QObject):
         sender = self.sender()
         if not sender or not isinstance(sender, QAction):
             return
-        
+
         data = sender.data() # type: ignore
         url = QUrl(data)
-        
+
         # Opens webpage in the standard browser
         QDesktopServices.openUrl(url)
-        
+
     def change_current_catalog(self, catalog: dict):
         self.qgs_settings.setValue(config.CURRENT_CATALOG_SETTINGS_KEY, catalog)
         CatalogManager.get_catalog(catalog["titel"], callback=self.set_services)
-        
+
     def set_services(self, services: Dict):
         current_catalog = self.qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)
         titel = current_catalog["titel"]
         name = current_catalog["name"]
         version = re.findall(r'v\d+', name)[0]
         self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, 'Lese '+ titel + ", Version " + version + ' ...', level=Qgis.MessageLevel.Success, duration=3)
-        
+
         self.services = services
         self.initGui()
-    
+
     # Get crs from user
     def get_crs(self, supported_auth_ids: list[str], layer_name: str) -> Union[str, None]:
         if supported_auth_ids is None:
             return None
-        
-        current_crs = QgsProject.instance().crs().authid()          
+
+        current_crs = QgsProject.instance().crs().authid()
         if current_crs not in supported_auth_ids or not self.automatic_crs:
             self.epsg_dialog.set_table_data(supported_auth_ids, layer_name)
             self.epsg_dialog.exec()
             if self.epsg_dialog.selected_coord is None:
                 return None
             current_crs = self.epsg_dialog.selected_coord
-        
+
         return current_crs
-    
+
     def add_topic(self, catalog_title: Optional[str] = None, path: str = ""):
         if path == "":
             sender = self.sender()
@@ -297,11 +297,11 @@ class GeoBasis_Loader(QObject):
         topic = catalog
         for key in path.split("/"):
             topic = topic[key]
-        
+
         if "layers" not in topic:
             self.addLayer(topic, None)
             return
-        
+
         layers = topic["layers"]
         if isinstance(layers, list):
             combination_layers = []
@@ -312,7 +312,7 @@ class GeoBasis_Loader(QObject):
             self.addLayerCombination(combination_layers)
         else:
             self.addLayerGroup(None, layers, topic["name"])
-    
+
     def addLayer(self, attributes: Dict, crs: Union[str, None], standalone: bool = True):
         if not attributes.get(config.InternalProperties.LOADING, True):
             return None
@@ -401,7 +401,7 @@ class GeoBasis_Loader(QObject):
                 symbol_layer.setSize(stroke_width)
             else:
                 QgsMessageLog.logMessage("Fehler bei Bestimmung der Geometrieart; Bestimmte Geometrie " + QgsWkbTypes.displayString(geom_type), config.PLUGIN_NAME, level=Qgis.MessageLevel.Warning)
-                        
+
         self.iface.messageBar().pushMessage(config.PLUGIN_NAME_AND_VERSION, config.MY_INFO_1 + attributes['name'] + config.MY_INFO_2, level=Qgis.MessageLevel.Success, duration=1)
         # Ebene zum Projekt hinzufügen aber nicht automatisch zum Ebenenbaum
         QgsProject.instance().addMapLayer(layer, False) # type: ignore
@@ -419,7 +419,7 @@ class GeoBasis_Loader(QObject):
             self.iface.layerTreeView().refreshLayerSymbology(layer.id())
 
         return layer
-    
+
     def _first_non_web_layer(self, layers: dict) -> Union[dict, None]:
         """Return the first layer entry whose type is not 'web', or None."""
         for layer in layers.values():
