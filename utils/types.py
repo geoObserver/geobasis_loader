@@ -1,14 +1,16 @@
+"""Dataclass definitions for catalog layer structures.
+
+These types model the hierarchy of layers, groups, combinations, and themes
+used in the GeoBasis Loader catalog format. They are not yet in active use
+but prepared for future type annotations throughout the codebase.
+"""
+
 from __future__ import annotations
 from dataclasses import dataclass
 
-#
-# Diese Datei und die enthaltenen Klassen werden noch nicht verwendet
-# Sie sind aber bereits implementiert und können in Zukunft für Type Annotations verwendet werden
-#
-
 @dataclass
 class Layer:
-    """A data class to represent a Layer with various attributes."""
+    """A single map layer with connection URI and display settings."""
 
     name: str
     type: str
@@ -24,7 +26,7 @@ class Layer:
 
 @dataclass
 class LayerGroup:
-    """A data class to represent a LayerGroup with various attributes. A LayerGroup is a collection of Layers."""
+    """A named collection of layers that are displayed together as a group."""
 
     name: str
     layers: dict[str, Layer]
@@ -33,10 +35,7 @@ class LayerGroup:
 
 @dataclass
 class LayerCombination:
-    """A data class to represent a LayerCombination.
-
-    A LayerCombination references existing Layers.
-    """
+    """A predefined combination that references existing layers by name."""
 
     name: str
     layers: list[str]
@@ -45,11 +44,7 @@ class LayerCombination:
 
 @dataclass
 class LayerTheme:
-    """A data class to represent a LayerTheme.
-
-    A LayerTheme is a collection of Layers, LayerGroups
-    and LayerCombinations.
-    """
+    """A thematic category containing layers, groups, and combinations."""
 
     kategorie: str
     themen: dict[str, Layer | LayerGroup | LayerCombination]
