@@ -479,11 +479,12 @@ class GeoBasis_Loader(QObject):
                     level=Qgis.MessageLevel.Warning,
                 )
 
-        self.iface.messageBar().pushMessage(
-            config.PLUGIN_NAME_AND_VERSION,
-            config.MY_INFO_1 + attributes['name'] + config.MY_INFO_2,
-            level=Qgis.MessageLevel.Success, duration=1,
-        )
+        if standalone:
+            self.iface.messageBar().pushMessage(
+                config.PLUGIN_NAME_AND_VERSION,
+                config.MY_INFO_1 + attributes['name'] + config.MY_INFO_2,
+                level=Qgis.MessageLevel.Success, duration=1,
+            )
         # Ebene zum Projekt hinzufügen aber nicht automatisch zum Ebenenbaum
         QgsProject.instance().addMapLayer(layer, False) # type: ignore
 
@@ -526,15 +527,24 @@ class GeoBasis_Loader(QObject):
             if preferred_crs is None:
                 return
 
+        loaded_count = 0
         for layerKey in layers:
             sub_layer = self.addLayer(layers[layerKey], preferred_crs, False)
             if sub_layer is None:
                 continue
+            loaded_count += 1
             ltl = newLayerGroup.insertLayer(0, sub_layer)
             if ltl:
                 ltl.setExpanded(False)
                 visible = layers[layerKey].get(config.InternalProperties.VISIBILITY, True)
                 ltl.setItemVisibilityChecked(visible)
+
+        if loaded_count > 0:
+            self.iface.messageBar().pushMessage(
+                config.PLUGIN_NAME_AND_VERSION,
+                f"Gruppe '{name}': {loaded_count} Layer erfolgreich geladen.",
+                level=Qgis.MessageLevel.Success, duration=3,
+            )
 
     def addLayerCombination(self, layers) -> None:
         preferred_crs = None
