@@ -68,7 +68,11 @@ class NetworkHandler(QObject):
             # (Über-)Schreibt dann die loakle JSON-Datei, wenn die Datei im Internet neuer ist
             # Sozusagen eigene Cache-Implementation
             networkLastModifiedRawValue = self.__reply.rawHeader(bytearray('Last-Modified', "utf-8")).data().decode()
-            networkLastModified = email.utils.parsedate_to_datetime(networkLastModifiedRawValue).timestamp()
+            try:
+                networkLastModified = email.utils.parsedate_to_datetime(networkLastModifiedRawValue).timestamp()
+            except (ValueError, TypeError):
+                networkLastModified = 0.0
+                QgsMessageLog.logMessage(f"Invalid Last-Modified header: '{networkLastModifiedRawValue}'", config.PLUGIN_NAME, level=Qgis.MessageLevel.Warning)
             self.successful = True
             self.done = True
             self.finished.emit(json_string, catalog_title, networkLastModified)
