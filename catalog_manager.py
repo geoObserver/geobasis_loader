@@ -1,6 +1,7 @@
+from __future__ import annotations
 import json, os, re, pathlib, email.utils
 from functools import partial
-from typing import Optional, Union
+from typing import Callable, Optional, Union
 from qgis.PyQt.QtNetwork import QNetworkRequest, QNetworkReply
 from qgis.PyQt.QtCore import QUrl, QObject, pyqtSignal
 from qgis.core import QgsNetworkAccessManager, QgsSettings, QgsMessageLog, Qgis
@@ -97,7 +98,7 @@ class CatalogManager:
     
     catalog_network_handlers: dict[str, NetworkHandler] = {}
     
-    _pending_callbacks: dict[str, callable] = {}
+    _pending_callbacks: dict[str, Callable] = {}
     
     @classmethod
     def setup(cls, iface: QgisInterface) -> None:
@@ -151,7 +152,7 @@ class CatalogManager:
             del cls._pending_callbacks[config.CATALOG_OVERVIEW_NAME]
     
     @classmethod
-    def get_overview(cls, callback: Optional[callable] = None) -> None:
+    def get_overview(cls, callback: Optional[Callable] = None) -> None:
         # ------- Network Handler für die Katalog Übersicht erstellen --------------
         cls.overview_network_handler = NetworkHandler(QgsNetworkAccessManager.instance())
         cls.overview_network_handler.finished.connect(cls.set_overview)
@@ -164,7 +165,7 @@ class CatalogManager:
             cls._pending_callbacks[config.CATALOG_OVERVIEW_NAME].append(callback)
     
     @classmethod
-    def get_catalog(cls, catalog_title: str, catalog_name: Optional[str] = None, callback: Optional[callable] = None) -> Union[None, dict, list]:        
+    def get_catalog(cls, catalog_title: str, catalog_name: Optional[str] = None, callback: Optional[Callable] = None) -> Union[None, dict, list]:        
         if catalog_title == config.CATALOG_OVERVIEW_NAME:
             if cls.overview is not None:
                 if callback:
@@ -200,7 +201,7 @@ class CatalogManager:
         return None
     
     @classmethod
-    def get_current_catalog(cls, callback: Optional[callable] = None) -> Union[None, dict, list]:
+    def get_current_catalog(cls, callback: Optional[Callable] = None) -> Union[None, dict, list]:
         qgs_settings = QgsSettings()
         current_catalog = qgs_settings.value(config.CURRENT_CATALOG_SETTINGS_KEY)
         if current_catalog is None or "name" not in current_catalog:
