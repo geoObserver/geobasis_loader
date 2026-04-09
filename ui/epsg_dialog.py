@@ -33,8 +33,7 @@ class EpsgDialog(QtWidgets.QDialog, EPSG_DIALOG):
         
         # Vorhandene Einträge löschen
         self.table.clearContents()
-        for _ in range(self.table.rowCount()):
-            self.table.removeRow(0)
+        self.table.setRowCount(0)
         
         # CRS84 in Tabelle einfügen, wenn nicht in unterstützten Koordinatensystemen
         # if "EPSG:4326" not in supported_auth_ids:
