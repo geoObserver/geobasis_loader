@@ -67,5 +67,5 @@ class SearchFilter(QgsLocatorFilter):
     
     # @override
     def triggerResult(self, result: QgsLocatorResult):
-        data = result._userData()
+        data = result.userData()
         self.gbl.add_topic(data["catalog_name"], data["path"])
