@@ -80,7 +80,7 @@ class NetworkHandler(QObject):
         
     def _handle_response(self, catalog_name: str, catalog_title: str, is_overview_response: bool):
         error = self._reply.error()
-        status_code: int = self._reply.attribute(QNetworkRequest.Attribute.HttpStatusCodeAttribute)
+        status_code: int = self._reply.attribute(netowrk_request_attributes.HttpStatusCodeAttribute)
         
         if error == no_error and status_code == 200:
             json_string = self._reply.readAll().data().decode('utf-8')
@@ -103,7 +103,9 @@ class NetworkHandler(QObject):
             return
         
         # Differenzierte Fehlerbehandlung
-        if status_code == 404:
+        if not status_code: 
+            logger.error(f"Kein Internet: {catalog_name} auf Server {self._server}")
+        elif status_code == 404:
             logger.warning(f"404 Not Found: {catalog_name} auf Server {self._server}")
         elif status_code == 429:
             logger.warning(f"429 Rate Limit: Server {self._server}")
@@ -334,7 +336,7 @@ class CatalogManager:
                 if is_overview_response:
                     callback()
                 else:
-                    callback(parsed_services)
+                    callback(cls.catalogs.get(catalog_name, None))
             del cls._pending_callbacks[catalog_name]
         
         cls.clear_network_handlers()
