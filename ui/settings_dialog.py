@@ -144,10 +144,11 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         # Layer settings
         for item in self._items:
             path: str = item.data(0, Qt.ItemDataRole.UserRole)
-            favorite_state = item.checkState(VISIBILITY_CHECKBOX_COL)
+            favorite_state = item.checkState(FAVORITE_CHECKBOX_COL)
             # Check whether it's unchecked or not due to tristate -> Negate it
             is_favorite = not favorite_state == Qt.CheckState.Unchecked
-            PropertyManager.set_favorite(path, is_favorite)
+            if "/" in path:     # Skip regions, since it wouldn't make sense
+                PropertyManager.set_favorite(path, is_favorite)
             
             visibility_state = item.checkState(VISIBILITY_CHECKBOX_COL)
             # Check whether it's unchecked or not due to tristate -> Negate it
