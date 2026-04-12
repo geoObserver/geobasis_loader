@@ -11,7 +11,7 @@ from . import config
 from .utils import custom_logger
 from . import ui as custom_ui
 from .catalog_manager import CatalogManager
-from .topic_handlers import catalog_types
+from .topic_handlers import catalog_types, PropertyManager
 
 logger = custom_logger.get_logger(__file__)
 
@@ -20,6 +20,7 @@ if Qgis.versionInt() < 33000:   # Breaking change in Version 3.30 -> Geometry ty
 else:
     geometry_types = Qgis.WkbType
 
+STAR_PREFIX = "\u2605 "  # ★
 
 class GeoBasis_Loader(QObject):
     services: Optional[catalog_types.Catalog] = None
@@ -64,6 +65,26 @@ class GeoBasis_Loader(QObject):
             # ------- Name des Katalogs einfügen -------------------------
             self.main_menu.addAction(self.qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)["titel"])
             self.main_menu.addSeparator()
+            
+            # ------- Favoritenmenü ------------------------
+            favorite_menu = QMenu(STAR_PREFIX + "Favoriten", self.main_menu)
+            favorite_menu.setObjectName('favorites-menu')
+            favorite_menu.setToolTipsVisible(True)
+            
+            for key in PropertyManager._favorite:
+                topic = self.services.get_entry(key)
+                if not topic:
+                    continue
+                
+                action = QAction(topic.name, favorite_menu)
+                action.setObjectName(topic.name)
+                action.setData(key)
+                action.triggered.connect(self.add_topic)
+                favorite_menu.addAction(action)
+            
+            self.main_menu.addMenu(favorite_menu)
+            self.main_menu.addSeparator()
+            
             # ------- Menübaum bauen und einfügen ------------------------
             for region in self.services.get_regions():
                 if not region.properties.visible:
