@@ -1,6 +1,6 @@
 """Manage persistent properties for catalog entries.
 
-The module stores and retrieves per-entry flags (init, favorite, visible,
+The module stores and retrieves per-entry flags (favorite, visible,
 enabled) via QGIS settings and exposes a proxy object for attribute-style
 access.
 """
@@ -19,7 +19,6 @@ class Properties:
     and writes to the module-level singleton manager.
 
     Attributes:
-        init: Whether the entry is a start entry.
         favorite: Whether the entry is marked as favorite.
         visible: Whether the entry is visible in the UI.
         enabled: Whether loading of the entry is allowed.
@@ -38,29 +37,6 @@ class Properties:
         if not isinstance(key, str):
             raise ValueError(f"Key isn't a string")
         self._key = key
-    
-    @property
-    def init(self) -> bool:
-        """Return whether the entry is a starting entry.
-
-        Returns:
-            True if start, else False.
-        """
-        return singleton.is_init(self._key)
-    
-    @init.setter
-    def init(self, value) -> None:
-        """Set start state and persist the change.
-
-        Args:
-            value: New start state.
-
-        Raises:
-            ValueError: If value is not a bool.
-        """
-        if not isinstance(value, bool):
-            raise ValueError(f"Object isn't a boolean")
-        singleton.set_initialisation(self._key, value, True)
     
     @property
     def favorite(self) -> bool:
@@ -136,10 +112,10 @@ class PropertyManager:
 
     def __init__(self):
         """Initialize in-memory sets and load persisted values."""
-        self._init: set[str] = set()
         self._favorite: set[str] = set()
         self._invisible: set[str] = set()
         self._disabled: set[str] = set()
+        self._qgs_settings = QgsSettings()
         self.load_all()
     
     def __getitem__(self, key: str) -> Properties:
@@ -163,22 +139,6 @@ class PropertyManager:
             A Properties proxy bound to key.
         """
         return self[key]
-    
-    def set_initialisation(self, key: str, init: bool, save_change: bool = False):
-        """Set start flag for an entry.
-
-        Args:
-            key: Unique catalog path/key of the entry.
-            init: New start state.
-            save_change: Whether to persist this change immediately.
-        """
-        if init:
-            self._init.add(key)
-        else:
-            self._init.discard(key)
-        
-        if save_change:
-            self.save(config.QgsSettingsKeys.PROPERTY_INIT)
     
     def set_favorite(self, key: str, favorite: bool, save_change: bool = False):
         """Set favorite flag for an entry.
@@ -231,17 +191,6 @@ class PropertyManager:
             
         if save_change:
             self.save(config.QgsSettingsKeys.PROPERTY_DISABLED)
-    
-    def is_init(self, key: str) -> bool:
-        """Return start state for an entry.
-
-        Args:
-            key: Unique catalog path/key of the entry.
-
-        Returns:
-            True if initialized, else False.
-        """
-        return key in self._init
     
     def is_favorite(self, key: str) -> bool:
         """Return favorite state for an entry.
@@ -307,9 +256,8 @@ class PropertyManager:
         Raises:
             ValueError: If property_key is unknown.
         """
-        if property_key == config.QgsSettingsKeys.PROPERTY_INIT:
-            property_value = self._init
-        elif property_key == config.QgsSettingsKeys.PROPERTY_FAVORITE:
+        
+        if property_key == config.QgsSettingsKeys.PROPERTY_FAVORITE:
             property_value = self._favorite
         elif property_key == config.QgsSettingsKeys.PROPERTY_INVISIBLE:
             property_value = self._invisible
@@ -318,8 +266,7 @@ class PropertyManager:
         else:
             raise ValueError(f"Can't save '{property_key}': Unknown property")
         
-        qgs_settings = QgsSettings()
-        qgs_settings.setValue(property_key, list(property_value))
+        self._qgs_settings.setValue(property_key, list(property_value))
     
     def load_all(self):
         """Load all property buckets from QgsSettings.
@@ -328,24 +275,22 @@ class PropertyManager:
         settings from catalogs/settings.json and then persists the migrated
         state in the new format.
         """
-        qgs_settings = QgsSettings()
-        if not qgs_settings.contains(config.QgsSettingsKeys.PROPERTY_INIT):
+
+        if not self._qgs_settings.contains(config.QgsSettingsKeys.PROPERTY_FAVORITE):
             path = pathlib.Path(config.PLUGIN_DIR) / "catalogs" / "settings.json"
             self._convert_old_properties(path)
             self.save_all()
             return
         
-        self._init: set[str] = set(qgs_settings.value(config.QgsSettingsKeys.PROPERTY_INIT, list(), type=list))
-        self._favorite: set[str] = set(qgs_settings.value(config.QgsSettingsKeys.PROPERTY_FAVORITE, list(), type=list))
-        self._invisible: set[str] = set(qgs_settings.value(config.QgsSettingsKeys.PROPERTY_INVISIBLE, list(), type=list))
-        self._disabled: set[str] = set(qgs_settings.value(config.QgsSettingsKeys.PROPERTY_DISABLED, list(), type=list))
+        self._favorite: set[str] = set(self._qgs_settings.value(config.QgsSettingsKeys.PROPERTY_FAVORITE, list(), type=list))
+        self._invisible: set[str] = set(self._qgs_settings.value(config.QgsSettingsKeys.PROPERTY_INVISIBLE, list(), type=list))
+        self._disabled: set[str] = set(self._qgs_settings.value(config.QgsSettingsKeys.PROPERTY_DISABLED, list(), type=list))
     
     def save_all(self):
         """Persist all properties to QgsSettings in one call."""
-        qgs_settings = QgsSettings()
-        qgs_settings.setValue(config.QgsSettingsKeys.PROPERTY_INIT, list(self._init))
-        qgs_settings.setValue(config.QgsSettingsKeys.PROPERTY_FAVORITE, list(self._favorite))
-        qgs_settings.setValue(config.QgsSettingsKeys.PROPERTY_INVISIBLE, list(self._invisible))
-        qgs_settings.setValue(config.QgsSettingsKeys.PROPERTY_DISABLED, list(self._disabled))
+
+        self._qgs_settings.setValue(config.QgsSettingsKeys.PROPERTY_FAVORITE, list(self._favorite))
+        self._qgs_settings.setValue(config.QgsSettingsKeys.PROPERTY_INVISIBLE, list(self._invisible))
+        self._qgs_settings.setValue(config.QgsSettingsKeys.PROPERTY_DISABLED, list(self._disabled))
 
 singleton = PropertyManager()
