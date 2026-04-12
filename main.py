@@ -404,7 +404,6 @@ class GeoBasis_Loader(QObject):
                 
             layer_tree_view.refreshLayerSymbology(layer.id())
         
-        logger.success(f"Ebene {layer_name} erfolgreich geladen")
         current_qgis_project = QgsProject.instance()
         if not current_qgis_project:
             logger.critical(f"Thema '{layer_name}' kann nicht zum Projekt hinzugefügt werden")
@@ -415,7 +414,7 @@ class GeoBasis_Loader(QObject):
         # Ebene zum Projekt hinzufügen aber nicht automatisch zum Ebenenbaum
         if standalone and current_qgis_project:
             root = current_qgis_project.layerTreeRoot()
-            if not root:
+            if root is None:
                 logger.error(f"Thema '{layer_name}' kann nicht zum Ebenenbaum hinzugefügt werden")    
             else:    
                 ltl = root.insertLayer(0, layer)
@@ -423,6 +422,7 @@ class GeoBasis_Loader(QObject):
                     ltl.setExpanded(False)
                     ltl.setItemVisibilityChecked(topic.properties.visible)
 
+        logger.success(f"Ebene {layer_name} erfolgreich geladen")
         return layer
     
     def add_layer_group(self, topic_group: catalog_types.TopicGroup, preferred_crs: Union[str, None], name: str) -> None:
