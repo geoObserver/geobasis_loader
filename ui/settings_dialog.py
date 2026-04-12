@@ -10,8 +10,9 @@ from ..topic_handlers import PropertyManager
 from ..topic_handlers import catalog_types
 
 SETTINGS_DIALOG = uic.loadUiType(os.path.join(os.path.dirname(__file__), "design_files", "settings_dialog.ui"))[0]
-VISIBILITY_CHECKBOX_COL = 1
-LOADING_CHECKBOX_COL = 2
+FAVORITE_CHECKBOX_COL = 1
+VISIBILITY_CHECKBOX_COL = 2
+LOADING_CHECKBOX_COL = 3
 
 class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
     def __init__(self, parent = None):
@@ -43,10 +44,11 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
     def setup(self):
         available_width = self.layer_settings_tree.width()
         checkbox_col_width = 80
-        name_col_width = available_width - self.layer_settings_tree.verticalScrollBar().width() - 2 * checkbox_col_width                               # type: ignore
+        name_col_width = available_width - self.layer_settings_tree.verticalScrollBar().width() - 3 * checkbox_col_width                               # type: ignore
         self.layer_settings_tree.setColumnWidth(0, name_col_width)
         self.layer_settings_tree.setColumnWidth(1, checkbox_col_width)
         self.layer_settings_tree.setColumnWidth(2, checkbox_col_width)
+        self.layer_settings_tree.setColumnWidth(3, checkbox_col_width)
 
     def showEvent(self, a0: Optional[QShowEvent]) -> None:
         super().showEvent(a0)
@@ -59,6 +61,9 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
             item.setText(0, data.name)
             item.setFlags(item.flags() | Qt.ItemFlag.ItemIsAutoTristate | Qt.ItemFlag.ItemIsUserCheckable)
             
+            # Favorite
+            checked = Qt.CheckState.Checked if data.properties.favorite else Qt.CheckState.Unchecked
+            item.setCheckState(FAVORITE_CHECKBOX_COL, checked)
             # Visibility
             checked = Qt.CheckState.Checked if data.properties.visible else Qt.CheckState.Unchecked
             item.setCheckState(VISIBILITY_CHECKBOX_COL, checked)
@@ -83,7 +88,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
                 topic_item = _add_entry(topic, region_item)
                 if isinstance(topic, catalog_types.TopicGroup):
                     for subtopic in topic.get_subtopics():
-                        subtopic_item = _add_entry(subtopic, topic_item)
+                        _ = _add_entry(subtopic, topic_item)
         
         # Global Settings
         qgs_settings = QgsSettings()
@@ -108,7 +113,8 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         if prompt_reply != QtWidgets.QMessageBox.StandardButton.Yes:
             return
         
-        # Visibility Tree
+        # Topics Tree
+        self.set_check_state_all_items(FAVORITE_CHECKBOX_COL, Qt.CheckState.Unchecked)
         self.set_check_state_all_items(VISIBILITY_CHECKBOX_COL, Qt.CheckState.Checked)
         self.set_check_state_all_items(LOADING_CHECKBOX_COL, Qt.CheckState.Checked)
         
@@ -138,6 +144,11 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         # Layer settings
         for item in self._items:
             path: str = item.data(0, Qt.ItemDataRole.UserRole)
+            favorite_state = item.checkState(VISIBILITY_CHECKBOX_COL)
+            # Check whether it's unchecked or not due to tristate -> Negate it
+            is_favorite = not favorite_state == Qt.CheckState.Unchecked
+            PropertyManager.set_favorite(path, is_favorite)
+            
             visibility_state = item.checkState(VISIBILITY_CHECKBOX_COL)
             # Check whether it's unchecked or not due to tristate -> Negate it
             is_visible = not visibility_state == Qt.CheckState.Unchecked

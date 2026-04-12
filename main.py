@@ -399,7 +399,7 @@ class GeoBasis_Loader(QObject):
             layer.triggerRepaint()
             layer_tree_view =  self.iface.layerTreeView()
             if layer_tree_view is None:
-                logger.critical(f"Symbologie nicht aktualisert, da Zugriff auf Ebenenbaum nicht erfolgreich")
+                logger.warning(f"Symbologie nicht aktualisert, da Zugriff auf Ebenenbaum nicht erfolgreich")
             else:
                 layer_tree_view.refreshLayerSymbology(layer.id())
         
