@@ -398,11 +398,10 @@ class GeoBasis_Loader(QObject):
                         
             layer.triggerRepaint()
             layer_tree_view =  self.iface.layerTreeView()
-            if not layer_tree_view:
-                logger.critical(f"")
-                return layer
-                
-            layer_tree_view.refreshLayerSymbology(layer.id())
+            if layer_tree_view is None:
+                logger.critical(f"Symbologie nicht aktualisert, da Zugriff auf Ebenenbaum nicht erfolgreich")
+            else:
+                layer_tree_view.refreshLayerSymbology(layer.id())
         
         current_qgis_project = QgsProject.instance()
         if not current_qgis_project:
@@ -422,7 +421,7 @@ class GeoBasis_Loader(QObject):
                     ltl.setExpanded(False)
                     ltl.setItemVisibilityChecked(topic.properties.visible)
 
-        logger.success(f"Ebene {layer_name} erfolgreich geladen")
+        logger.success(f"Thema '{layer_name}' erfolgreich geladen")
         return layer
     
     def add_layer_group(self, topic_group: catalog_types.TopicGroup, preferred_crs: Union[str, None], name: str) -> None:
