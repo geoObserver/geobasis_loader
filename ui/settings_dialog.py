@@ -15,7 +15,7 @@ VISIBILITY_CHECKBOX_COL = 2
 LOADING_CHECKBOX_COL = 3
 
 class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
-    def __init__(self, parent = None):
+    def __init__(self, parent=None):
         QtWidgets.QDialog.__init__(self, parent)
         
         # Store all tree view items for each exec -> Dont go through tree recursively to get check status of each item

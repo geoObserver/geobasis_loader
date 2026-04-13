@@ -29,7 +29,7 @@ class GeoBasis_Loader(QObject):
     qgs_settings = QgsSettings()
 
 # =========================================================================
-    def __init__(self, iface: QgisInterface, parent = None) -> None:
+    def __init__(self, iface: QgisInterface, parent=None) -> None:
         super().__init__(parent)
         self.iface = iface
         CatalogManager.setup(iface)
@@ -260,7 +260,7 @@ class GeoBasis_Loader(QObject):
         name = current_catalog["name"]
         version_matches = re.findall(r'v\d+', name)
         version = version_matches[0] if version_matches else "unbekannt"
-        logger.success('Lese '+ titel + ", Version " + version + ' ...', extra={"show_banner": True})
+        logger.success(f'Lese {titel}, Version {version} ...', extra={"show_banner": True})
         
         self.services = services
         self.initGui()

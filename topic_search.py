@@ -13,7 +13,6 @@ class SearchFilter(QgsLocatorFilter):
         self.setUseWithoutPrefix(True)
         # Not pretty but it is what it is
         self.gbl = gbl
-        self._search_index = SearchFilter.search_index
 
     # @override
     def name(self) -> str:
@@ -64,7 +63,7 @@ class SearchFilter(QgsLocatorFilter):
     def triggerResult(self, result: QgsLocatorResult):
         # FIXME: Currently private method -> just result.userData according to doc, but property not found in Python or C++/SIP
         data = result._userData()
-        self.gbl.add_topic(data["catalog_name"], data["path"])
+        self.gbl.add_topic(data["path"])
     
     @classmethod
     def build_search_index(cls, catalogs: dict[str, catalog_types.Catalog]) -> None:
@@ -90,7 +89,7 @@ class SearchFilter(QgsLocatorFilter):
     def search_results(self, search_string: str):
         search_string = search_string.lower().strip()
         
-        for index in self._search_index:
+        for index in SearchFilter.search_index:
             hit = False
             if search_string in index["name_lower"]:
                 hit = True

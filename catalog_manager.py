@@ -17,11 +17,11 @@ logger = custom_logger.get_logger(__file__)
 
 if QVersionNumber(6) > QVersionNumber.fromString(QT_VERSION_STR)[0]:
     no_error = 0
-    netowrk_request_attributes = QNetworkRequest
+    network_request_attributes = QNetworkRequest
     network_request_cache = QNetworkRequest
 else:
     no_error = QNetworkReply.NetworkError.NoError
-    netowrk_request_attributes = QNetworkRequest.Attribute
+    network_request_attributes = QNetworkRequest.Attribute
     network_request_cache = QNetworkRequest.CacheLoadControl
 
 
@@ -47,7 +47,7 @@ class NetworkHandler(QObject):
     def _fetch_data(self, url: str = '') -> Optional[QNetworkReply]:
         q_url = QUrl(url)
         request = QNetworkRequest(q_url)
-        request.setAttribute(netowrk_request_attributes.CacheLoadControlAttribute, network_request_cache.AlwaysNetwork)
+        request.setAttribute(network_request_attributes.CacheLoadControlAttribute, network_request_cache.AlwaysNetwork)
         request.setTransferTimeout(config.REQUEST_TIMEOUT_MS)
         # if self._server == config.ServerHosts.GITHUB:
         #     mediatype = "application/vnd.github.raw+json"
@@ -83,7 +83,7 @@ class NetworkHandler(QObject):
         
     def _handle_response(self, catalog_name: str, catalog_title: str, is_overview_response: bool):
         error = self._reply.error()
-        status_code: int = self._reply.attribute(netowrk_request_attributes.HttpStatusCodeAttribute)
+        status_code: int = self._reply.attribute(network_request_attributes.HttpStatusCodeAttribute)
         
         if error == no_error and status_code == 200:
             json_string = self._reply.readAll().data().decode('utf-8')
@@ -352,7 +352,7 @@ class CatalogManager:
         try:
             with open(file_path, "w", encoding="utf-8", newline="\n") as file:
                 json.dump(data, file, indent=2)
-        except (OSError, PermissionError) as e:
+        except OSError as e:
             logger.critical(f"Fehler beim Schreiben der Datei {file_path}: {e}")
         except TypeError as e:
             logger.critical(f"Nicht-serialisierbares Objekt für {file_path}: {e}")
