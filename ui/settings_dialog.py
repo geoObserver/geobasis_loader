@@ -20,9 +20,13 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         
         # Store all tree view items for each exec -> Dont go through tree recursively to get check status of each item
         self._items: list[QtWidgets.QTreeWidgetItem] = []
-        self._current_catalog = {}
+        self._current_catalog = None
+        self._updating_items = False
         
         self.setupUi(self)
+        
+        # Topic settings tree
+        self.layer_settings_tree.itemChanged.connect(self.on_item_changed)
         
         # Visibility tree buttons/actions
         self.expand_button.clicked.connect(self.layer_settings_tree.expandAll)
@@ -40,6 +44,67 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         self.layer_settings_tree: QtWidgets.QTreeWidget = self.layer_settings_tree
         self.server_button_group: QtWidgets.QButtonGroup = self.server_button_group
         self.automatic_crs_checkbox: QtWidgets.QCheckBox = self.automatic_crs_checkbox
+    
+    def _set_state_of_children(self, item: QtWidgets.QTreeWidgetItem, column: int, state: Qt.CheckState) -> None:
+        for i in range(item.childCount()):
+            child = item.child(i)
+            if child is None:
+                continue
+            
+            child.setCheckState(column, state)
+            self._set_state_of_children(child, column, state)
+    
+    def _set_state_of_parents(self, item: QtWidgets.QTreeWidgetItem, column: int) -> None:
+        parent = item.parent()
+        if parent is None:
+            return
+        
+        has_checked = False
+        has_unchecked = False
+        
+        for i in range(parent.childCount()):
+            child = parent.child(i)
+            if child is None:
+                continue
+            
+            state = child.checkState(column)
+            if state == Qt.CheckState.Checked:
+                has_checked = True
+            
+            if state == Qt.CheckState.Unchecked:
+                has_unchecked = True
+                
+            if state == Qt.CheckState.PartiallyChecked:
+                has_checked = True
+                has_checked = True
+            
+            # Break for-loop if both states are observed in children since further probing is unnecessary
+            if has_checked and has_unchecked:
+                break
+        
+        if has_checked and not has_unchecked:
+            new_parent_state = Qt.CheckState.Checked
+        elif not has_checked and has_unchecked:
+            new_parent_state = Qt.CheckState.Unchecked
+        else:
+            new_parent_state = Qt.CheckState.PartiallyChecked
+            
+        parent.setCheckState(column, new_parent_state)
+        self._set_state_of_parents(parent, column)
+    
+    def on_item_changed(self, item: QtWidgets.QTreeWidgetItem, column: int) -> None:
+        print("Test")
+        if self._updating_items:
+            return
+        
+        if column not in (VISIBILITY_CHECKBOX_COL, LOADING_CHECKBOX_COL):
+            return
+        
+        self._updating_items = True
+        state = item.checkState(column)
+        self._set_state_of_children(item, column, state)
+        self._set_state_of_parents(item, column)
+        self._updating_items = False
     
     def setup(self):
         available_width = self.layer_settings_tree.width()
@@ -59,7 +124,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         def _add_entry(data: catalog_types.BasicEntry, parent: Union[QtWidgets.QTreeWidgetItem, QtWidgets.QTreeWidget]) -> QtWidgets.QTreeWidgetItem:            
             item = QtWidgets.QTreeWidgetItem(parent)
             item.setText(0, data.name)
-            item.setFlags(item.flags() | Qt.ItemFlag.ItemIsAutoTristate | Qt.ItemFlag.ItemIsUserCheckable)
+            item.setFlags(item.flags() | Qt.ItemFlag.ItemIsUserCheckable)
             
             # Favorite
             checked = Qt.CheckState.Checked if data.properties.favorite else Qt.CheckState.Unchecked
@@ -81,6 +146,8 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         if self._current_catalog is None or isinstance(self._current_catalog, list):
             return
         
+        self._updating_items = True
+        
         # Properties Tree
         for region in self._current_catalog.get_regions():
             region_item = _add_entry(region, self.layer_settings_tree)
@@ -89,6 +156,8 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
                 if isinstance(topic, catalog_types.TopicGroup):
                     for subtopic in topic.get_subtopics():
                         _ = _add_entry(subtopic, topic_item)
+        
+        self._updating_items = False
         
         # Global Settings
         qgs_settings = QgsSettings()
@@ -102,8 +171,10 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         self.automatic_crs_checkbox.setChecked(automatic_crs)
         
     def set_check_state_all_items(self, column: int, state: Qt.CheckState) -> None:
+        self._updating_items = True
         for item in self._items:
             item.setCheckState(column, state)
+        self._updating_items = False
         viewport = self.layer_settings_tree.viewport()
         if viewport:
             viewport.update()
