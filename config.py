@@ -33,13 +33,6 @@ class ServerHosts(str, Enum):
             
         return servers
     
-class InternalProperties(str, Enum):
-    PATH = "__path__"
-    
-    @classmethod
-    def get_properties(cls) -> list["InternalProperties"]:
-        return [a for a in cls if a != cls.PATH]
-    
 class QgsSettingsKeys(str, Enum):
     CURRENT_CATALOG = 'geobasis_loader/current_catalog'
     AUTOMATIC_CRS = 'geobasis_loader/automatic_crs'
