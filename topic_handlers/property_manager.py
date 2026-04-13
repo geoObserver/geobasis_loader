@@ -5,7 +5,8 @@ enabled) via QGIS settings and exposes a proxy object for attribute-style
 access.
 """
 
-import pathlib, json
+import pathlib
+import json
 from qgis.core import QgsSettings
 from .. import config
 from ..utils import custom_logger

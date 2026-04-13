@@ -1,4 +1,7 @@
-import json, os, re, pathlib
+import json
+import os
+import re
+import pathlib
 from functools import partial
 from typing import Optional, Union, Callable
 from qgis.PyQt.QtNetwork import QNetworkRequest, QNetworkReply
