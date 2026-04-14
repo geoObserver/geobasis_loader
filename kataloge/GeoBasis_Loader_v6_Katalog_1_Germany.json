@@ -1345,7 +1345,7 @@
           }
         }
       },
-      "flustuecke_wfs": {
+      "flurstuecke_wfs": {
         "name": "BW: ALKIS Flurstücke (WFS)",
         "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='nora:v_al_flurstueck' url='https://owsproxy.lgl-bw.de/owsproxy/wfs/WFS_LGL-BW_ALKIS' url='https://owsproxy.lgl-bw.de/owsproxy/wfs/WFS_LGL-BW_ALKIS?version=2.0.0' version='auto'",
         "type": "ogc_wfs",
@@ -1368,6 +1368,26 @@
         "fillColor": [220, 220, 220],
         "strokeWidth": 0.1
       },
+      
+      "1617f6d208db43a496cafd6b487da255": {
+        "name": "BW: Flurbereinigungsverfahren (WMS)",
+        "layers": {
+          "f3279f79620f460dac888d48fedaa764": {
+            "name": "BW: Namen der Flurbereinigung Verfahrensgebiete in Baden-Württemberg (WMS)",
+            "type": "ogc_wms",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=fno:bw_flurbv_label&styles&tilePixelRatio=0&url=https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_FNO_VerfGeb_Bund_25?version%3D1.3.0%26user%3DZentrKomp%26password%3Dviewerprod",
+            "valid_epsg": ["EPSG:4326", "EPSG:4258", "EPSG:3857", "EPSG:4647", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:25832", "EPSG:25833"],
+            "minScale": 1000000000.0
+          },
+          "6718304cb4024fb2af4e5fae2dc1e242": {
+            "name": "BW: Flurbereinigung Verfahrensgebiete in Baden-Württemberg (WMS)",
+            "type": "ogc_wms",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=fno:bw_flurbv&styles&tilePixelRatio=0&url=https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_FNO_VerfGeb_Bund_25?version%3D1.3.0%26user%3DZentrKomp%26password%3Dviewerprod",
+            "valid_epsg": ["EPSG:4326", "EPSG:4258", "EPSG:3857", "EPSG:4647", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:25832", "EPSG:25833"]
+          }
+        }
+      },
+      
       "BW_kat_vg_layergroup": {
         "name": "BW: Kataster/Verwaltungsgrenzen (WMS)",
         "layers": {
