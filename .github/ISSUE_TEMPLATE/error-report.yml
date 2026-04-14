@@ -1,0 +1,152 @@
+name: Fehler melden
+description: Einen Fehler im Geobasis Loader melden
+title: "[Bug] "
+labels: ["bug", "triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Bitte beschreibe den Fehler so konkret wie möglich – das beschleunigt die Analyse erheblich.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Was ist passiert?
+      description: Kurze Beschreibung des Fehlers.
+      placeholder: "Beim Laden eines WMS-Dienstes erscheint keine Fehlermeldung, die Karte bleibt leer."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Schritte zur Reproduktion
+      description: Wie lässt sich der Fehler zuverlässig auslösen?
+      placeholder: |
+        1. URL xyz in das Eingabefeld eingeben
+        2. Auf „Laden" klicken
+        3. …
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Erwartetes Verhalten
+      description: Was hätte stattdessen passieren sollen?
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: Betroffene URL
+      description: Die URL, bei der der Fehler auftritt (sofern zutreffend).
+      placeholder: "https://example.com/dienst/wms"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Diensttyp
+      description: Welches Protokoll oder Format war betroffen?
+      options:
+        - WMS
+        - WFS
+        - WMTS
+        - OGC API Features
+        - OGC API Tiles
+        - GeoJSON
+        - GeoPackage
+        - XYZ-Tiles
+        - Sonstiges
+        - Nicht zutreffend
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: "## Systemumgebung"
+
+  - type: input
+    id: os
+    attributes:
+      label: Betriebssystem und Version
+      description: >
+        Name und Version des Betriebssystems.
+        Windows: Einstellungen → System → Info.
+        macOS: Apple-Menü → Über diesen Mac.
+        Linux: `lsb_release -d` oder `uname -a` im Terminal.
+      placeholder: "z. B. Windows 11 24H2 · macOS 15.4 Sequoia · Ubuntu 24.04.2 LTS"
+    validations:
+      required: true
+
+  - type: input
+    id: qgis_version
+    attributes:
+      label: QGIS-Version
+      description: >
+        Zu finden unter Hilfe → Über QGIS. Bitte vollständige Versionsangabe inkl. Patch-Level angeben.
+      placeholder: "3.40.5-Bratislava"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: qgis_variant
+    attributes:
+      label: QGIS-Installationsvariante
+      description: Wie wurde QGIS installiert?
+      options:
+        - Standalone-Installer (qgis.org)
+        - OSGeo4W
+        - Flatpak
+        - Conda / Mamba
+        - Paketmanager (apt, dnf, pacman …)
+        - Homebrew (macOS)
+        - Sonstiges
+    validations:
+      required: true
+
+  - type: input
+    id: python_version
+    attributes:
+      label: Python-Version
+      description: >
+        Die in QGIS eingebettete Python-Version – nicht die systemweite Installation.
+        Zu ermitteln über die QGIS-Python-Konsole (Strg+Alt+P) mit dem Befehl:
+        `import sys; print(sys.version)`
+      placeholder: "3.12.3 (main, Apr 10 2024, 05:33:47)"
+    validations:
+      required: true
+
+  - type: input
+    id: plugin_version
+    attributes:
+      label: Plugin-Version
+      description: >
+        Zu finden unter Erweiterungen → Erweiterungen verwalten und installieren → Installiert.
+      placeholder: "2.0"
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Fehlermeldungen / Logs
+      description: >
+        Konsolenausgaben, Netzwerk-Fehler oder sonstige relevante Ausgaben.
+        Das QGIS-Protokoll ist erreichbar unter Ansicht → Bedienfelder → Protokollmeldungen.
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Weitere Hinweise
+      description: Screenshots, Workarounds oder sonstige Beobachtungen.
+    validations:
+      required: false
