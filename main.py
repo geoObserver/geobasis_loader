@@ -266,7 +266,7 @@ class GeoBasis_Loader(QObject):
         self.initGui()
     
     # Get crs from user
-    def get_crs(self, supported_auth_ids: list[str], layer_name: str) -> Union[str, None]:
+    def get_crs(self, supported_auth_ids: frozenset[str], layer_name: str) -> Union[str, None]:
         if supported_auth_ids is None:
             return None
         

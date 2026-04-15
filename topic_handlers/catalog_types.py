@@ -38,7 +38,7 @@ class Topic(BasicEntry):
     """A data class to represent a topic (layer) with various attributes."""
     
     topic_type: TopicType = TopicType.WMS
-    valid_epsg_codes: list[str] = field(default_factory=list)
+    valid_epsg_codes: frozenset[str] = field(default_factory=frozenset)
     keywords: list[str] = field(default_factory=list)
     uri: str = "n.n."
     
@@ -71,7 +71,9 @@ class Topic(BasicEntry):
             "seperator": "separator"
         }
         kwargs = _present_kwargs(data, key_mapping)
-        return cls(**kwargs)
+        instance = cls(**kwargs)
+        instance.valid_epsg_codes = frozenset(instance.valid_epsg_codes)
+        return instance
     
     def to_dict(self) -> dict:
         data = {

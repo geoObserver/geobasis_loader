@@ -28,7 +28,7 @@ class EpsgDialog(QtWidgets.QDialog, EPSG_DIALOG):
         self.buttonBox.accepted.connect(self.confirm_selected_coord)
         self.table.cellDoubleClicked.connect(self.confirm_selected_coord)
         
-    def set_table_data(self, supported_auth_ids: list[str], layer_name: str) -> None:
+    def set_table_data(self, supported_auth_ids: frozenset[str], layer_name: str) -> None:
         # Gespeichertes Koordinatensystem zurücksetzen
         self.selected_coord = None
         
