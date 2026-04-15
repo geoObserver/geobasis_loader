@@ -4,9 +4,8 @@ from qgis.PyQt import uic, QtWidgets
 from qgis.PyQt.QtCore import Qt
 from qgis.PyQt.QtGui import QShowEvent
 from qgis.core import QgsSettings
-from ..catalog_manager import CatalogManager
 from .. import config
-from ..topic_handlers import PropertyManager
+from ..topic_handlers import PropertyManager, CatalogManager
 from ..topic_handlers import catalog_types
 
 SETTINGS_DIALOG = uic.loadUiType(os.path.join(os.path.dirname(__file__), "design_files", "settings_dialog.ui"))[0]

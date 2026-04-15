@@ -10,8 +10,7 @@ from .topic_search import SearchFilter
 from . import config
 from .utils import custom_logger
 from . import ui as custom_ui
-from .catalog_manager import CatalogManager
-from .topic_handlers import catalog_types, PropertyManager
+from .topic_handlers import catalog_types, PropertyManager, CatalogManager
 
 logger = custom_logger.get_logger(__file__)
 
@@ -32,7 +31,6 @@ class GeoBasis_Loader(QObject):
     def __init__(self, iface: QgisInterface, parent=None) -> None:
         super().__init__(parent)
         self.iface = iface
-        CatalogManager.setup(iface)
         CatalogManager.get_overview(callback=self.initGui)
         
         # ------- Create dialog variables, create dialogs lazily
@@ -139,6 +137,8 @@ class GeoBasis_Loader(QObject):
         action = self.main_menu.addAction("Über ...", self.open_web_site)
         if action:
             action.setData('https://geoobserver.de/qgis-plugin-geobasis-loader/')
+        
+        SearchFilter.build_search_index(CatalogManager.catalogs)
 
         # ------- Status-Schaltfläche für #geoObserver ------------------------
         # self.mainMenu.addAction("Status ...", partial(self.openWebSite, 'https://geoobserver.de/qgis-plugin-geobasis-loader/#statustabelle'))
