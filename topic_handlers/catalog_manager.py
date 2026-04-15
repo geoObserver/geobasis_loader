@@ -335,8 +335,7 @@ class CatalogManager:
         self.clear_network_handlers()
 
     def write_json(self, data: Union[dict, list, str], file_path: pathlib.Path) -> None:
-        # FIXME: Permissions to high (maybe 755) -> 777 used due to access problems on MacOs (I think, already some time ago), tried a few combinations
-        file_path.parent.mkdir(mode=0o777, parents=True, exist_ok=True)
+        file_path.parent.mkdir(mode=0o755, parents=True, exist_ok=True)
         
         try:
             with open(file_path, "w", encoding="utf-8", newline="\n") as file:

@@ -60,8 +60,8 @@ class SearchFilter(QgsLocatorFilter):
 
     # @override
     def triggerResult(self, result: QgsLocatorResult):
-        # FIXME: Currently private method -> just result.userData according to doc, but property not found in Python or C++/SIP
-        data = result._userData()
+        # FIXME: result.userData according to doc, but property not found in Python or C++/SIP
+        data = result.userData          # type: ignore
         self.gbl.add_topic(data["path"])
     
     @classmethod
