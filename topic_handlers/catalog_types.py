@@ -11,6 +11,8 @@ class TopicType(str, Enum):
     WCS = "ogc_wcs"
     APIF = "ogc_api_features"
     VECTORTILES = "ogc_vectortiles"
+    ARCGIS_FEATURE_SERVER = "arcgis_featureserver"
+    ARCGIS_MAP_SERVER = "arcgis_mapserver"
     WEB = "web"
 
 TopicLike = Union["Topic", "TopicGroup", "TopicCombination"]
