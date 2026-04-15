@@ -44,3 +44,16 @@ class QgsSettingsKeys(str, Enum):
 
 class QgsIcons:
     FAVORITES_STAR = QgsApplication.getThemeIcon("mIconFavorites.svg")
+    
+    TOPIC_GROUP_FOLDER = QgsApplication.getThemeIcon("mIconFolder.svg")
+    TOPIC_GROUP_ADD = QgsApplication.getThemeIcon("mActionAddGroup.svg")
+    TOPIC_COMBINATION_ICON = QgsApplication.getThemeIcon("mActionDataSourceManager.svg")
+    
+    WEB_ICON = QgsApplication.getThemeIcon("search.svg")
+    
+    WFS_ICON = QgsApplication.getThemeIcon("mIconWfs.svg")
+    WMS_ICON = QgsApplication.getThemeIcon("mIconWms.svg")
+    WCS_ICON = QgsApplication.getThemeIcon("mIconWcs.svg")
+    VECTORTILES_ICON = QgsApplication.getThemeIcon("mIconVectorTileLayer.svg")
+    ARCGIS_FEATURE_ICON = QgsApplication.getThemeIcon("mActionAddAfsLayer.svg")
+    ARCGIS_MAP_ICON = QgsApplication.getThemeIcon("mActionAddAmsLayer.svg")
