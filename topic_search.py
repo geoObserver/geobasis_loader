@@ -1,11 +1,12 @@
 from typing import Optional
 
-from .catalog_manager import CatalogManager
-from . import config
 from qgis.core import QgsLocatorFilter, QgsLocatorResult, QgsLocatorContext, QgsFeedback
+from .topic_handlers import catalog_types
 # Strings wie Beschreibung und Name werden nicht übersetzt und sind momentan nur in Deutsch 
 
 class SearchFilter(QgsLocatorFilter):
+    search_index = []
+    
     def __init__(self, gbl):
         super().__init__()
         self.setUseWithoutPrefix(True)
@@ -42,30 +43,59 @@ class SearchFilter(QgsLocatorFilter):
         if len(string) < 3 or not feedback or feedback.isCanceled():
             return
         
-        for catalog_name, catalog in CatalogManager.catalogs.items():
-            for group_key, group in catalog:
-                if feedback.isCanceled():
-                    return
-                
-                for topic_key, topic in group["themen"].items():
-                    hit = False
-                    if string in topic["name"].lower():
-                        hit = True
-                    elif "keywords" in topic:
-                        if any(string in keyword.lower() for keyword in topic["keywords"]):
-                            hit = True
-                
-                    # Momentan werden nur Knoten zurückgegeben aber nicht die Ebenen darin. So lassen oder wirklich alle Ebenen anzeigen? Kann halt bei Knoten die Resultate stark vergrößern (bspw. bei Verwaltungsgrenzen)
-                
-                    if hit:
-                        data = {
-                            "catalog_name": catalog_name,
-                            "path": topic[config.InternalProperties.PATH],
-                        }
-                        result = QgsLocatorResult(self, topic["name"], data)
-                        self.resultFetched.emit(result)
-    
+        # Momentan werden nur Knoten zurückgegeben aber nicht die Ebenen darin. So lassen oder wirklich alle Ebenen anzeigen? Kann halt bei Knoten die Resultate stark vergrößern (bspw. bei Verwaltungsgrenzen)
+        search_results = self.search_results(string)
+        for search_result in search_results:
+            if feedback.isCanceled():
+                return
+            
+            if not search_result["hit"]:
+                continue
+            
+            locator_result = QgsLocatorResult(self, search_result["name"], search_result)
+            locator_result.group = search_result["region"]
+            locator_result.score = 1.0 if string == search_result["name"].lower() else 0.5
+            locator_result.description = f"Katalog: {search_result["catalog_name"]}"
+            self.resultFetched.emit(locator_result)
+
     # @override
     def triggerResult(self, result: QgsLocatorResult):
-        data = result._userData()
-        self.gbl.add_topic(data["catalog_name"], data["path"])
+        # FIXME: result.userData according to doc, but property not found in Python or C++/SIP
+        data = result.userData          # type: ignore
+        self.gbl.add_topic(data["path"])
+    
+    @classmethod
+    def build_search_index(cls, catalogs: dict[str, catalog_types.Catalog]) -> None:
+        search_index = []
+        
+        for catalog_name, catalog in catalogs.items():
+            if not catalog:
+                continue
+            
+            for region in catalog.get_regions():
+                for topic in region.get_topics():
+                    search_index.append({
+                        "name": topic.name,
+                        "name_lower": topic.name.lower(),
+                        "region": region.name,
+                        "keywords_lower": [kw.lower() for kw in topic.keywords if isinstance(kw, str)],
+                        "catalog_name": catalog_name,
+                        "path": topic.path,
+                    })
+        
+        cls.search_index = search_index
+
+    def search_results(self, search_string: str):
+        search_string = search_string.lower().strip()
+        
+        for index in SearchFilter.search_index:
+            hit = False
+            if search_string in index["name_lower"]:
+                hit = True
+            elif any(search_string in kw for kw in index["keywords_lower"]):
+                hit = True
+
+            data = index.copy()
+            data["hit"] = hit
+            
+            yield data

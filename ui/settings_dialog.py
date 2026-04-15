@@ -1,28 +1,36 @@
 import os
-from typing import Union
+from typing import Union, Optional
 from qgis.PyQt import uic, QtWidgets
 from qgis.PyQt.QtCore import Qt
 from qgis.PyQt.QtGui import QShowEvent
 from qgis.core import QgsSettings
-from ..catalog_manager import CatalogManager
 from .. import config
+from ..topic_handlers import PropertyManager, CatalogManager
+from ..topic_handlers import catalog_types
 
 SETTINGS_DIALOG = uic.loadUiType(os.path.join(os.path.dirname(__file__), "design_files", "settings_dialog.ui"))[0]
-VISIBILITY_CHECKBOX_COL = 1
-LOADING_CHECKBOX_COL = 2
+FAVORITE_CHECKBOX_COL = 1
+VISIBILITY_CHECKBOX_COL = 2
+LOADING_CHECKBOX_COL = 3
 
 class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
-    # Store all tree view items for each exec_ -> Dont go through tree recursively to get check status of each item
-    _items: list[QtWidgets.QTreeWidgetItem] = []
-    _current_catalog = {}
-    
-    def __init__(self, parent = None):
+    def __init__(self, parent=None):
         QtWidgets.QDialog.__init__(self, parent)
+        
+        # Store all tree view items for each exec -> Dont go through tree recursively to get check status of each item
+        self._items: list[QtWidgets.QTreeWidgetItem] = []
+        self._current_catalog = None
+        self._updating_items = False
+        self._qgs_settings = QgsSettings()
+        
         self.setupUi(self)
         
+        # Topic settings tree
+        self.layer_settings_tree.itemChanged.connect(self.on_item_changed)
+        
         # Visibility tree buttons/actions
-        self.expand_button.clicked.connect(self.visibility_tree.expandAll)
-        self.collapse_button.clicked.connect(self.visibility_tree.collapseAll)
+        self.expand_button.clicked.connect(self.layer_settings_tree.expandAll)
+        self.collapse_button.clicked.connect(self.layer_settings_tree.collapseAll)
         self.check_visibility_button.clicked.connect(lambda: self.set_check_state_all_items(VISIBILITY_CHECKBOX_COL, Qt.CheckState.Checked))
         self.uncheck_visibility_button.clicked.connect(lambda: self.set_check_state_all_items(VISIBILITY_CHECKBOX_COL, Qt.CheckState.Unchecked))
         self.check_loading_button.clicked.connect(lambda: self.set_check_state_all_items(LOADING_CHECKBOX_COL, Qt.CheckState.Checked))
@@ -33,74 +41,171 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         self.reset_button.clicked.connect(self.restore_defaults)
         
         # IntelliSense
-        self.visibility_tree: QtWidgets.QTreeWidget = self.visibility_tree
+        self.layer_settings_tree: QtWidgets.QTreeWidget = self.layer_settings_tree
         self.server_button_group: QtWidgets.QButtonGroup = self.server_button_group
         self.automatic_crs_checkbox: QtWidgets.QCheckBox = self.automatic_crs_checkbox
     
-    def setup(self):
-        available_width = self.visibility_tree.width()
-        checkbox_col_width = 80
-        name_col_width = available_width - self.visibility_tree.verticalScrollBar().width() - 2 * checkbox_col_width                               # type: ignore
-        self.visibility_tree.setColumnWidth(0, name_col_width)
-        self.visibility_tree.setColumnWidth(1, checkbox_col_width)
-        self.visibility_tree.setColumnWidth(2, checkbox_col_width)
+    def _set_state_of_children(self, item: QtWidgets.QTreeWidgetItem, column: int, state: Qt.CheckState) -> None:
+        for i in range(item.childCount()):
+            child = item.child(i)
+            if child is None:
+                continue
+            
+            child.setCheckState(column, state)
+            self._set_state_of_children(child, column, state)
+    
+    def _set_state_of_parents(self, item: QtWidgets.QTreeWidgetItem, column: int) -> None:
+        parent = item.parent()
+        if parent is None:
+            return
+        
+        has_checked = False
+        has_unchecked = False
+        
+        for i in range(parent.childCount()):
+            child = parent.child(i)
+            if child is None:
+                continue
+            
+            state = child.checkState(column)
+            if state == Qt.CheckState.Checked:
+                has_checked = True
+            
+            if state == Qt.CheckState.Unchecked:
+                has_unchecked = True
+                
+            if state == Qt.CheckState.PartiallyChecked:
+                has_checked = True
+                has_unchecked = True
+            
+            # Break for-loop if both states are observed in children since further probing is unnecessary
+            if has_checked and has_unchecked:
+                break
 
-    def showEvent(self, a0: Union[QShowEvent, None]) -> None:
+        if column == FAVORITE_CHECKBOX_COL:
+            # Keep explicitly favorited groups checked. Otherwise favorites are an
+            # indicator state: partial when any descendant is favorited.
+            if parent.checkState(column) == Qt.CheckState.Checked:
+                new_parent_state = Qt.CheckState.Checked
+            elif has_checked:
+                new_parent_state = Qt.CheckState.PartiallyChecked
+            else:
+                new_parent_state = Qt.CheckState.Unchecked
+        else:
+            if has_checked and not has_unchecked:
+                new_parent_state = Qt.CheckState.Checked
+            elif not has_checked and has_unchecked:
+                new_parent_state = Qt.CheckState.Unchecked
+            else:
+                new_parent_state = Qt.CheckState.PartiallyChecked
+            
+        parent.setCheckState(column, new_parent_state)
+        self._set_state_of_parents(parent, column)
+    
+    def on_item_changed(self, item: QtWidgets.QTreeWidgetItem, column: int) -> None:
+        if self._updating_items:
+            return
+        
+        self._updating_items = True
+        if column not in (VISIBILITY_CHECKBOX_COL, LOADING_CHECKBOX_COL):
+            # Favorite groups can be checked independently from their children.
+            # If a group is unchecked, fall back to partial when descendants are favorited.
+            if item.childCount() > 0 and item.checkState(column) == Qt.CheckState.Unchecked:
+                has_favorited_child = False
+                for i in range(item.childCount()):
+                    child = item.child(i)
+                    if child is None:
+                        continue
+                    if child.checkState(column) != Qt.CheckState.Unchecked:
+                        has_favorited_child = True
+                        break
+                if has_favorited_child:
+                    item.setCheckState(column, Qt.CheckState.PartiallyChecked)
+
+            self._set_state_of_parents(item, column)
+        else:
+            state = item.checkState(column)
+            self._set_state_of_children(item, column, state)
+            self._set_state_of_parents(item, column)
+        self._updating_items = False
+    
+    def setup(self):
+        available_width = self.layer_settings_tree.width()
+        checkbox_col_width = 80
+        name_col_width = available_width - self.layer_settings_tree.verticalScrollBar().width() - 3 * checkbox_col_width                               # type: ignore
+        self.layer_settings_tree.setColumnWidth(0, name_col_width)
+        self.layer_settings_tree.setColumnWidth(1, checkbox_col_width)
+        self.layer_settings_tree.setColumnWidth(2, checkbox_col_width)
+        self.layer_settings_tree.setColumnWidth(3, checkbox_col_width)
+
+    def showEvent(self, a0: Optional[QShowEvent]) -> None:
         super().showEvent(a0)
         self.setup()
         self.set_settings()
        
     def set_settings(self):
-        def _add_visibility_entry(data: dict, parent: Union[QtWidgets.QTreeWidgetItem, None] = None):
-            name_key = "name"
-            if parent is None:
-                parent = self.visibility_tree
-                name_key = "menu"
+        def _add_entry(data: catalog_types.BasicEntry, parent: Union[QtWidgets.QTreeWidgetItem, QtWidgets.QTreeWidget]) -> QtWidgets.QTreeWidgetItem:            
+            item = QtWidgets.QTreeWidgetItem(parent)
+            item.setText(0, data.name)
+            item.setFlags(item.flags() | Qt.ItemFlag.ItemIsUserCheckable)
             
-            for key, value in data.items():   
-                if isinstance(value, dict):
-                    if key == "themen" or key == "layers":
-                        item = parent
-                    else:
-                        item = QtWidgets.QTreeWidgetItem(parent)
-                        item.setText(0, value[name_key])
-                        item.setFlags(item.flags() | Qt.ItemFlag.ItemIsAutoTristate | Qt.ItemFlag.ItemIsUserCheckable)
-                        # Visibility
-                        checked = Qt.CheckState.Checked if value.get(config.InternalProperties.VISIBILITY, True) else Qt.CheckState.Unchecked
-                        item.setCheckState(VISIBILITY_CHECKBOX_COL, checked)
-                        # Loading
-                        checked = Qt.CheckState.Checked if value.get(config.InternalProperties.LOADING, True) else Qt.CheckState.Unchecked
-                        item.setCheckState(LOADING_CHECKBOX_COL, checked)
-                        item.setData(0, Qt.ItemDataRole.UserRole, value.get(config.InternalProperties.PATH, None))
-                        self._items.append(item)
-                    
-                    _add_visibility_entry(value, item)                    
+            # Favorite
+            checked = Qt.CheckState.Checked if data.properties.favorite else Qt.CheckState.Unchecked
+            item.setCheckState(FAVORITE_CHECKBOX_COL, checked)
+            # Visibility
+            checked = Qt.CheckState.Checked if data.properties.visible else Qt.CheckState.Unchecked
+            item.setCheckState(VISIBILITY_CHECKBOX_COL, checked)
+            # Loading
+            checked = Qt.CheckState.Checked if data.properties.enabled else Qt.CheckState.Unchecked
+            item.setCheckState(LOADING_CHECKBOX_COL, checked)
+            
+            item.setData(0, Qt.ItemDataRole.UserRole, data.path)
+            self._items.append(item)
+        
+            return item
         
         self.clear_data()
-        current_catalog = CatalogManager.get_current_catalog()
-        if current_catalog is None:
+        self._current_catalog = CatalogManager.get_current_catalog()
+        if self._current_catalog is None or isinstance(self._current_catalog, list):
             return
         
-        # Visibility Tree
-        self._current_catalog = dict(current_catalog)
-        _add_visibility_entry(self._current_catalog)
+        self._updating_items = True
+        
+        # Properties Tree
+        for region in self._current_catalog.get_regions():
+            region_item = _add_entry(region, self.layer_settings_tree)
+            for topic in region.get_topics():
+                topic_item = _add_entry(topic, region_item)
+                if isinstance(topic, catalog_types.TopicGroup):
+                    for subtopic in topic.get_subtopics():
+                        _ = _add_entry(subtopic, topic_item)
+
+        # Sync parent favorite states after initial population while signals are suppressed.
+        # FIXME: Kinda slow, future performance increase needed
+        for item in self._items:
+            if item.childCount() == 0:
+                self._set_state_of_parents(item, FAVORITE_CHECKBOX_COL)
+                self._set_state_of_parents(item, VISIBILITY_CHECKBOX_COL)
+                self._set_state_of_parents(item, LOADING_CHECKBOX_COL)
+        
+        self._updating_items = False
         
         # Global Settings
-        qgs_settings = QgsSettings()
-        server = qgs_settings.value(config.SERVERS_SETTINGS_KEY, 0, type=int)
+        server = self._qgs_settings.value(config.QgsSettingsKeys.SERVERS, 0, type=int)
         for button in self.server_button_group.buttons():
             if button.property("server") == server:
                 button.setChecked(True)
             else:
                 button.setChecked(False)
-        automatic_crs = qgs_settings.value(config.AUTOMATIC_CRS_SETTINGS_KEY, False, bool)
-        print(automatic_crs)
+        automatic_crs = self._qgs_settings.value(config.QgsSettingsKeys.AUTOMATIC_CRS, False, bool)
         self.automatic_crs_checkbox.setChecked(automatic_crs)
         
     def set_check_state_all_items(self, column: int, state: Qt.CheckState) -> None:
+        self._updating_items = True
         for item in self._items:
             item.setCheckState(column, state)
-        viewport = self.visibility_tree.viewport()
+        self._updating_items = False
+        viewport = self.layer_settings_tree.viewport()
         if viewport:
             viewport.update()
     
@@ -109,7 +214,8 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         if prompt_reply != QtWidgets.QMessageBox.StandardButton.Yes:
             return
         
-        # Visibility Tree
+        # Topics Tree
+        self.set_check_state_all_items(FAVORITE_CHECKBOX_COL, Qt.CheckState.Unchecked)
         self.set_check_state_all_items(VISIBILITY_CHECKBOX_COL, Qt.CheckState.Checked)
         self.set_check_state_all_items(LOADING_CHECKBOX_COL, Qt.CheckState.Checked)
         
@@ -122,44 +228,41 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
                 button.setChecked(False)
                 
         # Automatic CRS
-        qgs_settings = QgsSettings()        
-        qgs_settings.setValue(config.AUTOMATIC_CRS_SETTINGS_KEY, False)
+        self._qgs_settings.setValue(config.QgsSettingsKeys.AUTOMATIC_CRS, False)
     
     def confirm_settings(self) -> None:
         # Global settings
-        qgs_settings = QgsSettings()
         checked_button = self.server_button_group.checkedButton()
         if checked_button:
             server_index = checked_button.property("server")
-            qgs_settings.setValue(config.SERVERS_SETTINGS_KEY, server_index)
+            self._qgs_settings.setValue(config.QgsSettingsKeys.SERVERS, server_index)
         
         automatic_crs = self.automatic_crs_checkbox.isChecked()
-        qgs_settings.setValue(config.AUTOMATIC_CRS_SETTINGS_KEY, automatic_crs)
+        self._qgs_settings.setValue(config.QgsSettingsKeys.AUTOMATIC_CRS, automatic_crs)
         
         # Layer settings
-        check_status = {
-            config.InternalProperties.VISIBILITY: {},
-            config.InternalProperties.LOADING: {},
-        }
-                
         for item in self._items:
             path: str = item.data(0, Qt.ItemDataRole.UserRole)
+            favorite_state = item.checkState(FAVORITE_CHECKBOX_COL)
+            # Check whether it's unchecked or not due to tristate -> Negate it and ignore partially checked
+            is_favorite = not favorite_state == Qt.CheckState.Unchecked and favorite_state != Qt.CheckState.PartiallyChecked
+            if "/" in path:     # Skip regions, since it wouldn't make sense
+                PropertyManager.set_favorite(path, is_favorite)
+            
             visibility_state = item.checkState(VISIBILITY_CHECKBOX_COL)
-            if visibility_state == Qt.CheckState.Unchecked:
-                check_status[config.InternalProperties.VISIBILITY][path] = False
-            else:
-                check_status[config.InternalProperties.VISIBILITY][path] = True
+            # Check whether it's unchecked or not due to tristate -> Negate it
+            is_visible = not visibility_state == Qt.CheckState.Unchecked
+            PropertyManager.set_visibility(path, is_visible)
                 
             loading_state = item.checkState(LOADING_CHECKBOX_COL)
-            if loading_state == Qt.CheckState.Unchecked:
-                check_status[config.InternalProperties.LOADING][path] = False
-            else:
-                check_status[config.InternalProperties.LOADING][path] = True
+            # Check whether it's unchecked or not due to tristate -> Negate it
+            is_enabled = not loading_state == Qt.CheckState.Unchecked
+            PropertyManager.set_enabled(path, is_enabled)
         
-        CatalogManager.update_internal_properties(check_status)
+        PropertyManager.save_all()
         self.clear_data()
         
     def clear_data(self) -> None:
         self._current_catalog = {}
         self._items = []
-        self.visibility_tree.clear()
+        self.layer_settings_tree.clear()

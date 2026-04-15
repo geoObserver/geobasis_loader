@@ -8,15 +8,13 @@ if QtCore.QVersionNumber(6) > QtCore.QVersionNumber.fromString(QtCore.QT_VERSION
     resize_mode = QtWidgets.QHeaderView
 else:
     resize_mode = QtWidgets.QHeaderView.ResizeMode
-    
-print(QtCore.QVersionNumber(5) > QtCore.QVersionNumber.fromString(QtCore.QT_VERSION_STR)[0])
+
 class EpsgDialog(QtWidgets.QDialog, EPSG_DIALOG):
     selected_coord = None
 
     def __init__(self, parent = None):
         QtWidgets.QDialog.__init__(self, parent)
         self.setupUi(self)
-        self._want_to_close = False
         
         self.table: QtWidgets.QTableWidget = self.tableWidget
         header = self.table.horizontalHeader()       
@@ -30,7 +28,7 @@ class EpsgDialog(QtWidgets.QDialog, EPSG_DIALOG):
         self.buttonBox.accepted.connect(self.confirm_selected_coord)
         self.table.cellDoubleClicked.connect(self.confirm_selected_coord)
         
-    def set_table_data(self, supported_auth_ids: list[str], layer_name: str) -> None:
+    def set_table_data(self, supported_auth_ids: frozenset[str], layer_name: str) -> None:
         # Gespeichertes Koordinatensystem zurücksetzen
         self.selected_coord = None
         
