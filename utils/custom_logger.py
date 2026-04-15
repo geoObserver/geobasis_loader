@@ -27,14 +27,12 @@ class GeoBasisLoaderLoggingHandler(logging.Handler):
         QgsMessageLog.logMessage(message, config.PLUGIN_NAME, qgis_message_level)
         
         if getattr(record, "show_banner", False):
-            try:
-                iface.messageBar().pushMessage(
-                    config.PLUGIN_NAME_AND_VERSION,
-                    message,
-                    qgis_message_level,
-                    qgis_message_duration,
+            if iface and iface.messageBar():        # type: ignore
+                iface.messageBar().pushMessage(     # type: ignore
+                    config.PLUGIN_NAME_AND_VERSION, message,
+                    qgis_message_level, qgis_message_duration,
                 )
-            except AttributeError:
+            else:
                 QgsMessageLog.logMessage(
                     "Messagebar not found during logging",
                     config.PLUGIN_NAME,

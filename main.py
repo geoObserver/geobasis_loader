@@ -382,15 +382,19 @@ class GeoBasis_Loader(QObject):
                 layer.setScaleBasedVisibility(True)
         
         if isinstance(layer, QgsVectorLayer):
-            try:
-                fill_color: QColor = QColor(*[int(c) for c in topic.fill_color]) if isinstance(topic.fill_color, list) else QColor(topic.fill_color)
-            except (TypeError, ValueError):
-                logger.warning(f"Ungültiger fillColor-Wert '{topic.fill_color}' für Layer '{layer_name}', verwende Grau")
+            if isinstance(topic.fill_color, list) and len(topic.fill_color) >= 3:
+                fill_color = QColor(*topic.fill_color[:4])  # RGB oder RGBA
+            elif isinstance(topic.fill_color, str):
+                fill_color = QColor(topic.fill_color)
+            else:
+                logger.warning(f"Ungültiger fillColor-Wert '{topic.fill_color}' für '{layer_name}'")
                 fill_color = QColor(220, 220, 220)
             
-            try:
-                stroke_color: QColor = QColor(*[int(c) for c in topic.stroke_color]) if isinstance(topic.stroke_color, list) else QColor(topic.stroke_color)
-            except (ValueError, TypeError):
+            if isinstance(topic.stroke_color, list) and len(topic.stroke_color) >= 3:
+                stroke_color = QColor(*topic.stroke_color[:4])  # RGB oder RGBA
+            elif isinstance(topic.stroke_color, str):
+                stroke_color = QColor(topic.stroke_color)
+            else:
                 logger.warning(f"Ungültiger strokeColor-Wert '{topic.stroke_color}' für Layer '{layer_name}', verwende Schwarz")
                 stroke_color = QColor(0, 0, 0)
             
@@ -403,21 +407,17 @@ class GeoBasis_Loader(QObject):
                     logger.warning("Symbol ist None oder leer für Layer: " + layer_name)
                 else:
                     symbol_layer: QgsSymbolLayer = symbol.symbolLayer(0)
-                    try:
-                        symbol_layer.setColor(fill_color)
-
-                        geom_type = QgsWkbTypes.singleType(QgsWkbTypes.flatType(layer.wkbType()))
-                        if geom_type == geometry_types.LineString:
-                            symbol_layer.setWidth(topic.stroke_width)
-                        elif geom_type == geometry_types.Polygon:
-                            symbol_layer.setStrokeColor(stroke_color)
-                            symbol_layer.setStrokeWidth(topic.stroke_width)
-                        elif geom_type == geometry_types.Point:
-                            symbol_layer.setSize(topic.stroke_width)
-                        else:
-                            logger.critical(f"Fehler bei Bestimmung der Geometrieart, Bestimmte Geometrie: {QgsWkbTypes.displayString(geom_type)}")
-                    except AttributeError as e:
-                        logger.warning(f"Styling für '{layer_name}' fehlgeschlagen: {e}")
+                    symbol_layer.setColor(fill_color)
+                    geom_type = QgsWkbTypes.singleType(QgsWkbTypes.flatType(layer.wkbType()))
+                    if geom_type == geometry_types.LineString:
+                        symbol_layer.setWidth(topic.stroke_width)
+                    elif geom_type == geometry_types.Polygon:
+                        symbol_layer.setStrokeColor(stroke_color)
+                        symbol_layer.setStrokeWidth(topic.stroke_width)
+                    elif geom_type == geometry_types.Point:
+                        symbol_layer.setSize(topic.stroke_width)
+                    else:
+                        logger.critical(f"Fehler bei Bestimmung der Geometrieart, Bestimmte Geometrie: {QgsWkbTypes.displayString(geom_type)}")
                         
             layer.triggerRepaint()
             layer_tree_view =  self.iface.layerTreeView()

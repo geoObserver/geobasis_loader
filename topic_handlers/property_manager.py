@@ -237,13 +237,13 @@ class PropertyManager:
         
         with open(path, encoding="utf-8") as f:
             data = json.load(f)
-            properties = data["properties"]
+            properties = data.get("properties", {})
             
-            visible = properties["__visible__"]
+            visible = properties.get("__visible__", {})
             for key, value in visible.items():
                 self.set_visibility(key, value)
                 
-            enabled = properties["__loading__"]
+            enabled = properties.get("__loading__", {})
             for key, value in enabled.items():
                 self.set_enabled(key, value)
     
