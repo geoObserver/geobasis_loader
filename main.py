@@ -376,6 +376,8 @@ class GeoBasis_Loader(QObject):
             layer = QgsVectorLayer(uri, layer_name, 'wfs')
         elif layer_type == catalog_types.TopicType.APIF:
             layer = QgsVectorLayer(uri, layer_name, 'oapif')
+        elif layer_type == catalog_types.TopicType.ARCGIS_FEATURE_SERVER:
+            layer = QgsVectorLayer(uri, layer_name, 'arcgisfeatureserver')
         elif layer_type == catalog_types.TopicType.VECTORTILES:
             layer = QgsVectorTileLayer(uri, layer_name)
             layer.loadDefaultStyle()
@@ -383,6 +385,8 @@ class GeoBasis_Loader(QObject):
             layer = QgsRasterLayer(uri, layer_name, 'wcs')
         elif layer_type == catalog_types.TopicType.WMS:
             layer = QgsRasterLayer(uri, layer_name, 'wms')
+        elif layer_type == catalog_types.TopicType.ARCGIS_MAP_SERVER:
+            layer = QgsRasterLayer(uri, layer_name, 'arcgismapserver')
         else:
             raise ValueError(f"Unknown layer type: {layer_type}")
 
