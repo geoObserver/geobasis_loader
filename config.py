@@ -1,6 +1,7 @@
 from enum import Enum
 import os
-from qgis.core import QgsSettings
+import pathlib
+from qgis.core import QgsSettings, QgsApplication
 
 PLUGIN_VERSION = '2.0.0'
 PLUGIN_NAME = 'GeoBasis Loader'
@@ -40,3 +41,6 @@ class QgsSettingsKeys(str, Enum):
     PROPERTY_FAVORITE = 'geobasis_loader/properties/favorite'
     PROPERTY_INVISIBLE = 'geobasis_loader/properties/invisible'
     PROPERTY_DISABLED = 'geobasis_loader/properties/disabled'
+
+class QgsIcons:
+    FAVORITES_STAR = QgsApplication.getThemeIcon("mIconFavorites.svg")

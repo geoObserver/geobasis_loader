@@ -67,7 +67,8 @@ class GeoBasis_Loader(QObject):
             self.main_menu.addSeparator()
             
             # ------- Favoritenmenü ------------------------
-            favorite_menu = QMenu(STAR_PREFIX + "Favoriten", self.main_menu)
+            favorite_menu = QMenu("Favoriten", self.main_menu)
+            favorite_menu.setIcon(config.QgsIcons.FAVORITES_STAR)
             favorite_menu.setObjectName('favorites-menu')
             favorite_menu.setToolTipsVisible(True)
             
