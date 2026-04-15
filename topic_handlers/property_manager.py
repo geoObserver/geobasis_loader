@@ -117,7 +117,6 @@ class PropertyManager:
         self._invisible: set[str] = set()
         self._disabled: set[str] = set()
         self._qgs_settings = QgsSettings()
-        self.load_all()
     
     def __getitem__(self, key: str) -> Properties:
         """Return a properties proxy for an entry key.

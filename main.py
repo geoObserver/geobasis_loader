@@ -32,6 +32,7 @@ class GeoBasis_Loader(QObject):
         self.iface = iface
         self._qgs_settings = QgsSettings()
         custom_logger.setup_logging()
+        PropertyManager.load_all()
         CatalogManager.get_overview(callback=self.initGui)
         
         # ------- Create dialog variables, create dialogs lazily
