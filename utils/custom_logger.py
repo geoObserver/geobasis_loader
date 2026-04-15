@@ -78,5 +78,3 @@ def remove_logging() -> None:
 def get_logger(name: str) -> GeoBasisLogger:
     child = logging.getLogger(f"{config.PLUGIN_LOGGER_NAME}.{name}")
     return GeoBasisLogger(child, None)
-
-setup_logging()
