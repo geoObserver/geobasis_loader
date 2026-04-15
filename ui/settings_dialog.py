@@ -21,6 +21,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         self._items: list[QtWidgets.QTreeWidgetItem] = []
         self._current_catalog = None
         self._updating_items = False
+        self._qgs_settings = QgsSettings()
         
         self.setupUi(self)
         
@@ -190,14 +191,13 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         self._updating_items = False
         
         # Global Settings
-        qgs_settings = QgsSettings()
-        server = qgs_settings.value(config.QgsSettingsKeys.SERVERS, 0, type=int)
+        server = self._qgs_settings.value(config.QgsSettingsKeys.SERVERS, 0, type=int)
         for button in self.server_button_group.buttons():
             if button.property("server") == server:
                 button.setChecked(True)
             else:
                 button.setChecked(False)
-        automatic_crs = qgs_settings.value(config.QgsSettingsKeys.AUTOMATIC_CRS, False, bool)
+        automatic_crs = self._qgs_settings.value(config.QgsSettingsKeys.AUTOMATIC_CRS, False, bool)
         self.automatic_crs_checkbox.setChecked(automatic_crs)
         
     def set_check_state_all_items(self, column: int, state: Qt.CheckState) -> None:
@@ -228,19 +228,17 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
                 button.setChecked(False)
                 
         # Automatic CRS
-        qgs_settings = QgsSettings()        
-        qgs_settings.setValue(config.QgsSettingsKeys.AUTOMATIC_CRS, False)
+        self._qgs_settings.setValue(config.QgsSettingsKeys.AUTOMATIC_CRS, False)
     
     def confirm_settings(self) -> None:
         # Global settings
-        qgs_settings = QgsSettings()
         checked_button = self.server_button_group.checkedButton()
         if checked_button:
             server_index = checked_button.property("server")
-            qgs_settings.setValue(config.QgsSettingsKeys.SERVERS, server_index)
+            self._qgs_settings.setValue(config.QgsSettingsKeys.SERVERS, server_index)
         
         automatic_crs = self.automatic_crs_checkbox.isChecked()
-        qgs_settings.setValue(config.QgsSettingsKeys.AUTOMATIC_CRS, automatic_crs)
+        self._qgs_settings.setValue(config.QgsSettingsKeys.AUTOMATIC_CRS, automatic_crs)
         
         # Layer settings
         for item in self._items:

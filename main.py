@@ -25,12 +25,12 @@ class GeoBasis_Loader(QObject):
     services: Optional[catalog_types.Catalog] = None
     
     search_filter = None
-    qgs_settings = QgsSettings()
 
 # =========================================================================
     def __init__(self, iface: QgisInterface, parent=None) -> None:
         super().__init__(parent)
         self.iface = iface
+        self._qgs_settings = QgsSettings()
         CatalogManager.get_overview(callback=self.initGui)
         
         # ------- Create dialog variables, create dialogs lazily
@@ -38,12 +38,12 @@ class GeoBasis_Loader(QObject):
         self._settings_dialog: Optional[custom_ui.SettingsDialog] = None
 
         # ------- Letzten Katalog laden --------------------------------------------
-        current_catalog = self.qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
+        current_catalog = self._qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
         if current_catalog is not None and "name" in current_catalog:
             CatalogManager.get_catalog(current_catalog["titel"], current_catalog["name"], self.set_services)
             
         # ------- Letzte Einstellung für automatisches Koordinatensystem laden -----
-        self.automatic_crs = self.qgs_settings.value(config.QgsSettingsKeys.AUTOMATIC_CRS, False, type=bool)
+        self.automatic_crs = self._qgs_settings.value(config.QgsSettingsKeys.AUTOMATIC_CRS, False, type=bool)
 
         icon = QIcon(config.PLUGIN_DIR + "/GeoBasis_Loader_icon.png")
         self.main_menu = QMenu(config.PLUGIN_NAME_AND_VERSION)
@@ -61,7 +61,7 @@ class GeoBasis_Loader(QObject):
         
         if self.services is not None:
             # ------- Name des Katalogs einfügen -------------------------
-            self.main_menu.addAction(self.qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)["titel"])
+            self.main_menu.addAction(self._qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)["titel"])
             self.main_menu.addSeparator()
             
             # ------- Favoritenmenü ------------------------
@@ -224,7 +224,7 @@ class GeoBasis_Loader(QObject):
         if status == 0:
             return
         
-        self.automatic_crs = self.qgs_settings.value(config.QgsSettingsKeys.AUTOMATIC_CRS, False, bool)
+        self.automatic_crs = self._qgs_settings.value(config.QgsSettingsKeys.AUTOMATIC_CRS, False, bool)
         
         logger.success("Einstellungen erfolgreich gespeichert", extra={"show_banner": True})
         self.initGui()
@@ -233,7 +233,7 @@ class GeoBasis_Loader(QObject):
         new_state = not self.automatic_crs
         
         self.automatic_crs = new_state
-        self.qgs_settings.setValue(config.QgsSettingsKeys.AUTOMATIC_CRS, new_state)
+        self._qgs_settings.setValue(config.QgsSettingsKeys.AUTOMATIC_CRS, new_state)
 
     def open_web_site(self):
         sender = self.sender()
@@ -247,11 +247,11 @@ class GeoBasis_Loader(QObject):
         QDesktopServices.openUrl(url)
         
     def change_current_catalog(self, catalog: dict):
-        self.qgs_settings.setValue(config.QgsSettingsKeys.CURRENT_CATALOG, catalog)
+        self._qgs_settings.setValue(config.QgsSettingsKeys.CURRENT_CATALOG, catalog)
         CatalogManager.get_catalog(catalog["titel"], callback=self.set_services)
         
     def set_services(self, services: catalog_types.Catalog):
-        current_catalog = self.qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
+        current_catalog = self._qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
         if current_catalog is None or "titel" not in current_catalog:
             logger.warning(f"Momentan ist kein valider Katalog ausgewählt, Bitten wählen Sie einen aus", extra={"show_banner": True})
             return
@@ -321,7 +321,7 @@ class GeoBasis_Loader(QObject):
         
         if topic.topic_type == catalog_types.TopicType.WEB:
             return None
-       
+        
         if crs is None or crs not in topic.valid_epsg_codes:
             crs = self.get_crs(topic.valid_epsg_codes, topic.name)
             if crs is None:
