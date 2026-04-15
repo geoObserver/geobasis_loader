@@ -446,7 +446,7 @@ class GeoBasis_Loader(QObject):
                 logger.error(f"Thema '{layer_name}' kann nicht zum Ebenenbaum hinzugefügt werden")    
             else:    
                 ltl = root.insertLayer(0, layer)
-                if ltl:
+                if ltl is not None:
                     ltl.setExpanded(False)
                     ltl.setItemVisibilityChecked(topic.properties.visible)
 
@@ -478,7 +478,7 @@ class GeoBasis_Loader(QObject):
             return
         
         layer_tree_root = current_qgis_project.layerTreeRoot()
-        if not layer_tree_root:
+        if layer_tree_root is None:
             logger.error("Ebenenbaum kann nicht geladen werden")
             return
         
@@ -491,7 +491,7 @@ class GeoBasis_Loader(QObject):
             if sub_layer is None:
                 continue
             ltl = new_layer_group.insertLayer(0, sub_layer)
-            if ltl:
+            if ltl is not None:
                 ltl.setExpanded(False)
                 ltl.setItemVisibilityChecked(subtopic.properties.visible)
         
