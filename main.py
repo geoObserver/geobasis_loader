@@ -71,17 +71,23 @@ class GeoBasis_Loader(QObject):
             favorite_menu.setObjectName('favorites-menu')
             favorite_menu.setToolTipsVisible(True)
             
-            for key in PropertyManager._favorite:
-                topic = self.services.get_entry(key)
-                if not topic:
-                    continue
-                
-                action = QAction(topic.name, favorite_menu)
-                action.setObjectName(topic.name)
-                action.setData(key)
-                action.triggered.connect(self.add_topic)
+            if not PropertyManager._favorite:
+                action = QAction("(Keine)", favorite_menu)
+                action.setObjectName("no-favorites")
+                action.setEnabled(False)
                 favorite_menu.addAction(action)
-            
+            else:
+                for key in PropertyManager._favorite:
+                    topic = self.services.get_entry(key)
+                    if not topic:
+                        continue
+                    
+                    action = QAction(topic.name, favorite_menu)
+                    action.setObjectName(topic.name)
+                    action.setData(key)
+                    action.triggered.connect(self.add_topic)
+                    favorite_menu.addAction(action)
+                
             self.main_menu.addMenu(favorite_menu)
             self.main_menu.addSeparator()
             
