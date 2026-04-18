@@ -81,7 +81,7 @@ class NetworkHandler(QObject):
         
     def _handle_response(self, catalog_name: str, catalog_title: str, is_overview_response: bool):
         error = self._reply.error()
-        status_code: int = self._reply.attribute(network_request_attributes.HttpStatusCodeAttribute)
+        status_code: Optional[int] = self._reply.attribute(network_request_attributes.HttpStatusCodeAttribute)
         
         if error == no_error and status_code == 200:
             json_string = self._reply.readAll().data().decode('utf-8')

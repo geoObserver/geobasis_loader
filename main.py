@@ -14,11 +14,6 @@ from .topic_handlers import catalog_types, PropertyManager, CatalogManager
 
 logger = custom_logger.get_logger(__file__)
 
-if Qgis.versionInt() < 33000:   # Breaking change in Version 3.30 -> Geometry types now in Qgis instead of QgsWkbTypes
-    geometry_types = QgsWkbTypes.Type       # type: ignore
-else:
-    geometry_types = Qgis.WkbType
-
 STAR_PREFIX = "\u2605 "  # ★
 
 class GeoBasis_Loader(QObject):
@@ -118,7 +113,7 @@ class GeoBasis_Loader(QObject):
             for catalog in CatalogManager.overview:
                 catalog_action = catalogs_menu.addAction(catalog["titel"], partial(self.change_current_catalog, catalog))
                 if not catalog_action:
-                    logger.warning(f"Eintrag für Katalog '{catalog["titel"]}' nicht vorhanden")
+                    logger.warning(f"Eintrag für Katalog '{catalog['titel']}' nicht vorhanden")
                     continue
                 
                 catalog_action.setObjectName("open-" + catalog["titel"])
@@ -429,12 +424,12 @@ class GeoBasis_Loader(QObject):
                     symbol_layer: QgsSymbolLayer = symbol.symbolLayer(0)
                     symbol_layer.setColor(fill_color)
                     geom_type = QgsWkbTypes.singleType(QgsWkbTypes.flatType(layer.wkbType()))
-                    if geom_type == geometry_types.LineString:
+                    if geom_type == Qgis.WkbType.LineString:
                         symbol_layer.setWidth(topic.stroke_width)
-                    elif geom_type == geometry_types.Polygon:
+                    elif geom_type == Qgis.WkbType.Polygon:
                         symbol_layer.setStrokeColor(stroke_color)
                         symbol_layer.setStrokeWidth(topic.stroke_width)
-                    elif geom_type == geometry_types.Point:
+                    elif geom_type == Qgis.WkbType.Point:
                         symbol_layer.setSize(topic.stroke_width)
                     else:
                         logger.critical(f"Fehler bei Bestimmung der Geometrieart, Bestimmte Geometrie: {QgsWkbTypes.displayString(geom_type)}")

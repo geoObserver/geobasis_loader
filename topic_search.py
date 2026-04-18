@@ -55,7 +55,7 @@ class SearchFilter(QgsLocatorFilter):
             locator_result = QgsLocatorResult(self, search_result["name"], search_result)
             locator_result.group = search_result["region"]
             locator_result.score = 1.0 if string == search_result["name"].lower() else 0.5
-            locator_result.description = f"Katalog: {search_result["catalog_name"]}"
+            locator_result.description = f"Katalog: {search_result['catalog_name']}"
             self.resultFetched.emit(locator_result)
 
     # @override
