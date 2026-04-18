@@ -68,7 +68,7 @@ class GeoBasis_Loader(QObject):
             
             # ------- Favoritenmenü ------------------------
             favorite_menu = QMenu("Favoriten", self.main_menu)
-            favorite_menu.setIcon(config.QgsIcons.FAVORITES_STAR)
+            favorite_menu.setIcon(custom_ui.Icons.get_icon(custom_ui.Icons.IconKey.FAVORITE_STAR))
             favorite_menu.setObjectName('favorites-menu')
             favorite_menu.setToolTipsVisible(True)
             
@@ -153,24 +153,7 @@ class GeoBasis_Loader(QObject):
         # self.mainMenu.addAction("Status ...", partial(self.openWebSite, 'https://geoobserver.de/qgis-plugin-geobasis-loader/#statustabelle'))
         
     def gui_for_one_region(self, topics: list[catalog_types.TopicLike], region_title: str) -> QMenu:
-        def _create_action(name: str, path: str, topic_type: str, parent: QMenu,  tip: str = "Thema hinzufügen", slot = self.add_topic) -> QAction:
-            if topic_type == catalog_types.TopicType.WEB:
-                icon = config.QgsIcons.WEB_ICON
-            elif topic_type in (catalog_types.TopicType.WFS, catalog_types.TopicType.APIF):
-                icon = config.QgsIcons.WFS_ICON
-            elif topic_type == catalog_types.TopicType.WMS:
-                icon = config.QgsIcons.WMS_ICON
-            elif topic_type == catalog_types.TopicType.WCS:
-                icon = config.QgsIcons.WCS_ICON
-            elif topic_type == catalog_types.TopicType.ARCGIS_FEATURE_SERVER:
-                icon = config.QgsIcons.ARCGIS_FEATURE_ICON
-            elif topic_type == catalog_types.TopicType.ARCGIS_MAP_SERVER:
-                icon = config.QgsIcons.ARCGIS_MAP_ICON
-            elif topic_type == "combination":
-                icon = config.QgsIcons.TOPIC_COMBINATION_ICON
-            else:
-                icon = config.QgsIcons.TOPIC_GROUP_ADD
-            
+        def _create_action(name: str, path: str, icon: QIcon, parent: QMenu,  tip: str = "Thema hinzufügen", slot = self.add_topic) -> QAction:            
             action = QAction(icon, name, parent)
             action.setObjectName(name)
             action.setStatusTip(tip)
@@ -188,16 +171,18 @@ class GeoBasis_Loader(QObject):
                 continue
             
             if isinstance(topic, catalog_types.Topic) and topic.topic_type == catalog_types.TopicType.WEB:
-                action = _create_action(topic.name, topic.uri, topic.topic_type, menu, "Informationen öffnen", self.open_web_site)
+                icon = custom_ui.Icons.get_icon(topic.topic_type)
+                action = _create_action(topic.name, topic.uri, icon, menu, "Informationen öffnen", self.open_web_site)
                 menu.addAction(action)
                 continue
             
             if isinstance(topic, catalog_types.TopicGroup):
                 topic_group_menu = QMenu(topic.name, menu)
-                topic_group_menu.setIcon(config.QgsIcons.TOPIC_GROUP_FOLDER)
+                topic_group_menu.setIcon(custom_ui.Icons.get_icon(custom_ui.Icons.IconKey.FOLDER_CLOSED))
                 topic_group_menu.setToolTipsVisible(True)
                 
-                add_all_action = _create_action("Alle laden", topic.path, "group_add_all", topic_group_menu, "Alle Themen der Gruppe laden")
+                icon = custom_ui.Icons.get_icon(custom_ui.Icons.IconKey.GROUP_ADD)
+                add_all_action = _create_action("Alle laden", topic.path, icon, topic_group_menu, "Alle Themen der Gruppe laden")
                 topic_group_menu.addAction(add_all_action)
                 topic_group_menu.addSeparator()
 
@@ -205,18 +190,21 @@ class GeoBasis_Loader(QObject):
                     if not subtopic.properties.visible:
                         continue
                     
+                    icon = custom_ui.Icons.get_icon(subtopic.topic_type)
                     if subtopic.topic_type == catalog_types.TopicType.WEB:
-                        subtopic_action = _create_action(subtopic.name, subtopic.uri, subtopic.topic_type, topic_group_menu, "Informationen öffnen", self.open_web_site)
+                        subtopic_action = _create_action(subtopic.name, subtopic.uri, icon, topic_group_menu, "Informationen öffnen", self.open_web_site)
                     else:
-                        subtopic_action = _create_action(subtopic.name, subtopic.path, subtopic.topic_type, topic_group_menu,)
+                        subtopic_action = _create_action(subtopic.name, subtopic.path, icon, topic_group_menu,)
                     topic_group_menu.addAction(subtopic_action)
 
                 menu.addMenu(topic_group_menu)
             else:
                 if isinstance(topic, catalog_types.TopicCombination):
-                    action = _create_action(topic.name, topic.path, "combination", menu)
+                    icon = custom_ui.Icons.get_icon(custom_ui.Icons.IconKey.COMBINATION_ADD)
+                    action = _create_action(topic.name, topic.path, icon, menu)
                 else:
-                    action = _create_action(topic.name, topic.path, topic.topic_type, menu)
+                    icon = custom_ui.Icons.get_icon(topic.topic_type)
+                    action = _create_action(topic.name, topic.path, icon, menu)
                 menu.addAction(action)
                 
             if topic.separator:
