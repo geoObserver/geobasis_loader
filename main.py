@@ -366,7 +366,7 @@ class GeoBasis_Loader(QObject):
             layer.loadDefaultStyle()
         elif layer_type == catalog_types.TopicType.WCS:
             layer = QgsRasterLayer(uri, layer_name, 'wcs')
-        elif layer_type == catalog_types.TopicType.WMS:
+        elif layer_type in (catalog_types.TopicType.WMS, catalog_types.TopicType.WMTS):
             layer = QgsRasterLayer(uri, layer_name, 'wms')
         elif layer_type == catalog_types.TopicType.ARCGIS_MAP_SERVER:
             layer = QgsRasterLayer(uri, layer_name, 'arcgismapserver')

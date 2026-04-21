@@ -28,6 +28,7 @@ ICON_PATHS: dict[IconKey, str] = {
 
 LAYER_TYPE_ICON_PATHS: dict[catalog_types.TopicType, str] = {
     catalog_types.TopicType.WMS: "/mIconWms.svg",
+    catalog_types.TopicType.WMTS: "/mIconWms.svg",
     catalog_types.TopicType.WFS: "/mIconWfs.svg",
     catalog_types.TopicType.WCS: "/mIconWcs.svg",
     catalog_types.TopicType.VECTORTILES: "/mIconVectorTileLayer.svg",

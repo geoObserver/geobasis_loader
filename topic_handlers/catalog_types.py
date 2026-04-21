@@ -7,10 +7,11 @@ from .property_manager import Properties
 
 class TopicType(str, Enum):
     WMS = "ogc_wms"
+    WMTS = "ogc_wmts"
     WFS = "ogc_wfs"
     WCS = "ogc_wcs"
     APIF = "ogc_api_features"
-    VECTORTILES = "ogc_vectortiles"
+    VECTORTILES = "ogc_vectorTiles"
     ARCGIS_FEATURE_SERVER = "arcgis_featureserver"
     ARCGIS_MAP_SERVER = "arcgis_mapserver"
     WEB = "web"
