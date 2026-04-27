@@ -456,7 +456,7 @@
             "opacity": 0.75
           },           
           "KWP_13": {
-            "name": "HAL: KWP - Potenzialanalyse  Industrielle Abwärme (WMS)",
+            "name": "HAL: KWP - Potenzialanalyse Industrielle Abwärme (WMS)",
             "type": "ogc_wms",
             "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=fbf81af6-41df-3fec-a744-94a793dd235e&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/fbf81af6-41df-3fec-a744-94a793dd235e",
@@ -544,6 +544,27 @@
             "type": "ogc_wms",
             "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=fdb4ad4f-9c6f-19f8-1707-75b93e5d8ff1&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/fdb4ad4f-9c6f-19f8-1707-75b93e5d8ff1",
+            "opacity": 0.75
+          },           
+          "KWP_26": {
+            "name": "HAL: KWP - KWP_Bestandsanalyse_Dezentrale Wärmeversorgung (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+           "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=f15e6077-1d8c-accd-becf-5c57b18404ee&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/f15e6077-1d8c-accd-becf-5c57b18404ee",
+            "opacity": 0.75
+          },          
+          "KWP_27": {
+            "name": "HAL: KWP - KWP_Bestandsanalyse_Gebäudetypen (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+           "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=f13cce2f-4fd6-d68b-275a-72e1b0f855a8&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/f13cce2f-4fd6-d68b-275a-72e1b0f855a8",
+            "opacity": 0.75
+          },           
+          "KWP_28": {
+            "name": "HAL: KWP - KWP_Bestandsanalyse_Baualtersklassen (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+           "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=fe066d0d-970a-51a4-2fbf-dea1e93626e6&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/fe066d0d-970a-51a4-2fbf-dea1e93626e6",
             "opacity": 0.75
           }           
         }
