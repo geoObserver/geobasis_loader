@@ -2876,7 +2876,7 @@
             "name": "NI: AP 10 farbig (WMS)",
             "type": "ogc_wms",
             "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:3035", "EPSG:3034", "EPSG:3044", "EPSG:3045", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:32632", "EPSG:32633", "EPSG:4647"],
-            "uri": "crs=EPSG:placeholder&contextualWMSLegend=0&dpiMode=7&featureCount=10&format=image/png&layers=ni_ap10_farbe_mit_hoehenlinien&styles&tilePixelRatio=0&url=https://opendata.lgln.niedersachsen.de/doorman/noauth/ap10_wms",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=ni_ap10_farbe&styles&tilePixelRatio=0&url=https://opendata.lgln.niedersachsen.de/doorman/noauth/ap10_basemap_wms",
             "opacity": 0.75,
             "minScale": 17499.9,
             "maxScale": 7500
@@ -2935,7 +2935,7 @@
             "name": "NI: AP 10 grau (WMS)",
             "type": "ogc_wms",
             "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:3857", "EPSG:3035", "EPSG:3034", "EPSG:3044", "EPSG:3045", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:32632", "EPSG:32633", "EPSG:4647"],
-            "uri": "crs=EPSG:placeholder&contextualWMSLegend=0&dpiMode=7&featureCount=10&format=image/png&layers=ni_ap10_grau_mit_hoehenlinien&styles&tilePixelRatio=0&url=https://opendata.lgln.niedersachsen.de/doorman/noauth/ap10_wms",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=ni_ap10_grau&styles&tilePixelRatio=0&url=https://opendata.lgln.niedersachsen.de/doorman/noauth/ap10_basemap_wms",
             "opacity": 0.75,
             "minScale": 17499.9,
             "maxScale": 7500
