@@ -228,7 +228,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
                 button.setChecked(False)
                 
         # Automatic CRS
-        self._qgs_settings.setValue(config.QgsSettingsKeys.AUTOMATIC_CRS, False)
+        self.automatic_crs_checkbox.setChecked(False)
     
     def confirm_settings(self) -> None:
         # Global settings
