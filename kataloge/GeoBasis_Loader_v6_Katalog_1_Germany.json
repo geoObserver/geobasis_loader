@@ -3947,6 +3947,24 @@
         "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Geoleistungspaket (GLP)", "Bodenrichtwerte (BRW)", "WMS: Bodenrichtwerte Land- und Forstwirtschaft 2024"],
         "komgis_priority": "79010",
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=Landwirtschaft&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_BRW2024_gast/guest?VERSION%3D1.3.0",
+        "opacity": 0.75
+      },
+      "bodenrichtwerte_bauland_2026": {
+        "name": "ST: Bodenrichtwerte Bauland 2026 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839"],
+        "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Geoleistungspaket (GLP)", "Bodenrichtwerte (BRW)", "WMS: Bodenrichtwerte Bauland 2024"],
+        "komgis_priority": "79000",
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Bauland&styles=SimpleB&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/ows_st_lvermgeo_brw2026",
+        "opacity": 0.75
+      },
+      "bodenrichtwerte_Landwirtschaft_2026": {
+        "name": "ST: Bodenrichtwerte Land- und Forstwirtschaft 2026 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839"],
+        "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Geoleistungspaket (GLP)", "Bodenrichtwerte (BRW)", "WMS: Bodenrichtwerte Land- und Forstwirtschaft 2024"],
+        "komgis_priority": "79010",
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Landwirtschaft&styles=SimpleLF&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/ows_st_lvermgeo_brw2026",
         "seperator": true,
         "opacity": 0.75
       },
