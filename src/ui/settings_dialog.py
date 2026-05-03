@@ -39,8 +39,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         self.check_loading_button.clicked.connect(lambda: self.set_check_state_all_items(LOADING_CHECKBOX_COL, Qt.CheckState.Checked))
         self.uncheck_loading_button.clicked.connect(lambda: self.set_check_state_all_items(LOADING_CHECKBOX_COL, Qt.CheckState.Unchecked))
         
-        # Button box
-        self.button_box.accepted.connect(self.confirm_settings)
+        self.accepted.connect(self.confirm_settings)
         self.reset_button.clicked.connect(self.restore_defaults)
         
         # IntelliSense
@@ -263,7 +262,6 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
             registry.property_manager.set_enabled(path, is_enabled)
         
         registry.property_manager.save_all()
-        self.accept()
         self.clear_data()
         
     def clear_data(self) -> None:
