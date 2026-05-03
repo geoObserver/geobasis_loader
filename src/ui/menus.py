@@ -95,7 +95,8 @@ class MainMenu(QMenu):
                 if not topic:
                     continue
                 
-                action = QAction(topic.name, self.favorites_menu)
+                icon = Icons.get_icon_from_entry(topic)
+                action = QAction(icon, topic.name, self.favorites_menu)
                 action.setObjectName(topic.name)
                 action.triggered.connect(lambda _, t=topic: handlers.add_topic(t.path))
                 self.favorites_menu.addAction(action)
