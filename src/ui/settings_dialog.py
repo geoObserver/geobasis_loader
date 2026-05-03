@@ -2,11 +2,13 @@ import os
 from typing import Union, Optional
 from qgis.PyQt import uic, QtWidgets
 from qgis.PyQt.QtCore import Qt
-from qgis.PyQt.QtGui import QShowEvent
+from qgis.PyQt.QtGui import QIcon, QShowEvent
 from qgis.core import QgsSettings
 from .. import config
 from ..services import registry
 from ..models import catalog_types
+# FIXME
+from . import icons as Icons
 from ..utils import custom_logger
 
 SETTINGS_DIALOG = uic.loadUiType(os.path.join(os.path.dirname(__file__), "design_files", "settings_dialog.ui"))[0]
@@ -39,6 +41,8 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         self.check_loading_button.clicked.connect(lambda: self.set_check_state_all_items(LOADING_CHECKBOX_COL, Qt.CheckState.Checked))
         self.uncheck_loading_button.clicked.connect(lambda: self.set_check_state_all_items(LOADING_CHECKBOX_COL, Qt.CheckState.Unchecked))
         
+        self.layer_settings_tree.itemExpanded.connect(self._on_item_expanded)
+        self.layer_settings_tree.itemCollapsed.connect(self._on_item_collapsed)
         self.accepted.connect(self.confirm_settings)
         self.reset_button.clicked.connect(self.restore_defaults)
         
@@ -131,6 +135,18 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
             self._set_state_of_parents(item, column)
         self._updating_items = False
     
+    def _on_item_expanded(self, item: QtWidgets.QTreeWidgetItem) -> None:
+        item_icon = item.icon(0)
+        folder_closed_icon = Icons.get_icon(Icons.IconKey.FOLDER_CLOSED)
+        if item_icon.cacheKey() == folder_closed_icon.cacheKey():
+            item.setIcon(0, Icons.get_icon(Icons.IconKey.FOLDER_OPEN))
+    
+    def _on_item_collapsed(self, item: QtWidgets.QTreeWidgetItem) -> None:
+        item_icon = item.icon(0)
+        folder_open_icon = Icons.get_icon(Icons.IconKey.FOLDER_OPEN)
+        if item_icon.cacheKey() == folder_open_icon.cacheKey():
+            item.setIcon(0, Icons.get_icon(Icons.IconKey.FOLDER_CLOSED))
+        
     def setup(self):
         available_width = self.layer_settings_tree.width()
         checkbox_col_width = 80
@@ -147,6 +163,19 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
     def set_settings(self, catalog: catalog_types.Catalog) -> None:
         def _add_entry(data: catalog_types.BasicEntry, parent: Union[QtWidgets.QTreeWidgetItem, QtWidgets.QTreeWidget]) -> QtWidgets.QTreeWidgetItem:            
             item = QtWidgets.QTreeWidgetItem(parent)
+            if isinstance(data, catalog_types.Region):
+                icon = Icons.get_icon(Icons.IconKey.FOLDER_CLOSED)
+            elif isinstance(data, catalog_types.Topic):
+                icon = Icons.get_icon(data.topic_type)
+            elif isinstance(data, catalog_types.TopicGroup):
+                icon = Icons.get_icon(Icons.IconKey.FOLDER_CLOSED)
+            elif isinstance(data, catalog_types.TopicCombination):
+                icon = Icons.get_icon(Icons.IconKey.COMBINATION_ADD)
+            else:
+                logger.critical(f"Ungültiger Typ für Knoten: {type(data)}")
+                icon = QIcon()
+            
+            item.setIcon(0, icon)
             item.setText(0, data.name)
             item.setFlags(item.flags() | Qt.ItemFlag.ItemIsUserCheckable)
             
