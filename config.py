@@ -8,9 +8,12 @@ PLUGIN_NAME = 'GeoBasis Loader'
 PLUGIN_NAME_AND_VERSION = PLUGIN_NAME + ' (v' + PLUGIN_VERSION + ')'
 
 PLUGIN_DIR = os.path.dirname(__file__)
+RESOURCES_DIR = pathlib.Path(PLUGIN_DIR) / "resources"
+PRESETS_DIR = pathlib.Path(QgsApplication.qgisSettingsDirPath()) / "presets"
 REQUEST_TIMEOUT_MS = 30000
 PLUGIN_LOGGER_NAME = "geobasis_loader"
 LOGGING_SUCCESS_LEVEL = 25
+PRESET_FORMAT_VERSION = 7.00
 
 CATALOG_OVERVIEW = "GeoBasis_Loader_v6_Kataloge.json"
 CATALOG_OVERVIEW_NAME = "catalog_overview"
