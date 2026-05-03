@@ -12,17 +12,19 @@ class IconKey(str, Enum):
     FAVORITE_STAR = "favorite_star"
     PRESET_USER = "preset_user"
     FOLDER_CLOSED = "folder_closed"
+    FOLDER_OPEN = "folder_open"
     GROUP_ADD = "group_add"
     COMBINATION_ADD = "combination_add"
     
     # Own resources
     TOOLBAR_MAIN_MENU_ICON = "toolbar_main_menu"
     
-# QGIS cions start wirh "/" while Plugin iocns/images/resources start without "/"
+# QGIS icons start with "/" while Plugin icons/images/resources start without "/"
 ICON_PATHS: dict[IconKey, str] = {
     IconKey.FAVORITE_STAR: "/mIconFavorites.svg",
     IconKey.PRESET_USER: "/user.svg",
     IconKey.FOLDER_CLOSED: "/mIconFolder.svg",
+    IconKey.FOLDER_OPEN: "/mIconFolderOpen.svg",
     IconKey.GROUP_ADD: "/mActionAddGroup.svg",
     IconKey.COMBINATION_ADD: "/mActionDataSourceManager.svg",
     IconKey.TOOLBAR_MAIN_MENU_ICON: "GeoBasis_Loader_Main_Icon.png"
