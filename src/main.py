@@ -5,12 +5,12 @@ from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtCore import QObject
 from qgis.core import QgsSettings
 from qgis.gui import QgisInterface
-from .src.core.search import SearchFilter
-from .src import config
-from .src.utils import custom_logger
-from .src import ui as custom_ui
-from .src.models import catalog_types
-from .src.services import registry
+from .core.search import SearchFilter
+from . import config
+from .utils import custom_logger
+from . import ui as custom_ui
+from .models import catalog_types
+from .services import registry
 logger = custom_logger.get_logger(__file__)
 
 STAR_PREFIX = "\u2605 "  # ★
