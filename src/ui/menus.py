@@ -97,7 +97,7 @@ class MainMenu(QMenu):
                 
                 action = QAction(topic.name, self.favorites_menu)
                 action.setObjectName(topic.name)
-                action.triggered.connect(lambda t=topic: handlers.add_topic(t.path))
+                action.triggered.connect(lambda _, t=topic: handlers.add_topic(t.path))
                 self.favorites_menu.addAction(action)
     
     def build_presets(self):        
@@ -116,7 +116,7 @@ class MainMenu(QMenu):
             action = QAction(preset.title, self.presets_menu)
             action.setObjectName(preset.title)
             action.setToolTip(preset.description)
-            action.triggered.connect(lambda p=preset: registry.preset_manager.add_preset_to_project(p.id))
+            action.triggered.connect(lambda _, p=preset: registry.preset_manager.add_preset_to_project(p.id))
             self.presets_menu.addAction(action)
         
         self.presets_menu.addSeparator()
@@ -125,7 +125,7 @@ class MainMenu(QMenu):
             action = QAction(preset.title, self.presets_menu)
             action.setObjectName(preset.title)
             action.setToolTip(preset.description)
-            action.triggered.connect(lambda p=preset: registry.preset_manager.add_preset_to_project(p.id))
+            action.triggered.connect(lambda _, p=preset: registry.preset_manager.add_preset_to_project(p.id))
             self.presets_menu.addAction(action)
     
     def _build_region_menu(self, region: catalog_types.Region) -> QMenu:
@@ -134,7 +134,7 @@ class MainMenu(QMenu):
             action.setObjectName(name)
             action.setStatusTip(tip)
             action.setToolTip(tip)
-            action.triggered.connect(lambda: slot(path))
+            action.triggered.connect(lambda _: slot(path))
             return action
         
         menu = QMenu(region.name, self)
