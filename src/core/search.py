@@ -1,7 +1,7 @@
 from typing import Optional
 
 from qgis.core import QgsLocatorFilter, QgsLocatorResult, QgsLocatorContext, QgsFeedback
-from .topic_handlers import catalog_types
+from ..models import catalog_types
 # Strings wie Beschreibung und Name werden nicht übersetzt und sind momentan nur in Deutsch 
 
 class SearchFilter(QgsLocatorFilter):

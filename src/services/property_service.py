@@ -10,104 +10,10 @@ import json
 from qgis.core import QgsSettings
 from .. import config
 from ..utils import custom_logger
+from ..models.properties import Properties
 
 logger = custom_logger.get_logger(__file__)
 
-class Properties:   
-    """Proxy object for a single entry's properties.
-
-    Instances are lightweight wrappers around an entry key and forward reads
-    and writes to the module-level singleton manager.
-
-    Attributes:
-        favorite: Whether the entry is marked as favorite.
-        visible: Whether the entry is visible in the UI.
-        enabled: Whether loading of the entry is allowed.
-    """
-
-    def __init__(self, key: str) -> None:
-        """Initialize a properties proxy.
-
-        Args:
-            key: Unique catalog path/key of the entry.
-        
-        Raises:
-            ValueError: Provided key is not a string
-        """
-        
-        if not isinstance(key, str):
-            raise ValueError(f"Key isn't a string")
-        self._key = key
-    
-    @property
-    def favorite(self) -> bool:
-        """Return whether the entry is marked as favorite.
-
-        Returns:
-            True if favorite, else False.
-        """
-        return singleton.is_favorite(self._key)
-    
-    @favorite.setter
-    def favorite(self, value) -> None:
-        """Set favorite state and persist the change.
-
-        Args:
-            value: New favorite state.
-
-        Raises:
-            ValueError: If value is not a bool.
-        """
-        if not isinstance(value, bool):
-            raise ValueError(f"Object isn't a boolean")
-        singleton.set_favorite(self._key, value, True)
-    
-    @property
-    def visible(self) -> bool:
-        """Return whether the entry should be visible in the UI.
-
-        Returns:
-            True if visible, else False.
-        """
-        return singleton.is_visible(self._key)
-    
-    @visible.setter
-    def visible(self, value) -> None:
-        """Set visibility state and persist the change.
-
-        Args:
-            value: New visibility state.
-
-        Raises:
-            ValueError: If value is not a bool.
-        """
-        if not isinstance(value, bool):
-            raise ValueError(f"Object isn't a boolean")
-        singleton.set_visibility(self._key, value, True)
-    
-    @property
-    def enabled(self) -> bool:
-        """Return whether loading this entry is allowed.
-
-        Returns:
-            True if loading is enabled, else False.
-        """
-        return singleton.is_enabled(self._key)
-    
-    @enabled.setter
-    def enabled(self, value) -> None:
-        """Set enabled state and persist the change.
-
-        Args:
-            value: New enabled state.
-
-        Raises:
-            ValueError: If value is not a bool.
-        """
-        if not isinstance(value, bool):
-            raise ValueError(f"Object isn't a boolean")
-        singleton.set_enabled(self._key, value, True)
-    
 class PropertyManager:
     """Manage property state and persistence for all entries."""
 

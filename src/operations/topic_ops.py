@@ -4,8 +4,9 @@ from qgis.PyQt.QtCore import QUrl
 from qgis.PyQt.QtGui import QDesktopServices, QColor
 from qgis.core import QgsProject, QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer, QgsSymbolLayer, QgsWkbTypes, Qgis, QgsSettings
 from qgis.utils import iface
-from . import catalog_types, CatalogManager
-from ..ui import EpsgDialog
+from ..models import catalog_types
+from ..services import registry
+from ..ui.epsg_dialog import EpsgDialog
 from .. import config
 from ..utils import custom_logger
 
@@ -39,7 +40,7 @@ def add_topic(topic, crs: Optional[str] = None) -> None:
 
 @add_topic.register(str)
 def _(path: str, crs: Optional[str] = None) -> None:
-    current_catalog = CatalogManager.get_current_catalog()
+    current_catalog = registry.catalog_manager.get_current_catalog()
     if not isinstance(current_catalog, catalog_types.Catalog):
         logger.error("Aktueller Katalog kann nicht geladen werden")
         return
@@ -260,7 +261,7 @@ def add_layer_group(topic_group: catalog_types.TopicGroup, preferred_crs: Option
         layer_tree_root.removeChildNode(new_layer_group)
         
 def add_layer_combination(topic_combination: catalog_types.TopicCombination, preferred_crs: Optional[str]) -> None:
-    current_catalog = CatalogManager.get_current_catalog()
+    current_catalog = registry.catalog_manager.get_current_catalog()
     if not isinstance(current_catalog, catalog_types.Catalog):
         logger.error("Aktueller Katalog kann nicht geladen werden")
         return
