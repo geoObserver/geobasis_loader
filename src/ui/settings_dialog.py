@@ -207,17 +207,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
     def set_settings(self, catalog: catalog_types.Catalog) -> None:
         def _add_entry(data: catalog_types.BasicEntry, parent: Union[QtWidgets.QTreeWidgetItem, QtWidgets.QTreeWidget]) -> QtWidgets.QTreeWidgetItem:            
             item = QtWidgets.QTreeWidgetItem(parent)
-            if isinstance(data, catalog_types.Region):
-                icon = Icons.get_icon(Icons.IconKey.FOLDER_CLOSED)
-            elif isinstance(data, catalog_types.Topic):
-                icon = Icons.get_icon(data.topic_type)
-            elif isinstance(data, catalog_types.TopicGroup):
-                icon = Icons.get_icon(Icons.IconKey.FOLDER_CLOSED)
-            elif isinstance(data, catalog_types.TopicCombination):
-                icon = Icons.get_icon(Icons.IconKey.COMBINATION_ADD)
-            else:
-                logger.critical(f"Ungültiger Typ für Knoten: {type(data)}")
-                icon = QIcon()
+            icon = Icons.get_icon_from_entry(data)
             
             item.setIcon(0, icon)
             item.setText(0, data.name)
