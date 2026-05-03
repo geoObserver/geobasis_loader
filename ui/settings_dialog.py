@@ -141,7 +141,6 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
     def showEvent(self, a0: Optional[QShowEvent]) -> None:
         super().showEvent(a0)
         self.setup()
-        self.set_settings()
        
     def set_settings(self):
         def _add_entry(data: catalog_types.BasicEntry, parent: Union[QtWidgets.QTreeWidgetItem, QtWidgets.QTreeWidget]) -> QtWidgets.QTreeWidgetItem:            
@@ -260,6 +259,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
             PropertyManager.set_enabled(path, is_enabled)
         
         PropertyManager.save_all()
+        self.accept()
         self.clear_data()
         
     def clear_data(self) -> None:
