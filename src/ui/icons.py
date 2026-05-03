@@ -86,6 +86,21 @@ def get_icon_from_key(icon_key: IconKey) -> QIcon:
     
     return icon
 
+def get_icon_from_entry(entry: catalog_types.BasicEntry) -> QIcon:
+    if isinstance(entry, catalog_types.Region):
+        icon = get_icon(IconKey.FOLDER_CLOSED)
+    elif isinstance(entry, catalog_types.Topic):
+        icon = get_icon(entry.topic_type)
+    elif isinstance(entry, catalog_types.TopicGroup):
+        icon = get_icon(IconKey.FOLDER_CLOSED)
+    elif isinstance(entry, catalog_types.TopicCombination):
+        icon = get_icon(IconKey.COMBINATION_ADD)
+    else:
+        logger.critical(f"Ungültiger Typ für Eintrag: {type(entry)}")
+        icon = QIcon()
+        
+    return icon
+
 def get_icon(key: Union[str, IconKey, catalog_types.TopicType]) -> QIcon:
     if not isinstance(key, str):
         logger.critical(f"Icon ID is not a string: ID of type {key.__class__}")
