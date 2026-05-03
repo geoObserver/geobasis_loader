@@ -57,7 +57,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
             if child is None:
                 continue
             
-            child.setCheckState(column, state)
+            self._set_state(child, column, state)
             self._set_state_of_children(child, column, state)
     
     def _set_state_of_parents(self, item: QtWidgets.QTreeWidgetItem, column: int) -> None:
@@ -73,7 +73,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
             if child is None:
                 continue
             
-            state = child.checkState(column)
+            state = self._get_state(child, column)
             if state == Qt.CheckState.Checked:
                 has_checked = True
             
@@ -91,7 +91,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         if column == FAVORITE_CHECKBOX_COL:
             # Keep explicitly favorited groups checked. Otherwise favorites are an
             # indicator state: partial when any descendant is favorited.
-            if parent.checkState(column) == Qt.CheckState.Checked:
+            if self._get_state(parent, column) == Qt.CheckState.Checked:
                 new_parent_state = Qt.CheckState.Checked
             elif has_checked:
                 new_parent_state = Qt.CheckState.PartiallyChecked
@@ -105,35 +105,79 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
             else:
                 new_parent_state = Qt.CheckState.PartiallyChecked
             
-        parent.setCheckState(column, new_parent_state)
+        self._set_state(parent, column, new_parent_state)
         self._set_state_of_parents(parent, column)
     
     def on_item_changed(self, item: QtWidgets.QTreeWidgetItem, column: int) -> None:
-        if self._updating_items:
+        if self._updating_items or column == 0:
             return
         
+        state = self._get_state(item, column)
+        has_checked, has_unchecked = self._get_child_state_summary(item, column)
+        if state == Qt.CheckState.PartiallyChecked and (item.childCount() == 0 or not (has_checked and has_unchecked)):
+            # Prevent users from setting partial states directly.
+            self._updating_items = True
+            normalized_state = Qt.CheckState.Checked if has_checked else Qt.CheckState.Unchecked
+            self._set_state(item, column, normalized_state)
+            self._updating_items = False
+            return
+
         self._updating_items = True
         if column not in (VISIBILITY_CHECKBOX_COL, LOADING_CHECKBOX_COL):
             # Favorite groups can be checked independently from their children.
             # If a group is unchecked, fall back to partial when descendants are favorited.
-            if item.childCount() > 0 and item.checkState(column) == Qt.CheckState.Unchecked:
+            if item.childCount() > 0 and self._get_state(item, column) == Qt.CheckState.Unchecked:
                 has_favorited_child = False
                 for i in range(item.childCount()):
                     child = item.child(i)
                     if child is None:
                         continue
-                    if child.checkState(column) != Qt.CheckState.Unchecked:
+                    if self._get_state(child, column) != Qt.CheckState.Unchecked:
                         has_favorited_child = True
                         break
                 if has_favorited_child:
-                    item.setCheckState(column, Qt.CheckState.PartiallyChecked)
+                    self._set_state(item, column, Qt.CheckState.PartiallyChecked)
 
             self._set_state_of_parents(item, column)
         else:
-            state = item.checkState(column)
+            state = self._get_state(item, column)
             self._set_state_of_children(item, column, state)
             self._set_state_of_parents(item, column)
         self._updating_items = False
+    
+    def _get_checkbox(self, item: QtWidgets.QTreeWidgetItem, column: int) -> QtWidgets.QCheckBox:
+        checkbox = self.layer_settings_tree.itemWidget(item, column)
+        if not isinstance(checkbox, QtWidgets.QCheckBox):
+            raise TypeError(f"No checkbox widget for column {column}")
+        return checkbox
+
+    def _get_state(self, item: QtWidgets.QTreeWidgetItem, column: int) -> Qt.CheckState:
+        return self._get_checkbox(item, column).checkState()
+
+    def _set_state(self, item: QtWidgets.QTreeWidgetItem, column: int, state: Qt.CheckState) -> None:
+        checkbox = self._get_checkbox(item, column)
+        if column == FAVORITE_CHECKBOX_COL:
+            checkbox.setTristate(state == Qt.CheckState.PartiallyChecked)
+        checkbox.setCheckState(state)
+
+    def _get_child_state_summary(self, item: QtWidgets.QTreeWidgetItem, column: int) -> tuple[bool, bool]:
+        has_checked = False
+        has_unchecked = False
+        for i in range(item.childCount()):
+            child = item.child(i)
+            if child is None:
+                continue
+            state = self._get_state(child, column)
+            if state == Qt.CheckState.Checked:
+                has_checked = True
+            elif state == Qt.CheckState.Unchecked:
+                has_unchecked = True
+            else:
+                has_checked = True
+                has_unchecked = True
+            if has_checked and has_unchecked:
+                break
+        return has_checked, has_unchecked
     
     def _on_item_expanded(self, item: QtWidgets.QTreeWidgetItem) -> None:
         item_icon = item.icon(0)
@@ -177,17 +221,27 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
             
             item.setIcon(0, icon)
             item.setText(0, data.name)
-            item.setFlags(item.flags() | Qt.ItemFlag.ItemIsUserCheckable)
+            item.setFlags(item.flags() | Qt.ItemFlag.ItemIsSelectable | Qt.ItemFlag.ItemIsEnabled)
             
             # Favorite
             checked = Qt.CheckState.Checked if data.properties.favorite else Qt.CheckState.Unchecked
-            item.setCheckState(FAVORITE_CHECKBOX_COL, checked)
+            favorite_checkbox = QtWidgets.QCheckBox()
+            favorite_checkbox.setTristate(False)
+            favorite_checkbox.setCheckState(checked)
+            favorite_checkbox.stateChanged.connect(lambda _=None, i=item, c=FAVORITE_CHECKBOX_COL: self.on_item_changed(i, c))
+            self.layer_settings_tree.setItemWidget(item, FAVORITE_CHECKBOX_COL, favorite_checkbox)
             # Visibility
             checked = Qt.CheckState.Checked if data.properties.visible else Qt.CheckState.Unchecked
-            item.setCheckState(VISIBILITY_CHECKBOX_COL, checked)
+            visibility_checkbox = QtWidgets.QCheckBox()
+            visibility_checkbox.setCheckState(checked)
+            visibility_checkbox.stateChanged.connect(lambda _=None, i=item, c=VISIBILITY_CHECKBOX_COL: self.on_item_changed(i, c))
+            self.layer_settings_tree.setItemWidget(item, VISIBILITY_CHECKBOX_COL, visibility_checkbox)
             # Loading
             checked = Qt.CheckState.Checked if data.properties.enabled else Qt.CheckState.Unchecked
-            item.setCheckState(LOADING_CHECKBOX_COL, checked)
+            loading_checkbox = QtWidgets.QCheckBox()
+            loading_checkbox.setCheckState(checked)
+            loading_checkbox.stateChanged.connect(lambda _=None, i=item, c=LOADING_CHECKBOX_COL: self.on_item_changed(i, c))
+            self.layer_settings_tree.setItemWidget(item, LOADING_CHECKBOX_COL, loading_checkbox)
             
             item.setData(0, Qt.ItemDataRole.UserRole, data.path)
             self._items.append(item)
@@ -234,7 +288,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
     def set_check_state_all_items(self, column: int, state: Qt.CheckState) -> None:
         self._updating_items = True
         for item in self._items:
-            item.setCheckState(column, state)
+            self._set_state(item, column, state)
         self._updating_items = False
         viewport = self.layer_settings_tree.viewport()
         if viewport:
@@ -274,18 +328,18 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         # Layer settings
         for item in self._items:
             path: str = item.data(0, Qt.ItemDataRole.UserRole)
-            favorite_state = item.checkState(FAVORITE_CHECKBOX_COL)
+            favorite_state = self._get_state(item, FAVORITE_CHECKBOX_COL)
             # Check whether it's unchecked or not due to tristate -> Negate it and ignore partially checked
             is_favorite = not favorite_state == Qt.CheckState.Unchecked and favorite_state != Qt.CheckState.PartiallyChecked
             if "/" in path:     # Skip regions, since it wouldn't make sense
                 registry.property_manager.set_favorite(path, is_favorite)
             
-            visibility_state = item.checkState(VISIBILITY_CHECKBOX_COL)
+            visibility_state = self._get_state(item, VISIBILITY_CHECKBOX_COL)
             # Check whether it's unchecked or not due to tristate -> Negate it
             is_visible = not visibility_state == Qt.CheckState.Unchecked
             registry.property_manager.set_visibility(path, is_visible)
                 
-            loading_state = item.checkState(LOADING_CHECKBOX_COL)
+            loading_state = self._get_state(item, LOADING_CHECKBOX_COL)
             # Check whether it's unchecked or not due to tristate -> Negate it
             is_enabled = not loading_state == Qt.CheckState.Unchecked
             registry.property_manager.set_enabled(path, is_enabled)
@@ -297,3 +351,4 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         self._current_catalog = {}
         self._items = []
         self.layer_settings_tree.clear()
+
