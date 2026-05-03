@@ -5,7 +5,9 @@ from qgis.PyQt.QtWidgets import QMenu, QAction
 from qgis.core import QgsSettings
 from qgis.utils import iface
 from . import Icons, SettingsDialog, PresetDialog
-from ..topic_handlers import PresetManager, PropertyManager, CatalogManager, catalog_types, handlers
+from ..services import registry
+from ..models import catalog_types
+from ..operations import topic_ops as handlers
 from .. import config
 from ..utils import custom_logger
 
@@ -33,7 +35,7 @@ class MainMenu(QMenu):
     
     def create_menu(self):
         self.clear()
-        current_catalog: Optional[Union[catalog_types.Catalog, list]] = CatalogManager.get_current_catalog()
+        current_catalog: Optional[Union[catalog_types.Catalog, list]] = registry.catalog_manager.get_current_catalog()
         if not isinstance(current_catalog, catalog_types.Catalog):
             logger.warning("No catalog provided and no current catalog found. Cannot build catalog menu.")
         else:
@@ -65,7 +67,7 @@ class MainMenu(QMenu):
             self.addSeparator()
             
             # ------ Kataloge ------------------------------------
-            if CatalogManager.overview is not None:
+            if registry.catalog_manager.overview is not None:
                 self._build_catalog_section()
                 self.addSeparator()
         
@@ -73,10 +75,10 @@ class MainMenu(QMenu):
     
     def build_favorites(self, catalog: Optional[catalog_types.Catalog] = None):
         self.favorites_menu.clear()
-        favorites = PropertyManager.get_favorites()
+        favorites = registry.property_manager.get_favorites()
         
         if not catalog:
-            current_catalog: Optional[Union[catalog_types.Catalog, list]] = CatalogManager.get_current_catalog()
+            current_catalog: Optional[Union[catalog_types.Catalog, list]] = registry.catalog_manager.get_current_catalog()
             if not isinstance(current_catalog, catalog_types.Catalog):
                 logger.warning("No catalog provided and no current catalog found. Cannot build favorites menu.")
                 return
@@ -100,8 +102,8 @@ class MainMenu(QMenu):
     
     def build_presets(self):        
         self.presets_menu.clear()
-        user_presets = PresetManager.get_user_presets()
-        curated_presets = PresetManager.get_curated_presets()
+        user_presets = registry.preset_manager.get_user_presets()
+        curated_presets = registry.preset_manager.get_curated_presets()
         
         action = QAction(Icons.get_icon(Icons.IconKey.GROUP_ADD), "Neu vom Projekt", self.presets_menu)
         action.setObjectName("new-preset-from-project")
@@ -114,7 +116,7 @@ class MainMenu(QMenu):
             action = QAction(preset.title, self.presets_menu)
             action.setObjectName(preset.title)
             action.setToolTip(preset.description)
-            action.triggered.connect(lambda p=preset: PresetManager.add_preset_to_project(p.id))
+            action.triggered.connect(lambda p=preset: registry.preset_manager.add_preset_to_project(p.id))
             self.presets_menu.addAction(action)
         
         self.presets_menu.addSeparator()
@@ -123,7 +125,7 @@ class MainMenu(QMenu):
             action = QAction(preset.title, self.presets_menu)
             action.setObjectName(preset.title)
             action.setToolTip(preset.description)
-            action.triggered.connect(lambda p=preset: PresetManager.add_preset_to_project(p.id))
+            action.triggered.connect(lambda p=preset: registry.preset_manager.add_preset_to_project(p.id))
             self.presets_menu.addAction(action)
     
     def _build_region_menu(self, region: catalog_types.Region) -> QMenu:
@@ -186,7 +188,7 @@ class MainMenu(QMenu):
         return menu
 
     def _build_catalog_section(self):
-        if CatalogManager.overview is None:
+        if registry.catalog_manager.overview is None:
             logger.warning("No catalog overview available. Cannot build catalog menu.")
             return
         
@@ -198,7 +200,7 @@ class MainMenu(QMenu):
         catalogs_menu.setObjectName('catalog-overview')
         
         # ------- Einträge im Katalogmenü erstellen ------------------------
-        for catalog in CatalogManager.overview:
+        for catalog in registry.catalog_manager.overview:
             catalog_action = catalogs_menu.addAction(catalog["titel"], lambda c=catalog: self._change_current_catalog(c))
             if not catalog_action:
                 logger.warning(f"Eintrag für Katalog '{catalog['titel']}' nicht erstellbar")
@@ -206,7 +208,7 @@ class MainMenu(QMenu):
             
             catalog_action.setObjectName("catalog-" + catalog["titel"])
         
-        self.addAction("Kataloge neu laden (Reload Catalogs)", lambda: CatalogManager.get_overview(callback=self.create_menu))
+        self.addAction("Kataloge neu laden (Reload Catalogs)", lambda: registry.catalog_manager.get_overview(callback=self.create_menu))
         
     def _build_end_section(self):
         self.addSeparator()
@@ -234,7 +236,7 @@ class MainMenu(QMenu):
         title = preset_dialog.preset_title
         description = preset_dialog.preset_description
         save_layer_crs = preset_dialog.save_layer_crs
-        PresetManager.create_user_preset_from_project(title, description, save_layer_crs)
+        registry.preset_manager.create_user_preset_from_project(title, description, save_layer_crs)
         self.build_presets()
     
     # FIXME: Maybe a dedicated settings module/class would be better than local changes
@@ -243,10 +245,10 @@ class MainMenu(QMenu):
         
     def _change_current_catalog(self, catalog: dict):
         self._qgs_settings.setValue(config.QgsSettingsKeys.CURRENT_CATALOG, catalog)
-        CatalogManager.get_catalog(catalog["titel"], callback=self.create_menu)
+        registry.catalog_manager.get_catalog(catalog["titel"], callback=self.create_menu)
     
     def _open_settings(self):
-        current_catalog = CatalogManager.get_current_catalog()
+        current_catalog = registry.catalog_manager.get_current_catalog()
         if not isinstance(current_catalog, catalog_types.Catalog):
             logger.warning("No current catalog found. Cannot open settings dialog.")
             return

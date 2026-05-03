@@ -9,7 +9,7 @@ from qgis.PyQt.QtCore import QUrl, QObject, QDateTime, pyqtSignal, QVersionNumbe
 from qgis.core import QgsNetworkAccessManager, QgsSettings
 from .. import config
 from ..utils import custom_logger
-from . import catalog_types
+from ..models import catalog_types
 
 logger = custom_logger.get_logger(__file__)
 
@@ -175,7 +175,7 @@ class CatalogManager:
             return
         
         if not self.overview:
-            logger.critical(f"Katalogübersicht fehlerhaft, Bitte starten Sie QGIS neu oder kontaktieren Sie den Autor")
+            logger.critical(f"Katalogübersicht fehlerhaft, Bitte starten Sie QGIS neu oder kontaktieren Sie den Autor", extra={"show_banner": True})
             return
         
         file_name = 'katalog_overview'
@@ -221,7 +221,7 @@ class CatalogManager:
             return self.catalogs[catalog_title]
             
         if self.overview_network_handler.done:
-            logger.warning("Katalog Übersicht ist nicht geladen, Bitte warten Sie oder kontaktieren Sie den Author")
+            logger.warning("Katalogübersicht ist nicht geladen, Bitte warten Sie oder kontaktieren Sie den Author", extra={"show_banner": True})
         else:
             if callback:
                 if catalog_title not in self._pending_callbacks:
@@ -231,7 +231,7 @@ class CatalogManager:
             if self.overview is not None:
                 matching_catalogs = [x for x in self.overview if x.get("titel") == catalog_title]
                 if not matching_catalogs:
-                    logger.error(f"Kein Katalog mit dem Namen {catalog_title} gefunden, Starten Sie QGIS neu oder kontaktieren Sie den Autor")
+                    logger.error(f"Kein Katalog mit dem Namen {catalog_title} gefunden, Starten Sie QGIS neu oder kontaktieren Sie den Autor", extra={"show_banner": True})
                     if callback:
                         callback(None)
                     return None

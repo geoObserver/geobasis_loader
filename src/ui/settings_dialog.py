@@ -5,8 +5,8 @@ from qgis.PyQt.QtCore import Qt
 from qgis.PyQt.QtGui import QShowEvent
 from qgis.core import QgsSettings
 from .. import config
-from ..topic_handlers import PropertyManager
-from ..topic_handlers import catalog_types
+from ..services import registry
+from ..models import catalog_types
 from ..utils import custom_logger
 
 SETTINGS_DIALOG = uic.loadUiType(os.path.join(os.path.dirname(__file__), "design_files", "settings_dialog.ui"))[0]
@@ -250,19 +250,19 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
             # Check whether it's unchecked or not due to tristate -> Negate it and ignore partially checked
             is_favorite = not favorite_state == Qt.CheckState.Unchecked and favorite_state != Qt.CheckState.PartiallyChecked
             if "/" in path:     # Skip regions, since it wouldn't make sense
-                PropertyManager.set_favorite(path, is_favorite)
+                registry.property_manager.set_favorite(path, is_favorite)
             
             visibility_state = item.checkState(VISIBILITY_CHECKBOX_COL)
             # Check whether it's unchecked or not due to tristate -> Negate it
             is_visible = not visibility_state == Qt.CheckState.Unchecked
-            PropertyManager.set_visibility(path, is_visible)
+            registry.property_manager.set_visibility(path, is_visible)
                 
             loading_state = item.checkState(LOADING_CHECKBOX_COL)
             # Check whether it's unchecked or not due to tristate -> Negate it
             is_enabled = not loading_state == Qt.CheckState.Unchecked
-            PropertyManager.set_enabled(path, is_enabled)
+            registry.property_manager.set_enabled(path, is_enabled)
         
-        PropertyManager.save_all()
+        registry.property_manager.save_all()
         self.accept()
         self.clear_data()
         

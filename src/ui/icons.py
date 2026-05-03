@@ -2,7 +2,7 @@ from enum import Enum
 from typing import Union
 from qgis.PyQt.QtGui import QIcon
 from qgis.core import QgsApplication
-from ..topic_handlers import catalog_types
+from ..models import catalog_types
 from ..utils import custom_logger
 from .. import config
 

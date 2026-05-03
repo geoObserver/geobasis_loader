@@ -8,7 +8,6 @@ from dataclasses import dataclass, field, asdict
 from qgis.core import QgsProject
 from .. import config 
 from ..utils import custom_logger
-from . import handlers
 
 logger = custom_logger.get_logger(__file__)
 
@@ -119,6 +118,7 @@ class PresetManager:
     
     @add_preset_to_project.register(Preset)
     def _(self, preset: Preset) -> None:
+        from ..operations import topic_ops as handlers
         for entry in preset.entries:
             path = entry["path"]
             crs = entry.get("crs")

@@ -1,5 +1,4 @@
 from enum import Enum
-import os
 import pathlib
 from qgis.core import QgsSettings, QgsApplication
 
@@ -7,7 +6,7 @@ PLUGIN_VERSION = '2.0.0'
 PLUGIN_NAME = 'GeoBasis Loader'
 PLUGIN_NAME_AND_VERSION = PLUGIN_NAME + ' (v' + PLUGIN_VERSION + ')'
 
-PLUGIN_DIR = os.path.dirname(__file__)
+PLUGIN_DIR = str(pathlib.Path(__file__).resolve().parents[1])
 RESOURCES_DIR = pathlib.Path(PLUGIN_DIR) / "resources"
 PRESETS_DIR = pathlib.Path(QgsApplication.qgisSettingsDirPath()) / "presets"
 REQUEST_TIMEOUT_MS = 30000

@@ -5,11 +5,12 @@ from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtCore import QObject
 from qgis.core import QgsSettings
 from qgis.gui import QgisInterface
-from .topic_search import SearchFilter
-from . import config
-from .utils import custom_logger
-from . import ui as custom_ui
-from .topic_handlers import catalog_types, PropertyManager, CatalogManager, PresetManager
+from .src.core.search import SearchFilter
+from .src import config
+from .src.utils import custom_logger
+from .src import ui as custom_ui
+from .src.models import catalog_types
+from .src.services import registry
 logger = custom_logger.get_logger(__file__)
 
 STAR_PREFIX = "\u2605 "  # ★
@@ -23,9 +24,9 @@ class GeoBasis_Loader(QObject):
         self.iface = iface
         self._qgs_settings = QgsSettings()
         custom_logger.setup_logging()
-        PropertyManager.load_all()
-        PresetManager.load_all()
-        CatalogManager.get_overview(callback=self.initGui)
+        registry.property_manager.load_all()
+        registry.preset_manager.load_all()
+        registry.catalog_manager.get_overview(callback=self.initGui)
 
         # # ------- Letzten Katalog laden --------------------------------------------
         # current_catalog = self._qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
@@ -73,5 +74,4 @@ class GeoBasis_Loader(QObject):
         version = version_matches[0] if version_matches else "unbekannt"
         logger.success(f'Lese {titel}, Version {version} ...', extra={"show_banner": True})
         
-        self.services = services
         self.initGui()
