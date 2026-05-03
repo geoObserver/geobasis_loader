@@ -10,6 +10,7 @@ logger = custom_logger.get_logger(__file__)
 
 class IconKey(str, Enum):
     FAVORITE_STAR = "favorite_star"
+    PRESET_USER = "preset_user"
     FOLDER_CLOSED = "folder_closed"
     GROUP_ADD = "group_add"
     COMBINATION_ADD = "combination_add"
@@ -20,6 +21,7 @@ class IconKey(str, Enum):
 # QGIS cions start wirh "/" while Plugin iocns/images/resources start without "/"
 ICON_PATHS: dict[IconKey, str] = {
     IconKey.FAVORITE_STAR: "/mIconFavorites.svg",
+    IconKey.PRESET_USER: "/user.svg",
     IconKey.FOLDER_CLOSED: "/mIconFolder.svg",
     IconKey.GROUP_ADD: "/mActionAddGroup.svg",
     IconKey.COMBINATION_ADD: "/mActionDataSourceManager.svg",
