@@ -225,6 +225,10 @@ class PropertyManager:
         """
         return key not in self._disabled
     
+    def get_favorites(self) -> set[str]:
+        """Return a set of all favorite entry keys."""
+        return self._favorite
+    
     def _convert_old_properties(self, path: pathlib.Path):
         """Migrate legacy JSON settings into current QgsSettings sets.
 
