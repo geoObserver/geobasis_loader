@@ -28,10 +28,8 @@ class GeoBasis_Loader(QObject):
         registry.preset_manager.load_all()
         registry.catalog_manager.get_overview(callback=self.initGui)
 
-        # # ------- Letzten Katalog laden --------------------------------------------
-        # current_catalog = self._qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
-        # if current_catalog is not None and "name" in current_catalog:
-        #     CatalogManager.get_catalog(current_catalog["titel"], current_catalog["name"], self.set_services)
+        # ------- Letzten Katalog laden --------------------------------------------
+        registry.catalog_manager.get_current_catalog(callback=self.set_services)
         
         plugin_menu = self.iface.pluginMenu()
         if plugin_menu:
