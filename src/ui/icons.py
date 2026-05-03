@@ -42,7 +42,7 @@ LAYER_TYPE_ICON_PATHS: dict[catalog_types.TopicType, str] = {
 
 _icons: dict[str, QIcon] = {}
 
-def get_ticon_from_topic_type(topic_type: catalog_types.TopicType) -> QIcon:
+def get_icon_from_topic_type(topic_type: catalog_types.TopicType) -> QIcon:
     if not isinstance(topic_type, catalog_types.TopicType):
         logger.critical(f"Icon not found: Topic type '{type}' unknown")
         return QIcon()
@@ -94,7 +94,7 @@ def get_icon(key: Union[str, IconKey, catalog_types.TopicType]) -> QIcon:
     
     try:
         topic_type = catalog_types.TopicType(key)
-        return get_ticon_from_topic_type(topic_type)
+        return get_icon_from_topic_type(topic_type)
     except ValueError:
         pass
     
