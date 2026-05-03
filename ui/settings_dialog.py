@@ -5,13 +5,16 @@ from qgis.PyQt.QtCore import Qt
 from qgis.PyQt.QtGui import QShowEvent
 from qgis.core import QgsSettings
 from .. import config
-from ..topic_handlers import PropertyManager, CatalogManager
+from ..topic_handlers import PropertyManager
 from ..topic_handlers import catalog_types
+from ..utils import custom_logger
 
 SETTINGS_DIALOG = uic.loadUiType(os.path.join(os.path.dirname(__file__), "design_files", "settings_dialog.ui"))[0]
 FAVORITE_CHECKBOX_COL = 1
 VISIBILITY_CHECKBOX_COL = 2
 LOADING_CHECKBOX_COL = 3
+
+logger = custom_logger.get_logger(__file__)
 
 class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
     def __init__(self, parent=None):
@@ -142,7 +145,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         super().showEvent(a0)
         self.setup()
        
-    def set_settings(self):
+    def set_settings(self, catalog: catalog_types.Catalog) -> None:
         def _add_entry(data: catalog_types.BasicEntry, parent: Union[QtWidgets.QTreeWidgetItem, QtWidgets.QTreeWidget]) -> QtWidgets.QTreeWidgetItem:            
             item = QtWidgets.QTreeWidgetItem(parent)
             item.setText(0, data.name)
@@ -164,10 +167,11 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
             return item
         
         self.clear_data()
-        self._current_catalog = CatalogManager.get_current_catalog()
-        if self._current_catalog is None or isinstance(self._current_catalog, list):
+        if not isinstance(catalog, catalog_types.Catalog):
+            logger.critical(f"Ungültiger Typ für Katalog: {type(catalog)}")
             return
         
+        self._current_catalog = catalog        
         self._updating_items = True
         
         # Properties Tree
