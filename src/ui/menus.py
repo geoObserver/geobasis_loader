@@ -235,7 +235,8 @@ class MainMenu(QMenu):
         action.toggled.connect(lambda checked: self._set_automatic_crs(checked))
         self.addAction(action)
         
-        self.addAction("Einstellungen (Aktueller Katalog)", self._open_settings)
+        settings_icon = icons.get_icon(icons.IconKey.SETTINGS)
+        self.addAction(settings_icon, "Einstellungen (Aktueller Katalog)", self._open_settings)
         self.addSeparator()
         
         # ------- Spenden-Schaltfläche für #geoObserver ------------------------

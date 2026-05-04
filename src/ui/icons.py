@@ -11,6 +11,7 @@ logger = custom_logger.get_logger(__file__)
 class IconKey(str, Enum):
     FAVORITE_STAR = "favorite_star"
     PRESET_USER = "preset_user"
+    SETTINGS = "settings"
     FOLDER_CLOSED = "folder_closed"
     FOLDER_OPEN = "folder_open"
     GROUP_ADD = "group_add"
@@ -23,6 +24,7 @@ class IconKey(str, Enum):
 ICON_PATHS: dict[IconKey, str] = {
     IconKey.FAVORITE_STAR: "/mIconFavorites.svg",
     IconKey.PRESET_USER: "/user.svg",
+    IconKey.SETTINGS: "/console/iconSettingsConsole.svg",
     IconKey.FOLDER_CLOSED: "/mIconFolder.svg",
     IconKey.FOLDER_OPEN: "/mIconFolderOpen.svg",
     IconKey.GROUP_ADD: "/mActionAddGroup.svg",
