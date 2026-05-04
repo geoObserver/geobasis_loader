@@ -1,7 +1,7 @@
 import uuid
 import pathlib
 import json
-from functools import singledispatch
+from functools import singledispatchmethod
 from datetime import datetime
 from typing import Optional, TypedDict, NotRequired
 from dataclasses import dataclass, field, asdict
@@ -100,7 +100,7 @@ class PresetManager:
         
         self.user_presets.pop(id, None)
     
-    @singledispatch
+    @singledispatchmethod
     def add_preset_to_project(self, preset) -> None:
         logger.critical(f"Nicht unterstützter Typ für Preset: {type(preset)}")
     
@@ -130,6 +130,10 @@ class PresetManager:
     def get_curated_presets(self) -> list[Preset]:
         return list(self.curated_presets.values())
     
+    def load_all(self) -> None:
+        self.user_presets = self.load_preset_file(self.USER_PRESETS_PATH)
+        self.curated_presets = self.load_preset_file(self.CURATED_PRESETS_PATH)
+    
     def load_preset_file(self, file_path: pathlib.Path) -> dict[str, Preset]:
         if not file_path.exists():
             return {}
@@ -154,10 +158,6 @@ class PresetManager:
         except OSError as e:
             logger.critical(f"Fehler beim Lesen der Datei '{file_path}': {e}")
             return {}
-        
-    def load_all(self) -> None:
-        self.user_presets = self.load_preset_file(self.USER_PRESETS_PATH)
-        self.curated_presets = self.load_preset_file(self.CURATED_PRESETS_PATH)
     
     def save_user_presets(self) -> None:
         data = {
