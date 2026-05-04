@@ -116,7 +116,9 @@ class MainMenu(QMenu):
         for preset in user_presets:
             action = QAction(preset.title, self.presets_menu)
             action.setObjectName(preset.title)
-            action.setToolTip(preset.description)
+            description = preset.description + "\n\n" if preset.description else ""
+            description += preset.topic_description()
+            action.setToolTip(description)
             action.triggered.connect(lambda _, p=preset: registry.preset_manager.add_preset_to_project(p.id))
             self.presets_menu.addAction(action)
         
@@ -125,7 +127,9 @@ class MainMenu(QMenu):
         for preset in curated_presets:
             action = QAction(preset.title, self.presets_menu)
             action.setObjectName(preset.title)
-            action.setToolTip(preset.description)
+            description = preset.description + "\n\n" if preset.description else ""
+            description += preset.topic_description()
+            action.setToolTip(description)
             action.triggered.connect(lambda _, p=preset: registry.preset_manager.add_preset_to_project(p.id))
             self.presets_menu.addAction(action)
     

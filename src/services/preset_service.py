@@ -51,6 +51,19 @@ class Preset:
             self.entries.insert(new_position, entry)
             self.modified = datetime.now()
     
+    def topic_description(self) -> str:
+        if not self.entries:
+            return "Keine Themen"
+        
+        description = "Enthaltene Themen:\n"
+        for entry in self.entries:
+            if "crs" in entry:
+                description += f"- {entry['name']} (CRS: {entry['crs']})\n"
+            else:
+                description += f"- {entry['name']}\n"
+        
+        return description.strip()
+    
     def to_dict(self) -> dict:
         return {
             "id": self.id,
