@@ -8,9 +8,8 @@ from .utils import custom_logger
 from .ui import menus
 from .models import catalog_types
 from .services import registry
-logger = custom_logger.get_logger(__file__)
 
-STAR_PREFIX = "\u2605 "  # ★
+logger = custom_logger.get_logger(__file__)
 
 class GeoBasis_Loader(QObject):  
     search_filter = None

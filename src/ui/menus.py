@@ -11,6 +11,8 @@ from ..operations import topic_ops as handlers
 from .. import config
 from ..utils import custom_logger
 
+STAR_PREFIX = "\u2605 "  # ★
+
 logger = custom_logger.get_logger(__name__)
 
 class MainMenu(QMenu):
@@ -151,14 +153,18 @@ class MainMenu(QMenu):
             if not topic.properties.visible:
                 continue
             
+            topic_name = topic.name
+            if topic.properties.favorite:
+                topic_name = STAR_PREFIX + topic_name
+            
             if isinstance(topic, catalog_types.Topic) and topic.topic_type == catalog_types.TopicType.WEB:
                 icon = icons.get_icon(topic.topic_type)
-                action = _create_action(topic.name, topic.uri, icon, menu, "Informationen öffnen", handlers.open_web_site)
+                action = _create_action(topic_name, topic.uri, icon, menu, "Informationen öffnen", handlers.open_web_site)
                 menu.addAction(action)
                 continue
             
             if isinstance(topic, catalog_types.TopicGroup):
-                topic_group_menu = QMenu(topic.name, menu)
+                topic_group_menu = QMenu(topic_name, menu)
                 topic_group_menu.setIcon(icons.get_icon(icons.IconKey.FOLDER_CLOSED))
                 topic_group_menu.setToolTipsVisible(True)
                 
@@ -171,21 +177,25 @@ class MainMenu(QMenu):
                     if not subtopic.properties.visible:
                         continue
                     
+                    subtopic_name = subtopic.name
+                    if subtopic.properties.favorite:
+                        subtopic_name = STAR_PREFIX + subtopic_name
+
                     icon = icons.get_icon(subtopic.topic_type)
                     if subtopic.topic_type == catalog_types.TopicType.WEB:
-                        subtopic_action = _create_action(subtopic.name, subtopic.uri, icon, topic_group_menu, "Informationen öffnen", handlers.open_web_site)
+                        subtopic_action = _create_action(subtopic_name, subtopic.uri, icon, topic_group_menu, "Informationen öffnen", handlers.open_web_site)
                     else:
-                        subtopic_action = _create_action(subtopic.name, subtopic.path, icon, topic_group_menu)
+                        subtopic_action = _create_action(subtopic_name, subtopic.path, icon, topic_group_menu)
                     topic_group_menu.addAction(subtopic_action)
 
                 menu.addMenu(topic_group_menu)
             else:
                 if isinstance(topic, catalog_types.TopicCombination):
                     icon = icons.get_icon(icons.IconKey.COMBINATION_ADD)
-                    action = _create_action(topic.name, topic.path, icon, menu)
+                    action = _create_action(topic_name, topic.path, icon, menu)
                 else:
                     icon = icons.get_icon(topic.topic_type)
-                    action = _create_action(topic.name, topic.path, icon, menu)
+                    action = _create_action(topic_name, topic.path, icon, menu)
                 menu.addAction(action)
                 
             if topic.separator:
