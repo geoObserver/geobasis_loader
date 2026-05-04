@@ -14,6 +14,7 @@ logger = custom_logger.get_logger(__file__)
 @dataclass
 class Preset:
     class Entry(TypedDict):
+        name: str
         path: str
         # FIXME: Only available for 3.11+; Is this enough?
         crs: NotRequired[str]
@@ -27,8 +28,8 @@ class Preset:
     def get_entry(self, path: str) -> Optional[Entry]:
         return next((entry for entry in self.entries if entry["path"] == path), None)
     
-    def add_entry(self, path: str, crs: Optional[str], position: Optional[int] = None) -> None:
-        entry: Preset.Entry = {"path": path}
+    def add_entry(self, name: str, path: str, crs: Optional[str], position: Optional[int] = None) -> None:
+        entry: Preset.Entry = {"name": name, "path": path}
         if crs is not None:
             entry["crs"] = crs
         
@@ -90,10 +91,11 @@ class PresetManager:
         entries = []
         def _traverse_layer_tree(node, parent_path=""):
             for child in node.children():
+                name = child.customProperty("gbl_name", "Thema")
                 path = child.customProperty("gbl_path", None)
                 crs = child.customProperty("gbl_crs", None)
                 if path is not None and path not in parent_path:
-                    entry = Preset.Entry(path=path)
+                    entry = Preset.Entry(name=name, path=path)
                     if crs is not None:
                         entry["crs"] = crs
                     entries.append(entry)
@@ -112,7 +114,7 @@ class PresetManager:
         
         preset = self.create_empty_user_preset(title, description)
         for entry in entries:
-            preset.add_entry(path=entry["path"], crs=entry.get("crs") if save_layer_crs else None)
+            preset.add_entry(name=entry["name"], path=entry["path"], crs=entry.get("crs") if save_layer_crs else None)
         
         return preset
     
