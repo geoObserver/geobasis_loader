@@ -201,6 +201,7 @@ def add_layer(topic: catalog_types.Topic, crs: Optional[str], standalone: bool =
         else:    
             ltl = root.insertLayer(0, layer)
             if ltl is not None:
+                ltl.setCustomProperty("gbl_name", topic.name)
                 ltl.setCustomProperty("gbl_path", topic.path)
                 ltl.setCustomProperty("gbl_crs", crs)
                 ltl.setExpanded(False)
@@ -242,6 +243,7 @@ def add_layer_group(topic_group: catalog_types.TopicGroup, preferred_crs: Option
     if new_layer_group is None:
         return
     
+    new_layer_group.setCustomProperty("gbl_name", topic_group.name)
     new_layer_group.setCustomProperty("gbl_path", topic_group.path)
     new_layer_group.setCustomProperty("gbl_crs", preferred_crs)
     
@@ -251,6 +253,7 @@ def add_layer_group(topic_group: catalog_types.TopicGroup, preferred_crs: Option
             continue
         ltl = new_layer_group.insertLayer(0, sub_layer)
         if ltl is not None:
+            ltl.setCustomProperty("gbl_name", subtopic.name)
             ltl.setCustomProperty("gbl_path", topic_group.path)
             ltl.setCustomProperty("gbl_crs", sub_layer.crs().authid())
             ltl.setExpanded(False)
