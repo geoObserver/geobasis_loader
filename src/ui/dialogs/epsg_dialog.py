@@ -25,7 +25,7 @@ class EpsgDialog(QtWidgets.QDialog, EPSG_DIALOG):
         layout = self.verticalLayout_2
         self.setLayout(layout)
 
-        self.buttonBox.accepted.connect(self.confirm_selected_coord)
+        self.accepted.connect(self.confirm_selected_coord)
         self.table.cellDoubleClicked.connect(self.confirm_selected_coord)
         
     def set_table_data(self, supported_auth_ids: frozenset[str], layer_name: str) -> None:
@@ -60,8 +60,13 @@ class EpsgDialog(QtWidgets.QDialog, EPSG_DIALOG):
             self.table.setItem(row_pos, 1, QtWidgets.QTableWidgetItem(auth_id))
     
     def confirm_selected_coord(self) -> None:
-        selected_items = self.table.selectedItems()
-        if len(selected_items) > 0:
-            auth_id = selected_items[1].text()            
-            self.selected_coord = auth_id
-            self.close()
+        current_row = self.table.currentRow()
+        if current_row < 0:
+            return
+        
+        auth_id_item = self.table.item(current_row, 1)
+        if auth_id_item is None:
+            return
+        
+        self.selected_coord = auth_id_item.text()
+        self.close()
