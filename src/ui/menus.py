@@ -35,7 +35,8 @@ class MainMenu(QMenu):
         self.presets_menu.setIcon(icons.get_icon(icons.IconKey.PRESET_USER))
         self.presets_menu.setToolTipsVisible(True)
     
-    def create_menu(self):
+    # FIXME
+    def create_menu(self, args=None):
         self.clear()
         current_catalog: Optional[Union[catalog_types.Catalog, list]] = registry.catalog_manager.get_current_catalog()
         if not isinstance(current_catalog, catalog_types.Catalog):
