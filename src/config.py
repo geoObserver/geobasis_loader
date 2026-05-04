@@ -7,8 +7,11 @@ PLUGIN_NAME = 'GeoBasis Loader'
 PLUGIN_NAME_AND_VERSION = PLUGIN_NAME + ' (v' + PLUGIN_VERSION + ')'
 
 PLUGIN_DIR = str(pathlib.Path(__file__).resolve().parents[1])
+PLUGIN_USER_DIR = pathlib.Path(QgsApplication.qgisSettingsDirPath()) / "geobasis_loader"
+
 RESOURCES_DIR = pathlib.Path(PLUGIN_DIR) / "resources"
-PRESETS_DIR = pathlib.Path(QgsApplication.qgisSettingsDirPath()) / "presets"
+PRESETS_DIR = PLUGIN_USER_DIR / "presets"
+
 REQUEST_TIMEOUT_MS = 30000
 PLUGIN_LOGGER_NAME = "geobasis_loader"
 LOGGING_SUCCESS_LEVEL = 25
