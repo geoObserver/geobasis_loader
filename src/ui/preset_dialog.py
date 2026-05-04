@@ -1,7 +1,8 @@
 import os
-from qgis.PyQt import uic, QtWidgets, QtCore
+from qgis.PyQt import uic, QtWidgets
+from .. import config
 
-PRESET_DIALOG = uic.loadUiType(os.path.join(os.path.dirname(__file__), "design_files", "preset_dialog.ui"))[0]
+PRESET_DIALOG = uic.loadUiType(config.RESOURCES_DIR / "design_files" / "preset_dialog.ui")[0]
 
 class PresetDialog(QtWidgets.QDialog, PRESET_DIALOG):
     def __init__(self, preset_title: str = "", preset_description: str = "", save_layer_crs: bool = False, save_crs_checkbox_visible: bool = True, parent = None):

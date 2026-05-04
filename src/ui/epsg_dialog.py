@@ -1,8 +1,9 @@
 import os
 from qgis.core import QgsCoordinateReferenceSystem
 from qgis.PyQt import uic, QtWidgets, QtCore
+from .. import config
 
-EPSG_DIALOG = uic.loadUiType(os.path.join(os.path.dirname(__file__), "design_files", "epsg_selector.ui"))[0]
+EPSG_DIALOG = uic.loadUiType(config.RESOURCES_DIR / "design_files" / "epsg_selector.ui")[0]
 
 if QtCore.QVersionNumber(6) > QtCore.QVersionNumber.fromString(QtCore.QT_VERSION_STR)[0]:
     resize_mode = QtWidgets.QHeaderView
