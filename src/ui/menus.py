@@ -1,5 +1,4 @@
 from typing import Optional, Union
-
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QMenu, QAction
 from qgis.core import QgsSettings

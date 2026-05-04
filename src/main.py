@@ -1,14 +1,11 @@
 import re
-from typing import Optional
-from qgis.PyQt.QtWidgets import QMenu
-from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtCore import QObject
 from qgis.core import QgsSettings
 from qgis.gui import QgisInterface
 from .core.search import SearchFilter
 from . import config
 from .utils import custom_logger
-from . import ui as custom_ui
+from .ui import menus
 from .models import catalog_types
 from .services import registry
 logger = custom_logger.get_logger(__file__)
@@ -33,11 +30,11 @@ class GeoBasis_Loader(QObject):
         
         plugin_menu = self.iface.pluginMenu()
         if plugin_menu:
-            self.main_menu = custom_ui.MainMenu(plugin_menu)
+            self.main_menu = menus.MainMenu(plugin_menu)
             plugin_menu.addMenu(self.main_menu)
         else:
             logger.critical("Konnte Plugin-Menü nicht finden. Menü konnte nicht hinzugefügt werden.")
-            self.main_menu = custom_ui.MainMenu(None)
+            self.main_menu = menus.MainMenu(None)
         
         self.search_filter = SearchFilter(self)
         self.iface.registerLocatorFilter(self.search_filter)    
