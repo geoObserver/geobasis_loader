@@ -6,10 +6,10 @@ PLUGIN_VERSION = '2.0.0'
 PLUGIN_NAME = 'GeoBasis Loader'
 PLUGIN_NAME_AND_VERSION = PLUGIN_NAME + ' (v' + PLUGIN_VERSION + ')'
 
-PLUGIN_DIR = str(pathlib.Path(__file__).resolve().parents[1])
+PLUGIN_DIR = pathlib.Path(__file__).resolve().parents[1]
 PLUGIN_USER_DIR = pathlib.Path(QgsApplication.qgisSettingsDirPath()) / "geobasis_loader"
 
-RESOURCES_DIR = pathlib.Path(PLUGIN_DIR) / "resources"
+RESOURCES_DIR = PLUGIN_DIR / "resources"
 PRESETS_DIR = PLUGIN_USER_DIR / "presets"
 
 REQUEST_TIMEOUT_MS = 30000
@@ -19,6 +19,7 @@ PRESET_FORMAT_VERSION = 7.00
 
 CATALOG_OVERVIEW = "GeoBasis_Loader_v6_Kataloge.json"
 CATALOG_OVERVIEW_NAME = "catalog_overview"
+
 class ServerHosts(str, Enum):
     GEOOBSERVER = "https://geoobserver.de/download/GeoBasis_Loader/{name}"
     GITHUB = "https://api.github.com/repos/geoObserver/geobasis_loader/contents/kataloge/{name}?ref=main"

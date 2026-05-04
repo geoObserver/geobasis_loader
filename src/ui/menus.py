@@ -19,7 +19,7 @@ class MainMenu(QMenu):
     def __init__(self, parent=None):
         super().__init__(config.PLUGIN_NAME_AND_VERSION, parent)
         self.setObjectName("main-menu")
-        icon = QIcon(config.PLUGIN_DIR + "/GeoBasis_Loader_icon.png")
+        icon = QIcon(str(config.PLUGIN_DIR / "GeoBasis_Loader_icon.png"))
         self.setIcon(icon)
         self._qgs_settings = QgsSettings()
         

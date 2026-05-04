@@ -187,7 +187,7 @@ class PropertyManager:
         """
 
         if not self._qgs_settings.contains(config.QgsSettingsKeys.PROPERTY_FAVORITE):
-            path = pathlib.Path(config.PLUGIN_DIR) / "catalogs" / "settings.json"
+            path = config.PLUGIN_DIR / "catalogs" / "settings.json"
             self._convert_old_properties(path)
             self.save_all()
             return

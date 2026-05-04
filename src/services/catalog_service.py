@@ -131,7 +131,7 @@ class NetworkHandler(QObject):
 class CatalogManager:
     overview: Optional[list[dict[str, str]]] = None
     catalogs: dict[str, catalog_types.Catalog] = {}
-    catalog_path = f'{config.PLUGIN_DIR}/catalogs/'
+    catalog_path = config.PLUGIN_DIR / "catalogs"
     
     catalog_network_handlers: dict[str, NetworkHandler] = {}
     
@@ -179,7 +179,7 @@ class CatalogManager:
             return
         
         file_name = 'katalog_overview'
-        file_path = pathlib.Path(self.catalog_path + file_name + '.json')
+        file_path = self.catalog_path / f"{file_name}.json"
         
         localLastModified = os.path.getmtime(file_path) if file_path.exists() else 0.0
         if localLastModified < last_modified:
@@ -272,7 +272,7 @@ class CatalogManager:
             self.catalogs[catalog_name] = catalog
         
         file_name = re.sub(r'\ ', '_', catalog_name.split(':')[0].lower())
-        file_path = pathlib.Path(self.catalog_path + file_name + '.json')
+        file_path = self.catalog_path / f"{file_name}.json"
         
         localLastModified = os.path.getmtime(file_path) if file_path.exists() else 0.0
         if localLastModified < last_modified:
@@ -289,7 +289,7 @@ class CatalogManager:
         is_overview_response = catalog_name == config.CATALOG_OVERVIEW_NAME
         
         file_name = re.sub(r'\ ', '_', catalog_name.split(':')[0].lower()) if not is_overview_response else 'katalog_overview'
-        file_path = pathlib.Path(self.catalog_path + file_name + '.json')
+        file_path = self.catalog_path / f"{file_name}.json"
         if not file_path.exists():
             error += ", Überprüfen Sie die Internetverbindung oder kontaktieren Sie den Autor"
             logger.warning(error, extra={"show_banner": True})
