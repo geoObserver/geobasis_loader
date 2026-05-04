@@ -119,7 +119,15 @@ def add_layer(topic: catalog_types.Topic, crs: Optional[str], standalone: bool =
         raise ValueError(f"Unknown layer type: {layer_type}")
 
     if not layer.isValid():
-        logger.critical(f"Layerladefehler {layer_name}, Dienst nicht verfügbar (URL?)", extra={"show_banner": True})
+        provider = layer.dataProvider()
+        layer_error = layer.error().message() if hasattr(layer, 'error') else "Unbekannter Fehler mit Layer"
+        provider_error = provider.error().message() if provider is not None and hasattr(provider, 'error') else "Unbekannter Fehler mit Datenanbieter"
+        
+        detail = " | ".join([msg for msg in (layer_error, provider_error) if msg])
+        logger.critical(
+            f"Layerladefehler {layer_name}, Dienst nicht verfügbar (URL?) - Details: {detail}",
+            extra={"show_banner": True},
+        )
         return None
     
     if hasattr(layer, 'setOpacity'):
