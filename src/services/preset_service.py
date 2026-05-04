@@ -4,7 +4,7 @@ import json
 from functools import singledispatchmethod
 from datetime import datetime
 from typing import Optional, TypedDict, NotRequired
-from dataclasses import dataclass, field, asdict
+from dataclasses import dataclass, field
 from qgis.core import QgsProject
 from .. import config 
 from ..utils import custom_logger
@@ -49,6 +49,29 @@ class Preset:
             entry = self.entries.pop(entry_index)
             self.entries.insert(new_position, entry)
             self.modified = datetime.now()
+    
+    def to_dict(self) -> dict:
+        return {
+            "id": self.id,
+            "title": self.title,
+            "description": self.description,
+            # FIXME: A bit convoluted; Better with utc and replace or even better datetime.UTC but only 3.11+
+            "modified": self.modified.isoformat(timespec="seconds") + "Z",
+            "entries": self.entries,
+        }
+    
+    @classmethod
+    def from_dict(cls, data: dict) -> "Preset":
+        modified_str = data.get("modified")
+        modified = datetime.fromisoformat(modified_str.removesuffix("Z")) if modified_str else datetime.now()
+        
+        return cls(
+            id=data.get("id", str(uuid.uuid4())),
+            title=data.get("title", "Preset"),
+            description=data.get("description"),
+            modified=modified,
+            entries=data.get("entries", [])
+        )
 
 class PresetManager:
     USER_PRESETS_PATH = config.PRESETS_DIR / "user_presets.json"
@@ -146,7 +169,7 @@ class PresetManager:
             presets = {}
             if format_version == 7.0:
                 for preset_data in presets_data:
-                    preset = Preset(**preset_data)
+                    preset = Preset.from_dict(preset_data)
                     presets[preset.id] = preset
             else:
                 logger.critical(f"Ungültige Format-Version der Presets '{file_path}'; Lesen nicht möglich")
@@ -162,7 +185,7 @@ class PresetManager:
     def save_user_presets(self) -> None:
         data = {
             "format_version": config.PRESET_FORMAT_VERSION,
-            "presets": [asdict(preset) for preset in self.user_presets.values()]
+            "presets": [preset.to_dict() for preset in self.user_presets.values()]
         }
         
         config.PRESETS_DIR.mkdir(mode=0o755, parents=True, exist_ok=True)
