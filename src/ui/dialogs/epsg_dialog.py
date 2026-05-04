@@ -70,3 +70,4 @@ class EpsgDialog(QtWidgets.QDialog, EPSG_DIALOG):
         
         self.selected_coord = auth_id_item.text()
         self.close()
+        self.deleteLater()
