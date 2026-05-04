@@ -35,8 +35,8 @@ class GeoBasis_Loader(QObject):
             logger.critical("Konnte Plugin-Menü nicht finden. Menü konnte nicht hinzugefügt werden.")
             self.main_menu = menus.MainMenu(None)
         
-        self.search_filter = SearchFilter(self)
-        self.iface.registerLocatorFilter(self.search_filter)    
+        self.search_filter = SearchFilter()
+        self.iface.registerLocatorFilter(self.search_filter)
         #self.iface.messageBar().pushMessage(self.myPluginV,f'Sollte Euch das Plugin gefallen,{"&nbsp;"}könnt Ihr es gern mit Eurer Mitarbeit,{"&nbsp;"}einem Voting und ggf.{"&nbsp;"}einem kleinen Betrag unterstützen ...{"&nbsp;"}Danke!!', 3, 8)     
     
     def initGui(self) -> None:

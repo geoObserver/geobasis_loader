@@ -10,6 +10,7 @@ from qgis.core import QgsNetworkAccessManager, QgsSettings
 from .. import config
 from ..utils import custom_logger
 from ..models import catalog_types
+from ..core.search import SearchFilter
 
 logger = custom_logger.get_logger(__file__)
 
@@ -271,6 +272,7 @@ class CatalogManager:
             catalog = catalog_types.Catalog.from_dict(parsed_catalog)
             catalog.build_index()
             self.catalogs[catalog_name] = catalog
+            SearchFilter.build_search_index(self.catalogs)
         
         file_name = re.sub(r'\ ', '_', catalog_name.split(':')[0].lower())
         file_path = self.catalog_path / f"{file_name}.json"
@@ -310,6 +312,7 @@ class CatalogManager:
             catalog = catalog_types.Catalog.from_dict(parsed_services)
             catalog.build_index()
             self.catalogs[catalog_name] = catalog
+            SearchFilter.build_search_index(self.catalogs)
         else:
             if not isinstance(parsed_services, list):
                 error += "Katalogübersicht nicht korrekt geparst"

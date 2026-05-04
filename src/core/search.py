@@ -1,17 +1,17 @@
 from typing import Optional
 
 from qgis.core import QgsLocatorFilter, QgsLocatorResult, QgsLocatorContext, QgsFeedback
+from ..operations import topic_ops
 from ..models import catalog_types
 # Strings wie Beschreibung und Name werden nicht übersetzt und sind momentan nur in Deutsch 
 
 class SearchFilter(QgsLocatorFilter):
     search_index = []
     
-    def __init__(self, gbl):
+    def __init__(self):
         super().__init__()
         self.setUseWithoutPrefix(True)
         # Not pretty but it is what it is
-        self.gbl = gbl
 
     # @override
     def name(self) -> str:
@@ -31,7 +31,7 @@ class SearchFilter(QgsLocatorFilter):
     
     # @override
     def clone(self) -> Optional[QgsLocatorFilter]:
-        return self.__class__(self.gbl)
+        return self.__class__()
     
     # @override
     def fetchResults(self, string: Optional[str], context: QgsLocatorContext, feedback: Optional[QgsFeedback]) -> None:
@@ -62,7 +62,7 @@ class SearchFilter(QgsLocatorFilter):
     def triggerResult(self, result: QgsLocatorResult):
         # FIXME: result.userData according to doc, but property not found in Python or C++/SIP
         data = result.userData          # type: ignore
-        self.gbl.add_topic(data["path"])
+        topic_ops.add_topic(data["path"])
     
     @classmethod
     def build_search_index(cls, catalogs: dict[str, catalog_types.Catalog]) -> None:
