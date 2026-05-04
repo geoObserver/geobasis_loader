@@ -220,33 +220,34 @@ class CatalogManager:
                 callback(self.catalogs[catalog_title])
             return self.catalogs[catalog_title]
             
-        if self.overview_network_handler.done:
-            logger.warning("Katalogübersicht ist nicht geladen, Bitte warten Sie oder kontaktieren Sie den Author", extra={"show_banner": True})
-        else:
-            if callback:
-                if catalog_title not in self._pending_callbacks:
-                    self._pending_callbacks[catalog_title] = []
-                self._pending_callbacks[catalog_title].append(callback)
+        if callback:
+            if catalog_title not in self._pending_callbacks:
+                self._pending_callbacks[catalog_title] = []
+            self._pending_callbacks[catalog_title].append(callback)
             
-            if self.overview is not None:
-                matching_catalogs = [x for x in self.overview if x.get("titel") == catalog_title]
-                if not matching_catalogs:
-                    logger.error(f"Kein Katalog mit dem Namen {catalog_title} gefunden, Starten Sie QGIS neu oder kontaktieren Sie den Autor", extra={"show_banner": True})
-                    if callback:
-                        callback(None)
-                    return None
-                
-                catalog_info: dict[str, str] = matching_catalogs[0]
-            else:
-                if catalog_name is None:
-                    raise ValueError("No catalog name provided")
-                catalog_info: dict[str, str] = {
-                    "titel": catalog_title,
-                    "name": catalog_name
-                }
-            handler = self.add_network_handler(catalog_info["titel"])
-            if handler.done:
-                handler.fetch_catalog(catalog_info["name"], catalog_info["titel"])
+        if not self.overview_network_handler.done:
+            logger.warning("Katalogübersicht ist nicht geladen, Bitte warten Sie oder kontaktieren Sie den Author", extra={"show_banner": True})
+            return None
+        
+        if self.overview is not None:
+            matching_catalogs = [x for x in self.overview if x.get("titel") == catalog_title]
+            if not matching_catalogs:
+                logger.error(f"Kein Katalog mit dem Namen {catalog_title} gefunden, Starten Sie QGIS neu oder kontaktieren Sie den Autor", extra={"show_banner": True})
+                if callback:
+                    callback(None)
+                return None
+            
+            catalog_info: dict[str, str] = matching_catalogs[0]
+        else:
+            if catalog_name is None:
+                raise ValueError("No catalog name provided")
+            catalog_info: dict[str, str] = {
+                "titel": catalog_title,
+                "name": catalog_name
+            }
+        handler = self.add_network_handler(catalog_info["titel"])
+        if handler.done:
+            handler.fetch_catalog(catalog_info["name"], catalog_info["titel"])
     
         return None
     
