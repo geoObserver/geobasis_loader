@@ -1,11 +1,13 @@
 import re
 from qgis.PyQt.QtCore import QObject
+from qgis.PyQt.QtGui import QCursor
+from qgis.PyQt.QtWidgets import QAction, QToolBar
 from qgis.core import QgsSettings
 from qgis.gui import QgisInterface
 from .core.search import SearchFilter
 from . import config
 from .utils import custom_logger
-from .ui import menus
+from .ui import menus, icons
 from .models import catalog_types
 from .services import registry
 
@@ -19,6 +21,8 @@ class GeoBasis_Loader(QObject):
         super().__init__(parent)
         self.iface = iface
         self._qgs_settings = QgsSettings()
+        self.toolbar = None
+        self.toolbar_main_menu_action = None
         custom_logger.setup_logging()
         registry.property_manager.load_all()
         registry.preset_manager.load_all()
@@ -34,11 +38,27 @@ class GeoBasis_Loader(QObject):
         else:
             logger.critical("Konnte Plugin-Menü nicht finden. Menü konnte nicht hinzugefügt werden.")
             self.main_menu = menus.MainMenu(None)
+
+        main_window = self.iface.mainWindow()
+        if main_window:
+            existing_toolbar = main_window.findChild(QToolBar, config.TOOLBAR_NAME)
+            if existing_toolbar:
+                self.toolbar = existing_toolbar
+            else:
+                self.toolbar = self.iface.addToolBar(config.TOOLBAR_NAME)
+                if self.toolbar:
+                    self.toolbar.setObjectName(config.TOOLBAR_NAME)
+
+            if self.toolbar:
+                action_icon = icons.get_icon(icons.IconKey.TOOLBAR_MAIN_MENU_ICON)
+                self.toolbar_main_menu_action = QAction(action_icon, config.PLUGIN_NAME_AND_VERSION, main_window)
+                self.toolbar_main_menu_action.setObjectName("toolbar-geobasis_loader-main_menu")
+                self.toolbar_main_menu_action.triggered.connect(self._show_main_menu)
+                self.toolbar.addAction(self.toolbar_main_menu_action)
         
         self.search_filter = SearchFilter()
         self.iface.registerLocatorFilter(self.search_filter)
-        #self.iface.messageBar().pushMessage(self.myPluginV,f'Sollte Euch das Plugin gefallen,{"&nbsp;"}könnt Ihr es gern mit Eurer Mitarbeit,{"&nbsp;"}einem Voting und ggf.{"&nbsp;"}einem kleinen Betrag unterstützen ...{"&nbsp;"}Danke!!', 3, 8)     
-    
+        
     def initGui(self) -> None:
         if self.main_menu:
             self.main_menu.clear()
@@ -50,9 +70,19 @@ class GeoBasis_Loader(QObject):
         self.iface.invalidateLocatorResults()
         self.iface.deregisterLocatorFilter(self.search_filter)
         self.search_filter = None
-        plugin_menu = self.iface.pluginMenu()
-        if self.main_menu and plugin_menu:
-            plugin_menu.removeAction(self.main_menu.menuAction())
+        if self.main_menu:
+            plugin_menu = self.iface.pluginMenu()
+            main_window = self.iface.mainWindow()
+            if self.toolbar and main_window:
+                if self.toolbar_main_menu_action:
+                    self.toolbar.removeAction(self.toolbar_main_menu_action)
+                    self.toolbar_main_menu_action = None
+                
+                if len(self.toolbar.actions()) == 0:
+                    main_window.removeToolBar(self.toolbar) # type: ignore
+                    self.toolbar = None
+            if plugin_menu:
+                plugin_menu.removeAction(self.main_menu.menuAction())
             self.main_menu = None
         custom_logger.remove_logging()
         
@@ -69,3 +99,17 @@ class GeoBasis_Loader(QObject):
         logger.success(f'Lese {titel}, Version {version} ...', extra={"show_banner": True})
         
         self.initGui()
+
+    def _show_main_menu(self) -> None:
+        if not self.main_menu:
+            logger.warning("Kein Hauptmenü verfügbar.")
+            return
+
+        if self.toolbar and self.toolbar_main_menu_action:
+            button = self.toolbar.widgetForAction(self.toolbar_main_menu_action)
+            if button:
+                pos = button.mapToGlobal(button.rect().bottomLeft())
+                self.main_menu.popup(pos)
+                return
+
+        self.main_menu.popup(QCursor.pos())
