@@ -27,7 +27,7 @@ ICON_PATHS: dict[IconKey, str] = {
     IconKey.FOLDER_OPEN: "/mIconFolderOpen.svg",
     IconKey.GROUP_ADD: "/mActionAddGroup.svg",
     IconKey.COMBINATION_ADD: "/mActionDataSourceManager.svg",
-    IconKey.TOOLBAR_MAIN_MENU_ICON: "GeoBasis_Loader_Main_Icon.png"
+    IconKey.TOOLBAR_MAIN_MENU_ICON: "GeoBasis_Loader_Main_Icon.svg"
 }
 
 LAYER_TYPE_ICON_PATHS: dict[catalog_types.TopicType, str] = {
@@ -79,7 +79,7 @@ def get_icon_from_key(icon_key: IconKey) -> QIcon:
     if icon_path.startswith("/"):
         icon = QgsApplication.getThemeIcon(icon_path)
     else:
-        path = (config.RESOURCES_DIR / icon_path).resolve()
+        path = (config.RESOURCES_DIR / "icons" / icon_path).resolve()
         icon = QIcon(str(path))
     
     _icons[icon_key] = icon
