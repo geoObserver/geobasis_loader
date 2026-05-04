@@ -1,10 +1,10 @@
 from enum import Enum
+import configparser
 import pathlib
+from dataclasses import dataclass
+from typing import Optional
 from qgis.core import QgsSettings, QgsApplication
 
-PLUGIN_VERSION = '2.0.0'
-PLUGIN_NAME = 'GeoBasis Loader'
-PLUGIN_NAME_AND_VERSION = PLUGIN_NAME + ' (v' + PLUGIN_VERSION + ')'
 
 PLUGIN_DIR = pathlib.Path(__file__).resolve().parents[1]
 PLUGIN_USER_DIR = pathlib.Path(QgsApplication.qgisSettingsDirPath()) / "geobasis_loader"
@@ -12,7 +12,61 @@ PLUGIN_USER_DIR = pathlib.Path(QgsApplication.qgisSettingsDirPath()) / "geobasis
 RESOURCES_DIR = PLUGIN_DIR / "resources"
 PRESETS_DIR = PLUGIN_USER_DIR / "presets"
 
-REQUEST_TIMEOUT_MS = 30000
+@dataclass(frozen=True)
+class PluginInfo:
+    name: str = ""
+    version: str = ""
+    icon: str = ""
+    icon_path: Optional[pathlib.Path] = None
+    description: str = ""
+    qgis_min_version: str = ""
+    qgis_max_version: str = ""
+    author: str = ""
+    email: str = ""
+    homepage: str = ""
+    repository: str = ""
+    tracker: str = ""
+
+def read_metadata(metadata_path: Optional[pathlib.Path] = None) -> PluginInfo:
+    path = metadata_path or (PLUGIN_DIR / "metadata.txt")
+    if not path.exists():
+        return PluginInfo()
+
+    parser = configparser.ConfigParser()
+    parser.optionxform = str
+    try:
+        parser.read(path, encoding="utf-8")
+    except configparser.Error:
+        return PluginInfo()
+
+    section = parser["general"] if parser.has_section("general") else {}
+    name = section.get("name", "")
+    name = name.replace("_", " ") if name else ""
+    icon = section.get("icon", "")
+    icon_path = (PLUGIN_DIR / icon) if icon else None
+
+    return PluginInfo(
+        name=name,
+        version=section.get("version", ""),
+        icon=icon,
+        icon_path=icon_path,
+        description=section.get("description", ""),
+        qgis_min_version=section.get("qgisMinimumVersion", ""),
+        qgis_max_version=section.get("qgisMaximumVersion", ""),
+        author=section.get("author", ""),
+        email=section.get("email", ""),
+        homepage=section.get("homepage", ""),
+        repository=section.get("repository", ""),
+        tracker=section.get("tracker", ""),
+    )
+
+plugin_info = read_metadata()
+
+PLUGIN_NAME = plugin_info.name
+PLUGIN_NAME_AND_VERSION = PLUGIN_NAME + ' (v' + plugin_info.version + ')'
+
+
+REQUEST_TIMEOUT_MS = 10000
 PLUGIN_LOGGER_NAME = "geobasis_loader"
 TOOLBAR_NAME = "geoobserver"
 LOGGING_SUCCESS_LEVEL = 25
