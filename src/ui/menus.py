@@ -1,6 +1,7 @@
 from typing import Optional, Union
+from qgis.PyQt.QtCore import Qt
 from qgis.PyQt.QtGui import QIcon
-from qgis.PyQt.QtWidgets import QMenu, QAction
+from qgis.PyQt.QtWidgets import QMenu, QAction, QMessageBox
 from qgis.core import QgsSettings
 from qgis.utils import iface
 from . import icons
@@ -16,6 +17,21 @@ STAR_PREFIX = "\u2605 "  # ★
 logger = custom_logger.get_logger(__name__)
 
 class MainMenu(QMenu):
+    class PresetsMenu(QMenu):
+        def __init__(self, title: str, owner: "MainMenu"):
+            super().__init__(title, owner)
+            self._owner = owner
+
+        def mouseReleaseEvent(self, a0):
+            if a0 is None:
+                return
+            
+            if a0.button() == Qt.MouseButton.RightButton:
+                self._owner._show_preset_context_menu(a0.pos(), a0.globalPosition().toPoint())
+                return
+
+            super().mouseReleaseEvent(a0)
+
     def __init__(self, parent=None):
         super().__init__(config.PLUGIN_NAME_AND_VERSION, parent)
         self.setObjectName("main-menu")
@@ -30,7 +46,7 @@ class MainMenu(QMenu):
         self.favorites_menu.setToolTipsVisible(True)
         
         # Presets menu
-        self.presets_menu = QMenu("Presets", self)
+        self.presets_menu = MainMenu.PresetsMenu("Presets", self)
         self.presets_menu.setObjectName("presets-menu")
         self.presets_menu.setIcon(icons.get_icon(icons.IconKey.PRESET_USER))
         self.presets_menu.setToolTipsVisible(True)
@@ -119,6 +135,7 @@ class MainMenu(QMenu):
         for preset in user_presets:
             action = QAction(preset.title, self.presets_menu)
             action.setObjectName(preset.title)
+            action.setData({"preset_id": preset.id, "preset_type": "user"})
             description = preset.description + "\n\n" if preset.description else ""
             description += preset.topic_description()
             action.setToolTip(description)
@@ -279,4 +296,62 @@ class MainMenu(QMenu):
     def _accept_settings(self):
         logger.success("Einstellungen erfolgreich gespeichert", extra={"show_banner": True})
         self.create_menu()
+
+    def _show_preset_context_menu(self, pos, global_pos=None) -> None:
+        action = self.presets_menu.actionAt(pos)
+        if not action:
+            return
+
+        data = action.data()
+        if not isinstance(data, dict) or data.get("preset_type") != "user":
+            return
+
+        preset_id = data.get("preset_id")
+        if not preset_id:
+            return
+
+        context_menu = QMenu(self.presets_menu)
         
+        delete_action = QAction("Preset löschen", context_menu)
+        delete_action.triggered.connect(lambda: self._delete_user_preset(preset_id, action.text()))
+        rename_action = QAction("Preset ändern", context_menu)
+        rename_action.triggered.connect(lambda: self._rename_user_preset(preset_id))
+        context_menu.addAction(rename_action)
+        context_menu.addAction(delete_action)
+        if global_pos is None:
+            global_pos = self.presets_menu.mapToGlobal(pos)
+        context_menu.exec(global_pos)
+
+    def _delete_user_preset(self, preset_id: str, preset_title: str) -> None:
+        confirm = QMessageBox.question(
+            iface.mainWindow(),
+            "Preset löschen",
+            f"Preset '{preset_title}' wirklich löschen?",
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+        )
+        if confirm != QMessageBox.StandardButton.Yes:
+            return
+
+        registry.preset_manager.remove_user_preset(preset_id)
+        registry.preset_manager.save_user_presets()
+        self.build_presets()
+    
+    def _rename_user_preset(self, preset_id: str) -> None:
+        preset = registry.preset_manager.user_presets.get(preset_id)
+        if not preset:
+            logger.error(f"Preset mit ID '{preset_id}' nicht gefunden. Ändern nicht möglich.")
+            return
+        
+        preset_dialog = PresetDialog(
+            preset.title, 
+            preset.description, 
+            save_crs_checkbox_visible=False, 
+            parent=iface.mainWindow()
+        )
+        if preset_dialog.exec() != PresetDialog.DialogCode.Accepted:
+            return
+        
+        preset.title = preset_dialog.preset_title
+        preset.description = preset_dialog.preset_description
+        registry.preset_manager.save_user_presets()
+        self.build_presets()
