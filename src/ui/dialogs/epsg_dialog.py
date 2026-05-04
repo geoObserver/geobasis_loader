@@ -1,7 +1,6 @@
-import os
 from qgis.core import QgsCoordinateReferenceSystem
 from qgis.PyQt import uic, QtWidgets, QtCore
-from .. import config
+from ... import config
 
 EPSG_DIALOG = uic.loadUiType(config.RESOURCES_DIR / "design_files" / "epsg_selector.ui")[0]
 

@@ -1,6 +1,5 @@
-import os
 from qgis.PyQt import uic, QtWidgets
-from .. import config
+from ... import config
 
 PRESET_DIALOG = uic.loadUiType(config.RESOURCES_DIR / "design_files" / "preset_dialog.ui")[0]
 

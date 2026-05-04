@@ -6,7 +6,7 @@ from qgis.core import QgsProject, QgsVectorLayer, QgsRasterLayer, QgsVectorTileL
 from qgis.utils import iface
 from ..models import catalog_types
 from ..services import registry
-from ..ui.epsg_dialog import EpsgDialog
+from ..ui.dialogs import EpsgDialog
 from .. import config
 from ..utils import custom_logger
 

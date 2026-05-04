@@ -4,7 +4,8 @@ from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QMenu, QAction
 from qgis.core import QgsSettings
 from qgis.utils import iface
-from . import Icons, SettingsDialog, PresetDialog
+from . import Icons
+from .dialogs import SettingsDialog, PresetDialog
 from ..services import registry
 from ..models import catalog_types
 from ..operations import topic_ops as handlers

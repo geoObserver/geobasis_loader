@@ -1,15 +1,14 @@
-import os
 from typing import Union, Optional
 from qgis.PyQt import uic, QtWidgets
 from qgis.PyQt.QtCore import Qt
 from qgis.PyQt.QtGui import QShowEvent
 from qgis.core import QgsSettings
-from .. import config
-from ..services import registry
-from ..models import catalog_types
+from ... import config
+from ...services import registry
+from ...models import catalog_types
 # FIXME
-from . import icons as Icons
-from ..utils import custom_logger
+from .. import icons as Icons
+from ...utils import custom_logger
 
 SETTINGS_DIALOG = uic.loadUiType(config.RESOURCES_DIR / "design_files" / "settings_dialog.ui")[0]
 FAVORITE_CHECKBOX_COL = 1
