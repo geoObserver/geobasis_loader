@@ -238,6 +238,7 @@ class MainMenu(QMenu):
         description = preset_dialog.preset_description
         save_layer_crs = preset_dialog.save_layer_crs
         registry.preset_manager.create_user_preset_from_project(title, description, save_layer_crs)
+        registry.preset_manager.save_user_presets()
         self.build_presets()
     
     # FIXME: Maybe a dedicated settings module/class would be better than local changes
