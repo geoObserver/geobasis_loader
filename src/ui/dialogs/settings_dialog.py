@@ -7,7 +7,7 @@ from ... import config
 from ...services import registry
 from ...models import catalog_types
 # FIXME
-from .. import icons as Icons
+from .. import icons
 from ...utils import custom_logger
 
 SETTINGS_DIALOG = uic.loadUiType(config.RESOURCES_DIR / "design_files" / "settings_dialog.ui")[0]
@@ -180,15 +180,15 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
     
     def _on_item_expanded(self, item: QtWidgets.QTreeWidgetItem) -> None:
         item_icon = item.icon(0)
-        folder_closed_icon = Icons.get_icon(Icons.IconKey.FOLDER_CLOSED)
+        folder_closed_icon = icons.get_icon(icons.IconKey.FOLDER_CLOSED)
         if item_icon.cacheKey() == folder_closed_icon.cacheKey():
-            item.setIcon(0, Icons.get_icon(Icons.IconKey.FOLDER_OPEN))
+            item.setIcon(0, icons.get_icon(icons.IconKey.FOLDER_OPEN))
     
     def _on_item_collapsed(self, item: QtWidgets.QTreeWidgetItem) -> None:
         item_icon = item.icon(0)
-        folder_open_icon = Icons.get_icon(Icons.IconKey.FOLDER_OPEN)
+        folder_open_icon = icons.get_icon(icons.IconKey.FOLDER_OPEN)
         if item_icon.cacheKey() == folder_open_icon.cacheKey():
-            item.setIcon(0, Icons.get_icon(Icons.IconKey.FOLDER_CLOSED))
+            item.setIcon(0, icons.get_icon(icons.IconKey.FOLDER_CLOSED))
         
     def setup(self):
         available_width = self.layer_settings_tree.width()
@@ -206,7 +206,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
     def set_settings(self, catalog: catalog_types.Catalog) -> None:
         def _add_entry(data: catalog_types.BasicEntry, parent: Union[QtWidgets.QTreeWidgetItem, QtWidgets.QTreeWidget]) -> QtWidgets.QTreeWidgetItem:            
             item = QtWidgets.QTreeWidgetItem(parent)
-            icon = Icons.get_icon_from_entry(data)
+            icon = icons.get_icon_from_entry(data)
             
             item.setIcon(0, icon)
             item.setText(0, data.name)

@@ -4,7 +4,7 @@ from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QMenu, QAction
 from qgis.core import QgsSettings
 from qgis.utils import iface
-from . import Icons
+from . import icons
 from .dialogs import SettingsDialog, PresetDialog
 from ..services import registry
 from ..models import catalog_types
@@ -25,13 +25,13 @@ class MainMenu(QMenu):
         # Favorites menu
         self.favorites_menu = QMenu("Favoriten", self)
         self.favorites_menu.setObjectName("favorites-menu")
-        self.favorites_menu.setIcon(Icons.get_icon(Icons.IconKey.FAVORITE_STAR))
+        self.favorites_menu.setIcon(icons.get_icon(icons.IconKey.FAVORITE_STAR))
         self.favorites_menu.setToolTipsVisible(True)
         
         # Presets menu
         self.presets_menu = QMenu("Presets", self)
         self.presets_menu.setObjectName("presets-menu")
-        self.presets_menu.setIcon(Icons.get_icon(Icons.IconKey.PRESET_USER))
+        self.presets_menu.setIcon(icons.get_icon(icons.IconKey.PRESET_USER))
         self.presets_menu.setToolTipsVisible(True)
     
     def create_menu(self):
@@ -96,7 +96,7 @@ class MainMenu(QMenu):
                 if not topic:
                     continue
                 
-                icon = Icons.get_icon_from_entry(topic)
+                icon = icons.get_icon_from_entry(topic)
                 action = QAction(icon, topic.name, self.favorites_menu)
                 action.setObjectName(topic.name)
                 action.triggered.connect(lambda _, t=topic: handlers.add_topic(t.path))
@@ -107,7 +107,7 @@ class MainMenu(QMenu):
         user_presets = registry.preset_manager.get_user_presets()
         curated_presets = registry.preset_manager.get_curated_presets()
         
-        action = QAction(Icons.get_icon(Icons.IconKey.GROUP_ADD), "Neu vom Projekt", self.presets_menu)
+        action = QAction(icons.get_icon(icons.IconKey.GROUP_ADD), "Neu vom Projekt", self.presets_menu)
         action.setObjectName("new-preset-from-project")
             
         action.triggered.connect(self._new_preset_from_project)
@@ -149,17 +149,17 @@ class MainMenu(QMenu):
                 continue
             
             if isinstance(topic, catalog_types.Topic) and topic.topic_type == catalog_types.TopicType.WEB:
-                icon = Icons.get_icon(topic.topic_type)
+                icon = icons.get_icon(topic.topic_type)
                 action = _create_action(topic.name, topic.uri, icon, menu, "Informationen öffnen", handlers.open_web_site)
                 menu.addAction(action)
                 continue
             
             if isinstance(topic, catalog_types.TopicGroup):
                 topic_group_menu = QMenu(topic.name, menu)
-                topic_group_menu.setIcon(Icons.get_icon(Icons.IconKey.FOLDER_CLOSED))
+                topic_group_menu.setIcon(icons.get_icon(icons.IconKey.FOLDER_CLOSED))
                 topic_group_menu.setToolTipsVisible(True)
                 
-                icon = Icons.get_icon(Icons.IconKey.GROUP_ADD)
+                icon = icons.get_icon(icons.IconKey.GROUP_ADD)
                 add_all_action = _create_action("Alle laden", topic.path, icon, topic_group_menu, "Alle Themen der Gruppe laden")
                 topic_group_menu.addAction(add_all_action)
                 topic_group_menu.addSeparator()
@@ -168,7 +168,7 @@ class MainMenu(QMenu):
                     if not subtopic.properties.visible:
                         continue
                     
-                    icon = Icons.get_icon(subtopic.topic_type)
+                    icon = icons.get_icon(subtopic.topic_type)
                     if subtopic.topic_type == catalog_types.TopicType.WEB:
                         subtopic_action = _create_action(subtopic.name, subtopic.uri, icon, topic_group_menu, "Informationen öffnen", handlers.open_web_site)
                     else:
@@ -178,10 +178,10 @@ class MainMenu(QMenu):
                 menu.addMenu(topic_group_menu)
             else:
                 if isinstance(topic, catalog_types.TopicCombination):
-                    icon = Icons.get_icon(Icons.IconKey.COMBINATION_ADD)
+                    icon = icons.get_icon(icons.IconKey.COMBINATION_ADD)
                     action = _create_action(topic.name, topic.path, icon, menu)
                 else:
-                    icon = Icons.get_icon(topic.topic_type)
+                    icon = icons.get_icon(topic.topic_type)
                     action = _create_action(topic.name, topic.path, icon, menu)
                 menu.addAction(action)
                 
