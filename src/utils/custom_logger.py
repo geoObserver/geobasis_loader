@@ -1,3 +1,4 @@
+from __future__ import annotations
 import logging
 from types import TracebackType
 from typing import Mapping
