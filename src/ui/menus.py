@@ -1,3 +1,4 @@
+import re
 from typing import Optional, Union
 from qgis.PyQt.QtCore import Qt
 from qgis.PyQt.QtGui import QIcon
@@ -51,8 +52,7 @@ class MainMenu(QMenu):
         self.presets_menu.setIcon(icons.get_icon(icons.IconKey.PRESET_USER))
         self.presets_menu.setToolTipsVisible(True)
     
-    # FIXME
-    def create_menu(self, args=None):
+    def create_menu(self):
         self.clear()
         current_catalog: Optional[Union[catalog_types.Catalog, list]] = registry.catalog_manager.get_current_catalog()
         if not isinstance(current_catalog, catalog_types.Catalog):
@@ -280,8 +280,22 @@ class MainMenu(QMenu):
         
     def _change_current_catalog(self, catalog: dict):
         self._qgs_settings.setValue(config.QgsSettingsKeys.CURRENT_CATALOG, catalog)
-        registry.catalog_manager.get_catalog(catalog["titel"], callback=self.create_menu)
+        registry.catalog_manager.get_catalog(catalog["titel"], callback=self._changed_current_catalog)
     
+    def _changed_current_catalog(self, _: Optional[Union[catalog_types.Catalog, list]] = None):
+        current_catalog = self._qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
+        if current_catalog is None or "titel" not in current_catalog:
+            logger.warning(f"Momentan ist kein valider Katalog ausgewählt, Bitten wählen Sie einen aus", extra={"show_banner": True})
+            return
+        
+        titel = current_catalog["titel"]
+        name = current_catalog["name"]
+        version_matches = re.findall(r'v\d+', name)
+        version = version_matches[0] if version_matches else "unbekannt"
+        logger.success(f'Lese {titel}, Version {version} ...', extra={"show_banner": True})
+        
+        self.create_menu()
+        
     def _open_settings(self):
         current_catalog = registry.catalog_manager.get_current_catalog()
         if not isinstance(current_catalog, catalog_types.Catalog):
