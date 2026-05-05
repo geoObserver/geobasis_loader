@@ -88,10 +88,11 @@ class ServerHosts(str, Enum):
         servers = []
         qgs_settings = QgsSettings()
         server_index = qgs_settings.value(QgsSettingsKeys.SERVERS, 0, type=int)
-        if server_index == 0:
-            servers = cls.get_all_servers()
+        all_servers = cls.get_all_servers()
+        if server_index == 0 or server_index > len(all_servers):
+            servers = all_servers
         else:
-            servers.append(cls.get_all_servers()[server_index - 1])
+            servers.append(all_servers[server_index - 1])
             
         return servers
     
