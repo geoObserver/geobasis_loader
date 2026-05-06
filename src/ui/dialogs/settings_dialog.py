@@ -27,6 +27,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         self._updating_items = False
         self._qgs_settings = QgsSettings()
         
+        self.setAttribute(Qt.WidgetAttribute.WA_DeleteOnClose, True)
         self.setupUi(self)
         
         # Topic settings tree
@@ -340,4 +341,3 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         self._current_catalog = {}
         self._items = []
         self.layer_settings_tree.clear()
-

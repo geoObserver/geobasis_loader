@@ -1,5 +1,5 @@
 from typing import Optional
-from qgis.PyQt import uic, QtWidgets
+from qgis.PyQt import uic, QtWidgets, QtCore
 from ... import config
 
 PRESET_DIALOG = uic.loadUiType(config.RESOURCES_DIR / "design_files" / "preset_dialog.ui")[0]
@@ -7,6 +7,7 @@ PRESET_DIALOG = uic.loadUiType(config.RESOURCES_DIR / "design_files" / "preset_d
 class PresetDialog(QtWidgets.QDialog, PRESET_DIALOG):
     def __init__(self, preset_title: str = "", preset_description: Optional[str] = "", save_layer_crs: bool = False, save_crs_checkbox_visible: bool = True, parent = None):
         QtWidgets.QDialog.__init__(self, parent)
+        self.setAttribute(QtCore.Qt.WidgetAttribute.WA_DeleteOnClose, True)
         self.setupUi(self)
         window_title = f"Preset '{preset_title}' ändern" if preset_title else "Neues Preset erstellen"
         self.setWindowTitle(window_title)
@@ -43,4 +44,3 @@ class PresetDialog(QtWidgets.QDialog, PRESET_DIALOG):
         self.preset_description = description if description else None
         self.save_layer_crs = save_layer_crs
         self.accept()
-        self.deleteLater()

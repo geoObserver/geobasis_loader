@@ -14,6 +14,7 @@ class EpsgDialog(QtWidgets.QDialog, EPSG_DIALOG):
 
     def __init__(self, parent = None):
         QtWidgets.QDialog.__init__(self, parent)
+        self.setAttribute(QtCore.Qt.WidgetAttribute.WA_DeleteOnClose, True)
         self.setupUi(self)
         
         self.table: QtWidgets.QTableWidget = self.tableWidget
@@ -69,4 +70,3 @@ class EpsgDialog(QtWidgets.QDialog, EPSG_DIALOG):
             return
         
         self.selected_coord = auth_id_item.text()
-        self.deleteLater()
