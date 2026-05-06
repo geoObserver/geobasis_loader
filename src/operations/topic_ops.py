@@ -27,8 +27,8 @@ def get_crs(supported_auth_ids: frozenset[str], layer_name: str) -> Union[str, N
     if current_crs not in supported_auth_ids or not automatic_crs:
         epsg_dialog = EpsgDialog(iface.mainWindow())
         epsg_dialog.set_table_data(supported_auth_ids, layer_name)
-        epsg_dialog.exec()
-        if epsg_dialog.selected_coord is None:
+        code = epsg_dialog.exec()
+        if code != epsg_dialog.DialogCode.Accepted:
             return None
         current_crs = epsg_dialog.selected_coord
     
