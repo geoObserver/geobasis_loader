@@ -84,6 +84,10 @@ class SearchFilter(QgsLocatorFilter):
                     })
         
         cls.search_index = search_index
+    
+    @classmethod
+    def clear_search_index(cls) -> None:
+        cls.search_index = []
 
     def search_results(self, search_string: str):
         # FIXME: Search with multiple words

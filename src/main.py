@@ -68,6 +68,7 @@ class GeoBasis_Loader(QObject):
 
     def unload(self):
         registry.catalog_manager.clear_network_handlers(force=True)
+        SearchFilter.clear_search_index()
         self.iface.invalidateLocatorResults()
         self.iface.deregisterLocatorFilter(self.search_filter)
         self.search_filter = None
