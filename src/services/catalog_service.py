@@ -53,6 +53,10 @@ class NetworkHandler(QObject):
             self._reply = None
             
         q_url = QUrl(url)
+        if not q_url.isValid():
+            logger.critical(f"Ungültige URL: {url}")
+            return None
+        
         request = QNetworkRequest(q_url)
         request.setAttribute(network_request_attributes.CacheLoadControlAttribute, network_request_cache.AlwaysNetwork)
         request.setTransferTimeout(config.REQUEST_TIMEOUT_MS)
@@ -67,7 +71,8 @@ class NetworkHandler(QObject):
         return self._manager.get(request)
   
     def fetch_catalog_overview(self) -> None:
-        url = self._server.format(name=config.CATALOG_OVERVIEW)
+        data_name = QUrl.toPercentEncoding(config.CATALOG_OVERVIEW).data().decode('utf-8')
+        url = self._server.format(name=data_name)
         reply = self._fetch_data(url=url)
         if not reply:
             logger.critical("Die Netzwerkantwort für die Katalogübersicht konnte nicht erstellt werden")
@@ -79,7 +84,8 @@ class NetworkHandler(QObject):
     def fetch_catalog(self, catalog_name: str, catalog_title: str) -> None:
         if not catalog_name.endswith(".json"):
             catalog_name += ".json"
-        url = self._server.format(name=catalog_name)
+        data_name = QUrl.toPercentEncoding(catalog_name).data().decode('utf-8')
+        url = self._server.format(name=data_name)
         reply = self._fetch_data(url=url)
         if not reply:
             logger.critical(f"Die Netzwerkantwort für den Katalog '{catalog_name}' konnte nicht erstellt werden")
