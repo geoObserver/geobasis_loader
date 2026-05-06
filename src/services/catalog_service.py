@@ -26,7 +26,7 @@ else:
 
 class NetworkHandler(QObject):
     _manager: QgsNetworkAccessManager
-    _reply: QNetworkReply
+    _reply: Optional[QNetworkReply]
     
     finished = pyqtSignal(str, str, float)
     error_occurred = pyqtSignal(str, str)
@@ -44,6 +44,14 @@ class NetworkHandler(QObject):
         self.successful = False
         
     def _fetch_data(self, url: str = '') -> Optional[QNetworkReply]:
+        if hasattr(self, "_reply") and self._reply is not None:
+            self._reply.finished.disconnect()
+            self._reply.errorOccurred.disconnect()
+            if not self._reply.isFinished():
+                self._reply.abort()
+            self._reply.deleteLater()
+            self._reply = None
+            
         q_url = QUrl(url)
         request = QNetworkRequest(q_url)
         request.setAttribute(network_request_attributes.CacheLoadControlAttribute, network_request_cache.AlwaysNetwork)
@@ -81,6 +89,9 @@ class NetworkHandler(QObject):
         self._reply.finished.connect(partial(self._handle_response, catalog_name, catalog_title, False))
         
     def _handle_response(self, catalog_name: str, catalog_title: str, is_overview_response: bool):
+        if not hasattr(self, "_reply") or self._reply is None:
+            logger.critical("Keine Netzwerkantwort zum Verarbeiten vorhanden")
+            return
         error = self._reply.error()
         status_code: Optional[int] = self._reply.attribute(network_request_attributes.HttpStatusCodeAttribute)
         
@@ -105,7 +116,7 @@ class NetworkHandler(QObject):
             return
         
         # Differenzierte Fehlerbehandlung
-        if not status_code: 
+        if not status_code:
             logger.error(f"Kein Internet: {catalog_name} auf Server {self._server}")
         elif status_code == 404:
             logger.warning(f"404 Not Found: {catalog_name} auf Server {self._server}")
@@ -127,7 +138,19 @@ class NetworkHandler(QObject):
                 self.fetch_catalog_overview()
             else:
                 self.fetch_catalog(catalog_name, catalog_title)
-
+    
+    def abort(self):
+        if hasattr(self, "_reply") and self._reply is not None and not self._reply.isFinished():
+            self._reply.disconnect()
+            self._reply.abort()
+            self._reply.deleteLater()
+            self._reply = None
+            logger.info("Netzwerkanfrage abgebrochen")
+        
+        self.done = True
+        self.finished.disconnect()
+        self.error_occurred.disconnect()
+        self.deleteLater()
 
 class CatalogManager:
     overview: Optional[list[dict[str, str]]] = None
@@ -154,18 +177,30 @@ class CatalogManager:
             self.catalog_network_handlers[catalog_title] = handler
         return handler
         
-    def clear_network_handlers(self) -> None:
-        if all(handler.done for handler in self.catalog_network_handlers.values()):
-            successful_count = sum(handler.successful for handler in self.catalog_network_handlers.values())
-            handler_count = len(self.catalog_network_handlers)
+    def clear_network_handlers(self, force: bool = False) -> None:
+        handlers = list(self.catalog_network_handlers.values())
+        all_done = all(handler.done for handler in handlers)
+        
+        if all_done and len(handlers) > 0:
+            handler_count = len(handlers)
+            successful_count = sum(handler.successful for handler in handlers)
             message = f"Es wurden {successful_count} von {handler_count} Kataloge neu geladen"
             
             if handler_count > 0 and successful_count / handler_count >= 0.5:
                 logger.success(message, extra={"show_banner": True})
             else:
                 logger.warning(message, extra={"show_banner": True})
-            
-            self.catalog_network_handlers.clear()
+        
+        if not force and not all_done:
+            return
+        
+        if hasattr(self, "overview_network_handler") and self.overview_network_handler is not None:
+            self.overview_network_handler.abort()
+        
+        for handler in handlers:
+            handler.abort()
+        
+        self.catalog_network_handlers.clear()
     
     def set_overview(self, overview: str, catalog_name: str, last_modified: float, fetch_catalogs: bool = True) -> None:
         try:
