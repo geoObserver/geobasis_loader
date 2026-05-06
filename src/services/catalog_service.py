@@ -256,6 +256,8 @@ class CatalogManager:
         qgs_settings = QgsSettings()
         current_catalog = qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
         if current_catalog is None or "name" not in current_catalog:
+            if callback:
+                callback(None)
             return None
         
         return self.get_catalog(current_catalog["titel"], current_catalog["name"], callback)
