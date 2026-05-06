@@ -397,10 +397,12 @@ class CatalogManager:
         try:
             with open(file_path, "w", encoding="utf-8", newline="\n") as file:
                 json.dump(data, file, indent=2)
-        except OSError as e:
-            logger.critical(f"Fehler beim Schreiben der Datei {file_path}: {e}")
         except TypeError as e:
             logger.critical(f"Nicht-serialisierbares Objekt für {file_path}: {e}")
+        except PermissionError as e:
+            logger.critical(f"Keine Berechtigung zum Schreiben der Datei {file_path}: {e}")
+        except OSError as e:
+            logger.critical(f"Fehler beim Schreiben der Datei {file_path} ({type(e).__name__}): {e}")
 
     def read_json(self, file_path: pathlib.Path) -> Union[dict, list]:
         if not file_path.exists():
@@ -413,8 +415,11 @@ class CatalogManager:
         except json.JSONDecodeError as e:
             logger.critical(f"Ungültiges JSON in Datei {file_path}: {e}")
             return {}
+        except PermissionError as e:
+            logger.critical(f"Keine Berechtigung zum Lesen der Datei {file_path}: {e}")
+            return {}
         except OSError as e:
-            logger.critical(f"Fehler beim Lesen der Datei {file_path}: {e}")
+            logger.critical(f"Fehler beim Lesen der Datei {file_path} ({type(e).__name__}): {e}")
             return {}
 
 singleton = CatalogManager()
