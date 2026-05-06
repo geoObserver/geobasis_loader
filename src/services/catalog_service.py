@@ -182,7 +182,10 @@ class CatalogManager:
         file_name = 'katalog_overview'
         file_path = self.catalog_path / f"{file_name}.json"
         
-        localLastModified = os.path.getmtime(file_path) if file_path.exists() else 0.0
+        try:
+            localLastModified = os.path.getmtime(file_path)
+        except OSError:
+            localLastModified = 0.0
         if localLastModified < last_modified:
             self.write_json(self.overview, file_path)
         
