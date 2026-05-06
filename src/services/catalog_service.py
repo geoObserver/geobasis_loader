@@ -203,11 +203,13 @@ class CatalogManager:
     
     def set_overview(self, overview: str, catalog_name: str, last_modified: float, fetch_catalogs: bool = True) -> None:
         try:
-            self.overview = json.loads(overview)
+            loaded_overview = json.loads(overview)
         except json.JSONDecodeError as e:
             logger.critical(f"Fehler beim Parsen der Katalogübersicht: {e}")
             logger.critical("Die Katalog-Übersicht enthält ungültiges JSON. Bitte prüfen Sie die Internetverbindung", extra={"show_banner": True})
             return
+        
+        self.overview = loaded_overview if isinstance(loaded_overview, list) else None
         
         if not self.overview:
             logger.critical(f"Katalogübersicht fehlerhaft, Bitte starten Sie QGIS neu oder kontaktieren Sie den Autor", extra={"show_banner": True})
