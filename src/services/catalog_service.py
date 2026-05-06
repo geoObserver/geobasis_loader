@@ -147,10 +147,13 @@ class NetworkHandler(QObject):
             self._reply = None
             logger.info("Netzwerkanfrage abgebrochen")
         
-        self.done = True
-        self.finished.disconnect()
-        self.error_occurred.disconnect()
-        self.deleteLater()
+        try:
+            self.done = True
+            self.finished.disconnect()
+            self.error_occurred.disconnect()
+            self.deleteLater()
+        except RuntimeError:
+            pass
 
 class CatalogManager:
     overview: Optional[list[dict[str, str]]]
