@@ -153,13 +153,13 @@ class NetworkHandler(QObject):
         self.deleteLater()
 
 class CatalogManager:
-    overview: Optional[list[dict[str, str]]] = None
-    catalogs: dict[str, catalog_types.Catalog] = {}
+    overview: Optional[list[dict[str, str]]]
+    catalogs: dict[str, catalog_types.Catalog]
     catalog_path = config.PLUGIN_DIR / "catalogs"
     
-    catalog_network_handlers: dict[str, NetworkHandler] = {}
+    catalog_network_handlers: dict[str, NetworkHandler]
     
-    _pending_callbacks: dict[str, list[Callable]] = {}
+    _pending_callbacks: dict[str, list[Callable]]
     
     def __init__(self) -> None:
         self.overview: Optional[list[dict[str, str]]] = None
