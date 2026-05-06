@@ -277,7 +277,11 @@ class CatalogManager:
         file_name = re.sub(r'\ ', '_', catalog_name.split(':')[0].lower())
         file_path = self.catalog_path / f"{file_name}.json"
         
-        localLastModified = os.path.getmtime(file_path) if file_path.exists() else 0.0
+        try:
+            localLastModified = os.path.getmtime(file_path)
+        except OSError:
+            localLastModified = 0.0
+
         if localLastModified < last_modified:
             self.write_json(parsed_catalog, file_path)
         
