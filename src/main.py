@@ -11,7 +11,7 @@ from .ui import menus, icons
 from .models import catalog_types
 from .services import registry
 
-logger = custom_logger.get_logger(__file__)
+logger = custom_logger.get_logger(__name__)
 
 class GeoBasis_Loader(QObject):  
     search_filter = None

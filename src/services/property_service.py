@@ -12,7 +12,7 @@ from .. import config
 from ..utils import custom_logger
 from ..models.properties import Properties
 
-logger = custom_logger.get_logger(__file__)
+logger = custom_logger.get_logger(__name__)
 
 class PropertyManager:
     """Manage property state and persistence for all entries."""

@@ -15,7 +15,7 @@ FAVORITE_CHECKBOX_COL = 1
 VISIBILITY_CHECKBOX_COL = 2
 LOADING_CHECKBOX_COL = 3
 
-logger = custom_logger.get_logger(__file__)
+logger = custom_logger.get_logger(__name__)
 
 class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
     def __init__(self, parent=None):

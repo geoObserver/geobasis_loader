@@ -10,7 +10,7 @@ from ..ui.dialogs import EpsgDialog
 from .. import config
 from ..utils import custom_logger
 
-logger = custom_logger.get_logger(__file__)
+logger = custom_logger.get_logger(__name__)
 
 # Get crs from user
 def get_crs(supported_auth_ids: frozenset[str], layer_name: str) -> Union[str, None]:

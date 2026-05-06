@@ -12,7 +12,7 @@ from ..utils import custom_logger
 from ..models import catalog_types
 from ..core.search import SearchFilter
 
-logger = custom_logger.get_logger(__file__)
+logger = custom_logger.get_logger(__name__)
 
 if QVersionNumber(6) > QVersionNumber.fromString(QT_VERSION_STR)[0]:
     no_error = 0

@@ -3,13 +3,18 @@ import pathlib
 import json
 from functools import singledispatchmethod
 from datetime import datetime
-from typing import Optional, TypedDict, NotRequired
+from typing import Optional, TypedDict
 from dataclasses import dataclass, field
 from qgis.core import QgsProject
 from .. import config 
 from ..utils import custom_logger
 
-logger = custom_logger.get_logger(__file__)
+try:
+    from typing import NotRequired
+except ImportError:
+    NotRequired = object  # type: ignore[assignment]
+
+logger = custom_logger.get_logger(__name__)
 
 @dataclass
 class Preset:

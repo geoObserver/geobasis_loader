@@ -6,7 +6,7 @@ from ..models import catalog_types
 from ..utils import custom_logger
 from .. import config
 
-logger = custom_logger.get_logger(__file__)
+logger = custom_logger.get_logger(__name__)
 
 class IconKey(str, Enum):
     FAVORITE_STAR = "favorite_star"
