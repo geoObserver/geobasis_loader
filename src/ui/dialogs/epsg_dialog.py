@@ -4,11 +4,6 @@ from ... import config
 
 EPSG_DIALOG = uic.loadUiType(config.RESOURCES_DIR / "design_files" / "epsg_selector.ui")[0]
 
-if QtCore.QVersionNumber(6) > QtCore.QVersionNumber.fromString(QtCore.QT_VERSION_STR)[0]:
-    resize_mode = QtWidgets.QHeaderView
-else:
-    resize_mode = QtWidgets.QHeaderView.ResizeMode
-
 class EpsgDialog(QtWidgets.QDialog, EPSG_DIALOG):
     selected_coord = None
 
@@ -18,9 +13,10 @@ class EpsgDialog(QtWidgets.QDialog, EPSG_DIALOG):
         self.setupUi(self)
         
         self.table: QtWidgets.QTableWidget = self.tableWidget
-        header = self.table.horizontalHeader()       
-        header.setSectionResizeMode(0, resize_mode.Stretch)
-        header.setSectionResizeMode(1, resize_mode.Stretch)
+        header = self.table.horizontalHeader()
+        if header is not None:
+            header.setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeMode.Stretch)
+            header.setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeMode.Stretch)
         
         # Layout auf das vorhandene setzen
         layout = self.verticalLayout_2

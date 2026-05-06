@@ -5,7 +5,7 @@ import pathlib
 from functools import partial
 from typing import Optional, Union, Callable
 from qgis.PyQt.QtNetwork import QNetworkRequest, QNetworkReply
-from qgis.PyQt.QtCore import QUrl, QObject, QDateTime, pyqtSignal, QVersionNumber, QT_VERSION_STR
+from qgis.PyQt.QtCore import QUrl, QObject, QDateTime, pyqtSignal
 from qgis.core import QgsNetworkAccessManager, QgsSettings
 from .. import config
 from ..utils import custom_logger
@@ -13,16 +13,6 @@ from ..models import catalog_types
 from ..core.search import SearchFilter
 
 logger = custom_logger.get_logger(__name__)
-
-if QVersionNumber(6) > QVersionNumber.fromString(QT_VERSION_STR)[0]:
-    no_error = 0
-    network_request_attributes = QNetworkRequest
-    network_request_cache = QNetworkRequest
-else:
-    no_error = QNetworkReply.NetworkError.NoError
-    network_request_attributes = QNetworkRequest.Attribute
-    network_request_cache = QNetworkRequest.CacheLoadControl
-
 
 class NetworkHandler(QObject):
     _manager: QgsNetworkAccessManager
@@ -58,7 +48,7 @@ class NetworkHandler(QObject):
             return None
         
         request = QNetworkRequest(q_url)
-        request.setAttribute(network_request_attributes.CacheLoadControlAttribute, network_request_cache.AlwaysNetwork)
+        request.setAttribute(QNetworkRequest.Attribute.CacheLoadControlAttribute, QNetworkRequest.CacheLoadControl.AlwaysNetwork)
         request.setTransferTimeout(config.REQUEST_TIMEOUT_MS)
         # if self._server == config.ServerHosts.GITHUB:
         #     mediatype = "application/vnd.github.raw+json"
@@ -99,9 +89,9 @@ class NetworkHandler(QObject):
             logger.critical("Keine Netzwerkantwort zum Verarbeiten vorhanden")
             return
         error = self._reply.error()
-        status_code: Optional[int] = self._reply.attribute(network_request_attributes.HttpStatusCodeAttribute)
+        status_code: Optional[int] = self._reply.attribute(QNetworkRequest.Attribute.HttpStatusCodeAttribute)
         
-        if error == no_error and status_code == 200:
+        if error == QNetworkReply.NetworkError.NoError and status_code == 200:
             json_string = self._reply.readAll().data().decode('utf-8')
      
             # Holt sich die Timestamps der letzten Modifikationen der lokalen JSON-Datei und der JSON-Datei aus dem Internet
