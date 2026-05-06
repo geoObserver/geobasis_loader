@@ -6,7 +6,7 @@ class Properties:
 
     def __init__(self, key: str) -> None:
         if not isinstance(key, str):
-            raise ValueError("Key is not a string")
+            raise TypeError("Key is not a string")
         self._key = key
 
     @property
@@ -17,7 +17,7 @@ class Properties:
     @favorite.setter
     def favorite(self, value) -> None:
         if not isinstance(value, bool):
-            raise ValueError("Object is not a boolean")
+            raise TypeError("Object is not a boolean")
         
         registry.property_manager.set_favorite(self._key, value, True)
 
@@ -29,7 +29,7 @@ class Properties:
     @visible.setter
     def visible(self, value) -> None:
         if not isinstance(value, bool):
-            raise ValueError("Object is not a boolean")
+            raise TypeError("Object is not a boolean")
         
         registry.property_manager.set_visibility(self._key, value, True)
 
@@ -41,6 +41,6 @@ class Properties:
     @enabled.setter
     def enabled(self, value) -> None:
         if not isinstance(value, bool):
-            raise ValueError("Object is not a boolean")
+            raise TypeError("Object is not a boolean")
         
         registry.property_manager.set_enabled(self._key, value, True)
