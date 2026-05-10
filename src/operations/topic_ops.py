@@ -64,6 +64,13 @@ def _(topic_group: catalog_types.TopicGroup, crs: Optional[str] = None) -> None:
 def _(topic_combination: catalog_types.TopicCombination, crs: Optional[str] = None) -> None:
     add_layer_combination(topic_combination, crs)
 
+@add_topic.register(catalog_types.Region)
+def _(region: catalog_types.Region, crs: Optional[str] = None) -> None:
+    logger.warning(
+        f"Region '{region.name}' kann nicht direkt geladen werden — bitte ein konkretes Thema auswählen.",
+        extra={"show_banner": True},
+    )
+
 def open_web_site(url: str):
     if not isinstance(url, str):
         return
