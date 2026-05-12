@@ -2,11 +2,13 @@ import re
 from typing import Optional, Union
 from qgis.PyQt.QtCore import Qt
 from qgis.PyQt.QtGui import QIcon
-from qgis.PyQt.QtWidgets import QMenu, QAction, QMessageBox
+from qgis.PyQt.QtWidgets import QMenu, QAction
 from qgis.core import QgsSettings
 from qgis.utils import iface
 from . import icons
+from ..core import events
 from .dialogs import SettingsDialog, PresetDialog
+from .context_menus import PresetContextMenu, FavoritesContextMenu, TopicContextMenu
 from ..services import registry
 from ..models import catalog_types
 from ..operations import topic_ops as handlers
@@ -18,21 +20,6 @@ STAR_PREFIX = "\u2605 "  # ★
 logger = custom_logger.get_logger(__name__)
 
 class MainMenu(QMenu):
-    class PresetsMenu(QMenu):
-        def __init__(self, title: str, owner: "MainMenu"):
-            super().__init__(title, owner)
-            self._owner = owner
-
-        def mouseReleaseEvent(self, a0):
-            if a0 is None:
-                return
-            
-            if a0.button() == Qt.MouseButton.RightButton:
-                self._owner._show_preset_context_menu(a0.pos(), a0.globalPosition().toPoint())
-                return
-
-            super().mouseReleaseEvent(a0)
-
     def __init__(self, parent=None):
         super().__init__(config.PLUGIN_NAME_AND_VERSION, parent)
         self.setObjectName("main-menu")
@@ -41,16 +28,15 @@ class MainMenu(QMenu):
         self._qgs_settings = QgsSettings()
         
         # Favorites menu
-        self.favorites_menu = QMenu("Favoriten", self)
-        self.favorites_menu.setObjectName("favorites-menu")
-        self.favorites_menu.setIcon(icons.get_icon(icons.IconKey.FAVORITE_STAR))
-        self.favorites_menu.setToolTipsVisible(True)
+        self.favorites_menu = FavoritesMenu(self)
         
         # Presets menu
-        self.presets_menu = MainMenu.PresetsMenu("Presets", self)
-        self.presets_menu.setObjectName("presets-menu")
-        self.presets_menu.setIcon(icons.get_icon(icons.IconKey.PRESET_USER))
-        self.presets_menu.setToolTipsVisible(True)
+        self.presets_menu = PresetsMenu(self)
+        
+        events.connect_presets_updated(self.build_presets)
+        events.connect_favorites_updated(self.build_favorites)
+        events.connect_visibility_updated(self.create_menu)
+        events.connect_enabled_updated(self.create_menu)
     
     def create_menu(self):
         self.clear()
@@ -63,11 +49,11 @@ class MainMenu(QMenu):
             self.addSeparator()
             
             # ------- Favoriten einfügen -------------------------
-            self.build_favorites(current_catalog)
+            self.favorites_menu.build(current_catalog)
             self.addMenu(self.favorites_menu)
             
             # ------- Presets einfügen ---------------------------
-            self.build_presets()
+            self.presets_menu.build()
             self.addMenu(self.presets_menu)
             
             self.addSeparator()
@@ -93,78 +79,24 @@ class MainMenu(QMenu):
         self._build_end_section()
     
     def build_favorites(self, catalog: Optional[catalog_types.Catalog] = None):
-        self.favorites_menu.clear()
-        favorites = registry.property_manager.get_favorites()
-        
-        if not catalog:
-            current_catalog: Optional[Union[catalog_types.Catalog, list]] = registry.catalog_manager.get_current_catalog()
-            if not isinstance(current_catalog, catalog_types.Catalog):
-                logger.warning("No catalog provided and no current catalog found. Cannot build favorites menu.")
-                return
-            catalog = current_catalog
-        
-        if not favorites:
-            action = QAction("(Keine)", self.favorites_menu)
-            action.setObjectName("no-favorites")
-            action.setEnabled(False)
-            self.favorites_menu.addAction(action)
-        else:
-            for key in favorites:
-                topic = catalog.get_entry(key)
-                if not topic:
-                    continue
-                
-                icon = icons.get_icon_from_entry(topic)
-                action = QAction(icon, topic.name, self.favorites_menu)
-                action.setObjectName(topic.name)
-                action.triggered.connect(lambda _, t=topic: handlers.add_topic(t.path))
-                self.favorites_menu.addAction(action)
+        # FIXME: Not enough since the star prefix needs to be updated as well
+        # self.favorites_menu.build(catalog)
+        self.create_menu()
     
     def build_presets(self):        
-        self.presets_menu.clear()
-        user_presets = registry.preset_manager.get_user_presets()
-        curated_presets = registry.preset_manager.get_curated_presets()
-        
-        action = QAction(icons.get_icon(icons.IconKey.GROUP_ADD), "Neu vom Projekt", self.presets_menu)
-        action.setObjectName("new-preset-from-project")
-            
-        action.triggered.connect(self._new_preset_from_project)
-        self.presets_menu.addAction(action)
-        self.presets_menu.addSeparator()
-        
-        for preset in user_presets:
-            action = QAction(preset.title, self.presets_menu)
-            action.setObjectName(preset.title)
-            action.setData({"preset_id": preset.id, "preset_type": "user"})
-            description = preset.description + "\n\n" if preset.description else ""
-            description += preset.topic_description()
-            action.setToolTip(description)
-            action.triggered.connect(lambda _, p=preset: registry.preset_manager.add_preset_to_project(p.id))
-            self.presets_menu.addAction(action)
-        
-        self.presets_menu.addSeparator()
-        
-        for preset in curated_presets:
-            action = QAction(preset.title, self.presets_menu)
-            action.setObjectName(preset.title)
-            description = preset.description + "\n\n" if preset.description else ""
-            description += preset.topic_description()
-            action.setToolTip(description)
-            action.triggered.connect(lambda _, p=preset: registry.preset_manager.add_preset_to_project(p.id))
-            self.presets_menu.addAction(action)
+        self.presets_menu.build()
     
-    def _build_region_menu(self, region: catalog_types.Region) -> QMenu:
+    def _build_region_menu(self, region: catalog_types.Region) -> "TopicMenu":
         def _create_action(name: str, path: str, icon: QIcon, parent: QMenu,  tip: str = "Thema hinzufügen", slot = handlers.add_topic) -> QAction:            
             action = QAction(icon, name, parent)
             action.setObjectName(name)
             action.setStatusTip(tip)
             action.setToolTip(tip)
+            action.setData(path)
             action.triggered.connect(lambda _: slot(path))
             return action
         
-        menu = QMenu(region.name, self)
-        menu.setObjectName('region-' + region.name)
-        menu.setToolTipsVisible(True)
+        menu = TopicMenu(region.name, 'region-' + region.name, self)
         
         topics = region.get_topics()        
         for topic in topics:
@@ -182,12 +114,11 @@ class MainMenu(QMenu):
                 continue
             
             if isinstance(topic, catalog_types.TopicGroup):
-                topic_group_menu = QMenu(topic_name, menu)
-                topic_group_menu.setIcon(icons.get_icon(icons.IconKey.FOLDER_CLOSED))
-                topic_group_menu.setToolTipsVisible(True)
+                topic_group_menu = TopicMenu(topic_name, 'topic-group-' + topic.name, menu)
+                topic_group_menu.setIcon(icons.get_icon(icons.IconKey.FOLDER_CLOSED))                
                 
                 icon = icons.get_icon(icons.IconKey.GROUP_ADD)
-                add_all_action = _create_action("Alle laden", topic.path, icon, topic_group_menu, "Alle Themen der Gruppe laden")
+                add_all_action = _create_action("Alle laden", topic.path, icon, topic_group_menu, "Alle Themen der Gruppe laden")                    
                 topic_group_menu.addAction(add_all_action)
                 topic_group_menu.addSeparator()
 
@@ -206,7 +137,12 @@ class MainMenu(QMenu):
                         subtopic_action = _create_action(subtopic_name, subtopic.path, icon, topic_group_menu)
                     topic_group_menu.addAction(subtopic_action)
 
-                menu.addMenu(topic_group_menu)
+                menu_action = menu.addMenu(topic_group_menu)
+                if menu_action is not None:
+                    menu_action.setStatusTip("Alle Themen der Gruppe laden")
+                    menu_action.setToolTip("Alle Themen der Gruppe laden")
+                    menu_action.setData(topic.path)
+                    menu_action.triggered.connect(lambda _, p=topic.path: handlers.add_topic(p))
             else:
                 if isinstance(topic, catalog_types.TopicCombination):
                     icon = icons.get_icon(icons.IconKey.COMBINATION_ADD)
@@ -262,18 +198,6 @@ class MainMenu(QMenu):
         # ------- Über-Schaltfläche für #geoObserver ------------------------
         self.addAction("Über ...", lambda: handlers.open_web_site('https://geoobserver.de/qgis-plugin-geobasis-loader/'))
     
-    def _new_preset_from_project(self):
-        preset_dialog = PresetDialog()
-        if preset_dialog.exec() != PresetDialog.DialogCode.Accepted:
-            return
-        
-        title = preset_dialog.preset_title
-        description = preset_dialog.preset_description
-        save_layer_crs = preset_dialog.save_layer_crs
-        registry.preset_manager.create_user_preset_from_project(title, description, save_layer_crs)
-        registry.preset_manager.save_user_presets()
-        self.build_presets()
-    
     # FIXME: Maybe a dedicated settings module/class would be better than local changes
     def _set_automatic_crs(self, enabled: bool):
         self._qgs_settings.setValue(config.QgsSettingsKeys.AUTOMATIC_CRS, enabled)
@@ -311,61 +235,148 @@ class MainMenu(QMenu):
         logger.success("Einstellungen erfolgreich gespeichert", extra={"show_banner": True})
         self.create_menu()
 
-    def _show_preset_context_menu(self, pos, global_pos=None) -> None:
-        action = self.presets_menu.actionAt(pos)
-        if not action:
+class CustomQMenu(QMenu):
+    def __init__(self, title: str, object_name: str, parent=None):
+        super().__init__(title, parent)
+        self.setObjectName(object_name)
+        self.setToolTipsVisible(True)
+    
+    def mouseReleaseEvent(self, a0):
+        if a0 is None:
+            return
+        
+        if a0.button() == Qt.MouseButton.RightButton:
+            print("Test")
+            self._init_context_menu(a0.pos(), a0.globalPosition().toPoint())
             return
 
+        super().mouseReleaseEvent(a0)
+    
+    def build(self):
+        ... # To be implemented in subclasses
+    
+    def _init_context_menu(self, pos, global_pos=None) -> None:
+        action = self.actionAt(pos) or self.menuAction()
+        if not action:
+            return
+        
+        if global_pos is None:
+            global_pos = self.mapToGlobal(pos)
+        
+        self._show_context_menu(action, global_pos)
+        
+    def _show_context_menu(self, action: QAction, global_pos) -> None:
+        ... # To be implemented in subclasses
+
+class PresetsMenu(CustomQMenu):
+    def __init__(self, parent):
+        super().__init__("Presets", "presets-menu", parent)
+        self.setIcon(icons.get_icon(icons.IconKey.PRESET_USER))
+    
+    def build(self):
+        self.clear()
+        user_presets = registry.preset_manager.get_user_presets()
+        curated_presets = registry.preset_manager.get_curated_presets()
+        
+        action = QAction(icons.get_icon(icons.IconKey.GROUP_ADD), "Neu vom Projekt", self)
+        action.setObjectName("new-preset-from-project")
+            
+        action.triggered.connect(self._new_preset_from_project)
+        self.addAction(action)
+        self.addSeparator()
+        
+        for preset in user_presets:
+            action = QAction(preset.title, self)
+            action.setObjectName(preset.title)
+            action.setData({"preset_id": preset.id, "preset_type": "user"})
+            description = preset.description + "\n\n" if preset.description else ""
+            description += preset.topic_description()
+            action.setToolTip(description)
+            action.triggered.connect(lambda _, p=preset: registry.preset_manager.add_preset_to_project(p.id))
+            self.addAction(action)
+        
+        self.addSeparator()
+        
+        for preset in curated_presets:
+            action = QAction(preset.title, self)
+            action.setObjectName(preset.title)
+            description = preset.description + "\n\n" if preset.description else ""
+            description += preset.topic_description()
+            action.setToolTip(description)
+            action.triggered.connect(lambda _, p=preset: registry.preset_manager.add_preset_to_project(p.id))
+            self.addAction(action)
+    
+    def _new_preset_from_project(self):
+        preset_dialog = PresetDialog()
+        if preset_dialog.exec() != PresetDialog.DialogCode.Accepted:
+            return
+        
+        title = preset_dialog.preset_title
+        description = preset_dialog.preset_description
+        save_layer_crs = preset_dialog.save_layer_crs
+        registry.preset_manager.create_user_preset_from_project(title, description, save_layer_crs)
+        registry.preset_manager.save_user_presets()
+        events.emit_presets_updated()
+    
+    def _show_context_menu(self, action: QAction, global_pos) -> None:
         data = action.data()
         if not isinstance(data, dict) or data.get("preset_type") != "user":
             return
 
         preset_id = data.get("preset_id")
-        if not preset_id:
-            return
-
-        context_menu = QMenu(self.presets_menu)
-        
-        delete_action = QAction("Preset löschen", context_menu)
-        delete_action.triggered.connect(lambda: self._delete_user_preset(preset_id, action.text()))
-        rename_action = QAction("Preset ändern", context_menu)
-        rename_action.triggered.connect(lambda: self._rename_user_preset(preset_id))
-        context_menu.addAction(rename_action)
-        context_menu.addAction(delete_action)
-        if global_pos is None:
-            global_pos = self.presets_menu.mapToGlobal(pos)
+        context_menu = PresetContextMenu(preset_id, self)
         context_menu.exec(global_pos)
 
-    def _delete_user_preset(self, preset_id: str, preset_title: str) -> None:
-        confirm = QMessageBox.question(
-            iface.mainWindow(),
-            "Preset löschen",
-            f"Preset '{preset_title}' wirklich löschen?",
-            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
-        )
-        if confirm != QMessageBox.StandardButton.Yes:
-            return
-
-        registry.preset_manager.remove_user_preset(preset_id)
-        registry.preset_manager.save_user_presets()
-        self.build_presets()
+class FavoritesMenu(CustomQMenu):
+    def __init__(self, parent):
+        super().__init__("Favoriten", "favorites-menu", parent)
+        self.setIcon(icons.get_icon(icons.IconKey.FAVORITE_STAR))
     
-    def _rename_user_preset(self, preset_id: str) -> None:
-        preset = registry.preset_manager.user_presets.get(preset_id)
-        if not preset:
-            logger.error(f"Preset mit ID '{preset_id}' nicht gefunden. Ändern nicht möglich.")
+    def build(self, catalog: Optional[catalog_types.Catalog] = None):
+        self.clear()
+        favorites = registry.property_manager.get_favorites()
+        
+        if not catalog:
+            current_catalog: Optional[Union[catalog_types.Catalog, list]] = registry.catalog_manager.get_current_catalog()
+            if not isinstance(current_catalog, catalog_types.Catalog):
+                logger.warning("No catalog provided and no current catalog found. Cannot build favorites menu.")
+                return
+            catalog = current_catalog
+        
+        if not favorites:
+            action = QAction("(Keine)", self)
+            action.setObjectName("no-favorites")
+            action.setEnabled(False)
+            self.addAction(action)
+        else:
+            for key in favorites:
+                topic = catalog.get_entry(key)
+                if not topic:
+                    continue
+                
+                icon = icons.get_icon_from_entry(topic)
+                action = QAction(icon, topic.name, self)
+                action.setData(topic.path)
+                action.setObjectName(topic.name)
+                action.triggered.connect(lambda _, t=topic: handlers.add_topic(t.path))
+                self.addAction(action)
+    
+    def _show_context_menu(self, action: QAction, global_pos) -> None:
+        data = action.data()
+        if not isinstance(data, str):
             return
         
-        preset_dialog = PresetDialog(
-            preset.title, 
-            preset.description, 
-            save_crs_checkbox_visible=False, 
-            parent=iface.mainWindow()
-        )
-        if preset_dialog.exec() != PresetDialog.DialogCode.Accepted:
+        context_menu = FavoritesContextMenu(data, self)
+        context_menu.exec(global_pos)
+
+class TopicMenu(CustomQMenu):
+    def __init__(self, title: str, object_name: str, parent=None):
+        super().__init__(title, object_name, parent)
+    
+    def _show_context_menu(self, action: QAction, global_pos) -> None:
+        data = action.data()
+        if not isinstance(data, str):
             return
         
-        preset.title = preset_dialog.preset_title
-        preset.description = preset_dialog.preset_description
-        registry.preset_manager.save_user_presets()
-        self.build_presets()
+        context_menu = TopicContextMenu(data, self)
+        context_menu.exec(global_pos)
