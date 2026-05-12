@@ -368,6 +368,13 @@
         "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=fea32850-90bc-e606-7fac-15e5e6388f1f&styles&url=https://geodienste.halle.de/opendata/fea32850-90bc-e606-7fac-15e5e6388f1f",
         "opacity": 0.75
       },
+      "licht": {
+        "name": "HAL: Lichtmasten Digitale Stadtgrundkarte (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:2398", "EPSG:2397", "EPSG:2399", "EPSG:2166", "EPSG:2167", "EPSG:2168", "EPSG:3035", "EPSG:3396", "EPSG:3397", "EPSG:3398", "EPSG:3399", "EPSG:32631", "EPSG:32632","EPSG:32633","EPSG:4326", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:31462", "EPSG:31463", "EPSG:31464", "EPSG:31465", "EPSG:25832", "EPSG:25833", "EPSG:900913", "EPSG:3395", "EPSG:4647", "EPSG:5650", "EPSG:3857"],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=f632dfcd-de9a-5217-82d9-6e2bc0a7e745&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/f632dfcd-de9a-5217-82d9-6e2bc0a7e745",
+        "opacity": 0.75
+      },
       "kwp_layergroup": {
         "name": "HAL: KWP - Kommunale Wärmeplanung (WMS) in AUFBAU!!!",
         "layers": {      
