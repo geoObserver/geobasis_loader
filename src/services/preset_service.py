@@ -184,6 +184,8 @@ class PresetManager:
             if not isinstance(preset_file, dict):
                 logger.critical(f"Ungültiges Format in Preset-Datei {file_path}: Erwartet wird ein JSON-Objekt")
                 return {}
+        except FileNotFoundError:
+            return {}               # Kein Fehler, wenn die Datei nicht existiert - Es gibt einfach keine Presets
         except Exception as e:
             logger.critical(f"Fehler beim Laden der Zusammenstellungen aus {file_path}: {e}")
             return {}
