@@ -1,7 +1,6 @@
-from __future__ import annotations
 import logging
 from types import TracebackType
-from typing import Mapping
+from typing import Mapping, Union, Optional
 from qgis.core import QgsMessageLog, Qgis
 from qgis.utils import iface
 from .. import config
@@ -45,7 +44,7 @@ class GeoBasisLogger(logging.LoggerAdapter):
     def success(self,
         msg: object,
         *args: object,
-        exc_info: None | bool | tuple[type[BaseException], BaseException, TracebackType | None] | tuple[None, None, None] | BaseException = None,
+        exc_info: Union[None, bool, tuple[type[BaseException], BaseException, Optional[TracebackType]], tuple[None, None, None], BaseException] = None,
         stack_info: bool = False,
         stacklevel: int = 1,
         extra: Mapping[str, object] | None = None,
