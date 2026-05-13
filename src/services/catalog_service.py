@@ -309,11 +309,6 @@ class CatalogManager:
             logger.critical(f"Der Katalog '{catalog_name}' enthält ungültiges JSON. Bitte prüfen Sie die Internetverbindung", extra={"show_banner": True})
             return
         
-        if isinstance(parsed_catalog, dict):
-            catalog = catalog_types.Catalog.from_dict(parsed_catalog)
-            self.catalogs[catalog_name] = catalog
-            SearchFilter.build_search_index(self.catalogs)
-        
         file_name = re.sub(r'\ ', '_', catalog_name.split(':')[0].lower())
         file_path = self.catalog_path / f"{file_name}.json"
         
@@ -324,6 +319,11 @@ class CatalogManager:
 
         if localLastModified < last_modified:
             self.write_json(parsed_catalog, file_path)
+        
+        if isinstance(parsed_catalog, dict):
+            catalog = catalog_types.Catalog.from_dict(parsed_catalog)
+            self.catalogs[catalog_name] = catalog
+            SearchFilter.build_search_index(self.catalogs)
         
         if catalog_name in self._pending_callbacks:
             for callback in self._pending_callbacks[catalog_name]:
