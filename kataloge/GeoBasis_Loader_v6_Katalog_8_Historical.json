@@ -61,6 +61,35 @@
       }
     }
   },
+    "MV:": {
+    "menu": "Mecklenburg/Vorpommern",
+    "themen": {
+      "Wiebeking_1786": {
+        "name": "MV: Wiebeking 1786 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:31468", "EPSG:31469", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:5652", "EPSG:5674", "EPSG:5675", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4937", "EPSG:7409", "EPSG:7423", "EPSG:9422", "EPSG:2398"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=wiebeking_1786&styles&tilePixelRatio=0&url=https://www.geodaten-mv.de/dienste/historische_karten_wms"
+      },
+      "Schmettau_1788": {
+        "name": "MV: Schmettau 1788 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:31468", "EPSG:31469", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:5652", "EPSG:5674", "EPSG:5675", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4937", "EPSG:7409", "EPSG:7423", "EPSG:9422", "EPSG:2398"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=schmettau_1788&styles&tilePixelRatio=0&url=https://www.geodaten-mv.de/dienste/historische_karten_wms"
+      },
+      "Messtischblaetter_1888": {
+        "name": "MV: Messtischblaetter 1888 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:31468", "EPSG:31469", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:5652", "EPSG:5674", "EPSG:5675", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4937", "EPSG:7409", "EPSG:7423", "EPSG:9422", "EPSG:2398"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=messtischblaetter_1888&styles&tilePixelRatio=0&url=https://www.geodaten-mv.de/dienste/historische_karten_wms"
+      },
+      "TK25AS_1980": {
+        "name": "MV: TK25AS um 1980 (WMS)",
+        "type": "ogc_wms",
+        "valid_epsg": ["EPSG:25833", "EPSG:25832", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:31468", "EPSG:31469", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:5650", "EPSG:5652", "EPSG:5674", "EPSG:5675", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:4937", "EPSG:7409", "EPSG:7423", "EPSG:9422", "EPSG:2398"],
+        "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=mv_tk25as&styles&tilePixelRatio=0&url=https://www.geodaten-mv.de/dienste/tk25as_laiv_wms"
+      }
+    }
+  },
     "ST:": {
     "menu": "Sachsen-Anhalt",
     "themen": {
@@ -68,15 +97,13 @@
         "name": "ST: DOP100 InVeKoS RGB 2009 - 100 cm (WMS)",
         "type": "ogc_wms",
         "valid_epsg": ["EPSG:31468", "EPSG:31467", "EPSG:31469", "EPSG:25833", "EPSG:25832", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:4326", "EPSG:900913", "EPSG:23032", "EPSG:23033", "EPSG:2168", "EPSG:2167", "EPSG:2166", "EPSG:4258", "OGC:CRS84"],
-        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/jpeg&layers=mlu_invekos09_rgb&styles&tilePixelRatio=0&url=http://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/f4bc7441-e2ce-d0a3/GDI-LSA_MLU_DOP/ows.wms",
-        "seperator": true
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/jpeg&layers=mlu_invekos09_rgb&styles&tilePixelRatio=0&url=http://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/f4bc7441-e2ce-d0a3/GDI-LSA_MLU_DOP/ows.wms"
       },
       "dop100_2009_cir": {
         "name": "ST: DOP100 InVeKoS CIR 2009 - 100 cm (WMS)",
         "type": "ogc_wms",
         "valid_epsg": ["EPSG:31468", "EPSG:31467", "EPSG:31469", "EPSG:25833", "EPSG:25832", "EPSG:2397", "EPSG:2398", "EPSG:2399", "EPSG:4326", "EPSG:900913", "EPSG:23032", "EPSG:23033", "EPSG:2168", "EPSG:2167", "EPSG:2166", "EPSG:4258", "OGC:CRS84"],
-        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/jpeg&layers=mlu_invekos09_cir&styles&tilePixelRatio=0&url=http://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/f4bc7441-e2ce-d0a3/GDI-LSA_MLU_DOP/ows.wms",
-        "seperator": true
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/jpeg&layers=mlu_invekos09_cir&styles&tilePixelRatio=0&url=http://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/f4bc7441-e2ce-d0a3/GDI-LSA_MLU_DOP/ows.wms"
       }
     }
   },
