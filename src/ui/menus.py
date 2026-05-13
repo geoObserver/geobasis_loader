@@ -226,6 +226,10 @@ class MainMenu(QMenu):
             logger.warning("No current catalog found. Cannot open settings dialog.")
             return
         
+        if iface is None or hasattr(iface, 'mainWindow') is False:
+            logger.error("Kein iface verfügbar (Headless?), Einstellungen können nicht geöffnet werden")
+            return
+        
         settings_dialog = SettingsDialog(iface.mainWindow())
         settings_dialog.set_settings(current_catalog)
         settings_dialog.accepted.connect(self._accept_settings)

@@ -25,6 +25,10 @@ def get_crs(supported_auth_ids: frozenset[str], layer_name: str) -> Union[str, N
     automatic_crs = QgsSettings().value(config.QgsSettingsKeys.AUTOMATIC_CRS, False, type=bool)
     current_crs = current_qgis_project.crs().authid()
     if current_crs not in supported_auth_ids or not automatic_crs:
+        if iface is None or hasattr(iface, 'mainWindow') is False:
+            logger.warning("Kein iface verfügbar (Headless?), CRS-Dialog übersprungen")
+            return None
+        
         epsg_dialog = EpsgDialog(iface.mainWindow())
         epsg_dialog.set_table_data(supported_auth_ids, layer_name)
         code = epsg_dialog.exec()
@@ -195,11 +199,14 @@ def add_layer(topic: catalog_types.Topic, crs: Optional[str], standalone: bool =
                     logger.critical(f"Fehler bei Bestimmung der Geometrieart, Bestimmte Geometrie: {QgsWkbTypes.displayString(geom_type)}")
                     
         layer.triggerRepaint()
-        layer_tree_view =  iface.layerTreeView() # type: ignore
-        if layer_tree_view is None:
-            logger.warning(f"Symbologie nicht aktualisert, da Zugriff auf Ebenenbaum nicht erfolgreich")
+        if iface is None or hasattr(iface, 'layerTreeView') is False:
+            logger.warning("Kein iface verfügbar (Headless?), Ebenenbaum-Refresh übersprungen")
         else:
-            layer_tree_view.refreshLayerSymbology(layer.id())
+            layer_tree_view =  iface.layerTreeView()
+            if layer_tree_view is None:
+                logger.warning(f"Symbologie nicht aktualisert, da Zugriff auf Ebenenbaum nicht erfolgreich")
+            else:
+                layer_tree_view.refreshLayerSymbology(layer.id())
     
     current_qgis_project = QgsProject.instance()
     if current_qgis_project is None:
