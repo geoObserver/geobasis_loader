@@ -8,7 +8,7 @@ from qgis.PyQt.QtNetwork import QNetworkRequest, QNetworkReply
 from qgis.PyQt.QtCore import QUrl, QObject, QDateTime, pyqtSignal
 from qgis.core import QgsNetworkAccessManager, QgsSettings
 from .. import config
-from ..utils import custom_logger
+from ..utils import custom_logger, helpers
 from ..models import catalog_types
 from ..core.search import SearchFilter
 
@@ -383,35 +383,17 @@ class CatalogManager:
         
         self.clear_network_handlers()
 
-    def write_json(self, data: Union[dict, list, str], file_path: pathlib.Path) -> None:
-        file_path.parent.mkdir(mode=0o755, parents=True, exist_ok=True)
-        
+    def write_json(self, data: Union[dict, list], file_path: pathlib.Path) -> None:
         try:
-            with open(file_path, "w", encoding="utf-8", newline="\n") as file:
-                json.dump(data, file, indent=2)
-        except TypeError as e:
-            logger.critical(f"Nicht-serialisierbares Objekt für {file_path}: {e}")
-        except PermissionError as e:
-            logger.critical(f"Keine Berechtigung zum Schreiben der Datei {file_path}: {e}")
-        except OSError as e:
-            logger.critical(f"Fehler beim Schreiben der Datei {file_path} ({type(e).__name__}): {e}")
+            helpers.write_json(data, file_path)
+        except Exception as e:
+            logger.critical(f"Fehler beim Schreiben der JSON-Datei {file_path}: {e}")
 
     def read_json(self, file_path: pathlib.Path) -> Union[dict, list]:
-        if not file_path.exists():
-            return {}
-        
         try:
-            with open(file_path, "r", encoding="utf-8") as file:
-                services = json.load(file)
-            return services
-        except json.JSONDecodeError as e:
-            logger.critical(f"Ungültiges JSON in Datei {file_path}: {e}")
-            return {}
-        except PermissionError as e:
-            logger.critical(f"Keine Berechtigung zum Lesen der Datei {file_path}: {e}")
-            return {}
-        except OSError as e:
-            logger.critical(f"Fehler beim Lesen der Datei {file_path} ({type(e).__name__}): {e}")
+            return helpers.read_json(file_path)
+        except Exception as e:
+            logger.critical(f"Fehler beim Lesen der JSON-Datei {file_path}: {e}")
             return {}
 
 singleton = CatalogManager()

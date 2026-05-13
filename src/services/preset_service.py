@@ -7,7 +7,7 @@ from typing import Optional, TypedDict
 from dataclasses import dataclass, field
 from qgis.core import QgsProject
 from .. import config 
-from ..utils import custom_logger
+from ..utils import custom_logger, helpers
 
 try:
     from typing import NotRequired
@@ -24,6 +24,7 @@ class Preset:
         # FIXME: Only available for 3.11+; Is this enough?
         crs: NotRequired[str]
     
+    # FIXME: Catalog ID?
     id: str = field(default_factory=lambda: str(uuid.uuid4()))
     title: str = "Preset"
     description: Optional[str] = None
@@ -178,29 +179,24 @@ class PresetManager:
         self.curated_presets = self.load_preset_file(self.CURATED_PRESETS_PATH)
     
     def load_preset_file(self, file_path: pathlib.Path) -> dict[str, Preset]:
-        if not file_path.exists():
+        try:
+            preset_file = helpers.read_json(file_path)
+            if not isinstance(preset_file, dict):
+                logger.critical(f"Ungültiges Format in Preset-Datei {file_path}: Erwartet wird ein JSON-Objekt")
+                return {}
+        except Exception as e:
+            logger.critical(f"Fehler beim Laden der Zusammenstellungen aus {file_path}: {e}")
             return {}
         
-        try:
-            with open(file_path, "r", encoding="utf-8") as file:
-                preset_file: dict = json.load(file)
-            format_version = preset_file.get("format_version", 0.0)
-            presets_data = preset_file.get("presets", [])
-            presets = {}
-            if format_version == 7.0:
-                for preset_data in presets_data:
-                    preset = Preset.from_dict(preset_data)
-                    presets[preset.id] = preset
-            else:
-                logger.critical(f"Ungültige Format-Version der Presets '{file_path}'; Lesen nicht möglich")
-            
-            return presets
-        except json.JSONDecodeError as e:
-            logger.critical(f"Ungültiges JSON in Datei '{file_path}': {e}")
-            return {}
-        except OSError as e:
-            logger.critical(f"Fehler beim Lesen der Datei '{file_path}': {e}")
-            return {}
+        format_version = preset_file.get("format_version", 0.0)
+        presets_data = preset_file.get("presets", [])
+        presets = {}
+        if format_version == 7.0:
+            for preset_data in presets_data:
+                preset = Preset.from_dict(preset_data)
+                presets[preset.id] = preset
+        
+        return presets
     
     def save_user_presets(self) -> None:
         data = {
@@ -208,14 +204,9 @@ class PresetManager:
             "presets": [preset.to_dict() for preset in self.user_presets.values()]
         }
         
-        config.PRESETS_DIR.mkdir(mode=0o755, parents=True, exist_ok=True)
-        
         try:
-            with open(self.USER_PRESETS_PATH, "w", encoding="utf-8", newline="\n") as file:
-                json.dump(data, file, indent=2)
-        except OSError as e:
-            logger.critical(f"Fehler beim Schreiben der Datei {self.USER_PRESETS_PATH}: {e}")
-        except TypeError as e:
-            logger.critical(f"Nicht-serialisierbares Objekt für {self.USER_PRESETS_PATH}: {e}")
+            helpers.write_json(data, self.USER_PRESETS_PATH)
+        except Exception as e:
+            logger.critical(f"Fehler beim Speichern der Zusammenstellungen: {e}")
 
 singleton = PresetManager()
