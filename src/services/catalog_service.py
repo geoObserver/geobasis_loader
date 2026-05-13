@@ -311,7 +311,6 @@ class CatalogManager:
         
         if isinstance(parsed_catalog, dict):
             catalog = catalog_types.Catalog.from_dict(parsed_catalog)
-            catalog.build_index()
             self.catalogs[catalog_name] = catalog
             SearchFilter.build_search_index(self.catalogs)
         
@@ -355,7 +354,6 @@ class CatalogManager:
         parsed_services = self.read_json(file_path)
         if not is_overview_response and isinstance(parsed_services, dict):
             catalog = catalog_types.Catalog.from_dict(parsed_services)
-            catalog.build_index()
             self.catalogs[catalog_name] = catalog
             SearchFilter.build_search_index(self.catalogs)
         else:

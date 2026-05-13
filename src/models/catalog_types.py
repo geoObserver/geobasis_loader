@@ -266,7 +266,7 @@ class Catalog:
         instance = cls(
             regions=regions
         )
-        # instance.build_index()
+        instance.build_index()
         return instance
     
     def to_dict(self) -> dict:
