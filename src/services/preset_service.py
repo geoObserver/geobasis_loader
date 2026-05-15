@@ -1,12 +1,12 @@
 import uuid
 import pathlib
-import json
 from functools import singledispatchmethod
 from datetime import datetime
 from typing import Optional, TypedDict
 from dataclasses import dataclass, field
 from qgis.core import QgsProject
-from .. import config 
+from ..models import catalog_types
+from .. import config
 from ..utils import custom_logger, helpers
 
 try:
@@ -31,10 +31,20 @@ class Preset:
     modified: datetime = datetime.now()
     entries: list[Entry] = field(default_factory=list)
     
+    def __contains__(self, item) -> bool:
+        if isinstance(item, (catalog_types.Topic, catalog_types.TopicGroup, catalog_types.TopicCombination)):
+            item = item.path
+        
+        if not isinstance(item, str):
+            logger.error(f"Ungültiger Typ für Preset-Eintrag: {type(item)}. Erwartet wird ein String.")
+            return False
+        
+        return any(entry["path"] == item for entry in self.entries)
+    
     def get_entry(self, path: str) -> Optional[Entry]:
         return next((entry for entry in self.entries if entry["path"] == path), None)
     
-    def add_entry(self, name: str, path: str, crs: Optional[str], position: Optional[int] = None) -> None:
+    def add_entry(self, name: str, path: str, crs: Optional[str] = None, position: Optional[int] = None) -> None:
         entry: Preset.Entry = {"name": name, "path": path}
         if crs is not None:
             entry["crs"] = crs
