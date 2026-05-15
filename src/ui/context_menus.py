@@ -113,6 +113,35 @@ class TopicContextMenu(QMenu):
         
         self.topic = topic
         
+        presets = registry.preset_manager.get_user_presets()
+        
+        add_to_preset_menu = QMenu("Zu Preset hinzufügen", self)
+        remove_from_preset_menu = QMenu("Von Preset entfernen", self)
+        if not presets:
+            no_preset_action = QAction("(Keine)", self)
+            no_preset_action.setEnabled(False)
+            add_to_preset_menu.addAction(no_preset_action)
+            remove_from_preset_menu.addAction(no_preset_action)
+        
+        for preset in presets:
+            activated = self.topic in preset
+            
+            add_action = QAction(preset.title, self)
+            add_action.setObjectName(f"add-preset-{preset.id}")
+            add_action.triggered.connect(lambda checked, p=preset: self._add_to_preset(p.id))
+            add_action.setEnabled(not activated)
+            add_to_preset_menu.addAction(add_action)
+        
+            remove_action = QAction(preset.title, self)
+            remove_action.setObjectName(f"remove-preset-{preset.id}")
+            remove_action.triggered.connect(lambda checked, p=preset: self._remove_from_preset(p.id))
+            remove_action.setEnabled(activated)
+            remove_from_preset_menu.addAction(remove_action)
+
+        self.addMenu(add_to_preset_menu)
+        self.addMenu(remove_from_preset_menu)
+        self.addSeparator()
+        
         if topic.properties.favorite:
             favorite_action = QAction("Von Favoriten entfernen", self)
         else:
@@ -151,3 +180,31 @@ class TopicContextMenu(QMenu):
         registry.property_manager.set_enabled(self.topic.path, new_value)
         registry.property_manager.save(config.QgsSettingsKeys.PROPERTY_DISABLED)
         events.emit_enabled_updated()
+    
+    def _add_to_preset(self, preset_id) -> None:
+        preset = registry.preset_manager.user_presets.get(preset_id)
+        if not preset:
+            logger.error(f"Preset mit ID '{preset_id}' nicht gefunden. Thema kann nicht hinzugefügt werden.")
+            return
+        
+        if self.topic in preset:
+            logger.warning(f"Thema '{self.topic.name}' bereits in Preset '{preset.title}'.")
+            return
+        
+        preset.add_entry(name=self.topic.name, path=self.topic.path)
+        registry.preset_manager.save_user_presets()
+        events.emit_presets_updated()
+    
+    def _remove_from_preset(self, preset_id) -> None:
+        preset = registry.preset_manager.user_presets.get(preset_id)
+        if not preset:
+            logger.error(f"Preset mit ID '{preset_id}' nicht gefunden. Thema kann nicht entfernt werden.")
+            return
+        
+        if self.topic not in preset:
+            logger.warning(f"Thema '{self.topic.name}' nicht im Preset '{preset.title}'.")
+            return
+        
+        preset.remove_entry(path=self.topic.path)
+        registry.preset_manager.save_user_presets()
+        events.emit_presets_updated()
