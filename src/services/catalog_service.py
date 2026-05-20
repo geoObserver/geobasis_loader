@@ -321,6 +321,8 @@ class CatalogManager:
             self.write_json(parsed_catalog, file_path)
         
         if isinstance(parsed_catalog, dict):
+            # FIXME: Catalog ID instead of name
+            parsed_catalog["name"] = catalog_name
             catalog = catalog_types.Catalog.from_dict(parsed_catalog)
             self.catalogs[catalog_name] = catalog
             SearchFilter.build_search_index(self.catalogs)
@@ -353,6 +355,8 @@ class CatalogManager:
 
         parsed_services = self.read_json(file_path)
         if not is_overview_response and isinstance(parsed_services, dict):
+            # FIXME: Catalog ID instead of name
+            parsed_services["name"] = catalog_name
             catalog = catalog_types.Catalog.from_dict(parsed_services)
             self.catalogs[catalog_name] = catalog
             SearchFilter.build_search_index(self.catalogs)

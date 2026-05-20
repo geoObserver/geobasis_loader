@@ -259,12 +259,14 @@ class Catalog:
     def from_dict(cls, data: dict) -> "Catalog":
         data = data or {}
         regions = {}
+        name = data.pop("name", "catalog")
         for region_key, region_dict in data.items():
             region = Region.from_dict(region_dict)
             regions[region_key] = region
         
         instance = cls(
-            regions=regions
+            regions=regions,
+            name=name
         )
         instance.build_index()
         return instance

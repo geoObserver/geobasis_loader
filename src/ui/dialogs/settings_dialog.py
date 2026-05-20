@@ -6,7 +6,6 @@ from qgis.core import QgsSettings
 from ... import config
 from ...services import registry
 from ...models import catalog_types
-# FIXME
 from .. import icons
 from ...utils import custom_logger
 
