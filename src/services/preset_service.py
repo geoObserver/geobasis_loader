@@ -21,11 +21,9 @@ class Preset:
     class Entry(TypedDict):
         name: str
         path: str
-        catalog: str
-        # FIXME: Only available for 3.11+; Is this enough?
+        # FIXME: Only available for 3.11+
         crs: NotRequired[str]
     
-    # FIXME: Catalog ID?
     id: str = field(default_factory=lambda: str(uuid.uuid4()))
     title: str = "Preset"
     description: Optional[str] = None
@@ -45,8 +43,8 @@ class Preset:
     def get_entry(self, path: str) -> Optional[Entry]:
         return next((entry for entry in self.entries if entry["path"] == path), None)
     
-    def add_entry(self, name: str, path: str, catalog_id: str, crs: Optional[str] = None, position: Optional[int] = None) -> None:
-        entry: Preset.Entry = {"name": name, "path": path, "catalog": catalog_id}
+    def add_entry(self, name: str, path: str, crs: Optional[str] = None, position: Optional[int] = None) -> None:
+        entry: Preset.Entry = {"name": name, "path": path}
         if crs is not None:
             entry["crs"] = crs
         
@@ -124,9 +122,8 @@ class PresetManager:
                 name = child.customProperty("gbl_name", "Thema")
                 path = child.customProperty("gbl_path", None)
                 crs = child.customProperty("gbl_crs", None)
-                catalog = child.customProperty("gbl_catalog", None)
                 if path is not None and path not in parent_path:
-                    entry = Preset.Entry(name=name, path=path, catalog=catalog)
+                    entry = Preset.Entry(name=name, path=path)
                     if crs is not None:
                         entry["crs"] = crs
                     entries.append(entry)
@@ -146,7 +143,7 @@ class PresetManager:
         preset = self.create_empty_user_preset(title, description)
         for entry in entries:
             if entry["path"] not in preset:
-                preset.add_entry(name=entry["name"], path=entry["path"], catalog_id=entry["catalog"], crs=entry.get("crs") if save_layer_crs else None)
+                preset.add_entry(name=entry["name"], path=entry["path"], crs=entry.get("crs") if save_layer_crs else None)
         
         return preset
     
