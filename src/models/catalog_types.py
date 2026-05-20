@@ -229,7 +229,15 @@ class Catalog:
         return list(self.regions.values())
     
     def get_entry(self, key: str) -> Optional[Union[Region, TopicLike]]:
-        if "/" not in key:      # If no delimiters -> Only region (or not found)
+        if ":/" in key:
+            catalog_id, _ = key.split(":/", 1)
+            if catalog_id != self.name:
+                return None
+        else:
+            key = f"{self.name}:/{key}"  # Ensure full path for lookup
+        
+        if key.count("/") == 1:      # If no delimiters (one slash in catalog prefix) -> Only region (or not found)
+            key = key.split(":/", 1)[1]  # Remove catalog prefix for region lookup
             return self.get_region(key)
         
         return self.entries.get(key, None)
@@ -238,7 +246,7 @@ class Catalog:
         self.entries.clear()
         
         for region_key, region in self.regions.items():
-            region.path = region_key
+            region.path = f"{self.name}:/{region_key}"
             for entry_key, entry in region.topics.items():
                 entry.path = f"{region.path}/{entry_key}"
                 self.entries[entry.path] = entry
