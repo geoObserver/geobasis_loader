@@ -39,47 +39,55 @@ def get_crs(supported_auth_ids: frozenset[str], layer_name: str) -> Union[str, N
     return current_crs
 
 @singledispatch
-def add_topic(topic, crs: Optional[str] = None) -> None:
-    logger.error(f"Unsupported topic type: {type(topic)}")
+def add_topic(topic, crs: Optional[str] = None, show_banner: bool = True) -> bool:
+    logger.error(f"Unsupported topic type: {type(topic)}", extra={"show_banner": show_banner})
+    return False
 
 @add_topic.register(str)
-def _(path: str, crs: Optional[str] = None) -> None:
+def _(path: str, crs: Optional[str] = None, show_banner: bool = True) -> bool:
     # FIXME: Adequate catalog overview
     catalog_id = path.split(":/")[0] if ":/" in path else ""
     catalog = registry.catalog_manager.catalogs.get(catalog_id)
     if not catalog:
         logger.error(f"Katalog mit der ID '{catalog_id}' nicht gefunden")
-        return
+        return False
     
     if not isinstance(catalog, catalog_types.Catalog):
         logger.error("Aktueller Katalog kann nicht geladen werden")
-        return
+        return False
     
     topic = catalog.get_entry(path)
     if not topic:
         logger.error(f"Thema mit dem Pfad '{path}' im Katalog '{catalog.name}' nicht gefunden")
-        return
+        return False
     
-    add_topic(topic, crs)
+    return add_topic(topic, crs, show_banner)
 
 @add_topic.register(catalog_types.Topic)
-def _(topic: catalog_types.Topic, crs: Optional[str] = None) -> None:
-    add_layer(topic, crs)
+def _(topic: catalog_types.Topic, crs: Optional[str] = None, show_banner: bool = True) -> bool:
+    try:
+        add_layer(topic, crs)
+        logger.success(f"Thema '{topic.name}' erfolgreich geladen", extra={"show_banner": show_banner})
+        return True
+    except Exception as e:
+        logger.error(f"Fehler beim Hinzufügen des Layers '{topic.name}': {e}")
+        return False
 
 @add_topic.register(catalog_types.TopicGroup)
-def _(topic_group: catalog_types.TopicGroup, crs: Optional[str] = None) -> None:
-    add_layer_group(topic_group, crs)
+def _(topic_group: catalog_types.TopicGroup, crs: Optional[str] = None, show_banner: bool = True) -> bool:
+    return add_layer_group(topic_group, crs, show_banner)
 
 @add_topic.register(catalog_types.TopicCombination)
-def _(topic_combination: catalog_types.TopicCombination, crs: Optional[str] = None) -> None:
-    add_layer_combination(topic_combination, crs)
+def _(topic_combination: catalog_types.TopicCombination, crs: Optional[str] = None, show_banner: bool = True) -> bool:
+    return add_layer_combination(topic_combination, crs, show_banner)
 
 @add_topic.register(catalog_types.Region)
-def _(region: catalog_types.Region, crs: Optional[str] = None) -> None:
+def _(region: catalog_types.Region, crs: Optional[str] = None, show_banner: bool = True) -> bool:
     logger.warning(
         f"Region '{region.name}' kann nicht direkt geladen werden — bitte ein konkretes Thema auswählen.",
-        extra={"show_banner": True},
+        extra={"show_banner": show_banner},
     )
+    return False
 
 def open_web_site(url: str):
     if not isinstance(url, str):
@@ -100,7 +108,7 @@ def add_layer(topic: catalog_types.Topic, crs: Optional[str], standalone: bool =
     if crs is None or crs not in topic.valid_epsg_codes:
         crs = get_crs(topic.valid_epsg_codes, topic.name)
         if crs is None:
-            return None
+            raise ValueError(f"CRS für Thema '{topic.name}' konnte nicht bestimmt werden")
 
     uri = topic.uri
     layer_type = topic.topic_type
@@ -109,8 +117,7 @@ def add_layer(topic: catalog_types.Topic, crs: Optional[str], standalone: bool =
     min_scale = topic.min_scale
 
     if uri == "n.n.":
-        logger.critical(f"Ladefehler Thema '{layer_name}': URL des Themas derzeit unbekannt.{'&nbsp;'}Falls gültige/aktuelle URL bekannt,{'&nbsp;'}bitte dem Autor melden.", extra={"show_banner": True})
-        return None
+        raise ValueError(f"Ladefehler Thema '{layer_name}': URL des Themas derzeit unbekannt. Falls gültige/aktuelle URL bekannt, bitte dem Autor melden.")
     
     uri = uri.replace("EPSG:placeholder", crs, 1)
     
@@ -141,11 +148,9 @@ def add_layer(topic: catalog_types.Topic, crs: Optional[str], standalone: bool =
         provider_error = provider.error().message() if provider is not None and hasattr(provider, 'error') else "Unbekannter Fehler mit Datenanbieter"
         
         detail = " | ".join([msg for msg in (layer_error, provider_error) if msg])
-        logger.critical(
+        raise RuntimeError(
             f"Layerladefehler {layer_name}, Dienst nicht verfügbar (URL?) - Details: {detail}",
-            extra={"show_banner": True},
         )
-        return None
     
     if hasattr(layer, 'setOpacity'):
         layer.setOpacity(topic.opacity)
@@ -158,7 +163,7 @@ def add_layer(topic: catalog_types.Topic, crs: Optional[str], standalone: bool =
     
     if min_scale is not None and max_scale is not None:
         if min_scale < max_scale:
-            logger.critical(f"Layerladefehler {layer_name}, Skalenwerte vertauscht oder fehlerhaft", extra={"show_banner": True})
+            raise RuntimeError(f"Layerladefehler {layer_name}, Skalenwerte vertauscht oder fehlerhaft")
         elif min_scale == max_scale: 
             logger.critical(f"Layerladefehler {layer_name}, Skalenwerte gleich", extra={"show_banner": True})
         elif min_scale > max_scale:
@@ -216,8 +221,7 @@ def add_layer(topic: catalog_types.Topic, crs: Optional[str], standalone: bool =
     
     current_qgis_project = QgsProject.instance()
     if current_qgis_project is None:
-        logger.critical(f"Thema '{layer_name}' kann nicht zum Projekt hinzugefügt werden")
-        return layer
+        raise RuntimeError(f"Thema '{layer_name}' kann nicht zum Projekt hinzugefügt werden")
     
     current_qgis_project.addMapLayer(layer, False)
 
@@ -225,7 +229,7 @@ def add_layer(topic: catalog_types.Topic, crs: Optional[str], standalone: bool =
     if standalone and current_qgis_project is not None:
         root = current_qgis_project.layerTreeRoot()
         if root is None:
-            logger.error(f"Thema '{layer_name}' kann nicht zum Ebenenbaum hinzugefügt werden")    
+            raise RuntimeError(f"Thema '{layer_name}' kann nicht zum Ebenenbaum hinzugefügt werden")
         else:    
             ltl = root.insertLayer(0, layer)
             if ltl is not None:
@@ -234,18 +238,18 @@ def add_layer(topic: catalog_types.Topic, crs: Optional[str], standalone: bool =
                 ltl.setCustomProperty("gbl_crs", crs)
                 ltl.setExpanded(False)
                 ltl.setItemVisibilityChecked(topic.properties.visible)
-
-    logger.success(f"Thema '{layer_name}' erfolgreich geladen")
+    
     return layer
 
-def add_layer_group(topic_group: catalog_types.TopicGroup, preferred_crs: Optional[str]) -> None:
+def add_layer_group(topic_group: catalog_types.TopicGroup, preferred_crs: Optional[str], show_banner: bool = True) -> bool:
+    # FIXME: Raise Exceptions
     if preferred_crs is None:
         # Get first non-web layer for crs information
         subtopic_iter = iter(topic_group.get_subtopics())
         priority_subtopic = next(subtopic_iter, None)
         while True:
             if priority_subtopic is None:
-                return
+                return False
             
             if priority_subtopic.topic_type == catalog_types.TopicType.WEB:
                 priority_subtopic = next(subtopic_iter, None)
@@ -255,28 +259,35 @@ def add_layer_group(topic_group: catalog_types.TopicGroup, preferred_crs: Option
         
         preferred_crs = get_crs(priority_subtopic.valid_epsg_codes, priority_subtopic.name)
         if preferred_crs is None:
-            return
+            return False
         
     current_qgis_project = QgsProject.instance()
     if not current_qgis_project:
         logger.error(f"Das aktuelle Projekt kann nicht geladen werden")    
-        return
+        return False
     
     layer_tree_root = current_qgis_project.layerTreeRoot()
     if layer_tree_root is None:
         logger.error("Ebenenbaum kann nicht geladen werden")
-        return
+        return False
     
     new_layer_group = layer_tree_root.insertGroup(0, topic_group.name)
     if new_layer_group is None:
-        return
+        return False
     
     new_layer_group.setCustomProperty("gbl_name", topic_group.name)
     new_layer_group.setCustomProperty("gbl_path", topic_group.path)
     new_layer_group.setCustomProperty("gbl_crs", preferred_crs)
     
+    failures = 0
     for subtopic in topic_group.get_subtopics():
-        sub_layer = add_layer(subtopic, preferred_crs, False)
+        try:
+            sub_layer = add_layer(subtopic, preferred_crs, False)
+        except Exception as e:
+            logger.error(f"Fehler beim Hinzufügen des Layers '{subtopic.name}' für Thema '{topic_group.name}': {e}")
+            failures += 1
+            continue
+        
         if sub_layer is None:
             continue
         ltl = new_layer_group.insertLayer(0, sub_layer)
@@ -286,16 +297,26 @@ def add_layer_group(topic_group: catalog_types.TopicGroup, preferred_crs: Option
             ltl.setCustomProperty("gbl_crs", sub_layer.crs().authid())
             ltl.setExpanded(False)
             ltl.setItemVisibilityChecked(subtopic.properties.visible)
+        else:
+            failures += 1
     
     # Leere Gruppe entfernen (wenn alle Sub-Layer fehlgeschlagen)
     if not new_layer_group.children():
         layer_tree_root.removeChildNode(new_layer_group)
+    
+    if failures == 0:
+        logger.success(f"Themengruppe '{topic_group.name}' erfolgreich geladen", extra={"show_banner": show_banner})
+    else:
+        logger.warning(f"Themengruppe '{topic_group.name}' teilweise geladen: {failures}/{len(topic_group.get_subtopics())} Einträge konnten nicht geladen werden", extra={"show_banner": show_banner})
+    
+    return failures == 0
         
-def add_layer_combination(topic_combination: catalog_types.TopicCombination, preferred_crs: Optional[str]) -> None:
+def add_layer_combination(topic_combination: catalog_types.TopicCombination, preferred_crs: Optional[str], show_banner: bool = True) -> bool:
+    # FIXME: Raise Exceptions
     current_catalog = registry.catalog_manager.get_current_catalog()
     if not isinstance(current_catalog, catalog_types.Catalog):
         logger.error("Aktueller Katalog kann nicht geladen werden")
-        return
+        return False
     
     referenced_topics: list[Union[catalog_types.Topic, catalog_types.TopicGroup]] = []
     for references in topic_combination.topic_paths:
@@ -306,8 +327,8 @@ def add_layer_combination(topic_combination: catalog_types.TopicCombination, pre
         referenced_topics.append(topic)
     
     if len(referenced_topics) < 1:
-        logger.warning(f"Themenkombination '{topic_combination.name}' besitzt keine validen Einträge. Kontaktieren Sie den Autor", extra={"show_banner": True})
-        return
+        logger.warning(f"Themenkombination '{topic_combination.name}' besitzt keine validen Einträge. Kontaktieren Sie den Autor", extra={"show_banner": show_banner})
+        return False
     
     if preferred_crs is None:
         for topic in referenced_topics:
@@ -334,10 +355,24 @@ def add_layer_combination(topic_combination: catalog_types.TopicCombination, pre
                 break
     
         if preferred_crs is None:
-            return
+            return False
     
+    failures = 0
     for topic in referenced_topics:
         if isinstance(topic, catalog_types.Topic):
-            add_layer(topic, preferred_crs)
+            try:
+                add_layer(topic, preferred_crs)
+            except Exception as e:
+                logger.error(f"Fehler beim Hinzufügen des Layers '{topic.name}' der Themenkombination '{topic_combination.name}': {e}")
+                failures += 1
         else:
-            add_layer_group(topic, preferred_crs)
+            success = add_layer_group(topic, preferred_crs, show_banner=show_banner)
+            if not success:
+                failures += 1
+    
+    if failures == 0:
+        logger.success(f"Themenkombination '{topic_combination.name}' erfolgreich geladen", extra={"show_banner": show_banner})
+    else:
+        logger.warning(f"Themenkombination '{topic_combination.name}' teilweise geladen: {failures}/{len(referenced_topics)} Einträge konnten nicht geladen werden", extra={"show_banner": show_banner})
+    
+    return failures == 0
