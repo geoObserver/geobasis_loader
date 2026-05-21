@@ -1,4 +1,3 @@
-from typing import get_args
 from qgis.PyQt.QtWidgets import QMenu, QAction, QMessageBox
 from qgis.utils import iface
 from ..core import events

@@ -65,7 +65,6 @@ plugin_info = read_metadata()
 PLUGIN_NAME = plugin_info.name
 PLUGIN_NAME_AND_VERSION = PLUGIN_NAME + ' (v' + plugin_info.version + ')'
 
-
 REQUEST_TIMEOUT_MS = 10000
 PLUGIN_LOGGER_NAME = "geobasis_loader"
 TOOLBAR_NAME = "geoobserver"
