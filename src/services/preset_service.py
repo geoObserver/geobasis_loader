@@ -173,11 +173,19 @@ class PresetManager:
     @add_preset_to_project.register(Preset)
     def _(self, preset: Preset) -> None:
         from ..operations import topic_ops as handlers
+        failures = 0
         for entry in preset.entries:
             path = entry["path"]
             crs = entry.get("crs")
-            handlers.add_topic(path, crs)
-    
+            success = handlers.add_topic(path, crs, False)
+            if not success:
+                failures += 1
+        
+        if failures == 0:
+            logger.success(f"Preset '{preset.title}' erfolgreich geladen", extra={"show_banner": True})
+        else:
+            logger.warning(f"Preset '{preset.title}' teilweise geladen: {failures}/{len(preset.entries)} Themen konnten nicht geladen werden", extra={"show_banner": True})
+
     def get_user_presets(self) -> list[Preset]:
         return list(self.user_presets.values())
 
