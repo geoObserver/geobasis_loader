@@ -250,7 +250,11 @@ class CustomQMenu(QMenu):
             return
         
         if a0.button() == Qt.MouseButton.RightButton:
-            self._init_context_menu(a0.pos(), a0.globalPosition().toPoint())
+            if hasattr(a0, 'globalPosition'):
+                global_pos = a0.globalPosition().toPoint()
+            else:
+                global_pos = a0.globalPos()
+            self._init_context_menu(a0.pos(), global_pos)
             return
 
         super().mouseReleaseEvent(a0)
