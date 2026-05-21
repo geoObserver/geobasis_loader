@@ -70,6 +70,7 @@ PLUGIN_LOGGER_NAME = "geobasis_loader"
 TOOLBAR_NAME = "geoobserver"
 LOGGING_SUCCESS_LEVEL = 25
 PRESET_FORMAT_VERSION = 7.00
+BOOKMARK_GROUP_NAME = plugin_info.name
 
 CATALOG_OVERVIEW = "GeoBasis_Loader_v6_Kataloge.json"
 CATALOG_OVERVIEW_NAME = "catalog_overview"

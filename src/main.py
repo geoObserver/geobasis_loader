@@ -2,7 +2,7 @@ import re
 from qgis.PyQt.QtCore import QObject
 from qgis.PyQt.QtGui import QCursor
 from qgis.PyQt.QtWidgets import QAction, QToolBar
-from qgis.core import QgsSettings
+from qgis.core import QgsSettings, QgsApplication
 from qgis.gui import QgisInterface
 from .core.search import SearchFilter
 from . import config
@@ -10,6 +10,7 @@ from .utils import custom_logger
 from .ui import menus, icons
 from .models import catalog_types
 from .services import registry
+from .operations import bookmark_ops
 
 logger = custom_logger.get_logger(__name__)
 
@@ -59,6 +60,10 @@ class GeoBasis_Loader(QObject):
         self.search_filter = SearchFilter()
         self.iface.registerLocatorFilter(self.search_filter)
         
+        manager = QgsApplication.bookmarkManager()
+        if manager is not None:
+            manager.bookmarkRemoved.connect(bookmark_ops._remove_gbl_spatial_bookmark_from_presets)
+        
     def initGui(self) -> None:
         if self.main_menu:
             self.main_menu.clear()
@@ -72,6 +77,9 @@ class GeoBasis_Loader(QObject):
         self.iface.invalidateLocatorResults()
         self.iface.deregisterLocatorFilter(self.search_filter)
         self.search_filter = None
+        manager = QgsApplication.bookmarkManager()
+        if manager is not None:
+            manager.bookmarkRemoved.disconnect(bookmark_ops._remove_gbl_spatial_bookmark_from_presets)
         if self.main_menu:
             plugin_menu = self.iface.pluginMenu()
             main_window = self.iface.mainWindow()

@@ -4,8 +4,9 @@ from functools import singledispatchmethod
 from datetime import datetime
 from typing import Optional, TypedDict
 from dataclasses import dataclass, field
-from qgis.core import QgsProject
+from qgis.core import QgsProject, QgsBookmark, QgsApplication
 from ..models import catalog_types
+from ..operations import bookmark_ops
 from .. import config
 from ..utils import custom_logger, helpers
 
@@ -29,6 +30,7 @@ class Preset:
     description: Optional[str] = None
     modified: datetime = datetime.now()
     entries: list[Entry] = field(default_factory=list)
+    spatial_bookmark_id: Optional[str] = None
     
     def __contains__(self, item) -> bool:
         if isinstance(item, (catalog_types.Topic, catalog_types.TopicGroup, catalog_types.TopicCombination)):
@@ -70,7 +72,7 @@ class Preset:
         if not self.entries:
             return "Keine Themen"
         
-        description = "Enthaltene Themen:\n"
+        description = f"Enthaltene Themen ({len(self.entries)} Themen):\n"
         for entry in self.entries:
             if "crs" in entry:
                 description += f"- {entry['name']} (CRS: {entry['crs']})\n"
@@ -79,6 +81,17 @@ class Preset:
         
         return description.strip()
     
+    def get_spatial_bookmark(self) -> Optional[QgsBookmark]:
+        if not self.spatial_bookmark_id:
+            return None
+        
+        bookmark_manager = QgsApplication.bookmarkManager()
+        if not bookmark_manager:
+            logger.error("QGIS Bookmark Manager nicht verfügbar. Räumliche Lesezeichen können nicht abgerufen werden.")
+            return None
+        
+        return bookmark_manager.bookmarkById(self.spatial_bookmark_id)
+    
     def to_dict(self) -> dict:
         return {
             "id": self.id,
@@ -86,6 +99,7 @@ class Preset:
             "description": self.description,
             # FIXME: A bit convoluted; Better with utc and replace or even better datetime.UTC but only 3.11+
             "modified": self.modified.isoformat(timespec="seconds") + "Z",
+            "spatial_bookmark_id": self.spatial_bookmark_id,
             "entries": self.entries,
         }
     
@@ -99,7 +113,8 @@ class Preset:
             title=data.get("title", "Preset"),
             description=data.get("description"),
             modified=modified,
-            entries=data.get("entries", [])
+            entries=data.get("entries", []),
+            spatial_bookmark_id=data.get("spatial_bookmark_id")
         )
 
 class PresetManager:
@@ -152,7 +167,9 @@ class PresetManager:
             logger.critical(f"Ungültiger Typ für Preset-ID: {type(id)}")
             return
         
-        self.user_presets.pop(id, None)
+        preset = self.user_presets.pop(id, None)
+        if preset and preset.spatial_bookmark_id:
+            bookmark_ops.remove_gbl_spatial_bookmark(preset.spatial_bookmark_id)
     
     @singledispatchmethod
     def add_preset_to_project(self, preset) -> None:
