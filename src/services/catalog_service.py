@@ -287,9 +287,8 @@ class CatalogManager:
                 "name": catalog_name
             }
         handler = self.add_network_handler(catalog_info["titel"])
-        if handler.done:
-            handler.fetch_catalog(catalog_info["name"], catalog_info["titel"])
-    
+        handler.fetch_catalog(catalog_info["name"], catalog_info["titel"])
+
         return None
     
     def get_current_catalog(self, callback: Optional[Callable] = None) -> Union[None, catalog_types.Catalog, list]:
