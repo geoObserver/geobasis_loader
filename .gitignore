@@ -15,3 +15,5 @@ GeoBasis_Loader_icon_.png
 .python-version
 pyproject.toml
 uv.lock
+/.gitignore
+/kataloge
