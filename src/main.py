@@ -79,7 +79,12 @@ class GeoBasis_Loader(QObject):
         self.search_filter = None
         manager = QgsApplication.bookmarkManager()
         if manager is not None:
-            manager.bookmarkRemoved.disconnect(bookmark_ops._remove_gbl_spatial_bookmark_from_presets)
+            try:
+                manager.bookmarkRemoved.disconnect(bookmark_ops._remove_gbl_spatial_bookmark_from_presets)
+            except (TypeError, RuntimeError):
+                # Slot was never connected (manager unavailable at init) or the
+                # C++ object is gone; nothing to disconnect on unload.
+                pass
         if self.main_menu:
             plugin_menu = self.iface.pluginMenu()
             main_window = self.iface.mainWindow()
