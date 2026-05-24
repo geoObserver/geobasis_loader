@@ -223,13 +223,19 @@ class CatalogManager:
         
         if not force and not all_done:
             return
-        
-        if hasattr(self, "overview_network_handler") and self.overview_network_handler is not None:
+
+        # Only tear down the overview handler on a forced clear (unload). During
+        # normal per-catalog completion keep it alive: get_catalog and
+        # get_overview read/abort self.overview_network_handler, so a
+        # deleteLater()'d-but-still-referenced handler would be a dangling
+        # reference (read .done / abort() on a freed QObject) on the next reload.
+        if force and self.overview_network_handler is not None:
             self.overview_network_handler.abort()
-        
+            self.overview_network_handler = None
+
         for handler in handlers:
             handler.abort()
-        
+
         self.catalog_network_handlers.clear()
     
     def set_overview(self, overview: str, catalog_name: str, last_modified: float, fetch_catalogs: bool = True) -> None:
