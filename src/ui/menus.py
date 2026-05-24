@@ -177,7 +177,7 @@ class MainMenu(QMenu):
             
             catalog_action.setObjectName("catalog-" + catalog["titel"])
         
-        self.addAction("Kataloge neu laden (Reload Catalogs)", lambda: registry.catalog_manager.get_overview(callback=self.create_menu))
+        self.addAction("Kataloge neu laden (Reload Catalogs)", lambda: registry.catalog_manager.get_overview(callback=self.create_menu, notify_reload=True))
         
     def _build_end_section(self):
         self.addSeparator()

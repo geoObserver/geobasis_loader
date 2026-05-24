@@ -166,6 +166,7 @@ class CatalogManager:
         self.catalogs: dict[str, catalog_types.Catalog] = {}
         self.catalog_network_handlers: dict[str, NetworkHandler] = {}
         self._pending_callbacks: dict[str, list[Callable]] = {}
+        self._notify_reload: bool = False
     
     def add_network_handler(self, catalog_title: str) -> NetworkHandler:
         if self.catalog_network_handlers.get(catalog_title, None) is not None:
@@ -181,12 +182,13 @@ class CatalogManager:
         handlers = list(self.catalog_network_handlers.values())
         all_done = all(handler.done for handler in handlers)
         
-        if all_done and len(handlers) > 0:
+        if all_done and len(handlers) > 0 and self._notify_reload:
+            self._notify_reload = False
             handler_count = len(handlers)
             successful_count = sum(handler.successful for handler in handlers)
             message = f"Es wurden {successful_count} von {handler_count} Kataloge neu geladen"
-            
-            if handler_count > 0 and successful_count / handler_count >= 0.5:
+
+            if successful_count / handler_count >= 0.5:
                 logger.success(message, extra={"show_banner": True})
             else:
                 logger.warning(message, extra={"show_banner": True})
@@ -237,7 +239,10 @@ class CatalogManager:
                 callback()
             del self._pending_callbacks[config.CATALOG_OVERVIEW_NAME]
     
-    def get_overview(self, callback: Optional[Callable] = None) -> None:
+    def get_overview(self, callback: Optional[Callable] = None, notify_reload: bool = False) -> None:
+        # notify_reload=True shows a summary banner once all catalogs finished
+        # (explicit user reload); the initial startup load stays silent.
+        self._notify_reload = notify_reload
         # ------- Network Handler für die Katalog Übersicht erstellen --------------
         self.overview_network_handler = NetworkHandler(QgsNetworkAccessManager.instance())
         self.overview_network_handler.finished.connect(self.set_overview)
