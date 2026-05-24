@@ -49,13 +49,15 @@ class NetworkHandler(QObject):
         request = QNetworkRequest(q_url)
         request.setAttribute(QNetworkRequest.Attribute.CacheLoadControlAttribute, QNetworkRequest.CacheLoadControl.AlwaysNetwork)
         request.setTransferTimeout(config.REQUEST_TIMEOUT_MS)
-        # if self._server == config.ServerHosts.GITHUB:
-        #     mediatype = "application/vnd.github.raw+json"
-        # else:
-        #     mediatype = "application/json"
+        # GitHub's Contents API returns a JSON envelope ({"content": <base64>, ...})
+        # unless the raw media type is requested explicitly.
+        if self._server == config.ServerHosts.GITHUB:
+            mediatype = "application/vnd.github.raw+json"
+        else:
+            mediatype = "application/json"
         request.setRawHeader(
             bytearray("Accept", "utf-8"),
-            bytearray("gzip, deflate", "utf-8")
+            bytearray(mediatype, "utf-8")
         )
         return self._manager.get(request)
   
