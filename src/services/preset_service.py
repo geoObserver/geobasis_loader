@@ -1,3 +1,6 @@
+from __future__ import annotations  # PEP 563: keep annotations as strings so
+# `crs: NotRequired[str]` is never evaluated on Python 3.9 (QGIS 3.40 LTR on
+# macOS ships 3.9, where typing.NotRequired does not exist).
 import uuid
 import pathlib
 from functools import singledispatchmethod
