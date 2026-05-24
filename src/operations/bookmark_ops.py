@@ -13,7 +13,8 @@ def add_gbl_spatial_bookmark(name: str, id: Optional[str] = None) -> tuple[Optio
         return None, False
     
     bookmark = helpers.create_spatial_bookmark()
-    bookmark.setId(id)
+    if id is not None:
+        bookmark.setId(id)
     bookmark.setName(name)
     bookmark.setGroup(config.BOOKMARK_GROUP_NAME)
     
