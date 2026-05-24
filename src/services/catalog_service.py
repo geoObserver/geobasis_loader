@@ -17,26 +17,45 @@ logger = custom_logger.get_logger(__name__)
 class NetworkHandler(QObject):
     _manager: QgsNetworkAccessManager
     _reply: Optional[QNetworkReply]
-    
+    # The exact slot connected to reply.finished, kept so we can disconnect
+    # *only* our own connection (never the argumentless reply.disconnect(),
+    # which would also sever QgsNetworkAccessManager's internal
+    # finished -> timeoutTimer.stop() connection and crash QGIS).
+    _finished_slot: Optional[Callable]
+
     finished = pyqtSignal(str, str, float)
     error_occurred = pyqtSignal(str, str)
-    
+
     def __init__(self, manager: Union[QgsNetworkAccessManager, None]) -> None:
         super().__init__()
         if not manager:
             logger.critical(f"Netzwerkanfrage hat keinen Netzwerkmanager, Bitte starten Sie QGIS neu oder kontaktieren Sie den Autor")
             raise ValueError("No QgsNetworkAccessManager recieved")
-        
+
         self._manager = manager
         self._server_list = config.ServerHosts.get_enabled_servers()
         self._server = self._server_list[0]
+        self._reply: Optional[QNetworkReply] = None
+        self._finished_slot: Optional[Callable] = None
         self.done = False
         self.successful = False
+
+    def _disconnect_own_finished_slot(self) -> None:
+        """Disconnect only our own reply.finished slot, preserving QGIS's
+        internal connections (notably finished -> timeoutTimer.stop())."""
+        if self._reply is not None and self._finished_slot is not None:
+            try:
+                self._reply.finished.disconnect(self._finished_slot)
+            except (TypeError, RuntimeError):
+                pass
+        self._finished_slot = None
         
     def _fetch_data(self, url: str = '') -> Optional[QNetworkReply]:
-        if hasattr(self, "_reply") and self._reply is not None:
-            self._reply.finished.disconnect()
+        if self._reply is not None:
+            self._disconnect_own_finished_slot()
             if not self._reply.isFinished():
+                # abort() emits finished(), which lets QGIS stop its timeout
+                # timer before the reply is scheduled for deletion.
                 self._reply.abort()
             self._reply.deleteLater()
             self._reply = None
@@ -70,7 +89,8 @@ class NetworkHandler(QObject):
             return
         
         self._reply = reply
-        self._reply.finished.connect(partial(self._handle_response, config.CATALOG_OVERVIEW, config.CATALOG_OVERVIEW_NAME, True))
+        self._finished_slot = partial(self._handle_response, config.CATALOG_OVERVIEW, config.CATALOG_OVERVIEW_NAME, True)
+        self._reply.finished.connect(self._finished_slot)
   
     def fetch_catalog(self, catalog_name: str, catalog_title: str) -> None:
         if not catalog_name.endswith(".json"):
@@ -83,7 +103,8 @@ class NetworkHandler(QObject):
             return
         
         self._reply = reply
-        self._reply.finished.connect(partial(self._handle_response, catalog_name, catalog_title, False))
+        self._finished_slot = partial(self._handle_response, catalog_name, catalog_title, False)
+        self._reply.finished.connect(self._finished_slot)
         
     def _handle_response(self, catalog_name: str, catalog_title: str, is_overview_response: bool):
         if not hasattr(self, "_reply") or self._reply is None:
@@ -137,19 +158,24 @@ class NetworkHandler(QObject):
                 self.fetch_catalog(catalog_name, catalog_title)
     
     def abort(self):
-        if hasattr(self, "_reply") and self._reply is not None and not self._reply.isFinished():
-            self._reply.disconnect()
-            self._reply.abort()
+        if self._reply is not None:
+            # Detach only our own slot; QGIS's internal finished -> timer.stop()
+            # must stay connected so abort() can disarm the timeout timer.
+            self._disconnect_own_finished_slot()
+            if not self._reply.isFinished():
+                self._reply.abort()
             self._reply.deleteLater()
             self._reply = None
             logger.info("Netzwerkanfrage abgebrochen")
-        
+
         try:
             self.done = True
+            # self.finished / self.error_occurred are this object's own signals,
+            # so the argumentless disconnect is safe here.
             self.finished.disconnect()
             self.error_occurred.disconnect()
             self.deleteLater()
-        except RuntimeError:
+        except (TypeError, RuntimeError):
             pass
 
 class CatalogManager:
