@@ -28,7 +28,7 @@ class Preset:
     id: str = field(default_factory=lambda: str(uuid.uuid4()))
     title: str = "Preset"
     description: Optional[str] = None
-    modified: datetime = datetime.now()
+    modified: datetime = field(default_factory=datetime.now)
     entries: list[Entry] = field(default_factory=list)
     spatial_bookmark_id: Optional[str] = None
     
