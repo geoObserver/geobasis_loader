@@ -142,18 +142,23 @@ class PresetManager:
     
     def create_user_preset_from_project(self, title: str, description: Optional[str] = None, save_layer_crs: bool = False) -> Optional[Preset]:
         entries = []
-        def _traverse_layer_tree(node, parent_path=""):
+        def _traverse_layer_tree(node, ancestor_recorded=False):
             for child in node.children():
                 name = child.customProperty("gbl_name", "Thema")
                 path = child.customProperty("gbl_path", None)
                 crs = child.customProperty("gbl_crs", None)
-                if path is not None and path not in parent_path:
+                # Record only the topmost node carrying a gbl_path (e.g. a group)
+                # and skip its descendants, so a loaded group becomes a single
+                # preset entry that re-creates the whole group on apply.
+                child_recorded = ancestor_recorded
+                if path is not None and not ancestor_recorded:
                     entry = Preset.Entry(name=name, path=path)
                     if crs is not None:
                         entry["crs"] = crs
                     entries.append(entry)
-                    
-                _traverse_layer_tree(child, parent_path=path if path is not None else "")
+                    child_recorded = True
+
+                _traverse_layer_tree(child, ancestor_recorded=child_recorded)
         
         project = QgsProject.instance()
         if project is None:
