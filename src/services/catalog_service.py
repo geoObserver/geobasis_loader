@@ -98,8 +98,8 @@ class NetworkHandler(QObject):
             # Holt sich die Timestamps der letzten Modifikationen der lokalen JSON-Datei und der JSON-Datei aus dem Internet
             # (Über-)Schreibt dann die loakle JSON-Datei, wenn die Datei im Internet neuer ist
             # Sozusagen eigene Cache-Implementation
-            network_last_modified_raw_value: QDateTime = self._reply.header(QNetworkRequest.KnownHeaders.LastModifiedHeader)
-            if network_last_modified_raw_value.isValid():
+            network_last_modified_raw_value: Optional[QDateTime] = self._reply.header(QNetworkRequest.KnownHeaders.LastModifiedHeader)
+            if network_last_modified_raw_value is not None and network_last_modified_raw_value.isValid():
                 network_last_modified = network_last_modified_raw_value.toMSecsSinceEpoch() / 1000      # ??????????
             else:
                 network_last_modified = 0.0
