@@ -243,7 +243,7 @@ class PresetManager:
         format_version = preset_file.get("format_version", 0.0)
         presets_data = preset_file.get("presets", [])
         presets = {}
-        if format_version == 7.0:
+        if format_version == config.PRESET_FORMAT_VERSION:
             for preset_data in presets_data:
                 preset = Preset.from_dict(preset_data)
                 presets[preset.id] = preset
