@@ -343,9 +343,9 @@ class CatalogManager:
         
         if catalog_name in self._pending_callbacks:
             for callback in self._pending_callbacks[catalog_name]:
-                callback(self.catalogs[catalog_name])
+                callback(self.catalogs.get(catalog_name))
             del self._pending_callbacks[catalog_name]
-        
+
         self.clear_network_handlers()
 
     def handle_fetch_error(self, error: str, catalog_name: str) -> None:
