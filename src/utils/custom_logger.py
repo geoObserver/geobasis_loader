@@ -47,7 +47,7 @@ class GeoBasisLogger(logging.LoggerAdapter):
         exc_info: Union[None, bool, tuple[type[BaseException], BaseException, Optional[TracebackType]], tuple[None, None, None], BaseException] = None,
         stack_info: bool = False,
         stacklevel: int = 1,
-        extra: Mapping[str, object] | None = None,
+        extra: Optional[Mapping[str, object]] = None,
         **kwargs: object,
     ) -> None:
         self.extra = extra          # Seems unnecessary but doesnt work without it
