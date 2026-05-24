@@ -36,7 +36,6 @@ class NetworkHandler(QObject):
     def _fetch_data(self, url: str = '') -> Optional[QNetworkReply]:
         if hasattr(self, "_reply") and self._reply is not None:
             self._reply.finished.disconnect()
-            self._reply.errorOccurred.disconnect()
             if not self._reply.isFinished():
                 self._reply.abort()
             self._reply.deleteLater()
