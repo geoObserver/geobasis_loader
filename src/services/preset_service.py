@@ -209,7 +209,10 @@ class PresetManager:
     def _(self, preset: Preset) -> None:
         from ..operations import topic_ops as handlers
         failures = 0
-        for entry in preset.entries:
+        # entries are stored top-to-bottom, but add_layer/add_layer_group insert
+        # each new layer/group at the top (position 0). Apply in reverse so the
+        # resulting layer-tree order matches the order the preset was saved in.
+        for entry in reversed(preset.entries):
             path = entry["path"]
             crs = entry.get("crs")
             success = handlers.add_topic(path, crs, False)
