@@ -22,8 +22,10 @@ class EpsgDialog(QtWidgets.QDialog, EPSG_DIALOG):
         layout = self.verticalLayout_2
         self.setLayout(layout)
 
-        self.table.cellDoubleClicked.connect(self.accept)
-        self.accepted.connect(self.confirm_selected_coord)
+        # Validate the selection *before* accepting (the .ui no longer wires
+        # buttonBox.accepted directly to accept(), which would bypass this).
+        self.table.cellDoubleClicked.connect(self.confirm_selected_coord)
+        self.buttonBox.accepted.connect(self.confirm_selected_coord)
         
     def set_table_data(self, supported_auth_ids: frozenset[str], layer_name: str) -> None:
         # Gespeichertes Koordinatensystem zurücksetzen
@@ -58,11 +60,14 @@ class EpsgDialog(QtWidgets.QDialog, EPSG_DIALOG):
     
     def confirm_selected_coord(self) -> None:
         current_row = self.table.currentRow()
-        if current_row < 0:
-            return
-        
-        auth_id_item = self.table.item(current_row, 1)
+        auth_id_item = self.table.item(current_row, 1) if current_row >= 0 else None
         if auth_id_item is None:
+            QtWidgets.QMessageBox.warning(
+                self,
+                "Keine Auswahl",
+                "Bitte wählen Sie ein Koordinatensystem aus.",
+            )
             return
-        
+
         self.selected_coord = auth_id_item.text()
+        self.accept()
