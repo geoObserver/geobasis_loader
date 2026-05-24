@@ -156,15 +156,17 @@ class CatalogManager:
     overview: Optional[list[dict[str, str]]]
     catalogs: dict[str, catalog_types.Catalog]
     catalog_path = config.PLUGIN_DIR / "catalogs"
-    
+
     catalog_network_handlers: dict[str, NetworkHandler]
-    
+    overview_network_handler: Optional[NetworkHandler]
+
     _pending_callbacks: dict[str, list[Callable]]
-    
+
     def __init__(self) -> None:
         self.overview: Optional[list[dict[str, str]]] = None
         self.catalogs: dict[str, catalog_types.Catalog] = {}
         self.catalog_network_handlers: dict[str, NetworkHandler] = {}
+        self.overview_network_handler: Optional[NetworkHandler] = None
         self._pending_callbacks: dict[str, list[Callable]] = {}
         self._notify_reload: bool = False
     
@@ -244,6 +246,10 @@ class CatalogManager:
         # (explicit user reload); the initial startup load stays silent.
         self._notify_reload = notify_reload
         # ------- Network Handler für die Katalog Übersicht erstellen --------------
+        # Abort a still-running overview request (e.g. reload clicked while the
+        # initial fetch is in flight) so its signals can no longer fire.
+        if self.overview_network_handler is not None:
+            self.overview_network_handler.abort()
         self.overview_network_handler = NetworkHandler(QgsNetworkAccessManager.instance())
         self.overview_network_handler.finished.connect(self.set_overview)
         self.overview_network_handler.error_occurred.connect(self.handle_fetch_error)
@@ -271,7 +277,7 @@ class CatalogManager:
                 self._pending_callbacks[catalog_title] = []
             self._pending_callbacks[catalog_title].append(callback)
             
-        if not self.overview_network_handler.done:
+        if self.overview_network_handler is None or not self.overview_network_handler.done:
             logger.warning("Katalogübersicht ist nicht geladen, Bitte warten Sie oder kontaktieren Sie den Author", extra={"show_banner": True})
             return None
         
