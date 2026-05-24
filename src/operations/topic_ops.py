@@ -313,14 +313,18 @@ def add_layer_group(topic_group: catalog_types.TopicGroup, preferred_crs: Option
         
 def add_layer_combination(topic_combination: catalog_types.TopicCombination, preferred_crs: Optional[str], show_banner: bool = True) -> bool:
     # FIXME: Raise Exceptions
-    current_catalog = registry.catalog_manager.get_current_catalog()
-    if not isinstance(current_catalog, catalog_types.Catalog):
-        logger.error("Aktueller Katalog kann nicht geladen werden")
+    # Resolve the combination's own catalog (its references live in the same
+    # catalog), not the currently selected one, so presets referencing a
+    # combination from another catalog still resolve.
+    catalog_id = topic_combination.path.split(":/")[0] if ":/" in topic_combination.path else ""
+    owning_catalog = registry.catalog_manager.catalogs.get(catalog_id)
+    if not isinstance(owning_catalog, catalog_types.Catalog):
+        logger.error("Katalog der Themenkombination kann nicht geladen werden")
         return False
-    
+
     referenced_topics: list[Union[catalog_types.Topic, catalog_types.TopicGroup]] = []
     for references in topic_combination.topic_paths:
-        topic = current_catalog.get_entry(references)
+        topic = owning_catalog.get_entry(references)
         # FIXME: If reference points towards region, nothing or another topic combination, ignore them
         if not topic or isinstance(topic, (catalog_types.Region, catalog_types.TopicCombination)):
             continue
