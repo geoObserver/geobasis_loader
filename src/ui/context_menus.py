@@ -5,6 +5,7 @@ from ..models import catalog_types
 from ..operations import bookmark_ops
 from ..services import registry
 from .dialogs import PresetDialog
+from . import icons
 from .. import config
 from ..utils import custom_logger, helpers
 
@@ -21,13 +22,16 @@ class PresetContextMenu(QMenu):
         
         if preset.spatial_bookmark_id:
             apply_bookmark_action = QAction("Räumliches Lesezeichen anwenden", self)
+            apply_bookmark_action.setIcon(icons.get_icon(icons.IconKey.SPATAIL_BOOKMARK_ZOOM))
             apply_bookmark_action.triggered.connect(self._apply_spatial_bookmark)
             remove_bookmark_action = QAction("Räumliches Lesezeichen entfernen", self)
+            remove_bookmark_action.setIcon(icons.get_icon(icons.IconKey.DELETE))
             remove_bookmark_action.triggered.connect(self._remove_spatial_bookmark)
             self.addAction(apply_bookmark_action)
             self.addAction(remove_bookmark_action)
         else:
             new_bookmark_action = QAction("Räumliches Lesezeichen erstellen", self)
+            new_bookmark_action.setIcon(icons.get_icon(icons.IconKey.SPATAIL_BOOKMARK_NEW))
             new_bookmark_action.triggered.connect(self._create_spatial_bookmark)
             self.addAction(new_bookmark_action)
         

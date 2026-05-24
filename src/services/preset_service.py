@@ -107,6 +107,16 @@ class Preset:
     def from_dict(cls, data: dict) -> "Preset":
         modified_str = data.get("modified")
         modified = datetime.fromisoformat(modified_str.removesuffix("Z")) if modified_str else datetime.now()
+        spatial_bookmark_id = data.get("spatial_bookmark_id")
+        if spatial_bookmark_id:
+            manager = QgsApplication.bookmarkManager()
+            if manager is not None:
+                bookmark = manager.bookmarkById(spatial_bookmark_id)
+                if bookmark.id() != spatial_bookmark_id:
+                    logger.warning(f"Räumliches Lesezeichen mit ID {spatial_bookmark_id} nicht gefunden. Verknüpfung wird entfernt.")
+                    spatial_bookmark_id = None
+            else:
+                logger.error("QGIS Bookmark Manager nicht verfügbar. Räumliche Lesezeichen können nicht überprüft werden.")
         
         return cls(
             id=data.get("id", str(uuid.uuid4())),
@@ -114,7 +124,7 @@ class Preset:
             description=data.get("description"),
             modified=modified,
             entries=data.get("entries", []),
-            spatial_bookmark_id=data.get("spatial_bookmark_id")
+            spatial_bookmark_id=spatial_bookmark_id
         )
 
 class PresetManager:

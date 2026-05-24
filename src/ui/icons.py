@@ -12,6 +12,9 @@ class IconKey(str, Enum):
     FAVORITE_STAR = "favorite_star"
     PRESET_USER = "preset_user"
     SETTINGS = "settings"
+    SPATAIL_BOOKMARK_NEW = "spatial_bookmark_new"
+    SPATAIL_BOOKMARK_ZOOM = "spatial_bookmark_zoom"
+    DELETE = "delete"
     FOLDER_CLOSED = "folder_closed"
     FOLDER_OPEN = "folder_open"
     GROUP_ADD = "group_add"
@@ -25,6 +28,9 @@ ICON_PATHS: dict[IconKey, str] = {
     IconKey.FAVORITE_STAR: "/mIconFavorites.svg",
     IconKey.PRESET_USER: "/user.svg",
     IconKey.SETTINGS: "/console/iconSettingsConsole.svg",
+    IconKey.SPATAIL_BOOKMARK_NEW: "/mActionNewBookmark.svg",
+    IconKey.SPATAIL_BOOKMARK_ZOOM: "/mActionZoomToBookmark.svg",
+    IconKey.DELETE: "/mActionDeleteSelected.svg",
     IconKey.FOLDER_CLOSED: "/mIconFolder.svg",
     IconKey.FOLDER_OPEN: "/mIconFolderOpen.svg",
     IconKey.GROUP_ADD: "/mActionAddGroup.svg",
