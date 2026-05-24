@@ -292,7 +292,10 @@ class CatalogManager:
             catalog_info: dict[str, str] = matching_catalogs[0]
         else:
             if catalog_name is None:
-                raise ValueError("No catalog name provided")
+                logger.error(f"Kein Katalogname für '{catalog_title}' angegeben und keine Übersicht geladen", extra={"show_banner": True})
+                if callback:
+                    callback(None)
+                return None
             catalog_info: dict[str, str] = {
                 "titel": catalog_title,
                 "name": catalog_name
