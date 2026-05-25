@@ -195,10 +195,11 @@ class CatalogManager:
         
         if not force and not all_done:
             return
-        
-        if hasattr(self, "overview_network_handler") and self.overview_network_handler is not None:
+
+        if force and self.overview_network_handler is not None:
             self.overview_network_handler.abort()
-        
+            self.overview_network_handler = None
+
         for handler in handlers:
             handler.abort()
         
