@@ -60,6 +60,7 @@ class NetworkHandler(QObject):
         return self._manager.get(request)
   
     def fetch_catalog_overview(self) -> None:
+        self.done = False
         data_name = QUrl.toPercentEncoding(config.CATALOG_OVERVIEW).data().decode('utf-8')
         url = self._server.format(name=data_name)
         reply = self._fetch_data(url=url)
@@ -71,6 +72,7 @@ class NetworkHandler(QObject):
         self._reply.finished.connect(partial(self._handle_response, config.CATALOG_OVERVIEW, config.CATALOG_OVERVIEW_NAME, True))
   
     def fetch_catalog(self, catalog_name: str, catalog_title: str) -> None:
+        self.done = False
         if not catalog_name.endswith(".json"):
             catalog_name += ".json"
         data_name = QUrl.toPercentEncoding(catalog_name).data().decode('utf-8')
@@ -284,8 +286,16 @@ class CatalogManager:
                 "titel": catalog_title,
                 "name": catalog_name
             }
-        handler = self.add_network_handler(catalog_info["titel"])
-        if handler.done:
+        
+        # Check if a network handler for this catalog already exists, if not create one. 
+        # If the handler already exists and is done, fetch the catalog. If the handler is not done, do nothing and wait for it to finish, since it will fetch the catalog once it's done.
+        # If there is no handler, create one and fetch the catalog.
+        if catalog_info["titel"] in self.catalog_network_handlers:  
+            handler = self.add_network_handler(catalog_info["titel"])
+            if handler.done:
+                handler.fetch_catalog(catalog_info["name"], catalog_info["titel"])
+        else:
+            handler = self.add_network_handler(catalog_info["titel"])
             handler.fetch_catalog(catalog_info["name"], catalog_info["titel"])
     
         return None
