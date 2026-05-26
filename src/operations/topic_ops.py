@@ -293,7 +293,7 @@ def add_layer_group(topic_group: catalog_types.TopicGroup, preferred_crs: Option
         ltl = new_layer_group.insertLayer(0, sub_layer)
         if ltl is not None:
             ltl.setCustomProperty("gbl_name", subtopic.name)
-            ltl.setCustomProperty("gbl_path", topic_group.path)
+            ltl.setCustomProperty("gbl_path", subtopic.path)
             ltl.setCustomProperty("gbl_crs", sub_layer.crs().authid())
             ltl.setExpanded(False)
             ltl.setItemVisibilityChecked(subtopic.properties.visible)

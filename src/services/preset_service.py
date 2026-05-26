@@ -144,10 +144,10 @@ class PresetManager:
         entries = []
         def _traverse_layer_tree(node, parent_path=""):
             for child in node.children():
-                name = child.customProperty("gbl_name", "Thema")
-                path = child.customProperty("gbl_path", None)
-                crs = child.customProperty("gbl_crs", None)
-                if path is not None and path not in parent_path:
+                name: str = child.customProperty("gbl_name", "Thema")
+                path: Optional[str] = child.customProperty("gbl_path", None)
+                crs: Optional[str] = child.customProperty("gbl_crs", None)
+                if path is not None and (not path.startswith(parent_path) or parent_path == ""):
                     entry = Preset.Entry(name=name, path=path)
                     if crs is not None:
                         entry["crs"] = crs
