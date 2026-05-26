@@ -16,7 +16,6 @@ logger = custom_logger.get_logger(__name__)
 
 class NetworkHandler(QObject):
     _manager: QgsNetworkAccessManager
-    _reply: Optional[QNetworkReply]
     
     finished = pyqtSignal(str, str, float)
     error_occurred = pyqtSignal(str, str)
@@ -28,13 +27,14 @@ class NetworkHandler(QObject):
             raise ValueError("No QgsNetworkAccessManager recieved")
         
         self._manager = manager
+        self._reply: Optional[QNetworkReply] = None
         self._server_list = config.ServerHosts.get_enabled_servers()
         self._server = self._server_list[0]
         self.done = False
         self.successful = False
         
     def _fetch_data(self, url: str = '') -> Optional[QNetworkReply]:
-        if hasattr(self, "_reply") and self._reply is not None:
+        if self._reply is not None:
             self._reply.finished.disconnect()
             if not self._reply.isFinished():
                 self._reply.abort()
@@ -86,7 +86,7 @@ class NetworkHandler(QObject):
         self._reply.finished.connect(partial(self._handle_response, catalog_name, catalog_title, False))
         
     def _handle_response(self, catalog_name: str, catalog_title: str, is_overview_response: bool):
-        if not hasattr(self, "_reply") or self._reply is None:
+        if self._reply is None:
             logger.critical("Keine Netzwerkantwort zum Verarbeiten vorhanden")
             return
         error = self._reply.error()
@@ -137,7 +137,7 @@ class NetworkHandler(QObject):
                 self.fetch_catalog(catalog_name, catalog_title)
     
     def abort(self):
-        if hasattr(self, "_reply") and self._reply is not None and not self._reply.isFinished():
+        if self._reply is not None and not self._reply.isFinished():
             self._reply.disconnect()
             self._reply.abort()
             self._reply.deleteLater()
