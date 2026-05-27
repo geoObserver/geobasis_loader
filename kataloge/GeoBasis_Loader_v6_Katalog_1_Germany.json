@@ -4241,7 +4241,7 @@
         "name": "ST: Digitales Oberflächenmodell - DOM1 (WCS) !! ab v0.9",
         "type": "ogc_wcs",
         "valid_epsg": ["EPSG:4326", "EPSG:25832"],
-        "uri": "cache=PreferNetwork&crs=EPSG:placeholder&dpiMode=7&format=GeoTIFF&identifier=1&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_DOM1_WCS_OpenData/guest",
+        "uri": "dpiMode=7&identifier=1&tilePixelRatio=0&url=https://geodatenportal.sachsen-anhalt.de/ows_WCS_ST_DOM1",
         "seperator": true
       },
       "denkmal_layergroup": {
