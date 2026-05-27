@@ -10,20 +10,16 @@ from ..operations import bookmark_ops
 from .. import config
 from ..utils import custom_logger, helpers
 
-try:
-    from typing import NotRequired
-except ImportError:
-    NotRequired = object  # type: ignore[assignment]
-
 logger = custom_logger.get_logger(__name__)
 
 @dataclass
 class Preset:
-    class Entry(TypedDict):
+    class BaseEntry(TypedDict):
         name: str
         path: str
-        # FIXME: Only available for 3.11+
-        crs: NotRequired[str]
+    
+    class Entry(BaseEntry, total=False):
+        crs: str
     
     id: str = field(default_factory=lambda: str(uuid.uuid4()))
     title: str = "Preset"
