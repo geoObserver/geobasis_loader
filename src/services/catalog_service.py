@@ -146,20 +146,30 @@ class NetworkHandler(QObject):
     
     def abort(self):
         if self._reply is not None:
-            if not self._reply.isFinished():
-                if self._finished_function:
+            # Always disconnect the finished signal, even if reply is already finished
+            if self._finished_function:
+                try:
                     self._reply.finished.disconnect(self._finished_function)
+                except (RuntimeError, TypeError):
+                    # Signal was never connected or already disconnected
+                    pass
+            
+            if not self._reply.isFinished():
                 self._reply.abort()
             self._reply.deleteLater()
             self._reply = None
             logger.info("Netzwerkanfrage abgebrochen")
         
+        self.done = True
         try:
-            self.done = True
             self.finished.disconnect()
+        except (RuntimeError, TypeError):
+            # No connections to disconnect
+            pass
+        try:
             self.error_occurred.disconnect()
-            self.deleteLater()
-        except RuntimeError:
+        except (RuntimeError, TypeError):
+            # No connections to disconnect
             pass
 
 class CatalogManager:
