@@ -28,6 +28,7 @@ class NetworkHandler(QObject):
         
         self._manager = manager
         self._reply: Optional[QNetworkReply] = None
+        self._finished_function: Optional[Callable] = None
         self._server_list = config.ServerHosts.get_enabled_servers()
         self._server = self._server_list[0]
         self.done = False
@@ -68,8 +69,9 @@ class NetworkHandler(QObject):
             logger.critical("Die Netzwerkantwort für die Katalogübersicht konnte nicht erstellt werden")
             return
         
+        self._finished_function = partial(self._handle_response, config.CATALOG_OVERVIEW, config.CATALOG_OVERVIEW_NAME, True)
         self._reply = reply
-        self._reply.finished.connect(partial(self._handle_response, config.CATALOG_OVERVIEW, config.CATALOG_OVERVIEW_NAME, True))
+        self._reply.finished.connect(self._finished_function)
   
     def fetch_catalog(self, catalog_name: str, catalog_title: str) -> None:
         self.done = False
@@ -82,9 +84,10 @@ class NetworkHandler(QObject):
             logger.critical(f"Die Netzwerkantwort für den Katalog '{catalog_name}' konnte nicht erstellt werden")
             return
         
+        self._finished_function = partial(self._handle_response, catalog_name, catalog_title, False)
         self._reply = reply
-        self._reply.finished.connect(partial(self._handle_response, catalog_name, catalog_title, False))
-        
+        self._reply.finished.connect(self._finished_function)
+
     def _handle_response(self, catalog_name: str, catalog_title: str, is_overview_response: bool):
         if self._reply is None:
             logger.critical("Keine Netzwerkantwort zum Verarbeiten vorhanden")
@@ -112,6 +115,11 @@ class NetworkHandler(QObject):
             logger.info(f"Katalog '{catalog_name}' erfolgreich von Server {index + 1} geladen")
             return
         
+        if error == QNetworkReply.NetworkError.OperationCanceledError:
+            logger.info(f"Netzwerkanfrage für '{catalog_name}' wurde abgebrochen")
+            self.done = True
+            return
+        
         # Differenzierte Fehlerbehandlung
         if not status_code:
             logger.error(f"Kein Internet: {catalog_name} auf Server {self._server}")
@@ -137,9 +145,11 @@ class NetworkHandler(QObject):
                 self.fetch_catalog(catalog_name, catalog_title)
     
     def abort(self):
-        if self._reply is not None and not self._reply.isFinished():
-            self._reply.disconnect()
-            self._reply.abort()
+        if self._reply is not None:
+            if not self._reply.isFinished():
+                if self._finished_function:
+                    self._reply.finished.disconnect(self._finished_function)
+                self._reply.abort()
             self._reply.deleteLater()
             self._reply = None
             logger.info("Netzwerkanfrage abgebrochen")
