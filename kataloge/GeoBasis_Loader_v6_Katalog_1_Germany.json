@@ -523,6 +523,36 @@
         },
         "seperator": true
       },
+      "DWD_layergroup": {
+        "name": "DE: DWD RBSN Stationen TEST (WMS)",
+        "layers": {
+          "dwd1": {
+            "name": "DE: 2m Temperatur an RBSN Stationen TEST (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["EPSG:3044", "EPSG:3045", "EPSG:3413", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4839", "EPSG:25832", "EPSG:25833", "EPSG:31467", "EPSG:31468", "EPSG:900913", "EPSG:1000001"],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=RBSN_T2m&styles&tilePixelRatio=0&type=wmst&url=https://maps.dwd.de/geoserver/dwd/RBSN_T2m/ows?version%3D1.3.0"
+          },
+          "dwd2": {
+            "name": "DE: Niederschlag an RBSN Stationen TEST (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["EPSG:3044", "EPSG:3045", "EPSG:3413", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4839", "EPSG:25832", "EPSG:25833", "EPSG:31467", "EPSG:31468", "EPSG:900913", "EPSG:1000001"],
+            "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=RBSN_RR&styles&temporalSource=provider&tilePixelRatio=0&type=wmst&url=https://maps.dwd.de/geoserver/dwd/RBSN_RR/ows?version%3D1.3.0"
+          },
+          "dwd3": {
+            "name": "DE: Windgeschwindigkeit an RBSN Stationen TEST (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["EPSG:3044", "EPSG:3045", "EPSG:3413", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4839", "EPSG:25832", "EPSG:25833", "EPSG:31467", "EPSG:31468", "EPSG:900913", "EPSG:1000001"],
+            "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=RBSN_FF&styles&temporalSource=provider&tilePixelRatio=0&type=wmst&url=https://maps.dwd.de/geoserver/dwd/RBSN_FF/ows?version%3D1.3.0"
+          },
+          "dwd4": {
+            "name": "DE: Relative Feuchte an RBSN Stationen TEST (WMS)",
+            "type": "ogc_wms",
+            "valid_epsg": ["EPSG:3044", "EPSG:3045", "EPSG:3413", "EPSG:3857", "EPSG:4258", "EPSG:4326", "EPSG:4839", "EPSG:25832", "EPSG:25833", "EPSG:31467", "EPSG:31468", "EPSG:900913", "EPSG:1000001"],
+            "uri": "allowTemporalUpdates=true&contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=RBSN_RH&styles&temporalSource=provider&tilePixelRatio=0&type=wmst&url=https://maps.dwd.de/geoserver/dwd/RBSN_RH/ows?version%3D1.3.0"
+          }
+        },
+        "seperator": true
+      },
       "starkregen_layergroup": {
         "name": "DE: Starkregen (WMS)",
         "layers": {
