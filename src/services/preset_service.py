@@ -10,25 +10,21 @@ from ..operations import bookmark_ops
 from .. import config
 from ..utils import custom_logger, helpers
 
-try:
-    from typing import NotRequired
-except ImportError:
-    NotRequired = object  # type: ignore[assignment]
-
 logger = custom_logger.get_logger(__name__)
 
 @dataclass
 class Preset:
-    class Entry(TypedDict):
+    class BaseEntry(TypedDict):
         name: str
         path: str
-        # FIXME: Only available for 3.11+
-        crs: NotRequired[str]
+    
+    class Entry(BaseEntry, total=False):
+        crs: str
     
     id: str = field(default_factory=lambda: str(uuid.uuid4()))
     title: str = "Preset"
     description: Optional[str] = None
-    modified: datetime = datetime.now()
+    modified: datetime = field(default_factory=datetime.now)
     entries: list[Entry] = field(default_factory=list)
     spatial_bookmark_id: Optional[str] = None
     
@@ -144,10 +140,10 @@ class PresetManager:
         entries = []
         def _traverse_layer_tree(node, parent_path=""):
             for child in node.children():
-                name = child.customProperty("gbl_name", "Thema")
-                path = child.customProperty("gbl_path", None)
-                crs = child.customProperty("gbl_crs", None)
-                if path is not None and path not in parent_path:
+                name: str = child.customProperty("gbl_name", "Thema")
+                path: Optional[str] = child.customProperty("gbl_path", None)
+                crs: Optional[str] = child.customProperty("gbl_crs", None)
+                if path is not None and (not path.startswith(parent_path) or parent_path == ""):
                     entry = Preset.Entry(name=name, path=path)
                     if crs is not None:
                         entry["crs"] = crs
@@ -201,7 +197,10 @@ class PresetManager:
     def _(self, preset: Preset) -> None:
         from ..operations import topic_ops as handlers
         failures = 0
-        for entry in preset.entries:
+        # entries are stored top-to-bottom, but add_layer/add_layer_group insert
+        # each new layer/group at the top (position 0). Apply in reverse so the
+        # resulting layer-tree order matches the order the preset was saved in.
+        for entry in reversed(preset.entries):
             path = entry["path"]
             crs = entry.get("crs")
             success = handlers.add_topic(path, crs, False)

@@ -16,7 +16,6 @@ logger = custom_logger.get_logger(__name__)
 
 class NetworkHandler(QObject):
     _manager: QgsNetworkAccessManager
-    _reply: Optional[QNetworkReply]
     
     finished = pyqtSignal(str, str, float)
     error_occurred = pyqtSignal(str, str)
@@ -28,15 +27,16 @@ class NetworkHandler(QObject):
             raise ValueError("No QgsNetworkAccessManager recieved")
         
         self._manager = manager
+        self._reply: Optional[QNetworkReply] = None
+        self._finished_function: Optional[Callable] = None
         self._server_list = config.ServerHosts.get_enabled_servers()
         self._server = self._server_list[0]
         self.done = False
         self.successful = False
         
     def _fetch_data(self, url: str = '') -> Optional[QNetworkReply]:
-        if hasattr(self, "_reply") and self._reply is not None:
+        if self._reply is not None:
             self._reply.finished.disconnect()
-            self._reply.errorOccurred.disconnect()
             if not self._reply.isFinished():
                 self._reply.abort()
             self._reply.deleteLater()
@@ -50,17 +50,18 @@ class NetworkHandler(QObject):
         request = QNetworkRequest(q_url)
         request.setAttribute(QNetworkRequest.Attribute.CacheLoadControlAttribute, QNetworkRequest.CacheLoadControl.AlwaysNetwork)
         request.setTransferTimeout(config.REQUEST_TIMEOUT_MS)
-        # if self._server == config.ServerHosts.GITHUB:
-        #     mediatype = "application/vnd.github.raw+json"
-        # else:
-        #     mediatype = "application/json"
+        if self._server == config.ServerHosts.GITHUB:
+            mediatype = "application/vnd.github.raw+json"
+        else:
+            mediatype = "gzip, deflate"
         request.setRawHeader(
             bytearray("Accept", "utf-8"),
-            bytearray("gzip, deflate", "utf-8")
+            bytearray(mediatype, "utf-8")
         )
         return self._manager.get(request)
   
     def fetch_catalog_overview(self) -> None:
+        self.done = False
         data_name = QUrl.toPercentEncoding(config.CATALOG_OVERVIEW).data().decode('utf-8')
         url = self._server.format(name=data_name)
         reply = self._fetch_data(url=url)
@@ -68,10 +69,12 @@ class NetworkHandler(QObject):
             logger.critical("Die Netzwerkantwort für die Katalogübersicht konnte nicht erstellt werden")
             return
         
+        self._finished_function = partial(self._handle_response, config.CATALOG_OVERVIEW, config.CATALOG_OVERVIEW_NAME, True)
         self._reply = reply
-        self._reply.finished.connect(partial(self._handle_response, config.CATALOG_OVERVIEW, config.CATALOG_OVERVIEW_NAME, True))
+        self._reply.finished.connect(self._finished_function)
   
     def fetch_catalog(self, catalog_name: str, catalog_title: str) -> None:
+        self.done = False
         if not catalog_name.endswith(".json"):
             catalog_name += ".json"
         data_name = QUrl.toPercentEncoding(catalog_name).data().decode('utf-8')
@@ -81,11 +84,12 @@ class NetworkHandler(QObject):
             logger.critical(f"Die Netzwerkantwort für den Katalog '{catalog_name}' konnte nicht erstellt werden")
             return
         
+        self._finished_function = partial(self._handle_response, catalog_name, catalog_title, False)
         self._reply = reply
-        self._reply.finished.connect(partial(self._handle_response, catalog_name, catalog_title, False))
-        
+        self._reply.finished.connect(self._finished_function)
+
     def _handle_response(self, catalog_name: str, catalog_title: str, is_overview_response: bool):
-        if not hasattr(self, "_reply") or self._reply is None:
+        if self._reply is None:
             logger.critical("Keine Netzwerkantwort zum Verarbeiten vorhanden")
             return
         error = self._reply.error()
@@ -97,8 +101,8 @@ class NetworkHandler(QObject):
             # Holt sich die Timestamps der letzten Modifikationen der lokalen JSON-Datei und der JSON-Datei aus dem Internet
             # (Über-)Schreibt dann die loakle JSON-Datei, wenn die Datei im Internet neuer ist
             # Sozusagen eigene Cache-Implementation
-            network_last_modified_raw_value: QDateTime = self._reply.header(QNetworkRequest.KnownHeaders.LastModifiedHeader)
-            if network_last_modified_raw_value.isValid():
+            network_last_modified_raw_value: Optional[QDateTime] = self._reply.header(QNetworkRequest.KnownHeaders.LastModifiedHeader)
+            if network_last_modified_raw_value is not None and network_last_modified_raw_value.isValid():
                 network_last_modified = network_last_modified_raw_value.toMSecsSinceEpoch() / 1000      # ??????????
             else:
                 network_last_modified = 0.0
@@ -109,6 +113,11 @@ class NetworkHandler(QObject):
             total_server_list = config.ServerHosts.get_all_servers()
             index = total_server_list.index(self._server)
             logger.info(f"Katalog '{catalog_name}' erfolgreich von Server {index + 1} geladen")
+            return
+        
+        if error == QNetworkReply.NetworkError.OperationCanceledError:
+            logger.info(f"Netzwerkanfrage für '{catalog_name}' wurde abgebrochen")
+            self.done = True
             return
         
         # Differenzierte Fehlerbehandlung
@@ -136,34 +145,48 @@ class NetworkHandler(QObject):
                 self.fetch_catalog(catalog_name, catalog_title)
     
     def abort(self):
-        if hasattr(self, "_reply") and self._reply is not None and not self._reply.isFinished():
-            self._reply.disconnect()
-            self._reply.abort()
+        if self._reply is not None:
+            # Always disconnect the finished signal, even if reply is already finished
+            if self._finished_function:
+                try:
+                    self._reply.finished.disconnect(self._finished_function)
+                except (RuntimeError, TypeError):
+                    # Signal was never connected or already disconnected
+                    pass
+            
+            if not self._reply.isFinished():
+                self._reply.abort()
             self._reply.deleteLater()
             self._reply = None
             logger.info("Netzwerkanfrage abgebrochen")
         
+        self.done = True
         try:
-            self.done = True
             self.finished.disconnect()
+        except (RuntimeError, TypeError):
+            # No connections to disconnect
+            pass
+        try:
             self.error_occurred.disconnect()
-            self.deleteLater()
-        except RuntimeError:
+        except (RuntimeError, TypeError):
+            # No connections to disconnect
             pass
 
 class CatalogManager:
     overview: Optional[list[dict[str, str]]]
     catalogs: dict[str, catalog_types.Catalog]
     catalog_path = config.PLUGIN_DIR / "catalogs"
-    
+
     catalog_network_handlers: dict[str, NetworkHandler]
-    
+    overview_network_handler: Optional[NetworkHandler]
+
     _pending_callbacks: dict[str, list[Callable]]
-    
+
     def __init__(self) -> None:
         self.overview: Optional[list[dict[str, str]]] = None
         self.catalogs: dict[str, catalog_types.Catalog] = {}
         self.catalog_network_handlers: dict[str, NetworkHandler] = {}
+        self.overview_network_handler: Optional[NetworkHandler] = None
         self._pending_callbacks: dict[str, list[Callable]] = {}
     
     def add_network_handler(self, catalog_title: str) -> NetworkHandler:
@@ -192,10 +215,11 @@ class CatalogManager:
         
         if not force and not all_done:
             return
-        
-        if hasattr(self, "overview_network_handler") and self.overview_network_handler is not None:
+
+        if force and self.overview_network_handler is not None:
             self.overview_network_handler.abort()
-        
+            self.overview_network_handler = None
+
         for handler in handlers:
             handler.abort()
         
@@ -238,6 +262,10 @@ class CatalogManager:
     
     def get_overview(self, callback: Optional[Callable] = None) -> None:
         # ------- Network Handler für die Katalog Übersicht erstellen --------------
+        # Abort a still-running overview request (e.g. reload clicked while the
+        # initial fetch is in flight) so its signals can no longer fire.
+        if self.overview_network_handler is not None:
+            self.overview_network_handler.abort()
         self.overview_network_handler = NetworkHandler(QgsNetworkAccessManager.instance())
         self.overview_network_handler.finished.connect(self.set_overview)
         self.overview_network_handler.error_occurred.connect(self.handle_fetch_error)
@@ -265,7 +293,7 @@ class CatalogManager:
                 self._pending_callbacks[catalog_title] = []
             self._pending_callbacks[catalog_title].append(callback)
             
-        if not self.overview_network_handler.done:
+        if self.overview_network_handler is None or not self.overview_network_handler.done:
             logger.warning("Katalogübersicht ist nicht geladen, Bitte warten Sie oder kontaktieren Sie den Author", extra={"show_banner": True})
             return None
         
@@ -280,13 +308,24 @@ class CatalogManager:
             catalog_info: dict[str, str] = matching_catalogs[0]
         else:
             if catalog_name is None:
-                raise ValueError("No catalog name provided")
+                logger.error(f"Kein Katalogname für '{catalog_title}' angegeben und keine Übersicht geladen", extra={"show_banner": True})
+                if callback:
+                    callback(None)
+                return None
             catalog_info: dict[str, str] = {
                 "titel": catalog_title,
                 "name": catalog_name
             }
-        handler = self.add_network_handler(catalog_info["titel"])
-        if handler.done:
+        
+        # Check if a network handler for this catalog already exists, if not create one. 
+        # If the handler already exists and is done, fetch the catalog. If the handler is not done, do nothing and wait for it to finish, since it will fetch the catalog once it's done.
+        # If there is no handler, create one and fetch the catalog.
+        if catalog_info["titel"] in self.catalog_network_handlers:  
+            handler = self.add_network_handler(catalog_info["titel"])
+            if handler.done:
+                handler.fetch_catalog(catalog_info["name"], catalog_info["titel"])
+        else:
+            handler = self.add_network_handler(catalog_info["titel"])
             handler.fetch_catalog(catalog_info["name"], catalog_info["titel"])
     
         return None
@@ -329,9 +368,9 @@ class CatalogManager:
         
         if catalog_name in self._pending_callbacks:
             for callback in self._pending_callbacks[catalog_name]:
-                callback(self.catalogs[catalog_name])
+                callback(self.catalogs.get(catalog_name))
             del self._pending_callbacks[catalog_name]
-        
+
         self.clear_network_handlers()
 
     def handle_fetch_error(self, error: str, catalog_name: str) -> None:

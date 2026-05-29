@@ -136,22 +136,6 @@
  <connections>
   <connection>
    <sender>buttonBox</sender>
-   <signal>accepted()</signal>
-   <receiver>NewDialog</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>463</x>
-     <y>330</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>279</x>
-     <y>179</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonBox</sender>
    <signal>rejected()</signal>
    <receiver>NewDialog</receiver>
    <slot>reject()</slot>
