@@ -214,6 +214,16 @@ class PresetManager:
             logger.success(f"Preset '{preset.title}' erfolgreich geladen", extra={"show_banner": True})
         else:
             logger.warning(f"Preset '{preset.title}' teilweise geladen: {failures}/{len(preset.entries)} Themen konnten nicht geladen werden", extra={"show_banner": True})
+    
+    def apply_preset_spatial_bookmark(self, preset: Preset) -> None:
+        bookmark = preset.get_spatial_bookmark()
+        if not bookmark:
+            if preset.spatial_bookmark_id:
+                logger.error(f"Räumliches Lesezeichen für Preset '{preset.title}' nicht gefunden. Anwenden nicht möglich.")
+            return
+        
+        helpers.apply_spatial_bookmark(bookmark)
+        logger.success(f"Räumliches Lesezeichen für Preset '{preset.title}' angewendet.")
 
     def get_user_presets(self) -> list[Preset]:
         return list(self.user_presets.values())

@@ -83,14 +83,7 @@ class PresetContextMenu(QMenu):
         events.emit_presets_updated()
     
     def _apply_spatial_bookmark(self) -> None:
-        bookmark = self.preset.get_spatial_bookmark()
-        if not bookmark:
-            if self.preset.spatial_bookmark_id:
-                logger.error(f"Räumliches Lesezeichen für Preset '{self.preset.title}' nicht gefunden. Anwenden nicht möglich.")
-            return
-        
-        helpers.apply_spatial_bookmark(bookmark)
-        logger.success(f"Räumliches Lesezeichen für Preset '{self.preset.title}' angewendet.")
+        registry.preset_manager.apply_preset_spatial_bookmark(self.preset)
     
     def _create_spatial_bookmark(self) -> None:
         id = f"preset-{self.preset.id}"
