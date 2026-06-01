@@ -84,7 +84,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QCheckBox" name="automatic_spatial_bookmark_checkBox">
+    <widget class="QCheckBox" name="automatic_spatial_bookmark_checkbox">
      <property name="text">
       <string>Automatisch existierendes räumliches Lesezeichen laden</string>
      </property>
