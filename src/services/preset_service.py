@@ -210,6 +210,9 @@ class PresetManager:
             if not success:
                 failures += 1
         
+        if preset.automatic_spatial_bookmark:
+            self.apply_preset_spatial_bookmark(preset)
+        
         if failures == 0:
             logger.success(f"Preset '{preset.title}' erfolgreich geladen", extra={"show_banner": True})
         else:
