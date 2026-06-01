@@ -70,6 +70,7 @@ class PresetContextMenu(QMenu):
             self.preset.title, 
             self.preset.description, 
             save_crs_checkbox_visible=False, 
+            automatic_spatial_bookmark=self.preset.automatic_spatial_bookmark,
             parent=parent
         )
         if preset_dialog.exec() != PresetDialog.DialogCode.Accepted:
@@ -77,6 +78,7 @@ class PresetContextMenu(QMenu):
         
         self.preset.title = preset_dialog.preset_title
         self.preset.description = preset_dialog.preset_description
+        self.preset.automatic_spatial_bookmark = preset_dialog.automatic_spatial_bookmark
         registry.preset_manager.save_user_presets()
         events.emit_presets_updated()
     
