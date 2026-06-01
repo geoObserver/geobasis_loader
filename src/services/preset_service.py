@@ -27,6 +27,7 @@ class Preset:
     modified: datetime = field(default_factory=datetime.now)
     entries: list[Entry] = field(default_factory=list)
     spatial_bookmark_id: Optional[str] = None
+    automatic_spatial_bookmark: bool = False
     
     def __contains__(self, item) -> bool:
         if isinstance(item, (catalog_types.Topic, catalog_types.TopicGroup, catalog_types.TopicCombination)):
@@ -96,6 +97,7 @@ class Preset:
             # FIXME: A bit convoluted; Better with utc and replace or even better datetime.UTC but only 3.11+
             "modified": self.modified.isoformat(timespec="seconds") + "Z",
             "spatial_bookmark_id": self.spatial_bookmark_id,
+            "automatic_spatial_bookmark": self.automatic_spatial_bookmark,
             "entries": self.entries,
         }
     
@@ -120,7 +122,8 @@ class Preset:
             description=data.get("description"),
             modified=modified,
             entries=data.get("entries", []),
-            spatial_bookmark_id=spatial_bookmark_id
+            spatial_bookmark_id=spatial_bookmark_id,
+            automatic_spatial_bookmark=data.get("automatic_spatial_bookmark", False)
         )
 
 class PresetManager:
