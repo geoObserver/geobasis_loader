@@ -72,12 +72,14 @@ class MainMenu(QMenu):
                 if region.separator:
                     self.addSeparator()
             
+        self.addSeparator()
+        
+        # ------ Kataloge ------------------------------------
+        if registry.catalog_manager.overview is None:
+            logger.warning("Keine Katalogübersicht verfügbar, Katalogmenü kann nicht erstellt werden.")
+        else:
+            self._build_catalog_section()
             self.addSeparator()
-            
-            # ------ Kataloge ------------------------------------
-            if registry.catalog_manager.overview is not None:
-                self._build_catalog_section()
-                self.addSeparator()
         
         self._build_end_section()
     
