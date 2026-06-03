@@ -22,6 +22,7 @@ class GeoBasis_Loader(QObject):
         super().__init__(parent)
         self.iface = iface
         self._qgs_settings = QgsSettings()
+        self.main_menu = None
         self.toolbar = None
         self.toolbar_main_menu_action = None
         custom_logger.setup_logging()
