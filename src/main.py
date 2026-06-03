@@ -105,14 +105,13 @@ class GeoBasis_Loader(QObject):
     def set_services(self, services: catalog_types.Catalog):
         current_catalog = self._qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
         if current_catalog is None or "titel" not in current_catalog:
-            logger.warning(f"Momentan ist kein valider Katalog ausgewählt, Bitten wählen Sie einen aus", extra={"show_banner": True})
-            return
-        
-        titel = current_catalog["titel"]
-        name = current_catalog["name"]
-        version_matches = re.findall(r'v\d+', name)
-        version = version_matches[0] if version_matches else "unbekannt"
-        logger.success(f'Lese {titel}, Version {version} ...', extra={"show_banner": True})
+            logger.warning(f"Momentan ist kein Katalog ausgewählt, Bitten wählen Sie einen aus", extra={"show_banner": True})
+        else:
+            titel = current_catalog["titel"]
+            name = current_catalog["name"]
+            version_matches = re.findall(r'v\d+', name)
+            version = version_matches[0] if version_matches else "unbekannt"
+            logger.success(f'Lese {titel}, Version {version} ...', extra={"show_banner": True})
         
         self.initGui()
 
