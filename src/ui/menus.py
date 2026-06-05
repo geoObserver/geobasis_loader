@@ -41,13 +41,16 @@ class MainMenu(QMenu):
     def create_menu(self):
         self.clear()
         current_catalog: Optional[Union[catalog_types.Catalog, list]] = registry.catalog_manager.get_current_catalog()
-        if not isinstance(current_catalog, catalog_types.Catalog):
+        if current_catalog is None:
+            logger.info("Bitte wählen Sie einen Katalog aus.")
+        elif not isinstance(current_catalog, catalog_types.Catalog):
             logger.warning("No catalog provided and no current catalog found. Cannot build catalog menu.")
         else:
             # ------- Name des Katalogs einfügen -----------------
             self.addAction(self._qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)["titel"])
             self.addSeparator()
             
+            # TODO: Entries are now absolute so favorites and presets should always be built
             # ------- Favoriten einfügen -------------------------
             self.favorites_menu.build(current_catalog)
             self.addMenu(self.favorites_menu)
@@ -69,12 +72,14 @@ class MainMenu(QMenu):
                 if region.separator:
                     self.addSeparator()
             
+        self.addSeparator()
+        
+        # ------ Kataloge ------------------------------------
+        if registry.catalog_manager.overview is None:
+            logger.warning("Keine Katalogübersicht verfügbar, Katalogmenü kann nicht erstellt werden.")
+        else:
+            self._build_catalog_section()
             self.addSeparator()
-            
-            # ------ Kataloge ------------------------------------
-            if registry.catalog_manager.overview is not None:
-                self._build_catalog_section()
-                self.addSeparator()
         
         self._build_end_section()
     
