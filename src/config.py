@@ -67,7 +67,7 @@ PLUGIN_NAME_AND_VERSION = PLUGIN_NAME + ' (v' + plugin_info.version + ')'
 
 REQUEST_TIMEOUT_MS = 10000
 PLUGIN_LOGGER_NAME = "geobasis_loader"
-TOOLBAR_NAME = "geoobserver"
+TOOLBAR_NAME = "geoObserverTools"
 LOGGING_SUCCESS_LEVEL = 25
 PRESET_FORMAT_VERSION = 7.00
 BOOKMARK_GROUP_NAME = plugin_info.name
