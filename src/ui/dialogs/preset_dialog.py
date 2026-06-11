@@ -5,7 +5,7 @@ from ... import config
 PRESET_DIALOG = uic.loadUiType(config.RESOURCES_DIR / "design_files" / "preset_dialog.ui")[0]
 
 class PresetDialog(QtWidgets.QDialog, PRESET_DIALOG):
-    def __init__(self, preset_title: str = "", preset_description: Optional[str] = "", save_layer_crs: bool = False, save_crs_checkbox_visible: bool = True, automatic_spatial_bookmark: bool = False, parent = None):
+    def __init__(self, preset_title: str = "", preset_description: Optional[str] = "", save_layer_crs: bool = False, save_crs_checkbox_visible: bool = True, parent = None):
         QtWidgets.QDialog.__init__(self, parent)
         self.setAttribute(QtCore.Qt.WidgetAttribute.WA_DeleteOnClose, True)
         self.setupUi(self)
@@ -16,13 +16,11 @@ class PresetDialog(QtWidgets.QDialog, PRESET_DIALOG):
         self.preset_title: str = preset_title
         self.preset_description: Optional[str] = preset_description if preset_description is not None else ""
         self.save_layer_crs: bool = save_layer_crs or save_crs_checkbox_visible
-        self.automatic_spatial_bookmark: bool = automatic_spatial_bookmark
         
         # Type hints for UI elements
         self.description_edit: QtWidgets.QPlainTextEdit = self.description_edit
         self.title_edit: QtWidgets.QLineEdit = self.title_edit
         self.save_layer_crs_checkbox: QtWidgets.QCheckBox = self.save_layer_crs_checkbox
-        self.automatic_spatial_bookmark_checkbox: QtWidgets.QCheckBox = self.automatic_spatial_bookmark_checkbox
         self.hint_label: QtWidgets.QLabel = self.hint_label
         
         # Default values
@@ -30,7 +28,6 @@ class PresetDialog(QtWidgets.QDialog, PRESET_DIALOG):
         self.description_edit.setPlainText(preset_description)
         self.save_layer_crs_checkbox.setChecked(save_layer_crs)
         self.save_layer_crs_checkbox.setVisible(save_crs_checkbox_visible)
-        self.automatic_spatial_bookmark_checkbox.setChecked(automatic_spatial_bookmark)
         
         self.buttonBox.accepted.connect(self.confirm_options)
     
@@ -38,7 +35,6 @@ class PresetDialog(QtWidgets.QDialog, PRESET_DIALOG):
         title = self.title_edit.text().strip()
         description = self.description_edit.toPlainText()
         save_layer_crs = self.save_layer_crs_checkbox.isChecked()
-        automatic_spatial_bookmark = self.automatic_spatial_bookmark_checkbox.isChecked()
         
         if not title:
             QtWidgets.QMessageBox.warning(self, "Ungültiger Titel", "Der Titel darf nicht leer sein.")
@@ -47,5 +43,4 @@ class PresetDialog(QtWidgets.QDialog, PRESET_DIALOG):
         self.preset_title = title
         self.preset_description = description if description else None
         self.save_layer_crs = save_layer_crs
-        self.automatic_spatial_bookmark = automatic_spatial_bookmark
         self.accept()

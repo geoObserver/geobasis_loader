@@ -70,7 +70,6 @@ class PresetContextMenu(QMenu):
             self.preset.title, 
             self.preset.description, 
             save_crs_checkbox_visible=False, 
-            automatic_spatial_bookmark=self.preset.automatic_spatial_bookmark,
             parent=parent
         )
         if preset_dialog.exec() != PresetDialog.DialogCode.Accepted:
@@ -78,12 +77,18 @@ class PresetContextMenu(QMenu):
         
         self.preset.title = preset_dialog.preset_title
         self.preset.description = preset_dialog.preset_description
-        self.preset.automatic_spatial_bookmark = preset_dialog.automatic_spatial_bookmark
         registry.preset_manager.save_user_presets()
         events.emit_presets_updated()
     
     def _apply_spatial_bookmark(self) -> None:
-        registry.preset_manager.apply_preset_spatial_bookmark(self.preset)
+        bookmark = self.preset.get_spatial_bookmark()
+        if not bookmark:
+            if self.preset.spatial_bookmark_id:
+                logger.error(f"Räumliches Lesezeichen für Preset '{self.preset.title}' nicht gefunden. Anwenden nicht möglich.")
+            return
+        
+        helpers.apply_spatial_bookmark(bookmark)
+        logger.success(f"Räumliches Lesezeichen für Preset '{self.preset.title}' angewendet.")
     
     def _create_spatial_bookmark(self) -> None:
         id = f"preset-{self.preset.id}"
