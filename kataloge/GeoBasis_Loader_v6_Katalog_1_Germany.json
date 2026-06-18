@@ -4571,6 +4571,38 @@
             "komgis_priority": "74520",
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=1&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_Festpunktuebersicht_OpenData/guest?VERSION%3D1.3.0"
           }
+        }
+      },
+      "feldblock_layergroup": {
+        "name": "ST: Feldblockdaten (WMS)",
+        "layers": {
+          "feldblock_feldbloecke": {
+            "name": "ST: Feldbblöcke nach Hauptbodennutzung (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "valid_epsg": ["EPSG:25832",  "EPSG:4647",  "EPSG:5650",  "EPSG:25831",  "EPSG:25833",  "EPSG:25834",  "EPSG:25835",  "EPSG:25836",  "EPSG:25837",  "EPSG:35832",  "EPSG:35833",  "EPSG:28402",  "EPSG:28403",  "EPSG:32632",  "EPSG:32633",  "EPSG:4326",  "EPSG:4258",  "EPSG:4178",  "EPSG:2398",  "EPSG:2399",  "EPSG:4314",  "EPSG:31466",  "EPSG:31467",  "EPSG:31468",  "EPSG:31469",  "EPSG:3034",  "EPSG:3035",  "EPSG:3038",  "EPSG:3039",  "EPSG:3040",  "EPSG:3041",  "EPSG:3042",  "EPSG:3043",  "EPSG:3044",  "EPSG:3045",  "EPSG:3046",  "EPSG:3047",  "EPSG:3048",  "EPSG:3049",  "EPSG:3050",  "EPSG:3051",  "EPSG:2166",  "EPSG:2167",  "EPSG:2168",  "EPSG:2180",  "EPSG:3857",  "EPSG:900913",  "EPSG:102100",  "EPSG:325833"],
+            "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Feldblockdaten", "WMS: Feldbblöcke nach Hauptbodennutzung"],
+            "komgis_priority": "74500",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Feldbloecke&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss-org1/service/ST_MWL_LFK/guest"
+          },
+          "feldblock_benachteiligte_gebiete": {
+            "name": "ST: Benachteiligte Gebiete (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "valid_epsg": ["EPSG:25832",  "EPSG:4647",  "EPSG:5650",  "EPSG:25831",  "EPSG:25833",  "EPSG:25834",  "EPSG:25835",  "EPSG:25836",  "EPSG:25837",  "EPSG:35832",  "EPSG:35833",  "EPSG:28402",  "EPSG:28403",  "EPSG:32632",  "EPSG:32633",  "EPSG:4326",  "EPSG:4258",  "EPSG:4178",  "EPSG:2398",  "EPSG:2399",  "EPSG:4314",  "EPSG:31466",  "EPSG:31467",  "EPSG:31468",  "EPSG:31469",  "EPSG:3034",  "EPSG:3035",  "EPSG:3038",  "EPSG:3039",  "EPSG:3040",  "EPSG:3041",  "EPSG:3042",  "EPSG:3043",  "EPSG:3044",  "EPSG:3045",  "EPSG:3046",  "EPSG:3047",  "EPSG:3048",  "EPSG:3049",  "EPSG:3050",  "EPSG:3051",  "EPSG:2166",  "EPSG:2167",  "EPSG:2168",  "EPSG:2180",  "EPSG:3857",  "EPSG:900913",  "EPSG:102100",  "EPSG:325833"],
+            "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Feldblockdaten", "WMS: Benachteiligte Gebiete"],
+            "komgis_priority": "74520",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=BENA&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss-org1/service/ST_MWL_LFK/guest"
+          },
+          "feldblock_IDs": {
+            "name": "ST: Feldbblock-IDs (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "valid_epsg": ["EPSG:25832",  "EPSG:4647",  "EPSG:5650",  "EPSG:25831",  "EPSG:25833",  "EPSG:25834",  "EPSG:25835",  "EPSG:25836",  "EPSG:25837",  "EPSG:35832",  "EPSG:35833",  "EPSG:28402",  "EPSG:28403",  "EPSG:32632",  "EPSG:32633",  "EPSG:4326",  "EPSG:4258",  "EPSG:4178",  "EPSG:2398",  "EPSG:2399",  "EPSG:4314",  "EPSG:31466",  "EPSG:31467",  "EPSG:31468",  "EPSG:31469",  "EPSG:3034",  "EPSG:3035",  "EPSG:3038",  "EPSG:3039",  "EPSG:3040",  "EPSG:3041",  "EPSG:3042",  "EPSG:3043",  "EPSG:3044",  "EPSG:3045",  "EPSG:3046",  "EPSG:3047",  "EPSG:3048",  "EPSG:3049",  "EPSG:3050",  "EPSG:3051",  "EPSG:2166",  "EPSG:2167",  "EPSG:2168",  "EPSG:2180",  "EPSG:3857",  "EPSG:900913",  "EPSG:102100",  "EPSG:325833"],
+            "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Feldblockdaten", "WMS: Benachteiligte Gebiete"],
+            "komgis_priority": "74520",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Feldbloecke_IDs&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss-org1/service/ST_MWL_LFK/guest&stepHeight=3000&stepWidth=3000"
+          }
         },
         "seperator": true
       },
