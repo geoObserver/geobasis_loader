@@ -1,36 +1,31 @@
-import os
 from qgis.core import QgsCoordinateReferenceSystem
 from qgis.PyQt import uic, QtWidgets, QtCore
+from ... import config
 
-EPSG_DIALOG = uic.loadUiType(os.path.join(os.path.dirname(__file__), "design_files", "epsg_selector.ui"))[0]
+EPSG_DIALOG = uic.loadUiType(config.RESOURCES_DIR / "design_files" / "epsg_selector.ui")[0]
 
-if QtCore.QVersionNumber(6) > QtCore.QVersionNumber.fromString(QtCore.QT_VERSION_STR)[0]:
-    resize_mode = QtWidgets.QHeaderView
-else:
-    resize_mode = QtWidgets.QHeaderView.ResizeMode
-    
-print(QtCore.QVersionNumber(5) > QtCore.QVersionNumber.fromString(QtCore.QT_VERSION_STR)[0])
 class EpsgDialog(QtWidgets.QDialog, EPSG_DIALOG):
     selected_coord = None
 
     def __init__(self, parent = None):
         QtWidgets.QDialog.__init__(self, parent)
+        self.setAttribute(QtCore.Qt.WidgetAttribute.WA_DeleteOnClose, True)
         self.setupUi(self)
-        self._want_to_close = False
         
         self.table: QtWidgets.QTableWidget = self.tableWidget
-        header = self.table.horizontalHeader()       
-        header.setSectionResizeMode(0, resize_mode.Stretch)
-        header.setSectionResizeMode(1, resize_mode.Stretch)
+        header = self.table.horizontalHeader()
+        if header is not None:
+            header.setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeMode.Stretch)
+            header.setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeMode.Stretch)
         
         # Layout auf das vorhandene setzen
         layout = self.verticalLayout_2
         self.setLayout(layout)
 
-        self.buttonBox.accepted.connect(self.confirm_selected_coord)
         self.table.cellDoubleClicked.connect(self.confirm_selected_coord)
+        self.buttonBox.accepted.connect(self.confirm_selected_coord)
         
-    def set_table_data(self, supported_auth_ids: list[str], layer_name: str) -> None:
+    def set_table_data(self, supported_auth_ids: frozenset[str], layer_name: str) -> None:
         # Gespeichertes Koordinatensystem zurücksetzen
         self.selected_coord = None
         
@@ -62,8 +57,15 @@ class EpsgDialog(QtWidgets.QDialog, EPSG_DIALOG):
             self.table.setItem(row_pos, 1, QtWidgets.QTableWidgetItem(auth_id))
     
     def confirm_selected_coord(self) -> None:
-        selected_items = self.table.selectedItems()
-        if len(selected_items) > 0:
-            auth_id = selected_items[1].text()            
-            self.selected_coord = auth_id
-            self.close()
+        current_row = self.table.currentRow()
+        auth_id_item = self.table.item(current_row, 1) if current_row >= 0 else None
+        if auth_id_item is None:
+            QtWidgets.QMessageBox.warning(
+                self,
+                "Keine Auswahl",
+                "Bitte wählen Sie ein Koordinatensystem aus.",
+            )
+            return
+        
+        self.selected_coord = auth_id_item.text()
+        self.accept()
