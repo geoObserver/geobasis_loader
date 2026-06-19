@@ -173,17 +173,10 @@ class NetworkHandler(QObject):
             pass
 
 class CatalogManager:
-    overview: Optional[list[dict[str, str]]]
-    catalogs: dict[str, catalog_types.Catalog]
     catalog_path = config.PLUGIN_DIR / "catalogs"
 
-    catalog_network_handlers: dict[str, NetworkHandler]
-    overview_network_handler: Optional[NetworkHandler]
-
-    _pending_callbacks: dict[str, list[Callable]]
-
     def __init__(self) -> None:
-        self.overview: Optional[list[dict[str, str]]] = None
+        self.overview: Optional[catalog_types.CatalogIndex] = None
         self.catalogs: dict[str, catalog_types.Catalog] = {}
         self.catalog_network_handlers: dict[str, NetworkHandler] = {}
         self.overview_network_handler: Optional[NetworkHandler] = None
@@ -233,7 +226,7 @@ class CatalogManager:
             logger.critical("Die Katalog-Übersicht enthält ungültiges JSON. Bitte prüfen Sie die Internetverbindung", extra={"show_banner": True})
             return
         
-        self.overview = loaded_overview if isinstance(loaded_overview, list) else None
+        self.overview = catalog_types.CatalogIndex.from_dict(loaded_overview) if isinstance(loaded_overview, list) else None
         
         if not self.overview:
             logger.critical(f"Katalogübersicht fehlerhaft, Bitte starten Sie QGIS neu oder kontaktieren Sie den Autor", extra={"show_banner": True})
@@ -247,7 +240,7 @@ class CatalogManager:
         except OSError:
             localLastModified = 0.0
         if localLastModified < last_modified:
-            self.write_json(self.overview, file_path)
+            self.write_json(self.overview.to_dict(), file_path)
         
         if fetch_catalogs:
             for catalog in self.overview:
@@ -276,7 +269,7 @@ class CatalogManager:
                 self._pending_callbacks[config.CATALOG_OVERVIEW_NAME] = []
             self._pending_callbacks[config.CATALOG_OVERVIEW_NAME].append(callback)
     
-    def get_catalog(self, catalog_title: str, catalog_name: Optional[str] = None, callback: Optional[Callable] = None) -> Union[None, catalog_types.Catalog, list]:        
+    def get_catalog(self, catalog_title: str, catalog_name: Optional[str] = None, callback: Optional[Callable] = None) -> Union[None, catalog_types.Catalog, catalog_types.CatalogIndex]:        
         if catalog_title == config.CATALOG_OVERVIEW_NAME:
             if self.overview is not None:
                 if callback:
@@ -330,7 +323,7 @@ class CatalogManager:
     
         return None
     
-    def get_current_catalog(self, callback: Optional[Callable] = None) -> Union[None, catalog_types.Catalog, list]:
+    def get_current_catalog(self, callback: Optional[Callable] = None) -> Union[None, catalog_types.Catalog, catalog_types.CatalogIndex]:
         qgs_settings = QgsSettings()
         current_catalog = qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
         if current_catalog is None or "name" not in current_catalog:
@@ -405,7 +398,7 @@ class CatalogManager:
                 logger.warning(error, extra={"show_banner": True})
                 return
             
-            self.overview = parsed_services
+            self.overview = catalog_types.CatalogIndex.from_dict(parsed_services)
             for catalog in self.overview:
                 # ------- Network Handler für die einzelnen Kataloge erstellen -------------
                 handler = self.add_network_handler(catalog["titel"])
