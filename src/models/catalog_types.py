@@ -284,8 +284,12 @@ class Catalog:
 
 @dataclass
 class CatalogIndex:
+    """A data class to represent a catalog index with various attributes. A catalog index is a structured collection of multiple catalogs."""
     
     catalogs: list[dict[str, str]] = field(default_factory=list)
+    
+    def __iter__(self):
+        yield from self.catalogs
     
     @classmethod
     def from_dict(cls, catalogs: list) -> "CatalogIndex":
