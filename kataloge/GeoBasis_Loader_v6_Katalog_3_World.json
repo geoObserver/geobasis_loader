@@ -4,6 +4,7 @@
     "themen": {
       "Bing_VirtualEarth": {
         "name": "Basemap World (außer Deutschland) farbig (WFS)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857"],
         "uri": "styleUrl=https://sgx.geodatenzentrum.de/gdz_basemapworld_vektor/styles/bm_web_wld_col.json&type=xyz&url=https://sgx.geodatenzentrum.de/gdz_basemapworld_vektor/tiles/v1/bm_web_wld_3857/%7Bz%7D/%7Bx%7D/%7By%7D.pbf&zmax=14&zmin=0&http-header:referer=",
         "type": "ogc_vectorTiles"
@@ -15,12 +16,14 @@
     "themen": {
       "NE TimeZones 10m WMS": {
         "name": "NE: Zeitzonen (TimeZones) 10m (WMS)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857", "EPSG:4326", "EPSG:900913", "EPSG:3044", "EPSG:3045", "EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:32601", "EPSG:32602", "EPSG:32603", "EPSG:32604", "EPSG:32605", "EPSG:32606", "EPSG:32607", "EPSG:32608", "EPSG:32609", "EPSG:32610", "EPSG:32611", "EPSG:32612", "EPSG:32613", "EPSG:32614", "EPSG:32615", "EPSG:32616", "EPSG:32617", "EPSG:32618", "EPSG:32619", "EPSG:32620", "EPSG:32621", "EPSG:32622", "EPSG:32623", "EPSG:32624", "EPSG:32625", "EPSG:32626", "EPSG:32627", "EPSG:32628", "EPSG:32629", "EPSG:32630", "EPSG:32631", "EPSG:32632", "EPSG:32633", "EPSG:32634", "EPSG:32635", "EPSG:32636", "EPSG:32637", "EPSG:32638", "EPSG:32639", "EPSG:32640", "EPSG:32641", "EPSG:32642", "EPSG:32643", "EPSG:32644", "EPSG:32645", "EPSG:32646", "EPSG:32647", "EPSG:32648", "EPSG:32649", "EPSG:32650", "EPSG:32651", "EPSG:32652", "EPSG:32653", "EPSG:32654", "EPSG:32655", "EPSG:32656", "EPSG:32657", "EPSG:32658", "EPSG:32659", "EPSG:32660", "EPSG:32661", "EPSG:32701", "EPSG:32702", "EPSG:32703", "EPSG:32704", "EPSG:32705", "EPSG:32706", "EPSG:32707", "EPSG:32708", "EPSG:32709", "EPSG:32710", "EPSG:32711", "EPSG:32712", "EPSG:32713", "EPSG:32714", "EPSG:32715", "EPSG:32716", "EPSG:32717", "EPSG:32718", "EPSG:32719", "EPSG:32720", "EPSG:32721", "EPSG:32722", "EPSG:32723", "EPSG:32724", "EPSG:32725", "EPSG:32726", "EPSG:32727", "EPSG:32728", "EPSG:32729", "EPSG:32730", "EPSG:32731", "EPSG:32732", "EPSG:32733", "EPSG:32734", "EPSG:32735", "EPSG:32736", "EPSG:32737", "EPSG:32738", "EPSG:32739", "EPSG:32740", "EPSG:32741", "EPSG:32742", "EPSG:32743", "EPSG:32744", "EPSG:32745", "EPSG:32746", "EPSG:32747", "EPSG:32748", "EPSG:32749", "EPSG:32750", "EPSG:32751", "EPSG:32752", "EPSG:32753", "EPSG:32754", "EPSG:32755", "EPSG:32756", "EPSG:32757", "EPSG:32758", "EPSG:32759", "EPSG:32760", "EPSG:32761", "OGC:CRS84"],
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=ne:ne_10m_time_zones&styles&tilePixelRatio=0&url=https://geoservice.dlr.de/eoc/basemap/wms",
         "type": "ogc_wms"
       },
       "NE TimeZones 10m WFS": {
         "name": "NE: Zeitzonen (TimeZones) 10m (WFS)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:4326"],
         "uri": "IgnoreAxisOrientation='1' InvertAxisOrientation='1' pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='ne:ne_10m_time_zones' url='https://geoservice.dlr.de/eoc/basemap/wfs' version='auto'",
         "type": "ogc_wfs",
@@ -31,6 +34,7 @@
       },
       "NE Graticules": {
         "name": "NE: Gradnetz/Gitterlinien (Graticules)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857", "EPSG:4326", "EPSG:900913", "EPSG:3044", "EPSG:3045", "EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:32601", "EPSG:32602", "EPSG:32603", "EPSG:32604", "EPSG:32605", "EPSG:32606", "EPSG:32607", "EPSG:32608", "EPSG:32609", "EPSG:32610", "EPSG:32611", "EPSG:32612", "EPSG:32613", "EPSG:32614", "EPSG:32615", "EPSG:32616", "EPSG:32617", "EPSG:32618", "EPSG:32619", "EPSG:32620", "EPSG:32621", "EPSG:32622", "EPSG:32623", "EPSG:32624", "EPSG:32625", "EPSG:32626", "EPSG:32627", "EPSG:32628", "EPSG:32629", "EPSG:32630", "EPSG:32631", "EPSG:32632", "EPSG:32633", "EPSG:32634", "EPSG:32635", "EPSG:32636", "EPSG:32637", "EPSG:32638", "EPSG:32639", "EPSG:32640", "EPSG:32641", "EPSG:32642", "EPSG:32643", "EPSG:32644", "EPSG:32645", "EPSG:32646", "EPSG:32647", "EPSG:32648", "EPSG:32649", "EPSG:32650", "EPSG:32651", "EPSG:32652", "EPSG:32653", "EPSG:32654", "EPSG:32655", "EPSG:32656", "EPSG:32657", "EPSG:32658", "EPSG:32659", "EPSG:32660", "EPSG:32661", "EPSG:32701", "EPSG:32702", "EPSG:32703", "EPSG:32704", "EPSG:32705", "EPSG:32706", "EPSG:32707", "EPSG:32708", "EPSG:32709", "EPSG:32710", "EPSG:32711", "EPSG:32712", "EPSG:32713", "EPSG:32714", "EPSG:32715", "EPSG:32716", "EPSG:32717", "EPSG:32718", "EPSG:32719", "EPSG:32720", "EPSG:32721", "EPSG:32722", "EPSG:32723", "EPSG:32724", "EPSG:32725", "EPSG:32726", "EPSG:32727", "EPSG:32728", "EPSG:32729", "EPSG:32730", "EPSG:32731", "EPSG:32732", "EPSG:32733", "EPSG:32734", "EPSG:32735", "EPSG:32736", "EPSG:32737", "EPSG:32738", "EPSG:32739", "EPSG:32740", "EPSG:32741", "EPSG:32742", "EPSG:32743", "EPSG:32744", "EPSG:32745", "EPSG:32746", "EPSG:32747", "EPSG:32748", "EPSG:32749", "EPSG:32750", "EPSG:32751", "EPSG:32752", "EPSG:32753", "EPSG:32754", "EPSG:32755", "EPSG:32756", "EPSG:32757", "EPSG:32758", "EPSG:32759", "EPSG:32760", "EPSG:32761", "OGC:CRS84"],
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=ne:ne_graticules&styles=default-style-ne:ne_graticules&tilePixelRatio=0&url=https://geoservice.dlr.de/eoc/basemap/wms",
         "type": "ogc_wms"
@@ -40,12 +44,14 @@
         "layers": {
           "NE_Basemap": {
             "name": "NE: Basemap (WMS)",
+            "gbl-view": "true",
             "type": "ogc_wms",
             "valid_epsg": ["EPSG:3857", "EPSG:4326", "EPSG:900913", "EPSG:3044", "EPSG:3045", "EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:32601", "EPSG:32602", "EPSG:32603", "EPSG:32604", "EPSG:32605", "EPSG:32606", "EPSG:32607", "EPSG:32608", "EPSG:32609", "EPSG:32610", "EPSG:32611", "EPSG:32612", "EPSG:32613", "EPSG:32614", "EPSG:32615", "EPSG:32616", "EPSG:32617", "EPSG:32618", "EPSG:32619", "EPSG:32620", "EPSG:32621", "EPSG:32622", "EPSG:32623", "EPSG:32624", "EPSG:32625", "EPSG:32626", "EPSG:32627", "EPSG:32628", "EPSG:32629", "EPSG:32630", "EPSG:32631", "EPSG:32632", "EPSG:32633", "EPSG:32634", "EPSG:32635", "EPSG:32636", "EPSG:32637", "EPSG:32638", "EPSG:32639", "EPSG:32640", "EPSG:32641", "EPSG:32642", "EPSG:32643", "EPSG:32644", "EPSG:32645", "EPSG:32646", "EPSG:32647", "EPSG:32648", "EPSG:32649", "EPSG:32650", "EPSG:32651", "EPSG:32652", "EPSG:32653", "EPSG:32654", "EPSG:32655", "EPSG:32656", "EPSG:32657", "EPSG:32658", "EPSG:32659", "EPSG:32660", "EPSG:32661", "EPSG:32701", "EPSG:32702", "EPSG:32703", "EPSG:32704", "EPSG:32705", "EPSG:32706", "EPSG:32707", "EPSG:32708", "EPSG:32709", "EPSG:32710", "EPSG:32711", "EPSG:32712", "EPSG:32713", "EPSG:32714", "EPSG:32715", "EPSG:32716", "EPSG:32717", "EPSG:32718", "EPSG:32719", "EPSG:32720", "EPSG:32721", "EPSG:32722", "EPSG:32723", "EPSG:32724", "EPSG:32725", "EPSG:32726", "EPSG:32727", "EPSG:32728", "EPSG:32729", "EPSG:32730", "EPSG:32731", "EPSG:32732", "EPSG:32733", "EPSG:32734", "EPSG:32735", "EPSG:32736", "EPSG:32737", "EPSG:32738", "EPSG:32739", "EPSG:32740", "EPSG:32741", "EPSG:32742", "EPSG:32743", "EPSG:32744", "EPSG:32745", "EPSG:32746", "EPSG:32747", "EPSG:32748", "EPSG:32749", "EPSG:32750", "EPSG:32751", "EPSG:32752", "EPSG:32753", "EPSG:32754", "EPSG:32755", "EPSG:32756", "EPSG:32757", "EPSG:32758", "EPSG:32759", "EPSG:32760", "EPSG:32761", "OGC:CRS84"],
              "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=basemap&styles=default-style-basemap&tilePixelRatio=0&url=https://geoservice.dlr.de/eoc/basemap/wms"
           },
           "NE_Basemap_Overlay": {
             "name": "NE: Basemap Overlay (WMS)",
+            "gbl-view": "true",
             "type": "ogc_wms",
             "valid_epsg": ["EPSG:3857", "EPSG:4326", "EPSG:900913", "EPSG:3044", "EPSG:3045", "EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:32601", "EPSG:32602", "EPSG:32603", "EPSG:32604", "EPSG:32605", "EPSG:32606", "EPSG:32607", "EPSG:32608", "EPSG:32609", "EPSG:32610", "EPSG:32611", "EPSG:32612", "EPSG:32613", "EPSG:32614", "EPSG:32615", "EPSG:32616", "EPSG:32617", "EPSG:32618", "EPSG:32619", "EPSG:32620", "EPSG:32621", "EPSG:32622", "EPSG:32623", "EPSG:32624", "EPSG:32625", "EPSG:32626", "EPSG:32627", "EPSG:32628", "EPSG:32629", "EPSG:32630", "EPSG:32631", "EPSG:32632", "EPSG:32633", "EPSG:32634", "EPSG:32635", "EPSG:32636", "EPSG:32637", "EPSG:32638", "EPSG:32639", "EPSG:32640", "EPSG:32641", "EPSG:32642", "EPSG:32643", "EPSG:32644", "EPSG:32645", "EPSG:32646", "EPSG:32647", "EPSG:32648", "EPSG:32649", "EPSG:32650", "EPSG:32651", "EPSG:32652", "EPSG:32653", "EPSG:32654", "EPSG:32655", "EPSG:32656", "EPSG:32657", "EPSG:32658", "EPSG:32659", "EPSG:32660", "EPSG:32661", "EPSG:32701", "EPSG:32702", "EPSG:32703", "EPSG:32704", "EPSG:32705", "EPSG:32706", "EPSG:32707", "EPSG:32708", "EPSG:32709", "EPSG:32710", "EPSG:32711", "EPSG:32712", "EPSG:32713", "EPSG:32714", "EPSG:32715", "EPSG:32716", "EPSG:32717", "EPSG:32718", "EPSG:32719", "EPSG:32720", "EPSG:32721", "EPSG:32722", "EPSG:32723", "EPSG:32724", "EPSG:32725", "EPSG:32726", "EPSG:32727", "EPSG:32728", "EPSG:32729", "EPSG:32730", "EPSG:32731", "EPSG:32732", "EPSG:32733", "EPSG:32734", "EPSG:32735", "EPSG:32736", "EPSG:32737", "EPSG:32738", "EPSG:32739", "EPSG:32740", "EPSG:32741", "EPSG:32742", "EPSG:32743", "EPSG:32744", "EPSG:32745", "EPSG:32746", "EPSG:32747", "EPSG:32748", "EPSG:32749", "EPSG:32750", "EPSG:32751", "EPSG:32752", "EPSG:32753", "EPSG:32754", "EPSG:32755", "EPSG:32756", "EPSG:32757", "EPSG:32758", "EPSG:32759", "EPSG:32760", "EPSG:32761", "OGC:CRS84"],
              "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=baseoverlay&styles=default-style-baseoverlay&tilePixelRatio=0&url=https://geoservice.dlr.de/eoc/basemap/wms"
@@ -57,12 +63,14 @@
         "layers": {
           "NE_Basemap_light": {
             "name": "NE: Basemap Light (WMS)",
+            "gbl-view": "true",
             "type": "ogc_wms",
             "valid_epsg": ["EPSG:3857", "EPSG:4326", "EPSG:900913", "EPSG:3044", "EPSG:3045", "EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:32601", "EPSG:32602", "EPSG:32603", "EPSG:32604", "EPSG:32605", "EPSG:32606", "EPSG:32607", "EPSG:32608", "EPSG:32609", "EPSG:32610", "EPSG:32611", "EPSG:32612", "EPSG:32613", "EPSG:32614", "EPSG:32615", "EPSG:32616", "EPSG:32617", "EPSG:32618", "EPSG:32619", "EPSG:32620", "EPSG:32621", "EPSG:32622", "EPSG:32623", "EPSG:32624", "EPSG:32625", "EPSG:32626", "EPSG:32627", "EPSG:32628", "EPSG:32629", "EPSG:32630", "EPSG:32631", "EPSG:32632", "EPSG:32633", "EPSG:32634", "EPSG:32635", "EPSG:32636", "EPSG:32637", "EPSG:32638", "EPSG:32639", "EPSG:32640", "EPSG:32641", "EPSG:32642", "EPSG:32643", "EPSG:32644", "EPSG:32645", "EPSG:32646", "EPSG:32647", "EPSG:32648", "EPSG:32649", "EPSG:32650", "EPSG:32651", "EPSG:32652", "EPSG:32653", "EPSG:32654", "EPSG:32655", "EPSG:32656", "EPSG:32657", "EPSG:32658", "EPSG:32659", "EPSG:32660", "EPSG:32661", "EPSG:32701", "EPSG:32702", "EPSG:32703", "EPSG:32704", "EPSG:32705", "EPSG:32706", "EPSG:32707", "EPSG:32708", "EPSG:32709", "EPSG:32710", "EPSG:32711", "EPSG:32712", "EPSG:32713", "EPSG:32714", "EPSG:32715", "EPSG:32716", "EPSG:32717", "EPSG:32718", "EPSG:32719", "EPSG:32720", "EPSG:32721", "EPSG:32722", "EPSG:32723", "EPSG:32724", "EPSG:32725", "EPSG:32726", "EPSG:32727", "EPSG:32728", "EPSG:32729", "EPSG:32730", "EPSG:32731", "EPSG:32732", "EPSG:32733", "EPSG:32734", "EPSG:32735", "EPSG:32736", "EPSG:32737", "EPSG:32738", "EPSG:32739", "EPSG:32740", "EPSG:32741", "EPSG:32742", "EPSG:32743", "EPSG:32744", "EPSG:32745", "EPSG:32746", "EPSG:32747", "EPSG:32748", "EPSG:32749", "EPSG:32750", "EPSG:32751", "EPSG:32752", "EPSG:32753", "EPSG:32754", "EPSG:32755", "EPSG:32756", "EPSG:32757", "EPSG:32758", "EPSG:32759", "EPSG:32760", "EPSG:32761", "OGC:CRS84"],
              "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=litemap&styles=default-style-litemap&tilePixelRatio=0&url=https://geoservice.dlr.de/eoc/basemap/wms"
           },
           "NE_Basemap_light_Overlay": {
             "name": "NE: Basemap Light Overlay (WMS)",
+            "gbl-view": "true",
             "type": "ogc_wms",
             "valid_epsg": ["EPSG:3857", "EPSG:4326", "EPSG:900913", "EPSG:3044", "EPSG:3045", "EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:31466", "EPSG:31467", "EPSG:31468", "EPSG:31469", "EPSG:32601", "EPSG:32602", "EPSG:32603", "EPSG:32604", "EPSG:32605", "EPSG:32606", "EPSG:32607", "EPSG:32608", "EPSG:32609", "EPSG:32610", "EPSG:32611", "EPSG:32612", "EPSG:32613", "EPSG:32614", "EPSG:32615", "EPSG:32616", "EPSG:32617", "EPSG:32618", "EPSG:32619", "EPSG:32620", "EPSG:32621", "EPSG:32622", "EPSG:32623", "EPSG:32624", "EPSG:32625", "EPSG:32626", "EPSG:32627", "EPSG:32628", "EPSG:32629", "EPSG:32630", "EPSG:32631", "EPSG:32632", "EPSG:32633", "EPSG:32634", "EPSG:32635", "EPSG:32636", "EPSG:32637", "EPSG:32638", "EPSG:32639", "EPSG:32640", "EPSG:32641", "EPSG:32642", "EPSG:32643", "EPSG:32644", "EPSG:32645", "EPSG:32646", "EPSG:32647", "EPSG:32648", "EPSG:32649", "EPSG:32650", "EPSG:32651", "EPSG:32652", "EPSG:32653", "EPSG:32654", "EPSG:32655", "EPSG:32656", "EPSG:32657", "EPSG:32658", "EPSG:32659", "EPSG:32660", "EPSG:32661", "EPSG:32701", "EPSG:32702", "EPSG:32703", "EPSG:32704", "EPSG:32705", "EPSG:32706", "EPSG:32707", "EPSG:32708", "EPSG:32709", "EPSG:32710", "EPSG:32711", "EPSG:32712", "EPSG:32713", "EPSG:32714", "EPSG:32715", "EPSG:32716", "EPSG:32717", "EPSG:32718", "EPSG:32719", "EPSG:32720", "EPSG:32721", "EPSG:32722", "EPSG:32723", "EPSG:32724", "EPSG:32725", "EPSG:32726", "EPSG:32727", "EPSG:32728", "EPSG:32729", "EPSG:32730", "EPSG:32731", "EPSG:32732", "EPSG:32733", "EPSG:32734", "EPSG:32735", "EPSG:32736", "EPSG:32737", "EPSG:32738", "EPSG:32739", "EPSG:32740", "EPSG:32741", "EPSG:32742", "EPSG:32743", "EPSG:32744", "EPSG:32745", "EPSG:32746", "EPSG:32747", "EPSG:32748", "EPSG:32749", "EPSG:32750", "EPSG:32751", "EPSG:32752", "EPSG:32753", "EPSG:32754", "EPSG:32755", "EPSG:32756", "EPSG:32757", "EPSG:32758", "EPSG:32759", "EPSG:32760", "EPSG:32761", "OGC:CRS84"],
              "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=liteoverlay&styles=default-style-liteoverlay&tilePixelRatio=0&url=https://geoservice.dlr.de/eoc/basemap/wms"
@@ -76,18 +84,21 @@
     "themen": {
       "osm1": {
         "name": "OSM: OpenStreetMap (XYZ)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&type=xyz&url=https://tile.openstreetmap.org/{z}/{x}/{y}.png&zmax=19&zmin=0",
         "type": "ogc_wmts"
       },
       "osm_de": {
         "name": "OSM: OpenStreetMap DE (XYZ)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&type=xyz&url=https://tile.openstreetmap.de/{z}/{x}/{y}.png&zmax=19&zmin=0",
         "type": "ogc_wmts"
       },
       "osm_ch": {
         "name": "OSM: OpenStreetMap CH (XYZ)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&type=xyz&url=https://tile.osm.ch/switzerland/{z}/{x}/{y}.png&zmax=19&zmin=0",
         "type": "ogc_wmts",
@@ -95,6 +106,7 @@
       },
       "osm_hot": {
         "name": "OSM: OpenStreetMap HOT (XYZ)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&type=xyz&url=https://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png&zmax=19&zmin=0",
         "type": "ogc_wmts",
@@ -102,18 +114,21 @@
       },
       "osm_farbig_vt-colorful": {
         "name": "OSM: OpenStreetMap Colorful (WFS)",
+        "gbl-view": "true",
         "type": "ogc_vectorTiles",
         "valid_epsg": ["EPSG:3857"],
         "uri": "styleUrl=https://geoobserver.de/download/versatiles_styles/colorful.json&type=xyz&url=https://tiles.versatiles.org/tiles/osm/%7Bz%7D/%7Bx%7D/%7By%7D&zmax=14&zmin=0&http-header:referer="
       },
       "osm_farbig_vt-Graybeard": {
         "name": "OSM: OpenStreetMap Graybeard (WFS)",
+        "gbl-view": "true",
         "type": "ogc_vectorTiles",
         "valid_epsg": ["EPSG:3857"],
         "uri": "styleUrl=https://tiles.versatiles.org/assets/styles/graybeard.json&type=xyz&url=https://tiles.versatiles.org/tiles/osm/%7Bz%7D/%7Bx%7D/%7By%7D&zmax=14&zmin=0&http-header:referer="
       },
       "osm_farbig_vt-Neutrino": {
         "name": "OSM: OpenStreetMap Neutrino (WFS)",
+        "gbl-view": "true",
         "type": "ogc_vectorTiles",
         "valid_epsg": ["EPSG:3857"],
         "uri": "styleUrl=https://tiles.versatiles.org/assets/styles/neutrino.json&type=xyz&url=https://tiles.versatiles.org/tiles/osm/%7Bz%7D/%7Bx%7D/%7By%7D&zmax=14&zmin=0&http-header:referer=",
@@ -126,54 +141,63 @@
     "themen": {
       "osm_sport1": {
         "name": "OSM: CyclOSM (XYZ)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format&type=xyz&url=https://a.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png&zmax=18&zmin=0",
         "type": "ogc_wmts"
       },
       "osm_sport2": {
         "name": "OSM: Waymarked Trails Cycling (XYZ)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format&type=xyz&url=https://tile.waymarkedtrails.org/cycling/{z}/{x}/{y}.png&zmax=18&zmin=0",
         "type": "ogc_wmts"
       },
       "osm_sport3": {
         "name": "OSM: Waymarked Trails Hiking (XYZ)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format&type=xyz&url=https://tile.waymarkedtrails.org/hiking/{z}/{x}/{y}.png&zmax=18&zmin=0",
         "type": "ogc_wmts"
       },
       "osm_sport4": {
         "name": "OSM: Waymarked MTB (XYZ)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format&type=xyz&url=https://tile.waymarkedtrails.org/mtb/{z}/{x}/{y}.png&zmax=18&zmin=0",
         "type": "ogc_wmts"
       },
       "osm_sport5": {
         "name": "OSM: Waymarked Riding (XYZ)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format&type=xyz&url=https://tile.waymarkedtrails.org/riding/{z}/{x}/{y}.png&zmax=18&zmin=0",
         "type": "ogc_wmts"
       },
       "osm_sport6": {
         "name": "OSM: Waymarked Skating (XYZ)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format&type=xyz&url=https://tile.waymarkedtrails.org/skating/{z}/{x}/{y}.png&zmax=18&zmin=0",
         "type": "ogc_wmts"
       },
       "osm_sport7": {
         "name": "OSM: Waymarked Slopes (XYZ)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format&type=xyz&url=https://tile.waymarkedtrails.org/slopes/{z}/{x}/{y}.png&zmax=18&zmin=0",
         "type": "ogc_wmts"
       },
       "osm_sport8": {
         "name": "OSM: MTB Map (XYZ)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format&type=xyz&url=http://tile.mtbmap.cz/mtbmap_tiles/{z}/{x}/{y}.png&zmax=18&zmin=0",
         "type": "ogc_wmts"
       },
       "osm_sport9": {
         "name": "OSM: OpenSnowMap Pisten (XYZ)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format&type=xyz&url=https://tiles.opensnowmap.org/pistes/{z}/{x}/{y}.png&zmax=18&zmin=0",
         "type": "ogc_wmts"
@@ -185,30 +209,35 @@
     "themen": {
       "otm": {
         "name": "OSM: OpenTopoMap (XYZ)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format&type=xyz&url=https://a.tile.opentopomap.org/%7Bz%7D/%7Bx%7D/%7By%7D.png&zmax=18&zmin=0",
         "type": "ogc_wmts"
       },
       "osm_fm": {
         "name": "OSM: OpenStreetMap Fire Map (XYZ)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857"],
         "uri": "http-header:referer=&type=xyz&url=http://openfiremap.org/hytiles/%7Bz%7D/%7Bx%7D/%7By%7D.png",
         "type": "ogc_wmts"
       },
       "oepnv": {
         "name": "OSM: MeMoMaps ÖPNV-Karte (XYZ)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format&type=xyz&url=https://tileserver.memomaps.de/tilegen/%7Bz%7D/%7Bx%7D/%7By%7D.png&zmax=18&zmin=0",
         "type": "ogc_wmts"
       },
       "openrailway": {
         "name": "OSM: OpenRailwayMap (XYZ)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format&type=xyz&url=https://a.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png&zmax=18&zmin=0",
         "type": "ogc_wmts"
       },
       "opensea": {
         "name": "OSM: OpenSeaMap (XYZ)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format&type=xyz&url=https://t1.openseamap.org/seamark/{z}/{x}/{y}.png&zmax=18&zmin=0",
         "type": "ogc_wmts",
@@ -216,6 +245,7 @@
       },
       "openinfra-wfs": {
         "name": "OSM: OpenInfraMap (WFS)",
+        "gbl-view": "true",
         "type": "ogc_vectorTiles",
         "valid_epsg": ["EPSG:3857"],
         "uri": "type=xyz&url=https://openinframap.org/tiles/%7Bz%7D/%7Bx%7D/%7By%7D.pbf&zmax=14&zmin=0",
@@ -228,18 +258,21 @@
     "themen": {
       "CartoDB_DarkMatter": {
         "name": "OSM: CartoDB DarkMatter (XYZ)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format&type=xyz&url=https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
         "type": "ogc_wmts"
       },
       "CartoDB_DarkMatter_NoLabels": {
         "name": "OSM: CartoDB DarkMatter NoLabels (XYZ)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format&type=xyz&url=https://a.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png",
         "type": "ogc_wmts"
       },
       "CartoDB_DarkMatter_OnlyLabels": {
         "name": "OSM: CartoDB DarkMatter OnlyLabels (XYZ)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format&type=xyz&url=https://a.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}.png",
         "type": "ogc_wmts",
@@ -247,18 +280,21 @@
       },
       "CartoDB_Positron": {
         "name": "OSM: CartoDB Positron (XYZ)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format&type=xyz&url=https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
         "type": "ogc_wmts"
       },
       "CartoDB_Positron_NoLabels": {
         "name": "OSM: CartoDB Positron NoLabels (XYZ)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format&type=xyz&url=https://a.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png",
         "type": "ogc_wmts"
       },
       "CartoDB_Positron_OnlyLabels": {
         "name": "OSM: CartoDB Positron OnlyLabels (XYZ)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format&type=xyz&url=https://a.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png",
         "type": "ogc_wmts",
@@ -266,24 +302,28 @@
       },
       "CartoDB_Voyager": {
         "name": "OSM: CartoDB Voyager (XYZ)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format&type=xyz&url=https://a.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png",
         "type": "ogc_wmts"
       },
       "CartoDB_Voyager_LabelsUnder": {
         "name": "OSM: CartoDB Voyager LabelsUnder (XYZ)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format&type=xyz&url=https://a.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}.png",
         "type": "ogc_wmts"
       },
       "CartoDB_Voyager_NoLabels": {
         "name": "OSM: CartoDB Voyager NoLabels (XYZ)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format&type=xyz&url=https://a.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}.png",
         "type": "ogc_wmts"
       },
       "CartoDB_Voyager_OnlyLabels": {
         "name": "OSM: CartoDB Voyager OnlyLabels (XYZ)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format&type=xyz&url=https://a.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}.png",
         "type": "ogc_wmts",
@@ -296,36 +336,42 @@
     "themen": {
       "google_maps": {
         "name": "Google: Maps (XYZ)",
+        "gbl-view": "false",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&type=xyz&zmin=0&zmax=20&url=https://mt1.google.com/vt/lyrs%3Dm%26x%3D{x}%26y%3D{y}%26z%3D{z}",
         "type": "ogc_wmts"
       },
       "google_satellite": {
         "name": "Google: Satellite (XYZ)",
+        "gbl-view": "false",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&type=xyz&zmin=0&zmax=20&url=https://mt1.google.com/vt/lyrs%3Ds%26x%3D{x}%26y%3D{y}%26z%3D{z}",
         "type": "ogc_wmts"
       },
       "google_terrain": {
         "name": "Google: Terrain (XYZ)",
+        "gbl-view": "false",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&type=xyz&zmin=0&zmax=20&url=https://mt1.google.com/vt/lyrs%3Dp%26x%3D{x}%26y%3D{y}%26z%3D{z}",
         "type": "ogc_wmts"
       },
       "google_hybrid": {
         "name": "Google: Hybrid (XYZ)",
+        "gbl-view": "false",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&type=xyz&zmin=0&zmax=20&url=https://mt1.google.com/vt/lyrs%3Dy%26x%3D{x}%26y%3D{y}%26z%3D{z}",
         "type": "ogc_wmts"
       },
       "google_labels": {
         "name": "Google: Labels (XYZ)",
+        "gbl-view": "false",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&type=xyz&zmin=0&zmax=20&url=https://mt1.google.com/vt/lyrs%3Dh%26x%3D{x}%26y%3D{y}%26z%3D{z}",
         "type": "ogc_wmts"
       },
       "google_traffic": {
         "name": "Google: Traffic (XYZ)",
+        "gbl-view": "false",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&type=xyz&url=https://mt0.google.com/vt/lyrs%3Dh@221097413,traffic%7Cseconds_into_week:-1%26hl%3Den%26style%3D2%26x%3D%7Bx%7D%26y%3D%7By%7D%26z%3D%7Bz%7D&zmax=18&zmin=0",
         "type": "ogc_wmts"
@@ -337,6 +383,7 @@
     "themen": {
       "Bing_VirtualEarth": {
         "name": "Bing VirtualEarth (XYZ)",
+        "gbl-view": "false",
         "valid_epsg": ["EPSG:3857"],
         "uri": "http-header:referer=&type=xyz&url=http://ecn.t3.tiles.virtualearth.net/tiles/a%7Bq%7D.jpeg?g%3D1&zmax=18&zmin=0",
         "type": "ogc_wmts"
@@ -348,6 +395,7 @@
     "themen": {
       "usgs_topobasemap": {
         "name": "USGS Topo Base Map (WMS)",
+        "gbl-view": "true",
         "valid_epsg": ["EPSG:3857", "OGC:CRS84", "EPSG:4326", "EPSG:102100"],
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=0&styles=default&tilePixelRatio=0&url=https://basemap.nationalmap.gov/arcgis/services/USGSTopo/MapServer/WMSServer",
         "type": "ogc_wms"
@@ -360,29 +408,34 @@
       "Esri_Graylight": {
         "valid_epsg": ["EPSG:3857"],
         "name": "ESRI: Gray (light) (XYZ)",
+        "gbl-view": "false",
         "uri": "http-header:referer=Requires ArcGIS Onlinesubscription&referer=Requires ArcGIS Onlinesubscription&type=xyz&url=http://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D&zmax=16&zmin=0",
         "type": "ogc_wmts"
       },
       "Esri_Graydark": {
         "name": "ESRI: Gray (dark) (XYZ)",
+        "gbl-view": "false",
         "valid_epsg": ["EPSG:3857"],
         "uri": "http-header:referer=Requires ArcGIS Onlinesubscription&referer=Requires ArcGIS Onlinesubscription&type=xyz&url=http://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D&zmax=16&zmin=0",
         "type": "ogc_wmts"
       },
       "Esri_NationalGeographic": {
         "name": "ESRI: National Geographic (XYZ)",
+        "gbl-view": "false",
         "valid_epsg": ["EPSG:3857"],
         "uri": "http-header:referer=Requires ArcGIS Onlinesubscription&referer=Requires ArcGIS Onlinesubscription&type=xyz&url=http://services.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D&zmax=12&zmin=0",
         "type": "ogc_wmts"
       },
       "Esri_WorldTopoMap": {
         "name": "ESRI: WorldTopoMap (XYZ)",
+        "gbl-view": "false",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format&type=xyz&url=https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D&zmax=18&zmin=0&http-header:referer=",
         "type": "ogc_wmts"
       },
       "Esri_WorldStreetMap": {
         "name": "ESRI: WorldStreetMap (XYZ)",
+        "gbl-view": "false",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format&type=xyz&url=https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D&zmax=18&zmin=0&http-header:referer=",
         "type": "ogc_wmts",
@@ -390,12 +443,14 @@
       },
       "Esri_Transportation": {
         "name": "ESRI: Transportation (XYZ)",
+        "gbl-view": "false",
         "valid_epsg": ["EPSG:3857"],
         "uri": "http-header:referer=Requires ArcGIS Onlinesubscription&referer=Requires ArcGIS Onlinesubscription&type=xyz&url=https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D&zmax=20&zmin=0",
         "type": "ogc_wmts"
       },
       "Esri_BoundariesPlaces": {
         "name": "ESRI: Boundaries Places (XYZ)",
+        "gbl-view": "false",
         "valid_epsg": ["EPSG:3857"],
         "uri": "http-header:referer=Requires ArcGIS Onlinesubscription&referer=Requires ArcGIS Onlinesubscription&type=xyz&url=https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D&zmax=20&zmin=0",
         "type": "ogc_wmts",
@@ -403,30 +458,35 @@
       },
       "Esri_Satellite": {
         "name": "ESRI: Satellite (XYZ)",
+        "gbl-view": "false",
         "valid_epsg": ["EPSG:3857"],
         "uri": "http-header:referer=Requires ArcGIS Onlinesubscription&referer=Requires ArcGIS Onlinesubscription&type=xyz&url=https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D&zmax=17&zmin=0",
         "type": "ogc_wmts"
       },
       "Esri_WorldPhysical": {
         "name": "ESRI: WorldPhysical (XYZ)",
+        "gbl-view": "false",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format&type=xyz&url=https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D&zmax=18&zmin=0&http-header:referer=",
         "type": "ogc_wmts"
       },
       "Esri_WorldTerrain": {
         "name": "ESRI: WorldTerrain (XYZ)",
+        "gbl-view": "false",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format&type=xyz&url=https://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D&zmax=18&zmin=0&http-header:referer=",
         "type": "ogc_wmts"
       },
       "Esri_WorldShadedRelief": {
         "name": "ESRI: WorldShadedRelief (XYZ)",
+        "gbl-view": "false",
         "valid_epsg": ["EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format&type=xyz&url=https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D&zmax=18&zmin=0&http-header:referer=",
         "type": "ogc_wmts"
       },
       "Esri_Ocean": {
         "name": "ESRI: Ocean (XYZ)",
+        "gbl-view": "false",
         "valid_epsg": ["EPSG:3857"],
         "uri": "http-header:referer=Requires ArcGIS Onlinesubscription&referer=Requires ArcGIS Onlinesubscription&type=xyz&url=https://services.arcgisonline.com/ArcGIS/rest/services/Ocean/World_Ocean_Base/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D&zmax=10&zmin=0",
         "type": "ogc_wmts"
