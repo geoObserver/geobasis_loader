@@ -2623,7 +2623,7 @@
         "gbl-view": "true",
         "type": "ogc_wms",
         "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:31467", "EPSG:4258", "EPSG:4326", "EPSG:3044", "EPSG:3857", "OGC:CRS84"],
-        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=DOP10_2023_BHV&styles&tilePixelRatio=0&url=https://geodienste.bremen.de/wms_dop10_2023?VERSION%3D1.3.0"
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dop10_2025_BHV&styles&tilePixelRatio=0&url=https://geodienste.bremen.de/wms_dop_lb"
       },
       "dop20hb": {
         "name": "HB: Digitale Orthophotos - DOP20 (WMS)",
