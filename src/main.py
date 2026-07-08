@@ -8,7 +8,6 @@ from .core.search import SearchFilter
 from . import config
 from .utils import custom_logger
 from .ui import menus, icons
-from .models import catalog_types
 from .services import registry
 from .operations import bookmark_ops
 
@@ -30,7 +29,7 @@ class GeoBasis_Loader(QObject):
         registry.catalog_manager.get_overview(callback=self.initGui)
 
         # ------- Letzten Katalog laden --------------------------------------------
-        registry.catalog_manager.get_current_catalog(callback=self.set_services)
+        registry.catalog_manager.fetch_and_set_current_catalog()
         
         plugin_menu = self.iface.pluginMenu()
         if plugin_menu:
@@ -100,20 +99,6 @@ class GeoBasis_Loader(QObject):
                 plugin_menu.removeAction(self.main_menu.menuAction())
             self.main_menu = None
         custom_logger.remove_logging()
-        
-    def set_services(self, services: catalog_types.Catalog):
-        current_catalog = self._qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
-        if current_catalog is None or "titel" not in current_catalog:
-            logger.warning(f"Momentan ist kein valider Katalog ausgewählt, Bitten wählen Sie einen aus", extra={"show_banner": True})
-            return
-        
-        titel = current_catalog["titel"]
-        name = current_catalog["name"]
-        version_matches = re.findall(r'v\d+', name)
-        version = version_matches[0] if version_matches else "unbekannt"
-        logger.success(f'Lese {titel}, Version {version} ...', extra={"show_banner": True})
-        
-        self.initGui()
 
     def _show_main_menu(self) -> None:
         if not self.main_menu:

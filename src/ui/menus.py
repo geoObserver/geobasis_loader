@@ -37,10 +37,12 @@ class MainMenu(QMenu):
         events.connect_favorites_updated(self.build_favorites)
         events.connect_visibility_updated(self.create_menu)
         events.connect_enabled_updated(self.create_menu)
+        events.connect_current_catalog_updated(self.create_menu)
+        events.connect_overview_updated(self.create_menu)
     
     def create_menu(self):
         self.clear()
-        current_catalog: Optional[Union[catalog_types.Catalog, list]] = registry.catalog_manager.get_current_catalog()
+        current_catalog: Optional[catalog_types.Catalog] = registry.catalog_manager.get_current_catalog()
         if not isinstance(current_catalog, catalog_types.Catalog):
             logger.warning("No catalog provided and no current catalog found. Cannot build catalog menu.")
         else:
@@ -170,7 +172,7 @@ class MainMenu(QMenu):
         
         # ------- Einträge im Katalogmenü erstellen ------------------------
         for catalog in registry.catalog_manager.overview:
-            catalog_action = catalogs_menu.addAction(catalog["titel"], lambda c=catalog: self._change_current_catalog(c))
+            catalog_action = catalogs_menu.addAction(catalog["titel"], lambda c=catalog: registry.catalog_manager.set_current_catalog(c))
             if not catalog_action:
                 logger.warning(f"Eintrag für Katalog '{catalog['titel']}' nicht erstellbar")
                 continue
@@ -201,10 +203,6 @@ class MainMenu(QMenu):
     # FIXME: Maybe a dedicated settings module/class would be better than local changes
     def _set_automatic_crs(self, enabled: bool):
         self._qgs_settings.setValue(config.QgsSettingsKeys.AUTOMATIC_CRS, enabled)
-        
-    def _change_current_catalog(self, catalog: dict):
-        self._qgs_settings.setValue(config.QgsSettingsKeys.CURRENT_CATALOG, catalog)
-        registry.catalog_manager.get_catalog(catalog["titel"], callback=self._changed_current_catalog)
     
     def _changed_current_catalog(self, _: Optional[Union[catalog_types.Catalog, list]] = None):
         current_catalog = self._qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)

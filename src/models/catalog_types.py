@@ -281,3 +281,20 @@ class Catalog:
     
     def to_dict(self) -> dict:
         return {k: region.to_dict() for k, region in self.regions.items()}
+
+@dataclass
+class CatalogIndex:
+    """A data class to represent a catalog index with various attributes. A catalog index is a structured collection of multiple catalogs."""
+    
+    catalogs: list[dict[str, str]] = field(default_factory=list)
+    
+    def __iter__(self):
+        yield from self.catalogs
+    
+    @classmethod
+    def from_dict(cls, catalogs: list) -> "CatalogIndex":
+        data = catalogs or []
+        return cls(catalogs=data)
+    
+    def to_dict(self) -> list[dict[str, str]]:
+        return self.catalogs

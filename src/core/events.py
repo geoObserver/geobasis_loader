@@ -11,6 +11,9 @@ class Events(QObject):
     visibility_updated = pyqtSignal()
     enabled_updated = pyqtSignal()
     
+    current_catalog_updated = pyqtSignal()
+    overview_updated = pyqtSignal()
+    
     def __init__(self):
         super().__init__()
     
@@ -38,6 +41,18 @@ class Events(QObject):
         """
         self.enabled_updated.emit()
     
+    def emit_current_catalog_updated(self):
+        """
+        Emit a signal to notify listeners that the current catalog has been updated.
+        """
+        self.current_catalog_updated.emit()
+
+    def emit_overview_updated(self):
+        """
+        Emit a signal to notify listeners that the overview has been updated.
+        """
+        self.overview_updated.emit()
+
     def connect_presets_updated(self, slot):
         """
         Connect a slot to the presets_updated signal.
@@ -69,3 +84,19 @@ class Events(QObject):
         :param slot: The function to be called when the signal is emitted.
         """
         self.enabled_updated.connect(slot)
+    
+    def connect_current_catalog_updated(self, slot):
+        """
+        Connect a slot to the current_catalog_updated signal.
+
+        :param slot: The function to be called when the signal is emitted.
+        """
+        self.current_catalog_updated.connect(slot)
+        
+    def connect_overview_updated(self, slot):
+        """
+        Connect a slot to the overview_updated signal.
+
+        :param slot: The function to be called when the signal is emitted.
+        """
+        self.overview_updated.connect(slot)
