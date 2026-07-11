@@ -4,7 +4,7 @@ from qgis.PyQt.QtGui import QCursor
 from qgis.PyQt.QtWidgets import QAction, QToolBar
 from qgis.core import QgsSettings, QgsApplication
 from qgis.gui import QgisInterface
-from .core.search import SearchFilter
+from .ui.search_filter import SearchFilter
 from . import config
 from .utils import custom_logger
 from .ui import menus, icons
