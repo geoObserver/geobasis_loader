@@ -10,7 +10,6 @@ from qgis.core import QgsNetworkAccessManager, QgsSettings
 from .. import config
 from ..utils import custom_logger, helpers
 from ..models import catalog_types
-from ..core.search import SearchFilter
 from ..core import events
 
 logger = custom_logger.get_logger(__name__)
@@ -366,6 +365,9 @@ class CatalogManager:
         
         self.get_catalog(current_catalog["titel"], current_catalog["name"], callback=_set_catalog)
     
+    def get_all_catalogs(self) -> tuple[catalog_types.Catalog, ...]:
+        return tuple(self.catalogs.values())
+    
     def add_catalog(self, raw_catalog: str, catalog_name: str, last_modified: float) -> None:
         try:
             parsed_catalog = json.loads(raw_catalog)
@@ -390,7 +392,6 @@ class CatalogManager:
             parsed_catalog["name"] = catalog_name
             catalog = catalog_types.Catalog.from_dict(parsed_catalog)
             self.catalogs[catalog_name] = catalog
-            SearchFilter.build_search_index(self.catalogs)
         
         if catalog_name in self._pending_callbacks:
             for callback in self._pending_callbacks[catalog_name]:
@@ -424,7 +425,6 @@ class CatalogManager:
             parsed_services["name"] = catalog_name
             catalog = catalog_types.Catalog.from_dict(parsed_services)
             self.catalogs[catalog_name] = catalog
-            SearchFilter.build_search_index(self.catalogs)
         else:
             if not isinstance(parsed_services, list):
                 error += "Katalogübersicht nicht korrekt geparst"
