@@ -5465,6 +5465,7 @@
         "type": "ogc_wms",
         "komgis_layerid": "6c499237-82d8-4ef8-bf76-6b4341b3bdf1",
         "komgis_node": ["Externe Geodienste", "Land Thüringen", "ALKIS", "WMS: ALKIS Flurstücke"],
+        "komgis_priority": "75000",
         "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:4839", "EPSG:3857"],
         "keywords": ["ALKIS", "ALK", "AAA", "Flurstücke", "Flurstücksnummern", "Grundstücke", "Liegenschaften", "Parzellen", "Fluren", "Gemarkungen"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_flurstuecke&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/adv_alkis_wms_th"
@@ -5475,6 +5476,7 @@
         "type": "ogc_wms",
         "komgis_layerid": "77fe9440-e957-4985-ba9d-7b4cd3b5c5b2",
         "komgis_node": ["Externe Geodienste", "Land Thüringen", "ALKIS", "WMS: ALKIS Gebäude"],
+        "komgis_priority": "85000",
         "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:4839", "EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_gebaeude&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/adv_alkis_wms_th"
       },
@@ -5487,6 +5489,7 @@
             "type": "ogc_wms",
             "komgis_layerid": "79061cb3-f3f6-4c48-9691-a2d258730e38",
             "komgis_node": ["Externe Geodienste", "Land Thüringen", "ALKIS", "ALKIS Tatsächliche Nutzung", "WMS: Gewässer"],
+            "komgis_priority": "87200",
             "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:4839", "EPSG:3857"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_gewaesser&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/adv_alkis_wms_th",
             "opacity": 0.75
@@ -5497,6 +5500,7 @@
             "type": "ogc_wms",
             "komgis_layerid": "1f56efac-807d-46d0-a6f4-d40bf200fd1f",
             "komgis_node": ["Externe Geodienste", "Land Thüringen", "ALKIS", "ALKIS Tatsächliche Nutzung", "WMS: Siedlung"],
+            "komgis_priority": "87100",
             "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:4839", "EPSG:3857"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_siedlung&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/adv_alkis_wms_th",
             "opacity": 0.75
@@ -5507,6 +5511,7 @@
             "type": "ogc_wms",
             "komgis_layerid": "6f77e1c2-d372-4f66-8642-11ac4f5a8145",
             "komgis_node": ["Externe Geodienste", "Land Thüringen", "ALKIS", "ALKIS Tatsächliche Nutzung", "WMS: Vegetation"],
+            "komgis_priority": "87400",
             "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:4839", "EPSG:3857"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_vegetation&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/adv_alkis_wms_th",
             "opacity": 0.75
@@ -5517,6 +5522,7 @@
             "type": "ogc_wms",
             "komgis_layerid": "e68c4e76-650e-43c0-986a-a70780c3178d",
             "komgis_node": ["Externe Geodienste", "Land Thüringen", "ALKIS", "ALKIS Tatsächliche Nutzung", "WMS: Verkehr"],
+            "komgis_priority": "87300",
             "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:4839", "EPSG:3857"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=adv_alkis_verkehr&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/adv_alkis_wms_th",
             "opacity": 0.75
@@ -5535,6 +5541,7 @@
         "type": "ogc_wms",
         "komgis_layerid": "6f050dc4-1200-47b9-870d-726e1736fc91",
         "komgis_node": ["Externe Geodienste", "Land Thüringen", "Bodenrichtwerte (BRW)", "WMS: Bodenrichtwerte Aktuell PTO"],
+        "komgis_priority": "79100",
         "valid_epsg": ["EPSG:31467", "EPSG:31468", "EPSG:25832", "EPSG:25833", "EPSG:4326", "EPSG:4258", "EPSG:3038", "EPSG:3039", "EPSG:3040", "EPSG:3041", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3857"],
         "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/boris/vBORIS_simple?VERSION%3D1.3.0&layers=vBODENRICHTWERTZONE_aktuell&layers=vBODENRICHTWERTZONE_aktuell_PTO&styles=Bodenrichtwertzone&styles=default",
         "seperator": true,
@@ -5574,6 +5581,7 @@
             "type": "ogc_wms",
             "komgis_layerid": "c58f3627-acb4-40b8-81a1-7b2e2cec9ad1",
             "komgis_node": ["Externe Geodienste", "Land Thüringen", "Digitale Topografische Karten (DTK)", "Farbvariante", "WMS: TK 10 farbig"],
+            "komgis_priority": "90500",
             "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:31467", "EPSG:31468", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3038", "EPSG:3039", "EPSG:3040", "EPSG:3041", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3857"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=th_dtk10&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/geobasis/DTK10col",
             "opacity": 0.75,
@@ -5586,6 +5594,7 @@
             "type": "ogc_wms",
             "komgis_layerid": "ffc5eb51-0fd8-4a62-8633-7a8c66424b7a",
             "komgis_node": ["Externe Geodienste", "Land Thüringen", "Digitale Topografische Karten (DTK)", "Farbvariante", "WMS: TK 25 farbig"],
+            "komgis_priority": "90600",
             "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:31467", "EPSG:31468", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3038", "EPSG:3039", "EPSG:3040", "EPSG:3041", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3857"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=th_dtk25&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/geobasis/DTK25col",
             "opacity": 0.75,
@@ -5598,6 +5607,7 @@
             "type": "ogc_wms",
             "komgis_layerid": "3e291649-6dcf-4d75-85ac-de3d9288b257",
             "komgis_node": ["Externe Geodienste", "Land Thüringen", "Digitale Topografische Karten (DTK)", "Farbvariante", "WMS: TK 50 farbig"],
+            "komgis_priority": "90700",
             "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:31467", "EPSG:31468", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3038", "EPSG:3039", "EPSG:3040", "EPSG:3041", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3857"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=th_dtk50&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/geobasis/DTK50col",
             "opacity": 0.75,
@@ -5610,6 +5620,7 @@
             "type": "ogc_wms",
             "komgis_layerid": "9de91695-6089-4172-acee-92478871b003",
             "komgis_node": ["Externe Geodienste", "Land Thüringen", "Digitale Topografische Karten (DTK)", "Farbvariante", "WMS: TK 100 farbig"],
+            "komgis_priority": "90800",
             "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:31467", "EPSG:31468", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3038", "EPSG:3039", "EPSG:3040", "EPSG:3041", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3857"],
             "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=th_dtk100&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/geobasis/DTK100col",
             "opacity": 0.75,
@@ -5625,15 +5636,17 @@
         "type": "ogc_wms",
         "komgis_layerid": "9936379e-3cec-41cf-b976-ac81c353bd65",
         "komgis_node": ["Externe Geodienste", "Land Thüringen", "Digitale Orthophotos (DOP)", "WMS: DOP 20"],
+        "komgis_priority": "89400",
         "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:31467", "EPSG:31468", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3038", "EPSG:3039", "EPSG:3040", "EPSG:3041", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=th_dop&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/DOP"
       },
       "dop200": {
         "gbl-view": "true",
-        "name": "TH: Digitale Orthophotos - DOP200 (WMS)c",
+        "name": "TH: Digitale Orthophotos - DOP200 (WMS)",
         "type": "ogc_wms",
         "komgis_layerid": "6d070dfb-aae0-4a81-bbf5-f9ee24eb8963",
         "komgis_node": ["Externe Geodienste", "Land Thüringen", "Digitale Orthophotos (DOP)", "WMS: DOP 200"],
+        "komgis_priority": "89500",
         "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:31467", "EPSG:31468", "EPSG:4326", "EPSG:4258", "EPSG:3034", "EPSG:3035", "EPSG:3038", "EPSG:3039", "EPSG:3040", "EPSG:3041", "EPSG:3042", "EPSG:3043", "EPSG:3044", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3857"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=th_dop200rgb&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/DOP"
       }
