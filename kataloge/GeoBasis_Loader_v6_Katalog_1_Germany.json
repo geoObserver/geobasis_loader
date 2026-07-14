@@ -4574,7 +4574,7 @@
         "type": "ogc_wms",
         "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839"],
         "komgis_layerid": "475ac495-137c-40ba-bfa0-448955685f12",
-        "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Geoleistungspaket (GLP)", "Bodenrichtwerte (BRW)", "WMS: Bodenrichtwerte Bauland 2024"],
+        "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Geoleistungspaket (GLP)", "Bodenrichtwerte (BRW)", "WMS: Bodenrichtwerte Bauland 2026"],
         "komgis_priority": "79000",
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Bauland&styles=SimpleB&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/ows_st_lvermgeo_brw2026",
         "opacity": 0.75
@@ -4585,7 +4585,7 @@
         "type": "ogc_wms",
         "valid_epsg": ["EPSG:25832", "EPSG:25833", "EPSG:4258", "EPSG:4326", "EPSG:4647", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:4839"],
         "komgis_layerid": "b7e10603-aff9-44c7-a221-ea33ef83e894",
-        "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Geoleistungspaket (GLP)", "Bodenrichtwerte (BRW)", "WMS: Bodenrichtwerte Land- und Forstwirtschaft 2024"],
+        "komgis_node": ["Externe Geodienste", "Land Sachsen-Anhalt", "Geoleistungspaket (GLP)", "Bodenrichtwerte (BRW)", "WMS: Bodenrichtwerte Land- und Forstwirtschaft 2026"],
         "komgis_priority": "79010",
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Landwirtschaft&styles=SimpleLF&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/ows_st_lvermgeo_brw2026",
         "seperator": true,
