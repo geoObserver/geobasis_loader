@@ -4458,6 +4458,51 @@
         "komgis_node": ["Externe Geodienste", "Land Sachsen", "Digitale Orthophotos", "WMS: DOP20 "],
 		"valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25833", "EPSG:4258", "EPSG:25832", "EPSG:31469", "EPSG:31465", "EPSG:31468", "EPSG:31464", "EPSG:31467", "EPSG:31463", "EPSG:31466", "EPSG:31462", "EPSG:3034", "EPSG:3035", "EPSG:3044", "EPSG:3045", "EPSG:3857", "EPSG:102100", "EPSG:3398", "EPSG:3399", "EPSG:2180", "EPSG:5514", "EPSG:102067", "EPSG:102067", "EPSG:5514", "EPSG:5650"],
         "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&&layers=sn_dop_020&tilePixelRatio=0&url=https://geodienste.sachsen.de/wms_geosn_dop-rgb/guest?VERSION%3D1.3.0t"
+      },
+      "qh_layergroup": {
+        "name": "SN: Hochwasser HQxxx (WMS)",
+        "layers": {
+          "hq20": {
+            "name": "SN: Hochwasser HQ20/25 (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25833", "EPSG:2166", "EPSG:2397", "EPSG:2167", "EPSG:2398", "EPSG:2168", "EPSG:2399", "EPSG:2176", "EPSG:2177", "EPSG:2178", "EPSG:2179", "EPSG:2180", "EPSG:2398", "EPSG:2167", "EPSG:2399", "EPSG:2168", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3120", "EPSG:3398", "EPSG:3399", "EPSG:3834", "EPSG:3835", "EPSG:3836", "EPSG:3837", "EPSG:3857", "EPSG:102100", "EPSG:4258", "EPSG:4267", "EPSG:4269", "EPSG:4314", "EPSG:5221", "EPSG:102066", "EPSG:5514", "EPSG:102067", "EPSG:5555", "EPSG:25832", "EPSG:5556", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:5668", "EPSG:5669", "EPSG:5673", "EPSG:5674", "EPSG:5675", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:25832", "EPSG:28402", "EPSG:28403", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:31468", "EPSG:31464", "EPSG:31469", "EPSG:31465", "EPSG:32632", "EPSG:32633", "EPSG:32634", "EPSG:102067", "EPSG:5514"],
+            "komgis_layerid": "c1500a3e-5946-4c3d-a961-0c7829ba3c49",
+            "komgis_node": ["Externe Geodienste", "Land Sachsen", "Hochwasser HQxxx", "WMS: Hochwasser HQ20/25"],
+            "komgis_priority": "74500",
+            "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=4&styles&tilePixelRatio=0&url=https://luis.sachsen.de/arcgis/services/wasser/hochwassergefaehrdung_rastercache/MapServer/WMSServer"
+          },
+          "hq50": {
+            "name": "SN: Hochwasser HQ50 (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25833", "EPSG:2166", "EPSG:2397", "EPSG:2167", "EPSG:2398", "EPSG:2168", "EPSG:2399", "EPSG:2176", "EPSG:2177", "EPSG:2178", "EPSG:2179", "EPSG:2180", "EPSG:2398", "EPSG:2167", "EPSG:2399", "EPSG:2168", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3120", "EPSG:3398", "EPSG:3399", "EPSG:3834", "EPSG:3835", "EPSG:3836", "EPSG:3837", "EPSG:3857", "EPSG:102100", "EPSG:4258", "EPSG:4267", "EPSG:4269", "EPSG:4314", "EPSG:5221", "EPSG:102066", "EPSG:5514", "EPSG:102067", "EPSG:5555", "EPSG:25832", "EPSG:5556", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:5668", "EPSG:5669", "EPSG:5673", "EPSG:5674", "EPSG:5675", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:25832", "EPSG:28402", "EPSG:28403", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:31468", "EPSG:31464", "EPSG:31469", "EPSG:31465", "EPSG:32632", "EPSG:32633", "EPSG:32634", "EPSG:102067", "EPSG:5514"],
+            "komgis_layerid": "fb0a214d-e4f0-4806-b385-bba801c076f4",
+            "komgis_node": ["Externe Geodienste", "Land Sachsen", "Hochwasser HQxxx", "WMS: Hochwasser HQ50"],
+            "komgis_priority": "74510",
+            "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=3&styles&tilePixelRatio=0&url=https://luis.sachsen.de/arcgis/services/wasser/hochwassergefaehrdung_rastercache/MapServer/WMSServer"
+          },
+          "hq100": {
+            "name": "SN: Hochwasser HQ100 (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25833", "EPSG:2166", "EPSG:2397", "EPSG:2167", "EPSG:2398", "EPSG:2168", "EPSG:2399", "EPSG:2176", "EPSG:2177", "EPSG:2178", "EPSG:2179", "EPSG:2180", "EPSG:2398", "EPSG:2167", "EPSG:2399", "EPSG:2168", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3120", "EPSG:3398", "EPSG:3399", "EPSG:3834", "EPSG:3835", "EPSG:3836", "EPSG:3837", "EPSG:3857", "EPSG:102100", "EPSG:4258", "EPSG:4267", "EPSG:4269", "EPSG:4314", "EPSG:5221", "EPSG:102066", "EPSG:5514", "EPSG:102067", "EPSG:5555", "EPSG:25832", "EPSG:5556", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:5668", "EPSG:5669", "EPSG:5673", "EPSG:5674", "EPSG:5675", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:25832", "EPSG:28402", "EPSG:28403", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:31468", "EPSG:31464", "EPSG:31469", "EPSG:31465", "EPSG:32632", "EPSG:32633", "EPSG:32634", "EPSG:102067", "EPSG:5514"],
+            "komgis_layerid": "b327560a-b23f-4b2b-982f-8d3ae9f24c49",
+            "komgis_node": ["Externe Geodienste", "Land Sachsen", "Hochwasser HQxxx", "WMS: Hochwasser HQ100"],
+            "komgis_priority": "74510",
+            "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=2&styles&tilePixelRatio=0&url=https://luis.sachsen.de/arcgis/services/wasser/hochwassergefaehrdung_rastercache/MapServer/WMSServer"
+          },
+          "hq200": {
+            "name": "SN: Hochwasser HQ200/300 (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "valid_epsg": ["OGC:CRS84", "EPSG:4326", "EPSG:25833", "EPSG:2166", "EPSG:2397", "EPSG:2167", "EPSG:2398", "EPSG:2168", "EPSG:2399", "EPSG:2176", "EPSG:2177", "EPSG:2178", "EPSG:2179", "EPSG:2180", "EPSG:2398", "EPSG:2167", "EPSG:2399", "EPSG:2168", "EPSG:3034", "EPSG:3035", "EPSG:3045", "EPSG:3046", "EPSG:3047", "EPSG:3048", "EPSG:3049", "EPSG:3050", "EPSG:3120", "EPSG:3398", "EPSG:3399", "EPSG:3834", "EPSG:3835", "EPSG:3836", "EPSG:3837", "EPSG:3857", "EPSG:102100", "EPSG:4258", "EPSG:4267", "EPSG:4269", "EPSG:4314", "EPSG:5221", "EPSG:102066", "EPSG:5514", "EPSG:102067", "EPSG:5555", "EPSG:25832", "EPSG:5556", "EPSG:25833", "EPSG:5650", "EPSG:5653", "EPSG:5668", "EPSG:5669", "EPSG:5673", "EPSG:5674", "EPSG:5675", "EPSG:5677", "EPSG:5678", "EPSG:5679", "EPSG:25832", "EPSG:28402", "EPSG:28403", "EPSG:31466", "EPSG:31462", "EPSG:31467", "EPSG:31463", "EPSG:31468", "EPSG:31464", "EPSG:31469", "EPSG:31465", "EPSG:32632", "EPSG:32633", "EPSG:32634", "EPSG:102067", "EPSG:5514"],
+            "komgis_layerid": "31a9191b-dd56-4440-9a37-8eb749626c98",
+            "komgis_node": ["Externe Geodienste", "Land Sachsen", "Hochwasser HQxxx", "WMS: Hochwasser HQ200"],
+            "komgis_priority": "74520",
+            "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=1&styles&tilePixelRatio=0&url=https://luis.sachsen.de/arcgis/services/wasser/hochwassergefaehrdung_rastercache/MapServer/WMSServer"
+          }
+        }
       }
     }
   },
