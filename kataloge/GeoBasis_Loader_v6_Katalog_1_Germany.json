@@ -12388,8 +12388,8 @@
         "komgis_node": [
           "Externe Geodienste",
           "Land Sachsen",
-          "Digitale Orthophotos",
-          "WMS: DOP20 "
+          "Luftbilder / Digitale Orthophotos (DOP)",
+          "WMS: DOP20"
         ],
         "valid_epsg": [
           "OGC:CRS84",
