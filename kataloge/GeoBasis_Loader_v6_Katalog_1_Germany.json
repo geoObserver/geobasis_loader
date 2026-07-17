@@ -11418,7 +11418,7 @@
             "komgis_node": [
               "Externe Geodienste",
               "Land Sachsen",
-              "ALKIS",
+              "ALKIS - Amtl. Liegenschaftskatasterinformationssystem",
               "ALKIS Tatsächliche Nutzung",
               "WMS: Gewässer"
             ],
@@ -11452,7 +11452,7 @@
             "komgis_node": [
               "Externe Geodienste",
               "Land Sachsen",
-              "ALKIS",
+              "ALKIS - Amtl. Liegenschaftskatasterinformationssystem",
               "ALKIS Tatsächliche Nutzung",
               "WMS: Siedlung"
             ],
@@ -11486,7 +11486,7 @@
             "komgis_node": [
               "Externe Geodienste",
               "Land Sachsen",
-              "ALKIS",
+              "ALKIS - Amtl. Liegenschaftskatasterinformationssystem",
               "ALKIS Tatsächliche Nutzung",
               "WMS: Vegetation"
             ],
@@ -11520,7 +11520,7 @@
             "komgis_node": [
               "Externe Geodienste",
               "Land Sachsen",
-              "ALKIS",
+              "ALKIS - Amtl. Liegenschaftskatasterinformationssystem",
               "ALKIS Tatsächliche Nutzung",
               "WMS: Verkehr"
             ],
@@ -12796,7 +12796,7 @@
         "komgis_node": [
           "Externe Geodienste",
           "Land Sachsen-Anhalt",
-          "ALKIS",
+          "ALKIS - Amtl. Liegenschaftskatasterinformationssystem",
           "WMS: ALKIS Flurstücke"
         ],
         "komgis_priority": "75000",
@@ -12835,7 +12835,7 @@
         "komgis_node": [
           "Externe Geodienste",
           "Land Sachsen-Anhalt",
-          "ALKIS",
+          "ALKIS - Amtl. Liegenschaftskatasterinformationssystem",
           "WMS: ALKIS Gebäude"
         ],
         "komgis_priority": "85000",
@@ -12873,7 +12873,7 @@
             "komgis_node": [
               "Externe Geodienste",
               "Land Sachsen-Anhalt",
-              "ALKIS",
+              "ALKIS - Amtl. Liegenschaftskatasterinformationssystem",
               "ALKIS Tatsächliche Nutzung",
               "WMS: Gewässer"
             ],
@@ -12908,7 +12908,7 @@
             "komgis_node": [
               "Externe Geodienste",
               "Land Sachsen-Anhalt",
-              "ALKIS",
+              "ALKIS - Amtl. Liegenschaftskatasterinformationssystem",
               "ALKIS Tatsächliche Nutzung",
               "WMS: Siedlung"
             ],
@@ -12943,7 +12943,7 @@
             "komgis_node": [
               "Externe Geodienste",
               "Land Sachsen-Anhalt",
-              "ALKIS",
+              "ALKIS - Amtl. Liegenschaftskatasterinformationssystem",
               "ALKIS Tatsächliche Nutzung",
               "WMS: Vegetation"
             ],
@@ -12997,7 +12997,7 @@
             "komgis_node": [
               "Externe Geodienste",
               "Land Sachsen-Anhalt",
-              "ALKIS",
+              "ALKIS - Amtl. Liegenschaftskatasterinformationssystem",
               "ALKIS Tatsächliche Nutzung",
               "WMS: Verkehr"
             ],
@@ -15314,7 +15314,7 @@
         "komgis_node": [
           "Externe Geodienste",
           "Land Thüringen",
-          "ALKIS",
+          "ALKIS - Amtl. Liegenschaftskatasterinformationssystem",
           "WMS: ALKIS Flurstücke"
         ],
         "komgis_priority": "75000",
@@ -15348,7 +15348,7 @@
         "komgis_node": [
           "Externe Geodienste",
           "Land Thüringen",
-          "ALKIS",
+          "ALKIS - Amtl. Liegenschaftskatasterinformationssystem",
           "WMS: ALKIS Gebäude"
         ],
         "komgis_priority": "85000",
@@ -15373,7 +15373,7 @@
             "komgis_node": [
               "Externe Geodienste",
               "Land Thüringen",
-              "ALKIS",
+              "ALKIS - Amtl. Liegenschaftskatasterinformationssystem",
               "ALKIS Tatsächliche Nutzung",
               "WMS: Gewässer"
             ],
@@ -15397,7 +15397,7 @@
             "komgis_node": [
               "Externe Geodienste",
               "Land Thüringen",
-              "ALKIS",
+              "ALKIS - Amtl. Liegenschaftskatasterinformationssystem",
               "ALKIS Tatsächliche Nutzung",
               "WMS: Siedlung"
             ],
@@ -15421,7 +15421,7 @@
             "komgis_node": [
               "Externe Geodienste",
               "Land Thüringen",
-              "ALKIS",
+              "ALKIS - Amtl. Liegenschaftskatasterinformationssystem",
               "ALKIS Tatsächliche Nutzung",
               "WMS: Vegetation"
             ],
@@ -15445,7 +15445,7 @@
             "komgis_node": [
               "Externe Geodienste",
               "Land Thüringen",
-              "ALKIS",
+              "ALKIS - Amtl. Liegenschaftskatasterinformationssystem",
               "ALKIS Tatsächliche Nutzung",
               "WMS: Verkehr"
             ],
