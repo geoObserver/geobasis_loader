@@ -5258,7 +5258,7 @@
         "seperator": true
       },
       "dop20": {
-        "name": "BW: Digitale Orthophotos - DOP20 (WMS)",
+        "name": "BW: Digitale Orthophotos - DOP20  (WMS) (WMS)",
         "gbl-view": "true",
         "type": "ogc_wms",
         "valid_epsg": [
@@ -12389,7 +12389,7 @@
           "Externe Geodienste",
           "Land Sachsen",
           "Luftbilder / Digitale Orthophotos (DOP)",
-          "WMS: DOP20"
+          "WMS: DOP20 (20 cm Bodenauflösung)"
         ],
         "valid_epsg": [
           "OGC:CRS84",
@@ -14068,7 +14068,7 @@
           "Land Sachsen-Anhalt",
           "Geoleistungspaket (GLP)",
           "Luftbilder / Digitale Orthophotos (DOP)",
-          "WMS: DOP 20"
+          "WMS: DOP20 (20 cm Bodenauflösung)"
         ],
         "komgis_priority": "89400",
         "valid_epsg": [
@@ -14099,7 +14099,7 @@
           "Land Sachsen-Anhalt",
           "Geoleistungspaket (GLP)",
           "Luftbilder / Digitale Orthophotos (DOP)",
-          "WMS: DOP 100"
+          "WMS: DOP100  (100 cm Bodenauflösung)"
         ],
         "komgis_priority": "89500",
         "valid_epsg": [
@@ -15755,7 +15755,7 @@
           "Externe Geodienste",
           "Land Thüringen",
           "Luftbilder / Digitale Orthophotos (DOP)",
-          "WMS: DOP 20"
+          "WMS: DOP20 (20 cm Bodenauflösung)"
         ],
         "komgis_priority": "89400",
         "valid_epsg": [
@@ -15790,7 +15790,7 @@
           "Externe Geodienste",
           "Land Thüringen",
           "Luftbilder / Digitale Orthophotos (DOP)",
-          "WMS: DOP 200"
+          "WMS: DOP200  (200 cm Bodenauflösung)"
         ],
         "komgis_priority": "89500",
         "valid_epsg": [
