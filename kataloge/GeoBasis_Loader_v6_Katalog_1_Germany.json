@@ -11558,8 +11558,8 @@
         ],
         "seperator": true
       },
-      "bodenrichtwerte": {
-        "name": "SN: Bodenrichtwerte Bauland 2024 (WMS)",
+      "bodenrichtwerte_bau_2026": {
+        "name": "SN: Bodenrichtwerte Bauland 2026 (WMS)",
         "gbl-view": "true",
         "type": "ogc_wms",
         "komgis_layerid": "c727f743-a2b6-4071-acb9-0c167092a58e",
@@ -11567,7 +11567,7 @@
           "Externe Geodienste",
           "Land Sachsen",
           "Bodenrichtwerte",
-          "WMS: Bodenrichtwerte Bauland 2024"
+          "WMS: Bodenrichtwerte Bauland 2026"
         ],
         "valid_epsg": [
           "EPSG:4258",
@@ -11589,7 +11589,42 @@
           "EPSG:5514",
           "EPSG:5650"
         ],
-        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Bauland 2024&styles&tilePixelRatio=0&url=https://www.landesvermessung.sachsen.de/fp/http-proxy/svc?cfg%3Dboris_2024",
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Bauland 2026&styles&tilePixelRatio=0&url=https://www.landesvermessung.sachsen.de/fp/httpproxy/svcdep/wms/boris_2026",
+        "seperator": true,
+        "opacity": 0.75
+      },
+      "bodenrichtwerte_land_2026": {
+        "name": "SN: Bodenrichtwerte Land- und Forstwirtschaft, sonst. Flächen 2026 (WMS)",
+        "gbl-view": "true",
+        "type": "ogc_wms",
+        "komgis_layerid": "e5a47bb8-4439-4dcd-a853-c8979510bd50",
+        "komgis_node": [
+          "Externe Geodienste",
+          "Land Sachsen",
+          "Bodenrichtwerte",
+          "WMS: Bodenrichtwerte Land- und Forstwirtschaft, sonst. Flächen 2026"
+        ],
+        "valid_epsg": [
+          "EPSG:4258",
+          "EPSG:4326",
+          "EPSG:25832",
+          "EPSG:25833",
+          "EPSG:31469",
+          "EPSG:31468",
+          "EPSG:31467",
+          "EPSG:31466",
+          "EPSG:3034",
+          "EPSG:3035",
+          "EPSG:3044",
+          "EPSG:3045",
+          "EPSG:3857",
+          "EPSG:3398",
+          "EPSG:3399",
+          "EPSG:2180",
+          "EPSG:5514",
+          "EPSG:5650"
+        ],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Land- und Forstwirtschaft; sonstige Flächen 2026&styles&tilePixelRatio=0&url=https://www.landesvermessung.sachsen.de/fp/httpproxy/svcdep/wms/boris_2026",
         "seperator": true,
         "opacity": 0.75
       },
