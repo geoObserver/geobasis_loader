@@ -11477,7 +11477,7 @@
         "komgis_node": [
           "Externe Geodienste",
           "Land Sachsen",
-          "ALKIS",
+          "ALKIS - Amtl. Liegenschaftskatasterinformationssystem",
           "WMS: ALKIS Flurstücke"
         ],
         "valid_epsg": [
@@ -11521,7 +11521,7 @@
         "komgis_node": [
           "Externe Geodienste",
           "Land Sachsen",
-          "ALKIS",
+          "ALKIS - Amtl. Liegenschaftskatasterinformationssystem",
           "WMS: ALKIS Gebäude"
         ],
         "valid_epsg": [
