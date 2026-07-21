@@ -11126,7 +11126,7 @@
         "name": "RP: HQ10 Hochwasser hoher Wahrscheinlichkeit (WMS)",
         "layers": {
           "hq10_1": {
-            "name": "RP: HQ10 Fliessgeschindigkeit (WMS)",
+            "name": "RP: HQ10 Fliessgeschwindigkeit (WMS)",
             "gbl-view": "true",
             "type": "ogc_wms",
             "valid_epsg": [
@@ -11195,7 +11195,7 @@
         "name": "RP: HQ100 Hochwasser mittlere Wahrscheinlichkeit (WMS)",
         "layers": {
           "hq100_1": {
-            "name": "RP: HQ100 Fliessgeschindigkeit (WMS)",
+            "name": "RP: HQ100 Fliessgeschwindigkeit (WMS)",
             "gbl-view": "true",
             "type": "ogc_wms",
             "valid_epsg": [
@@ -11256,6 +11256,75 @@
              "EPSG:4258"
              ],
             "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=Ueberflutungsflaechen_HQ_100&styles&tilePixelRatio=0&url=https://geodienste-wasser.rlp-umwelt.de/maps/HWGK/wms?VERSION%3D1.3.0",
+            "opacity": 0.75
+          }
+        }
+      },
+      "hqextrem_layergroup": {
+        "name": "RP: HQextrem Hochwasser mittlere Wahrscheinlichkeit (WMS)",
+        "layers": {
+          "hqextrem_1": {
+            "name": "RP: HQextrem Fliessgeschwindigkeit (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "valid_epsg": [
+             "OGC:CRS84",
+             "EPSG:4326",
+             "EPSG:25832",
+             "EPSG:31466",
+             "EPSG:31467",
+             "EPSG:3857",
+             "EPSG:4258"
+             ],
+            "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=Fliessgeschwindigkeit_HQ_extrem&styles&tilePixelRatio=0&url=https://geodienste-wasser.rlp-umwelt.de/maps/HWGK/wms?VERSION%3D1.3.0",
+            "opacity": 0.75
+          },
+          "hqextrem_2": {
+            "name": "RP: HQextrem Überflutungsgefährdung (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "valid_epsg": [
+             "OGC:CRS84",
+             "EPSG:4326",
+             "EPSG:25832",
+             "EPSG:31466",
+             "EPSG:31467",
+             "EPSG:3857",
+             "EPSG:4258"
+             ],
+            "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=HQext_pot_Land_utm32&styles&tilePixelRatio=0&url=https://geodienste-wasser.rlp-umwelt.de/maps/HWGK/wms?VERSION%3D1.3.0",
+            "opacity": 0.75
+          },
+          "hqextrem_3": {
+            "name": "RP: HQextrem Wassertiefen (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "valid_epsg": [
+             "OGC:CRS84",
+             "EPSG:4326",
+             "EPSG:25832",
+             "EPSG:31466",
+             "EPSG:31467",
+             "EPSG:3857",
+             "EPSG:4258"
+             ],
+            "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=HQext_akt_Land_utm32&styles&tilePixelRatio=0&url=https://geodienste-wasser.rlp-umwelt.de/maps/HWGK/wms?VERSION%3D1.3.0",
+            "opacity": 0.75
+          },
+          "hqextrem_4": {
+            "name": "RP: HQextrem Überflutungsflächen (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "valid_epsg": [
+             "OGC:CRS84",
+             "EPSG:4326",
+             "EPSG:25832",
+             "EPSG:31466",
+             "EPSG:31467",
+             "EPSG:3857",
+             "EPSG:4258"
+             ],
+            "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=Ueberflutungsflaechen_HQ_extrem&styles&tilePixelRatio=0&url=https://geodienste-wasser.rlp-umwelt.de/maps/HWGK/wms?VERSION%3D1.3.0",
             "opacity": 0.75
           }
         }
