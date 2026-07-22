@@ -6405,7 +6405,7 @@
             "name": "BB: TK 10 grau (WMS)",
             "gbl-view": "true",
             "type": "ogc_wms",
-            "komgis_layerid": "xxxxxxxxxxxxx",
+            "komgis_layerid": "cfd2ad3b-140e-41be-bbed-7fb64dcdbc14",
             "komgis_node": [
               "Externe Geodienste",
               "Land Brandenburg",
@@ -6436,7 +6436,7 @@
             "name": "BB: TK 25 grau (WMS)",
             "gbl-view": "true",
             "type": "ogc_wms",
-            "komgis_layerid": "xxxxxxxxxxxxx",
+            "komgis_layerid": "2ddac169-2777-4a6d-adfb-e1c68a5cef0f",
             "komgis_node": [
               "Externe Geodienste",
               "Land Brandenburg",
@@ -6467,7 +6467,7 @@
             "name": "BB: TK 50 grau (WMS)",
             "gbl-view": "true",
             "type": "ogc_wms",
-            "komgis_layerid": "xxxxxxxxxxxxx",
+            "komgis_layerid": "d17234cd-5ce1-4ff8-aa81-aabaf048554e",
             "komgis_node": [
               "Externe Geodienste",
               "Land Brandenburg",
@@ -6498,7 +6498,7 @@
             "name": "BB: TK 100 grau (WMS)",
             "gbl-view": "true",
             "type": "ogc_wms",
-            "komgis_layerid": "xxxxxxxxxxxxx",
+            "komgis_layerid": "cfd2ad3b-140e-41be-bbed-7fb64dcdbc14",
             "komgis_node": [
               "Externe Geodienste",
               "Land Brandenburg",
