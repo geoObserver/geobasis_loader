@@ -5688,6 +5688,14 @@
         "name": "BB: ALKIS Flurstücke (WMS)",
         "gbl-view": "true",
         "type": "ogc_wms",
+        "komgis_layerid": "98e7ddca-0b4b-40e8-a114-f3d079489ee3",
+        "komgis_node": [
+          "Externe Geodienste",
+          "Land Brandenburg",
+          "ALKIS - Amtl. Liegenschaftskatasterinformationssystem",
+          "WMS: ALKIS Flurstücke"
+        ],
+        "komgis_priority": "75000",
         "valid_epsg": [
           "EPSG:25833",
           "EPSG:25832",
@@ -5720,6 +5728,14 @@
         "name": "BB: ALKIS Gebäude (WMS)",
         "gbl-view": "true",
         "type": "ogc_wms",
+        "komgis_layerid": "ff674e43-168d-4a53-ad20-c4c4e443f28b",
+        "komgis_node": [
+          "Externe Geodienste",
+          "Land Brandenburg",
+          "ALKIS - Amtl. Liegenschaftskatasterinformationssystem",
+          "WMS: ALKIS Gebäude"
+        ],
+        "komgis_priority": "85000",
         "valid_epsg": [
           "EPSG:25833",
           "EPSG:25832",
@@ -5743,6 +5759,15 @@
             "name": "Gewässer",
             "gbl-view": "true",
             "type": "ogc_wms",
+            "komgis_layerid": "823c1705-aaca-4733-bfe2-23828e91f316",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Land Brandenburg",
+              "ALKIS - Amtl. Liegenschaftskatasterinformationssystem",
+              "ALKIS Tatsächliche Nutzung",
+              "WMS: Gewässer"
+            ],
+            "komgis_priority": "87200",
             "valid_epsg": [
               "EPSG:25833",
               "EPSG:25832",
@@ -5764,6 +5789,15 @@
             "name": "Siedlung",
             "gbl-view": "true",
             "type": "ogc_wms",
+            "komgis_layerid": "52aa0c3c-0f2a-4f0f-a758-e14998dcd5d4",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Land Brandenburg",
+              "ALKIS - Amtl. Liegenschaftskatasterinformationssystem",
+              "ALKIS Tatsächliche Nutzung",
+              "WMS: Siedlung"
+            ],
+            "komgis_priority": "87100",
             "valid_epsg": [
               "EPSG:25833",
               "EPSG:25832",
@@ -5785,6 +5819,15 @@
             "name": "Vegetation",
             "gbl-view": "true",
             "type": "ogc_wms",
+            "komgis_layerid": "0b9b4837-1c8e-4f8c-8780-2299ce1cc324",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Land Brandenburg",
+              "ALKIS - Amtl. Liegenschaftskatasterinformationssystem",
+              "ALKIS Tatsächliche Nutzung",
+              "WMS: Vegetation"
+            ],
+            "komgis_priority": "87400",
             "valid_epsg": [
               "EPSG:25833",
               "EPSG:25832",
@@ -5806,6 +5849,15 @@
             "name": "Verkehr",
             "gbl-view": "true",
             "type": "ogc_wms",
+            "komgis_layerid": "bc2ad88f-50ff-49cd-9969-7494d3c3a372",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Land Brandenburg",
+              "ALKIS - Amtl. Liegenschaftskatasterinformationssystem",
+              "ALKIS Tatsächliche Nutzung",
+              "WMS: Verkehr"
+            ],
+            "komgis_priority": "87300",
             "valid_epsg": [
               "EPSG:25833",
               "EPSG:25832",
@@ -5839,6 +5891,15 @@
         "name": "BB: Bodenrichtwerte Bauland zonal 2025 (WMS)",
         "gbl-view": "true",
         "type": "ogc_wms",
+        "komgis_layerid": "751e567f-7fd7-40b6-9fe9-8d0d666f846a",
+        "komgis_node": [
+          "Externe Geodienste",
+          "Land Brandenburg",
+          "Geoleistungspaket (GLP)",
+          "Bodenrichtwerte (BRW)",
+          "WMS: Bodenrichtwerte Bauland zonal 2025"
+        ],
+        "komgis_priority": "79000",
         "valid_epsg": [
           "EPSG:25833",
           "EPSG:25832",
@@ -5860,6 +5921,15 @@
         "name": "BB: Bodenrichtwerte Landwirtschaft zonal 2025 (WMS)",
         "gbl-view": "true",
         "type": "ogc_wms",
+        "komgis_layerid": "349fe0dd-0f73-4283-82e2-9e32832d0d55",
+        "komgis_node": [
+          "Externe Geodienste",
+          "Land Brandenburg",
+          "Geoleistungspaket (GLP)",
+          "Bodenrichtwerte (BRW)",
+          "WMS: Bodenrichtwerte Forstwirtschaft zonal 2025"
+        ],
+        "komgis_priority": "79010",
         "valid_epsg": [
           "EPSG:25833",
           "EPSG:25832",
@@ -6146,6 +6216,16 @@
             "gbl-view": "true",
             "name": "BB: TK 10 farbig (WMS)",
             "type": "ogc_wms",
+            "komgis_layerid": "c7943f52-b611-4c29-a69e-3ee17ab816ae",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Land Brandenburg",
+              "Geoleistungspaket (GLP)",
+              "Digitale Topografische Karten (DTK)",
+              "Farbvariante",
+              "WMS: DTK 10 (farbig)"
+            ],
+            "komgis_priority": "90500",
             "valid_epsg": [
               "EPSG:25833",
               "EPSG:25832",
@@ -6167,6 +6247,16 @@
             "name": "BB: TK 25 farbig (WMS)",
             "gbl-view": "true",
             "type": "ogc_wms",
+            "komgis_layerid": "a7a43c71-86e0-423f-ae16-603dbb295003",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Land Brandenburg",
+              "Geoleistungspaket (GLP)",
+              "Digitale Topografische Karten (DTK)",
+              "Farbvariante",
+              "WMS: DTK 25 (farbig)"
+            ],
+            "komgis_priority": "90600",
             "valid_epsg": [
               "EPSG:25833",
               "EPSG:25832",
@@ -6188,6 +6278,17 @@
             "name": "BB: TK 50 farbig (WMS)",
             "gbl-view": "true",
             "type": "ogc_wms",
+
+            "komgis_layerid": "e6551078-41c4-4779-95e3-b050f295b8e3",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Land Brandenburg",
+              "Geoleistungspaket (GLP)",
+              "Digitale Topografische Karten (DTK)",
+              "Farbvariante",
+              "WMS: DTK 50 (farbig)"
+            ],
+            "komgis_priority": "90700",
             "valid_epsg": [
               "EPSG:25833",
               "EPSG:25832",
@@ -6209,6 +6310,16 @@
             "name": "BB: TK 100 farbig (WMS)",
             "gbl-view": "true",
             "type": "ogc_wms",
+            "komgis_layerid": "0784c9e1-976a-4977-809f-61ee3a369ff6",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Land Brandenburg",
+              "Geoleistungspaket (GLP)",
+              "Digitale Topografische Karten (DTK)",
+              "Farbvariante",
+              "WMS: DTK 100 (farbig)"
+            ],
+            "komgis_priority": "90800",
             "valid_epsg": [
               "EPSG:25833",
               "EPSG:25832",
@@ -6294,6 +6405,16 @@
             "name": "BB: TK 10 grau (WMS)",
             "gbl-view": "true",
             "type": "ogc_wms",
+            "komgis_layerid": "xxxxxxxxxxxxx",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Land Brandenburg",
+              "Geoleistungspaket (GLP)",
+              "Digitale Topografische Karten (DTK)",
+              "Grauvariante",
+              "WMS: DTK 10 (grau)"
+            ],
+            "komgis_priority": "90501",
             "valid_epsg": [
               "EPSG:25833",
               "EPSG:25832",
@@ -6315,6 +6436,16 @@
             "name": "BB: TK 25 grau (WMS)",
             "gbl-view": "true",
             "type": "ogc_wms",
+            "komgis_layerid": "xxxxxxxxxxxxx",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Land Brandenburg",
+              "Geoleistungspaket (GLP)",
+              "Digitale Topografische Karten (DTK)",
+              "Grauvariante",
+              "WMS: DTK 25 (grau)"
+            ],
+            "komgis_priority": "90601",
             "valid_epsg": [
               "EPSG:25833",
               "EPSG:25832",
@@ -6336,6 +6467,16 @@
             "name": "BB: TK 50 grau (WMS)",
             "gbl-view": "true",
             "type": "ogc_wms",
+            "komgis_layerid": "xxxxxxxxxxxxx",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Land Brandenburg",
+              "Geoleistungspaket (GLP)",
+              "Digitale Topografische Karten (DTK)",
+              "Grauvariante",
+              "WMS: DTK 50 (grau)"
+            ],
+            "komgis_priority": "90701",
             "valid_epsg": [
               "EPSG:25833",
               "EPSG:25832",
@@ -6357,6 +6498,16 @@
             "name": "BB: TK 100 grau (WMS)",
             "gbl-view": "true",
             "type": "ogc_wms",
+            "komgis_layerid": "xxxxxxxxxxxxx",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Land Brandenburg",
+              "Geoleistungspaket (GLP)",
+              "Digitale Topografische Karten (DTK)",
+              "Grauvariante",
+              "WMS: DTK 100 (grau)"
+            ],
+            "komgis_priority": "90801",
             "valid_epsg": [
               "EPSG:25833",
               "EPSG:25832",
@@ -6381,6 +6532,15 @@
         "name": "BB: Digitale Orthophotos - DOP20 (WMS)",
         "gbl-view": "true",
         "type": "ogc_wms",
+        "komgis_layerid": "bb373735-60de-4ace-befb-d424036e75df",
+        "komgis_node": [
+          "Externe Geodienste",
+          "Land Brandenburg",
+          "Geoleistungspaket (GLP)",
+          "Luftbilder / Digitale Orthophotos (DOP)",
+          "WMS: DOP20 (20 cm Bodenauflösung)"
+        ],
+        "komgis_priority": "89400",
         "valid_epsg": [
           "EPSG:25833",
           "EPSG:25832",
@@ -6401,6 +6561,15 @@
         "name": "BE: Digitale Oberflächenmodell - DOM100 - 2020-2022 (WMS)",
         "gbl-view": "true",
         "type": "ogc_wms",
+        "komgis_layerid": "505dd26a-2f31-4204-b22a-50dc01e292d2",
+        "komgis_node": [
+          "Externe Geodienste",
+          "Land Brandenburg",
+          "Geoleistungspaket (GLP)",
+          "Luftbilder / Digitale Oberflächenmodell (DOM)",
+          "WMS: DOM100 2020-2022 (100 cm Bodenauflösung)"
+        ],
+        "komgis_priority": "89500",
         "valid_epsg": [
           "EPSG:25833",
           "EPSG:25832",
