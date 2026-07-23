@@ -6405,7 +6405,7 @@
             "name": "BB: TK 10 grau (WMS)",
             "gbl-view": "true",
             "type": "ogc_wms",
-            "komgis_layerid": "cfd2ad3b-140e-41be-bbed-7fb64dcdbc14",
+            "komgis_layerid": "0f9a5383-cca2-47d6-87bf-bbb1280e3b70",
             "komgis_node": [
               "Externe Geodienste",
               "Land Brandenburg",
