@@ -54,7 +54,7 @@ class Topic(BasicEntry):
     
     # FIXME: Different class for feature services would be cleaner
     def is_vector(self) -> bool:
-        return self.topic_type in (TopicType.APIF, TopicType.WFS)
+        return self.topic_type in (TopicType.APIF, TopicType.WFS, TopicType.VECTORTILES)
     
     @classmethod
     def from_dict(cls, data: dict) -> "Topic":
