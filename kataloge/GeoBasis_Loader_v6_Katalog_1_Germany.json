@@ -9218,6 +9218,13 @@
         "name": "NI: Bodenrichtwerte Bauland 2024 (WMS)",
         "gbl-view": "true",
         "type": "ogc_wms",
+        "komgis_layerid": "50f12570-7868-4eab-8311-0bce44aa8f49",
+        "komgis_node": [
+          "Externe Geodienste",
+          "Land Niedersachsen",
+          "Bodenrichtwerte (BRW)",
+          "WMS: Bodenrichtwerte Bauland 2024"
+        ],
         "valid_epsg": [
           "EPSG:25832",
           "EPSG:25833",
