@@ -8910,6 +8910,7 @@
           "ALKIS - Amtl. Liegenschaftskatasterinformationssystem",
           "WMS: ALKIS Flurstücke, Gebäude, Nutzung "
         ],
+        "komgis_priority": "75000",
         "valid_epsg": [
           "EPSG:25833",
           "EPSG:25832",
@@ -9225,6 +9226,7 @@
           "Bodenrichtwerte (BRW)",
           "WMS: Bodenrichtwerte Bauland 2024"
         ],
+        "komgis_priority": "79000",
         "valid_epsg": [
           "EPSG:25832",
           "EPSG:25833",
@@ -9652,6 +9654,14 @@
         "name": "NI: Digitale Orthophotos - DOP20 (WMS)",
         "gbl-view": "true",
         "type": "ogc_wms",
+        "komgis_layerid": "11d9806d-974b-4b2a-af06-f6a45f34b86a",
+        "komgis_node": [
+          "Externe Geodienste",
+          "Land Niedersachsen",
+          "Luftbilder / Digitale Orthophotos (DOP)",
+          "WMS: DOP20 (20 cm Bodenauflösung)"
+        ],
+        "komgis_priority": "89400",
         "valid_epsg": [
           "EPSG:25832",
           "EPSG:25833",
@@ -12816,6 +12826,7 @@
           "Luftbilder / Digitale Orthophotos (DOP)",
           "WMS: DOP20 (20 cm Bodenauflösung)"
         ],
+        "komgis_priority": "89400",
         "valid_epsg": [
           "OGC:CRS84",
           "EPSG:4326",
