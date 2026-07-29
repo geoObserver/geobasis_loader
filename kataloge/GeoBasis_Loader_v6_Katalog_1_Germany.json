@@ -8903,6 +8903,13 @@
         "name": "NI: ALKIS Flurstücke, Gebäude, Nutzung (WMS)",
         "gbl-view": "true",
         "type": "ogc_wms",
+        "komgis_layerid": "f9cce02d-6426-427b-bccc-ccd0a62b3f80",
+        "komgis_node": [
+          "Externe Geodienste",
+          "Land Niedersachsen",
+          "ALKIS - Amtl. Liegenschaftskatasterinformationssystem",
+          "WMS: ALKIS Flurstücke, Gebäude, Nutzung "
+        ],
         "valid_epsg": [
           "EPSG:25833",
           "EPSG:25832",
