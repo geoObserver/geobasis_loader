@@ -9322,6 +9322,14 @@
             "name": "NI: AP 25 farbig (WMS)",
             "gbl-view": "true",
             "type": "ogc_wms",
+            "komgis_layerid": "4b0b32d5-fcbd-4af5-a0d1-653fe9f99047",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Land Niedersachsen",
+              "Digitale Topografische Karten inkl. HB/BHV",
+              "WMS: Amtl. Präsentation AP 25 farbig"
+            ],
+            "komgis_priority": "95000",
             "valid_epsg": [
               "EPSG:25832",
               "EPSG:25833",
@@ -9349,6 +9357,14 @@
             "name": "NI: AK 5 farbig (WMS)",
             "gbl-view": "true",
             "type": "ogc_wms",
+            "komgis_layerid": "9dc2e393-a461-4af5-8324-189b2f479b31",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Land Niedersachsen",
+              "Digitale Topografische Karten inkl. HB/BHV",
+              "WMS: Amtl. Karte AK 5 farbig"
+            ],
+            "komgis_priority": "95001",
             "valid_epsg": [
               "EPSG:25832",
               "EPSG:25833",
@@ -9376,6 +9392,14 @@
             "name": "NI: AP 10 farbig (WMS)",
             "gbl-view": "true",
             "type": "ogc_wms",
+            "komgis_layerid": "088a130a-62d2-4713-8907-9ee56082404c",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Land Niedersachsen",
+              "Digitale Topografische Karten inkl. HB/BHV",
+              "WMS: Amtl. Präsentation AK 10 farbig"
+            ],
+            "komgis_priority": "95002",
             "valid_epsg": [
               "EPSG:25832",
               "EPSG:25833",
@@ -9403,6 +9427,14 @@
             "name": "NI: TK 25 farbig (WMS)",
             "gbl-view": "true",
             "type": "ogc_wms",
+            "komgis_layerid": "819b360e-5b67-4ef6-a5eb-c582ae5ebf39",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Land Niedersachsen",
+              "Digitale Topografische Karten inkl. HB/BHV",
+              "WMS: Topogr. Karte TK 25 farbig"
+            ],
+            "komgis_priority": "95003",
             "valid_epsg": [
               "EPSG:25832",
               "EPSG:25833",
@@ -9430,6 +9462,14 @@
             "name": "NI: TK 50 farbig (WMS)",
             "gbl-view": "true",
             "type": "ogc_wms",
+            "komgis_layerid": "30b3f556-27e8-488f-9238-ae9ac499f7ad",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Land Niedersachsen",
+              "Digitale Topografische Karten inkl. HB/BHV",
+              "WMS: Topogr. Karte TK 50 farbig"
+            ],
+            "komgis_priority": "95004",
             "valid_epsg": [
               "EPSG:25832",
               "EPSG:25833",
@@ -9457,6 +9497,14 @@
             "name": "NI: TK 100 farbig (WMS)",
             "gbl-view": "true",
             "type": "ogc_wms",
+            "komgis_layerid": "1d75cb41-ecaa-42da-9243-692c47af410d",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Land Niedersachsen",
+              "Digitale Topografische Karten inkl. HB/BHV",
+              "WMS: Topogr. Karte TK 100 farbig"
+            ],
+            "komgis_priority": "95005",
             "valid_epsg": [
               "EPSG:25832",
               "EPSG:25833",
