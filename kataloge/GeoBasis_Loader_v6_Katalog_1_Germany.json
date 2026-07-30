@@ -13375,7 +13375,7 @@
         "name": "ST: ALKIS Gebäude (WMS)",
         "gbl-view": "true",
         "type": "ogc_wms",
-        "komgis_layerid": "bbb02e0a-04b6-48e7-9a79-9b13a57aba70",
+        "komgis_layerid": "b3aac1cc-6c42-4c78-9684-3708bd1d44a3",
         "komgis_node": [
           "Externe Geodienste",
           "Land Sachsen-Anhalt",
