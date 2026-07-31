@@ -14255,7 +14255,7 @@
         "name": "ST: Topograf. Karten farbig (WMS)",
         "layers": {
           "tk_10_farbig": {
-            "name": "ST: TK 10 farbig (WMS)",
+            "name": "ST: P10 Topographie (Farbe mit Schummerung) (WMS)",
             "gbl-view": "true",
             "type": "ogc_wms",
             "komgis_layerid": "a444f992-0f6c-4578-8878-089bbc33a890",
@@ -14265,7 +14265,7 @@
               "Geoleistungspaket (GLP)",
               "Digitale Topografische Karten (DTK)",
               "Farbvariante",
-              "WMS: DTK 10 (farbig)"
+              "WMS: P10 Topographie (Farbe mit Schummerung)"
             ],
             "komgis_priority": "90500",
             "valid_epsg": [
@@ -14283,7 +14283,7 @@
               "EPSG:2168",
               "EPSG:3857"
             ],
-            "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=lsa_lvermgeo_dtk10_col_1&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_DTK_WMS_OpenData/guest?VERSION%3D1.3.0",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/tiff&layers=ST_basemapde_p10_raster&styles=default&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/ows_WMS_ST_P10_top",
             "opacity": 0.75,
             "minScale": 17500,
             "maxScale": 1
@@ -14431,7 +14431,7 @@
         "gbl-view": "true",
         "layers": {
           "tk_10_grau": {
-            "name": "ST: TK 10 grau (WMS)",
+            "name": "ST: P10 Grau (WMS)",
             "type": "ogc_wms",
             "komgis_layerid": "a363b0c7-006b-4c16-9e39-b05c30da2f0e",
             "komgis_node": [
@@ -14440,7 +14440,7 @@
               "Geoleistungspaket (GLP)",
               "Digitale Topografische Karten (DTK)",
               "Graustufenvariante",
-              "WMS: DTK 10 (grau)"
+              "WMS: P10 Grau"
             ],
             "komgis_priority": "90501",
             "valid_epsg": [
@@ -14458,7 +14458,7 @@
               "EPSG:2168",
               "EPSG:3857"
             ],
-            "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&styles&layers=lsa_lvermgeo_dtk10_ein_1&url=https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_DTK_WMS_OpenData/guest?VERSION%3D1.3.0",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/tiff&layers=ST_basemapde_p10_raster_gry&styles=default&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/ows_WMS_ST_P10_gry",
             "opacity": 0.75,
             "minScale": 17500,
             "maxScale": 1
