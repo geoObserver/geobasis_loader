@@ -1,15 +1,14 @@
-import re
-from qgis.PyQt.QtCore import QObject
+from qgis.PyQt.QtCore import QObject, Qt
 from qgis.PyQt.QtGui import QCursor
 from qgis.PyQt.QtWidgets import QAction, QToolBar
 from qgis.core import QgsSettings, QgsApplication
 from qgis.gui import QgisInterface
-from .ui.search_filter import SearchFilter
 from . import config
 from .utils import custom_logger
-from .ui import menus, icons
+from .ui import menus, icons, panel, search_filter
 from .services import registry
 from .operations import bookmark_ops
+from .core import search_index
 
 logger = custom_logger.get_logger(__name__)
 
@@ -56,7 +55,7 @@ class GeoBasis_Loader(QObject):
                 self.toolbar_main_menu_action.triggered.connect(self._show_main_menu)
                 self.toolbar.addAction(self.toolbar_main_menu_action)
         
-        self.search_filter = SearchFilter()
+        self.search_filter = search_filter.SearchFilter()
         self.iface.registerLocatorFilter(self.search_filter)
         
         manager = QgsApplication.bookmarkManager()
@@ -72,7 +71,7 @@ class GeoBasis_Loader(QObject):
 
     def unload(self):
         registry.catalog_manager.clear_network_handlers(force=True)
-        SearchFilter.clear_search_index()
+        search_index.clear()
         self.iface.invalidateLocatorResults()
         self.iface.deregisterLocatorFilter(self.search_filter)
         self.search_filter = None
