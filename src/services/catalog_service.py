@@ -253,6 +253,8 @@ class CatalogManager:
             for callback in self._pending_callbacks[config.CATALOG_OVERVIEW_NAME]:
                 callback()
             del self._pending_callbacks[config.CATALOG_OVERVIEW_NAME]
+        
+        events.emit_overview_updated()
     
     def get_overview(self, callback: Optional[Callable] = None) -> None:
         # ------- Network Handler für die Katalog Übersicht erstellen --------------
