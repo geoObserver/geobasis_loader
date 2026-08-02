@@ -2,7 +2,7 @@ from qgis.PyQt.QtWidgets import QMenu, QAction, QMessageBox
 from qgis.utils import iface
 from ..core import events
 from ..models import catalog_types
-from ..operations import bookmark_ops
+from ..operations import bookmark_ops, topic_ops
 from ..services import registry
 from .dialogs import PresetDialog
 from . import icons
@@ -164,6 +164,20 @@ class TopicContextMenu(QMenu):
         
         self.topic = topic
         
+        load_action = QAction("Zur Karte hinzufügen", self)
+        load_action.setObjectName(f"load-topic")
+        load_action.triggered.connect(lambda: topic_ops.add_topic(self.topic))
+        self.addAction(load_action)
+        self.addSeparator()
+        
+        if topic.properties.favorite:
+            favorite_action = QAction("Von Favoriten entfernen", self)
+        else:
+            favorite_action = QAction("Zu Favoriten hinzufügen", self)
+        favorite_action.triggered.connect(self._change_favorite)
+        self.addAction(favorite_action)
+        self.addSeparator()
+        
         presets = registry.preset_manager.get_user_presets()
         
         add_to_preset_menu = QMenu("Zu Preset hinzufügen", self)
@@ -192,13 +206,6 @@ class TopicContextMenu(QMenu):
         self.addMenu(add_to_preset_menu)
         self.addMenu(remove_from_preset_menu)
         self.addSeparator()
-        
-        if topic.properties.favorite:
-            favorite_action = QAction("Von Favoriten entfernen", self)
-        else:
-            favorite_action = QAction("Zu Favoriten hinzufügen", self)
-        favorite_action.triggered.connect(self._change_favorite)
-        self.addAction(favorite_action)
         
         if topic.properties.visible:
             visibility_action = QAction("Thema ausblenden", self)
