@@ -22,6 +22,7 @@ class IconKey(str, Enum):
     
     # Own resources
     TOOLBAR_MAIN_MENU_ICON = "toolbar_main_menu"
+    CATALOG_GLOBE_ICON = "catalog_globe"
     
 # QGIS icons start with "/" while Plugin icons/images/resources start without "/"
 ICON_PATHS: dict[IconKey, str] = {
@@ -35,7 +36,8 @@ ICON_PATHS: dict[IconKey, str] = {
     IconKey.FOLDER_OPEN: "/mIconFolderOpen.svg",
     IconKey.GROUP_ADD: "/mActionAddGroup.svg",
     IconKey.COMBINATION_ADD: "/mActionDataSourceManager.svg",
-    IconKey.TOOLBAR_MAIN_MENU_ICON: "GeoBasis_Loader_Main_Icon.svg"
+    IconKey.CATALOG_GLOBE_ICON: "globe.svg",
+    IconKey.TOOLBAR_MAIN_MENU_ICON: "GeoBasis_Loader_Main_Icon.svg",
 }
 
 LAYER_TYPE_ICON_PATHS: dict[catalog_types.TopicType, str] = {
