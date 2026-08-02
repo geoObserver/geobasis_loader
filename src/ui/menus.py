@@ -15,8 +15,6 @@ from ..operations import topic_ops as handlers
 from .. import config
 from ..utils import custom_logger
 
-STAR_PREFIX = "\u2605 "  # ★
-
 logger = custom_logger.get_logger(__name__)
 
 class MainMenu(QMenu):
@@ -107,7 +105,7 @@ class MainMenu(QMenu):
             
             topic_name = topic.name
             if topic.properties.favorite:
-                topic_name = STAR_PREFIX + topic_name
+                topic_name = config.STAR_PREFIX + topic_name
             
             if isinstance(topic, catalog_types.Topic) and topic.topic_type == catalog_types.TopicType.WEB:
                 icon = icons.get_icon(topic.topic_type)
@@ -130,7 +128,7 @@ class MainMenu(QMenu):
                     
                     subtopic_name = subtopic.name
                     if subtopic.properties.favorite:
-                        subtopic_name = STAR_PREFIX + subtopic_name
+                        subtopic_name = config.STAR_PREFIX + subtopic_name
 
                     icon = icons.get_icon(subtopic.topic_type)
                     if subtopic.topic_type == catalog_types.TopicType.WEB:
