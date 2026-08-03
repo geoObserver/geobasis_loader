@@ -49,6 +49,7 @@ class GeoBasis_Loader(QObject):
                     self.toolbar.setObjectName(config.TOOLBAR_NAME)
 
             if self.toolbar:
+                # Main menu action
                 action_icon = icons.get_icon(icons.IconKey.TOOLBAR_MAIN_MENU_ICON)
                 self.toolbar_main_menu_action = QAction(action_icon, config.PLUGIN_NAME_AND_VERSION, main_window)
                 self.toolbar_main_menu_action.setObjectName("toolbar-geobasis_loader-main_menu")
