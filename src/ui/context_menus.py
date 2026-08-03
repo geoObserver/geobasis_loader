@@ -150,23 +150,27 @@ class FavoritesContextMenu(QMenu):
 
 class TopicContextMenu(QMenu):
     def __init__(self, topic_path, parent=None):
-        super().__init__(parent)
-        catalog = registry.catalog_manager.get_current_catalog()
-        if not catalog or not isinstance(catalog, catalog_types.Catalog):
-            return
-        
-        topic = catalog.get_entry(topic_path)
+        super().__init__(parent)        
+        topic = registry.catalog_manager.get_topic_by_path(topic_path)
         if not topic or not isinstance(
-            topic,
-            (catalog_types.Topic, catalog_types.TopicGroup, catalog_types.TopicCombination),
+            topic, 
+            (catalog_types.Topic,
+            catalog_types.TopicGroup,
+            catalog_types.TopicCombination)
         ):
             return
         
         self.topic = topic
         
-        load_action = QAction("Zur Karte hinzufügen", self)
+        if isinstance(topic, catalog_types.Topic) and topic.topic_type == catalog_types.TopicType.WEB:
+            text = "Webseite öffnen"
+            func = lambda: topic_ops.open_web_site(topic.uri)
+        else:
+            text = "Zur Karte hinzufügen"
+            func = lambda: topic_ops.add_topic(topic)
+        load_action = QAction(text, self)
         load_action.setObjectName(f"load-topic")
-        load_action.triggered.connect(lambda: topic_ops.add_topic(self.topic))
+        load_action.triggered.connect(func)
         self.addAction(load_action)
         self.addSeparator()
         
@@ -178,34 +182,35 @@ class TopicContextMenu(QMenu):
         self.addAction(favorite_action)
         self.addSeparator()
         
-        presets = registry.preset_manager.get_user_presets()
-        
-        add_to_preset_menu = QMenu("Zu Preset hinzufügen", self)
-        remove_from_preset_menu = QMenu("Von Preset entfernen", self)
-        if not presets:
-            no_preset_action = QAction("(Keine)", self)
-            no_preset_action.setEnabled(False)
-            add_to_preset_menu.addAction(no_preset_action)
-            remove_from_preset_menu.addAction(no_preset_action)
-        
-        for preset in presets:
-            activated = self.topic in preset
+        if isinstance(self.topic, catalog_types.Topic) and self.topic.topic_type != catalog_types.TopicType.WEB:
+            presets = registry.preset_manager.get_user_presets()
             
-            add_action = QAction(preset.title, self)
-            add_action.setObjectName(f"add-preset-{preset.id}")
-            add_action.triggered.connect(lambda checked, p=preset: self._add_to_preset(p.id))
-            add_action.setEnabled(not activated)
-            add_to_preset_menu.addAction(add_action)
-        
-            remove_action = QAction(preset.title, self)
-            remove_action.setObjectName(f"remove-preset-{preset.id}")
-            remove_action.triggered.connect(lambda checked, p=preset: self._remove_from_preset(p.id))
-            remove_action.setEnabled(activated)
-            remove_from_preset_menu.addAction(remove_action)
+            add_to_preset_menu = QMenu("Zu Preset hinzufügen", self)
+            remove_from_preset_menu = QMenu("Von Preset entfernen", self)
+            if not presets:
+                no_preset_action = QAction("(Keine)", self)
+                no_preset_action.setEnabled(False)
+                add_to_preset_menu.addAction(no_preset_action)
+                remove_from_preset_menu.addAction(no_preset_action)
+            
+            for preset in presets:
+                activated = self.topic in preset
+                
+                add_action = QAction(preset.title, self)
+                add_action.setObjectName(f"add-preset-{preset.id}")
+                add_action.triggered.connect(lambda checked, p=preset: self._add_to_preset(p.id))
+                add_action.setEnabled(not activated)
+                add_to_preset_menu.addAction(add_action)
+            
+                remove_action = QAction(preset.title, self)
+                remove_action.setObjectName(f"remove-preset-{preset.id}")
+                remove_action.triggered.connect(lambda checked, p=preset: self._remove_from_preset(p.id))
+                remove_action.setEnabled(activated)
+                remove_from_preset_menu.addAction(remove_action)
 
-        self.addMenu(add_to_preset_menu)
-        self.addMenu(remove_from_preset_menu)
-        self.addSeparator()
+            self.addMenu(add_to_preset_menu)
+            self.addMenu(remove_from_preset_menu)
+            self.addSeparator()
         
         if topic.properties.visible:
             visibility_action = QAction("Thema ausblenden", self)
