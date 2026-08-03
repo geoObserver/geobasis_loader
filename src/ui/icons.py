@@ -20,6 +20,8 @@ class IconKey(str, Enum):
     GROUP_ADD = "group_add"
     COMBINATION_ADD = "combination_add"
     REFRESH_ARROWS = "refresh_arrows"
+    ADD_PLUS = "add_plus"
+    REMOVE_MINUS = "remove_minus"
     
     # Own resources
     TOOLBAR_MAIN_MENU_ICON = "toolbar_main_menu"
@@ -39,6 +41,9 @@ ICON_PATHS: dict[IconKey, str] = {
     IconKey.GROUP_ADD: "/mActionAddGroup.svg",
     IconKey.COMBINATION_ADD: "/mActionDataSourceManager.svg",
     IconKey.REFRESH_ARROWS: "/mActionRefresh.svg",
+    IconKey.ADD_PLUS: "/symbologyAdd.svg",
+    IconKey.REMOVE_MINUS: "/symbologyRemove.svg",
+    
     IconKey.CATALOG_GLOBE_ICON: "globe.svg",
     IconKey.TOOLBAR_MAIN_MENU_ICON: "GeoBasis_Loader_Main_Icon.svg",
     IconKey.TOOLBAR_GBL_PANEL_ICON: "GeoBasis_Loader_Catalog_Icon.svg"
