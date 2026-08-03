@@ -340,3 +340,22 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         self._current_catalog = {}
         self._items = []
         self.layer_settings_tree.clear()
+
+def open_settings():
+    current_catalog = registry.catalog_manager.get_current_catalog()
+    if not isinstance(current_catalog, catalog_types.Catalog):
+        logger.warning("No current catalog found. Cannot open settings dialog.")
+        return
+    
+    if iface is None or hasattr(iface, 'mainWindow') is False:
+        logger.error("Kein iface verfügbar (Headless?), Einstellungen können nicht geöffnet werden")
+        return
+    
+    settings_dialog = SettingsDialog(iface.mainWindow())
+    settings_dialog.set_settings(current_catalog)
+    settings_dialog.accepted.connect(_accept_settings)
+    settings_dialog.open()
+
+def _accept_settings():
+    logger.success("Einstellungen erfolgreich gespeichert", extra={"show_banner": True})
+    events.emit_general_settings_changed()
