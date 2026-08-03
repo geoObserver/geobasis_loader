@@ -83,7 +83,7 @@
         </item>
         <item>
          <property name="text">
-          <string>Gruppiert nach Katalog</string>
+          <string>Gruppiert nach Region</string>
          </property>
         </item>
        </widget>
@@ -93,6 +93,9 @@
    </item>
    <item>
     <widget class="QTreeWidget" name="favorites_tree_widget">
+     <property name="contextMenuPolicy">
+      <enum>Qt::CustomContextMenu</enum>
+     </property>
      <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>
      </property>

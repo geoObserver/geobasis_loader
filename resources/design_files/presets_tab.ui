@@ -171,6 +171,9 @@
    </item>
    <item>
     <widget class="QTreeWidget" name="presets_tree_widget">
+     <property name="contextMenuPolicy">
+      <enum>Qt::CustomContextMenu</enum>
+     </property>
      <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>
      </property>
@@ -184,6 +187,9 @@
       <bool>true</bool>
      </property>
      <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+     <property name="headerHidden">
       <bool>true</bool>
      </property>
      <property name="columnCount">
