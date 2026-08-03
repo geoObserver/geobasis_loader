@@ -102,10 +102,19 @@
      <property name="alternatingRowColors">
       <bool>true</bool>
      </property>
+     <property name="autoExpandDelay">
+      <number>-1</number>
+     </property>
      <property name="sortingEnabled">
       <bool>false</bool>
      </property>
+     <property name="animated">
+      <bool>true</bool>
+     </property>
      <property name="headerHidden">
+      <bool>true</bool>
+     </property>
+     <property name="expandsOnDoubleClick">
       <bool>true</bool>
      </property>
      <column>
