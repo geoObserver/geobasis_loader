@@ -367,6 +367,56 @@ class CatalogManager:
         
         self.get_catalog(current_catalog["titel"], current_catalog["name"], callback=_set_catalog)
     
+    def get_topic_by_path(self, path: str) -> Optional[catalog_types.BasicEntry]:
+        resolved = self.get_parts_by_path(path)
+        if resolved is None or isinstance(resolved.entry, catalog_types.Catalog):
+            return None
+
+        return resolved.entry
+
+    def get_parts_by_path(self, path: str) -> Optional[catalog_types.CatalogPath]:
+        catalog_id = path.split(":/")[0] if ":/" in path else ""
+        catalog = self.catalogs.get(catalog_id)
+        if not catalog:
+            logger.error(f"Katalog mit der ID '{catalog_id}' nicht gefunden")
+            return None
+
+        if not isinstance(catalog, catalog_types.Catalog):
+            logger.error("Aktueller Katalog kann nicht geladen werden")
+            return None
+
+        if ":/" in path:
+            _, relative_path = path.split(":/", 1)
+        else:
+            relative_path = path
+
+        path_parts = [part for part in relative_path.split("/") if part]
+        if not path_parts:
+            logger.error(f"Leerer Pfad kann nicht aufgelöst werden")
+            return None
+
+        region = catalog.get_region(path_parts[0])
+        if region is None:
+            logger.error(f"Region mit dem Pfad '{path}' im Katalog '{catalog.name}' nicht gefunden")
+            return None
+
+        if len(path_parts) == 1:
+            return catalog_types.CatalogPath(catalog=catalog, region=region)
+
+        topic = region.get_topic(path_parts[1])
+        if topic is None:
+            logger.error(f"Thema mit dem Pfad '{path}' im Katalog '{catalog.name}' nicht gefunden")
+            return None
+
+        subtopic = None
+        if len(path_parts) >= 3 and isinstance(topic, catalog_types.TopicGroup):
+            subtopic = topic.get_subtopic(path_parts[2])
+            if subtopic is None:
+                logger.error(f"Unterthema mit dem Pfad '{path}' im Katalog '{catalog.name}' nicht gefunden")
+                return None
+
+        return catalog_types.CatalogPath(catalog=catalog, region=region, topic=topic, subtopic=subtopic)
+    
     def get_all_catalogs(self) -> tuple[catalog_types.Catalog, ...]:
         return tuple(self.catalogs.values())
     
