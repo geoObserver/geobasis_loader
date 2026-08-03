@@ -298,3 +298,20 @@ class CatalogIndex:
     
     def to_dict(self) -> list[dict[str, str]]:
         return self.catalogs
+
+@dataclass(frozen=True)
+class CatalogPath:
+    catalog: Catalog
+    region: Optional[Region] = None
+    topic: Optional[TopicLike] = None
+    subtopic: Optional[Topic] = None
+
+    @property
+    def entry(self) -> Union[BasicEntry, Catalog]:
+        if self.subtopic is not None:
+            return self.subtopic
+        if self.topic is not None:
+            return self.topic
+        if self.region is not None:
+            return self.region
+        return self.catalog
