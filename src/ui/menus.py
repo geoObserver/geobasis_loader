@@ -53,7 +53,7 @@ class MainMenu(QMenu):
             self.addSeparator()
             
             # ------- Favoriten einfügen -------------------------
-            self.favorites_menu.build(current_catalog)
+            self.favorites_menu.build()
             self.addMenu(self.favorites_menu)
             
             # ------- Presets einfügen ---------------------------
@@ -314,16 +314,9 @@ class FavoritesMenu(CustomQMenu):
         super().__init__("Favoriten", "favorites-menu", parent)
         self.setIcon(icons.get_icon(icons.IconKey.FAVORITE_STAR))
     
-    def build(self, catalog: Optional[catalog_types.Catalog] = None):
+    def build(self):
         self.clear()
         favorites = registry.property_manager.get_favorites()
-        
-        if not catalog:
-            current_catalog: Optional[Union[catalog_types.Catalog, list]] = registry.catalog_manager.get_current_catalog()
-            if not isinstance(current_catalog, catalog_types.Catalog):
-                logger.warning("No catalog provided and no current catalog found. Cannot build favorites menu.")
-                return
-            catalog = current_catalog
         
         if not favorites:
             action = QAction("(Keine)", self)
@@ -331,8 +324,10 @@ class FavoritesMenu(CustomQMenu):
             action.setEnabled(False)
             self.addAction(action)
         else:
-            for key in favorites:
-                topic = catalog.get_entry(key)
+            topics = [registry.catalog_manager.get_topic_by_path(fav) for fav in favorites]
+            topics = sorted(topics, key=lambda t: t.name if t else "")
+            
+            for topic in topics:
                 if not topic:
                     continue
                 
