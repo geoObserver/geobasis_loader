@@ -7,7 +7,7 @@ from qgis.core import QgsSettings
 from qgis.utils import iface
 from . import icons
 from ..core import events
-from .dialogs import SettingsDialog, PresetDialog
+from .dialogs import PresetDialog, open_settings
 from .context_menus import PresetContextMenu, FavoritesContextMenu, TopicContextMenu
 from ..services import registry
 from ..models import catalog_types
@@ -25,6 +25,9 @@ class MainMenu(QMenu):
         self.setIcon(icon)
         self._qgs_settings = QgsSettings()
         
+        # Buttons
+        self.automatic_crs_action: Optional[QAction] = None
+        
         # Favorites menu
         self.favorites_menu = FavoritesMenu(self)
         
@@ -37,6 +40,7 @@ class MainMenu(QMenu):
         events.connect_enabled_updated(self.create_menu)
         events.connect_current_catalog_updated(self.create_menu)
         events.connect_overview_updated(self.create_menu)
+        events.connect_automatic_crs_changed(self._sync_automatic_crs)
     
     def create_menu(self):
         self.clear()
@@ -177,19 +181,18 @@ class MainMenu(QMenu):
             
             catalog_action.setObjectName("catalog-" + catalog["titel"])
         
-        self.addAction("Kataloge neu laden (Reload Catalogs)", lambda: registry.catalog_manager.get_overview(callback=self.create_menu))
+        self.addAction("Kataloge neu laden (Reload Catalogs)", registry.catalog_manager.get_overview)
         
     def _build_end_section(self):
         self.addSeparator()
         
-        qgs_settings = QgsSettings()
-        automatic_crs = qgs_settings.value(config.QgsSettingsKeys.AUTOMATIC_CRS, False, type=bool)
-        action = QAction(text="Wenn möglich, Dienste autom. im KBS laden", parent=self, checkable=True, checked=automatic_crs) # type: ignore
-        action.toggled.connect(lambda checked: self._set_automatic_crs(checked))
-        self.addAction(action)
+        automatic_crs = self._qgs_settings.value(config.QgsSettingsKeys.AUTOMATIC_CRS, False, type=bool)
+        self.automatic_crs_action = QAction(text="Wenn möglich, Dienste autom. im KBS laden", parent=self, checkable=True, checked=automatic_crs) # type: ignore
+        self.automatic_crs_action.triggered.connect(self._set_automatic_crs)
+        self.addAction(self.automatic_crs_action)
         
         settings_icon = icons.get_icon(icons.IconKey.SETTINGS)
-        self.addAction(settings_icon, "Einstellungen (Aktueller Katalog)", self._open_settings)
+        self.addAction(settings_icon, "Einstellungen (Aktueller Katalog)", open_settings)
         self.addSeparator()
         
         # ------- Spenden-Schaltfläche für #geoObserver ------------------------
@@ -201,39 +204,15 @@ class MainMenu(QMenu):
     # FIXME: Maybe a dedicated settings module/class would be better than local changes
     def _set_automatic_crs(self, enabled: bool):
         self._qgs_settings.setValue(config.QgsSettingsKeys.AUTOMATIC_CRS, enabled)
+        events.emit_automatic_crs_changed()
     
-    def _changed_current_catalog(self, _: Optional[Union[catalog_types.Catalog, list]] = None):
-        current_catalog = self._qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
-        if current_catalog is None or "titel" not in current_catalog:
-            logger.warning(f"Momentan ist kein valider Katalog ausgewählt, Bitten wählen Sie einen aus", extra={"show_banner": True})
+    def _sync_automatic_crs(self):
+        if self.automatic_crs_action is None:
+            logger.warning("Automatic CRS action not initialized. Cannot sync state.")
             return
         
-        titel = current_catalog["titel"]
-        name = current_catalog["name"]
-        version_matches = re.findall(r'v\d+', name)
-        version = version_matches[0] if version_matches else "unbekannt"
-        logger.success(f'Lese {titel}, Version {version} ...', extra={"show_banner": True})
-        
-        self.create_menu()
-        
-    def _open_settings(self):
-        current_catalog = registry.catalog_manager.get_current_catalog()
-        if not isinstance(current_catalog, catalog_types.Catalog):
-            logger.warning("No current catalog found. Cannot open settings dialog.")
-            return
-        
-        if iface is None or hasattr(iface, 'mainWindow') is False:
-            logger.error("Kein iface verfügbar (Headless?), Einstellungen können nicht geöffnet werden")
-            return
-        
-        settings_dialog = SettingsDialog(iface.mainWindow())
-        settings_dialog.set_settings(current_catalog)
-        settings_dialog.accepted.connect(self._accept_settings)
-        settings_dialog.open()
-    
-    def _accept_settings(self):
-        logger.success("Einstellungen erfolgreich gespeichert", extra={"show_banner": True})
-        self.create_menu()
+        automatic_crs = self._qgs_settings.value(config.QgsSettingsKeys.AUTOMATIC_CRS, False, type=bool)
+        self.automatic_crs_action.setChecked(automatic_crs)
 
 class CustomQMenu(QMenu):
     def __init__(self, title: str, object_name: str, parent=None):
