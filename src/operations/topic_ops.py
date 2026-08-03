@@ -45,22 +45,10 @@ def add_topic(topic, crs: Optional[str] = None, show_banner: bool = True) -> boo
 
 @add_topic.register(str)
 def _(path: str, crs: Optional[str] = None, show_banner: bool = True) -> bool:
-    # FIXME: Adequate catalog overview
-    catalog_id = path.split(":/")[0] if ":/" in path else ""
-    catalog = registry.catalog_manager.catalogs.get(catalog_id)
-    if not catalog:
-        logger.error(f"Katalog mit der ID '{catalog_id}' nicht gefunden")
-        return False
-    
-    if not isinstance(catalog, catalog_types.Catalog):
-        logger.error("Aktueller Katalog kann nicht geladen werden")
-        return False
-    
-    topic = catalog.get_entry(path)
+    topic = registry.catalog_manager.get_topic_by_path(path)
     if not topic:
-        logger.error(f"Thema mit dem Pfad '{path}' im Katalog '{catalog.name}' nicht gefunden")
         return False
-    
+
     return add_topic(topic, crs, show_banner)
 
 @add_topic.register(catalog_types.Topic)
