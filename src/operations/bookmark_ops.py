@@ -19,11 +19,16 @@ def add_gbl_spatial_bookmark(name: str, id: Optional[str] = None) -> tuple[Optio
     bookmark.setName(name)
     bookmark.setGroup(config.BOOKMARK_GROUP_NAME)
     
-    id, successful = bookmark_manager.addBookmark(bookmark)
-    if successful:
-        logger.success(f"Räumliches Lesezeichen '{name}' erstellt.")
+    check_bookmark = bookmark_manager.bookmarkById(bookmark.id())
+    if check_bookmark.id() == bookmark.id():
+        logger.info(f"Räumliches Lesezeichen mit ID '{bookmark.id()}' existiert bereits. Es wird überschrieben.")
+        successful = bookmark_manager.updateBookmark(bookmark)
     else:
-        logger.error(f"Fehler beim Erstellen des räumlichen Lesezeichens '{name}'.")
+        id, successful = bookmark_manager.addBookmark(bookmark)
+        if successful:
+            logger.success(f"Räumliches Lesezeichen '{name}' erstellt.")
+        else:
+            logger.error(f"Fehler beim Erstellen des räumlichen Lesezeichens '{name}'.")
     return id, successful
 
 def remove_gbl_spatial_bookmark(bookmark_id: str) -> bool:
