@@ -56,7 +56,10 @@
          </size>
         </property>
         <property name="toolTip">
-         <string>Kataloge neu laden</string>
+         <string>Neues Preset erstellen</string>
+        </property>
+        <property name="statusTip">
+         <string/>
         </property>
         <property name="text">
          <string/>
@@ -71,6 +74,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="delete_preset_button">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -84,7 +90,7 @@
          </size>
         </property>
         <property name="toolTip">
-         <string>Anzeigeoptionen</string>
+         <string>Ausgewähltes Preset löschen</string>
         </property>
         <property name="text">
          <string/>
@@ -112,6 +118,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="new_bookmark_button">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -125,7 +134,38 @@
          </size>
         </property>
         <property name="toolTip">
-         <string>Anzeigeoptionen</string>
+         <string>Neues räumliches Lesezeichen zum ausgewähltem Preset hinzufügen</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>18</width>
+          <height>18</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="apply_bookmark_button">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>25</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="toolTip">
+         <string>Räumliches Lesezeichen des ausgewählten Presets anwenden</string>
         </property>
         <property name="text">
          <string/>
@@ -140,6 +180,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="delete_bookmark_button">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -153,7 +196,7 @@
          </size>
         </property>
         <property name="toolTip">
-         <string>Anzeigeoptionen</string>
+         <string>Räumliches Lesezeichen des ausgewählten Presets löschen</string>
         </property>
         <property name="text">
          <string/>
