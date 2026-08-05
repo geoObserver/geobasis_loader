@@ -1,10 +1,9 @@
 import re
-from typing import Optional, Union
+from typing import Optional
 from qgis.PyQt.QtCore import Qt
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QMenu, QAction
 from qgis.core import QgsSettings
-from qgis.utils import iface
 from . import icons
 from ..core import events
 from .dialogs import open_settings
@@ -12,6 +11,7 @@ from .context_menus import PresetContextMenu, FavoritesContextMenu, TopicContext
 from ..services import registry
 from ..models import catalog_types
 from ..operations import topic_ops as handlers
+from ..operations import preset_ops
 from ..ui.dialogs import PresetDialog
 from .. import config
 from ..utils import custom_logger
@@ -258,7 +258,10 @@ class PresetsMenu(CustomQMenu):
     
     def build(self):
         self.clear()
-        user_presets = registry.preset_manager.get_user_presets()
+        user_presets = sorted(
+            registry.preset_manager.get_user_presets(),
+            key=lambda preset: preset.title.casefold(),
+        )
         curated_presets = registry.preset_manager.get_curated_presets()
         
         action = QAction(icons.get_icon(icons.IconKey.ADD_PLUS), "Neu", self)
@@ -275,7 +278,7 @@ class PresetsMenu(CustomQMenu):
             description = preset.description + "\n\n" if preset.description else ""
             description += preset.topic_description()
             action.setToolTip(description)
-            action.triggered.connect(lambda _, p=preset: registry.preset_manager.add_preset_to_project(p.id))
+            action.triggered.connect(lambda _, p=preset: preset_ops.add_preset_to_project(p.id))
             self.addAction(action)
         
         self.addSeparator()
@@ -286,7 +289,7 @@ class PresetsMenu(CustomQMenu):
             description = preset.description + "\n\n" if preset.description else ""
             description += preset.topic_description()
             action.setToolTip(description)
-            action.triggered.connect(lambda _, p=preset: registry.preset_manager.add_preset_to_project(p.id))
+            action.triggered.connect(lambda _, p=preset: preset_ops.add_preset_to_project(p.id))
             self.addAction(action)
     
     # FIXME: Method twice implemented. use dedicated method
