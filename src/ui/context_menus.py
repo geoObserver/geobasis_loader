@@ -2,7 +2,7 @@ from qgis.PyQt.QtWidgets import QMenu, QAction, QMessageBox
 from qgis.utils import iface
 from ..core import events
 from ..models import catalog_types
-from ..operations import bookmark_ops, topic_ops
+from ..operations import bookmark_ops, topic_ops, preset_ops
 from ..services import registry
 from .dialogs import PresetDialog
 from . import icons
@@ -22,7 +22,7 @@ class PresetContextMenu(QMenu):
         
         if preset.spatial_bookmark_id:
             apply_bookmark_action = QAction("Räumliches Lesezeichen anwenden", self)
-            apply_bookmark_action.setIcon(icons.get_icon(icons.IconKey.SPATAIL_BOOKMARK_ZOOM))
+            apply_bookmark_action.setIcon(icons.get_icon(icons.IconKey.SPATIAL_BOOKMARK_ZOOM))
             apply_bookmark_action.triggered.connect(self._apply_spatial_bookmark)
             remove_bookmark_action = QAction("Räumliches Lesezeichen entfernen", self)
             remove_bookmark_action.setIcon(icons.get_icon(icons.IconKey.DELETE))
@@ -31,7 +31,7 @@ class PresetContextMenu(QMenu):
             self.addAction(remove_bookmark_action)
         else:
             new_bookmark_action = QAction("Räumliches Lesezeichen erstellen", self)
-            new_bookmark_action.setIcon(icons.get_icon(icons.IconKey.SPATAIL_BOOKMARK_NEW))
+            new_bookmark_action.setIcon(icons.get_icon(icons.IconKey.SPATIAL_BOOKMARK_NEW))
             new_bookmark_action.triggered.connect(self._create_spatial_bookmark)
             self.addAction(new_bookmark_action)
         
@@ -45,73 +45,19 @@ class PresetContextMenu(QMenu):
         self.addAction(delete_action)
     
     def _delete_user_preset(self) -> None:
-        parent = iface.mainWindow() if iface is not None and hasattr(iface, 'mainWindow') else None
-        
-        confirm = QMessageBox.question(
-            parent,
-            "Preset löschen",
-            f"Preset '{self.preset.title}' löschen?",
-        )
-        if confirm != QMessageBox.StandardButton.Yes:
-            return
-
-        registry.preset_manager.remove_user_preset(self.preset.id)
-        registry.preset_manager.save_user_presets()
-        events.emit_presets_updated()
+        preset_ops.delete_user_preset(self.preset, self.parentWidget())
     
     def _rename_user_preset(self) -> None:
-        if not self.preset:
-            logger.error(f"Preset '{self.preset.title}' nicht gefunden. Ändern nicht möglich.")
-            return
-        
-        parent = iface.mainWindow() if iface is not None and hasattr(iface, 'mainWindow') else None
-        
-        preset_dialog = PresetDialog(
-            self.preset.title, 
-            self.preset.description, 
-            save_crs_checkbox_visible=False, 
-            parent=parent
-        )
-        if preset_dialog.exec() != PresetDialog.DialogCode.Accepted:
-            return
-        
-        self.preset.title = preset_dialog.preset_title
-        self.preset.description = preset_dialog.preset_description
-        registry.preset_manager.save_user_presets()
-        events.emit_presets_updated()
+        preset_ops.change_user_preset(self.preset, self.parentWidget())
     
     def _apply_spatial_bookmark(self) -> None:
-        bookmark = self.preset.get_spatial_bookmark()
-        if not bookmark:
-            if self.preset.spatial_bookmark_id:
-                logger.error(f"Räumliches Lesezeichen für Preset '{self.preset.title}' nicht gefunden. Anwenden nicht möglich.")
-            return
-        
-        helpers.apply_spatial_bookmark(bookmark)
-        logger.success(f"Räumliches Lesezeichen für Preset '{self.preset.title}' angewendet.")
+        preset_ops.apply_spatial_bookmark_from_preset(self.preset)
     
     def _create_spatial_bookmark(self) -> None:
-        id = f"preset-{self.preset.id}"
-        name = f"Preset: {self.preset.title}"
-        bookmark_id, successful = bookmark_ops.add_gbl_spatial_bookmark(name, id=id)
-        if not successful or not bookmark_id:
-            logger.error(f"Räumliches Lesezeichen für Preset '{self.preset.title}' konnte nicht erstellt werden.")
-            return
-        
-        self.preset.spatial_bookmark_id = bookmark_id
-        registry.preset_manager.save_user_presets()
-        events.emit_presets_updated()
-        logger.success(f"Räumliches Lesezeichen für Preset '{self.preset.title}' erstellt.")
+        preset_ops.create_spatial_bookmark_from_preset(self.preset)
     
     def _remove_spatial_bookmark(self) -> None:
-        if not self.preset.spatial_bookmark_id:
-            logger.error(f"Preset '{self.preset.title}' hat kein räumliches Lesezeichen. Entfernen nicht möglich.")
-            return
-        
-        success = bookmark_ops.remove_gbl_spatial_bookmark(self.preset.spatial_bookmark_id)
-        if not success:
-            logger.error(f"Räumliches Lesezeichen für Preset '{self.preset.title}' konnte nicht entfernt werden.")
-            return
+        preset_ops.remove_spatial_bookmark_from_preset(self.preset)
 
 class FavoritesContextMenu(QMenu):
     def __init__(self, topic_path, parent=None):
