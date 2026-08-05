@@ -1,11 +1,7 @@
-import uuid
 import pathlib
-from functools import singledispatchmethod
-from datetime import datetime
-from typing import Optional, TypedDict
-from dataclasses import dataclass, field
-from qgis.core import QgsProject, QgsBookmark, QgsApplication
-from ..models import catalog_types
+from typing import Optional
+from qgis.core import QgsProject
+from ..models.preset_types import Preset
 from ..operations import bookmark_ops
 from .. import config
 from ..utils import custom_logger, helpers
@@ -65,41 +61,6 @@ class PresetManager:
         preset = self.user_presets.pop(id, None)
         if preset and preset.spatial_bookmark_id:
             bookmark_ops.remove_gbl_spatial_bookmark(preset.spatial_bookmark_id)
-    
-    @singledispatchmethod
-    def add_preset_to_project(self, preset) -> None:
-        logger.critical(f"Nicht unterstützter Typ für Preset: {type(preset)}")
-    
-    @add_preset_to_project.register(str)
-    def _(self, preset_id: str) -> None:
-        preset = self.user_presets.get(preset_id)
-        if not preset:
-            preset = self.curated_presets.get(preset_id)
-            
-        if not preset:
-            logger.critical(f"Preset nicht gefunden: {preset_id}")
-            return
-        
-        self.add_preset_to_project(preset)
-    
-    @add_preset_to_project.register(Preset)
-    def _(self, preset: Preset) -> None:
-        from ..operations import topic_ops as handlers
-        failures = 0
-        # entries are stored top-to-bottom, but add_layer/add_layer_group insert
-        # each new layer/group at the top (position 0). Apply in reverse so the
-        # resulting layer-tree order matches the order the preset was saved in.
-        for entry in reversed(preset.entries):
-            path = entry["path"]
-            crs = entry.get("crs")
-            success = handlers.add_topic(path, crs, False)
-            if not success:
-                failures += 1
-        
-        if failures == 0:
-            logger.success(f"Preset '{preset.title}' erfolgreich geladen", extra={"show_banner": True})
-        else:
-            logger.warning(f"Preset '{preset.title}' teilweise geladen: {failures}/{len(preset.entries)} Themen konnten nicht geladen werden", extra={"show_banner": True})
 
     def get_user_presets(self) -> list[Preset]:
         return list(self.user_presets.values())

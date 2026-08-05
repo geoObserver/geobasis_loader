@@ -1,16 +1,18 @@
+from functools import singledispatch
 from typing import Optional, Union
 from qgis.PyQt.QtWidgets import QMessageBox
 from ..core import events
 from . import bookmark_ops
+from . import topic_ops
+from ..models.preset_types import Preset
 from ..services import registry
-from ..services import preset_service
 from ..ui.dialogs import PresetDialog
 from ..utils import custom_logger, helpers
 
 logger = custom_logger.get_logger(__name__)
 
-def _get_preset_by_id(preset_id: Union['preset_service.Preset', str]) -> Optional['preset_service.Preset']:
-    if isinstance(preset_id, preset_service.Preset):
+def _get_preset_by_id(preset_id: Union[Preset, str]) -> Optional[Preset]:
+    if isinstance(preset_id, Preset):
         return preset_id
     elif not isinstance(preset_id, str):
         logger.error(f"Ungültiger Typ für Preset-ID: {type(preset_id)}. Erwartet wird 'Preset' oder 'str'.")
@@ -22,8 +24,42 @@ def _get_preset_by_id(preset_id: Union['preset_service.Preset', str]) -> Optiona
         return None
     return preset
 
+@singledispatch
+def add_preset_to_project(preset) -> None:
+    logger.critical(f"Nicht unterstützter Typ für Preset: {type(preset)}")
+
+@add_preset_to_project.register(str)
+def _(preset_id: str) -> None:
+    preset = registry.preset_manager.user_presets.get(preset_id)
+    if not preset:
+        preset = registry.preset_manager.curated_presets.get(preset_id)
+        
+    if not preset:
+        logger.critical(f"Preset nicht gefunden: {preset_id}")
+        return
+    
+    add_preset_to_project(preset)
+
+@add_preset_to_project.register(Preset)
+def _(preset: Preset) -> None:
+    failures = 0
+    # entries are stored top-to-bottom, but add_layer/add_layer_group insert
+    # each new layer/group at the top (position 0). Apply in reverse so the
+    # resulting layer-tree order matches the order the preset was saved in.
+    for entry in reversed(preset.entries):
+        path = entry["path"]
+        crs = entry.get("crs")
+        success = topic_ops.add_topic(path, crs, False)
+        if not success:
+            failures += 1
+    
+    if failures == 0:
+        logger.success(f"Preset '{preset.title}' erfolgreich geladen", extra={"show_banner": True})
+    else:
+        logger.warning(f"Preset '{preset.title}' teilweise geladen: {failures}/{len(preset.entries)} Themen konnten nicht geladen werden", extra={"show_banner": True})
+
 # FIXME: Rename bookamrk after preset renamed
-def create_spatial_bookmark_from_preset(preset: Union['preset_service.Preset', str]) -> None:
+def create_spatial_bookmark_from_preset(preset: Union[Preset, str]) -> None:
     preset_obj = _get_preset_by_id(preset)
     if not preset_obj:
         return
@@ -40,7 +76,7 @@ def create_spatial_bookmark_from_preset(preset: Union['preset_service.Preset', s
     events.emit_presets_updated()
     logger.success(f"Räumliches Lesezeichen für Preset '{preset_obj.title}' erstellt.")
 
-def apply_spatial_bookmark_from_preset(preset: Union['preset_service.Preset', str]) -> None:
+def apply_spatial_bookmark_from_preset(preset: Union[Preset, str]) -> None:
     preset_obj = _get_preset_by_id(preset)
     if not preset_obj:
         return
@@ -54,7 +90,7 @@ def apply_spatial_bookmark_from_preset(preset: Union['preset_service.Preset', st
     helpers.apply_spatial_bookmark(bookmark)
     logger.success(f"Räumliches Lesezeichen für Preset '{preset_obj.title}' angewendet.")
 
-def remove_spatial_bookmark_from_preset(preset: Union['preset_service.Preset', str]) -> None:
+def remove_spatial_bookmark_from_preset(preset: Union[Preset, str]) -> None:
     preset_obj = _get_preset_by_id(preset)
     if not preset_obj:
         return
@@ -80,7 +116,7 @@ def new_preset_from_project():
     registry.preset_manager.save_user_presets()
     events.emit_presets_updated()
 
-def change_user_preset(preset: Union['preset_service.Preset', str], parent=None) -> None:    
+def change_user_preset(preset: Union[Preset, str], parent=None) -> None:    
     preset_obj = _get_preset_by_id(preset)
     if not preset_obj:
         return
@@ -101,7 +137,7 @@ def change_user_preset(preset: Union['preset_service.Preset', str], parent=None)
 
 # FIXME: UI box in ui helper module
 # FIXME: Move multiple functions frm preset_service to preset_ops
-def delete_user_preset(preset: Union['preset_service.Preset', str], parent=None) -> None:    
+def delete_user_preset(preset: Union[Preset, str], parent=None) -> None:    
     preset_obj = _get_preset_by_id(preset)
     if not preset_obj:
         return
