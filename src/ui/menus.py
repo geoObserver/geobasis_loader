@@ -7,11 +7,12 @@ from qgis.core import QgsSettings
 from qgis.utils import iface
 from . import icons
 from ..core import events
-from .dialogs import PresetDialog, open_settings
+from .dialogs import open_settings
 from .context_menus import PresetContextMenu, FavoritesContextMenu, TopicContextMenu
 from ..services import registry
 from ..models import catalog_types
 from ..operations import topic_ops as handlers
+from ..ui.dialogs import PresetDialog
 from .. import config
 from ..utils import custom_logger
 
@@ -260,10 +261,10 @@ class PresetsMenu(CustomQMenu):
         user_presets = registry.preset_manager.get_user_presets()
         curated_presets = registry.preset_manager.get_curated_presets()
         
-        action = QAction(icons.get_icon(icons.IconKey.GROUP_ADD), "Neu vom Projekt", self)
+        action = QAction(icons.get_icon(icons.IconKey.ADD_PLUS), "Neu", self)
         action.setObjectName("new-preset-from-project")
             
-        action.triggered.connect(self._new_preset_from_project)
+        action.triggered.connect(self._new_preset)
         self.addAction(action)
         self.addSeparator()
         
@@ -288,7 +289,8 @@ class PresetsMenu(CustomQMenu):
             action.triggered.connect(lambda _, p=preset: registry.preset_manager.add_preset_to_project(p.id))
             self.addAction(action)
     
-    def _new_preset_from_project(self):
+    # FIXME: Method twice implemented. use dedicated method
+    def _new_preset(self):
         preset_dialog = PresetDialog()
         if preset_dialog.exec() != PresetDialog.DialogCode.Accepted:
             return
@@ -296,7 +298,10 @@ class PresetsMenu(CustomQMenu):
         title = preset_dialog.preset_title
         description = preset_dialog.preset_description
         save_layer_crs = preset_dialog.save_layer_crs
-        registry.preset_manager.create_user_preset_from_project(title, description, save_layer_crs)
+        if preset_dialog.mode == 1:  # from project
+            registry.preset_manager.create_user_preset_from_project(title, description, save_layer_crs)
+        else:
+            registry.preset_manager.create_empty_user_preset(title, description)
         registry.preset_manager.save_user_presets()
         events.emit_presets_updated()
     
