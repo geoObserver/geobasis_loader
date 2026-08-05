@@ -220,6 +220,12 @@
      <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>
      </property>
+     <property name="dragEnabled">
+      <bool>false</bool>
+     </property>
+     <property name="dragDropMode">
+      <enum>QAbstractItemView::NoDragDrop</enum>
+     </property>
      <property name="alternatingRowColors">
       <bool>true</bool>
      </property>
@@ -240,6 +246,9 @@
      </property>
      <attribute name="headerCascadingSectionResizes">
       <bool>false</bool>
+     </attribute>
+     <attribute name="headerMinimumSectionSize">
+      <number>0</number>
      </attribute>
      <column>
       <property name="text">
