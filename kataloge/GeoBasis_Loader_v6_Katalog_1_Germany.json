@@ -14283,7 +14283,7 @@
               "EPSG:2168",
               "EPSG:3857"
             ],
-            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/tiff&layers=ST_basemapde_p10_raster&styles=default&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/ows_WMS_ST_P10_top",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=ST_basemapde_p10_raster&styles=default&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/ows_WMS_ST_P10_top",
             "opacity": 0.75,
             "minScale": 17500,
             "maxScale": 1
@@ -14458,7 +14458,7 @@
               "EPSG:2168",
               "EPSG:3857"
             ],
-            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/tiff&layers=ST_basemapde_p10_raster_gry&styles=default&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/ows_WMS_ST_P10_gry",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=ST_basemapde_p10_raster_gry&styles=default&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/ows_WMS_ST_P10_gry",
             "opacity": 0.75,
             "minScale": 17500,
             "maxScale": 1
