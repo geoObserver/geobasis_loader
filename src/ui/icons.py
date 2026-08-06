@@ -25,9 +25,11 @@ class IconKey(str, Enum):
     REMOVE_MINUS = "remove_minus"
     
     # Own resources
+    CATALOG_GLOBE_ICON = "catalog_globe"
+    BULB_ON_ICON = "bulb_on"
+    BULB_OFF_ICON = "bulb_off"
     TOOLBAR_MAIN_MENU_ICON = "toolbar_main_menu"
     TOOLBAR_GBL_PANEL_ICON = "toolbar_gbl_panel"
-    CATALOG_GLOBE_ICON = "catalog_globe"
     
 # QGIS icons start with "/" while Plugin icons/images/resources start without "/"
 ICON_PATHS: dict[IconKey, str] = {
@@ -47,6 +49,8 @@ ICON_PATHS: dict[IconKey, str] = {
     IconKey.REMOVE_MINUS: "/symbologyRemove.svg",
     
     IconKey.CATALOG_GLOBE_ICON: "globe.svg",
+    IconKey.BULB_ON_ICON: "bulb_on.svg",
+    IconKey.BULB_OFF_ICON: "bulb_off.svg",
     IconKey.TOOLBAR_MAIN_MENU_ICON: "GeoBasis_Loader_Main_Icon.svg",
     IconKey.TOOLBAR_GBL_PANEL_ICON: "GeoBasis_Loader_Catalog_Icon.svg"
 }
