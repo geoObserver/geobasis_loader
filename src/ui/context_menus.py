@@ -20,6 +20,11 @@ class PresetContextMenu(QMenu):
         
         self.preset = preset
         
+        load_preset_action = QAction("Preset laden", self)
+        load_preset_action.triggered.connect(lambda: preset_ops.add_preset_to_project(self.preset))
+        self.addAction(load_preset_action)
+        self.addSeparator()
+
         if preset.spatial_bookmark_id:
             apply_bookmark_action = QAction("Räumliches Lesezeichen anwenden", self)
             apply_bookmark_action.setIcon(icons.get_icon(icons.IconKey.SPATIAL_BOOKMARK_ZOOM))
