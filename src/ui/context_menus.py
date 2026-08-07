@@ -133,7 +133,7 @@ class TopicContextMenu(QMenu):
         self.addAction(favorite_action)
         self.addSeparator()
         
-        if isinstance(self.topic, catalog_types.Topic) and self.topic.topic_type != catalog_types.TopicType.WEB:
+        if not (isinstance(self.topic, catalog_types.Topic) and self.topic.topic_type == catalog_types.TopicType.WEB):
             presets = registry.preset_manager.get_user_presets()
             
             add_to_preset_menu = QMenu("Zu Preset hinzufügen", self)
