@@ -13,9 +13,12 @@ class Preset:
     class BaseEntry(TypedDict):
         name: str
         path: str
+        visible: bool
     
     class Entry(BaseEntry, total=False):
         crs: str
+        # FIXME: Use id instead of path as key
+        subtopic_visible: dict[str, bool]
     
     id: str = field(default_factory=lambda: str(uuid.uuid4()))
     title: str = "Preset"
