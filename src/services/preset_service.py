@@ -13,7 +13,7 @@ class PresetManager:
     CURATED_PRESETS_PATH = config.PRESETS_DIR / "curated_presets.json"
     
     def __init__(self) -> None:
-        self.user_presets: dict[str, Preset] = {}
+        self.user_presets: dict[str, Preset] = {} 
         self.curated_presets: dict[str, Preset] = {}
     
     def create_empty_user_preset(self, title: str, description: Optional[str] = None) -> Preset:
@@ -29,7 +29,7 @@ class PresetManager:
                 path: Optional[str] = child.customProperty("gbl_path", None)
                 crs: Optional[str] = child.customProperty("gbl_crs", None)
                 if path is not None and (not path.startswith(parent_path) or parent_path == ""):
-                    entry = Preset.Entry(name=name, path=path)
+                    entry = Preset.Entry(name=name, path=path, visible=child.itemVisibilityChecked())
                     if crs is not None:
                         entry["crs"] = crs
                     entries.append(entry)
@@ -49,7 +49,7 @@ class PresetManager:
         preset = self.create_empty_user_preset(title, description)
         for entry in entries:
             if entry["path"] not in preset:
-                preset.add_entry(name=entry["name"], path=entry["path"], crs=entry.get("crs") if save_layer_crs else None)
+                preset.add_entry(name=entry["name"], path=entry["path"], visible=entry["visible"], crs=entry.get("crs") if save_layer_crs else None)
         
         return preset
     

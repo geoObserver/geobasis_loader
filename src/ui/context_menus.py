@@ -205,7 +205,7 @@ class TopicContextMenu(QMenu):
             logger.warning(f"Thema '{self.topic.name}' bereits in Preset '{preset.title}'.")
             return
         
-        preset.add_entry(name=self.topic.name, path=self.topic.path, position=0)
+        preset.add_entry(name=self.topic.name, path=self.topic.path, visible=True, position=0)
         registry.preset_manager.save_user_presets()
         events.emit_presets_updated()
     
