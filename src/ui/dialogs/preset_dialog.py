@@ -12,6 +12,7 @@ class PresetDialog(QtWidgets.QDialog, PRESET_DIALOG):
         window_title = f"Preset '{preset_title}' ändern" if preset_title else "Neues Preset erstellen"
         self.setWindowTitle(window_title)
         
+        
         # Variables
         self.preset_title: str = preset_title
         self.preset_description: Optional[str] = preset_description if preset_description is not None else ""
@@ -20,6 +21,9 @@ class PresetDialog(QtWidgets.QDialog, PRESET_DIALOG):
         # Type hints for UI elements
         self.description_edit: QtWidgets.QPlainTextEdit = self.description_edit
         self.title_edit: QtWidgets.QLineEdit = self.title_edit
+        self.new_preset_method_button_group: QtWidgets.QButtonGroup = self.new_preset_method_button_group
+        self.from_empty_radio: QtWidgets.QRadioButton = self.from_empty_radio
+        self.from_project_radio: QtWidgets.QRadioButton = self.from_project_radio
         self.save_layer_crs_checkbox: QtWidgets.QCheckBox = self.save_layer_crs_checkbox
         self.hint_label: QtWidgets.QLabel = self.hint_label
         
@@ -29,7 +33,12 @@ class PresetDialog(QtWidgets.QDialog, PRESET_DIALOG):
         self.save_layer_crs_checkbox.setChecked(save_layer_crs)
         self.save_layer_crs_checkbox.setVisible(save_crs_checkbox_visible)
         
+        self.from_empty_radio.clicked.connect(lambda: self.save_layer_crs_checkbox.setEnabled(False))
+        self.from_project_radio.clicked.connect(lambda: self.save_layer_crs_checkbox.setEnabled(True))
         self.buttonBox.accepted.connect(self.confirm_options)
+        
+        # FIXME: Enum
+        self.mode = self.from_empty_radio.isChecked() + 1
     
     def confirm_options(self) -> None:
         title = self.title_edit.text().strip()

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <!-- Gluehbirne AUS (neutrales Grau, identische Form wie AN) - Sichtbarkeits-Toggle im Presets-Tab -->
+  <path d="M8 1.2a4.6 4.6 0 0 0-2.7 8.32c.6.44.95 1.02 1.02 1.58h3.36c.07-.56.42-1.14 1.02-1.58A4.6 4.6 0 0 0 8 1.2z"
+        fill="#c2c2c2" stroke="#7d7d7d" stroke-width="0.9"/>
+  <path d="M6.3 11.9h3.4v1.1a.5.5 0 0 1-.5.5H6.8a.5.5 0 0 1-.5-.5z"
+        fill="#a8a8a8" stroke="#7d7d7d" stroke-width="0.5"/>
+  <rect x="6.9" y="13.7" width="2.2" height="1.0" rx="0.4" fill="#a8a8a8"/>
+</svg>

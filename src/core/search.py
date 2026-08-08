@@ -7,6 +7,7 @@ from ..services import registry
 class SearchIndex:
     def __init__(self):
         self._index = None
+        # FIXME: invalidate index upon adding/removing catalog
     
     def build(self) -> None:
         search_index = ()
@@ -23,6 +24,7 @@ class SearchIndex:
                         catalog_name=catalog.name,
                         region_name=region.name,
                         name=topic.name,
+                        entry_type=topic.entry_type,
                         layer_type=topic.topic_type if isinstance(topic, catalog_types.Topic) else "",
                         path=topic.path,
                         name_lower=topic.name.casefold(),
@@ -38,6 +40,7 @@ class SearchIndex:
                                 catalog_name=catalog.name,
                                 region_name=region.name,
                                 name=subtopic.name,
+                                entry_type=subtopic.entry_type,
                                 layer_type=subtopic.topic_type,
                                 path=subtopic.path,
                                 name_lower=subtopic.name.casefold(),
@@ -68,7 +71,7 @@ class SearchIndex:
             yield from ()
         
         for entry in self.peek_entries():
-            if all(token in entry.name_lower or any(token in kw for kw in entry.keywords_lower) for token in tokens):
+            if all(token in entry.name_lower or any(kw.startswith(token) for kw in entry.keywords_lower) for token in tokens):
                 yield entry
     
     def score(self, entry: SearchEntry, tokens: tuple[str, ...]) -> int:
@@ -78,6 +81,6 @@ class SearchIndex:
                 score += 150
             elif token in entry.name_lower:
                 score += 50
-            if any(token in kw for kw in entry.keywords_lower):
+            if any(kw.startswith(token) for kw in entry.keywords_lower):
                 score += 25
         return score

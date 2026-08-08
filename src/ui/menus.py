@@ -1,21 +1,20 @@
 import re
-from typing import Optional, Union
+from typing import Optional
 from qgis.PyQt.QtCore import Qt
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QMenu, QAction
 from qgis.core import QgsSettings
-from qgis.utils import iface
 from . import icons
 from ..core import events
-from .dialogs import SettingsDialog, PresetDialog
-from .context_menus import PresetContextMenu, FavoritesContextMenu, TopicContextMenu
+from .dialogs import open_settings
+from .context_menus import PresetContextMenu, TopicContextMenu
 from ..services import registry
 from ..models import catalog_types
 from ..operations import topic_ops as handlers
+from ..operations import preset_ops
+from ..ui.dialogs import PresetDialog
 from .. import config
 from ..utils import custom_logger
-
-STAR_PREFIX = "\u2605 "  # ★
 
 logger = custom_logger.get_logger(__name__)
 
@@ -26,6 +25,9 @@ class MainMenu(QMenu):
         icon = QIcon(str(config.PLUGIN_DIR / "GeoBasis_Loader_icon.png"))
         self.setIcon(icon)
         self._qgs_settings = QgsSettings()
+        
+        # Buttons
+        self.automatic_crs_action: Optional[QAction] = None
         
         # Favorites menu
         self.favorites_menu = FavoritesMenu(self)
@@ -39,6 +41,7 @@ class MainMenu(QMenu):
         events.connect_enabled_updated(self.create_menu)
         events.connect_current_catalog_updated(self.create_menu)
         events.connect_overview_updated(self.create_menu)
+        events.connect_automatic_crs_changed(self._sync_automatic_crs)
     
     def create_menu(self):
         self.clear()
@@ -51,7 +54,7 @@ class MainMenu(QMenu):
             self.addSeparator()
             
             # ------- Favoriten einfügen -------------------------
-            self.favorites_menu.build(current_catalog)
+            self.favorites_menu.build()
             self.addMenu(self.favorites_menu)
             
             # ------- Presets einfügen ---------------------------
@@ -107,7 +110,7 @@ class MainMenu(QMenu):
             
             topic_name = topic.name
             if topic.properties.favorite:
-                topic_name = STAR_PREFIX + topic_name
+                topic_name = config.STAR_PREFIX + topic_name
             
             if isinstance(topic, catalog_types.Topic) and topic.topic_type == catalog_types.TopicType.WEB:
                 icon = icons.get_icon(topic.topic_type)
@@ -130,7 +133,7 @@ class MainMenu(QMenu):
                     
                     subtopic_name = subtopic.name
                     if subtopic.properties.favorite:
-                        subtopic_name = STAR_PREFIX + subtopic_name
+                        subtopic_name = config.STAR_PREFIX + subtopic_name
 
                     icon = icons.get_icon(subtopic.topic_type)
                     if subtopic.topic_type == catalog_types.TopicType.WEB:
@@ -179,19 +182,18 @@ class MainMenu(QMenu):
             
             catalog_action.setObjectName("catalog-" + catalog["titel"])
         
-        self.addAction("Kataloge neu laden (Reload Catalogs)", lambda: registry.catalog_manager.get_overview(callback=self.create_menu))
+        self.addAction("Kataloge neu laden (Reload Catalogs)", registry.catalog_manager.get_overview)
         
     def _build_end_section(self):
         self.addSeparator()
         
-        qgs_settings = QgsSettings()
-        automatic_crs = qgs_settings.value(config.QgsSettingsKeys.AUTOMATIC_CRS, False, type=bool)
-        action = QAction(text="Wenn möglich, Dienste autom. im KBS laden", parent=self, checkable=True, checked=automatic_crs) # type: ignore
-        action.toggled.connect(lambda checked: self._set_automatic_crs(checked))
-        self.addAction(action)
+        automatic_crs = self._qgs_settings.value(config.QgsSettingsKeys.AUTOMATIC_CRS, False, type=bool)
+        self.automatic_crs_action = QAction(text="Wenn möglich, Dienste autom. im KBS laden", parent=self, checkable=True, checked=automatic_crs) # type: ignore
+        self.automatic_crs_action.triggered.connect(self._set_automatic_crs)
+        self.addAction(self.automatic_crs_action)
         
         settings_icon = icons.get_icon(icons.IconKey.SETTINGS)
-        self.addAction(settings_icon, "Einstellungen (Aktueller Katalog)", self._open_settings)
+        self.addAction(settings_icon, "Einstellungen (Aktueller Katalog)", open_settings)
         self.addSeparator()
         
         # ------- Spenden-Schaltfläche für #geoObserver ------------------------
@@ -206,39 +208,15 @@ class MainMenu(QMenu):
     # FIXME: Maybe a dedicated settings module/class would be better than local changes
     def _set_automatic_crs(self, enabled: bool):
         self._qgs_settings.setValue(config.QgsSettingsKeys.AUTOMATIC_CRS, enabled)
+        events.emit_automatic_crs_changed()
     
-    def _changed_current_catalog(self, _: Optional[Union[catalog_types.Catalog, list]] = None):
-        current_catalog = self._qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
-        if current_catalog is None or "titel" not in current_catalog:
-            logger.warning(f"Momentan ist kein valider Katalog ausgewählt, Bitten wählen Sie einen aus", extra={"show_banner": True})
+    def _sync_automatic_crs(self):
+        if self.automatic_crs_action is None:
+            logger.warning("Automatic CRS action not initialized. Cannot sync state.")
             return
         
-        titel = current_catalog["titel"]
-        name = current_catalog["name"]
-        version_matches = re.findall(r'v\d+', name)
-        version = version_matches[0] if version_matches else "unbekannt"
-        logger.success(f'Lese {titel}, Version {version} ...', extra={"show_banner": True})
-        
-        self.create_menu()
-        
-    def _open_settings(self):
-        current_catalog = registry.catalog_manager.get_current_catalog()
-        if not isinstance(current_catalog, catalog_types.Catalog):
-            logger.warning("No current catalog found. Cannot open settings dialog.")
-            return
-        
-        if iface is None or hasattr(iface, 'mainWindow') is False:
-            logger.error("Kein iface verfügbar (Headless?), Einstellungen können nicht geöffnet werden")
-            return
-        
-        settings_dialog = SettingsDialog(iface.mainWindow())
-        settings_dialog.set_settings(current_catalog)
-        settings_dialog.accepted.connect(self._accept_settings)
-        settings_dialog.open()
-    
-    def _accept_settings(self):
-        logger.success("Einstellungen erfolgreich gespeichert", extra={"show_banner": True})
-        self.create_menu()
+        automatic_crs = self._qgs_settings.value(config.QgsSettingsKeys.AUTOMATIC_CRS, False, type=bool)
+        self.automatic_crs_action.setChecked(automatic_crs)
 
 class CustomQMenu(QMenu):
     def __init__(self, title: str, object_name: str, parent=None):
@@ -283,13 +261,16 @@ class PresetsMenu(CustomQMenu):
     
     def build(self):
         self.clear()
-        user_presets = registry.preset_manager.get_user_presets()
+        user_presets = sorted(
+            registry.preset_manager.get_user_presets(),
+            key=lambda preset: preset.title.casefold(),
+        )
         curated_presets = registry.preset_manager.get_curated_presets()
         
-        action = QAction(icons.get_icon(icons.IconKey.GROUP_ADD), "Neu vom Projekt", self)
+        action = QAction(icons.get_icon(icons.IconKey.ADD_PLUS), "Neu", self)
         action.setObjectName("new-preset-from-project")
             
-        action.triggered.connect(self._new_preset_from_project)
+        action.triggered.connect(self._new_preset)
         self.addAction(action)
         self.addSeparator()
         
@@ -297,10 +278,8 @@ class PresetsMenu(CustomQMenu):
             action = QAction(preset.title, self)
             action.setObjectName(preset.title)
             action.setData({"preset_id": preset.id, "preset_type": "user"})
-            description = preset.description + "\n\n" if preset.description else ""
-            description += preset.topic_description()
-            action.setToolTip(description)
-            action.triggered.connect(lambda _, p=preset: registry.preset_manager.add_preset_to_project(p.id))
+            action.setToolTip(preset.complete_description())
+            action.triggered.connect(lambda _, p=preset: preset_ops.add_preset_to_project(p.id))
             self.addAction(action)
         
         self.addSeparator()
@@ -308,13 +287,12 @@ class PresetsMenu(CustomQMenu):
         for preset in curated_presets:
             action = QAction(preset.title, self)
             action.setObjectName(preset.title)
-            description = preset.description + "\n\n" if preset.description else ""
-            description += preset.topic_description()
-            action.setToolTip(description)
-            action.triggered.connect(lambda _, p=preset: registry.preset_manager.add_preset_to_project(p.id))
+            action.setToolTip(preset.complete_description())
+            action.triggered.connect(lambda _, p=preset: preset_ops.add_preset_to_project(p.id))
             self.addAction(action)
     
-    def _new_preset_from_project(self):
+    # FIXME: Method twice implemented. use dedicated method
+    def _new_preset(self):
         preset_dialog = PresetDialog()
         if preset_dialog.exec() != PresetDialog.DialogCode.Accepted:
             return
@@ -322,7 +300,10 @@ class PresetsMenu(CustomQMenu):
         title = preset_dialog.preset_title
         description = preset_dialog.preset_description
         save_layer_crs = preset_dialog.save_layer_crs
-        registry.preset_manager.create_user_preset_from_project(title, description, save_layer_crs)
+        if preset_dialog.mode == 1:  # from project
+            registry.preset_manager.create_user_preset_from_project(title, description, save_layer_crs)
+        else:
+            registry.preset_manager.create_empty_user_preset(title, description)
         registry.preset_manager.save_user_presets()
         events.emit_presets_updated()
     
@@ -340,16 +321,9 @@ class FavoritesMenu(CustomQMenu):
         super().__init__("Favoriten", "favorites-menu", parent)
         self.setIcon(icons.get_icon(icons.IconKey.FAVORITE_STAR))
     
-    def build(self, catalog: Optional[catalog_types.Catalog] = None):
+    def build(self):
         self.clear()
         favorites = registry.property_manager.get_favorites()
-        
-        if not catalog:
-            current_catalog: Optional[Union[catalog_types.Catalog, list]] = registry.catalog_manager.get_current_catalog()
-            if not isinstance(current_catalog, catalog_types.Catalog):
-                logger.warning("No catalog provided and no current catalog found. Cannot build favorites menu.")
-                return
-            catalog = current_catalog
         
         if not favorites:
             action = QAction("(Keine)", self)
@@ -357,8 +331,10 @@ class FavoritesMenu(CustomQMenu):
             action.setEnabled(False)
             self.addAction(action)
         else:
-            for key in favorites:
-                topic = catalog.get_entry(key)
+            topics = [registry.catalog_manager.get_topic_by_path(fav) for fav in favorites]
+            topics = sorted(topics, key=lambda t: t.name if t else "")
+            
+            for topic in topics:
                 if not topic:
                     continue
                 
@@ -374,7 +350,7 @@ class FavoritesMenu(CustomQMenu):
         if not isinstance(data, str):
             return
         
-        context_menu = FavoritesContextMenu(data, self)
+        context_menu = TopicContextMenu(data, self)
         context_menu.exec(global_pos)
 
 class TopicMenu(CustomQMenu):
@@ -388,3 +364,19 @@ class TopicMenu(CustomQMenu):
         
         context_menu = TopicContextMenu(data, self)
         context_menu.exec(global_pos)
+
+class CatalogDisplayOptionsMenu(QMenu):
+    def __init__(self, parent=None):
+        super().__init__("Anzeigeeinstellungen", parent)
+        self.setObjectName("catalog-display-options-menu")
+        self._qgs_settings = QgsSettings()
+    
+    def build(self):
+        highlight_favorites = self._qgs_settings.value(config.QgsSettingsKeys.DISPLAY_HIGHLIGHT_FAVORITES, False, type=bool)
+        highlight_favorites_action = QAction("Favoriten hervorheben", self, checkable=True, checked=highlight_favorites)    # type: ignore
+        highlight_favorites_action.triggered.connect(self._set_highlight_favorites)
+        self.addAction(highlight_favorites_action)
+    
+    def _set_highlight_favorites(self, enabled: bool):
+        self._qgs_settings.setValue(config.QgsSettingsKeys.DISPLAY_HIGHLIGHT_FAVORITES, enabled)
+        events.emit_display_highlight_favorites_changed()

@@ -16,6 +16,12 @@ class TopicType(str, Enum):
     ARCGIS_MAP_SERVER = "arcgis_mapserver"
     WEB = "web"
 
+class EntryType(str, Enum):
+    TOPIC = "topic"
+    TOPIC_GROUP = "topic_group"
+    TOPIC_COMBINATION = "topic_combination"
+    REGION = "region"
+
 TopicLike = Union["Topic", "TopicGroup", "TopicCombination"]
 
 def _present_kwargs(data: dict, key_map: dict[str, str]) -> dict:
@@ -35,6 +41,19 @@ class BasicEntry:
     @cached_property
     def properties(self) -> Properties:
         return Properties(self.path)
+    
+    @property
+    def entry_type(self) -> EntryType:
+        if isinstance(self, Topic):
+            return EntryType.TOPIC
+        elif isinstance(self, TopicGroup):
+            return EntryType.TOPIC_GROUP
+        elif isinstance(self, TopicCombination):
+            return EntryType.TOPIC_COMBINATION
+        elif isinstance(self, Region):
+            return EntryType.REGION
+        else:
+            raise ValueError(f"Unknown entry type for {self}")
 
 @dataclass
 class Topic(BasicEntry):
@@ -298,3 +317,20 @@ class CatalogIndex:
     
     def to_dict(self) -> list[dict[str, str]]:
         return self.catalogs
+
+@dataclass(frozen=True)
+class CatalogPath:
+    catalog: Catalog
+    region: Optional[Region] = None
+    topic: Optional[TopicLike] = None
+    subtopic: Optional[Topic] = None
+
+    @property
+    def entry(self) -> Union[BasicEntry, Catalog]:
+        if self.subtopic is not None:
+            return self.subtopic
+        if self.topic is not None:
+            return self.topic
+        if self.region is not None:
+            return self.region
+        return self.catalog

@@ -253,6 +253,8 @@ class CatalogManager:
             for callback in self._pending_callbacks[config.CATALOG_OVERVIEW_NAME]:
                 callback()
             del self._pending_callbacks[config.CATALOG_OVERVIEW_NAME]
+        
+        events.emit_overview_updated()
     
     def get_overview(self, callback: Optional[Callable] = None) -> None:
         # ------- Network Handler für die Katalog Übersicht erstellen --------------
@@ -365,9 +367,61 @@ class CatalogManager:
         
         self.get_catalog(current_catalog["titel"], current_catalog["name"], callback=_set_catalog)
     
-    def get_all_catalogs(self) -> tuple[catalog_types.Catalog, ...]:
-        return tuple(self.catalogs.values())
+    def get_topic_by_path(self, path: str) -> Optional[catalog_types.BasicEntry]:
+        resolved = self.get_parts_by_path(path)
+        if resolved is None or isinstance(resolved.entry, catalog_types.Catalog):
+            return None
+
+        return resolved.entry
+
+    def get_parts_by_path(self, path: str) -> Optional[catalog_types.CatalogPath]:
+        catalog_id = path.split(":/")[0] if ":/" in path else ""
+        catalog = self.catalogs.get(catalog_id)
+        if not catalog:
+            logger.error(f"Katalog mit der ID '{catalog_id}' nicht gefunden")
+            return None
+
+        if not isinstance(catalog, catalog_types.Catalog):
+            logger.error("Aktueller Katalog kann nicht geladen werden")
+            return None
+
+        if ":/" in path:
+            _, relative_path = path.split(":/", 1)
+        else:
+            relative_path = path
+
+        path_parts = [part for part in relative_path.split("/") if part]
+        if not path_parts:
+            logger.error(f"Leerer Pfad kann nicht aufgelöst werden")
+            return None
+
+        region = catalog.get_region(path_parts[0])
+        if region is None:
+            logger.error(f"Region mit dem Pfad '{path}' im Katalog '{catalog.name}' nicht gefunden")
+            return None
+
+        if len(path_parts) == 1:
+            return catalog_types.CatalogPath(catalog=catalog, region=region)
+
+        topic = region.get_topic(path_parts[1])
+        if topic is None:
+            logger.error(f"Thema mit dem Pfad '{path}' im Katalog '{catalog.name}' nicht gefunden")
+            return None
+
+        subtopic = None
+        if len(path_parts) >= 3 and isinstance(topic, catalog_types.TopicGroup):
+            subtopic = topic.get_subtopic(path_parts[2])
+            if subtopic is None:
+                logger.error(f"Unterthema mit dem Pfad '{path}' im Katalog '{catalog.name}' nicht gefunden")
+                return None
+
+        return catalog_types.CatalogPath(catalog=catalog, region=region, topic=topic, subtopic=subtopic)
     
+    def get_all_catalogs(self) -> tuple[catalog_types.Catalog, ...]:
+        # FIXME: As property not just here
+        a = dict(sorted(self.catalogs.items()))
+        return tuple(a.values())
+
     def add_catalog(self, raw_catalog: str, catalog_name: str, last_modified: float) -> None:
         try:
             parsed_catalog = json.loads(raw_catalog)
@@ -425,6 +479,11 @@ class CatalogManager:
             parsed_services["name"] = catalog_name
             catalog = catalog_types.Catalog.from_dict(parsed_services)
             self.catalogs[catalog_name] = catalog
+            qgs_settings = QgsSettings()
+            current_cat_info = qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
+            if current_cat_info and current_cat_info.get("titel") == catalog_name:
+                self._current_catalog = catalog
+                events.emit_current_catalog_updated()
         else:
             if not isinstance(parsed_services, list):
                 error += "Katalogübersicht nicht korrekt geparst"
@@ -432,6 +491,7 @@ class CatalogManager:
                 return
             
             self.overview = catalog_types.CatalogIndex.from_dict(parsed_services)
+            events.emit_overview_updated()
             for catalog in self.overview:
                 # ------- Network Handler für die einzelnen Kataloge erstellen -------------
                 handler = self.add_network_handler(catalog["titel"])

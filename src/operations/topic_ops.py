@@ -39,52 +39,44 @@ def get_crs(supported_auth_ids: frozenset[str], layer_name: str) -> Union[str, N
     return current_crs
 
 @singledispatch
-def add_topic(topic, crs: Optional[str] = None, show_banner: bool = True) -> bool:
+def add_topic(topic, visible: Union[bool, dict[str, bool]] = True, crs: Optional[str] = None, show_banner: bool = True) -> bool:
     logger.error(f"Unsupported topic type: {type(topic)}", extra={"show_banner": show_banner})
     return False
 
 @add_topic.register(str)
-def _(path: str, crs: Optional[str] = None, show_banner: bool = True) -> bool:
-    # FIXME: Adequate catalog overview
-    catalog_id = path.split(":/")[0] if ":/" in path else ""
-    catalog = registry.catalog_manager.catalogs.get(catalog_id)
-    if not catalog:
-        logger.error(f"Katalog mit der ID '{catalog_id}' nicht gefunden")
-        return False
-    
-    if not isinstance(catalog, catalog_types.Catalog):
-        logger.error("Aktueller Katalog kann nicht geladen werden")
-        return False
-    
-    topic = catalog.get_entry(path)
+def _(path: str, visible: Union[bool, dict[str, bool]] = True, crs: Optional[str] = None, show_banner: bool = True) -> bool:
+    topic = registry.catalog_manager.get_topic_by_path(path)
     if not topic:
-        logger.error(f"Thema mit dem Pfad '{path}' im Katalog '{catalog.name}' nicht gefunden")
+        logger.error(f"Thema '{path}' nicht gefunden, kann nicht geladen werden", extra={"show_banner": show_banner})
         return False
-    
-    return add_topic(topic, crs, show_banner)
+
+    return add_topic(topic, visible, crs, show_banner)
 
 @add_topic.register(catalog_types.Topic)
-def _(topic: catalog_types.Topic, crs: Optional[str] = None, show_banner: bool = True) -> bool:
+def _(topic: catalog_types.Topic, visible: Union[bool, dict[str, bool]] = True, crs: Optional[str] = None, show_banner: bool = True) -> bool:
+    if isinstance(visible, dict):
+        visible = visible.get(topic.path, True)
+    
     try:
-        add_layer(topic, crs)
+        add_layer(topic, visible, crs)
         logger.success(f"Thema '{topic.name}' erfolgreich geladen", extra={"show_banner": show_banner})
         return True
     except Exception as e:
-        logger.error(f"Fehler beim Hinzufügen des Layers '{topic.name}': {e}")
+        logger.error(f"Fehler beim Hinzufügen des Layers '{topic.name}': {e}", extra={"show_banner": show_banner})
         return False
 
 @add_topic.register(catalog_types.TopicGroup)
-def _(topic_group: catalog_types.TopicGroup, crs: Optional[str] = None, show_banner: bool = True) -> bool:
-    return add_layer_group(topic_group, crs, show_banner)
+def _(topic_group: catalog_types.TopicGroup, visible: Union[bool, dict[str, bool]] = True, crs: Optional[str] = None, show_banner: bool = True) -> bool:
+    return add_layer_group(topic_group, visible, crs, show_banner)
 
 @add_topic.register(catalog_types.TopicCombination)
-def _(topic_combination: catalog_types.TopicCombination, crs: Optional[str] = None, show_banner: bool = True) -> bool:
-    return add_layer_combination(topic_combination, crs, show_banner)
+def _(topic_combination: catalog_types.TopicCombination, visible: Union[bool, dict[str, bool]] = True, crs: Optional[str] = None, show_banner: bool = True) -> bool:
+    return add_layer_combination(topic_combination, visible, crs, show_banner)
 
 @add_topic.register(catalog_types.Region)
-def _(region: catalog_types.Region, crs: Optional[str] = None, show_banner: bool = True) -> bool:
+def _(region: catalog_types.Region, visible: Union[bool, dict[str, bool]] = True, crs: Optional[str] = None, show_banner: bool = True) -> bool:
     logger.warning(
-        f"Region '{region.name}' kann nicht direkt geladen werden — bitte ein konkretes Thema auswählen.",
+        f"Region '{region.name}' kann nicht direkt geladen werden - bitte ein konkretes Thema auswählen.",
         extra={"show_banner": show_banner},
     )
     return False
@@ -98,7 +90,7 @@ def open_web_site(url: str):
     # Opens webpage in the standard browser
     QDesktopServices.openUrl(q_url)
 
-def add_layer(topic: catalog_types.Topic, crs: Optional[str], standalone: bool = True) -> Optional[Union[QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer]]:
+def add_layer(topic: catalog_types.Topic, visible: bool = True, crs: Optional[str] = None, standalone: bool = True) -> Optional[Union[QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer]]:
     if not topic.properties.enabled:
         return None
     
@@ -237,11 +229,11 @@ def add_layer(topic: catalog_types.Topic, crs: Optional[str], standalone: bool =
                 ltl.setCustomProperty("gbl_path", topic.path)
                 ltl.setCustomProperty("gbl_crs", crs)
                 ltl.setExpanded(False)
-                ltl.setItemVisibilityChecked(topic.properties.visible)
+                ltl.setItemVisibilityChecked(visible)
     
     return layer
 
-def add_layer_group(topic_group: catalog_types.TopicGroup, preferred_crs: Optional[str], show_banner: bool = True) -> bool:
+def add_layer_group(topic_group: catalog_types.TopicGroup, visibility: Union[bool, dict[str, bool]] = True, preferred_crs: Optional[str] = None, show_banner: bool = True) -> bool:
     # FIXME: Raise Exceptions
     if preferred_crs is None:
         # Get first non-web layer for crs information
@@ -275,14 +267,28 @@ def add_layer_group(topic_group: catalog_types.TopicGroup, preferred_crs: Option
     if new_layer_group is None:
         return False
     
+    if isinstance(visibility, dict):
+        group_visibility = visibility.get(topic_group.path, True)
+    elif isinstance(visibility, bool):
+        group_visibility = visibility
+    else:
+        group_visibility = True
+    
     new_layer_group.setCustomProperty("gbl_name", topic_group.name)
     new_layer_group.setCustomProperty("gbl_path", topic_group.path)
     new_layer_group.setCustomProperty("gbl_crs", preferred_crs)
+    new_layer_group.setItemVisibilityChecked(group_visibility)
     
     failures = 0
     for subtopic in topic_group.get_subtopics():
+        if isinstance(visibility, dict):
+            subtopic_visibility = visibility.get(subtopic.path, True)
+        else:
+            # Always show subtopics when the input is a bool or something else -> Bool only for the group node
+            subtopic_visibility = True
+            
         try:
-            sub_layer = add_layer(subtopic, preferred_crs, False)
+            sub_layer = add_layer(subtopic, subtopic_visibility, preferred_crs, False)
         except Exception as e:
             logger.error(f"Fehler beim Hinzufügen des Layers '{subtopic.name}' für Thema '{topic_group.name}': {e}")
             failures += 1
@@ -296,7 +302,7 @@ def add_layer_group(topic_group: catalog_types.TopicGroup, preferred_crs: Option
             ltl.setCustomProperty("gbl_path", subtopic.path)
             ltl.setCustomProperty("gbl_crs", sub_layer.crs().authid())
             ltl.setExpanded(False)
-            ltl.setItemVisibilityChecked(subtopic.properties.visible)
+            ltl.setItemVisibilityChecked(subtopic_visibility)
         else:
             failures += 1
     
@@ -311,7 +317,7 @@ def add_layer_group(topic_group: catalog_types.TopicGroup, preferred_crs: Option
     
     return failures == 0
         
-def add_layer_combination(topic_combination: catalog_types.TopicCombination, preferred_crs: Optional[str], show_banner: bool = True) -> bool:
+def add_layer_combination(topic_combination: catalog_types.TopicCombination, visibility: Union[bool, dict[str, bool]] = True, preferred_crs: Optional[str] = None, show_banner: bool = True) -> bool:
     # FIXME: Raise Exceptions
     # Resolve the combination's own catalog (its references live in the same
     # catalog), not the currently selected one, so presets referencing a
@@ -361,16 +367,26 @@ def add_layer_combination(topic_combination: catalog_types.TopicCombination, pre
         if preferred_crs is None:
             return False
     
+    if isinstance(visibility, dict) and len(visibility) == 1:
+        visibility = visibility.get(topic_combination.path, True)
+    
     failures = 0
-    for topic in referenced_topics:
+    for topic in referenced_topics:            
         if isinstance(topic, catalog_types.Topic):
+            if isinstance(visibility, dict):
+                subtopic_visibility = visibility.get(topic.path, True)
+            elif isinstance(visibility, bool):
+                subtopic_visibility = visibility
+            else:
+                subtopic_visibility = True
+            
             try:
-                add_layer(topic, preferred_crs)
+                add_layer(topic, subtopic_visibility, preferred_crs)
             except Exception as e:
                 logger.error(f"Fehler beim Hinzufügen des Layers '{topic.name}' der Themenkombination '{topic_combination.name}': {e}")
                 failures += 1
         else:
-            success = add_layer_group(topic, preferred_crs, show_banner=show_banner)
+            success = add_layer_group(topic, visibility, preferred_crs, show_banner=show_banner)
             if not success:
                 failures += 1
     

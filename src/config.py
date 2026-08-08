@@ -71,6 +71,11 @@ TOOLBAR_NAME = "geoObserverTools"
 LOGGING_SUCCESS_LEVEL = 25
 PRESET_FORMAT_VERSION = 7.00
 BOOKMARK_GROUP_NAME = plugin_info.name
+STAR_PREFIX = "\u2605 "  # ★
+SEARCH_HIGHLIGHT_COLOR = "#DA0000"  # Red, for highlight text when searching in the panel
+GRAYED_OUT_COLOR = "#808080"  # Gray, for items from other catalogs
+
+CURRENT_CATALOG_SCORE_BONUS = 1000  # Score bonus for entries from the currently selected catalog
 
 CATALOG_OVERVIEW = "GeoBasis_Loader_v6_Kataloge.json"
 CATALOG_OVERVIEW_NAME = "catalog_overview"
@@ -100,6 +105,8 @@ class QgsSettingsKeys(str, Enum):
     CURRENT_CATALOG = 'geobasis_loader/current_catalog'
     AUTOMATIC_CRS = 'geobasis_loader/automatic_crs'
     SERVERS = 'geobasis_loader/servers'
+    SHOW_GBL_PANEL = 'geobasis_loader/show_gbl_panel'
+    DISPLAY_HIGHLIGHT_FAVORITES = 'geobasis_loader/display_highlight_favorites'
     PROPERTY_FAVORITE = 'geobasis_loader/properties/favorite'
     PROPERTY_INVISIBLE = 'geobasis_loader/properties/invisible'
     PROPERTY_DISABLED = 'geobasis_loader/properties/disabled'
