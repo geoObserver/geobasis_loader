@@ -46,11 +46,14 @@ class Preset:
                 return index
         return None
     
-    def add_entry(self, name: str, path: str, visible: bool, crs: Optional[str] = None, position: Optional[int] = None) -> None:
+    def add_entry(self, name: str, path: str, visible: bool, subtopics_visible: Optional[dict[str, bool]] = None, crs: Optional[str] = None, position: Optional[int] = None) -> None:
         entry: Preset.Entry = {"name": name, "path": path, "visible": visible}
         if crs is not None:
             entry["crs"] = crs
-        
+
+        if subtopics_visible is not None:
+            entry["subtopic_visible"] = subtopics_visible
+
         if position is not None:
             self.entries.insert(position, entry)
         else:

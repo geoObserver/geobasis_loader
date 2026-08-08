@@ -1,6 +1,6 @@
 import pathlib
 from typing import Optional
-from qgis.core import QgsProject
+from qgis.core import QgsProject, QgsLayerTreeNode
 from ..models.preset_types import Preset
 from ..operations import bookmark_ops
 from .. import config
@@ -22,18 +22,25 @@ class PresetManager:
         return preset
     
     def create_user_preset_from_project(self, title: str, description: Optional[str] = None, save_layer_crs: bool = False) -> Optional[Preset]:
-        entries = []
-        def _traverse_layer_tree(node, parent_path=""):
+        entries: list[Preset.Entry] = []
+        def _traverse_layer_tree(node: QgsLayerTreeNode, parent_path: str = "") -> None:
             for child in node.children():
                 name: str = child.customProperty("gbl_name", "Thema")
                 path: Optional[str] = child.customProperty("gbl_path", None)
                 crs: Optional[str] = child.customProperty("gbl_crs", None)
-                if path is not None and (not path.startswith(parent_path) or parent_path == ""):
-                    entry = Preset.Entry(name=name, path=path, visible=child.itemVisibilityChecked())
-                    if crs is not None:
-                        entry["crs"] = crs
-                    entries.append(entry)
-                    
+                if path is not None:
+                    if not path.startswith(parent_path) or parent_path == "":
+                        entry = Preset.Entry(name=name, path=path, visible=child.itemVisibilityChecked())
+                        if crs is not None:
+                            entry["crs"] = crs
+                        entries.append(entry)
+                    elif path.startswith(parent_path):
+                        entry = next((e for e in entries if e["path"] == parent_path), None)
+                        if entry:
+                            subtopics_visible = entry.get("subtopic_visible", {})
+                            subtopics_visible[path] = child.itemVisibilityChecked()
+                            entry["subtopic_visible"] = subtopics_visible
+                            
                 _traverse_layer_tree(child, parent_path=path if path is not None else "")
         
         project = QgsProject.instance()
@@ -49,7 +56,7 @@ class PresetManager:
         preset = self.create_empty_user_preset(title, description)
         for entry in entries:
             if entry["path"] not in preset:
-                preset.add_entry(name=entry["name"], path=entry["path"], visible=entry["visible"], crs=entry.get("crs") if save_layer_crs else None)
+                preset.add_entry(name=entry["name"], path=entry["path"], visible=entry["visible"], crs=entry.get("crs") if save_layer_crs else None, subtopics_visible=entry.get("subtopic_visible"))
         
         return preset
     
