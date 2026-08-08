@@ -477,6 +477,11 @@ class CatalogManager:
             parsed_services["name"] = catalog_name
             catalog = catalog_types.Catalog.from_dict(parsed_services)
             self.catalogs[catalog_name] = catalog
+            qgs_settings = QgsSettings()
+            current_cat_info = qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
+            if current_cat_info and current_cat_info.get("titel") == catalog_name:
+                self._current_catalog = catalog
+                events.emit_current_catalog_updated()
         else:
             if not isinstance(parsed_services, list):
                 error += "Katalogübersicht nicht korrekt geparst"
@@ -484,6 +489,7 @@ class CatalogManager:
                 return
             
             self.overview = catalog_types.CatalogIndex.from_dict(parsed_services)
+            events.emit_overview_updated()
             for catalog in self.overview:
                 # ------- Network Handler für die einzelnen Kataloge erstellen -------------
                 handler = self.add_network_handler(catalog["titel"])
