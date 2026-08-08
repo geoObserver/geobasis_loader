@@ -74,6 +74,9 @@
         <property name="toolTip">
          <string>Katalog wechseln</string>
         </property>
+        <property name="sizeAdjustPolicy">
+         <enum>QComboBox::AdjustToMinimumContentsLengthWithIcon</enum>
+        </property>
        </widget>
       </item>
       <item>
@@ -360,7 +363,7 @@
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>40</width>
+          <width>5</width>
           <height>20</height>
          </size>
         </property>
@@ -373,6 +376,12 @@
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>10</width>
+          <height>0</height>
+         </size>
         </property>
         <property name="text">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;E-Mail an &lt;a href=&quot;mailto:kontakt@geobasisloader.de&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0066cc;&quot;&gt;kontakt@geobasisloader.de&lt;/span&gt;&lt;/a&gt; für Ergänzungen!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
