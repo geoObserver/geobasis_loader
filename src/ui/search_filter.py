@@ -2,7 +2,9 @@ from typing import Optional, Union
 
 from qgis.core import QgsLocatorFilter, QgsLocatorResult, QgsLocatorContext, QgsFeedback
 from ..operations import topic_ops
+from ..models import catalog_types
 from ..core import search_index
+from . import icons
 # Strings wie Beschreibung und Name werden nicht übersetzt und sind momentan nur in Deutsch 
 
 class SearchFilter(QgsLocatorFilter):
@@ -72,6 +74,12 @@ class SearchFilter(QgsLocatorFilter):
             locator_result.group = search_result.region_name
             locator_result.score = score
             locator_result.description = f"Katalog: {search_result.catalog_name}"
+            if search_result.entry_type == catalog_types.EntryType.TOPIC:
+                locator_result.icon = icons.get_icon(search_result.layer_type)
+            elif search_result.entry_type == catalog_types.EntryType.TOPIC_GROUP:
+                locator_result.icon = icons.get_icon(icons.IconKey.GROUP_ADD)
+            elif search_result.entry_type == catalog_types.EntryType.TOPIC_COMBINATION:
+                locator_result.icon = icons.get_icon(icons.IconKey.COMBINATION_ADD)
             self.resultFetched.emit(locator_result)
 
     # @override
