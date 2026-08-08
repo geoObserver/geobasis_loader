@@ -341,3 +341,5 @@ def open_settings():
 def _accept_settings():
     logger.success("Einstellungen erfolgreich gespeichert", extra={"show_banner": True})
     events.emit_general_settings_changed()
+    events.emit_visibility_updated()
+    events.emit_enabled_updated()
