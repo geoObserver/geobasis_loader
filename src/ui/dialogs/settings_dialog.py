@@ -343,3 +343,4 @@ def _accept_settings():
     events.emit_general_settings_changed()
     events.emit_visibility_updated()
     events.emit_enabled_updated()
+    events.emit_favorites_updated()
