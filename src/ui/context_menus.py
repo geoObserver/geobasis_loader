@@ -185,41 +185,6 @@ class PresetEntrySubtopicContextMenu(QMenu):
         new_state = not self.entry.get("subtopic_visible", {}).get(self.subtopic_path, True)
         preset_ops.change_subtopic_visibility_in_preset(self.preset, self.entry["path"], self.subtopic_path, new_state)
 
-class FavoritesContextMenu(QMenu):
-    def __init__(self, topic_path, parent=None):
-        super().__init__(parent)
-        catalog = registry.catalog_manager.get_current_catalog()
-        if not catalog or not isinstance(catalog, catalog_types.Catalog):
-            return
-        
-        topic = catalog.get_entry(topic_path)
-        if not topic or not isinstance(
-            topic,
-            (catalog_types.Topic, catalog_types.TopicGroup, catalog_types.TopicCombination),
-        ):
-            return
-        
-        self.topic = topic
-        
-        delete_action = QAction("Favorit entfernen", self)
-        delete_action.triggered.connect(self._delete_favorite)
-        self.addAction(delete_action)
-    
-    def _delete_favorite(self) -> None:
-        # parent = iface.mainWindow() if iface is not None and hasattr(iface, 'mainWindow') else None
-        
-        # confirm = QMessageBox.question(
-        #     parent,
-        #     "Favorit entfernen",
-        #     f"'{self.topic.name}' von Favoriten entfernen?",
-        # )
-        # if confirm != QMessageBox.StandardButton.Yes:
-        #     return
-
-        registry.property_manager.set_favorite(self.topic.path, False)
-        registry.property_manager.save(config.QgsSettingsKeys.PROPERTY_FAVORITE)
-        events.emit_favorites_updated()
-
 class TopicContextMenu(QMenu):
     def __init__(self, topic_path, parent=None):
         super().__init__(parent)        

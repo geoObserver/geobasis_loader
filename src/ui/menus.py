@@ -7,7 +7,7 @@ from qgis.core import QgsSettings
 from . import icons
 from ..core import events
 from .dialogs import open_settings
-from .context_menus import PresetContextMenu, FavoritesContextMenu, TopicContextMenu
+from .context_menus import PresetContextMenu, TopicContextMenu
 from ..services import registry
 from ..models import catalog_types
 from ..operations import topic_ops as handlers
@@ -351,7 +351,7 @@ class FavoritesMenu(CustomQMenu):
         if not isinstance(data, str):
             return
         
-        context_menu = FavoritesContextMenu(data, self)
+        context_menu = TopicContextMenu(data, self)
         context_menu.exec(global_pos)
 
 class TopicMenu(CustomQMenu):
