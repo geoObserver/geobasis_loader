@@ -24,6 +24,17 @@ def _get_preset_by_id(preset_id: Union[Preset, str]) -> Optional[Preset]:
         return None
     return preset
 
+def _get_entry_from_preset(preset: Union[Preset, str], entry_path: str) -> Optional[Preset.Entry]:
+    preset_obj = _get_preset_by_id(preset)
+    if not preset_obj:
+        return None
+
+    entry = preset_obj.get_entry(entry_path)
+    if not entry:
+        logger.error(f"Eintrag '{entry_path}' nicht im Preset '{preset_obj.title}' gefunden.")
+        return None
+    return entry
+
 @singledispatch
 def add_preset_to_project(preset) -> None:
     logger.critical(f"Nicht unterstützter Typ für Preset: {type(preset)}")
@@ -49,7 +60,10 @@ def _(preset: Preset) -> None:
     for entry in reversed(preset.entries):
         path = entry["path"]
         crs = entry.get("crs")
-        success = topic_ops.add_topic(path, crs, False)
+        visible = entry.get("visible", True)
+        subtopics_visibility = entry.get("subtopic_visible", {})
+        visiblity = {**subtopics_visibility, path: visible}
+        success = topic_ops.add_topic(path, visiblity, crs, False)
         if not success:
             failures += 1
     
@@ -132,6 +146,35 @@ def change_user_preset(preset: Union[Preset, str], parent=None) -> None:
     
     preset_obj.title = preset_dialog.preset_title
     preset_obj.description = preset_dialog.preset_description
+    registry.preset_manager.save_user_presets()
+    events.emit_presets_updated()
+
+def change_entry_visibility_in_preset(preset: Union[Preset, str], entry_path: str, visible: bool) -> None:
+    preset_obj = _get_preset_by_id(preset)
+    if not preset_obj:
+        return
+
+    entry = _get_entry_from_preset(preset, entry_path)
+    if not entry:
+        return
+
+    entry["visible"] = visible
+    registry.preset_manager.save_user_presets()
+    events.emit_presets_updated()
+
+def change_subtopic_visibility_in_preset(preset: Union[Preset, str], entry_path: str, subtopic_path: str, visible: bool) -> None:
+    preset_obj = _get_preset_by_id(preset)
+    if not preset_obj:
+        return
+
+    entry = _get_entry_from_preset(preset, entry_path)
+    if not entry:
+        return
+
+    if "subtopic_visible" not in entry:
+        entry["subtopic_visible"] = {}
+    
+    entry["subtopic_visible"][subtopic_path] = visible
     registry.preset_manager.save_user_presets()
     events.emit_presets_updated()
 
