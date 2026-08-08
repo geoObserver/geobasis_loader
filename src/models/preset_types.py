@@ -39,9 +39,15 @@ class Preset:
     
     def get_entry(self, path: str) -> Optional[Entry]:
         return next((entry for entry in self.entries if entry["path"] == path), None)
+
+    def get_index_of_entry(self, path: str) -> Optional[int]:
+        for index, entry in enumerate(self.entries):
+            if entry["path"] == path:
+                return index
+        return None
     
-    def add_entry(self, name: str, path: str, crs: Optional[str] = None, position: Optional[int] = None) -> None:
-        entry: Preset.Entry = {"name": name, "path": path}
+    def add_entry(self, name: str, path: str, visible: bool, crs: Optional[str] = None, position: Optional[int] = None) -> None:
+        entry: Preset.Entry = {"name": name, "path": path, "visible": visible}
         if crs is not None:
             entry["crs"] = crs
         
