@@ -17,6 +17,8 @@ class Events(QObject):
     automatic_crs_changed = pyqtSignal()
     server_selection_changed = pyqtSignal()
     
+    display_highlight_favorites_changed = pyqtSignal()
+    
     def __init__(self):
         super().__init__()
     
@@ -78,6 +80,12 @@ class Events(QObject):
         """
         self.emit_automatic_crs_changed()
         self.emit_server_selection_changed()
+    
+    def emit_display_highlight_favorites_changed(self):
+        """
+        Emit a signal to notify listeners that the display highlight favorites setting has changed.
+        """
+        self.display_highlight_favorites_changed.emit()
 
     def connect_presets_updated(self, slot):
         """
@@ -142,3 +150,11 @@ class Events(QObject):
         :param slot: The function to be called when the signal is emitted.
         """
         self.server_selection_changed.connect(slot)
+    
+    def connect_display_highlight_favorites_changed(self, slot):
+        """
+        Connect a slot to the display_highlight_favorites_changed signal.
+
+        :param slot: The function to be called when the signal is emitted.
+        """
+        self.display_highlight_favorites_changed.connect(slot)
