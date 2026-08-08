@@ -70,12 +70,20 @@ class Preset:
         description = f"Enthaltene Themen ({len(self.entries)} Themen):\n"
         for entry in self.entries:
             if "crs" in entry:
-                description += f"- {entry['name']} (CRS: {entry['crs']})\n"
+                description += f"- {entry['name']} (CRS: {entry['crs']})"
             else:
-                description += f"- {entry['name']}\n"
-        
+                description += f"- {entry['name']}"
+            if not entry.get("visible", True):
+                description += " [unsichtbar]"
+            description += "\n"
         return description.strip()
     
+    def complete_description(self) -> str:
+        description = self.title + "\n"
+        description += self.description + "\n\n" if self.description else ""
+        description += self.topic_description()
+        return description
+
     def get_spatial_bookmark(self) -> Optional[QgsBookmark]:
         if not self.spatial_bookmark_id:
             return None
