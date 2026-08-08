@@ -190,6 +190,7 @@ class CatalogTab(QtWidgets.QWidget, CATALOG_TAB):
             self.contact_label.setVisible(False)
             while self.catalog_tree_widget.topLevelItemCount() > 0 and not self._searching:
                 self._top_level_items.append(self.catalog_tree_widget.takeTopLevelItem(0))
+            self.catalog_tree_widget.setTreePosition(1)
         else:
             self.catalog_selection_combo_box.setEnabled(True)
             self.topic_count_widget.setVisible(True)
@@ -198,6 +199,7 @@ class CatalogTab(QtWidgets.QWidget, CATALOG_TAB):
             self.catalog_tree_widget.clear()
             self.catalog_tree_widget.addTopLevelItems(self._top_level_items)
             self._top_level_items.clear()
+            self.catalog_tree_widget.setTreePosition(0)
         
         self._searching = searching
 
@@ -206,13 +208,6 @@ class CatalogTab(QtWidgets.QWidget, CATALOG_TAB):
         self.catalog_tree_widget.clear()
         current_catalog_hits = 0
         other_catalog_hits = 0
-        
-        separation_item = QgsTreeWidgetItem(self.catalog_tree_widget)
-        separation_item.setText(0, "——— Treffer aus anderen Katalogen ———")
-        separation_item.setFlags(QtCore.Qt.ItemFlag.NoItemFlags)  # Make it unselectable
-        separation_item.setForeground(0, QtGui.QColor(config.GRAYED_OUT_COLOR))
-        separation_item.setData(0, QtCore.Qt.ItemDataRole.UserRole, None)
-        separation_item.setSortData(0, config.CURRENT_CATALOG_SCORE_BONUS - 1)
         
         search_index.get_entries()  # Ensure the search index is built
         tokens = search_index.tokenize(text)
@@ -238,7 +233,14 @@ class CatalogTab(QtWidgets.QWidget, CATALOG_TAB):
             search_item.setToolTip(0, f"{entry.name} laden\nRegion: {entry.region_name}\nKatalog: {entry.catalog_name}")
             search_item.setSortData(0, score)
         
-        self.catalog_tree_widget.setTreePosition(1)         # Make triangles disappear since its flat 
+        if self.catalog_tree_widget.topLevelItemCount() > 0:
+            separation_item = QgsTreeWidgetItem(self.catalog_tree_widget)
+            separation_item.setText(0, "——— Treffer aus anderen Katalogen ———")
+            separation_item.setFlags(QtCore.Qt.ItemFlag.NoItemFlags)  # Make it unselectable
+            separation_item.setForeground(0, QtGui.QColor(config.GRAYED_OUT_COLOR))
+            separation_item.setData(0, QtCore.Qt.ItemDataRole.UserRole, None)
+            separation_item.setSortData(0, config.CURRENT_CATALOG_SCORE_BONUS - 1)
+        
         self.catalog_tree_widget.sortItems(0, QtCore.Qt.SortOrder.DescendingOrder)
         self.current_catalog_search_count_label.setText(str(current_catalog_hits))
         self.other_catalog_search_count_label.setText(str(other_catalog_hits))
