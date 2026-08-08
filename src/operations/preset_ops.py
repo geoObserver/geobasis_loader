@@ -72,6 +72,35 @@ def _(preset: Preset) -> None:
     else:
         logger.warning(f"Preset '{preset.title}' teilweise geladen: {failures}/{len(preset.entries)} Themen konnten nicht geladen werden", extra={"show_banner": True})
 
+def load_entry_from_preset(preset: Union[Preset, str], entry_path: str) -> None:
+    preset_obj = _get_preset_by_id(preset)
+    if not preset_obj:
+        return
+
+    entry = _get_entry_from_preset(preset, entry_path)
+    if not entry:
+        return
+
+    path = entry["path"]
+    crs = entry.get("crs")
+    visible = entry.get("visible", True)
+    subtopics_visibility = entry.get("subtopic_visible", {})
+    visiblity = {**subtopics_visibility, path: visible}
+    topic_ops.add_topic(path, visiblity, crs, True)
+
+def load_subtopic_from_preset(preset: Union[Preset, str], entry_path: str, subtopic_path: str) -> None:
+    preset_obj = _get_preset_by_id(preset)
+    if not preset_obj:
+        return
+
+    entry = _get_entry_from_preset(preset, entry_path)
+    if not entry:
+        return
+
+    subtopic_visibility = entry.get("subtopic_visible", {}).get(subtopic_path, True)
+    crs = entry.get("crs")
+    topic_ops.add_topic(subtopic_path, subtopic_visibility, crs, True)
+
 # FIXME: Rename bookamrk after preset renamed
 def create_spatial_bookmark_from_preset(preset: Union[Preset, str]) -> None:
     preset_obj = _get_preset_by_id(preset)
