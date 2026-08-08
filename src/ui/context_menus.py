@@ -64,6 +64,127 @@ class PresetContextMenu(QMenu):
     def _remove_spatial_bookmark(self) -> None:
         preset_ops.remove_spatial_bookmark_from_preset(self.preset)
 
+class PresetEntryContextMenu(QMenu):
+    def __init__(self, preset_id, entry_path, parent=None):
+        super().__init__(parent)
+        preset = registry.preset_manager.user_presets.get(preset_id)
+        if not preset:
+            return
+        
+        entry = preset.get_entry(entry_path)
+        if not entry:
+            return
+        
+        self.preset = preset
+        self.entry = entry
+        
+        load_entry_action = QAction("Eintrag laden", self)
+        load_entry_action.triggered.connect(self._load_entry)
+        self.addAction(load_entry_action)
+        
+        text = "Beim Laden ausblenden" if entry.get("visible", True) else "Beim Laden einblenden"
+        change_visibility_action = QAction(text, self)
+        change_visibility_action.triggered.connect(self._change_entry_visibility)
+        self.addAction(change_visibility_action)
+        
+        current_index = preset.get_index_of_entry(entry_path)
+        if current_index is not None and current_index > 0:
+            move_up_action = QAction("Eintrag nach oben verschieben", self)
+            move_up_action.triggered.connect(self._move_entry_up)
+            self.addAction(move_up_action)
+        
+        if current_index is not None and current_index < len(preset.entries) - 1:
+            move_down_action = QAction("Eintrag nach unten verschieben", self)
+            move_down_action.triggered.connect(self._move_entry_down)
+            self.addAction(move_down_action)
+        self.addSeparator()
+        
+        presets = registry.preset_manager.get_user_presets()
+        add_to_preset_menu = QMenu("Zu Preset hinzufügen", self)
+        if not presets:
+            no_preset_action = QAction("(Keine)", self)
+            no_preset_action.setEnabled(False)
+            add_to_preset_menu.addAction(no_preset_action)
+        
+        for preset in presets:
+            activated = self.entry["path"] in preset
+            
+            add_action = QAction(preset.title, self)
+            add_action.setObjectName(f"add-preset-{preset.id}")
+            add_action.triggered.connect(lambda checked, p=preset: self._add_to_preset(p.id))
+            add_action.setEnabled(not activated)
+            add_to_preset_menu.addAction(add_action)
+
+        self.addMenu(add_to_preset_menu)
+        
+        remove_action = QAction("Eintrag entfernen", self)
+        remove_action.triggered.connect(self._remove_entry_from_preset)
+        self.addAction(remove_action)
+    
+    def _load_entry(self) -> None:
+        preset_ops.load_entry_from_preset(self.preset, self.entry["path"])
+    
+    def _change_entry_visibility(self) -> None:
+        new_state = not self.entry.get("visible", True)
+        preset_ops.change_entry_visibility_in_preset(self.preset, self.entry["path"], new_state)
+    
+    def _move_entry_up(self) -> None:
+        new_index = preset_ops.get_new_index(self.preset, self.entry["path"], -1)
+        preset_ops.move_entry_in_preset(self.preset, self.entry["path"], new_index)
+    
+    def _move_entry_down(self) -> None:
+        new_index = preset_ops.get_new_index(self.preset, self.entry["path"], 1)
+        preset_ops.move_entry_in_preset(self.preset, self.entry["path"], new_index)
+    
+    # FIXME: Method twice implemented, see TopicsContextMenu
+    def _add_to_preset(self, preset_id) -> None:
+        preset = registry.preset_manager.user_presets.get(preset_id)
+        if not preset:
+            logger.error(f"Preset mit ID '{preset_id}' nicht gefunden. Thema kann nicht hinzugefügt werden.")
+            return
+
+        if self.entry["path"] in preset:
+            logger.warning(f"Thema '{self.entry['name']}' bereits in Preset '{preset.title}'.")
+            return
+
+        preset.add_entry(name=self.entry['name'], path=self.entry['path'], visible=True, position=0)
+        registry.preset_manager.save_user_presets()
+        events.emit_presets_updated()
+    
+    def _remove_entry_from_preset(self) -> None:
+        preset_ops.remove_entry_from_preset(self.preset, self.entry["path"])
+
+class PresetEntrySubtopicContextMenu(QMenu):
+    def __init__(self, preset_id, entry_path, subtopic_path, parent=None):
+        super().__init__(parent)
+        preset = registry.preset_manager.user_presets.get(preset_id)
+        if not preset:
+            return
+        
+        entry = preset.get_entry(entry_path)
+        if not entry:
+            return
+        
+        self.preset = preset
+        self.entry = entry
+        self.subtopic_path = subtopic_path
+        
+        load_entry_action = QAction("Ebene laden", self)
+        load_entry_action.triggered.connect(self._load_entry)
+        self.addAction(load_entry_action)
+        
+        text = "Beim Laden ausblenden" if entry.get("subtopic_visible", {}).get(subtopic_path, True) else "Beim Laden einblenden"
+        change_visibility_action = QAction(text, self)
+        change_visibility_action.triggered.connect(self._change_subtopic_visibility)
+        self.addAction(change_visibility_action)
+    
+    def _load_entry(self) -> None:
+        preset_ops.load_subtopic_from_preset(self.preset, self.entry["path"], self.subtopic_path)
+    
+    def _change_subtopic_visibility(self) -> None:
+        new_state = not self.entry.get("subtopic_visible", {}).get(self.subtopic_path, True)
+        preset_ops.change_subtopic_visibility_in_preset(self.preset, self.entry["path"], self.subtopic_path, new_state)
+
 class FavoritesContextMenu(QMenu):
     def __init__(self, topic_path, parent=None):
         super().__init__(parent)
