@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>857</width>
-    <height>293</height>
+    <height>298</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -250,6 +250,9 @@
             <bool>true</bool>
            </property>
            <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <property name="spacing">
+             <number>3</number>
+            </property>
             <property name="leftMargin">
              <number>0</number>
             </property>
@@ -288,6 +291,9 @@
          <item>
           <widget class="QWidget" name="search_count_widget" native="true">
            <layout class="QHBoxLayout" name="horizontalLayout_5">
+            <property name="spacing">
+             <number>3</number>
+            </property>
             <property name="leftMargin">
              <number>0</number>
             </property>
@@ -317,6 +323,9 @@
             <item>
              <widget class="QWidget" name="other_catalog_search_count_widget" native="true">
               <layout class="QHBoxLayout" name="horizontalLayout_6">
+               <property name="spacing">
+                <number>3</number>
+               </property>
                <property name="leftMargin">
                 <number>0</number>
                </property>
@@ -367,7 +376,7 @@
         <property name="sizeHint" stdset="0">
          <size>
           <width>5</width>
-          <height>20</height>
+          <height>0</height>
          </size>
         </property>
        </spacer>
