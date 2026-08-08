@@ -418,8 +418,10 @@ class CatalogManager:
         return catalog_types.CatalogPath(catalog=catalog, region=region, topic=topic, subtopic=subtopic)
     
     def get_all_catalogs(self) -> tuple[catalog_types.Catalog, ...]:
-        return tuple(self.catalogs.values())
-    
+        # FIXME: As property not just here
+        a = dict(sorted(self.catalogs.items()))
+        return tuple(a.values())
+
     def add_catalog(self, raw_catalog: str, catalog_name: str, last_modified: float) -> None:
         try:
             parsed_catalog = json.loads(raw_catalog)
