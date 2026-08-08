@@ -22,6 +22,8 @@ class GeoBasis_Loader(QObject):
         self._qgs_settings = QgsSettings()
         self.toolbar = None
         self.toolbar_main_menu_action = None
+        self.toolbar_gbl_panel_action = None
+        self.gbl_panel = None
         custom_logger.setup_logging()
         registry.property_manager.load_all()
         registry.preset_manager.load_all()
@@ -37,6 +39,8 @@ class GeoBasis_Loader(QObject):
         else:
             logger.critical("Konnte Plugin-Menü nicht finden. Menü konnte nicht hinzugefügt werden.")
             self.main_menu = menus.MainMenu(None)
+        
+        self.gbl_panel = panel.GblPanel(parent=self.iface.mainWindow())
 
         main_window = self.iface.mainWindow()
         if main_window:
@@ -55,18 +59,35 @@ class GeoBasis_Loader(QObject):
                 self.toolbar_main_menu_action.setObjectName("toolbar-geobasis_loader-main_menu")
                 self.toolbar_main_menu_action.triggered.connect(self._show_main_menu)
                 self.toolbar.addAction(self.toolbar_main_menu_action)
+                
+                # GBL panel action
+                action_icon = icons.get_icon(icons.IconKey.TOOLBAR_GBL_PANEL_ICON)
+                self.toolbar_gbl_panel_action = QAction(action_icon, "Katalogbrowser öffnen/schließen", main_window)
+                self.toolbar_gbl_panel_action.setObjectName("toolbar-geobasis_loader-gbl_panel")
+                self.toolbar_gbl_panel_action.setCheckable(True)
+                self.gbl_panel.setToggleVisibilityAction(self.toolbar_gbl_panel_action)
+                self.toolbar.addAction(self.toolbar_gbl_panel_action)
         
-        self.search_filter = search_filter.SearchFilter()
-        self.iface.registerLocatorFilter(self.search_filter)
+            self.search_filter = search_filter.SearchFilter()
+            self.iface.registerLocatorFilter(self.search_filter)
         
         manager = QgsApplication.bookmarkManager()
         if manager is not None:
             manager.bookmarkRemoved.connect(bookmark_ops._remove_gbl_spatial_bookmark_from_presets)
+            
+        # Apply user settings
+        gbl_panel_visible = self._qgs_settings.value(config.QgsSettingsKeys.SHOW_GBL_PANEL, False, type=bool)
+        if self.gbl_panel:
+            self.gbl_panel.setUserVisible(gbl_panel_visible)
         
     def initGui(self) -> None:
         if self.main_menu:
             self.main_menu.clear()
             self.main_menu.create_menu()
+        
+        if self.gbl_panel:
+            self.iface.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, self.gbl_panel)
+            self.gbl_panel.closedStateChanged.connect(self._on_gbl_panel_closed_state_changed)
     
 #===================================================================================
 
@@ -76,6 +97,14 @@ class GeoBasis_Loader(QObject):
         self.iface.invalidateLocatorResults()
         self.iface.deregisterLocatorFilter(self.search_filter)
         self.search_filter = None
+        
+        if self.gbl_panel:
+            self.gbl_panel.setUserVisible(False)
+            self.iface.removeDockWidget(self.gbl_panel)
+            self.gbl_panel.setParent(None)
+            self.gbl_panel.deleteLater()
+            self.gbl_panel = None
+        
         manager = QgsApplication.bookmarkManager()
         if manager is not None:
             try:
@@ -91,6 +120,10 @@ class GeoBasis_Loader(QObject):
                 if self.toolbar_main_menu_action:
                     self.toolbar.removeAction(self.toolbar_main_menu_action)
                     self.toolbar_main_menu_action = None
+                
+                if self.toolbar_gbl_panel_action:
+                    self.toolbar.removeAction(self.toolbar_gbl_panel_action)
+                    self.toolbar_gbl_panel_action = None
                 
                 if len(self.toolbar.actions()) == 0:
                     main_window.removeToolBar(self.toolbar) # type: ignore
@@ -113,3 +146,7 @@ class GeoBasis_Loader(QObject):
                 return
 
         self.main_menu.popup(QCursor.pos())
+    
+    def _on_gbl_panel_closed_state_changed(self, was_closed: bool) -> None:
+        self._qgs_settings.setValue(config.QgsSettingsKeys.SHOW_GBL_PANEL, not was_closed)
+    
