@@ -7,6 +7,7 @@ class SearchEntry:
     catalog_name: str
     region_name: str
     name: str
+    entry_type: str
     layer_type: str
     path: str
     name_lower: str
