@@ -197,6 +197,9 @@ class MainMenu(QMenu):
         # ------- Spenden-Schaltfläche für #geoObserver ------------------------
         self.addAction("GeoBasis_Loader per Spende unterstützen ...", lambda: handlers.open_web_site('https://geoobserver.de/support_geobasis_loader/'))
         
+        # ------- Andere #geoObserver Plugins Webseite -------------------------
+        self.addAction("#geoObserver-Tools", lambda: handlers.open_web_site('https://geoobserver.de/qgis-plugins/'))
+        
         # ------- Über-Schaltfläche für #geoObserver ------------------------
         self.addAction("Über ...", lambda: handlers.open_web_site('https://geoobserver.de/qgis-plugin-geobasis-loader/'))
     
