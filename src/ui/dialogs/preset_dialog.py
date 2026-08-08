@@ -24,6 +24,7 @@ class PresetDialog(QtWidgets.QDialog, PRESET_DIALOG):
         self.new_preset_method_button_group: QtWidgets.QButtonGroup = self.new_preset_method_button_group
         self.from_empty_radio: QtWidgets.QRadioButton = self.from_empty_radio
         self.from_project_radio: QtWidgets.QRadioButton = self.from_project_radio
+        self.new_preset_method_button_group: QtWidgets.QButtonGroup = self.new_preset_method_button_group
         self.save_layer_crs_checkbox: QtWidgets.QCheckBox = self.save_layer_crs_checkbox
         self.hint_label: QtWidgets.QLabel = self.hint_label
         
@@ -35,11 +36,18 @@ class PresetDialog(QtWidgets.QDialog, PRESET_DIALOG):
         
         self.from_empty_radio.clicked.connect(lambda: self.save_layer_crs_checkbox.setEnabled(False))
         self.from_project_radio.clicked.connect(lambda: self.save_layer_crs_checkbox.setEnabled(True))
+        self.new_preset_method_button_group.buttonClicked.connect(self._on_preset_method_changed)
         self.buttonBox.accepted.connect(self.confirm_options)
         
         # FIXME: Enum
-        self.mode = self.from_empty_radio.isChecked() + 1
+        self.mode = 0
     
+    def _on_preset_method_changed(self, checked_button: QtWidgets.QRadioButton) -> None:
+        if checked_button == self.from_empty_radio:
+            self.mode = 0
+        elif checked_button == self.from_project_radio:
+            self.mode = 1
+
     def confirm_options(self) -> None:
         title = self.title_edit.text().strip()
         description = self.description_edit.toPlainText()
