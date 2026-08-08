@@ -207,6 +207,39 @@ def change_subtopic_visibility_in_preset(preset: Union[Preset, str], entry_path:
     registry.preset_manager.save_user_presets()
     events.emit_presets_updated()
 
+def remove_entry_from_preset(preset: Union[Preset, str], entry_path: str) -> None:
+    preset_obj = _get_preset_by_id(preset)
+    if not preset_obj:
+        return
+
+    entry = _get_entry_from_preset(preset, entry_path)
+    if not entry:
+        return
+
+    preset_obj.remove_entry(entry_path)
+    registry.preset_manager.save_user_presets()
+    events.emit_presets_updated()
+
+def move_entry_in_preset(preset: Union[Preset, str], entry_path: str, new_index: int) -> None:
+    preset_obj = _get_preset_by_id(preset)
+    if not preset_obj:
+        return
+
+    preset_obj.change_order(entry_path, new_index)
+    registry.preset_manager.save_user_presets()
+    events.emit_presets_updated()
+
+def get_new_index(preset: Union[Preset, str], entry_path: str, diff: int) -> int:
+    preset_obj = _get_preset_by_id(preset)
+    if not preset_obj:
+        return 0
+
+    current_index = preset_obj.get_index_of_entry(entry_path)
+    if current_index is None:
+        return 0
+
+    return max(0, min(len(preset_obj.entries) - 1, current_index + diff))
+
 # FIXME: UI box in ui helper module
 # FIXME: Move multiple functions frm preset_service to preset_ops
 def delete_user_preset(preset: Union[Preset, str], parent=None) -> None:    
