@@ -361,3 +361,19 @@ class TopicMenu(CustomQMenu):
         
         context_menu = TopicContextMenu(data, self)
         context_menu.exec(global_pos)
+
+class CatalogDisplayOptionsMenu(QMenu):
+    def __init__(self, parent=None):
+        super().__init__("Anzeigeeinstellungen", parent)
+        self.setObjectName("catalog-display-options-menu")
+        self._qgs_settings = QgsSettings()
+    
+    def build(self):
+        highlight_favorites = self._qgs_settings.value(config.QgsSettingsKeys.DISPLAY_HIGHLIGHT_FAVORITES, False, type=bool)
+        highlight_favorites_action = QAction("Favoriten hervorheben", self, checkable=True, checked=highlight_favorites)    # type: ignore
+        highlight_favorites_action.triggered.connect(self._set_highlight_favorites)
+        self.addAction(highlight_favorites_action)
+    
+    def _set_highlight_favorites(self, enabled: bool):
+        self._qgs_settings.setValue(config.QgsSettingsKeys.DISPLAY_HIGHLIGHT_FAVORITES, enabled)
+        events.emit_display_highlight_favorites_changed()
