@@ -106,6 +106,7 @@ class QgsSettingsKeys(str, Enum):
     AUTOMATIC_CRS = 'geobasis_loader/automatic_crs'
     SERVERS = 'geobasis_loader/servers'
     SHOW_GBL_PANEL = 'geobasis_loader/show_gbl_panel'
+    DISPLAY_HIGHLIGHT_FAVORITES = 'geobasis_loader/display_highlight_favorites'
     PROPERTY_FAVORITE = 'geobasis_loader/properties/favorite'
     PROPERTY_INVISIBLE = 'geobasis_loader/properties/invisible'
     PROPERTY_DISABLED = 'geobasis_loader/properties/disabled'
