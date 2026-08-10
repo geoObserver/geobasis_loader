@@ -74,7 +74,7 @@ class CatalogTab(QtWidgets.QWidget, CATALOG_TAB):
         self.topic_search_line_edit.setShowSearchIcon(True)
         self.topic_search_line_edit.setToolTip("Eingabe zum Filtern (mind. 2 Zeichen).\nBegriffe mit Leerzeichen trennen (UND-Verknüpfung).\nDurchsucht Namen und Stichworte")
         layout = self.topic_search_line_edit_widget.layout()
-        if layout:
+        if layout is not None:
             layout.addWidget(self.topic_search_line_edit)
 
         self.search_count_widget.setVisible(False)
