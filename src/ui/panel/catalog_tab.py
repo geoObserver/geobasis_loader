@@ -31,12 +31,13 @@ class CatalogTab(QtWidgets.QWidget, CATALOG_TAB):
         self._timer = QtCore.QTimer(self)
         self._search_highlight_delegate = SearchHighlightItemDelegate(self.catalog_tree_widget)
         self._display_menu = menus.CatalogDisplayOptionsMenu(self.display_settings_button)
+        self.topic_search_line_edit: QgsFilterLineEdit = QgsFilterLineEdit(self.topic_search_line_edit_widget)
         
         # Type hints for UI elements
         self.catalog_selection_combo_box: QtWidgets.QComboBox = self.catalog_selection_combo_box
         self.display_settings_button: QtWidgets.QPushButton = self.display_settings_button
         self.catalog_refresh_button: QtWidgets.QPushButton = self.catalog_refresh_button
-        self.topic_search_line_edit: QgsFilterLineEdit = self.topic_search_line_edit
+        self.topic_search_line_edit_widget: QtWidgets.QWidget = self.topic_search_line_edit_widget
         self.catalog_tree_widget: QtWidgets.QTreeWidget = self.catalog_tree_widget
         self.topic_count_widget: QtWidgets.QWidget = self.topic_count_widget
         self.search_count_widget: QtWidgets.QWidget = self.search_count_widget
@@ -68,6 +69,14 @@ class CatalogTab(QtWidgets.QWidget, CATALOG_TAB):
         events.connect_display_highlight_favorites_changed(self.build_catalog_tree) # FIXME: Only selected updating instead of whole tree
         
         # Settings/Defaults
+        self.topic_search_line_edit.setPlaceholderText("Thema suchen...")
+        self.topic_search_line_edit.setClearButtonEnabled(True)
+        self.topic_search_line_edit.setShowSearchIcon(True)
+        self.topic_search_line_edit.setToolTip("Eingabe zum Filtern (mind. 2 Zeichen).\nBegriffe mit Leerzeichen trennen (UND-Verknüpfung).\nDurchsucht Namen und Stichworte")
+        layout = self.topic_search_line_edit_widget.layout()
+        if layout:
+            layout.addWidget(self.topic_search_line_edit)
+
         self.search_count_widget.setVisible(False)
         self._timer.setInterval(300)
         self._timer.setSingleShot(True)

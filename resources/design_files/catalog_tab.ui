@@ -139,28 +139,27 @@
     </widget>
    </item>
    <item>
-    <widget class="QgsFilterLineEdit" name="topic_search_line_edit">
-     <property name="contextMenuPolicy">
-      <enum>Qt::ActionsContextMenu</enum>
+    <widget class="QWidget" name="topic_search_line_edit_widget" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Maximum" vsizetype="Minimum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
-     <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Eingabe zum Filtern (mind. 2 Zeichen).&lt;/p&gt;&lt;p&gt;Begriffe mit Leerzeichen trennen (UND-Verknüpfung).&lt;/p&gt;&lt;p&gt;Durchsucht Namen und Stichworte&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="placeholderText">
-      <string>Themen suchen...</string>
-     </property>
-     <property name="showClearButton">
-      <bool>true</bool>
-     </property>
-     <property name="showSearchIcon">
-      <bool>true</bool>
-     </property>
-     <property name="showSpinner">
-      <bool>false</bool>
-     </property>
-     <property name="qgisRelation" stdset="0">
-      <string notr="true"/>
-     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_10">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+     </layout>
     </widget>
    </item>
    <item>
@@ -420,13 +419,6 @@
    </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>QgsFilterLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>qgsfilterlineedit.h</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>
