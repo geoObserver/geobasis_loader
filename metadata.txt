@@ -41,7 +41,7 @@ deprecated=False
 server=False
 hasProcessingProvider=False
 
-changelog=2.2.0 GBL-Fenster mit allen Kernfunktionen hinzugefügt
+changelog=2.2.0 GBL-Fenster mit allen Kernfunktionen hinzugefügt, Erweiterung Presets mit räumlichen Lesezeichen, Einführung erweiterter interner Suchfunktion
     2.1.1 Bugfix: Falsche Protokollierung von Netzwerkfehlern, Fehlerhafte Initialisierung bei Erstinstallation
     2.1.0 Favoriten, Zusammenstellungen und Code-Refactoring
     2.0.0 Qt5- & Qt6-Kompatibilität (für QGIS 4)
