@@ -134,8 +134,8 @@ class NetworkHandler(QObject):
 
         curr_server_index = self._server_list.index(self._server)
         if curr_server_index == len(self._server_list) - 1:
-            self.error_occurred.emit("Netzwerkfehler beim Laden der URL's", catalog_title)
             self.done = True
+            self.error_occurred.emit("Netzwerkfehler beim Laden der URL's", catalog_title)
             logger.warning(f"Katalog '{catalog_name}' konnte nicht von einem Server geladen werden")
         else:
             self._server = self._server_list[curr_server_index + 1]
@@ -476,6 +476,8 @@ class CatalogManager:
                     else:
                         callback(None)
                 del self._pending_callbacks[catalog_name]
+            
+            self.clear_network_handlers()
             return
 
         parsed_services = self.read_json(file_path)

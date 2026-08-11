@@ -127,7 +127,6 @@ class CatalogTab(QtWidgets.QWidget, CATALOG_TAB):
                 return
     
     def build_catalog_tree(self) -> None:
-        print("Test")
         def _add_entry(data: catalog_types.BasicEntry, parent: Union[QtWidgets.QTreeWidgetItem, QtWidgets.QTreeWidget]) -> QtWidgets.QTreeWidgetItem:            
             item = QtWidgets.QTreeWidgetItem(parent)
             icon = icons.get_icon_from_entry(data)
