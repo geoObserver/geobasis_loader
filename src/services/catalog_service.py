@@ -446,6 +446,11 @@ class CatalogManager:
             parsed_catalog["name"] = catalog_name
             catalog = catalog_types.Catalog.from_dict(parsed_catalog)
             self.catalogs[catalog_name] = catalog
+            qgs_settings = QgsSettings()
+            current_cat_info = qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
+            if current_cat_info and current_cat_info.get("titel") == catalog_name:
+                self._current_catalog = catalog
+                events.emit_current_catalog_updated()
         
         if catalog_name in self._pending_callbacks:
             for callback in self._pending_callbacks[catalog_name]:
