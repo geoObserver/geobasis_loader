@@ -156,9 +156,10 @@ class NetworkHandler(QObject):
             
             if not self._reply.isFinished():
                 self._reply.abort()
+                logger.info("Netzwerkanfrage abgebrochen")
+            
             self._reply.deleteLater()
             self._reply = None
-            logger.info("Netzwerkanfrage abgebrochen")
         
         self.done = True
         try:
