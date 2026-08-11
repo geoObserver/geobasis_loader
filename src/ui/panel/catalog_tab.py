@@ -53,7 +53,7 @@ class CatalogTab(QtWidgets.QWidget, CATALOG_TAB):
     
         # Connect slots
         self.catalog_selection_combo_box.currentIndexChanged.connect(self._on_catalog_selection_changed)
-        self.catalog_refresh_button.clicked.connect(registry.catalog_manager.get_overview)
+        self.catalog_refresh_button.clicked.connect(lambda: registry.catalog_manager.get_overview())
         self.topic_search_line_edit.valueChanged.connect(self._start_search_timer)
         
         self.catalog_tree_widget.itemDoubleClicked.connect(self._on_item_double_clicked)
@@ -63,6 +63,7 @@ class CatalogTab(QtWidgets.QWidget, CATALOG_TAB):
         
         events.connect_overview_updated(self._set_catalog_selection)
         events.connect_current_catalog_updated(self.build_catalog_tree)
+        events.connect_current_catalog_updated(self.set_catalog_selection)
         events.connect_visibility_updated(self.build_catalog_tree)
         events.connect_enabled_updated(self.build_catalog_tree)
         events.connect_favorites_updated(self.build_catalog_tree) # FIXME: Only selected updating instead of whole tree
@@ -96,10 +97,15 @@ class CatalogTab(QtWidgets.QWidget, CATALOG_TAB):
         if current_overview is None:
             logger.warning("No catalog overview available. Cannot build catalog menu.")
             return
-        
+
+        blocker = QtCore.QSignalBlocker(self.catalog_selection_combo_box)
+        qgs_settings = QgsSettings()
+        current_catalog_info = qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG, {}, type=dict)
         self.catalog_selection_combo_box.clear()
-        for catalog in current_overview:
-            self.catalog_selection_combo_box.addItem(catalog["titel"], catalog)
+        for index, catalog_info in enumerate(current_overview):
+            self.catalog_selection_combo_box.addItem(catalog_info["titel"], catalog_info)
+            if current_catalog_info == catalog_info:
+                self.catalog_selection_combo_box.setCurrentIndex(index)
     
     def _on_catalog_selection_changed(self, index: int) -> None:
         catalog_data = self.catalog_selection_combo_box.itemData(index)
@@ -109,7 +115,19 @@ class CatalogTab(QtWidgets.QWidget, CATALOG_TAB):
         
         registry.catalog_manager.set_current_catalog(catalog_data)
     
+    def set_catalog_selection(self) -> None:
+        # Block signal since its already being done beacuase of a signal
+        blocker = QtCore.QSignalBlocker(self.catalog_selection_combo_box)
+        qgs_settings = QgsSettings()
+        catalog_info = qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG, {}, type=dict)
+        for index in range(self.catalog_selection_combo_box.count()):
+            item_data = self.catalog_selection_combo_box.itemData(index)
+            if item_data == catalog_info:
+                self.catalog_selection_combo_box.setCurrentIndex(index)
+                return
+    
     def build_catalog_tree(self) -> None:
+        print("Test")
         def _add_entry(data: catalog_types.BasicEntry, parent: Union[QtWidgets.QTreeWidgetItem, QtWidgets.QTreeWidget]) -> QtWidgets.QTreeWidgetItem:            
             item = QtWidgets.QTreeWidgetItem(parent)
             icon = icons.get_icon_from_entry(data)
