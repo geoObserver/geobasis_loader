@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>398</width>
-    <height>293</height>
+    <height>376</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -70,7 +70,7 @@
       <item>
        <widget class="QRadioButton" name="radioButton_2">
         <property name="text">
-         <string>Katalog-Server 1</string>
+         <string>Katalog-Server 1 (geoobserver.de)</string>
         </property>
         <property name="server" stdset="0">
          <number>1</number>
@@ -83,7 +83,7 @@
       <item>
        <widget class="QRadioButton" name="radioButton_3">
         <property name="text">
-         <string>Katalog-Server 2</string>
+         <string>Katalog-Server 2 (GitHub)</string>
         </property>
         <property name="server" stdset="0">
          <number>2</number>
