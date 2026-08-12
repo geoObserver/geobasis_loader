@@ -108,6 +108,7 @@ class PresetsTab(QtWidgets.QWidget, PRESETS_TAB):
             preset_item.setIcon(0, icons.get_icon(icons.IconKey.PRESET_USER))
             preset_item.setText(0, preset.title)
             preset_item.setToolTip(0, preset.complete_description())
+            preset_item.setToolTip(1, "Preset hat räumlichen Lesezeichen" if preset.spatial_bookmark_id else None)
             preset_item.setData(0, QtCore.Qt.ItemDataRole.UserRole, preset.id)
             preset_item.setData(0, TYPE_USER_ROLE, "preset")
             preset_item.setData(0, TREE_PATH_USER_ROLE, preset.id)
@@ -131,8 +132,11 @@ class PresetsTab(QtWidgets.QWidget, PRESETS_TAB):
                 
                 entry_count += 1
                 topic_item = _add_entry(topic, preset_item)
-                init_icon = icons.get_icon(icons.IconKey.BULB_ON_ICON) if entry.get("visible", True) else icons.get_icon(icons.IconKey.BULB_OFF_ICON)
+                is_visible = entry.get("visible", True)
+                init_icon = icons.get_icon(icons.IconKey.BULB_ON_ICON) if is_visible else icons.get_icon(icons.IconKey.BULB_OFF_ICON)
+                visible_icon_tooltip = "Thema bei Laden des Presets sichtbar" if is_visible else "Thema bei Laden des Presets unsichtbar"
                 topic_item.setIcon(1, init_icon)
+                topic_item.setToolTip(1, visible_icon_tooltip)
                 
                 text = topic_item.text(0)
                 crs = entry.get("crs")
@@ -162,8 +166,11 @@ class PresetsTab(QtWidgets.QWidget, PRESETS_TAB):
                 # Reversed so that the list is in the same order as the layers after loading the preset
                 for subtopic in reversed(topic.get_subtopics()):
                     subtopic_item = _add_entry(subtopic, topic_item)
-                    icon = icons.get_icon(icons.IconKey.BULB_ON_ICON) if entry.get("subtopic_visible", {}).get(subtopic.path, True) else icons.get_icon(icons.IconKey.BULB_OFF_ICON)
-                    subtopic_item.setIcon(1, icon)
+                    is_visible = entry.get("subtopic_visible", {}).get(subtopic.path, True)
+                    init_icon = icons.get_icon(icons.IconKey.BULB_ON_ICON) if is_visible else icons.get_icon(icons.IconKey.BULB_OFF_ICON)
+                    visible_icon_tooltip = "Thema bei Laden des Presets sichtbar" if is_visible else "Thema bei Laden des Presets unsichtbar"
+                    subtopic_item.setIcon(1, init_icon)
+                    subtopic_item.setToolTip(1, visible_icon_tooltip)
                     path += "/" + subtopic.path
                     subtopic_item.setData(0, TREE_PATH_USER_ROLE, path)
                     if currently_selected_tree_node_path == path:
