@@ -7670,6 +7670,14 @@
       "flurstuecke": {
         "name": "HE: ALKIS Flurstücke, Gebäude, Nutzung (WMS)",
         "gbl-view": "true",
+        "komgis_layerid": "2c7a7dff-dd8c-42cd-a683-be4d50379c3b",
+        "komgis_node": [
+          "Externe Geodienste",
+          "Land Hessen",
+          "ALKIS - Amtl. Liegenschaftskatasterinformationssystem",
+          "WMS: ALKIS Flurstücke, Gebäude, Nutzung"
+        ],
+        "komgis_priority": "87500",
         "type": "ogc_wms",
         "valid_epsg": [
           "EPSG:4326",
@@ -7705,12 +7713,20 @@
           "Fluren",
           "Gemarkungen"
         ],
-        "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&layers=he_alk&styles&url=https://www.geoportal.hessen.de/mapbender/php/wms.php?inspire%3D1%26layer_id%3D52063%26withChilds%3D1",
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=he_alk&styles&tilePixelRatio=0&url=https://www.gds-srv.hessen.de/cgi-bin/lika-services/ogc-free-maps.ows?language%3Dger%26VERSION%3D1.3.0",
         "seperator": true
       },
       "bodenrichtwerte": {
-        "name": "HE: Bodenrichtwerte Bauland 2024 (WMS)",
+        "name": "HE: Bodenrichtwerte Bauland 2026 (WMS)",
         "gbl-view": "true",
+        "komgis_layerid": "9fc0b823-c479-48d9-a2f6-d956e849cbcc",
+        "komgis_node": [
+          "Externe Geodienste",
+          "Land Hessen",
+          "Bodenrichtwerte",
+          "WMS: Bodenrichtwerte Bauland 2026"
+        ],
+        "komgis_priority": "79000",
         "type": "ogc_wms",
         "valid_epsg": [
           "EPSG:25832",
@@ -7734,7 +7750,45 @@
           "EPSG:3046",
           "EPSG:3047"
         ],
-        "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&url=https://www.gds-srv.hessen.de/cgi-bin/lika-services/ogc-free-maps.ows?language%3Dger%26VERSION%3D1.3.0&layers=hboris_feature&layers=hboris_label&styles=&styles=",
+        "uri": "ccontextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=hboris_feature&styles&tilePixelRatio=0&url=https://www.gds-srv.hessen.de/cgi-bin/lika-services/ogc-free-maps.ows?language%3Dger%26VERSION%3D1.3.0",
+        "seperator": true,
+        "opacity": 0.75
+      },
+      "bodenrichtwerte_label": {
+        "name": "HE: Bodenrichtwerte Bauland 2026 Beschriftung (WMS)",
+        "gbl-view": "true",
+        "komgis_layerid": "b64d3458-751b-41c9-b75f-4aba26a95385",
+        "komgis_node": [
+          "Externe Geodienste",
+          "Land Hessen",
+          "Bodenrichtwerte",
+          "WMS: Bodenrichtwerte Bauland 2025 Beschriftung"
+        ],
+        "komgis_priority": "79000",
+        "type": "ogc_wms",
+        "valid_epsg": [
+          "EPSG:25832",
+          "EPSG:25833",
+          "EPSG:31467",
+          "EPSG:31466",
+          "EPSG:31468",
+          "EPSG:31469",
+          "EPSG:4326",
+          "EPSG:4258",
+          "EPSG:900913",
+          "EPSG:3857",
+          "EPSG:3038",
+          "EPSG:3039",
+          "EPSG:3040",
+          "EPSG:3041",
+          "EPSG:3042",
+          "EPSG:3043",
+          "EPSG:3044",
+          "EPSG:3045",
+          "EPSG:3046",
+          "EPSG:3047"
+        ],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=hboris_label&styles&tilePixelRatio=0&url=https://www.gds-srv.hessen.de/cgi-bin/lika-services/ogc-free-maps.ows?language%3Dger%26VERSION%3D1.3.0",
         "seperator": true,
         "opacity": 0.75
       },
@@ -8167,8 +8221,17 @@
         "name": "HE: Topograf. Karten farbig (WMS)",
         "layers": {
           "tk_25_farbig": {
-            "name": "HE: TK 25 farbig (WMS)",
+            "name": "HE: DTK 25 farbig (WMS)",
             "gbl-view": "true",
+            "komgis_layerid": "9135bcd4-50cf-485b-81d4-1cf3c785f216",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Land Hessen",
+              "Topografische Karten",
+              "Topograf. Karten farbig",
+              "WMS: DTK 25 farbig"
+            ],
+            "komgis_priority": "90600",
             "type": "ogc_wms",
             "valid_epsg": [
               "EPSG:4326",
@@ -8192,14 +8255,23 @@
               "EPSG:3046",
               "EPSG:3047"
             ],
-            "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&layers=he_dtk25&styles&url=https://www.geoportal.hessen.de/mapbender/php/wms.php?inspire%3D1%26layer_id%3D52068%26withChilds%3D1",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=he_dtk25&styles&tilePixelRatio=0&url=https://www.gds-srv.hessen.de/cgi-bin/lika-services/ogc-free-maps.ows?language%3Dger%26VERSION%3D1.3.0",
             "opacity": 0.75,
             "minScale": 37500,
             "maxScale": 1
           },
           "tk_50_farbig": {
-            "name": "HE: TK 50 farbig (WMS)",
+            "name": "HE: DTK 50 farbig (WMS)",
             "gbl-view": "true",
+            "komgis_layerid": "68e0876a-c186-4654-b0a5-1d5b0b048d1a",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Land Hessen",
+              "Topografische Karten",
+              "Topograf. Karten farbig",
+              "WMS: DTK 50 farbig"
+            ],
+            "komgis_priority": "90700",
             "type": "ogc_wms",
             "valid_epsg": [
               "EPSG:4326",
@@ -8223,14 +8295,23 @@
               "EPSG:3046",
               "EPSG:3047"
             ],
-            "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&layers=he_dtk50&styles&url=https://www.geoportal.hessen.de/mapbender/php/wms.php?inspire%3D1%26layer_id%3D52085%26withChilds%3D1",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=he_dtk50&styles&tilePixelRatio=0&url=https://www.gds-srv.hessen.de/cgi-bin/lika-services/ogc-free-maps.ows?language%3Dger%26VERSION%3D1.3.0",
             "opacity": 0.75,
             "minScale": 75000,
             "maxScale": 37500
           },
           "tk_100_farbig": {
-            "name": "HE: TK 100 farbig (WMS)",
+            "name": "HE: DTK 100 farbig (WMS)",
             "gbl-view": "true",
+            "komgis_layerid": "2e6460d3-8819-4d04-b211-e9d1c1d07b87",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Land Hessen",
+              "Topografische Karten",
+              "Topograf. Karten farbig",
+              "WMS: DTK 100 farbig"
+            ],
+            "komgis_priority": "90800",
             "type": "ogc_wms",
             "valid_epsg": [
               "EPSG:4326",
@@ -8254,45 +8335,233 @@
               "EPSG:3046",
               "EPSG:3047"
             ],
-            "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&layers=he_dtk100&styles&url=https://www.geoportal.hessen.de/mapbender/php/wms.php?inspire%3D1%26layer_id%3D52092%26withChilds%3D1",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=he_dtk100&styles&tilePixelRatio=0&url=https://www.gds-srv.hessen.de/cgi-bin/lika-services/ogc-free-maps.ows?language%3Dger%26VERSION%3D1.3.0",
             "opacity": 0.75,
             "minScale": 500000,
             "maxScale": 75000
           }
         }
       },
-      "pg_4_100": {
-        "name": "HE: Präsentationsgrafik - PG4 ... PG100 (WMS)",
-        "gbl-view": "true",
-        "type": "ogc_wms",
-        "valid_epsg": [
-          "EPSG:25832",
-          "EPSG:25833",
-          "EPSG:31467",
-          "EPSG:31466",
-          "EPSG:31468",
-          "EPSG:31469",
-          "EPSG:4326",
-          "EPSG:4258",
-          "EPSG:900913",
-          "EPSG:3857",
-          "EPSG:3038",
-          "EPSG:3039",
-          "EPSG:3040",
-          "EPSG:3041",
-          "EPSG:3042",
-          "EPSG:3043",
-          "EPSG:3044",
-          "EPSG:3045",
-          "EPSG:3046",
-          "EPSG:3047"
-        ],
-        "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&url=https://www.gds-srv.hessen.de/cgi-bin/lika-services/ogc-free-maps.ows?language%3Dger%26VERSION%3D1.3.0&layers=he_pg4&layers=he_pg10&layers=he_pg100&layers=he_pg50&layers=he_pg25&styles=&styles=&styles=&styles=&styles=",
-        "seperator": true
+
+
+      "pg_farbig_layergroup": {
+        "name": "HE: Präsentationsgrafik farbig (WMS)",
+        "layers": {
+          "pg_4_farbig": {
+            "name": "HE: PG 4 farbig (WMS)",
+            "gbl-view": "true",
+            "komgis_layerid": "eb51319a-44fc-4c23-b1a1-d684d57def20",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Land Hessen",
+              "Topografische Karten",
+              "Präsentationsgrafik farbig",
+              "WMS: PG 4 farbig"
+            ],
+            "komgis_priority": "90600",
+            "type": "ogc_wms",
+            "valid_epsg": [
+              "EPSG:4326",
+              "EPSG:25832",
+              "EPSG:25833",
+              "EPSG:31467",
+              "EPSG:31466",
+              "EPSG:31468",
+              "EPSG:31469",
+              "EPSG:4258",
+              "EPSG:900913",
+              "EPSG:3857",
+              "EPSG:3038",
+              "EPSG:3039",
+              "EPSG:3040",
+              "EPSG:3041",
+              "EPSG:3042",
+              "EPSG:3043",
+              "EPSG:3044",
+              "EPSG:3045",
+              "EPSG:3046",
+              "EPSG:3047"
+            ],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=he_pg4&styles&tilePixelRatio=0&url=https://www.gds-srv.hessen.de/cgi-bin/lika-services/ogc-free-maps.ows?language%3Dger%26VERSION%3D1.3.0",
+            "opacity": 0.75,
+            "minScale": 5000,
+            "maxScale": 1
+          },
+          "pg_10_farbig": {
+            "name": "HE: PG 10 farbig (WMS)",
+            "gbl-view": "true",
+            "komgis_layerid": "94289830-3ef8-4a04-a89b-cc4aa2f63a1c",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Land Hessen",
+              "Topografische Karten",
+              "Präsentationsgrafik farbig",
+              "WMS: PG 10 farbig"
+            ],
+            "komgis_priority": "90600",
+            "type": "ogc_wms",
+            "valid_epsg": [
+              "EPSG:4326",
+              "EPSG:25832",
+              "EPSG:25833",
+              "EPSG:31467",
+              "EPSG:31466",
+              "EPSG:31468",
+              "EPSG:31469",
+              "EPSG:4258",
+              "EPSG:900913",
+              "EPSG:3857",
+              "EPSG:3038",
+              "EPSG:3039",
+              "EPSG:3040",
+              "EPSG:3041",
+              "EPSG:3042",
+              "EPSG:3043",
+              "EPSG:3044",
+              "EPSG:3045",
+              "EPSG:3046",
+              "EPSG:3047"
+            ],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=he_pg10&styles&tilePixelRatio=0&url=https://www.gds-srv.hessen.de/cgi-bin/lika-services/ogc-free-maps.ows?language%3Dger%26VERSION%3D1.3.0",
+            "opacity": 0.75,
+            "minScale": 17500,
+            "maxScale": 5000
+          },
+          "pg_25_farbig": {
+            "name": "HE: PG 25 farbig (WMS)",
+            "gbl-view": "true",
+            "komgis_layerid": "bb6b2a63-3405-4d3a-8446-425ec596c01e",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Land Hessen",
+              "Topografische Karten",
+              "Präsentationsgrafik farbig",
+              "WMS: PG 25 farbig"
+            ],
+            "komgis_priority": "90600",
+            "type": "ogc_wms",
+            "valid_epsg": [
+              "EPSG:4326",
+              "EPSG:25832",
+              "EPSG:25833",
+              "EPSG:31467",
+              "EPSG:31466",
+              "EPSG:31468",
+              "EPSG:31469",
+              "EPSG:4258",
+              "EPSG:900913",
+              "EPSG:3857",
+              "EPSG:3038",
+              "EPSG:3039",
+              "EPSG:3040",
+              "EPSG:3041",
+              "EPSG:3042",
+              "EPSG:3043",
+              "EPSG:3044",
+              "EPSG:3045",
+              "EPSG:3046",
+              "EPSG:3047"
+            ],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=he_pg25&styles&tilePixelRatio=0&url=https://www.gds-srv.hessen.de/cgi-bin/lika-services/ogc-free-maps.ows?language%3Dger%26VERSION%3D1.3.0",
+            "opacity": 0.75,
+            "minScale": 37500,
+            "maxScale": 17500
+          },
+          "pg_50_farbig": {
+            "name": "HE: PG 50 farbig (WMS)",
+            "gbl-view": "true",
+            "komgis_layerid": "fff7a9f5-1ce1-42ed-a1cc-940d10aa1602",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Land Hessen",
+              "Topografische Karten",
+              "Präsentationsgrafik farbig",
+              "WMS: PG 50 farbig"
+            ],
+            "komgis_priority": "90700",
+            "type": "ogc_wms",
+            "valid_epsg": [
+              "EPSG:4326",
+              "EPSG:25832",
+              "EPSG:25833",
+              "EPSG:31467",
+              "EPSG:31466",
+              "EPSG:31468",
+              "EPSG:31469",
+              "EPSG:4258",
+              "EPSG:900913",
+              "EPSG:3857",
+              "EPSG:3038",
+              "EPSG:3039",
+              "EPSG:3040",
+              "EPSG:3041",
+              "EPSG:3042",
+              "EPSG:3043",
+              "EPSG:3044",
+              "EPSG:3045",
+              "EPSG:3046",
+              "EPSG:3047"
+            ],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=he_pg50&styles&tilePixelRatio=0&url=https://www.gds-srv.hessen.de/cgi-bin/lika-services/ogc-free-maps.ows?language%3Dger%26VERSION%3D1.3.0",
+            "opacity": 0.75,
+            "minScale": 75000,
+            "maxScale": 37500
+          },
+          "pg_100_farbig": {
+            "name": "HE: PG 100 farbig (WMS)",
+            "gbl-view": "true",
+            "komgis_layerid": "f627823f-8465-4859-bb8c-968a565f3f60",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Land Hessen",
+              "Topografische Karten",
+              "Präsentationsgrafik farbig",
+              "WMS: PG 100 farbig"
+            ],
+            "komgis_priority": "90800",
+            "type": "ogc_wms",
+            "valid_epsg": [
+              "EPSG:4326",
+              "EPSG:25832",
+              "EPSG:25833",
+              "EPSG:31467",
+              "EPSG:31466",
+              "EPSG:31468",
+              "EPSG:31469",
+              "EPSG:4258",
+              "EPSG:900913",
+              "EPSG:3857",
+              "EPSG:3038",
+              "EPSG:3039",
+              "EPSG:3040",
+              "EPSG:3041",
+              "EPSG:3042",
+              "EPSG:3043",
+              "EPSG:3044",
+              "EPSG:3045",
+              "EPSG:3046",
+              "EPSG:3047"
+            ],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=he_pg100&styles&tilePixelRatio=0&url=https://www.gds-srv.hessen.de/cgi-bin/lika-services/ogc-free-maps.ows?language%3Dger%26VERSION%3D1.3.0",
+            "opacity": 0.75,
+            "minScale": 5000000,
+            "maxScale": 75000
+          }
+        }
       },
+
+
       "dop20": {
         "name": "HE: Digitale Orthophotos - DOP20 (WMS)",
         "gbl-view": "true",
+        "komgis_layerid": "4668d035-a6f0-44a2-a247-5d01ebf37fab",
+        "komgis_node": [
+          "Externe Geodienste",
+          "Land Hessen",
+          "Luftbilder / Digitale Orthophotos (DOP)",
+          "WMS: DOP20 (20 cm Bodenauflösung)"
+        ],
+        "komgis_priority": "89400",
         "type": "ogc_wms",
         "valid_epsg": [
           "EPSG:4326",
@@ -8316,7 +8585,44 @@
           "EPSG:3046",
           "EPSG:3047"
         ],
-        "uri": "crs=EPSG:placeholder&format=image/png&dpiMode=7&tilePixelRatio=0&Request=GetMap&Version=1.3.0&layers=he_dop_rgb&styles&url=https://www.geoportal.hessen.de/mapbender/php/wms.php?inspire%3D1%26layer_id%3D52123%26withChilds%3D1",
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=he_dop20_rgb&styles&tilePixelRatio=0&url=https://www.gds-srv.hessen.de/cgi-bin/lika-services/ogc-free-images.ows?language%3Dger%26VERSION%3D1.3.0",
+        "seperator": true
+      },
+      "dop20cir": {
+        "name": "HE: Digitale Orthophotos - DOP20 CIR (WMS)",
+        "gbl-view": "true",
+        "komgis_layerid": "37e8eb5b-dae7-4331-9372-fc738618851d",
+        "komgis_node": [
+          "Externe Geodienste",
+          "Land Hessen",
+          "Luftbilder / Digitale Orthophotos (DOP)",
+          "WMS: DOP20 CIR (20 cm Bodenauflösung)"
+        ],
+        "komgis_priority": "89400",
+        "type": "ogc_wms",
+        "valid_epsg": [
+          "EPSG:4326",
+          "EPSG:25832",
+          "EPSG:25833",
+          "EPSG:31467",
+          "EPSG:31466",
+          "EPSG:31468",
+          "EPSG:31469",
+          "EPSG:4258",
+          "EPSG:900913",
+          "EPSG:3857",
+          "EPSG:3038",
+          "EPSG:3039",
+          "EPSG:3040",
+          "EPSG:3041",
+          "EPSG:3042",
+          "EPSG:3043",
+          "EPSG:3044",
+          "EPSG:3045",
+          "EPSG:3046",
+          "EPSG:3047"
+        ],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=he_dop20_cir&styles&tilePixelRatio=0&url=https://www.gds-srv.hessen.de/cgi-bin/lika-services/ogc-free-images.ows?language%3Dger%26VERSION%3D1.3.0",
         "seperator": true
       }
     }
