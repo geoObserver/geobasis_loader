@@ -350,19 +350,32 @@ class CatalogManager:
             logger.error(f"Ungültiger Katalog-ID-Typ: {type(id)}")
             return
         
-        if id in self.catalogs:
-            titel = id
-            name = info["name"]
-            version_matches = re.findall(r'v\d+', name)
-            version = version_matches[0] if version_matches else "unbekannt"
+        titel = id
+        
+        if titel not in self.catalogs:
+            def set_loaded_catalog(catalog: Optional[catalog_types.Catalog]=None) -> None:
+                if catalog is not None and titel in self.catalogs:
+                    self.set_current_catalog(info)
             
-            self._current_catalog = self.catalogs[id]
-            qgs_settings = QgsSettings()
-            qgs_settings.setValue(config.QgsSettingsKeys.CURRENT_CATALOG, info)
-            events.emit_current_catalog_updated()
-            logger.success(f'Lese {titel}, Version {version} ...', extra={"show_banner": True})
-        else:
-            logger.error(f"Katalog mit ID '{id}' nicht gefunden")
+            self.get_catalog(titel, info.get("name"), callback=set_loaded_catalog)
+            return
+        
+        qgs_settings = QgsSettings()
+        # Return if the current catalog is already set to the same catalog and the settings match
+        if (
+            self._current_catalog is self.catalogs[id]
+            and qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG, {}, type=dict) == info
+        ):
+            return
+        
+        name = info["name"]
+        version_matches = re.findall(r'v\d+', name)
+        version = version_matches[0] if version_matches else "unbekannt"
+        
+        self._current_catalog = self.catalogs[id]
+        qgs_settings.setValue(config.QgsSettingsKeys.CURRENT_CATALOG, info)
+        events.emit_current_catalog_updated()
+        logger.success(f'Lese {titel}, Version {version} ...', extra={"show_banner": True})
     
     def fetch_and_set_current_catalog(self) -> None:
         qgs_settings = QgsSettings()
