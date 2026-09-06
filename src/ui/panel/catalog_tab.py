@@ -71,7 +71,6 @@ class CatalogTab(QtWidgets.QWidget, CATALOG_TAB):
         
         # Settings/Defaults
         self.topic_search_line_edit.setPlaceholderText("Thema suchen...")
-        self.topic_search_line_edit.setClearButtonEnabled(True)
         self.topic_search_line_edit.setShowSearchIcon(True)
         self.topic_search_line_edit.setToolTip("Eingabe zum Filtern (mind. 2 Zeichen).\nBegriffe mit Leerzeichen trennen (UND-Verknüpfung).\nDurchsucht Namen und Stichworte")
         layout = self.topic_search_line_edit_widget.layout()
@@ -99,18 +98,16 @@ class CatalogTab(QtWidgets.QWidget, CATALOG_TAB):
             return
 
         blocker = QtCore.QSignalBlocker(self.catalog_selection_combo_box)
-        qgs_settings = QgsSettings()
-        current_catalog_info = qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG, {}, type=dict)
         self.catalog_selection_combo_box.clear()
-        for index, catalog_info in enumerate(current_overview):
+        for catalog_info in current_overview:
             self.catalog_selection_combo_box.addItem(catalog_info["titel"], catalog_info)
-            if current_catalog_info == catalog_info:
-                self.catalog_selection_combo_box.setCurrentIndex(index)
+        
+        self.set_catalog_selection()
     
     def _on_catalog_selection_changed(self, index: int) -> None:
         catalog_data = self.catalog_selection_combo_box.itemData(index)
         if catalog_data is None:
-            logger.warning("No catalog data found for the selected index.")
+            logger.info("Kein Katalog ausgewählt")
             return
         
         registry.catalog_manager.set_current_catalog(catalog_data)
@@ -120,11 +117,18 @@ class CatalogTab(QtWidgets.QWidget, CATALOG_TAB):
         blocker = QtCore.QSignalBlocker(self.catalog_selection_combo_box)
         qgs_settings = QgsSettings()
         catalog_info = qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG, {}, type=dict)
-        for index in range(self.catalog_selection_combo_box.count()):
-            item_data = self.catalog_selection_combo_box.itemData(index)
-            if item_data == catalog_info:
-                self.catalog_selection_combo_box.setCurrentIndex(index)
-                return
+        
+        selected_index = self.catalog_selection_combo_box.findData(catalog_info)
+        placeholder_index = self.catalog_selection_combo_box.findData(None)
+        if selected_index != -1:
+            # Placeholder is None and new catalog is {} meaning that the placeholder cant be found so if nothing is found its the placeholder
+            self.catalog_selection_combo_box.setCurrentIndex(selected_index)
+            if placeholder_index != -1:
+                self.catalog_selection_combo_box.removeItem(placeholder_index)  # Remove the placeholder item if a valid catalog is selected
+        else:
+            if placeholder_index == -1:
+                self.catalog_selection_combo_box.insertItem(0, "Katalog auswählen...", None)  # Add a placeholder item at the top
+            self.catalog_selection_combo_box.setCurrentIndex(0)  # Ensure the placeholder is selected if no valid catalog is found
     
     def build_catalog_tree(self) -> None:
         def _add_entry(data: catalog_types.BasicEntry, parent: Union[QtWidgets.QTreeWidgetItem, QtWidgets.QTreeWidget]) -> QtWidgets.QTreeWidgetItem:            
