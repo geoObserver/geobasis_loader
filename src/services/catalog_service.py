@@ -242,6 +242,10 @@ class CatalogManager:
         
         if not self.overview:
             logger.critical(f"Katalogübersicht fehlerhaft, Bitte starten Sie QGIS neu oder kontaktieren Sie den Autor", extra={"show_banner": True})
+            if config.CATALOG_OVERVIEW_NAME in self._pending_callbacks:
+                for callback in self._pending_callbacks[config.CATALOG_OVERVIEW_NAME]:
+                    callback()
+                del self._pending_callbacks[config.CATALOG_OVERVIEW_NAME]
             return
         
         file_name = 'katalog_overview'
@@ -506,6 +510,10 @@ class CatalogManager:
             if not isinstance(parsed_services, list):
                 error += "Katalogübersicht nicht korrekt geparst"
                 logger.warning(error, extra={"show_banner": True})
+                if config.CATALOG_OVERVIEW_NAME in self._pending_callbacks:
+                    for callback in self._pending_callbacks[config.CATALOG_OVERVIEW_NAME]:
+                        callback()
+                    del self._pending_callbacks[config.CATALOG_OVERVIEW_NAME]
                 return
             
             self.overview = catalog_types.CatalogIndex.from_dict(parsed_services)
