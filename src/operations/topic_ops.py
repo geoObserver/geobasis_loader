@@ -54,6 +54,10 @@ def _(path: str, visible: Union[bool, dict[str, bool]] = True, crs: Optional[str
 
 @add_topic.register(catalog_types.Topic)
 def _(topic: catalog_types.Topic, visible: Union[bool, dict[str, bool]] = True, crs: Optional[str] = None, show_banner: bool = True) -> bool:
+    if topic.topic_type == catalog_types.TopicType.WEB:
+        logger.warning(f"Web-Thema '{topic.name}' kann nicht als Layer geladen werden", extra={"show_banner": show_banner})
+        return False
+
     if isinstance(visible, dict):
         visible = visible.get(topic.path, True)
     
