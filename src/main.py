@@ -131,6 +131,7 @@ class GeoBasis_Loader(QObject):
                     self.toolbar = None
             if plugin_menu:
                 plugin_menu.removeAction(self.main_menu.menuAction())
+            self.main_menu.dispose()
             self.main_menu = None
         custom_logger.remove_logging()
 
