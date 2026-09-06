@@ -36,7 +36,12 @@ class NetworkHandler(QObject):
         
     def _fetch_data(self, url: str = '') -> Optional[QNetworkReply]:
         if self._reply is not None:
-            self._reply.finished.disconnect()
+            if self._finished_function:
+                try:
+                    self._reply.finished.disconnect(self._finished_function)
+                except (RuntimeError, TypeError):
+                    # Signal was never connected or already disconnected
+                    pass
             if not self._reply.isFinished():
                 self._reply.abort()
             self._reply.deleteLater()
