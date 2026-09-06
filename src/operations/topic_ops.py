@@ -243,6 +243,9 @@ def add_layer(topic: catalog_types.Topic, visible: bool = True, crs: Optional[st
 
 def add_layer_group(topic_group: catalog_types.TopicGroup, visibility: Union[bool, dict[str, bool]] = True, preferred_crs: Optional[str] = None, show_banner: bool = True) -> bool:
     # FIXME: Raise Exceptions
+    if not topic_group.properties.enabled:
+        return True
+    
     if preferred_crs is None:
         # Get first non-web layer for crs information
         subtopic_iter = iter(topic_group.get_subtopics())
@@ -330,6 +333,9 @@ def add_layer_combination(topic_combination: catalog_types.TopicCombination, vis
     # Resolve the combination's own catalog (its references live in the same
     # catalog), not the currently selected one, so presets referencing a
     # combination from another catalog still resolve.
+    if not topic_combination.properties.enabled:
+        return True
+    
     catalog_id = topic_combination.path.split(":/")[0] if ":/" in topic_combination.path else ""
     owning_catalog = registry.catalog_manager.catalogs.get(catalog_id)
     if not isinstance(owning_catalog, catalog_types.Catalog):
