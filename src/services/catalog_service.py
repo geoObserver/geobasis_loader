@@ -299,8 +299,12 @@ class CatalogManager:
                 self._pending_callbacks[catalog_title] = []
             self._pending_callbacks[catalog_title].append(callback)
             
-        if self.overview_network_handler is None or not self.overview_network_handler.done:
+        if self.overview_network_handler is None:
             logger.warning("Katalogübersicht ist nicht geladen, Bitte warten Sie oder kontaktieren Sie den Author", extra={"show_banner": True})
+            return None
+
+        if not self.overview_network_handler.done:
+            logger.warning("Katalogübersicht ist noh nicht geladen, Bitte warten Sie", extra={"show_banner": False})
             return None
         
         if self.overview is not None:
