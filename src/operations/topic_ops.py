@@ -152,6 +152,7 @@ def add_layer(topic: catalog_types.Topic, visible: bool = True, crs: Optional[st
         layer.setOpacity(topic.opacity)
         
     if isinstance(layer, QgsVectorLayer):
+        # Fallback: If not set the layer could stop loading due t the sheer number of features (e.g. 1000) in the layer. This is a QGIS default setting.
         if max_scale is None:
             max_scale = 1.0
         if min_scale is None:
@@ -159,13 +160,16 @@ def add_layer(topic: catalog_types.Topic, visible: bool = True, crs: Optional[st
     
     if min_scale is not None and max_scale is not None:
         if min_scale < max_scale:
-            raise RuntimeError(f"Layerladefehler {layer_name}, Skalenwerte vertauscht oder fehlerhaft")
-        elif min_scale == max_scale: 
-            logger.critical(f"Layerladefehler {layer_name}, Skalenwerte gleich", extra={"show_banner": True})
-        elif min_scale > max_scale:
-            layer.setMinimumScale(min_scale)
-            layer.setMaximumScale(max_scale)
-            layer.setScaleBasedVisibility(True)
+            logger.warning(f"Thema '{layer_name}': Skalenwerte vertauscht, werden getauscht")
+            min_scale, max_scale = max_scale, min_scale
+        elif min_scale == max_scale:
+            logger.warning(f"Thema '{layer_name}': minScale == maxScale, Grenzen ignoriert")
+            min_scale = max_scale = None
+
+    if min_scale is not None or max_scale is not None:
+        layer.setMinimumScale(float(min_scale) if min_scale is not None else 0.0)
+        layer.setMaximumScale(float(max_scale) if max_scale is not None else 0.0)
+        layer.setScaleBasedVisibility(True)
     
     if isinstance(layer, QgsVectorLayer):
         if isinstance(topic.fill_color, list) and len(topic.fill_color) >= 3:
