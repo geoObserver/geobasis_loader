@@ -101,25 +101,28 @@ class NetworkHandler(QObject):
         status_code: Optional[int] = self._reply.attribute(QNetworkRequest.Attribute.HttpStatusCodeAttribute)
         
         if error == QNetworkReply.NetworkError.NoError and status_code == 200:
-            json_string = self._reply.readAll().data().decode('utf-8')
-     
-            # Holt sich die Timestamps der letzten Modifikationen der lokalen JSON-Datei und der JSON-Datei aus dem Internet
-            # (Über-)Schreibt dann die loakle JSON-Datei, wenn die Datei im Internet neuer ist
-            # Sozusagen eigene Cache-Implementation
-            network_last_modified_raw_value: Optional[QDateTime] = self._reply.header(QNetworkRequest.KnownHeaders.LastModifiedHeader)
-            if network_last_modified_raw_value is not None and network_last_modified_raw_value.isValid():
-                network_last_modified = network_last_modified_raw_value.toMSecsSinceEpoch() / 1000      # ??????????
+            try:
+                json_string = self._reply.readAll().data().decode('utf-8')
+            except UnicodeDecodeError as decode_error:
+                logger.error(f"Ungültige UTF-8-Antwort für '{catalog_name}': {decode_error}")
             else:
-                network_last_modified = 0.0
-            self.successful = True
-            self.done = True
-            self.finished.emit(json_string, catalog_title, network_last_modified)
-            
-            total_server_list = config.ServerHosts.get_all_servers()
-            index = total_server_list.index(self._server)
-            logger.info(f"Katalog '{catalog_name}' erfolgreich von Server {index + 1} geladen")
-            return
-        
+                # Holt sich die Timestamps der letzten Modifikationen der lokalen JSON-Datei und der JSON-Datei aus dem Internet
+                # (Über-)Schreibt dann die loakle JSON-Datei, wenn die Datei im Internet neuer ist
+                # Sozusagen eigene Cache-Implementation
+                network_last_modified_raw_value: Optional[QDateTime] = self._reply.header(QNetworkRequest.KnownHeaders.LastModifiedHeader)
+                if network_last_modified_raw_value is not None and network_last_modified_raw_value.isValid():
+                    network_last_modified = network_last_modified_raw_value.toMSecsSinceEpoch() / 1000      # ??????????
+                else:
+                    network_last_modified = 0.0
+                self.successful = True
+                self.done = True
+                self.finished.emit(json_string, catalog_title, network_last_modified)
+                
+                total_server_list = config.ServerHosts.get_all_servers()
+                index = total_server_list.index(self._server)
+                logger.info(f"Katalog '{catalog_name}' erfolgreich von Server {index + 1} geladen")
+                return
+     
         if error == QNetworkReply.NetworkError.OperationCanceledError:
             logger.info(f"Netzwerkanfrage für '{catalog_name}' wurde abgebrochen")
             self.done = True
@@ -128,6 +131,8 @@ class NetworkHandler(QObject):
         # Differenzierte Fehlerbehandlung
         if not status_code:
             logger.error(f"Kein Internet: {catalog_name} auf Server {self._server}")
+        elif status_code == 200:
+            logger.error(f"Unerwarteter Fehler beim Decoden oder Verarbeiten: {catalog_name} auf Server {self._server}")
         elif status_code == 404:
             logger.warning(f"404 Not Found: {catalog_name} auf Server {self._server}")
         elif status_code == 429:
