@@ -251,12 +251,7 @@ class CatalogManager:
         file_name = 'katalog_overview'
         file_path = self.catalog_path / f"{file_name}.json"
         
-        try:
-            localLastModified = os.path.getmtime(file_path)
-        except OSError:
-            localLastModified = 0.0
-        if localLastModified < last_modified:
-            self.write_json(self.overview.to_dict(), file_path)
+        self._write_cache_if_stale(loaded_overview, file_path, last_modified)
         
         if fetch_catalogs:
             for catalog in self.overview:
@@ -448,19 +443,14 @@ class CatalogManager:
         file_name = re.sub(r'\ ', '_', catalog_name.split(':')[0].lower())
         file_path = self.catalog_path / f"{file_name}.json"
         
-        try:
-            localLastModified = os.path.getmtime(file_path)
-        except OSError:
-            localLastModified = 0.0
-
-        if localLastModified < last_modified:
-            self.write_json(parsed_catalog, file_path)
+        self._write_cache_if_stale(parsed_catalog, file_path, last_modified)
         
         if isinstance(parsed_catalog, dict):
             # FIXME: Catalog ID instead of name
             parsed_catalog["name"] = catalog_name
             catalog = catalog_types.Catalog.from_dict(parsed_catalog)
             self.catalogs[catalog_name] = catalog
+
             qgs_settings = QgsSettings()
             current_cat_info = qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
             if current_cat_info and current_cat_info.get("titel") == catalog_name:
@@ -535,6 +525,19 @@ class CatalogManager:
             del self._pending_callbacks[catalog_name]
         
         self.clear_network_handlers()
+    
+    def _write_cache_if_stale(self, data: Union[dict, list], file_path: pathlib.Path, last_modified: float) -> None:
+        try:
+            local_last_modified = os.path.getmtime(file_path)
+        except OSError:
+            local_last_modified = None          # fehlt oder unlesbar -> unbekannt, NICHT 0.0
+
+        if local_last_modified is None:         # kein Cache -> immer schreiben
+            self.write_json(data, file_path)
+        elif last_modified <= 0.0:              # Server-Zeitstempel unbekannt -> lieber schreiben
+            self.write_json(data, file_path)
+        elif local_last_modified < last_modified:
+            self.write_json(data, file_path)
 
     def write_json(self, data: Union[dict, list], file_path: pathlib.Path) -> None:
         try:
