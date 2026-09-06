@@ -365,17 +365,16 @@ class CatalogManager:
             logger.error(f"Katalog mit ID '{id}' nicht gefunden")
     
     def fetch_and_set_current_catalog(self) -> None:
-        # FIXME
-        def _set_catalog(cat):
-            self._current_catalog = cat
-            events.emit_current_catalog_updated()
-            
         qgs_settings = QgsSettings()
         current_catalog = qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
         if current_catalog is None or "name" not in current_catalog:
             return None
         
-        self.get_catalog(current_catalog["titel"], current_catalog["name"], callback=_set_catalog)
+        def set_catalog(catalog: Optional[catalog_types.Catalog]=None) -> None:
+            if catalog is not None and current_catalog.get("titel") in self.catalogs:
+                self.set_current_catalog(current_catalog)
+            
+        self.get_catalog(current_catalog["titel"], current_catalog["name"], callback=set_catalog)
     
     def get_topic_by_path(self, path: str) -> Optional[catalog_types.BasicEntry]:
         resolved = self.get_parts_by_path(path)
@@ -452,10 +451,14 @@ class CatalogManager:
             self.catalogs[catalog_name] = catalog
 
             qgs_settings = QgsSettings()
-            current_cat_info = qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
-            if current_cat_info and current_cat_info.get("titel") == catalog_name:
-                self._current_catalog = catalog
-                events.emit_current_catalog_updated()
+            current_catalog_info = qgs_settings.value(
+                config.QgsSettingsKeys.CURRENT_CATALOG,
+                {},
+                type=dict,
+            )
+
+            if current_catalog_info.get("titel") == catalog_name:
+                self.set_current_catalog(current_catalog_info)
         
         if catalog_name in self._pending_callbacks:
             for callback in self._pending_callbacks[catalog_name]:
@@ -492,10 +495,14 @@ class CatalogManager:
             catalog = catalog_types.Catalog.from_dict(parsed_services)
             self.catalogs[catalog_name] = catalog
             qgs_settings = QgsSettings()
-            current_cat_info = qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
-            if current_cat_info and current_cat_info.get("titel") == catalog_name:
-                self._current_catalog = catalog
-                events.emit_current_catalog_updated()
+            current_catalog_info = qgs_settings.value(
+                            config.QgsSettingsKeys.CURRENT_CATALOG,
+                            {},
+                            type=dict,
+                        )
+        
+            if current_catalog_info.get("titel") == catalog_name:
+                self.set_current_catalog(current_catalog_info)
         else:
             if not isinstance(parsed_services, list):
                 error += "Katalogübersicht nicht korrekt geparst"
