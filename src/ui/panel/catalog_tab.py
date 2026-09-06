@@ -61,7 +61,7 @@ class CatalogTab(QtWidgets.QWidget, CATALOG_TAB):
         self.catalog_tree_widget.itemCollapsed.connect(self._on_item_collapsed)
         self.catalog_tree_widget.customContextMenuRequested.connect(self._on_catalog_tree_context_menu)
         
-        events.connect_overview_updated(self._set_catalog_selection)
+        events.connect_overview_updated(self._build_catalog_selection)
         events.connect_current_catalog_updated(self.build_catalog_tree)
         events.connect_current_catalog_updated(self.set_catalog_selection)
         events.connect_visibility_updated(self.build_catalog_tree)
@@ -92,7 +92,7 @@ class CatalogTab(QtWidgets.QWidget, CATALOG_TAB):
             }
         """)
     
-    def _set_catalog_selection(self) -> None:
+    def _build_catalog_selection(self) -> None:
         current_overview = registry.catalog_manager.overview
         if current_overview is None:
             logger.warning("No catalog overview available. Cannot build catalog menu.")

@@ -310,6 +310,12 @@ class CatalogIndex:
     def __iter__(self):
         yield from self.catalogs
     
+    def __len__(self):
+        return len(self.catalogs)
+    
+    def __bool__(self):
+        return bool(self.catalogs)
+    
     @classmethod
     def from_dict(cls, catalogs: list) -> "CatalogIndex":
         data = catalogs or []
