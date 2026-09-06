@@ -141,8 +141,13 @@ class PresetsTab(QtWidgets.QWidget, PRESETS_TAB):
                 text = topic_item.text(0)
                 crs = entry.get("crs")
                 text += f" [{crs}]" if crs else ""
+                loadable_subtopics = []
                 if isinstance(topic, catalog_types.TopicGroup):
-                    group_layer_count = len(topic.get_subtopics())
+                    loadable_subtopics = [
+                        subtopic for subtopic in topic.get_subtopics()
+                        if subtopic.topic_type != catalog_types.TopicType.WEB
+                    ]
+                    group_layer_count = len(loadable_subtopics)
                     layers += group_layer_count
                     groups += 1
                     text += f" [Gruppe, {group_layer_count} Ebenen]"
@@ -164,7 +169,7 @@ class PresetsTab(QtWidgets.QWidget, PRESETS_TAB):
                 
                 topic_item.setExpanded(path in self._expanded_items)
                 # Reversed so that the list is in the same order as the layers after loading the preset
-                for subtopic in reversed(topic.get_subtopics()):
+                for subtopic in reversed(loadable_subtopics):
                     subtopic_item = _add_entry(subtopic, topic_item)
                     is_visible = entry.get("subtopic_visible", {}).get(subtopic.path, True)
                     init_icon = icons.get_icon(icons.IconKey.BULB_ON_ICON) if is_visible else icons.get_icon(icons.IconKey.BULB_OFF_ICON)
