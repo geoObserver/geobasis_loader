@@ -1,6 +1,6 @@
 import logging
 from types import TracebackType
-from typing import Mapping, Union, Optional
+from typing import Mapping, MutableMapping, Union, Optional
 from qgis.core import QgsMessageLog, Qgis
 from qgis.utils import iface
 from .. import config
@@ -41,6 +41,14 @@ class GeoBasisLoaderLoggingHandler(logging.Handler):
 
 
 class GeoBasisLogger(logging.LoggerAdapter):
+    def process(self, msg: object, kwargs: MutableMapping[str, object]) -> tuple[object, MutableMapping[str, object]]:
+        merged = dict(self.extra or {})
+        kwargs_extra = kwargs.get("extra")
+        if kwargs_extra and isinstance(kwargs_extra, Mapping):
+            merged.update(kwargs_extra)
+        kwargs["extra"] = merged
+        return msg, kwargs
+    
     def success(self,
         msg: object,
         *args: object,
@@ -50,7 +58,6 @@ class GeoBasisLogger(logging.LoggerAdapter):
         extra: Union[Mapping[str, object], None] = None,
         **kwargs: object,
     ) -> None:
-        self.extra = extra          # Seems unnecessary but doesnt work without it
         self.log(config.LOGGING_SUCCESS_LEVEL, msg, *args, exc_info=exc_info, stack_info=stack_info, stacklevel=stacklevel, extra=extra, **kwargs)
 
 

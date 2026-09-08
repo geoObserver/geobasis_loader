@@ -25,6 +25,7 @@ class MainMenu(QMenu):
         icon = QIcon(str(config.PLUGIN_DIR / "GeoBasis_Loader_icon.png"))
         self.setIcon(icon)
         self._qgs_settings = QgsSettings()
+        self._dynamic_menus: list[QMenu] = []
         
         # Buttons
         self.automatic_crs_action: Optional[QAction] = None
@@ -43,8 +44,27 @@ class MainMenu(QMenu):
         events.connect_overview_updated(self.create_menu)
         events.connect_automatic_crs_changed(self._sync_automatic_crs)
     
-    def create_menu(self):
+    def clear_menu(self):
         self.clear()
+        for menu in self._dynamic_menus:
+            menu.deleteLater()
+        self._dynamic_menus.clear()
+    
+    def dispose(self):
+        events.visibility_updated.disconnect(self.create_menu)
+        events.enabled_updated.disconnect(self.create_menu)
+        events.current_catalog_updated.disconnect(self.create_menu)
+        events.overview_updated.disconnect(self.create_menu)
+        events.presets_updated.disconnect(self.build_presets)
+        events.favorites_updated.disconnect(self.build_favorites)
+        events.automatic_crs_changed.disconnect(self._sync_automatic_crs)
+
+        self.clear_menu()
+        self.setParent(None)
+        self.deleteLater()
+    
+    def create_menu(self):
+        self.clear_menu()
         current_catalog: Optional[catalog_types.Catalog] = registry.catalog_manager.get_current_catalog()
         if current_catalog is None:
             logger.info("Bitte wählen Sie einen Katalog aus.")
@@ -72,6 +92,7 @@ class MainMenu(QMenu):
                     continue
                 
                 region_menu = self._build_region_menu(region)
+                self._dynamic_menus.append(region_menu)
                 self.addMenu(region_menu)
                 
                 if region.separator:
@@ -147,12 +168,7 @@ class MainMenu(QMenu):
                         subtopic_action = _create_action(subtopic_name, subtopic.path, icon, topic_group_menu)
                     topic_group_menu.addAction(subtopic_action)
 
-                menu_action = menu.addMenu(topic_group_menu)
-                if menu_action is not None:
-                    menu_action.setStatusTip("Alle Themen der Gruppe laden")
-                    menu_action.setToolTip("Alle Themen der Gruppe laden")
-                    menu_action.setData(topic.path)
-                    menu_action.triggered.connect(lambda _, p=topic.path: handlers.add_topic(p))
+                menu.addMenu(topic_group_menu)
             else:
                 if isinstance(topic, catalog_types.TopicCombination):
                     icon = icons.get_icon(icons.IconKey.COMBINATION_ADD)

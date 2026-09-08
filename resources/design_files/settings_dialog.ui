@@ -306,7 +306,4 @@
    </hints>
   </connection>
  </connections>
- <buttongroups>
-  <buttongroup name="server_button_group"/>
- </buttongroups>
 </ui>

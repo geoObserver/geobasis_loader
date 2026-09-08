@@ -57,8 +57,7 @@ class SearchFilter(QgsLocatorFilter):
             return
         
         string = string.lower()
-        string = string.removeprefix(self.prefix())
-        if len(string) < 3 or not feedback or feedback.isCanceled():
+        if len(string) < 2 or not feedback or feedback.isCanceled():
             return
         
         # Momentan werden nur Knoten zurückgegeben aber nicht die Ebenen darin. So lassen oder wirklich alle Ebenen anzeigen? Kann halt bei Knoten die Resultate stark vergrößern (bspw. bei Verwaltungsgrenzen)

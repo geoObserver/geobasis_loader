@@ -2,6 +2,7 @@ from functools import singledispatch
 from typing import Optional, Union
 from qgis.PyQt.QtWidgets import QMessageBox
 from ..core import events
+from ..models import catalog_types
 from . import bookmark_ops
 from . import topic_ops
 from ..models.preset_types import Preset
@@ -95,6 +96,11 @@ def load_subtopic_from_preset(preset: Union[Preset, str], entry_path: str, subto
 
     entry = _get_entry_from_preset(preset, entry_path)
     if not entry:
+        return
+
+    subtopic = registry.catalog_manager.get_topic_by_path(subtopic_path)
+    if isinstance(subtopic, catalog_types.Topic) and subtopic.topic_type == catalog_types.TopicType.WEB:
+        logger.warning(f"Web-Unterthema '{subtopic.name}' kann nicht aus einem Preset geladen werden")
         return
 
     subtopic_visibility = entry.get("subtopic_visible", {}).get(subtopic_path, True)

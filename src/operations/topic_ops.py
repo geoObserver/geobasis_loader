@@ -54,6 +54,10 @@ def _(path: str, visible: Union[bool, dict[str, bool]] = True, crs: Optional[str
 
 @add_topic.register(catalog_types.Topic)
 def _(topic: catalog_types.Topic, visible: Union[bool, dict[str, bool]] = True, crs: Optional[str] = None, show_banner: bool = True) -> bool:
+    if topic.topic_type == catalog_types.TopicType.WEB:
+        logger.warning(f"Web-Thema '{topic.name}' kann nicht als Layer geladen werden", extra={"show_banner": show_banner})
+        return False
+
     if isinstance(visible, dict):
         visible = visible.get(topic.path, True)
     
@@ -148,6 +152,7 @@ def add_layer(topic: catalog_types.Topic, visible: bool = True, crs: Optional[st
         layer.setOpacity(topic.opacity)
         
     if isinstance(layer, QgsVectorLayer):
+        # Fallback: If not set the layer could stop loading due t the sheer number of features (e.g. 1000) in the layer. This is a QGIS default setting.
         if max_scale is None:
             max_scale = 1.0
         if min_scale is None:
@@ -155,13 +160,16 @@ def add_layer(topic: catalog_types.Topic, visible: bool = True, crs: Optional[st
     
     if min_scale is not None and max_scale is not None:
         if min_scale < max_scale:
-            raise RuntimeError(f"Layerladefehler {layer_name}, Skalenwerte vertauscht oder fehlerhaft")
-        elif min_scale == max_scale: 
-            logger.critical(f"Layerladefehler {layer_name}, Skalenwerte gleich", extra={"show_banner": True})
-        elif min_scale > max_scale:
-            layer.setMinimumScale(min_scale)
-            layer.setMaximumScale(max_scale)
-            layer.setScaleBasedVisibility(True)
+            logger.warning(f"Thema '{layer_name}': Skalenwerte vertauscht, werden getauscht")
+            min_scale, max_scale = max_scale, min_scale
+        elif min_scale == max_scale:
+            logger.warning(f"Thema '{layer_name}': minScale == maxScale, Grenzen ignoriert")
+            min_scale = max_scale = None
+
+    if min_scale is not None or max_scale is not None:
+        layer.setMinimumScale(float(min_scale) if min_scale is not None else 0.0)
+        layer.setMaximumScale(float(max_scale) if max_scale is not None else 0.0)
+        layer.setScaleBasedVisibility(True)
     
     if isinstance(layer, QgsVectorLayer):
         if isinstance(topic.fill_color, list) and len(topic.fill_color) >= 3:
@@ -235,6 +243,9 @@ def add_layer(topic: catalog_types.Topic, visible: bool = True, crs: Optional[st
 
 def add_layer_group(topic_group: catalog_types.TopicGroup, visibility: Union[bool, dict[str, bool]] = True, preferred_crs: Optional[str] = None, show_banner: bool = True) -> bool:
     # FIXME: Raise Exceptions
+    if not topic_group.properties.enabled:
+        return True
+    
     if preferred_crs is None:
         # Get first non-web layer for crs information
         subtopic_iter = iter(topic_group.get_subtopics())
@@ -322,6 +333,9 @@ def add_layer_combination(topic_combination: catalog_types.TopicCombination, vis
     # Resolve the combination's own catalog (its references live in the same
     # catalog), not the currently selected one, so presets referencing a
     # combination from another catalog still resolve.
+    if not topic_combination.properties.enabled:
+        return True
+    
     catalog_id = topic_combination.path.split(":/")[0] if ":/" in topic_combination.path else ""
     owning_catalog = registry.catalog_manager.catalogs.get(catalog_id)
     if not isinstance(owning_catalog, catalog_types.Catalog):

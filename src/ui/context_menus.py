@@ -164,6 +164,10 @@ class PresetEntrySubtopicContextMenu(QMenu):
         entry = preset.get_entry(entry_path)
         if not entry:
             return
+
+        subtopic = registry.catalog_manager.get_topic_by_path(subtopic_path)
+        if isinstance(subtopic, catalog_types.Topic) and subtopic.topic_type == catalog_types.TopicType.WEB:
+            return
         
         self.preset = preset
         self.entry = entry
