@@ -62,11 +62,12 @@ def read_metadata(metadata_path: Optional[pathlib.Path] = None) -> PluginInfo:
 
 plugin_info = read_metadata()
 
-PLUGIN_NAME = plugin_info.name
-PLUGIN_NAME_AND_VERSION = PLUGIN_NAME + ' (v' + plugin_info.version + ')'
+PLUGIN_NAME = plugin_info.name.lower()
+PLUGIN_TITLE = plugin_info.name
+PLUGIN_NAME_AND_VERSION = PLUGIN_TITLE + ' (v' + plugin_info.version + ')'
 
 REQUEST_TIMEOUT_MS = 10000
-PLUGIN_LOGGER_NAME = "geobasis_loader"
+PLUGIN_LOGGER_NAME = PLUGIN_NAME
 TOOLBAR_NAME = "geoObserverTools"
 LOGGING_SUCCESS_LEVEL = 25
 PRESET_FORMAT_VERSION = 7.00

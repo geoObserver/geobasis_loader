@@ -24,7 +24,7 @@ class GeoBasisLoaderLoggingHandler(logging.Handler):
 
         qgis_message_level, qgis_message_duration = self.get_qgis_severity(record.levelno)
         message = record.getMessage()
-        QgsMessageLog.logMessage(message, config.PLUGIN_NAME, qgis_message_level)
+        QgsMessageLog.logMessage(message, config.PLUGIN_TITLE, qgis_message_level)
         
         if getattr(record, "show_banner", False):
             if iface and iface.messageBar():        # type: ignore
@@ -35,7 +35,7 @@ class GeoBasisLoaderLoggingHandler(logging.Handler):
             else:
                 QgsMessageLog.logMessage(
                     "Messagebar not found during logging",
-                    config.PLUGIN_NAME,
+                    config.PLUGIN_TITLE,
                     Qgis.MessageLevel.Critical,
                 )
 
