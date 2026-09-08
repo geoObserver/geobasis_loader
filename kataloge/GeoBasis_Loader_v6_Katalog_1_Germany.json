@@ -5285,6 +5285,14 @@
       "alkis_parzellen_grau": {
         "name": "BY: ALKIS-Parzellarkarte (Graustufen) (WMS)",
         "gbl-view": "true",
+        "komgis_layerid": "a2645b19-9d5e-4d5c-bd23-18f44cccd1a7",
+        "komgis_node": [
+          "Externe Geodienste",
+          "Land Bayern",
+          "ALKIS - Amtl. Liegenschaftskatasterinformationssystem",
+          "WMS: ALKIS-Parzellarkarte (Graustufen)"
+        ],
+        "komgis_priority": "75000",
         "type": "ogc_wms",
         "valid_epsg": [
           "EPSG:25832",
@@ -5300,6 +5308,15 @@
       "alkis_parzellen_farbig": {
         "name": "BY: ALKIS-Parzellarkarte (Farbe) (WMS)",
         "gbl-view": "true",
+        "komgis_layerid": "578bd782-b2fc-48b7-9173-9bd555a2c6e2",
+        "komgis_node": [
+          "Externe Geodienste",
+          "Land Bayern",
+          "ALKIS - Amtl. Liegenschaftskatasterinformationssystem",
+          "WMS: ALKIS-Parzellarkarte (Farbig)"
+        ],
+        "komgis_priority": "75000",
+
         "type": "ogc_wms",
         "valid_epsg": [
           "EPSG:25832",
@@ -5427,6 +5444,15 @@
           "tk_10_farbig": {
             "name": "BY: DOK farbig (WMS)",
             "gbl-view": "true",
+            "komgis_layerid": "0ce8da75-56ac-476e-ba02-4b53c449781b",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Land Bayern",
+              "Topografische Karten",
+              "Topograf. Karten farbig",
+              "WMS: DOK farbig"
+            ],
+            "komgis_priority": "90400",
             "type": "ogc_wms",
             "valid_epsg": [
               "EPSG:25832",
@@ -5445,6 +5471,15 @@
           "tk_25_farbig": {
             "name": "BY: TK 25 farbig (WMS)",
             "gbl-view": "true",
+            "komgis_layerid": "8e7938ba-f988-45e5-a93b-a6cde5c97284",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Land Bayern",
+              "Topografische Karten",
+              "Topograf. Karten farbig",
+              "WMS: TK 25 farbig"
+            ],
+            "komgis_priority": "90400",
             "type": "ogc_wms",
             "valid_epsg": [
               "EPSG:25832",
@@ -5463,6 +5498,15 @@
           "tk_50_farbig": {
             "name": "BY: TK 50 farbig (WMS)",
             "gbl-view": "true",
+            "komgis_layerid": "27ab7868-ae2e-483c-8e6a-020c2e742349",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Land Bayern",
+              "Topografische Karten",
+              "Topograf. Karten farbig",
+              "WMS: TK 50 farbig"
+            ],
+            "komgis_priority": "90500",
             "type": "ogc_wms",
             "valid_epsg": [
               "EPSG:25832",
@@ -5481,6 +5525,15 @@
           "tk_100_farbig": {
             "name": "BY: TK 100 farbig (WMS)",
             "gbl-view": "true",
+            "komgis_layerid": "0304ad21-a477-4173-9c97-ebc09cc72dfb",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Land Bayern",
+              "Topografische Karten",
+              "Topograf. Karten farbig",
+              "WMS: TK 100 farbig"
+            ],
+            "komgis_priority": "90600",
             "type": "ogc_wms",
             "valid_epsg": [
               "EPSG:25832",
@@ -5499,6 +5552,15 @@
           "tk_500_farbig": {
             "name": "BY: TK 500 farbig (WMS)",
             "gbl-view": "true",
+            "komgis_layerid": "f1418e75-a206-4e83-a2cb-46d0a527e431",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Land Bayern",
+              "Topografische Karten",
+              "Topograf. Karten farbig",
+              "WMS: TK 500 farbig"
+            ],
+            "komgis_priority": "90700",
             "type": "ogc_wms",
             "valid_epsg": [
               "EPSG:25832",
@@ -5626,6 +5688,14 @@
       "dop20_col": {
         "name": "BY: Digitale Orthophotos - DOP20 Farbe (WMS)",
         "gbl-view": "true",
+        "komgis_layerid": "60a4daec-44fe-4167-b231-e6bc5b13217a",
+        "komgis_node": [
+          "Externe Geodienste",
+          "Land Bayern",
+          "Luftbilder / Digitale Orthophotos (DOP)",
+          "WMS: DOP20 (20 cm Bodenauflösung)"
+        ],
+        "komgis_priority": "89450",
         "type": "ogc_wms",
         "valid_epsg": [
           "EPSG:25832",
@@ -5641,6 +5711,14 @@
       "dop20_gray": {
         "name": "BY: Digitale Orthophotos - DOP20 Graustufen (WMS)",
         "gbl-view": "true",
+        "komgis_layerid": "3d52b76b-3ab3-4eed-ae26-f2c523fe36c1",
+        "komgis_node": [
+          "Externe Geodienste",
+          "Land Bayern",
+          "Luftbilder / Digitale Orthophotos (DOP)",
+          "WMS: DOP20 grau (20 cm Bodenauflösung)"
+        ],
+        "komgis_priority": "89460",
         "type": "ogc_wms",
         "valid_epsg": [
           "EPSG:25832",
@@ -5656,6 +5734,14 @@
       "dop20_ir": {
         "name": "BY: Digitale Orthophotos - DOP20 Colorinfrarot (WMS)",
         "gbl-view": "true",
+        "komgis_layerid": "ed0ae72d-12d2-4c69-a0d4-292feea0433a",
+        "komgis_node": [
+          "Externe Geodienste",
+          "Land Bayern",
+          "Luftbilder / Digitale Orthophotos (DOP)",
+          "WMS: DOP20 CIR (20 cm Bodenauflösung)"
+        ],
+        "komgis_priority": "89470",
         "type": "ogc_wms",
         "valid_epsg": [
           "EPSG:25832",
@@ -10758,7 +10844,7 @@
               "EPSG:31468",
               "EPSG:31469"
             ],
-            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=nw_gemarkungen_fluren_gemarkungen&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/geobasis/wms_nw_gemarkungen_fluren",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://www.wms.nrw.de/geobasis/wms_nw_verwaltungsgebiete&layers=nw_verwaltungsgebiete_gemarkungsgrenze&layers=nw_verwaltungsgebiete_gemarkungsbezeichnung&styles=&styles=",
             "opacity": 0.75
           },
           "NW_Flure": {
@@ -10800,7 +10886,7 @@
               "EPSG:31468",
               "EPSG:31469"
             ],
-            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=nw_gemarkungen_fluren_fluren&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/geobasis/wms_nw_gemarkungen_fluren",
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://www.wms.nrw.de/geobasis/wms_nw_verwaltungsgebiete&layers=nw_verwaltungsgebiete_flurgrenze&layers=nw_verwaltungsgebiete_flurbezeichnung&styles=&styles=",
             "opacity": 0.75
           }
         },
