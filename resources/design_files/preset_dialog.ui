@@ -18,16 +18,16 @@
     <number>10</number>
    </property>
    <property name="leftMargin">
-    <number>12</number>
+    <number>5</number>
    </property>
    <property name="topMargin">
-    <number>12</number>
+    <number>5</number>
    </property>
    <property name="rightMargin">
-    <number>12</number>
+    <number>5</number>
    </property>
    <property name="bottomMargin">
-    <number>12</number>
+    <number>5</number>
    </property>
    <item>
     <layout class="QFormLayout" name="formLayout">
@@ -74,7 +74,51 @@
     </layout>
    </item>
    <item>
+    <widget class="QWidget" name="widget" native="true">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QRadioButton" name="from_empty_radio">
+        <property name="text">
+         <string>Leeres Preset</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">new_preset_method_button_group</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="from_project_radio">
+        <property name="text">
+         <string>Preset von Projekt</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">new_preset_method_button_group</string>
+        </attribute>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
     <widget class="QCheckBox" name="save_layer_crs_checkbox">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="text">
       <string>KBS/CRS der Layer speichern</string>
      </property>
@@ -84,40 +128,16 @@
     </widget>
    </item>
    <item>
-    <widget class="QFrame" name="hint_frame">
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
+    <widget class="QLabel" name="hint_label">
+     <property name="text">
+      <string>Hinweis: Die exakte Anordnung der Ebenen ist beim Laden des Presets nicht garantiert. Die Layer werden dem Projekt flach hinzugefügt und nicht in einer benutzerdefinierten Gruppenstruktur.</string>
      </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
+     <property name="textFormat">
+      <enum>Qt::PlainText</enum>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <property name="leftMargin">
-       <number>8</number>
-      </property>
-      <property name="topMargin">
-       <number>8</number>
-      </property>
-      <property name="rightMargin">
-       <number>8</number>
-      </property>
-      <property name="bottomMargin">
-       <number>8</number>
-      </property>
-      <item>
-       <widget class="QLabel" name="hint_label">
-        <property name="text">
-         <string>Hinweis: Die exakte Anordnung der Ebenen ist beim Laden des Presets nicht garantiert. Die Layer werden dem Projekt flach hinzugefügt und nicht in einer benutzerdefinierten Gruppenstruktur.</string>
-        </property>
-        <property name="textFormat">
-         <enum>Qt::PlainText</enum>
-        </property>
-        <property name="wordWrap">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
     </widget>
    </item>
    <item>
@@ -151,4 +171,7 @@
    </hints>
   </connection>
  </connections>
+ <buttongroups>
+  <buttongroup name="new_preset_method_button_group"/>
+ </buttongroups>
 </ui>

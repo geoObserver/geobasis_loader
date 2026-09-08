@@ -1,134 +1,19 @@
-import uuid
 import pathlib
-from functools import singledispatchmethod
-from datetime import datetime
-from typing import Optional, TypedDict
-from dataclasses import dataclass, field
-from qgis.core import QgsProject, QgsBookmark, QgsApplication
-from ..models import catalog_types
+from typing import Optional
+from qgis.core import QgsProject, QgsLayerTreeNode
+from ..models.preset_types import Preset
 from ..operations import bookmark_ops
 from .. import config
 from ..utils import custom_logger, helpers
 
 logger = custom_logger.get_logger(__name__)
 
-@dataclass
-class Preset:
-    class BaseEntry(TypedDict):
-        name: str
-        path: str
-    
-    class Entry(BaseEntry, total=False):
-        crs: str
-    
-    id: str = field(default_factory=lambda: str(uuid.uuid4()))
-    title: str = "Preset"
-    description: Optional[str] = None
-    modified: datetime = field(default_factory=datetime.now)
-    entries: list[Entry] = field(default_factory=list)
-    spatial_bookmark_id: Optional[str] = None
-    
-    def __contains__(self, item) -> bool:
-        if isinstance(item, (catalog_types.Topic, catalog_types.TopicGroup, catalog_types.TopicCombination)):
-            item = item.path
-        
-        if not isinstance(item, str):
-            logger.error(f"Ungültiger Typ für Preset-Eintrag: {type(item)}. Erwartet wird ein String.")
-            return False
-        
-        return any(entry["path"] == item for entry in self.entries)
-    
-    def get_entry(self, path: str) -> Optional[Entry]:
-        return next((entry for entry in self.entries if entry["path"] == path), None)
-    
-    def add_entry(self, name: str, path: str, crs: Optional[str] = None, position: Optional[int] = None) -> None:
-        entry: Preset.Entry = {"name": name, "path": path}
-        if crs is not None:
-            entry["crs"] = crs
-        
-        if position is not None:
-            self.entries.insert(position, entry)
-        else:
-            self.entries.append(entry)
-        
-        self.modified = datetime.now()
-    
-    def remove_entry(self, path: str) -> None:
-        self.entries = [entry for entry in self.entries if entry["path"] != path]
-        self.modified = datetime.now()
-
-    def change_order(self, path: str, new_position: int) -> None:
-        entry_index = next((i for i, entry in enumerate(self.entries) if entry["path"] == path), None)
-        if entry_index is not None:
-            entry = self.entries.pop(entry_index)
-            self.entries.insert(new_position, entry)
-            self.modified = datetime.now()
-    
-    def topic_description(self) -> str:
-        if not self.entries:
-            return "Keine Themen"
-        
-        description = f"Enthaltene Themen ({len(self.entries)} Themen):\n"
-        for entry in self.entries:
-            if "crs" in entry:
-                description += f"- {entry['name']} (CRS: {entry['crs']})\n"
-            else:
-                description += f"- {entry['name']}\n"
-        
-        return description.strip()
-    
-    def get_spatial_bookmark(self) -> Optional[QgsBookmark]:
-        if not self.spatial_bookmark_id:
-            return None
-        
-        bookmark_manager = QgsApplication.bookmarkManager()
-        if not bookmark_manager:
-            logger.error("QGIS Bookmark Manager nicht verfügbar. Räumliche Lesezeichen können nicht abgerufen werden.")
-            return None
-        
-        return bookmark_manager.bookmarkById(self.spatial_bookmark_id)
-    
-    def to_dict(self) -> dict:
-        return {
-            "id": self.id,
-            "title": self.title,
-            "description": self.description,
-            # FIXME: A bit convoluted; Better with utc and replace or even better datetime.UTC but only 3.11+
-            "modified": self.modified.isoformat(timespec="seconds") + "Z",
-            "spatial_bookmark_id": self.spatial_bookmark_id,
-            "entries": self.entries,
-        }
-    
-    @classmethod
-    def from_dict(cls, data: dict) -> "Preset":
-        modified_str = data.get("modified")
-        modified = datetime.fromisoformat(modified_str.removesuffix("Z")) if modified_str else datetime.now()
-        spatial_bookmark_id = data.get("spatial_bookmark_id")
-        if spatial_bookmark_id:
-            manager = QgsApplication.bookmarkManager()
-            if manager is not None:
-                bookmark = manager.bookmarkById(spatial_bookmark_id)
-                if bookmark.id() != spatial_bookmark_id:
-                    logger.warning(f"Räumliches Lesezeichen mit ID {spatial_bookmark_id} nicht gefunden. Verknüpfung wird entfernt.")
-                    spatial_bookmark_id = None
-            else:
-                logger.error("QGIS Bookmark Manager nicht verfügbar. Räumliche Lesezeichen können nicht überprüft werden.")
-        
-        return cls(
-            id=data.get("id", str(uuid.uuid4())),
-            title=data.get("title", "Preset"),
-            description=data.get("description"),
-            modified=modified,
-            entries=data.get("entries", []),
-            spatial_bookmark_id=spatial_bookmark_id
-        )
-
 class PresetManager:
     USER_PRESETS_PATH = config.PRESETS_DIR / "user_presets.json"
     CURATED_PRESETS_PATH = config.PRESETS_DIR / "curated_presets.json"
     
     def __init__(self) -> None:
-        self.user_presets: dict[str, Preset] = {}
+        self.user_presets: dict[str, Preset] = {} 
         self.curated_presets: dict[str, Preset] = {}
     
     def create_empty_user_preset(self, title: str, description: Optional[str] = None) -> Preset:
@@ -137,18 +22,25 @@ class PresetManager:
         return preset
     
     def create_user_preset_from_project(self, title: str, description: Optional[str] = None, save_layer_crs: bool = False) -> Optional[Preset]:
-        entries = []
-        def _traverse_layer_tree(node, parent_path=""):
+        entries: list[Preset.Entry] = []
+        def _traverse_layer_tree(node: QgsLayerTreeNode, parent_path: str = "") -> None:
             for child in node.children():
                 name: str = child.customProperty("gbl_name", "Thema")
                 path: Optional[str] = child.customProperty("gbl_path", None)
                 crs: Optional[str] = child.customProperty("gbl_crs", None)
-                if path is not None and (not path.startswith(parent_path) or parent_path == ""):
-                    entry = Preset.Entry(name=name, path=path)
-                    if crs is not None:
-                        entry["crs"] = crs
-                    entries.append(entry)
-                    
+                if path is not None:
+                    if not path.startswith(parent_path) or parent_path == "":
+                        entry = Preset.Entry(name=name, path=path, visible=child.itemVisibilityChecked())
+                        if crs is not None:
+                            entry["crs"] = crs
+                        entries.append(entry)
+                    elif path.startswith(parent_path):
+                        entry = next((e for e in entries if e["path"] == parent_path), None)
+                        if entry:
+                            subtopics_visible = entry.get("subtopic_visible", {})
+                            subtopics_visible[path] = child.itemVisibilityChecked()
+                            entry["subtopic_visible"] = subtopics_visible
+                            
                 _traverse_layer_tree(child, parent_path=path if path is not None else "")
         
         project = QgsProject.instance()
@@ -164,7 +56,7 @@ class PresetManager:
         preset = self.create_empty_user_preset(title, description)
         for entry in entries:
             if entry["path"] not in preset:
-                preset.add_entry(name=entry["name"], path=entry["path"], crs=entry.get("crs") if save_layer_crs else None)
+                preset.add_entry(name=entry["name"], path=entry["path"], visible=entry["visible"], crs=entry.get("crs") if save_layer_crs else None, subtopics_visible=entry.get("subtopic_visible"))
         
         return preset
     
@@ -176,41 +68,6 @@ class PresetManager:
         preset = self.user_presets.pop(id, None)
         if preset and preset.spatial_bookmark_id:
             bookmark_ops.remove_gbl_spatial_bookmark(preset.spatial_bookmark_id)
-    
-    @singledispatchmethod
-    def add_preset_to_project(self, preset) -> None:
-        logger.critical(f"Nicht unterstützter Typ für Preset: {type(preset)}")
-    
-    @add_preset_to_project.register(str)
-    def _(self, preset_id: str) -> None:
-        preset = self.user_presets.get(preset_id)
-        if not preset:
-            preset = self.curated_presets.get(preset_id)
-            
-        if not preset:
-            logger.critical(f"Preset nicht gefunden: {preset_id}")
-            return
-        
-        self.add_preset_to_project(preset)
-    
-    @add_preset_to_project.register(Preset)
-    def _(self, preset: Preset) -> None:
-        from ..operations import topic_ops as handlers
-        failures = 0
-        # entries are stored top-to-bottom, but add_layer/add_layer_group insert
-        # each new layer/group at the top (position 0). Apply in reverse so the
-        # resulting layer-tree order matches the order the preset was saved in.
-        for entry in reversed(preset.entries):
-            path = entry["path"]
-            crs = entry.get("crs")
-            success = handlers.add_topic(path, crs, False)
-            if not success:
-                failures += 1
-        
-        if failures == 0:
-            logger.success(f"Preset '{preset.title}' erfolgreich geladen", extra={"show_banner": True})
-        else:
-            logger.warning(f"Preset '{preset.title}' teilweise geladen: {failures}/{len(preset.entries)} Themen konnten nicht geladen werden", extra={"show_banner": True})
 
     def get_user_presets(self) -> list[Preset]:
         return list(self.user_presets.values())

@@ -133,6 +133,7 @@ class PropertyManager:
     
     def get_favorites(self) -> set[str]:
         """Return a set of all favorite entry keys."""
+        # TODO: Frozenset for immutability
         return self._favorite
     
     def _convert_old_properties(self, path: pathlib.Path):
@@ -192,9 +193,13 @@ class PropertyManager:
             self.save_all()
             return
         
-        self._favorite: set[str] = set(self._qgs_settings.value(config.QgsSettingsKeys.PROPERTY_FAVORITE, list(), type=list))
-        self._invisible: set[str] = set(self._qgs_settings.value(config.QgsSettingsKeys.PROPERTY_INVISIBLE, list(), type=list))
-        self._disabled: set[str] = set(self._qgs_settings.value(config.QgsSettingsKeys.PROPERTY_DISABLED, list(), type=list))
+        self._favorite.clear()
+        self._invisible.clear()
+        self._disabled.clear()
+        
+        self._favorite.update(self._qgs_settings.value(config.QgsSettingsKeys.PROPERTY_FAVORITE, list(), type=list))
+        self._invisible.update(self._qgs_settings.value(config.QgsSettingsKeys.PROPERTY_INVISIBLE, list(), type=list))
+        self._disabled.update(self._qgs_settings.value(config.QgsSettingsKeys.PROPERTY_DISABLED, list(), type=list))
     
     def save_all(self):
         """Persist all properties to QgsSettings in one call."""

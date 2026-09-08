@@ -50,6 +50,8 @@ class EpsgDialog(QtWidgets.QDialog, EPSG_DIALOG):
             #     auth_id = "OGC:CRS84"
 
             crs = QgsCoordinateReferenceSystem(auth_id)
+            if not crs.isValid():
+                continue
             
             row_pos = self.table.rowCount()
             self.table.insertRow(row_pos)

@@ -16,6 +16,12 @@ class TopicType(str, Enum):
     ARCGIS_MAP_SERVER = "arcgis_mapserver"
     WEB = "web"
 
+class EntryType(str, Enum):
+    TOPIC = "topic"
+    TOPIC_GROUP = "topic_group"
+    TOPIC_COMBINATION = "topic_combination"
+    REGION = "region"
+
 TopicLike = Union["Topic", "TopicGroup", "TopicCombination"]
 
 def _present_kwargs(data: dict, key_map: dict[str, str]) -> dict:
@@ -35,6 +41,19 @@ class BasicEntry:
     @cached_property
     def properties(self) -> Properties:
         return Properties(self.path)
+    
+    @property
+    def entry_type(self) -> EntryType:
+        if isinstance(self, Topic):
+            return EntryType.TOPIC
+        elif isinstance(self, TopicGroup):
+            return EntryType.TOPIC_GROUP
+        elif isinstance(self, TopicCombination):
+            return EntryType.TOPIC_COMBINATION
+        elif isinstance(self, Region):
+            return EntryType.REGION
+        else:
+            raise ValueError(f"Unknown entry type for {self}")
 
 @dataclass
 class Topic(BasicEntry):
@@ -54,7 +73,7 @@ class Topic(BasicEntry):
     
     # FIXME: Different class for feature services would be cleaner
     def is_vector(self) -> bool:
-        return self.topic_type in (TopicType.APIF, TopicType.WFS)
+        return self.topic_type in (TopicType.APIF, TopicType.WFS, TopicType.VECTORTILES)
     
     @classmethod
     def from_dict(cls, data: dict) -> "Topic":
@@ -281,3 +300,43 @@ class Catalog:
     
     def to_dict(self) -> dict:
         return {k: region.to_dict() for k, region in self.regions.items()}
+
+@dataclass
+class CatalogIndex:
+    """A data class to represent a catalog index with various attributes. A catalog index is a structured collection of multiple catalogs."""
+    
+    catalogs: list[dict[str, str]] = field(default_factory=list)
+    
+    def __iter__(self):
+        yield from self.catalogs
+    
+    def __len__(self):
+        return len(self.catalogs)
+    
+    def __bool__(self):
+        return bool(self.catalogs)
+    
+    @classmethod
+    def from_dict(cls, catalogs: list) -> "CatalogIndex":
+        data = catalogs or []
+        return cls(catalogs=data)
+    
+    def to_dict(self) -> list[dict[str, str]]:
+        return self.catalogs
+
+@dataclass(frozen=True)
+class CatalogPath:
+    catalog: Catalog
+    region: Optional[Region] = None
+    topic: Optional[TopicLike] = None
+    subtopic: Optional[Topic] = None
+
+    @property
+    def entry(self) -> Union[BasicEntry, Catalog]:
+        if self.subtopic is not None:
+            return self.subtopic
+        if self.topic is not None:
+            return self.topic
+        if self.region is not None:
+            return self.region
+        return self.catalog
