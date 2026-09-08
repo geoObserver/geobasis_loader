@@ -2,13 +2,13 @@ from typing import Optional, Union
 from functools import singledispatch
 from qgis.PyQt.QtCore import QUrl
 from qgis.PyQt.QtGui import QDesktopServices, QColor
-from qgis.core import QgsProject, QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer, QgsSymbolLayer, QgsWkbTypes, Qgis, QgsSettings
+from qgis.core import QgsProject, QgsVectorLayer, QgsRasterLayer, QgsVectorTileLayer, QgsSymbolLayer, QgsWkbTypes, Qgis
 from qgis.utils import iface
 from ..models import catalog_types
 from ..services import registry
 from ..ui.dialogs import EpsgDialog
-from .. import config
 from ..utils import custom_logger
+from ..core import plugin_settings
 
 logger = custom_logger.get_logger(__name__)
 
@@ -22,7 +22,7 @@ def get_crs(supported_auth_ids: frozenset[str], layer_name: str) -> Union[str, N
         logger.error(f"Das aktuelle Projekt kann nicht geladen werden")    
         return None
     
-    automatic_crs = QgsSettings().value(config.QgsSettingsKeys.AUTOMATIC_CRS, False, type=bool)
+    automatic_crs = plugin_settings.automatic_crs
     current_crs = current_qgis_project.crs().authid()
     if current_crs not in supported_auth_ids or not automatic_crs:
         if iface is None or hasattr(iface, 'mainWindow') is False:

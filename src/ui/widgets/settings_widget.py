@@ -1,8 +1,5 @@
-from typing import Optional, Union
-
-from qgis.PyQt import uic, QtWidgets, QtCore
-from qgis.core import QgsSettings
-from ...core import events
+from qgis.PyQt import uic, QtWidgets
+from ...core import events, plugin_settings
 from ... import config
 from ...utils import custom_logger
 
@@ -14,7 +11,6 @@ class SettingsWidget(QtWidgets.QWidget, SETTINGS_WIDGET):
     def __init__(self, parent: QtWidgets.QWidget):
         QtWidgets.QWidget.__init__(self, parent)
         self.setupUi(self)
-        self._qgs_settings = QgsSettings()
         self._automatic_save_settings = True
         self.set_settings()
         
@@ -40,23 +36,23 @@ class SettingsWidget(QtWidgets.QWidget, SETTINGS_WIDGET):
         self._automatic_save_settings = value
     
     def set_settings(self) -> None:
-        server = self._qgs_settings.value(config.QgsSettingsKeys.SERVERS, 0, type=int)
+        server = plugin_settings.current_server
         for button in self.server_selection_button_group.buttons():
             if button.property("server") == server:
                 button.setChecked(True)
             else:
                 button.setChecked(False)
-        automatic_crs = self._qgs_settings.value(config.QgsSettingsKeys.AUTOMATIC_CRS, False, bool)
+        automatic_crs = plugin_settings.automatic_crs
         self.automatic_crs_check_box.setChecked(automatic_crs)
     
     def save_settings(self) -> None:
         for button in self.server_selection_button_group.buttons():
             if button.isChecked():
                 server = button.property("server")
-                self._qgs_settings.setValue(config.QgsSettingsKeys.SERVERS, server)
+                plugin_settings.current_server = server
                 break
         automatic_crs = self.automatic_crs_check_box.isChecked()
-        self._qgs_settings.setValue(config.QgsSettingsKeys.AUTOMATIC_CRS, automatic_crs)
+        plugin_settings.automatic_crs = automatic_crs
     
     def set_default_settings(self) -> None:
         # Server selection
@@ -72,11 +68,11 @@ class SettingsWidget(QtWidgets.QWidget, SETTINGS_WIDGET):
     def _on_server_selection_clicked(self, button: QtWidgets.QAbstractButton) -> None:
         if self.automatic_save_settings:
             server = button.property("server")
-            self._qgs_settings.setValue(config.QgsSettingsKeys.SERVERS, server)
+            plugin_settings.current_server = server
             events.emit_server_selection_changed()
     
     def _on_server_selection_changed(self) -> None:
-        server = self._qgs_settings.value(config.QgsSettingsKeys.SERVERS, 0, type=int)
+        server = plugin_settings.current_server
         for button in self.server_selection_button_group.buttons():
             if button.property("server") == server:
                 button.setChecked(True)
@@ -85,11 +81,11 @@ class SettingsWidget(QtWidgets.QWidget, SETTINGS_WIDGET):
     
     def _on_automatic_crs_check_box_changed(self, state: bool) -> None:
         if self.automatic_save_settings:
-            self._qgs_settings.setValue(config.QgsSettingsKeys.AUTOMATIC_CRS, state)
+            plugin_settings.automatic_crs = state
             events.emit_automatic_crs_changed()
     
     def _on_automatic_crs_changed(self) -> None:
-        automatic_crs = self._qgs_settings.value(config.QgsSettingsKeys.AUTOMATIC_CRS, False, bool)
+        automatic_crs = plugin_settings.automatic_crs
         self.automatic_crs_check_box.setChecked(automatic_crs)
     
     def _on_advanced_settings_button_clicked(self) -> None:

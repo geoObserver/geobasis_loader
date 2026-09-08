@@ -1,11 +1,9 @@
-import re
 from typing import Optional
 from qgis.PyQt.QtCore import Qt
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QMenu, QAction
-from qgis.core import QgsSettings
 from . import icons
-from ..core import events
+from ..core import events, plugin_settings
 from .dialogs import open_settings
 from .context_menus import PresetContextMenu, TopicContextMenu
 from ..services import registry
@@ -24,7 +22,6 @@ class MainMenu(QMenu):
         self.setObjectName("main-menu")
         icon = QIcon(str(config.PLUGIN_DIR / "GeoBasis_Loader_icon.png"))
         self.setIcon(icon)
-        self._qgs_settings = QgsSettings()
         self._dynamic_menus: list[QMenu] = []
         
         # Buttons
@@ -72,7 +69,7 @@ class MainMenu(QMenu):
             logger.warning("No catalog provided and no current catalog found. Cannot build catalog menu.")
         else:
             # ------- Name des Katalogs einfügen -----------------
-            self.addAction(self._qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)["titel"])
+            self.addAction(plugin_settings.current_catalog["titel"])
             self.addSeparator()
             
             # TODO: Entries are now absolute so favorites and presets should always be built
@@ -208,7 +205,7 @@ class MainMenu(QMenu):
     def _build_end_section(self):
         self.addSeparator()
         
-        automatic_crs = self._qgs_settings.value(config.QgsSettingsKeys.AUTOMATIC_CRS, False, type=bool)
+        automatic_crs = plugin_settings.automatic_crs
         self.automatic_crs_action = QAction(text="Wenn möglich, Dienste autom. im KBS laden", parent=self, checkable=True, checked=automatic_crs) # type: ignore
         self.automatic_crs_action.triggered.connect(self._set_automatic_crs)
         self.addAction(self.automatic_crs_action)
@@ -228,7 +225,7 @@ class MainMenu(QMenu):
     
     # FIXME: Maybe a dedicated settings module/class would be better than local changes
     def _set_automatic_crs(self, enabled: bool):
-        self._qgs_settings.setValue(config.QgsSettingsKeys.AUTOMATIC_CRS, enabled)
+        plugin_settings.automatic_crs = enabled
         events.emit_automatic_crs_changed()
     
     def _sync_automatic_crs(self):
@@ -236,7 +233,7 @@ class MainMenu(QMenu):
             logger.warning("Automatic CRS action not initialized. Cannot sync state.")
             return
         
-        automatic_crs = self._qgs_settings.value(config.QgsSettingsKeys.AUTOMATIC_CRS, False, type=bool)
+        automatic_crs = plugin_settings.automatic_crs
         self.automatic_crs_action.setChecked(automatic_crs)
 
 class CustomQMenu(QMenu):
@@ -390,14 +387,13 @@ class CatalogDisplayOptionsMenu(QMenu):
     def __init__(self, parent=None):
         super().__init__("Anzeigeeinstellungen", parent)
         self.setObjectName("catalog-display-options-menu")
-        self._qgs_settings = QgsSettings()
     
     def build(self):
-        highlight_favorites = self._qgs_settings.value(config.QgsSettingsKeys.DISPLAY_HIGHLIGHT_FAVORITES, False, type=bool)
+        highlight_favorites = plugin_settings.highlight_favorites
         highlight_favorites_action = QAction("Favoriten hervorheben", self, checkable=True, checked=highlight_favorites)    # type: ignore
         highlight_favorites_action.triggered.connect(self._set_highlight_favorites)
         self.addAction(highlight_favorites_action)
     
     def _set_highlight_favorites(self, enabled: bool):
-        self._qgs_settings.setValue(config.QgsSettingsKeys.DISPLAY_HIGHLIGHT_FAVORITES, enabled)
+        plugin_settings.highlight_favorites = enabled
         events.emit_display_highlight_favorites_changed()

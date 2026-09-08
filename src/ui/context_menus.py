@@ -1,13 +1,11 @@
-from qgis.PyQt.QtWidgets import QMenu, QAction, QMessageBox
-from qgis.utils import iface
+from qgis.PyQt.QtWidgets import QMenu, QAction
 from ..core import events
 from ..models import catalog_types
-from ..operations import bookmark_ops, topic_ops, preset_ops
+from ..operations import topic_ops, preset_ops
 from ..services import registry
-from .dialogs import PresetDialog
 from . import icons
 from .. import config
-from ..utils import custom_logger, helpers
+from ..utils import custom_logger
 
 logger = custom_logger.get_logger(__name__)
 

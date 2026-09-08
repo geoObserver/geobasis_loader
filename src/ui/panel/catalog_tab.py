@@ -1,10 +1,9 @@
 from typing import Union
-from qgis.core import QgsSettings
 from qgis.PyQt import uic, QtWidgets, QtCore, QtGui
 from qgis.gui import QgsFilterLineEdit, QgsTreeWidgetItem
 from ..widgets.item_delegates import SearchHighlightItemDelegate
 from ...models import catalog_types
-from ...core import events, search_index
+from ...core import events, search_index, plugin_settings
 from ...operations import topic_ops
 from ...services import registry
 from .. import icons
@@ -115,8 +114,7 @@ class CatalogTab(QtWidgets.QWidget, CATALOG_TAB):
     def set_catalog_selection(self) -> None:
         # Block signal since its already being done beacuase of a signal
         blocker = QtCore.QSignalBlocker(self.catalog_selection_combo_box)
-        qgs_settings = QgsSettings()
-        catalog_info = qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG, {}, type=dict)
+        catalog_info = plugin_settings.current_catalog
         
         selected_index = self.catalog_selection_combo_box.findData(catalog_info)
         placeholder_index = self.catalog_selection_combo_box.findData(None)
@@ -174,7 +172,7 @@ class CatalogTab(QtWidgets.QWidget, CATALOG_TAB):
         self.catalog_selection_combo_box.setCurrentText(current_catalog.name)
         bolded_font = QtGui.QFont(self.catalog_tree_widget.font())
         bolded_font.setBold(True)
-        highlight_favorites = QgsSettings().value(config.QgsSettingsKeys.DISPLAY_HIGHLIGHT_FAVORITES, False, type=bool)
+        highlight_favorites = plugin_settings.highlight_favorites
         entry_count = 0
         
         for region in current_catalog.get_regions():

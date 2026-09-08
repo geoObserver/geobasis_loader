@@ -1,14 +1,14 @@
 from qgis.PyQt.QtCore import QObject, Qt
 from qgis.PyQt.QtGui import QCursor
 from qgis.PyQt.QtWidgets import QAction, QToolBar
-from qgis.core import QgsSettings, QgsApplication
+from qgis.core import QgsApplication
 from qgis.gui import QgisInterface
 from . import config
 from .utils import custom_logger
 from .ui import menus, icons, panel, search_filter
 from .services import registry
 from .operations import bookmark_ops
-from .core import search_index
+from .core import search_index, plugin_settings
 
 logger = custom_logger.get_logger(__name__)
 
@@ -19,7 +19,6 @@ class GeoBasis_Loader(QObject):
     def __init__(self, iface: QgisInterface, parent=None) -> None:
         super().__init__(parent)
         self.iface = iface
-        self._qgs_settings = QgsSettings()
         self.main_menu = None
         self.toolbar = None
         self.toolbar_main_menu_action = None
@@ -77,7 +76,7 @@ class GeoBasis_Loader(QObject):
             manager.bookmarkRemoved.connect(bookmark_ops._remove_gbl_spatial_bookmark_from_presets)
             
         # Apply user settings
-        gbl_panel_visible = self._qgs_settings.value(config.QgsSettingsKeys.SHOW_GBL_PANEL, False, type=bool)
+        gbl_panel_visible = plugin_settings.show_gbl_panel
         if self.gbl_panel:
             self.gbl_panel.setUserVisible(gbl_panel_visible)
         
@@ -150,5 +149,5 @@ class GeoBasis_Loader(QObject):
         self.main_menu.popup(QCursor.pos())
     
     def _on_gbl_panel_closed_state_changed(self, was_closed: bool) -> None:
-        self._qgs_settings.setValue(config.QgsSettingsKeys.SHOW_GBL_PANEL, not was_closed)
+        plugin_settings.show_gbl_panel = not was_closed
     

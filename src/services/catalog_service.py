@@ -6,11 +6,11 @@ from functools import partial
 from typing import Optional, Union, Callable
 from qgis.PyQt.QtNetwork import QNetworkRequest, QNetworkReply
 from qgis.PyQt.QtCore import QUrl, QObject, QDateTime, pyqtSignal
-from qgis.core import QgsNetworkAccessManager, QgsSettings
+from qgis.core import QgsNetworkAccessManager
 from .. import config
 from ..utils import custom_logger, helpers
 from ..models import catalog_types
-from ..core import events
+from ..core import events, plugin_settings
 
 logger = custom_logger.get_logger(__name__)
 
@@ -364,11 +364,10 @@ class CatalogManager:
             self.get_catalog(titel, info.get("name"), callback=set_loaded_catalog)
             return
         
-        qgs_settings = QgsSettings()
         # Return if the current catalog is already set to the same catalog and the settings match
         if (
             self._current_catalog is self.catalogs[id]
-            and qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG, {}, type=dict) == info
+            and plugin_settings.current_catalog == info
         ):
             return
         
@@ -377,13 +376,12 @@ class CatalogManager:
         version = version_matches[0] if version_matches else "unbekannt"
         
         self._current_catalog = self.catalogs[id]
-        qgs_settings.setValue(config.QgsSettingsKeys.CURRENT_CATALOG, info)
+        plugin_settings.current_catalog = info
         events.emit_current_catalog_updated()
         logger.success(f'Lese {titel}, Version {version} ...', extra={"show_banner": True})
     
     def fetch_and_set_current_catalog(self) -> None:
-        qgs_settings = QgsSettings()
-        current_catalog = qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
+        current_catalog = plugin_settings.current_catalog
         if current_catalog is None or "name" not in current_catalog:
             return None
         
@@ -466,13 +464,8 @@ class CatalogManager:
             parsed_catalog["name"] = catalog_name
             catalog = catalog_types.Catalog.from_dict(parsed_catalog)
             self.catalogs[catalog_name] = catalog
-
-            qgs_settings = QgsSettings()
-            current_catalog_info = qgs_settings.value(
-                config.QgsSettingsKeys.CURRENT_CATALOG,
-                {},
-                type=dict,
-            )
+    
+            current_catalog_info = plugin_settings.current_catalog
 
             if current_catalog_info.get("titel") == catalog_name:
                 self.set_current_catalog(current_catalog_info)
@@ -511,12 +504,7 @@ class CatalogManager:
             parsed_services["name"] = catalog_name
             catalog = catalog_types.Catalog.from_dict(parsed_services)
             self.catalogs[catalog_name] = catalog
-            qgs_settings = QgsSettings()
-            current_catalog_info = qgs_settings.value(
-                            config.QgsSettingsKeys.CURRENT_CATALOG,
-                            {},
-                            type=dict,
-                        )
+            current_catalog_info = plugin_settings.current_catalog
         
             if current_catalog_info.get("titel") == catalog_name:
                 self.set_current_catalog(current_catalog_info)
