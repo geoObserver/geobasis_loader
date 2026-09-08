@@ -2,7 +2,7 @@
 name=GeoBasis_Loader
 qgisMinimumVersion=3.40
 qgisMaximumVersion=4.99
-version=2.1.0
+version=2.2.0
 author=Anton May, Mike Elstermann (#geoObserver)
 email=news@geoobserver.de
 
@@ -41,7 +41,8 @@ deprecated=False
 server=False
 hasProcessingProvider=False
 
-changelog=2.1.1 Bugfix: Falsche Protokollierung von Netzwerkfehlern, Fehlerhafte Initialisierung bei Erstinstallation
+changelog=2.2.0 GBL-Fenster mit allen Kernfunktionen hinzugefügt, Erweiterung Presets mit räumlichen Lesezeichen, Einführung erweiterter interner Suchfunktion
+    2.1.1 Bugfix: Falsche Protokollierung von Netzwerkfehlern, Fehlerhafte Initialisierung bei Erstinstallation
     2.1.0 Favoriten, Zusammenstellungen und Code-Refactoring
     2.0.0 Qt5- & Qt6-Kompatibilität (für QGIS 4)
     1.4.2 Fixing basemap.de vectortiles

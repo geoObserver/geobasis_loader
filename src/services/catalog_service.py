@@ -10,7 +10,7 @@ from qgis.core import QgsNetworkAccessManager, QgsSettings
 from .. import config
 from ..utils import custom_logger, helpers
 from ..models import catalog_types
-from ..core.search import SearchFilter
+from ..core import events
 
 logger = custom_logger.get_logger(__name__)
 
@@ -36,7 +36,12 @@ class NetworkHandler(QObject):
         
     def _fetch_data(self, url: str = '') -> Optional[QNetworkReply]:
         if self._reply is not None:
-            self._reply.finished.disconnect()
+            if self._finished_function:
+                try:
+                    self._reply.finished.disconnect(self._finished_function)
+                except (RuntimeError, TypeError):
+                    # Signal was never connected or already disconnected
+                    pass
             if not self._reply.isFinished():
                 self._reply.abort()
             self._reply.deleteLater()
@@ -96,25 +101,28 @@ class NetworkHandler(QObject):
         status_code: Optional[int] = self._reply.attribute(QNetworkRequest.Attribute.HttpStatusCodeAttribute)
         
         if error == QNetworkReply.NetworkError.NoError and status_code == 200:
-            json_string = self._reply.readAll().data().decode('utf-8')
-     
-            # Holt sich die Timestamps der letzten Modifikationen der lokalen JSON-Datei und der JSON-Datei aus dem Internet
-            # (Über-)Schreibt dann die loakle JSON-Datei, wenn die Datei im Internet neuer ist
-            # Sozusagen eigene Cache-Implementation
-            network_last_modified_raw_value: Optional[QDateTime] = self._reply.header(QNetworkRequest.KnownHeaders.LastModifiedHeader)
-            if network_last_modified_raw_value is not None and network_last_modified_raw_value.isValid():
-                network_last_modified = network_last_modified_raw_value.toMSecsSinceEpoch() / 1000      # ??????????
+            try:
+                json_string = self._reply.readAll().data().decode('utf-8')
+            except UnicodeDecodeError as decode_error:
+                logger.error(f"Ungültige UTF-8-Antwort für '{catalog_name}': {decode_error}")
             else:
-                network_last_modified = 0.0
-            self.successful = True
-            self.done = True
-            self.finished.emit(json_string, catalog_title, network_last_modified)
-            
-            total_server_list = config.ServerHosts.get_all_servers()
-            index = total_server_list.index(self._server)
-            logger.info(f"Katalog '{catalog_name}' erfolgreich von Server {index + 1} geladen")
-            return
-        
+                # Holt sich die Timestamps der letzten Modifikationen der lokalen JSON-Datei und der JSON-Datei aus dem Internet
+                # (Über-)Schreibt dann die loakle JSON-Datei, wenn die Datei im Internet neuer ist
+                # Sozusagen eigene Cache-Implementation
+                network_last_modified_raw_value: Optional[QDateTime] = self._reply.header(QNetworkRequest.KnownHeaders.LastModifiedHeader)
+                if network_last_modified_raw_value is not None and network_last_modified_raw_value.isValid():
+                    network_last_modified = network_last_modified_raw_value.toMSecsSinceEpoch() / 1000      # ??????????
+                else:
+                    network_last_modified = 0.0
+                self.successful = True
+                self.done = True
+                self.finished.emit(json_string, catalog_title, network_last_modified)
+                
+                total_server_list = config.ServerHosts.get_all_servers()
+                index = total_server_list.index(self._server)
+                logger.info(f"Katalog '{catalog_name}' erfolgreich von Server {index + 1} geladen")
+                return
+     
         if error == QNetworkReply.NetworkError.OperationCanceledError:
             logger.info(f"Netzwerkanfrage für '{catalog_name}' wurde abgebrochen")
             self.done = True
@@ -123,6 +131,8 @@ class NetworkHandler(QObject):
         # Differenzierte Fehlerbehandlung
         if not status_code:
             logger.error(f"Kein Internet: {catalog_name} auf Server {self._server}")
+        elif status_code == 200:
+            logger.error(f"Unerwarteter Fehler beim Decoden oder Verarbeiten: {catalog_name} auf Server {self._server}")
         elif status_code == 404:
             logger.warning(f"404 Not Found: {catalog_name} auf Server {self._server}")
         elif status_code == 429:
@@ -134,8 +144,8 @@ class NetworkHandler(QObject):
 
         curr_server_index = self._server_list.index(self._server)
         if curr_server_index == len(self._server_list) - 1:
-            self.error_occurred.emit("Netzwerkfehler beim Laden der URL's", catalog_title)
             self.done = True
+            self.error_occurred.emit("Netzwerkfehler beim Laden der URL's", catalog_title)
             logger.warning(f"Katalog '{catalog_name}' konnte nicht von einem Server geladen werden")
         else:
             self._server = self._server_list[curr_server_index + 1]
@@ -174,21 +184,15 @@ class NetworkHandler(QObject):
             pass
 
 class CatalogManager:
-    overview: Optional[list[dict[str, str]]]
-    catalogs: dict[str, catalog_types.Catalog]
     catalog_path = config.PLUGIN_DIR / "catalogs"
 
-    catalog_network_handlers: dict[str, NetworkHandler]
-    overview_network_handler: Optional[NetworkHandler]
-
-    _pending_callbacks: dict[str, list[Callable]]
-
     def __init__(self) -> None:
-        self.overview: Optional[list[dict[str, str]]] = None
+        self.overview: Optional[catalog_types.CatalogIndex] = None
         self.catalogs: dict[str, catalog_types.Catalog] = {}
         self.catalog_network_handlers: dict[str, NetworkHandler] = {}
         self.overview_network_handler: Optional[NetworkHandler] = None
         self._pending_callbacks: dict[str, list[Callable]] = {}
+        self._current_catalog = None
     
     def add_network_handler(self, catalog_title: str) -> NetworkHandler:
         if self.catalog_network_handlers.get(catalog_title, None) is not None:
@@ -234,21 +238,20 @@ class CatalogManager:
             logger.critical("Die Katalog-Übersicht enthält ungültiges JSON. Bitte prüfen Sie die Internetverbindung", extra={"show_banner": True})
             return
         
-        self.overview = loaded_overview if isinstance(loaded_overview, list) else None
+        self.overview = catalog_types.CatalogIndex.from_dict(loaded_overview) if isinstance(loaded_overview, list) else None
         
         if not self.overview:
             logger.critical(f"Katalogübersicht fehlerhaft, Bitte starten Sie QGIS neu oder kontaktieren Sie den Autor", extra={"show_banner": True})
+            if config.CATALOG_OVERVIEW_NAME in self._pending_callbacks:
+                for callback in self._pending_callbacks[config.CATALOG_OVERVIEW_NAME]:
+                    callback()
+                del self._pending_callbacks[config.CATALOG_OVERVIEW_NAME]
             return
         
         file_name = 'katalog_overview'
         file_path = self.catalog_path / f"{file_name}.json"
         
-        try:
-            localLastModified = os.path.getmtime(file_path)
-        except OSError:
-            localLastModified = 0.0
-        if localLastModified < last_modified:
-            self.write_json(self.overview, file_path)
+        self._write_cache_if_stale(loaded_overview, file_path, last_modified)
         
         if fetch_catalogs:
             for catalog in self.overview:
@@ -260,6 +263,8 @@ class CatalogManager:
             for callback in self._pending_callbacks[config.CATALOG_OVERVIEW_NAME]:
                 callback()
             del self._pending_callbacks[config.CATALOG_OVERVIEW_NAME]
+        
+        events.emit_overview_updated()
     
     def get_overview(self, callback: Optional[Callable] = None) -> None:
         # ------- Network Handler für die Katalog Übersicht erstellen --------------
@@ -277,7 +282,7 @@ class CatalogManager:
                 self._pending_callbacks[config.CATALOG_OVERVIEW_NAME] = []
             self._pending_callbacks[config.CATALOG_OVERVIEW_NAME].append(callback)
     
-    def get_catalog(self, catalog_title: str, catalog_name: Optional[str] = None, callback: Optional[Callable] = None) -> Union[None, catalog_types.Catalog, list]:        
+    def get_catalog(self, catalog_title: str, catalog_name: Optional[str] = None, callback: Optional[Callable] = None) -> Union[None, catalog_types.Catalog, catalog_types.CatalogIndex]:        
         if catalog_title == config.CATALOG_OVERVIEW_NAME:
             if self.overview is not None:
                 if callback:
@@ -294,8 +299,12 @@ class CatalogManager:
                 self._pending_callbacks[catalog_title] = []
             self._pending_callbacks[catalog_title].append(callback)
             
-        if self.overview_network_handler is None or not self.overview_network_handler.done:
+        if self.overview_network_handler is None:
             logger.warning("Katalogübersicht ist nicht geladen, Bitte warten Sie oder kontaktieren Sie den Author", extra={"show_banner": True})
+            return None
+
+        if not self.overview_network_handler.done:
+            logger.warning("Katalogübersicht ist noh nicht geladen, Bitte warten Sie", extra={"show_banner": False})
             return None
         
         if self.overview is not None:
@@ -331,16 +340,114 @@ class CatalogManager:
     
         return None
     
-    def get_current_catalog(self, callback: Optional[Callable] = None) -> Union[None, catalog_types.Catalog, list]:
+    def get_current_catalog(self) -> Union[None, catalog_types.Catalog]:
+        return self._current_catalog
+    
+    def set_current_catalog(self, info: dict) -> None:
+        # FIXME: Id instead of dict
+        if "titel" not in info:
+            logger.warning(f"Momentan ist kein valider Katalog ausgewählt, Bitten wählen Sie einen aus", extra={"show_banner": True})
+            return
+        
+        id = info.get("titel")
+        if not isinstance(id, str):
+            logger.error(f"Ungültiger Katalog-ID-Typ: {type(id)}")
+            return
+        
+        titel = id
+        
+        if titel not in self.catalogs:
+            def set_loaded_catalog(catalog: Optional[catalog_types.Catalog]=None) -> None:
+                if catalog is not None and titel in self.catalogs:
+                    self.set_current_catalog(info)
+            
+            self.get_catalog(titel, info.get("name"), callback=set_loaded_catalog)
+            return
+        
+        qgs_settings = QgsSettings()
+        # Return if the current catalog is already set to the same catalog and the settings match
+        if (
+            self._current_catalog is self.catalogs[id]
+            and qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG, {}, type=dict) == info
+        ):
+            return
+        
+        name = info["name"]
+        version_matches = re.findall(r'v\d+', name)
+        version = version_matches[0] if version_matches else "unbekannt"
+        
+        self._current_catalog = self.catalogs[id]
+        qgs_settings.setValue(config.QgsSettingsKeys.CURRENT_CATALOG, info)
+        events.emit_current_catalog_updated()
+        logger.success(f'Lese {titel}, Version {version} ...', extra={"show_banner": True})
+    
+    def fetch_and_set_current_catalog(self) -> None:
         qgs_settings = QgsSettings()
         current_catalog = qgs_settings.value(config.QgsSettingsKeys.CURRENT_CATALOG)
         if current_catalog is None or "name" not in current_catalog:
-            if callback:
-                callback(None)
             return None
         
-        return self.get_catalog(current_catalog["titel"], current_catalog["name"], callback)
+        def set_catalog(catalog: Optional[catalog_types.Catalog]=None) -> None:
+            if catalog is not None and current_catalog.get("titel") in self.catalogs:
+                self.set_current_catalog(current_catalog)
+            
+        self.get_catalog(current_catalog["titel"], current_catalog["name"], callback=set_catalog)
     
+    def get_topic_by_path(self, path: str) -> Optional[catalog_types.BasicEntry]:
+        resolved = self.get_parts_by_path(path)
+        if resolved is None or isinstance(resolved.entry, catalog_types.Catalog):
+            return None
+
+        return resolved.entry
+
+    def get_parts_by_path(self, path: str) -> Optional[catalog_types.CatalogPath]:
+        catalog_id = path.split(":/")[0] if ":/" in path else ""
+        catalog = self.catalogs.get(catalog_id)
+        if not catalog:
+            logger.error(f"Katalog mit der ID '{catalog_id}' nicht gefunden")
+            return None
+
+        if not isinstance(catalog, catalog_types.Catalog):
+            logger.error("Aktueller Katalog kann nicht geladen werden")
+            return None
+
+        if ":/" in path:
+            _, relative_path = path.split(":/", 1)
+        else:
+            relative_path = path
+
+        path_parts = [part for part in relative_path.split("/") if part]
+        if not path_parts:
+            logger.error(f"Leerer Pfad kann nicht aufgelöst werden")
+            return None
+
+        region = catalog.get_region(path_parts[0])
+        if region is None:
+            logger.error(f"Region mit dem Pfad '{path}' im Katalog '{catalog.name}' nicht gefunden")
+            return None
+
+        if len(path_parts) == 1:
+            return catalog_types.CatalogPath(catalog=catalog, region=region)
+
+        topic = region.get_topic(path_parts[1])
+        if topic is None:
+            logger.error(f"Thema mit dem Pfad '{path}' im Katalog '{catalog.name}' nicht gefunden")
+            return None
+
+        subtopic = None
+        if len(path_parts) >= 3 and isinstance(topic, catalog_types.TopicGroup):
+            subtopic = topic.get_subtopic(path_parts[2])
+            if subtopic is None:
+                logger.error(f"Unterthema mit dem Pfad '{path}' im Katalog '{catalog.name}' nicht gefunden")
+                return None
+
+        return catalog_types.CatalogPath(catalog=catalog, region=region, topic=topic, subtopic=subtopic)
+    
+    def get_all_catalogs(self) -> tuple[catalog_types.Catalog, ...]:
+        # FIXME: As property not just here
+        a = dict(sorted(self.catalogs.items()))
+        return tuple(a.values())
+
     def add_catalog(self, raw_catalog: str, catalog_name: str, last_modified: float) -> None:
         try:
             parsed_catalog = json.loads(raw_catalog)
@@ -352,20 +459,23 @@ class CatalogManager:
         file_name = re.sub(r'\ ', '_', catalog_name.split(':')[0].lower())
         file_path = self.catalog_path / f"{file_name}.json"
         
-        try:
-            localLastModified = os.path.getmtime(file_path)
-        except OSError:
-            localLastModified = 0.0
-
-        if localLastModified < last_modified:
-            self.write_json(parsed_catalog, file_path)
+        self._write_cache_if_stale(parsed_catalog, file_path, last_modified)
         
         if isinstance(parsed_catalog, dict):
             # FIXME: Catalog ID instead of name
             parsed_catalog["name"] = catalog_name
             catalog = catalog_types.Catalog.from_dict(parsed_catalog)
             self.catalogs[catalog_name] = catalog
-            SearchFilter.build_search_index(self.catalogs)
+
+            qgs_settings = QgsSettings()
+            current_catalog_info = qgs_settings.value(
+                config.QgsSettingsKeys.CURRENT_CATALOG,
+                {},
+                type=dict,
+            )
+
+            if current_catalog_info.get("titel") == catalog_name:
+                self.set_current_catalog(current_catalog_info)
         
         if catalog_name in self._pending_callbacks:
             for callback in self._pending_callbacks[catalog_name]:
@@ -391,6 +501,8 @@ class CatalogManager:
                     else:
                         callback(None)
                 del self._pending_callbacks[catalog_name]
+            
+            self.clear_network_handlers()
             return
 
         parsed_services = self.read_json(file_path)
@@ -399,14 +511,27 @@ class CatalogManager:
             parsed_services["name"] = catalog_name
             catalog = catalog_types.Catalog.from_dict(parsed_services)
             self.catalogs[catalog_name] = catalog
-            SearchFilter.build_search_index(self.catalogs)
+            qgs_settings = QgsSettings()
+            current_catalog_info = qgs_settings.value(
+                            config.QgsSettingsKeys.CURRENT_CATALOG,
+                            {},
+                            type=dict,
+                        )
+        
+            if current_catalog_info.get("titel") == catalog_name:
+                self.set_current_catalog(current_catalog_info)
         else:
             if not isinstance(parsed_services, list):
                 error += "Katalogübersicht nicht korrekt geparst"
                 logger.warning(error, extra={"show_banner": True})
+                if config.CATALOG_OVERVIEW_NAME in self._pending_callbacks:
+                    for callback in self._pending_callbacks[config.CATALOG_OVERVIEW_NAME]:
+                        callback()
+                    del self._pending_callbacks[config.CATALOG_OVERVIEW_NAME]
                 return
             
-            self.overview = parsed_services
+            self.overview = catalog_types.CatalogIndex.from_dict(parsed_services)
+            events.emit_overview_updated()
             for catalog in self.overview:
                 # ------- Network Handler für die einzelnen Kataloge erstellen -------------
                 handler = self.add_network_handler(catalog["titel"])
@@ -424,6 +549,19 @@ class CatalogManager:
             del self._pending_callbacks[catalog_name]
         
         self.clear_network_handlers()
+    
+    def _write_cache_if_stale(self, data: Union[dict, list], file_path: pathlib.Path, last_modified: float) -> None:
+        try:
+            local_last_modified = os.path.getmtime(file_path)
+        except OSError:
+            local_last_modified = None          # fehlt oder unlesbar -> unbekannt, NICHT 0.0
+
+        if local_last_modified is None:         # kein Cache -> immer schreiben
+            self.write_json(data, file_path)
+        elif last_modified <= 0.0:              # Server-Zeitstempel unbekannt -> lieber schreiben
+            self.write_json(data, file_path)
+        elif local_last_modified < last_modified:
+            self.write_json(data, file_path)
 
     def write_json(self, data: Union[dict, list], file_path: pathlib.Path) -> None:
         try:

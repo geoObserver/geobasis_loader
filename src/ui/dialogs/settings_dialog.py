@@ -3,10 +3,12 @@ from qgis.PyQt import uic, QtWidgets
 from qgis.PyQt.QtCore import Qt
 from qgis.PyQt.QtGui import QShowEvent
 from qgis.core import QgsSettings
+from qgis.utils import iface
+from ...core import events
 from ... import config
 from ...services import registry
 from ...models import catalog_types
-from .. import icons
+from .. import icons, widgets
 from ...utils import custom_logger
 
 SETTINGS_DIALOG = uic.loadUiType(config.RESOURCES_DIR / "design_files" / "settings_dialog.ui")[0]
@@ -28,6 +30,10 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         
         self.setAttribute(Qt.WidgetAttribute.WA_DeleteOnClose, True)
         self.setupUi(self)
+        self.general_settings_tab = widgets.SettingsWidget(self.tabWidget)
+        self.general_settings_tab.automatic_save_settings = False
+        self.general_settings_tab.set_advanced_settings_visibility(False)
+        self.tabWidget.addTab(self.general_settings_tab, "Generelle Einstellungen")
         
         # Topic settings tree
         self.layer_settings_tree.itemChanged.connect(self.on_item_changed)
@@ -47,8 +53,6 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         
         # IntelliSense
         self.layer_settings_tree: QtWidgets.QTreeWidget = self.layer_settings_tree
-        self.server_button_group: QtWidgets.QButtonGroup = self.server_button_group
-        self.automatic_crs_checkbox: QtWidgets.QCheckBox = self.automatic_crs_checkbox
     
     def _set_state_of_children(self, item: QtWidgets.QTreeWidgetItem, column: int, state: Qt.CheckState) -> None:
         for i in range(item.childCount()):
@@ -264,15 +268,7 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         
         self._updating_items = False
         
-        # Global Settings
-        server = self._qgs_settings.value(config.QgsSettingsKeys.SERVERS, 0, type=int)
-        for button in self.server_button_group.buttons():
-            if button.property("server") == server:
-                button.setChecked(True)
-            else:
-                button.setChecked(False)
-        automatic_crs = self._qgs_settings.value(config.QgsSettingsKeys.AUTOMATIC_CRS, False, bool)
-        self.automatic_crs_checkbox.setChecked(automatic_crs)
+        # general settings already init in the widget itself
         
     def set_check_state_all_items(self, column: int, state: Qt.CheckState) -> None:
         self._updating_items = True
@@ -294,25 +290,11 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         self.set_check_state_all_items(LOADING_CHECKBOX_COL, Qt.CheckState.Checked)
         
         # Global Settings
-        # Server Select
-        for button in self.server_button_group.buttons():
-            if button.property("server") == 0:
-                button.setChecked(True)
-            else:
-                button.setChecked(False)
-                
-        # Automatic CRS
-        self.automatic_crs_checkbox.setChecked(False)
+        self.general_settings_tab.set_default_settings()
     
     def confirm_settings(self) -> None:
         # Global settings
-        checked_button = self.server_button_group.checkedButton()
-        if checked_button:
-            server_index = checked_button.property("server")
-            self._qgs_settings.setValue(config.QgsSettingsKeys.SERVERS, server_index)
-        
-        automatic_crs = self.automatic_crs_checkbox.isChecked()
-        self._qgs_settings.setValue(config.QgsSettingsKeys.AUTOMATIC_CRS, automatic_crs)
+        self.general_settings_tab.save_settings()
         
         # Layer settings
         for item in self._items:
@@ -340,3 +322,25 @@ class SettingsDialog(QtWidgets.QDialog, SETTINGS_DIALOG):
         self._current_catalog = {}
         self._items = []
         self.layer_settings_tree.clear()
+
+def open_settings():
+    current_catalog = registry.catalog_manager.get_current_catalog()
+    if not isinstance(current_catalog, catalog_types.Catalog):
+        logger.warning("No current catalog found. Cannot open settings dialog.")
+        return
+    
+    if iface is None or hasattr(iface, 'mainWindow') is False:
+        logger.error("Kein iface verfügbar (Headless?), Einstellungen können nicht geöffnet werden")
+        return
+    
+    settings_dialog = SettingsDialog(iface.mainWindow())
+    settings_dialog.set_settings(current_catalog)
+    settings_dialog.accepted.connect(_accept_settings)
+    settings_dialog.open()
+
+def _accept_settings():
+    logger.success("Einstellungen erfolgreich gespeichert", extra={"show_banner": True})
+    events.emit_general_settings_changed()
+    events.emit_visibility_updated()
+    events.emit_enabled_updated()
+    events.emit_favorites_updated()

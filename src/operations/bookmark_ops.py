@@ -1,11 +1,13 @@
 from typing import Optional
-from qgis.core import QgsBookmark, QgsApplication
+from qgis.core import QgsApplication
+from ..core import events
 from ..services import registry
 from ..utils import helpers, custom_logger
 from .. import config
 
 logger = custom_logger.get_logger(__name__)
 
+#FIXME: Move multiple boomkmark functions from helper here
 def add_gbl_spatial_bookmark(name: str, id: Optional[str] = None) -> tuple[Optional[str], bool]:
     bookmark_manager = QgsApplication.bookmarkManager()
     if bookmark_manager is None:
@@ -17,11 +19,16 @@ def add_gbl_spatial_bookmark(name: str, id: Optional[str] = None) -> tuple[Optio
     bookmark.setName(name)
     bookmark.setGroup(config.BOOKMARK_GROUP_NAME)
     
-    id, successful = bookmark_manager.addBookmark(bookmark)
-    if successful:
-        logger.success(f"Räumliches Lesezeichen '{name}' erstellt.")
+    check_bookmark = bookmark_manager.bookmarkById(bookmark.id())
+    if check_bookmark.id() == bookmark.id():
+        logger.info(f"Räumliches Lesezeichen mit ID '{bookmark.id()}' existiert bereits. Es wird überschrieben.")
+        successful = bookmark_manager.updateBookmark(bookmark)
     else:
-        logger.error(f"Fehler beim Erstellen des räumlichen Lesezeichens '{name}'.")
+        id, successful = bookmark_manager.addBookmark(bookmark)
+        if successful:
+            logger.success(f"Räumliches Lesezeichen '{name}' erstellt.")
+        else:
+            logger.error(f"Fehler beim Erstellen des räumlichen Lesezeichens '{name}'.")
     return id, successful
 
 def remove_gbl_spatial_bookmark(bookmark_id: str) -> bool:
@@ -42,4 +49,5 @@ def _remove_gbl_spatial_bookmark_from_presets(bookmark_id: str) -> None:
         if preset.spatial_bookmark_id == bookmark_id:
             preset.spatial_bookmark_id = None
             registry.preset_manager.save_user_presets()
+            events.emit_presets_updated()
             logger.success(f"Räumliches Lesezeichen mit ID '{bookmark_id}' aus Preset '{preset.title}' entfernt.")
