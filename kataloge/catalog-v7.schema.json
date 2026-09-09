@@ -204,6 +204,9 @@
         "gbl_view": {
           "type": "boolean"
         },
+        "osm_usable": {
+          "type": "boolean"
+        },
         "komgis_layerid": {
           "tpye": "string"
         },
