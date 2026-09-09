@@ -9,6 +9,13 @@ class PluginSettings:
     def __init__(self):
         self._qgs_settings = QgsSettings()
     
+    def _check_key(self, key: Union[config.QgsSettingsKeys, str]) -> str:
+        key = key.value if isinstance(key, config.QgsSettingsKeys) else key
+        if not isinstance(key, str):
+            raise TypeError(f"Expected key of type str or QgsSettingsKeys, got {type(key)}")
+        
+        return key
+    
     def _check_type(self, value, expected_type):
         if expected_type is not None and not isinstance(value, expected_type):
             raise TypeError(f"Expected value of type {expected_type}, got {type(value)}")
@@ -49,9 +56,12 @@ class PluginSettings:
         self.set_value(config.QgsSettingsKeys.DISPLAY_HIGHLIGHT_FAVORITES, value)
     
     @current_server.setter
-    def current_server(self, value: Union[int, config.ServerHosts]):
-        if isinstance(value, int):
-            value = config.ServerHosts(value)
+    def current_server(self, value: int):
+        # FIXME
+        self._check_type(value, int)
+        server = config.ServerHosts.get_server_by_index(value)
+        if not server and value != 0:
+            raise ValueError(f"Invalid server index: {value}")
         self.set_value(config.QgsSettingsKeys.SERVERS, value)
     
     @show_gbl_panel.setter
@@ -60,9 +70,9 @@ class PluginSettings:
         self.set_value(config.QgsSettingsKeys.SHOW_GBL_PANEL, value)
     
     def get_value(self, key: Union[config.QgsSettingsKeys, str], default=None, value_type=None):
-        key = key.value if isinstance(key, config.QgsSettingsKeys) else key
+        key = self._check_key(key)
         return self._qgs_settings.value(key, default, type=value_type)
 
     def set_value(self, key: Union[config.QgsSettingsKeys, str], value):
-        key = key.value if isinstance(key, config.QgsSettingsKeys) else key
+        key = self._check_key(key)
         self._qgs_settings.setValue(key, value)

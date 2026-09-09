@@ -41,7 +41,6 @@ def read_metadata(metadata_path: Optional[pathlib.Path] = None) -> PluginInfo:
 
     section = parser["general"] if parser.has_section("general") else {}
     name = section.get("name", "")
-    name = name.replace("_", " ") if name else ""
     icon = section.get("icon", "")
     icon_path = (PLUGIN_DIR / icon) if icon else None
 
@@ -93,7 +92,7 @@ class ServerHosts(str, Enum):
     def get_enabled_servers(cls) -> list[str]:
         servers = []
         qgs_settings = QgsSettings()
-        server_index = qgs_settings.value(QgsSettingsKeys.SERVERS, 0, type=int)
+        server_index = qgs_settings.value(QgsSettingsKeys.SERVERS.value, 0, type=int)
         all_servers = cls.get_all_servers()
         if server_index == 0 or server_index > len(all_servers):
             servers = all_servers
@@ -101,6 +100,13 @@ class ServerHosts(str, Enum):
             servers.append(all_servers[server_index - 1])
             
         return servers
+    
+    @classmethod
+    def get_server_by_index(cls, index: int) -> Optional[str]:
+        all_servers = cls.get_all_servers()
+        if index < 1 or index > len(all_servers):
+            return None
+        return all_servers[index - 1]
     
 class QgsSettingsKeys(str, Enum):
     CURRENT_CATALOG = 'current_catalog'

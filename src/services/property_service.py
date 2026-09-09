@@ -177,7 +177,7 @@ class PropertyManager:
         else:
             raise ValueError(f"Can't save '{property_key}': Unknown property")
         
-        self._qgs_settings.setValue(property_key, list(property_value))
+        self._qgs_settings.setValue(property_key.value, list(property_value))
     
     def load_all(self):
         """Load all property buckets from QgsSettings.
@@ -197,15 +197,15 @@ class PropertyManager:
         self._invisible.clear()
         self._disabled.clear()
         
-        self._favorite.update(self._qgs_settings.value(config.QgsSettingsKeys.PROPERTY_FAVORITE, list(), type=list))
-        self._invisible.update(self._qgs_settings.value(config.QgsSettingsKeys.PROPERTY_INVISIBLE, list(), type=list))
-        self._disabled.update(self._qgs_settings.value(config.QgsSettingsKeys.PROPERTY_DISABLED, list(), type=list))
+        self._favorite.update(self._qgs_settings.value(config.QgsSettingsKeys.PROPERTY_FAVORITE.value, list(), type=list))
+        self._invisible.update(self._qgs_settings.value(config.QgsSettingsKeys.PROPERTY_INVISIBLE.value, list(), type=list))
+        self._disabled.update(self._qgs_settings.value(config.QgsSettingsKeys.PROPERTY_DISABLED.value, list(), type=list))
     
     def save_all(self):
         """Persist all properties to QgsSettings in one call."""
 
-        self._qgs_settings.setValue(config.QgsSettingsKeys.PROPERTY_FAVORITE, list(self._favorite))
-        self._qgs_settings.setValue(config.QgsSettingsKeys.PROPERTY_INVISIBLE, list(self._invisible))
-        self._qgs_settings.setValue(config.QgsSettingsKeys.PROPERTY_DISABLED, list(self._disabled))
+        self._qgs_settings.setValue(config.QgsSettingsKeys.PROPERTY_FAVORITE.value, list(self._favorite))
+        self._qgs_settings.setValue(config.QgsSettingsKeys.PROPERTY_INVISIBLE.value, list(self._invisible))
+        self._qgs_settings.setValue(config.QgsSettingsKeys.PROPERTY_DISABLED.value, list(self._disabled))
 
 singleton = PropertyManager()
