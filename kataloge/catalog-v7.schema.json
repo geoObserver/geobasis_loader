@@ -203,6 +203,29 @@
         }
       ]
     },
+    "entryThirdPartyData": {
+      "type": "object",
+      "properties": {
+        "gbl_view": {
+          "type": "boolean"
+        },
+        "osm_usable": {
+          "type": "boolean"
+        },
+        "komgis_layerid": {
+          "tpye": "string"
+        },
+        "komgis_node": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "komgis_priority": {
+          "type": "string"
+        }
+      }
+    },
     "entryMetadata": {
       "type": "object",
       "properties": {
@@ -255,6 +278,9 @@
       "allOf": [
         {
           "$ref": "#/$defs/entryMetadata"
+        },
+        {
+          "$ref": "#/$defs/entryThirdPartyData"
         },
         {
           "type": "object",
@@ -369,6 +395,9 @@
           "$ref": "#/$defs/entryMetadata"
         },
         {
+          "$ref": "#/$defs/entryThirdPartyData"
+        },
+        {
           "type": "object",
           "unevaluatedProperties": false,
           "required": [
@@ -395,6 +424,9 @@
       "allOf": [
         {
           "$ref": "#/$defs/entryMetadata"
+        },
+        {
+          "$ref": "#/$defs/entryThirdPartyData"
         },
         {
           "type": "object",
