@@ -95,6 +95,7 @@
         "modified",
         "author",
         "description",
+        "legal_notice",
         "regions"
       ],
       "properties": {
@@ -117,6 +118,10 @@
         },
         "description": {
           "$ref": "#/$defs/nonEmptyString"
+        },
+        "legal_notice": {
+          "type": "string",
+          "const": "This catalog is provided “as is” without warranty of any kind. The catalog author does not guarantee the accuracy, completeness, currency, legality, or availability of the catalog or the referenced services, and assumes no responsibility for their content, operation, or continued availability. The catalog author is not liable for any direct or indirect loss or damage arising from the use of, or reliance on, this catalog or the referenced services, except where liability cannot legally be excluded. The referenced services are provided by independent third parties; their terms of use, licenses, fees, access restrictions, attribution requirements, and privacy policies apply. Inclusion of a service does not constitute an endorsement or guarantee of its suitability."
         },
         "global_crs": {
           "$ref": "#/$defs/crsList"
