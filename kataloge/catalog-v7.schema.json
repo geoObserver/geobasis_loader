@@ -74,15 +74,15 @@
         },
         "author": {
           "type": "string",
-          "$comment": "This property is non-canonical. The author of the actual catalog is correct. This property is just for convenience/useability."
+          "$comment": "This property is non-canonical. The author of the actual catalog is correct. This property is just for convenience/usability."
         },
         "description": {
           "type": "string",
-          "$comment": "This property is non-canonical. The description of the actual catalog is correct. This property is just for convenience/useability."
+          "$comment": "This property is non-canonical. The description of the actual catalog is correct. This property is just for convenience/usability."
         },
         "modified": {
           "$ref": "#/$defs/dateTime",
-          "$comment": "This property is non-canonical. The modified datetime of the actual catalog is correct. This property is just for convenience/useability."
+          "$comment": "This property is non-canonical. The modified datetime of the actual catalog is correct. This property is just for convenience/usability."
         }
       }
     },
@@ -127,10 +127,7 @@
           "$ref": "#/$defs/crsList"
         },
         "service_templates": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/$defs/serviceTemplate"
-          }
+          "$ref": "#/$defs/serviceTemplates"
         },
         "regions": {
           "type": "object",
@@ -141,20 +138,27 @@
         }
       }
     },
-    "serviceTemplate": {
+    "serviceTemplates": {
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "base_url",
-        "uri_pattern"
+        "server_uris",
+        "uri_patterns"
       ],
       "properties": {
-        "base_url": {
-          "$ref": "#/$defs/uri"
+        "server_uris": {
+          "type":  "object",
+          "minProperties": 0,
+          "additionalProperties": {
+            "$ref": "#/$defs/uri"
+          }
         },
-        "uri_pattern": {
-          "type": "string",
-          "minLength": 1
+        "uri_patterns": {
+          "type": "object",
+          "minProperties": 0,
+          "additionalProperties": {
+            "$ref": "#/$defs/uriPattern"
+          }
         }
       }
     },
@@ -204,7 +208,7 @@
           "type": "boolean"
         },
         "komgis_layerid": {
-          "tpye": "string"
+          "$ref": "#/$defs/nonEmptyString"
         },
         "komgis_node": {
           "type": "array",
@@ -213,7 +217,7 @@
           }
         },
         "komgis_priority": {
-          "type": "string"
+          "$ref": "#/$defs/nonEmptyString"
         }
       }
     },
@@ -226,15 +230,6 @@
         "description": {
           "type": "string"
         },
-        "attribution": {
-          "type": "string"
-        },
-        "license": {
-          "type": "string"
-        },
-        "license_url": {
-          "$ref": "#/$defs/uri"
-        },
         "modified": {
           "$ref": "#/$defs/dateTime"
         },
@@ -242,12 +237,6 @@
           "type": "boolean"
         },
         "deprecated_message": {
-          "type": "string"
-        },
-        "access_constraints": {
-          "type": "string"
-        },
-        "fees": {
           "type": "string"
         },
         "keywords": {
@@ -278,6 +267,12 @@
             "title",
             "service_type"
           ],
+          "dependentRequired": {
+            "server_uri": [
+              "uri_pattern",
+              "layer_id"
+            ]
+          },
           "properties": {
             "entry_type": {
               "const": "topic"
@@ -299,21 +294,48 @@
             "crs": {
               "$ref": "#/$defs/crsList"
             },
-            "uri": {
-              "type": "string",
-              "minLength": 1
+            "service_uri": {
+              "$comment": "This property can be used to directly specify the URI of the service. If this property is used, server_uri, uri_pattern, and layer_id will be ignored (since it's the entire URI). Template {crs} must still be included if it's not a web topic.",
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uri-template",
+                  "minLength": 1
+                }
+              ]
             },
-            "service_template": {
-              "$ref": "#/$defs/identifier"
+            "server_uri": {
+              "$comment": "This property can be used to specify the server URI of the service. It can be a server URI or a key from the global server_uris (identified by www./http). If this property is used, uri_pattern and layer_id must also be specified.",
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?:https?://|www\\.)"
+                },
+                {
+                  "$ref": "#/$defs/nonEmptyString"
+                }
+              ]
+            },
+            "uri_pattern": {
+              "$comment": "This property can be used to specify the URI pattern of the service. It can be a URI pattern or a key from the global uri_patterns (identified by the {crs} placeholder). The property server_uri must be used to specify the server URI of this service.",
+              "anyOf":[
+                {
+                  "$ref": "#/$defs/uriPattern"
+                },
+                {
+                  "$ref": "#/$defs/nonEmptyString"
+                }
+              ]
             },
             "layer_id": {
-              "type": "string",
-              "minLength": 1
+              "$ref": "#/$defs/nonEmptyString"
             },
             "opacity": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1
+              "maximum": 1,
+              "default": 1
             },
             "min_scale": {
               "type": "number",
@@ -324,35 +346,41 @@
               "exclusiveMinimum": 0
             },
             "fill_color": {
-              "$ref": "#/$defs/color"
+              "$ref": "#/$defs/color",
+              "default": [220, 220, 220]
             },
             "stroke_color": {
-              "$ref": "#/$defs/color"
+              "$ref": "#/$defs/color",
+              "default": "black"
             },
             "stroke_width": {
               "type": "number",
-              "minimum": 0
+              "minimum": 0,
+              "default": 0.3
             }
           },
           "oneOf": [
             {
               "required": [
-                "uri"
+                "service_uri"
               ],
               "not": {
-                "required": [
-                  "service_template"
+                "anyOf": [
+                  { "required": ["server_uri"] },
+                  { "required": ["uri_pattern"] },
+                  { "required": ["layer_id"] }
                 ]
               }
             },
             {
               "required": [
-                "service_template",
+                "server_uri",
+                "uri_pattern",
                 "layer_id"
               ],
               "not": {
                 "required": [
-                  "uri"
+                  "service_uri"
                 ]
               }
             }
@@ -368,10 +396,29 @@
             }
           },
           "then": {
+            "required": [
+              "service_uri"
+            ],
             "not": {
-              "required": [
-                "crs"
+              "anyOf":[
+                { "required": ["crs"] },
+                { "required": ["server_uri"] },
+                { "required": ["uri_pattern"] },
+                { "required": ["layer_id"] }
               ]
+            }
+          },
+          "else": {
+            "if": {
+              "required": ["service_uri"]
+            },
+            "then": {
+              "properties": {
+                "service_uri": {
+                  "type": "string",
+                  "pattern": "^(?=.*\\{crs\\}).*$"
+                }
+              }
             }
           }
         }
@@ -435,7 +482,7 @@
               "items": {
                 "type": "string",
                 "pattern": "^[a-z0-9][a-z0-9_-]*$",
-                "$comment": "Every reference is a id for a topic in the same catalog"
+                "$comment": "Every reference is an ID for a topic in the same catalog"
               }
             }
           }
@@ -492,7 +539,13 @@
     },
     "uri": {
       "type": "string",
-      "format": "uri"
+      "format": "uri",
+      "minLength": 1
+    },
+    "uriPattern": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?=.*\\{crs\\})(?=.*\\{layer_id\\}).*$"
     }
   }
 }
