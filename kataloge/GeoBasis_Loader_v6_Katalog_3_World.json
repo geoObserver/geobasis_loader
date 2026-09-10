@@ -1081,13 +1081,31 @@
         "type": "ogc_wmts",
         "seperator": true
       },
-      "landcover": {
-        "name": "OSM: Landcover kombiniert mit OSM4EO (WMS)",
+      "OSM_landuse_comb_OSM4EO": {
+        "name": "OSM: Landuse - Landcover kombiniert mit OSM4EO (WMS)",
         "gbl-view": "true",
         "valid_epsg": [
           "EPSG:3857"
         ],
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=osmlanduse:osm_lulc_combined_osm4eo&styles&tilePixelRatio=0&url=https://maps.heigit.org/osmlanduse/service?REQUEST%3DGetCapabilities",
+        "type": "ogc_wms"
+      },
+      "OSM_landuse_OSM4EO": {
+        "name": "OSM: Landuse - Landcover OSM4EO (WMS)",
+        "gbl-view": "true",
+        "valid_epsg": [
+          "EPSG:3857"
+        ],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=osmlanduse:osm4eo&styles&tilePixelRatio=0&url=https://maps.heigit.org/osmlanduse/service?REQUEST%3DGetCapabilities",
+        "type": "ogc_wms"
+      },
+      "OSM_landuse": {
+        "name": "OSM: Landuse - Landcover (WMS)",
+        "gbl-view": "true",
+        "valid_epsg": [
+          "EPSG:3857"
+        ],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=osmlanduse:osm_lulc&styles&tilePixelRatio=0&url=https://maps.heigit.org/osmlanduse/service?REQUEST%3DGetCapabilities",
         "type": "ogc_wms"
       },
       "openinfra-wfs": {
