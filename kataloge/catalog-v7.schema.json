@@ -250,9 +250,6 @@
         "fees": {
           "type": "string"
         },
-        "osm_usable": {
-          "type": "boolean"
-        },
         "keywords": {
           "type": "array",
           "items": {
