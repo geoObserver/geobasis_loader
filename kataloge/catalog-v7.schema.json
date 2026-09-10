@@ -155,15 +155,6 @@
         "uri_pattern": {
           "type": "string",
           "minLength": 1
-        },
-        "access_constraints": {
-          "type": "string"
-        },
-        "fees": {
-          "type": "string"
-        },
-        "osm_usable": {
-          "type": "boolean"
         }
       }
     },
@@ -447,7 +438,7 @@
               "items": {
                 "type": "string",
                 "pattern": "^[a-z0-9][a-z0-9_-]*$",
-                "$comment": "Every refernce is a id for a topic in the same catalog"
+                "$comment": "Every reference is a id for a topic in the same catalog"
               }
             }
           }
