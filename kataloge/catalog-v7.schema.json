@@ -96,6 +96,7 @@
         "author",
         "description",
         "legal_notice",
+        "global_crs",
         "regions"
       ],
       "properties": {
@@ -116,8 +117,11 @@
         "author": {
           "$ref": "#/$defs/nonEmptyString"
         },
-        "description": {
+        "title": {
           "$ref": "#/$defs/nonEmptyString"
+        },
+        "description": {
+          "type": "string"
         },
         "legal_notice": {
           "type": "string",
@@ -223,7 +227,14 @@
     },
     "entryMetadata": {
       "type": "object",
+      "required": [
+        "id",
+        "title"
+      ],
       "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
         "title": {
           "$ref": "#/$defs/nonEmptyString"
         },
@@ -438,11 +449,15 @@
           "required": [
             "entry_type",
             "title",
+            "crs",
             "subtopics"
           ],
           "properties": {
             "entry_type": {
               "const": "group"
+            },
+            "crs": {
+              "$ref": "#/$defs/crsList"
             },
             "subtopics": {
               "type": "object",
@@ -469,11 +484,15 @@
           "required": [
             "entry_type",
             "title",
+            "crs",
             "references"
           ],
           "properties": {
             "entry_type": {
               "const": "combination"
+            },
+            "crs": {
+              "$ref": "#/$defs/crsList"
             },
             "references": {
               "type": "array",
@@ -491,7 +510,7 @@
     },
     "crsList": {
       "type": "array",
-      "minItems": 1,
+      "minItems": 0,
       "uniqueItems": true,
       "items": {
         "type": "string",
