@@ -1,0 +1,430 @@
+{
+  "format_version": 7.0,
+  "id": "germany_conservation_zones",
+  "catalog_version": 1.0,
+  "modified": "2026-09-13T22:46:40+02:00",
+  "author": "geoObserver",
+  "title": "Katalog 6: Deutschland Schutzgebiete",
+  "description": "Migrated from a GeoBasis Loader v6 catalog.",
+  "legal_notice": "This catalog is provided “as is” without warranty of any kind. The catalog author does not guarantee the accuracy, completeness, currency, legality, or availability of the catalog or the referenced services, and assumes no responsibility for their content, operation, or continued availability. The catalog author is not liable for any direct or indirect loss or damage arising from the use of, or reliance on, this catalog or the referenced services, except where liability cannot legally be excluded. The referenced services are provided by independent third parties; their terms of use, licenses, fees, access restrictions, attribution requirements, and privacy policies apply. Inclusion of a service does not constitute an endorsement or guarantee of its suitability.",
+  "global_crs": [
+    "EPSG:25832"
+  ],
+  "regions": {
+    "DE_bund_1": {
+      "title": "DE Schutzgebiete (WMS)",
+      "topics": {
+        "5e37aa45d2664d7898eb743819ec8b6a": {
+          "id": "5e37aa45d2664d7898eb743819ec8b6a",
+          "entry_type": "topic",
+          "title": "DE: Landschaftsschutzgbiete (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [
+            "EPSG:102100",
+            "EPSG:25831",
+            "EPSG:25833",
+            "EPSG:3034",
+            "EPSG:3035",
+            "EPSG:3044",
+            "EPSG:3045",
+            "EPSG:31462",
+            "EPSG:31463",
+            "EPSG:31464",
+            "EPSG:31466",
+            "EPSG:31467",
+            "EPSG:31468",
+            "EPSG:3857",
+            "EPSG:4258",
+            "EPSG:4326",
+            "OGC:CRS84"
+          ],
+          "gbl_view": true,
+          "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=Landschaftsschutzgebiete&styles&tilePixelRatio=0&url=https://geodienste.bfn.de/ogc/wms/schutzgebiet?VERSION%3D1.3.0"
+        },
+        "0bd23e45e8ac4844ac4bf675460343d4": {
+          "id": "0bd23e45e8ac4844ac4bf675460343d4",
+          "entry_type": "topic",
+          "title": "DE: Naturschutzgbiete (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [
+            "EPSG:102100",
+            "EPSG:25831",
+            "EPSG:25833",
+            "EPSG:3034",
+            "EPSG:3035",
+            "EPSG:3044",
+            "EPSG:3045",
+            "EPSG:31462",
+            "EPSG:31463",
+            "EPSG:31464",
+            "EPSG:31466",
+            "EPSG:31467",
+            "EPSG:31468",
+            "EPSG:3857",
+            "EPSG:4258",
+            "EPSG:4326",
+            "OGC:CRS84"
+          ],
+          "gbl_view": true,
+          "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=Naturschutzgebiete&styles&tilePixelRatio=0&url=https://geodienste.bfn.de/ogc/wms/schutzgebiet?VERSION%3D1.3.0"
+        },
+        "0390fb7d279542b49aeaec818c80ab0d": {
+          "id": "0390fb7d279542b49aeaec818c80ab0d",
+          "entry_type": "topic",
+          "title": "DE: Naturparke (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [
+            "EPSG:102100",
+            "EPSG:25831",
+            "EPSG:25833",
+            "EPSG:3034",
+            "EPSG:3035",
+            "EPSG:3044",
+            "EPSG:3045",
+            "EPSG:31462",
+            "EPSG:31463",
+            "EPSG:31464",
+            "EPSG:31466",
+            "EPSG:31467",
+            "EPSG:31468",
+            "EPSG:3857",
+            "EPSG:4258",
+            "EPSG:4326",
+            "OGC:CRS84"
+          ],
+          "gbl_view": true,
+          "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=Naturparke&styles&tilePixelRatio=0&url=https://geodienste.bfn.de/ogc/wms/schutzgebiet?VERSION%3D1.3.0"
+        },
+        "627bf5155fe24152baa2de31eafca83b": {
+          "id": "627bf5155fe24152baa2de31eafca83b",
+          "entry_type": "topic",
+          "title": "DE: Nationalparke (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [
+            "EPSG:102100",
+            "EPSG:25831",
+            "EPSG:25833",
+            "EPSG:3034",
+            "EPSG:3035",
+            "EPSG:3044",
+            "EPSG:3045",
+            "EPSG:31462",
+            "EPSG:31463",
+            "EPSG:31464",
+            "EPSG:31466",
+            "EPSG:31467",
+            "EPSG:31468",
+            "EPSG:3857",
+            "EPSG:4258",
+            "EPSG:4326",
+            "OGC:CRS84"
+          ],
+          "gbl_view": true,
+          "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=Nationalparke&styles&tilePixelRatio=0&url=https://geodienste.bfn.de/ogc/wms/schutzgebiet?VERSION%3D1.3.0"
+        },
+        "cd642b289eab45b6af4153ce6dc7bae9": {
+          "id": "cd642b289eab45b6af4153ce6dc7bae9",
+          "entry_type": "topic",
+          "title": "DE: Biosphärenreservate (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [
+            "EPSG:102100",
+            "EPSG:25831",
+            "EPSG:25833",
+            "EPSG:3034",
+            "EPSG:3035",
+            "EPSG:3044",
+            "EPSG:3045",
+            "EPSG:31462",
+            "EPSG:31463",
+            "EPSG:31464",
+            "EPSG:31466",
+            "EPSG:31467",
+            "EPSG:31468",
+            "EPSG:3857",
+            "EPSG:4258",
+            "EPSG:4326",
+            "OGC:CRS84"
+          ],
+          "gbl_view": true,
+          "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=Biosphaerenreservate&styles&tilePixelRatio=0&url=https://geodienste.bfn.de/ogc/wms/schutzgebiet?VERSION%3D1.3.0"
+        },
+        "ef59d0fed91a48d4ad76a0c569ec8a4f": {
+          "id": "ef59d0fed91a48d4ad76a0c569ec8a4f",
+          "entry_type": "topic",
+          "title": "DE: Biosphärenreservate Zonierung (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [
+            "EPSG:102100",
+            "EPSG:25831",
+            "EPSG:25833",
+            "EPSG:3034",
+            "EPSG:3035",
+            "EPSG:3044",
+            "EPSG:3045",
+            "EPSG:31462",
+            "EPSG:31463",
+            "EPSG:31464",
+            "EPSG:31466",
+            "EPSG:31467",
+            "EPSG:31468",
+            "EPSG:3857",
+            "EPSG:4258",
+            "EPSG:4326",
+            "OGC:CRS84"
+          ],
+          "gbl_view": true,
+          "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=Biosphaerenreservate_Zonierung&styles&tilePixelRatio=0&url=https://geodienste.bfn.de/ogc/wms/schutzgebiet?VERSION%3D1.3.0"
+        },
+        "ee80085236554fda90ec2ed212c4abb8": {
+          "id": "ee80085236554fda90ec2ed212c4abb8",
+          "entry_type": "topic",
+          "title": "DE: Vogelschutzgebiete (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [
+            "EPSG:102100",
+            "EPSG:25831",
+            "EPSG:25833",
+            "EPSG:3034",
+            "EPSG:3035",
+            "EPSG:3044",
+            "EPSG:3045",
+            "EPSG:31462",
+            "EPSG:31463",
+            "EPSG:31464",
+            "EPSG:31466",
+            "EPSG:31467",
+            "EPSG:31468",
+            "EPSG:3857",
+            "EPSG:4258",
+            "EPSG:4326",
+            "OGC:CRS84"
+          ],
+          "gbl_view": true,
+          "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=Vogelschutzgebiete&styles&tilePixelRatio=0&url=https://geodienste.bfn.de/ogc/wms/schutzgebiet?VERSION%3D1.3.0"
+        },
+        "d12b8199811d4045a262e7992c24d85a": {
+          "id": "d12b8199811d4045a262e7992c24d85a",
+          "entry_type": "topic",
+          "title": "DE: Fauna-Flora-Habitat-Gebiete (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [
+            "EPSG:102100",
+            "EPSG:25831",
+            "EPSG:25833",
+            "EPSG:3034",
+            "EPSG:3035",
+            "EPSG:3044",
+            "EPSG:3045",
+            "EPSG:31462",
+            "EPSG:31463",
+            "EPSG:31464",
+            "EPSG:31466",
+            "EPSG:31467",
+            "EPSG:31468",
+            "EPSG:3857",
+            "EPSG:4258",
+            "EPSG:4326",
+            "OGC:CRS84"
+          ],
+          "gbl_view": true,
+          "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=Fauna_Flora_Habitat_Gebiete&styles&tilePixelRatio=0&url=https://geodienste.bfn.de/ogc/wms/schutzgebiet?VERSION%3D1.3.0"
+        },
+        "359e0e2f2a9b40ef8f362044936da8f8": {
+          "id": "359e0e2f2a9b40ef8f362044936da8f8",
+          "entry_type": "topic",
+          "title": "DE: Nationale Naturmonumente (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [
+            "EPSG:102100",
+            "EPSG:25831",
+            "EPSG:25833",
+            "EPSG:3034",
+            "EPSG:3035",
+            "EPSG:3044",
+            "EPSG:3045",
+            "EPSG:31462",
+            "EPSG:31463",
+            "EPSG:31464",
+            "EPSG:31466",
+            "EPSG:31467",
+            "EPSG:31468",
+            "EPSG:3857",
+            "EPSG:4258",
+            "EPSG:4326",
+            "OGC:CRS84"
+          ],
+          "gbl_view": true,
+          "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=Nationale_Naturmonumente&styles&tilePixelRatio=0&url=https://geodienste.bfn.de/ogc/wms/schutzgebiet?VERSION%3D1.3.0"
+        }
+      }
+    },
+    "DE_bund_2": {
+      "title": "DE Schutzgebiete (WFS)",
+      "topics": {
+        "dbec86f63f0e4da489c7554a79b3bb2c": {
+          "id": "dbec86f63f0e4da489c7554a79b3bb2c",
+          "entry_type": "topic",
+          "title": "DE: Landschaftsschutzgbiete (WFS)",
+          "service_type": "ogc_wfs",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='{crs}' typename='bfn_sch_Schutzgebiet:Landschaftsschutzgebiete' url='https://geodienste.bfn.de/ogc/wfs/schutzgebiet' url='https://geodienste.bfn.de/ogc/wfs/schutzgebiet?VERSION=2.0.0' version='auto'",
+          "min_scale": 1000000.0,
+          "max_scale": 1.0,
+          "fill_color": [
+            255,
+            255,
+            100
+          ],
+          "stroke_width": 0.2
+        },
+        "86f0873f6dbd4618b5495887fb0f8cf2": {
+          "id": "86f0873f6dbd4618b5495887fb0f8cf2",
+          "entry_type": "topic",
+          "title": "DE: Naturschutzgbiete (WFS)",
+          "service_type": "ogc_wfs",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='{crs}' typename='bfn_sch_Schutzgebiet:Naturschutzgebiete' url='https://geodienste.bfn.de/ogc/wfs/schutzgebiet' url='https://geodienste.bfn.de/ogc/wfs/schutzgebiet?VERSION=2.0.0' version='auto'",
+          "min_scale": 1000000.0,
+          "max_scale": 1.0,
+          "fill_color": [
+            100,
+            255,
+            100
+          ],
+          "stroke_width": 0.2
+        },
+        "c85d3515973843ffaf16a3fec093b70f": {
+          "id": "c85d3515973843ffaf16a3fec093b70f",
+          "entry_type": "topic",
+          "title": "DE: Naturparke (WFS)",
+          "service_type": "ogc_wfs",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='{crs}' typename='bfn_sch_Schutzgebiet:Naturparke' url='https://geodienste.bfn.de/ogc/wfs/schutzgebiet' url='https://geodienste.bfn.de/ogc/wfs/schutzgebiet?VERSION=2.0.0' version='auto'",
+          "min_scale": 1000000.0,
+          "max_scale": 1.0,
+          "fill_color": [
+            0,
+            200,
+            0
+          ],
+          "stroke_width": 0.2
+        },
+        "33a3a33e4d9746acabec67f452762174": {
+          "id": "33a3a33e4d9746acabec67f452762174",
+          "entry_type": "topic",
+          "title": "DE: Nationalparke (WFS)",
+          "service_type": "ogc_wfs",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='{crs}' typename='bfn_sch_Schutzgebiet:Nationalparke' url='https://geodienste.bfn.de/ogc/wfs/schutzgebiet' url='https://geodienste.bfn.de/ogc/wfs/schutzgebiet?VERSION=2.0.0' version='auto'",
+          "min_scale": 1000000.0,
+          "max_scale": 1.0,
+          "fill_color": [
+            200,
+            0,
+            0
+          ],
+          "stroke_width": 0.2
+        },
+        "1319fd8dd7654339b27dcbc34069816f": {
+          "id": "1319fd8dd7654339b27dcbc34069816f",
+          "entry_type": "topic",
+          "title": "DE: Biosphärenreservate (WFS)",
+          "service_type": "ogc_wfs",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='{crs}' typename='bfn_sch_Schutzgebiet:Biosphaerenreservate' url='https://geodienste.bfn.de/ogc/wfs/schutzgebiet' url='https://geodienste.bfn.de/ogc/wfs/schutzgebiet?VERSION=2.0.0' version='auto'",
+          "min_scale": 1000000.0,
+          "max_scale": 1.0,
+          "fill_color": [
+            200,
+            0,
+            200
+          ],
+          "stroke_width": 0.2
+        },
+        "1d30d1ca4bf746f29571beb1412cbc52": {
+          "id": "1d30d1ca4bf746f29571beb1412cbc52",
+          "entry_type": "topic",
+          "title": "DE: Biosphärenreservate Zonierung (WFS)",
+          "service_type": "ogc_wfs",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='{crs}' typename='bfn_sch_Schutzgebiet:Biosphaerenreservate_Zonierung' url='https://geodienste.bfn.de/ogc/wfs/schutzgebiet' url='https://geodienste.bfn.de/ogc/wfs/schutzgebiet?VERSION=2.0.0' version='auto'",
+          "min_scale": 1000000.0,
+          "max_scale": 1.0,
+          "fill_color": [
+            200,
+            100,
+            200
+          ],
+          "stroke_width": 0.2
+        },
+        "110b63d26a7b4d27825f3a365cc0441b": {
+          "id": "110b63d26a7b4d27825f3a365cc0441b",
+          "entry_type": "topic",
+          "title": "DE: Vogelschutzgebiete (WFS)",
+          "service_type": "ogc_wfs",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='{crs}' typename='bfn_sch_Schutzgebiet:Vogelschutzgebiete' url='https://geodienste.bfn.de/ogc/wfs/schutzgebiet' url='https://geodienste.bfn.de/ogc/wfs/schutzgebiet?VERSION=2.0.0' version='auto'",
+          "min_scale": 1000000.0,
+          "max_scale": 1.0,
+          "fill_color": [
+            100,
+            100,
+            255
+          ],
+          "stroke_width": 0.2
+        },
+        "7f1a6dbb8399409ebc5dacb66d1ffa27": {
+          "id": "7f1a6dbb8399409ebc5dacb66d1ffa27",
+          "entry_type": "topic",
+          "title": "DE: Fauna-Flora-Habitat-Gebiete (WFS)",
+          "service_type": "ogc_wfs",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='{crs}' typename='bfn_sch_Schutzgebiet:Fauna_Flora_Habitat_Gebiete' url='https://geodienste.bfn.de/ogc/wfs/schutzgebiet' url='https://geodienste.bfn.de/ogc/wfs/schutzgebiet?VERSION=2.0.0' version='auto'",
+          "min_scale": 1000000.0,
+          "max_scale": 1.0,
+          "fill_color": [
+            255,
+            120,
+            0
+          ],
+          "stroke_width": 0.2
+        },
+        "6d7ef87dd0894bdda6dacbce65efda0c": {
+          "id": "6d7ef87dd0894bdda6dacbce65efda0c",
+          "entry_type": "topic",
+          "title": "DE: Nationale Naturmonumente (WFS)",
+          "service_type": "ogc_wfs",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='{crs}' typename='bfn_sch_Schutzgebiet:Nationale_Naturmonumente' url='https://geodienste.bfn.de/ogc/wfs/schutzgebiet' url='https://geodienste.bfn.de/ogc/wfs/schutzgebiet?VERSION=2.0.0' version='auto'",
+          "min_scale": 1000000.0,
+          "max_scale": 1.0,
+          "fill_color": [
+            255,
+            0,
+            128
+          ],
+          "stroke_width": 0.2
+        }
+      }
+    }
+  }
+}

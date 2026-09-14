@@ -1,0 +1,676 @@
+{
+  "format_version": 7.0,
+  "id": "germany_zensus_2022",
+  "catalog_version": 1.0,
+  "modified": "2026-09-13T22:46:48+02:00",
+  "author": "geoObserver",
+  "title": "Katalog 7: Deutschland Zensus 2022 (15.05.2022)",
+  "description": "Migrated from a GeoBasis Loader v6 catalog.",
+  "legal_notice": "This catalog is provided “as is” without warranty of any kind. The catalog author does not guarantee the accuracy, completeness, currency, legality, or availability of the catalog or the referenced services, and assumes no responsibility for their content, operation, or continued availability. The catalog author is not liable for any direct or indirect loss or damage arising from the use of, or reliance on, this catalog or the referenced services, except where liability cannot legally be excluded. The referenced services are provided by independent third parties; their terms of use, licenses, fees, access restrictions, attribution requirements, and privacy policies apply. Inclusion of a service does not constitute an endorsement or guarantee of its suitability.",
+  "global_crs": [
+    "EPSG:25831",
+    "EPSG:25832",
+    "EPSG:25833",
+    "EPSG:28992",
+    "EPSG:3034",
+    "EPSG:3035",
+    "EPSG:3043",
+    "EPSG:3044",
+    "EPSG:3045",
+    "EPSG:31466",
+    "EPSG:31467",
+    "EPSG:32632",
+    "EPSG:3857",
+    "EPSG:3875",
+    "EPSG:4248",
+    "EPSG:4258",
+    "EPSG:4326",
+    "OGC:CRS84"
+  ],
+  "regions": {
+    "Bevölkerung": {
+      "title": "Bevölkerung",
+      "topics": {
+        "d3297c68912b408aafea84b06d783748": {
+          "id": "d3297c68912b408aafea84b06d783748",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Bevölkerung 100m (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=bevoelkerung_100m&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "0fb4946ead6440bcad8d691d7a5a01ac": {
+          "id": "0fb4946ead6440bcad8d691d7a5a01ac",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Bevölkerung 1km (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=bevoelkerung_1km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "facda52ffabc425ba2b0605f698a9cee": {
+          "id": "facda52ffabc425ba2b0605f698a9cee",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Bevölkerung 10km (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=bevoelkerung_10km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "582ea52c0ee7449eb2b6db9e49127605": {
+          "id": "582ea52c0ee7449eb2b6db9e49127605",
+          "entry_type": "combination",
+          "title": "Zensus 2022: ▶︎ Bevölkerung 100m, 1km, 10km (WMS)",
+          "crs": [],
+          "references": [
+            "d3297c68912b408aafea84b06d783748",
+            "0fb4946ead6440bcad8d691d7a5a01ac",
+            "facda52ffabc425ba2b0605f698a9cee"
+          ]
+        }
+      }
+    },
+    "Nettokaltmieten": {
+      "title": "Nettokaltmieten",
+      "topics": {
+        "b6d2edd90be14bddb19d6a9d0028cf80": {
+          "id": "b6d2edd90be14bddb19d6a9d0028cf80",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Nettokaltmieten 100m (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=durchschnittMiete_100m&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "459ae697727f4aed9be37e78aa354d8c": {
+          "id": "459ae697727f4aed9be37e78aa354d8c",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Nettokaltmieten 1km (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=durchschnittMiete_1km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "a3f45dde3f60421187340298da9ffc02": {
+          "id": "a3f45dde3f60421187340298da9ffc02",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Nettokaltmieten 10km (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=durchschnittMiete_10km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "5879f8038a4a4df09bc3c5660fa1a1af": {
+          "id": "5879f8038a4a4df09bc3c5660fa1a1af",
+          "entry_type": "combination",
+          "title": "Zensus 2022: ▶︎ Nettokaltmieten 100m, 1km, 10km (WMS)",
+          "crs": [],
+          "references": [
+            "b6d2edd90be14bddb19d6a9d0028cf80",
+            "459ae697727f4aed9be37e78aa354d8c",
+            "a3f45dde3f60421187340298da9ffc02"
+          ]
+        }
+      }
+    },
+    "Ausländeranteil": {
+      "title": "Ausländeranteil",
+      "topics": {
+        "2cbdfe5b6f1e4972886d55ecc929aae0": {
+          "id": "2cbdfe5b6f1e4972886d55ecc929aae0",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Ausländeranteil 100m (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=auslaenderanteil_100m&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "bc920e60286c421ba1575f1a1f981d50": {
+          "id": "bc920e60286c421ba1575f1a1f981d50",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Ausländeranteil 1km (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=auslaenderanteil_1km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "44c0b0a438d0405d980eea9cef99259e": {
+          "id": "44c0b0a438d0405d980eea9cef99259e",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Ausländeranteil 10km (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=auslaenderanteil_10km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "e488a048766444438f7c1486e82e54ef": {
+          "id": "e488a048766444438f7c1486e82e54ef",
+          "entry_type": "combination",
+          "title": "Zensus 2022: ▶︎ Ausländeranteil 100m, 1km, 10km (WMS)",
+          "crs": [],
+          "references": [
+            "2cbdfe5b6f1e4972886d55ecc929aae0",
+            "bc920e60286c421ba1575f1a1f981d50",
+            "44c0b0a438d0405d980eea9cef99259e"
+          ]
+        }
+      }
+    },
+    "Bevölkerungsanteilu18": {
+      "title": "Bevölkerungsanteil unter 18 Jahre",
+      "topics": {
+        "ebe672e1e34b42ca9d123070ca9dbd85": {
+          "id": "ebe672e1e34b42ca9d123070ca9dbd85",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Bevölkerungsanteil unter 18 Jahre 100m (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=anteilu18_100m&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "cc4d226700b5479bb01bac9d3ce28ae8": {
+          "id": "cc4d226700b5479bb01bac9d3ce28ae8",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Bevölkerungsanteil unter 18 Jahre 1km (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=anteilu18_1km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "8cb54eebc7fd4fab80004587d8d6b850": {
+          "id": "8cb54eebc7fd4fab80004587d8d6b850",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Bevölkerungsanteil unter 18 Jahre 10km (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=anteilu18_10km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "1fdb3d9a2f8348bfbd97e59e2bf2aa30": {
+          "id": "1fdb3d9a2f8348bfbd97e59e2bf2aa30",
+          "entry_type": "combination",
+          "title": "Zensus 2022: ▶︎ Bevölkerungsanteil unter 18 Jahre 100m, 1km, 10km (WMS)",
+          "crs": [],
+          "references": [
+            "ebe672e1e34b42ca9d123070ca9dbd85",
+            "cc4d226700b5479bb01bac9d3ce28ae8",
+            "8cb54eebc7fd4fab80004587d8d6b850"
+          ]
+        }
+      }
+    },
+    "Bevölkerungsanteilue65": {
+      "title": "Bevölkerungsanteil über 65 Jahre",
+      "topics": {
+        "5f1c5b23f9bf494990a89b68f7b70671": {
+          "id": "5f1c5b23f9bf494990a89b68f7b70671",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Bevölkerungsanteil über 65 Jahre 100m (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=anteilue65_100m&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "0f5f9845623b4a97b6682d798ab8f620": {
+          "id": "0f5f9845623b4a97b6682d798ab8f620",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Bevölkerungsanteil über 65 Jahre 1km (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=anteilue65_1km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "12ccfbd9b98d43f280d31a3d1265f29d": {
+          "id": "12ccfbd9b98d43f280d31a3d1265f29d",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Bevölkerungsanteil über 65 Jahre 10km (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=anteilue65_10km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "0512216de4cb4dd8ae2450f8b82598e1": {
+          "id": "0512216de4cb4dd8ae2450f8b82598e1",
+          "entry_type": "combination",
+          "title": "Zensus 2022: ▶︎ Bevölkerungsanteil über 65 Jahre 100m, 1km, 10km (WMS)",
+          "crs": [],
+          "references": [
+            "5f1c5b23f9bf494990a89b68f7b70671",
+            "0f5f9845623b4a97b6682d798ab8f620",
+            "12ccfbd9b98d43f280d31a3d1265f29d"
+          ]
+        }
+      }
+    },
+    "Eigentümerquote": {
+      "title": "Eigentümerquote in Wohngebäuden in %",
+      "topics": {
+        "35aa3adcaed040eaa62a05c2498a9a68": {
+          "id": "35aa3adcaed040eaa62a05c2498a9a68",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Eigentümerquote in Wohngebäuden in % 100m (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=eigentuemerquote_100m&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "a4131eb11c26465d88dd7c4ce7c69c73": {
+          "id": "a4131eb11c26465d88dd7c4ce7c69c73",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Eigentümerquote in Wohngebäuden in % 1km (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=eigentuemerquote_1km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "40d3086a762a4119bc0bcf1d440a6d05": {
+          "id": "40d3086a762a4119bc0bcf1d440a6d05",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Eigentümerquote in Wohngebäuden in % 10km (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=eigentuemerquote_10km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "3b776ddad0664a418a9c5b36e50868eb": {
+          "id": "3b776ddad0664a418a9c5b36e50868eb",
+          "entry_type": "combination",
+          "title": "Zensus 2022: ▶︎ Eigentümerquote in Wohngebäuden in % 100m, 1km, 10km (WMS)",
+          "crs": [],
+          "references": [
+            "35aa3adcaed040eaa62a05c2498a9a68",
+            "a4131eb11c26465d88dd7c4ce7c69c73",
+            "40d3086a762a4119bc0bcf1d440a6d05"
+          ]
+        }
+      }
+    },
+    "Durchschnittsalter": {
+      "title": "Durchschnittsalter",
+      "topics": {
+        "733c87bab70d4a9aab8cec988050fd36": {
+          "id": "733c87bab70d4a9aab8cec988050fd36",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Durchschnittsalter 100m (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=durchschnittsalter_100m&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "dc6cd3ae530e448bb7b5217fe5e60655": {
+          "id": "dc6cd3ae530e448bb7b5217fe5e60655",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Durchschnittsalter 1km (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=durchschnittsalter_1km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "dcaa8970704e40b2b3d1af663c35e448": {
+          "id": "dcaa8970704e40b2b3d1af663c35e448",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Durchschnittsalter 10km (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=durchschnittsalter_10km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "a34a72d7f3774f7f927016a498616d5d": {
+          "id": "a34a72d7f3774f7f927016a498616d5d",
+          "entry_type": "combination",
+          "title": "Zensus 2022: ▶︎ Durchschnittsalter 100m, 1km, 10km (WMS)",
+          "crs": [],
+          "references": [
+            "733c87bab70d4a9aab8cec988050fd36",
+            "dc6cd3ae530e448bb7b5217fe5e60655",
+            "dcaa8970704e40b2b3d1af663c35e448"
+          ]
+        }
+      }
+    },
+    "DurchschnittHauhaltsgroesse": {
+      "title": "Durchschnittliche Haushaltsgröße in Personen",
+      "topics": {
+        "328032acbd6d4286893066212aca4579": {
+          "id": "328032acbd6d4286893066212aca4579",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Durchschnittliche Haushaltsgröße in Personen 100m (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=durchschnittHaushaltsgroesse_100m&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "593eab82baf74881831e29dd2be9b24a": {
+          "id": "593eab82baf74881831e29dd2be9b24a",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Durchschnittliche Haushaltsgröße in Personen 1km (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=durchschnittHaushaltsgroesse_1km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "1a8e45e7bac549a4a8144bf44db5b59a": {
+          "id": "1a8e45e7bac549a4a8144bf44db5b59a",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Durchschnittliche Haushaltsgröße in Personen 10km (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=durchschnittHaushaltsgroesse_10km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "43859505251c4e689e413bfff7cb752b": {
+          "id": "43859505251c4e689e413bfff7cb752b",
+          "entry_type": "combination",
+          "title": "Zensus 2022: ▶︎ Durchschnittliche Haushaltsgröße in Personen 100m, 1km, 10km (WMS)",
+          "crs": [],
+          "references": [
+            "328032acbd6d4286893066212aca4579",
+            "593eab82baf74881831e29dd2be9b24a",
+            "1a8e45e7bac549a4a8144bf44db5b59a"
+          ]
+        }
+      }
+    },
+    "Leerstandsquote": {
+      "title": "Leerstandsquote in %",
+      "topics": {
+        "ddc04266bdbc42ba9905e3fbe00b36bc": {
+          "id": "ddc04266bdbc42ba9905e3fbe00b36bc",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Leerstandsquote in % 100m (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=leerstandsquote_100m&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "6562f8f05d554256a3d8bbb2c6e63e5f": {
+          "id": "6562f8f05d554256a3d8bbb2c6e63e5f",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Leerstandsquote in % 1km (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=leerstandsquote_1km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "60bb89328a42437480ec758196312382": {
+          "id": "60bb89328a42437480ec758196312382",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Leerstandsquote in % 10km (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=leerstandsquote_10km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "ac5634c5742d4336b29f2dee6cee7940": {
+          "id": "ac5634c5742d4336b29f2dee6cee7940",
+          "entry_type": "combination",
+          "title": "Zensus 2022: ▶︎ Leerstandsquote in % 100m, 1km, 10km (WMS)",
+          "crs": [],
+          "references": [
+            "ddc04266bdbc42ba9905e3fbe00b36bc",
+            "6562f8f05d554256a3d8bbb2c6e63e5f",
+            "60bb89328a42437480ec758196312382"
+          ]
+        }
+      }
+    },
+    "Marktleerstandsquote": {
+      "title": "Marktaktiv leerstehende Wohnungen in %",
+      "topics": {
+        "469988319b4d41f69d835ccce2460769": {
+          "id": "469988319b4d41f69d835ccce2460769",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Marktleerstandsquote in % 100m (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=marktleerstandsquote_100m&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "b4514702419e4663b69de1b4309b03d6": {
+          "id": "b4514702419e4663b69de1b4309b03d6",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Marktleerstandsquote in % 1km (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=marktleerstandsquote_1km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "46efa735301443bf948d634533fe02c3": {
+          "id": "46efa735301443bf948d634533fe02c3",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Marktleerstandsquote in % 10km (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=marktleerstandsquote_10km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "571be09d768a4a0d9173366cefaded2c": {
+          "id": "571be09d768a4a0d9173366cefaded2c",
+          "entry_type": "combination",
+          "title": "Zensus 2022: ▶︎ Marktleerstandsquote in % 100m, 1km, 10km (WMS)",
+          "crs": [],
+          "references": [
+            "469988319b4d41f69d835ccce2460769",
+            "b4514702419e4663b69de1b4309b03d6",
+            "46efa735301443bf948d634533fe02c3"
+          ]
+        }
+      }
+    },
+    "WohnflaecheProBewohner": {
+      "title": "Wohnfläche pro Bewohner",
+      "topics": {
+        "094458d76f5a4d7791db9ab91b549bfc": {
+          "id": "094458d76f5a4d7791db9ab91b549bfc",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Wohnfläche pro Bewohner 100m (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=wohnflaecheBewohner_100m&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "496c6ee7c78f4aaf850214201c110fa3": {
+          "id": "496c6ee7c78f4aaf850214201c110fa3",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Wohnfläche pro Bewohner 1km (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=wohnflaecheBewohner_1km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "e1eecc3c0880448fa16bf368495c09dd": {
+          "id": "e1eecc3c0880448fa16bf368495c09dd",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Wohnfläche pro Bewohner 10km (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=wohnflaecheBewohner_10km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "4db3fd46ee094af0a0e16ccaa2b5f028": {
+          "id": "4db3fd46ee094af0a0e16ccaa2b5f028",
+          "entry_type": "combination",
+          "title": "Zensus 2022: ▶︎ Wohnflaeche pro Bewohner 100m, 1km, 10km (WMS)",
+          "crs": [],
+          "references": [
+            "094458d76f5a4d7791db9ab91b549bfc",
+            "496c6ee7c78f4aaf850214201c110fa3",
+            "e1eecc3c0880448fa16bf368495c09dd"
+          ]
+        }
+      }
+    },
+    "WohnflaecheProWohnung": {
+      "title": "Wohnfläche pro Wohnung",
+      "topics": {
+        "3b6bbb9e0bfb45d88acfaae7290da0dd": {
+          "id": "3b6bbb9e0bfb45d88acfaae7290da0dd",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Wohnfläche pro Wohnung 100m (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=wohnflaecheWohnung_100m&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "86e940e0b8c0433bb534c66b0f3f36a6": {
+          "id": "86e940e0b8c0433bb534c66b0f3f36a6",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Wohnfläche pro Wohnung 1km (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=wohnflaecheWohnung_1km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "d7cf12929c1b40a99d4e3c2073dce731": {
+          "id": "d7cf12929c1b40a99d4e3c2073dce731",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Wohnfläche pro Wohnung 10km (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=wohnflaecheWohnung_10km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "e839bc5e22f54f91a44eef6e01566e3a": {
+          "id": "e839bc5e22f54f91a44eef6e01566e3a",
+          "entry_type": "combination",
+          "title": "Zensus 2022: ▶︎ Wohnflaeche pro Wohnung 100m, 1km, 10km (WMS)",
+          "crs": [],
+          "references": [
+            "3b6bbb9e0bfb45d88acfaae7290da0dd",
+            "86e940e0b8c0433bb534c66b0f3f36a6",
+            "d7cf12929c1b40a99d4e3c2073dce731"
+          ]
+        }
+      }
+    },
+    "WohnnungenNachEnergietraeger": {
+      "title": "Wohnungen nach Energieträger",
+      "topics": {
+        "8de8390fcf2f454b8eac95a07bd640cf": {
+          "id": "8de8390fcf2f454b8eac95a07bd640cf",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Wohnungen nach Energieträger 100m (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=energietraeger_100m&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "4fe2917e43e545098e8304af1e311eaa": {
+          "id": "4fe2917e43e545098e8304af1e311eaa",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Wohnungen nach Energieträger 1km (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=energietraeger_1km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "058b4dc599644683b1bb7637b00f527a": {
+          "id": "058b4dc599644683b1bb7637b00f527a",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Wohnungen nach Energieträger 10km (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=energietraeger_10km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "a95c89c1208047e982545a4d1e4c2b11": {
+          "id": "a95c89c1208047e982545a4d1e4c2b11",
+          "entry_type": "combination",
+          "title": "Zensus 2022: ▶︎ Wohnungen nach Energieträger 100m, 1km, 10km (WMS)",
+          "crs": [],
+          "references": [
+            "8de8390fcf2f454b8eac95a07bd640cf",
+            "4fe2917e43e545098e8304af1e311eaa",
+            "058b4dc599644683b1bb7637b00f527a"
+          ]
+        }
+      }
+    },
+    "WohnnungenNachUeberwiegenderHeizungsart": {
+      "title": "Wohnungen nach überwiegender Heizungsart",
+      "topics": {
+        "414c5cf9ce7148ff977a82e73aad9c7e": {
+          "id": "414c5cf9ce7148ff977a82e73aad9c7e",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Wohnungen nach überwiegender Heizungsart 100m (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=heizungsarten_100m&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "c0584d7134bf43fd98c1c131d15cd929": {
+          "id": "c0584d7134bf43fd98c1c131d15cd929",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Wohnungen nach überwiegender Heizungsart 1km (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=heizungsarten_1km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "20cf066598654db6870f1224e43dab9e": {
+          "id": "20cf066598654db6870f1224e43dab9e",
+          "entry_type": "topic",
+          "title": "Zensus 2022: Wohnungen nach überwiegender Heizungsart 10km (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=heizungsarten_10km&styles&tilePixelRatio=0&url=https://www.wms.nrw.de/wms/zensusatlas?version%3D1.3.0"
+        },
+        "70ea8d5a53c8445485403ed6d7edc929": {
+          "id": "70ea8d5a53c8445485403ed6d7edc929",
+          "entry_type": "combination",
+          "title": "Zensus 2022: ▶︎ Wohnungen nach überwiegender Heizungsart 100m, 1km, 10km (WMS)",
+          "crs": [],
+          "references": [
+            "414c5cf9ce7148ff977a82e73aad9c7e",
+            "c0584d7134bf43fd98c1c131d15cd929",
+            "20cf066598654db6870f1224e43dab9e"
+          ]
+        }
+      }
+    }
+  }
+}

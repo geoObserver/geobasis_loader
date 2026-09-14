@@ -1,0 +1,533 @@
+{
+  "format_version": 7.0,
+  "id": "st_lau",
+  "catalog_version": 1.0,
+  "modified": "2026-09-13T22:46:33+02:00",
+  "author": "geoObserver",
+  "title": "Katalog 4: ST LAU Schutzgebiete",
+  "description": "Migrated from a GeoBasis Loader v6 catalog.",
+  "legal_notice": "This catalog is provided “as is” without warranty of any kind. The catalog author does not guarantee the accuracy, completeness, currency, legality, or availability of the catalog or the referenced services, and assumes no responsibility for their content, operation, or continued availability. The catalog author is not liable for any direct or indirect loss or damage arising from the use of, or reliance on, this catalog or the referenced services, except where liability cannot legally be excluded. The referenced services are provided by independent third parties; their terms of use, licenses, fees, access restrictions, attribution requirements, and privacy policies apply. Inclusion of a service does not constitute an endorsement or guarantee of its suitability.",
+  "global_crs": [
+    "EPSG:2397",
+    "EPSG:2398",
+    "EPSG:2399",
+    "EPSG:25832",
+    "EPSG:25833",
+    "EPSG:31467",
+    "EPSG:31468",
+    "EPSG:31469",
+    "EPSG:4326",
+    "EPSG:4647",
+    "EPSG:5650",
+    "EPSG:5652",
+    "EPSG:5653"
+  ],
+  "regions": {
+    "lsa_lau_1": {
+      "title": "ST: LSA SG Naturschutz (WMS)",
+      "topics": {
+        "e192c75762614e42950bb5175b8262dc": {
+          "id": "e192c75762614e42950bb5175b8262dc",
+          "entry_type": "topic",
+          "title": "ST: LSA Biosphärenreservate (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [
+            "EPSG:2166",
+            "EPSG:2167",
+            "EPSG:2168",
+            "EPSG:4258",
+            "EPSG:900913",
+            "OGC:CRS84"
+          ],
+          "gbl_view": true,
+          "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=lau_br_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms"
+        },
+        "e146082cf1824e2aade84206bc2c314a": {
+          "id": "e146082cf1824e2aade84206bc2c314a",
+          "entry_type": "topic",
+          "title": "ST: LSA EU-Vogelschutzgebiete SPA (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [
+            "EPSG:2166",
+            "EPSG:2167",
+            "EPSG:2168",
+            "EPSG:4258",
+            "EPSG:900913",
+            "OGC:CRS84"
+          ],
+          "gbl_view": true,
+          "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=lau_spa_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms"
+        },
+        "d6aa1ce29ff6454eb7d2ade4bb2df8cb": {
+          "id": "d6aa1ce29ff6454eb7d2ade4bb2df8cb",
+          "entry_type": "topic",
+          "title": "ST: LSA Fauna-Flora-Habitat - Gebiete FFH (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [
+            "EPSG:2166",
+            "EPSG:2167",
+            "EPSG:2168",
+            "EPSG:4258",
+            "EPSG:900913",
+            "OGC:CRS84"
+          ],
+          "gbl_view": true,
+          "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=lau_ffh_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms"
+        },
+        "0189bfdf66ea4543991a13a33eeedfb1": {
+          "id": "0189bfdf66ea4543991a13a33eeedfb1",
+          "entry_type": "topic",
+          "title": "ST: LSA Ramsar-Feuchtgebiete (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [
+            "EPSG:2166",
+            "EPSG:2167",
+            "EPSG:2168",
+            "EPSG:4258",
+            "EPSG:900913",
+            "OGC:CRS84"
+          ],
+          "gbl_view": true,
+          "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=lau_fib_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms"
+        },
+        "c7164e4532dd47468ff41787a101a7ce": {
+          "id": "c7164e4532dd47468ff41787a101a7ce",
+          "entry_type": "topic",
+          "title": "ST: LSA Nationalparke (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [
+            "EPSG:2166",
+            "EPSG:2167",
+            "EPSG:2168",
+            "EPSG:4258",
+            "EPSG:900913",
+            "OGC:CRS84"
+          ],
+          "gbl_view": true,
+          "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=lau_nap_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms"
+        },
+        "06734d4d6f474f7e85d85cefb6ffa024": {
+          "id": "06734d4d6f474f7e85d85cefb6ffa024",
+          "entry_type": "topic",
+          "title": "ST: LSA Nationales Naturmonumente (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [
+            "EPSG:2166",
+            "EPSG:2167",
+            "EPSG:2168",
+            "EPSG:4258",
+            "EPSG:900913",
+            "OGC:CRS84"
+          ],
+          "gbl_view": true,
+          "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=lau_nnm_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms"
+        },
+        "68f49f0c669744ab84cc39c38e16343d": {
+          "id": "68f49f0c669744ab84cc39c38e16343d",
+          "entry_type": "topic",
+          "title": "ST: LSA Naturschutzgebiete (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [
+            "EPSG:2166",
+            "EPSG:2167",
+            "EPSG:2168",
+            "EPSG:4258",
+            "EPSG:900913",
+            "OGC:CRS84"
+          ],
+          "gbl_view": true,
+          "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=lau_nsg_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms"
+        },
+        "1d924bd9d3f5475592298cf89d346a57": {
+          "id": "1d924bd9d3f5475592298cf89d346a57",
+          "entry_type": "topic",
+          "title": "ST: LSA Landschaftsschutzgebiete (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [
+            "EPSG:2166",
+            "EPSG:2167",
+            "EPSG:2168",
+            "EPSG:4258",
+            "EPSG:900913",
+            "OGC:CRS84"
+          ],
+          "gbl_view": true,
+          "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=lau_lsg_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms"
+        },
+        "7b9586347e044c188a769512e201be6c": {
+          "id": "7b9586347e044c188a769512e201be6c",
+          "entry_type": "topic",
+          "title": "ST: LSA Naturparke (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [
+            "EPSG:2166",
+            "EPSG:2167",
+            "EPSG:2168",
+            "EPSG:4258",
+            "EPSG:900913",
+            "OGC:CRS84"
+          ],
+          "gbl_view": true,
+          "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=lau_nup_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms"
+        },
+        "dc053434cff84d9c9328f60bef20a70e": {
+          "id": "dc053434cff84d9c9328f60bef20a70e",
+          "entry_type": "topic",
+          "title": "ST: LSA Flächenhafte Naturdenkmale NDF (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [
+            "EPSG:2166",
+            "EPSG:2167",
+            "EPSG:2168",
+            "EPSG:4258",
+            "EPSG:900913",
+            "OGC:CRS84"
+          ],
+          "gbl_view": true,
+          "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=lau_ndf_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms"
+        },
+        "90d18f6e877141a89be25b7ff0aebcb1": {
+          "id": "90d18f6e877141a89be25b7ff0aebcb1",
+          "entry_type": "topic",
+          "title": "ST: LSA Geschützte Landschaftsbestandteile (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [
+            "EPSG:2166",
+            "EPSG:2167",
+            "EPSG:2168",
+            "EPSG:4258",
+            "EPSG:900913",
+            "OGC:CRS84"
+          ],
+          "gbl_view": true,
+          "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=lau_glb_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms"
+        },
+        "98a16fd0927042caa9b1c3acafc8ef76": {
+          "id": "98a16fd0927042caa9b1c3acafc8ef76",
+          "entry_type": "topic",
+          "title": "ST: LSA Flächennaturdenkmale FND (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [
+            "EPSG:2166",
+            "EPSG:2167",
+            "EPSG:2168",
+            "EPSG:4258",
+            "EPSG:900913",
+            "OGC:CRS84"
+          ],
+          "gbl_view": true,
+          "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=lau_fnd_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms"
+        },
+        "ded878e99223473fbe321d8a0db58292": {
+          "id": "ded878e99223473fbe321d8a0db58292",
+          "entry_type": "topic",
+          "title": "ST: LSA Geschützte Parke (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [
+            "EPSG:2166",
+            "EPSG:2167",
+            "EPSG:2168",
+            "EPSG:4258",
+            "EPSG:900913",
+            "OGC:CRS84"
+          ],
+          "gbl_view": true,
+          "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=lau_gp_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms"
+        },
+        "7162a0ca07c841209678b93ea1369e1f": {
+          "id": "7162a0ca07c841209678b93ea1369e1f",
+          "entry_type": "topic",
+          "title": "ST: LSA Allgemeinverfügungen zur nationalen Sicherstellung (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [
+            "EPSG:2166",
+            "EPSG:2167",
+            "EPSG:2168",
+            "EPSG:4258",
+            "EPSG:900913",
+            "OGC:CRS84"
+          ],
+          "gbl_view": true,
+          "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=lau_av_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms"
+        },
+        "6f6d7c490d644fd681906d1843305204": {
+          "id": "6f6d7c490d644fd681906d1843305204",
+          "entry_type": "topic",
+          "title": "ST: LSA Vertragliche Vereinbarungen (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [
+            "EPSG:2166",
+            "EPSG:2167",
+            "EPSG:2168",
+            "EPSG:4258",
+            "EPSG:900913",
+            "OGC:CRS84"
+          ],
+          "gbl_view": true,
+          "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=lau_ven_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms"
+        }
+      }
+    },
+    "lsa_lau_2": {
+      "title": "ST: LSA SG Wasserschutz (WMS)",
+      "topics": {
+        "f536aadaa22d41d9ad05aa56f1655dab": {
+          "id": "f536aadaa22d41d9ad05aa56f1655dab",
+          "entry_type": "topic",
+          "title": "ST: LSA Wasserschutzgebiete (WMS)",
+          "service_type": "ogc_wms",
+          "crs": [
+            "EPSG:2166",
+            "EPSG:2167",
+            "EPSG:2168",
+            "EPSG:4258",
+            "EPSG:900913",
+            "OGC:CRS84"
+          ],
+          "gbl_view": true,
+          "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=lau_wsg_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms",
+          "min_scale": 1000000.0,
+          "max_scale": 1.0
+        }
+      }
+    },
+    "lsa_lau_3": {
+      "title": "ST: LSA SG Naturschutz (WFS) derzeit unter 1:25000",
+      "topics": {
+        "fabafbe5fc3446158fbe1c5393386f29": {
+          "id": "fabafbe5fc3446158fbe1c5393386f29",
+          "entry_type": "topic",
+          "title": "ST: LSA Biosphärenreservate (WFS)",
+          "service_type": "ogc_wfs",
+          "crs": [
+            "EPSG:900913"
+          ],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='{crs}' typename='sg:lau_br_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto'",
+          "min_scale": 1000000.0,
+          "max_scale": 1.0
+        },
+        "122e26d7552b4481a853e7b1a8087947": {
+          "id": "122e26d7552b4481a853e7b1a8087947",
+          "entry_type": "topic",
+          "title": "ST: LSA EU-Vogelschutzgebiete SPA (WFS)",
+          "service_type": "ogc_wfs",
+          "crs": [
+            "EPSG:900913"
+          ],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='{crs}' typename='sg:lau_spa_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto'",
+          "min_scale": 1000000.0,
+          "max_scale": 1.0
+        },
+        "888fc547ba2a4e68acf92506f625c0fe": {
+          "id": "888fc547ba2a4e68acf92506f625c0fe",
+          "entry_type": "topic",
+          "title": "ST: LSA Fauna-Flora-Habitat - Gebiete FFH (WFS)",
+          "service_type": "ogc_wfs",
+          "crs": [
+            "EPSG:900913"
+          ],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='{crs}' typename='sg:lau_ffh_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto'",
+          "min_scale": 1000000.0,
+          "max_scale": 1.0
+        },
+        "6ff63942ba9e41d1859d10af71bbad82": {
+          "id": "6ff63942ba9e41d1859d10af71bbad82",
+          "entry_type": "topic",
+          "title": "ST: LSA Ramsar-Feuchtgebiete (WFS)",
+          "service_type": "ogc_wfs",
+          "crs": [
+            "EPSG:900913"
+          ],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='{crs}' typename='sg:lau_fib_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto'",
+          "min_scale": 1000000.0,
+          "max_scale": 1.0
+        },
+        "88cd7170d66d42f39d0a6d6b64d25cae": {
+          "id": "88cd7170d66d42f39d0a6d6b64d25cae",
+          "entry_type": "topic",
+          "title": "ST: LSA Nationalparke (WFS)",
+          "service_type": "ogc_wfs",
+          "crs": [
+            "EPSG:900913"
+          ],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='{crs}' typename='sg:lau_nap_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto'",
+          "min_scale": 1000000.0,
+          "max_scale": 1.0
+        },
+        "89562030fe8c4efd89ff9c50e23795d8": {
+          "id": "89562030fe8c4efd89ff9c50e23795d8",
+          "entry_type": "topic",
+          "title": "ST: LSA Nationales Naturmonumente (WFS)",
+          "service_type": "ogc_wfs",
+          "crs": [
+            "EPSG:900913"
+          ],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='{crs}' typename='sg:lau_nnm_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto'",
+          "min_scale": 1000000.0,
+          "max_scale": 1.0
+        },
+        "f5b89ffc51cd4bbd8bbc04045699e47e": {
+          "id": "f5b89ffc51cd4bbd8bbc04045699e47e",
+          "entry_type": "topic",
+          "title": "ST: LSA Naturschutzgebiete (WFS)",
+          "service_type": "ogc_wfs",
+          "crs": [
+            "EPSG:900913"
+          ],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='{crs}' typename='sg:lau_nsg_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto'",
+          "min_scale": 1000000.0,
+          "max_scale": 1.0
+        },
+        "aec7626a59b54c729c5c0c2e8ab7b770": {
+          "id": "aec7626a59b54c729c5c0c2e8ab7b770",
+          "entry_type": "topic",
+          "title": "ST: LSA Landschaftsschutzgebiete (WFS)",
+          "service_type": "ogc_wfs",
+          "crs": [
+            "EPSG:900913"
+          ],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='{crs}' typename='sg:lau_lsg_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto'",
+          "min_scale": 1000000.0,
+          "max_scale": 1.0
+        },
+        "fcb73acb9d844d338a6ab50b5cec3322": {
+          "id": "fcb73acb9d844d338a6ab50b5cec3322",
+          "entry_type": "topic",
+          "title": "ST: LSA Naturparke (WFS)",
+          "service_type": "ogc_wfs",
+          "crs": [
+            "EPSG:900913"
+          ],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='{crs}' typename='sg:lau_nup_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto'",
+          "min_scale": 1000000.0,
+          "max_scale": 1.0
+        },
+        "98b828c7613749fe8c346e10173dde24": {
+          "id": "98b828c7613749fe8c346e10173dde24",
+          "entry_type": "topic",
+          "title": "ST: LSA Flächenhafte Naturdenkmale NDF (WFS)",
+          "service_type": "ogc_wfs",
+          "crs": [
+            "EPSG:900913"
+          ],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='{crs}' typename='sg:lau_ndf_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto'",
+          "min_scale": 1000000.0,
+          "max_scale": 1.0
+        },
+        "a4d4a1619b6d46e192d6071ed1a132c1": {
+          "id": "a4d4a1619b6d46e192d6071ed1a132c1",
+          "entry_type": "topic",
+          "title": "ST: LSA Geschützte Landschaftsbestandteile (WFS)",
+          "service_type": "ogc_wfs",
+          "crs": [
+            "EPSG:900913"
+          ],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='{crs}' typename='sg:lau_glb_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto'",
+          "min_scale": 1000000.0,
+          "max_scale": 1.0
+        },
+        "0022e831229949a5b73e3ef805ada889": {
+          "id": "0022e831229949a5b73e3ef805ada889",
+          "entry_type": "topic",
+          "title": "ST: LSA Flächennaturdenkmale FND (WFS)",
+          "service_type": "ogc_wfs",
+          "crs": [
+            "EPSG:900913"
+          ],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='{crs}' typename='sg:lau_fnd_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto'",
+          "min_scale": 1000000.0,
+          "max_scale": 1.0
+        },
+        "e72e42d562ee407ba01fcc38e8181b51": {
+          "id": "e72e42d562ee407ba01fcc38e8181b51",
+          "entry_type": "topic",
+          "title": "ST: LSA Geschützte Parke (WFS)",
+          "service_type": "ogc_wfs",
+          "crs": [
+            "EPSG:900913"
+          ],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='{crs}' typename='sg:lau_gp_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto'",
+          "min_scale": 1000000.0,
+          "max_scale": 1.0
+        },
+        "b35e39585901469d9bc4213f4f929d79": {
+          "id": "b35e39585901469d9bc4213f4f929d79",
+          "entry_type": "topic",
+          "title": "ST: LSA Allgemeinverfügungen zur nationalen Sicherstellung (WFS)",
+          "service_type": "ogc_wfs",
+          "crs": [
+            "EPSG:900913"
+          ],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='{crs}' typename='sg:lau_av_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto'",
+          "min_scale": 1000000.0,
+          "max_scale": 1.0
+        },
+        "48ad611af2984e73ad74ad10a91ad85b": {
+          "id": "48ad611af2984e73ad74ad10a91ad85b",
+          "entry_type": "topic",
+          "title": "ST: LSA Vertragliche Vereinbarungen (WFS)",
+          "service_type": "ogc_wfs",
+          "crs": [
+            "EPSG:900913"
+          ],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='{crs}' typename='sg:lau_ven_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto",
+          "min_scale": 1000000.0,
+          "max_scale": 1.0
+        }
+      }
+    },
+    "lsa_lau_4": {
+      "title": "ST: LSA SG Wasserschutz (WFS) derzeit nur unter 1:25000",
+      "topics": {
+        "f15d02b643c646f4b7dde35256b72c18": {
+          "id": "f15d02b643c646f4b7dde35256b72c18",
+          "entry_type": "topic",
+          "title": "ST: LSA Wasserschutzgebiete (WFS)",
+          "service_type": "ogc_wfs",
+          "crs": [],
+          "opacity": 0.75,
+          "gbl_view": true,
+          "service_uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='{crs}' typename='sg:lau_wsg_lsa' url='https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wfs/942f5d74-6c2b-263a/GDI-LSA_Schutzgebiete/ows.wfs' version='auto'",
+          "min_scale": 1000000.0,
+          "max_scale": 1.0,
+          "fill_color": [
+            100,
+            100,
+            255
+          ],
+          "stroke_width": 0.1
+        }
+      }
+    }
+  }
+}
