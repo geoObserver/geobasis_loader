@@ -90,11 +90,11 @@
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "format_version",
         "id",
+        "title",
         "modified",
+        "format_version",
         "author",
-        "description",
         "legal_notice",
         "global_crs",
         "regions"
