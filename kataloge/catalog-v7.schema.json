@@ -564,7 +564,7 @@
     "uriPattern": {
       "type": "string",
       "minLength": 1,
-      "pattern": "^(?=.*\\{crs\\})(?=.*\\{layer_id\\}).*$"
+      "pattern": "^(?=.*\\{uri\\})(?=.*\\{crs\\})(?=.*\\{layer_id\\}).*$"
     }
   }
 }
