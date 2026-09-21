@@ -171,9 +171,13 @@
       "additionalProperties": false,
       "required": [
         "title",
+        "id",
         "topics"
       ],
       "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
         "title": {
           "$ref": "#/$defs/nonEmptyString"
         },
