@@ -134,9 +134,9 @@
           "$ref": "#/$defs/serviceTemplates"
         },
         "regions": {
-          "type": "object",
-          "minProperties": 1,
-          "additionalProperties": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
             "$ref": "#/$defs/region"
           }
         }
@@ -185,9 +185,9 @@
           "type": "boolean"
         },
         "topics": {
-          "type": "object",
-          "minProperties": 1,
-          "additionalProperties": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
             "$ref": "#/$defs/entry"
           }
         }
@@ -464,9 +464,9 @@
               "$ref": "#/$defs/crsList"
             },
             "subtopics": {
-              "type": "object",
-              "minProperties": 1,
-              "additionalProperties": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
                 "$ref": "#/$defs/topic"
               }
             }
