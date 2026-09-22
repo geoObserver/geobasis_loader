@@ -2,18 +2,19 @@
   "format_version": 7.0,
   "id": "europe",
   "catalog_version": 1.0,
-  "modified": "2026-09-13T22:46:25+02:00",
+  "modified": "2026-09-22T09:57:52+02:00",
   "author": "geoObserver",
   "title": "Katalog 2: Europa / Europe",
   "description": "Migrated from a GeoBasis Loader v6 catalog.",
   "legal_notice": "This catalog is provided “as is” without warranty of any kind. The catalog author does not guarantee the accuracy, completeness, currency, legality, or availability of the catalog or the referenced services, and assumes no responsibility for their content, operation, or continued availability. The catalog author is not liable for any direct or indirect loss or damage arising from the use of, or reliance on, this catalog or the referenced services, except where liability cannot legally be excluded. The referenced services are provided by independent third parties; their terms of use, licenses, fees, access restrictions, attribution requirements, and privacy policies apply. Inclusion of a service does not constitute an endorsement or guarantee of its suitability.",
   "global_crs": [],
-  "regions": {
-    "a": {
+  "regions": [
+    {
+      "id": "00a0f83a677042d9ab9eb6235a3bfadd",
       "title": "Österreich",
-      "topics": {
-        "86da02cd56054cf59af2039ff130405b": {
-          "id": "86da02cd56054cf59af2039ff130405b",
+      "topics": [
+        {
+          "id": "445fa7bd82ef4bf7b8787c892f85d66a",
           "entry_type": "topic",
           "title": "A: Geoland Basemap (WMTS)",
           "service_type": "ogc_wmts",
@@ -23,8 +24,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=geolandbasemap&styles=normal&tileMatrixSet=google3857&tilePixelRatio=0&url=https://basemap.at/wmts/1.0.0/WMTSCapabilities.xml"
         },
-        "ce164d616ac443ce99719b07d15f6f16": {
-          "id": "ce164d616ac443ce99719b07d15f6f16",
+        {
+          "id": "1b03946e6716477dbb2a76d706f72407",
           "entry_type": "topic",
           "title": "A: Geoland Basemap grau (WMTS)",
           "service_type": "ogc_wmts",
@@ -34,8 +35,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=bmapgrau&styles=normal&tileMatrixSet=google3857&tilePixelRatio=0&url=https://basemap.at/wmts/1.0.0/WMTSCapabilities.xml"
         },
-        "fcf63e5994e64688b335dcceb7e68cb3": {
-          "id": "fcf63e5994e64688b335dcceb7e68cb3",
+        {
+          "id": "8da57412a8834ea581ea483551945ff6",
           "entry_type": "topic",
           "title": "A: Geoland Basemap High DPI (WMTS)",
           "service_type": "ogc_wmts",
@@ -46,8 +47,8 @@
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/jpeg&layers=bmaphidpi&styles=normal&tileMatrixSet=google3857&tilePixelRatio=0&url=https://basemap.at/wmts/1.0.0/WMTSCapabilities.xml",
           "separator_after": true
         },
-        "54f94ecdae10434aa3bf712139ca042f": {
-          "id": "54f94ecdae10434aa3bf712139ca042f",
+        {
+          "id": "c02988988e734b44821306ccd5125bbc",
           "entry_type": "topic",
           "title": "A: Geoland Basemap Orthofoto - DOP10 (WMTS)",
           "service_type": "ogc_wmts",
@@ -57,8 +58,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/jpeg&layers=bmaporthofoto30cm&styles=normal&tileMatrixSet=google3857&tilePixelRatio=0&url=https://basemap.at/wmts/1.0.0/WMTSCapabilities.xml"
         },
-        "a5068c442be041ffb58b99ec86124798": {
-          "id": "a5068c442be041ffb58b99ec86124798",
+        {
+          "id": "de0c014de7df4e798eaacfe89b750e00",
           "entry_type": "topic",
           "title": "A: Geoland Basemap Overlay (WMTS)",
           "service_type": "ogc_wmts",
@@ -69,8 +70,8 @@
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=bmapoverlay&styles=normal&tileMatrixSet=google3857&tilePixelRatio=0&url=https://basemap.at/wmts/1.0.0/WMTSCapabilities.xml",
           "separator_after": true
         },
-        "27293d8c86954591ae57565dbb80f6d6": {
-          "id": "27293d8c86954591ae57565dbb80f6d6",
+        {
+          "id": "0a6e3810b757409bbc079ca96d58d67c",
           "entry_type": "topic",
           "title": "A: Geoland Basemap Oberfläche DOM (WMTS)",
           "service_type": "ogc_wmts",
@@ -80,8 +81,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/jpeg&layers=bmapoberflaeche&styles=grau&tileMatrixSet=google3857_0-17&tilePixelRatio=0&url=https://basemap.at/wmts/1.0.0/WMTSCapabilities.xml"
         },
-        "1a71932487de4bf6aa4fe8eff52dc8cd": {
-          "id": "1a71932487de4bf6aa4fe8eff52dc8cd",
+        {
+          "id": "6dc53ea1e1ef487192bb76a6af352e51",
           "entry_type": "topic",
           "title": "A: Geoland Basemap Gelände DGM (WMTS)",
           "service_type": "ogc_wmts",
@@ -91,13 +92,14 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/jpeg&layers=bmapgelaende&styles=grau&tileMatrixSet=google3857_0-17&tilePixelRatio=0&url=https://basemap.at/wmts/1.0.0/WMTSCapabilities.xml"
         }
-      }
+      ]
     },
-    "ch": {
+    {
+      "id": "32b1a4e3d55e41e8ba5c874901cd5db1",
       "title": "Schweiz",
-      "topics": {
-        "78e8e4fdbcb84b75b2f2f3e898a752b3": {
-          "id": "78e8e4fdbcb84b75b2f2f3e898a752b3",
+      "topics": [
+        {
+          "id": "9ce54a35e24645188b8884d78f78ec30",
           "entry_type": "topic",
           "title": "CH: Flurstücke (WMS)",
           "service_type": "ogc_wms",
@@ -122,16 +124,16 @@
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/jpeg&layers=ch.swisstopo-vd.amtliche-vermessung&styles&url=https://wms.geo.admin.ch/",
           "separator_after": true
         },
-        "5ce5052f2a934e03b7ad8cc3edabc545": {
-          "id": "5ce5052f2a934e03b7ad8cc3edabc545",
+        {
+          "id": "4f9d4f9a53374bb0bf05dcf36c134d56",
           "entry_type": "group",
           "title": "CH: Landeskarten farbig (WMTS)",
           "crs": [
             "EPSG:2056"
           ],
-          "subtopics": {
-            "09902141627a4565888c6357754e80ff": {
-              "id": "09902141627a4565888c6357754e80ff",
+          "subtopics": [
+            {
+              "id": "3d5a51fb0ab547f4a5d3eaa965ac822f",
               "entry_type": "topic",
               "title": "CH: Landeskarten 10 farbig (WMTS)",
               "service_type": "ogc_wmts",
@@ -144,8 +146,8 @@
               "min_scale": 17500.0,
               "max_scale": 1
             },
-            "1ce83641dacf4ce7b74d3cd3bf91775a": {
-              "id": "1ce83641dacf4ce7b74d3cd3bf91775a",
+            {
+              "id": "e5015ffae18b4afeaef6bdcb6c2eed1e",
               "entry_type": "topic",
               "title": "CH: Landeskarten 25 farbig (WMTS)",
               "service_type": "ogc_wmts",
@@ -158,8 +160,8 @@
               "min_scale": 37500.0,
               "max_scale": 17500.0
             },
-            "72f94aef124147cfa71ed8c3802421d8": {
-              "id": "72f94aef124147cfa71ed8c3802421d8",
+            {
+              "id": "7f92cd6e1ff04066b0aa2a81161d13f7",
               "entry_type": "topic",
               "title": "CH: Landeskarten 50 farbig (WMTS)",
               "service_type": "ogc_wmts",
@@ -172,11 +174,11 @@
               "min_scale": 750000.0,
               "max_scale": 37500.0
             }
-          },
+          ],
           "separator_after": true
         },
-        "ad6bbab6461b42e9910771ae6f3d7db8": {
-          "id": "ad6bbab6461b42e9910771ae6f3d7db8",
+        {
+          "id": "925a7429c8024aa4b85886b7804a7aab",
           "entry_type": "topic",
           "title": "CH: SWISSIMAGE - Digitale Orthophotos - DOP10 (WMTS)",
           "service_type": "ogc_wmts",
@@ -186,13 +188,14 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/jpeg&layers=ch.swisstopo.swissimage&styles=ch.swisstopo.swissimage&tileDimensions=Time%3Dcurrent&tileMatrixSet=2056_28&url=https://wmts.geo.admin.ch/EPSG/2056/1.0.0/WMTSCapabilities.xml"
         }
-      }
+      ]
     },
-    "cz": {
+    {
+      "id": "a70a64bb8b2340a09d473bb6c4bcc06d",
       "title": "Tschechien",
-      "topics": {
-        "7db6b2a4c7ac42c58016f0e6d41adff7": {
-          "id": "7db6b2a4c7ac42c58016f0e6d41adff7",
+      "topics": [
+        {
+          "id": "cf8bc085760c41bc93535df79865f9ea",
           "entry_type": "topic",
           "title": "CZ: Flurstücke/Gebäude (WMS)",
           "service_type": "ogc_wms",
@@ -219,8 +222,8 @@
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=KN&styles&tilePixelRatio=0&url=https://services.cuzk.cz/wms/wms.asp",
           "separator_after": true
         },
-        "a88630fe6c3b40b4b2403a3dea4572d5": {
-          "id": "a88630fe6c3b40b4b2403a3dea4572d5",
+        {
+          "id": "b8f0d4763f9a4baba97fe9a80f7876e5",
           "entry_type": "group",
           "title": "CZ: TK farbig (WMS)",
           "crs": [
@@ -244,9 +247,9 @@
             "EPSG:5514",
             "OGC:CRS84"
           ],
-          "subtopics": {
-            "e183f98d51d94a8d8cead1357b40cfb7": {
-              "id": "e183f98d51d94a8d8cead1357b40cfb7",
+          "subtopics": [
+            {
+              "id": "a25896f77bbe4b6990391438a6141378",
               "entry_type": "topic",
               "title": "CZ: DTK 5 farbig (WMS)",
               "service_type": "ogc_wms",
@@ -277,8 +280,8 @@
               "min_scale": 7500.0,
               "max_scale": 1
             },
-            "d0d63d0fcf864c1cb07c8189951d0c53": {
-              "id": "d0d63d0fcf864c1cb07c8189951d0c53",
+            {
+              "id": "c55669ff731b49079fe0111eabbd78d0",
               "entry_type": "topic",
               "title": "CZ: TK 10 farbig (WMS)",
               "service_type": "ogc_wms",
@@ -309,8 +312,8 @@
               "min_scale": 17500.0,
               "max_scale": 7500.0
             },
-            "7f0d471eb7f24eda977b14cd84767883": {
-              "id": "7f0d471eb7f24eda977b14cd84767883",
+            {
+              "id": "b5e194cbe2e446ca95e6d55bcd17b2d1",
               "entry_type": "topic",
               "title": "CZ: TK 25 farbig (WMS)",
               "service_type": "ogc_wms",
@@ -341,8 +344,8 @@
               "min_scale": 37500.0,
               "max_scale": 17500.0
             },
-            "110d8fd2b1434dcebb4c8a237b346608": {
-              "id": "110d8fd2b1434dcebb4c8a237b346608",
+            {
+              "id": "cbbee0ced0834d0bba60dd91ae2bde24",
               "entry_type": "topic",
               "title": "CZ: TK 50 farbig (WMS)",
               "service_type": "ogc_wms",
@@ -373,8 +376,8 @@
               "min_scale": 75000.0,
               "max_scale": 37500
             },
-            "340760278c1c422098f50a64cb37ebd7": {
-              "id": "340760278c1c422098f50a64cb37ebd7",
+            {
+              "id": "7590f5b7e5a049e2a724f1def89e2f66",
               "entry_type": "topic",
               "title": "CZ: TK 100 farbig (WMS)",
               "service_type": "ogc_wms",
@@ -405,8 +408,8 @@
               "min_scale": 175000.0,
               "max_scale": 75000.0
             },
-            "033087530acf485d86fa46b78441e3c4": {
-              "id": "033087530acf485d86fa46b78441e3c4",
+            {
+              "id": "8087f3f6377b47c2a4dcd0b065d6714f",
               "entry_type": "topic",
               "title": "CZ: TK 250 farbig (WMS)",
               "service_type": "ogc_wms",
@@ -437,8 +440,8 @@
               "min_scale": 375000.0,
               "max_scale": 175000.0
             },
-            "dc4035f883244f6d94c7a6c5b186b927": {
-              "id": "dc4035f883244f6d94c7a6c5b186b927",
+            {
+              "id": "ef091728578047c5a0c68f2ee56dd484",
               "entry_type": "topic",
               "title": "CZ: TÜK 500 farbig (WMS)",
               "service_type": "ogc_wms",
@@ -469,8 +472,8 @@
               "min_scale": 750000.0,
               "max_scale": 375000.0
             },
-            "dca0b7869985420e9d907fc8b6e91809": {
-              "id": "dca0b7869985420e9d907fc8b6e91809",
+            {
+              "id": "4a59ba10216b47188e62af6a51f75bdc",
               "entry_type": "topic",
               "title": "CZ: TÜK 1000 farbig (WMS)",
               "service_type": "ogc_wms",
@@ -501,11 +504,11 @@
               "min_scale": 5000000.0,
               "max_scale": 750000.0
             }
-          },
+          ],
           "separator_after": true
         },
-        "9155cfeca3e2480ca73fa92cf2eb5d95": {
-          "id": "9155cfeca3e2480ca73fa92cf2eb5d95",
+        {
+          "id": "2cd69cae5ed345d292439991a8c5fa68",
           "entry_type": "topic",
           "title": "CZ: Orthophotos  (WMS)",
           "service_type": "ogc_wms",
@@ -533,13 +536,14 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=0&styles=default&tilePixelRatio=0&url=https://ags.cuzk.cz/arcgis1/services/ORTOFOTO/MapServer/WMSServer"
         }
-      }
+      ]
     },
-    "LU": {
+    {
+      "id": "2509d5a74fe148b3934d2b02ffb7b7b8",
       "title": "Luxemburg",
-      "topics": {
-        "2ab964e53c324c03a4c75efeafa0a733": {
-          "id": "2ab964e53c324c03a4c75efeafa0a733",
+      "topics": [
+        {
+          "id": "33e5627a6ac64f21a7dfaade92e0080b",
           "entry_type": "topic",
           "title": "LU: Basiskarte (WMTS)",
           "service_type": "ogc_wmts",
@@ -554,8 +558,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=basemap&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0"
         },
-        "8bd609fced664e648fbec0160b94a6c5": {
-          "id": "8bd609fced664e648fbec0160b94a6c5",
+        {
+          "id": "658b4ee982fb4da99104ffd993ba87a6",
           "entry_type": "topic",
           "title": "LU: Straßenkarte (WMTS)",
           "service_type": "ogc_wmts",
@@ -571,8 +575,8 @@
           "service_uri": "crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=roadmap_luxonly&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0",
           "separator_after": true
         },
-        "6fb7b5e957e74436847fc151397b444d": {
-          "id": "6fb7b5e957e74436847fc151397b444d",
+        {
+          "id": "18125b803c87498989d8459c6ba1dcb3",
           "entry_type": "group",
           "title": "LU: Landeskarten farbig (WMTS)",
           "crs": [
@@ -582,9 +586,9 @@
             "EPSG:3857",
             "EPSG:4326"
           ],
-          "subtopics": {
-            "59dbb4a2e8ba47a1a6222bc1cd3457e3": {
-              "id": "59dbb4a2e8ba47a1a6222bc1cd3457e3",
+          "subtopics": [
+            {
+              "id": "6619f257320148ebb63da4b9197ce14c",
               "entry_type": "topic",
               "title": "LU: Landeskarten TK 1:5000 farbig (WMS)",
               "service_type": "ogc_wmts",
@@ -601,8 +605,8 @@
               "min_scale": 7500.0,
               "max_scale": 1
             },
-            "44b1eca6e16f40b084fba9f45a9a55d7": {
-              "id": "44b1eca6e16f40b084fba9f45a9a55d7",
+            {
+              "id": "608a4407ef004c7196073050f01c3739",
               "entry_type": "topic",
               "title": "LU: Landeskarten TK 1:20000 (WMS)",
               "service_type": "ogc_wmts",
@@ -619,8 +623,8 @@
               "min_scale": 30000.0,
               "max_scale": 7500.0
             },
-            "32c8441085d3486eb9238dab457d52c8": {
-              "id": "32c8441085d3486eb9238dab457d52c8",
+            {
+              "id": "062ca9f8ff274a478e55737565c2ae10",
               "entry_type": "topic",
               "title": "LU: Landeskarten TK 1:50000 (WMS)",
               "service_type": "ogc_wmts",
@@ -637,8 +641,8 @@
               "min_scale": 75000.0,
               "max_scale": 30000.0
             },
-            "8ef8cbe774f2439095a2aab445893d2c": {
-              "id": "8ef8cbe774f2439095a2aab445893d2c",
+            {
+              "id": "6e9a13355cbd476aa237a4c7abec3486",
               "entry_type": "topic",
               "title": "LU: Landeskarten TK 1:100000 (WMS)",
               "service_type": "ogc_wmts",
@@ -655,8 +659,8 @@
               "min_scale": 175000.0,
               "max_scale": 75000.0
             },
-            "d74e888e00284ad29a4affb8a87190c9": {
-              "id": "d74e888e00284ad29a4affb8a87190c9",
+            {
+              "id": "ce1b6f2fbd90403db75ab84c8d03f559",
               "entry_type": "topic",
               "title": "LU: Landeskarten TK 1:250000 (WMS)",
               "service_type": "ogc_wmts",
@@ -673,11 +677,11 @@
               "min_scale": 1000000.0,
               "max_scale": 175000.0
             }
-          },
+          ],
           "separator_after": true
         },
-        "c548ce2089a94e75b05fd814c5b7f990": {
-          "id": "c548ce2089a94e75b05fd814c5b7f990",
+        {
+          "id": "15693329b53440c89c84c0c9fc6b2384",
           "entry_type": "topic",
           "title": "LU: Topographische Karte 1:100.000 S/W-Version (WMTS)",
           "service_type": "ogc_wmts",
@@ -691,8 +695,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=topo_100k_bw&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0"
         },
-        "844ac4f22cfb485f9b6c2e6487a39ca1": {
-          "id": "844ac4f22cfb485f9b6c2e6487a39ca1",
+        {
+          "id": "4a00551b8e6c454f9d42350b1af74b5a",
           "entry_type": "topic",
           "title": "LU: Topographische Karte automatisch (WMTS)",
           "service_type": "ogc_wmts",
@@ -706,8 +710,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=topo&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0"
         },
-        "a1562f28a701499db57e66665acc463d": {
-          "id": "a1562f28a701499db57e66665acc463d",
+        {
+          "id": "f415469230b64b5f8998d6e165c54a08",
           "entry_type": "topic",
           "title": "LU: Topographische Karte automatisch S/W (WMTS)",
           "service_type": "ogc_wmts",
@@ -721,8 +725,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=topo_bw&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0"
         },
-        "7fefc9210df54b369fae9216d6d62326": {
-          "id": "7fefc9210df54b369fae9216d6d62326",
+        {
+          "id": "930c2547851648188bc989dc1cf4c9a2",
           "entry_type": "topic",
           "title": "LU: Topographische Karte Vektor (WMTS)",
           "service_type": "ogc_wmts",
@@ -736,8 +740,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=topomap&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0"
         },
-        "f34bb11bdee84a8395aa5dc067cc1baf": {
-          "id": "f34bb11bdee84a8395aa5dc067cc1baf",
+        {
+          "id": "a517c6ea1f5147c3a36cf8e95ddf6aa2",
           "entry_type": "topic",
           "title": "LU: Topographische Karte Vektor grau (WMTS)",
           "service_type": "ogc_wmts",
@@ -752,8 +756,8 @@
           "service_uri": "crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=topomap_gray&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0",
           "separator_after": true
         },
-        "d21f921a49e845a38557c46db84d0695": {
-          "id": "d21f921a49e845a38557c46db84d0695",
+        {
+          "id": "b3196070486d49b3be3d1c762b99124e",
           "entry_type": "topic",
           "title": "LU: Orthophotos (WMTS)",
           "service_type": "ogc_wmts",
@@ -767,8 +771,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=ortho_latest&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0"
         },
-        "bf9397791095442fa824a925f0aa54b6": {
-          "id": "bf9397791095442fa824a925f0aa54b6",
+        {
+          "id": "e5b1077d81324265b8c7712efb37d9c3",
           "entry_type": "topic",
           "title": "LU: Orthophotos hybrid (WMTS)",
           "service_type": "ogc_wmts",
@@ -782,8 +786,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=hybrid&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0"
         },
-        "dc118ecc03eb494e908774a038753f1c": {
-          "id": "dc118ecc03eb494e908774a038753f1c",
+        {
+          "id": "384b7d9f6b2842b5b987022fece82d7f",
           "entry_type": "topic",
           "title": "LU: DOM LIDAR 2019 (WMTS)",
           "service_type": "ogc_wmts",
@@ -798,8 +802,8 @@
           "service_uri": "crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=lidar_2019_mns_public&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0",
           "separator_after": true
         },
-        "f8891e3a1e324668aac7a1c509851472": {
-          "id": "f8891e3a1e324668aac7a1c509851472",
+        {
+          "id": "03aeea1151bd410ebbf85bd343acadb2",
           "entry_type": "topic",
           "title": "LU: Höhenlinien 10m (WMTS)",
           "service_type": "ogc_wmts",
@@ -813,7 +817,7 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=courbes_de_niveau_10m&styles&tilePixelRatio=0&url=https://wmts1.geoportail.lu/opendata/service?version%3D1.3.0"
         }
-      }
+      ]
     }
-  }
+  ]
 }

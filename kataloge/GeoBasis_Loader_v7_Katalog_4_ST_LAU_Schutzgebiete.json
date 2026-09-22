@@ -2,7 +2,7 @@
   "format_version": 7.0,
   "id": "st_lau",
   "catalog_version": 1.0,
-  "modified": "2026-09-13T22:46:33+02:00",
+  "modified": "2026-09-22T09:57:57+02:00",
   "author": "geoObserver",
   "title": "Katalog 4: ST LAU Schutzgebiete",
   "description": "Migrated from a GeoBasis Loader v6 catalog.",
@@ -22,12 +22,13 @@
     "EPSG:5652",
     "EPSG:5653"
   ],
-  "regions": {
-    "lsa_lau_1": {
+  "regions": [
+    {
+      "id": "4cc1dcd7de2f4b52a8291f096cbae941",
       "title": "ST: LSA SG Naturschutz (WMS)",
-      "topics": {
-        "e192c75762614e42950bb5175b8262dc": {
-          "id": "e192c75762614e42950bb5175b8262dc",
+      "topics": [
+        {
+          "id": "c8f7adb040e546689dd1f9267152bbec",
           "entry_type": "topic",
           "title": "ST: LSA Biosphärenreservate (WMS)",
           "service_type": "ogc_wms",
@@ -42,8 +43,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=lau_br_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms"
         },
-        "e146082cf1824e2aade84206bc2c314a": {
-          "id": "e146082cf1824e2aade84206bc2c314a",
+        {
+          "id": "a5834f477bfb48c992c2238837d0d5d0",
           "entry_type": "topic",
           "title": "ST: LSA EU-Vogelschutzgebiete SPA (WMS)",
           "service_type": "ogc_wms",
@@ -58,8 +59,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=lau_spa_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms"
         },
-        "d6aa1ce29ff6454eb7d2ade4bb2df8cb": {
-          "id": "d6aa1ce29ff6454eb7d2ade4bb2df8cb",
+        {
+          "id": "5e77b53e22f6496f9ff6f3a508dd99bd",
           "entry_type": "topic",
           "title": "ST: LSA Fauna-Flora-Habitat - Gebiete FFH (WMS)",
           "service_type": "ogc_wms",
@@ -74,8 +75,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=lau_ffh_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms"
         },
-        "0189bfdf66ea4543991a13a33eeedfb1": {
-          "id": "0189bfdf66ea4543991a13a33eeedfb1",
+        {
+          "id": "5c89f2041dd3409ba6f324873e8c32c4",
           "entry_type": "topic",
           "title": "ST: LSA Ramsar-Feuchtgebiete (WMS)",
           "service_type": "ogc_wms",
@@ -90,8 +91,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=lau_fib_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms"
         },
-        "c7164e4532dd47468ff41787a101a7ce": {
-          "id": "c7164e4532dd47468ff41787a101a7ce",
+        {
+          "id": "3663e0816be64281a50504f6b2d695fc",
           "entry_type": "topic",
           "title": "ST: LSA Nationalparke (WMS)",
           "service_type": "ogc_wms",
@@ -106,8 +107,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=lau_nap_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms"
         },
-        "06734d4d6f474f7e85d85cefb6ffa024": {
-          "id": "06734d4d6f474f7e85d85cefb6ffa024",
+        {
+          "id": "7e75b0e5a0174d5d81cffb19188ac75b",
           "entry_type": "topic",
           "title": "ST: LSA Nationales Naturmonumente (WMS)",
           "service_type": "ogc_wms",
@@ -122,8 +123,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=lau_nnm_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms"
         },
-        "68f49f0c669744ab84cc39c38e16343d": {
-          "id": "68f49f0c669744ab84cc39c38e16343d",
+        {
+          "id": "f887580cd1304b2cb93f71be2823b0dd",
           "entry_type": "topic",
           "title": "ST: LSA Naturschutzgebiete (WMS)",
           "service_type": "ogc_wms",
@@ -138,8 +139,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=lau_nsg_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms"
         },
-        "1d924bd9d3f5475592298cf89d346a57": {
-          "id": "1d924bd9d3f5475592298cf89d346a57",
+        {
+          "id": "93ec3f64e34f4287a1ca9ecb2f830a2f",
           "entry_type": "topic",
           "title": "ST: LSA Landschaftsschutzgebiete (WMS)",
           "service_type": "ogc_wms",
@@ -154,8 +155,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=lau_lsg_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms"
         },
-        "7b9586347e044c188a769512e201be6c": {
-          "id": "7b9586347e044c188a769512e201be6c",
+        {
+          "id": "afd83208ff004965a7a0eff2f3aaefa8",
           "entry_type": "topic",
           "title": "ST: LSA Naturparke (WMS)",
           "service_type": "ogc_wms",
@@ -170,8 +171,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=lau_nup_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms"
         },
-        "dc053434cff84d9c9328f60bef20a70e": {
-          "id": "dc053434cff84d9c9328f60bef20a70e",
+        {
+          "id": "d24f44b7087f4ef0aba4f2a16c87eb95",
           "entry_type": "topic",
           "title": "ST: LSA Flächenhafte Naturdenkmale NDF (WMS)",
           "service_type": "ogc_wms",
@@ -186,8 +187,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=lau_ndf_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms"
         },
-        "90d18f6e877141a89be25b7ff0aebcb1": {
-          "id": "90d18f6e877141a89be25b7ff0aebcb1",
+        {
+          "id": "d89f902fd10344eb92f230b238b363c4",
           "entry_type": "topic",
           "title": "ST: LSA Geschützte Landschaftsbestandteile (WMS)",
           "service_type": "ogc_wms",
@@ -202,8 +203,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=lau_glb_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms"
         },
-        "98a16fd0927042caa9b1c3acafc8ef76": {
-          "id": "98a16fd0927042caa9b1c3acafc8ef76",
+        {
+          "id": "53e8fd89f8834a14a251e7d20877c6d8",
           "entry_type": "topic",
           "title": "ST: LSA Flächennaturdenkmale FND (WMS)",
           "service_type": "ogc_wms",
@@ -218,8 +219,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=lau_fnd_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms"
         },
-        "ded878e99223473fbe321d8a0db58292": {
-          "id": "ded878e99223473fbe321d8a0db58292",
+        {
+          "id": "55e143235ad642a683733a77c45a2a4d",
           "entry_type": "topic",
           "title": "ST: LSA Geschützte Parke (WMS)",
           "service_type": "ogc_wms",
@@ -234,8 +235,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=lau_gp_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms"
         },
-        "7162a0ca07c841209678b93ea1369e1f": {
-          "id": "7162a0ca07c841209678b93ea1369e1f",
+        {
+          "id": "8e69b8f79d374b048792e509848893cf",
           "entry_type": "topic",
           "title": "ST: LSA Allgemeinverfügungen zur nationalen Sicherstellung (WMS)",
           "service_type": "ogc_wms",
@@ -250,8 +251,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=lau_av_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms"
         },
-        "6f6d7c490d644fd681906d1843305204": {
-          "id": "6f6d7c490d644fd681906d1843305204",
+        {
+          "id": "7d95bb51fcc94e81a54a8f0eb96d6cd4",
           "entry_type": "topic",
           "title": "ST: LSA Vertragliche Vereinbarungen (WMS)",
           "service_type": "ogc_wms",
@@ -266,13 +267,14 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=lau_ven_lsa&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/45787536-3a45-0121/GDI-LSA_LAU_Schutzgebiete/ows.wms"
         }
-      }
+      ]
     },
-    "lsa_lau_2": {
+    {
+      "id": "5a6f167d43464021a30be33245994436",
       "title": "ST: LSA SG Wasserschutz (WMS)",
-      "topics": {
-        "f536aadaa22d41d9ad05aa56f1655dab": {
-          "id": "f536aadaa22d41d9ad05aa56f1655dab",
+      "topics": [
+        {
+          "id": "12d26f66a9284a899f4e2280dabef3c1",
           "entry_type": "topic",
           "title": "ST: LSA Wasserschutzgebiete (WMS)",
           "service_type": "ogc_wms",
@@ -289,13 +291,14 @@
           "min_scale": 1000000.0,
           "max_scale": 1.0
         }
-      }
+      ]
     },
-    "lsa_lau_3": {
+    {
+      "id": "62a5547505604a3bbfc730d6dfd9a11e",
       "title": "ST: LSA SG Naturschutz (WFS) derzeit unter 1:25000",
-      "topics": {
-        "fabafbe5fc3446158fbe1c5393386f29": {
-          "id": "fabafbe5fc3446158fbe1c5393386f29",
+      "topics": [
+        {
+          "id": "b1fc31e973e84bf39bdcae67eb6f6d08",
           "entry_type": "topic",
           "title": "ST: LSA Biosphärenreservate (WFS)",
           "service_type": "ogc_wfs",
@@ -308,8 +311,8 @@
           "min_scale": 1000000.0,
           "max_scale": 1.0
         },
-        "122e26d7552b4481a853e7b1a8087947": {
-          "id": "122e26d7552b4481a853e7b1a8087947",
+        {
+          "id": "574e9340db584d05ae5d66fcfc68320d",
           "entry_type": "topic",
           "title": "ST: LSA EU-Vogelschutzgebiete SPA (WFS)",
           "service_type": "ogc_wfs",
@@ -322,8 +325,8 @@
           "min_scale": 1000000.0,
           "max_scale": 1.0
         },
-        "888fc547ba2a4e68acf92506f625c0fe": {
-          "id": "888fc547ba2a4e68acf92506f625c0fe",
+        {
+          "id": "ca84e08586e349e58ec797e063f8e865",
           "entry_type": "topic",
           "title": "ST: LSA Fauna-Flora-Habitat - Gebiete FFH (WFS)",
           "service_type": "ogc_wfs",
@@ -336,8 +339,8 @@
           "min_scale": 1000000.0,
           "max_scale": 1.0
         },
-        "6ff63942ba9e41d1859d10af71bbad82": {
-          "id": "6ff63942ba9e41d1859d10af71bbad82",
+        {
+          "id": "f0764ab0343049fe88b02357f097d401",
           "entry_type": "topic",
           "title": "ST: LSA Ramsar-Feuchtgebiete (WFS)",
           "service_type": "ogc_wfs",
@@ -350,8 +353,8 @@
           "min_scale": 1000000.0,
           "max_scale": 1.0
         },
-        "88cd7170d66d42f39d0a6d6b64d25cae": {
-          "id": "88cd7170d66d42f39d0a6d6b64d25cae",
+        {
+          "id": "a7a7949e36fe4b94a8a1d6cefda8fe87",
           "entry_type": "topic",
           "title": "ST: LSA Nationalparke (WFS)",
           "service_type": "ogc_wfs",
@@ -364,8 +367,8 @@
           "min_scale": 1000000.0,
           "max_scale": 1.0
         },
-        "89562030fe8c4efd89ff9c50e23795d8": {
-          "id": "89562030fe8c4efd89ff9c50e23795d8",
+        {
+          "id": "5940b342cdc44d94ac3ab0127850f232",
           "entry_type": "topic",
           "title": "ST: LSA Nationales Naturmonumente (WFS)",
           "service_type": "ogc_wfs",
@@ -378,8 +381,8 @@
           "min_scale": 1000000.0,
           "max_scale": 1.0
         },
-        "f5b89ffc51cd4bbd8bbc04045699e47e": {
-          "id": "f5b89ffc51cd4bbd8bbc04045699e47e",
+        {
+          "id": "b5c7381e946d44c0a8750133696636c3",
           "entry_type": "topic",
           "title": "ST: LSA Naturschutzgebiete (WFS)",
           "service_type": "ogc_wfs",
@@ -392,8 +395,8 @@
           "min_scale": 1000000.0,
           "max_scale": 1.0
         },
-        "aec7626a59b54c729c5c0c2e8ab7b770": {
-          "id": "aec7626a59b54c729c5c0c2e8ab7b770",
+        {
+          "id": "a346bb8081c34a9d9b1d619b7a4201e3",
           "entry_type": "topic",
           "title": "ST: LSA Landschaftsschutzgebiete (WFS)",
           "service_type": "ogc_wfs",
@@ -406,8 +409,8 @@
           "min_scale": 1000000.0,
           "max_scale": 1.0
         },
-        "fcb73acb9d844d338a6ab50b5cec3322": {
-          "id": "fcb73acb9d844d338a6ab50b5cec3322",
+        {
+          "id": "0ef7d74d8c29484589db4e9fc93b53fd",
           "entry_type": "topic",
           "title": "ST: LSA Naturparke (WFS)",
           "service_type": "ogc_wfs",
@@ -420,8 +423,8 @@
           "min_scale": 1000000.0,
           "max_scale": 1.0
         },
-        "98b828c7613749fe8c346e10173dde24": {
-          "id": "98b828c7613749fe8c346e10173dde24",
+        {
+          "id": "7c0907b076e047cf8d5c2ce9971fe184",
           "entry_type": "topic",
           "title": "ST: LSA Flächenhafte Naturdenkmale NDF (WFS)",
           "service_type": "ogc_wfs",
@@ -434,8 +437,8 @@
           "min_scale": 1000000.0,
           "max_scale": 1.0
         },
-        "a4d4a1619b6d46e192d6071ed1a132c1": {
-          "id": "a4d4a1619b6d46e192d6071ed1a132c1",
+        {
+          "id": "893bf0ba74704cda80aaf5b953ce8358",
           "entry_type": "topic",
           "title": "ST: LSA Geschützte Landschaftsbestandteile (WFS)",
           "service_type": "ogc_wfs",
@@ -448,8 +451,8 @@
           "min_scale": 1000000.0,
           "max_scale": 1.0
         },
-        "0022e831229949a5b73e3ef805ada889": {
-          "id": "0022e831229949a5b73e3ef805ada889",
+        {
+          "id": "970e3649885444419c3999e85851d058",
           "entry_type": "topic",
           "title": "ST: LSA Flächennaturdenkmale FND (WFS)",
           "service_type": "ogc_wfs",
@@ -462,8 +465,8 @@
           "min_scale": 1000000.0,
           "max_scale": 1.0
         },
-        "e72e42d562ee407ba01fcc38e8181b51": {
-          "id": "e72e42d562ee407ba01fcc38e8181b51",
+        {
+          "id": "2dc2a3c4237e4c4caec61065bf532874",
           "entry_type": "topic",
           "title": "ST: LSA Geschützte Parke (WFS)",
           "service_type": "ogc_wfs",
@@ -476,8 +479,8 @@
           "min_scale": 1000000.0,
           "max_scale": 1.0
         },
-        "b35e39585901469d9bc4213f4f929d79": {
-          "id": "b35e39585901469d9bc4213f4f929d79",
+        {
+          "id": "7b481b79b4b24222a33dd45e88d88450",
           "entry_type": "topic",
           "title": "ST: LSA Allgemeinverfügungen zur nationalen Sicherstellung (WFS)",
           "service_type": "ogc_wfs",
@@ -490,8 +493,8 @@
           "min_scale": 1000000.0,
           "max_scale": 1.0
         },
-        "48ad611af2984e73ad74ad10a91ad85b": {
-          "id": "48ad611af2984e73ad74ad10a91ad85b",
+        {
+          "id": "d5e4eada5fb0450cb75d486b1536f0c2",
           "entry_type": "topic",
           "title": "ST: LSA Vertragliche Vereinbarungen (WFS)",
           "service_type": "ogc_wfs",
@@ -504,13 +507,14 @@
           "min_scale": 1000000.0,
           "max_scale": 1.0
         }
-      }
+      ]
     },
-    "lsa_lau_4": {
+    {
+      "id": "012c4cbe3d25442685409dacafa0af9b",
       "title": "ST: LSA SG Wasserschutz (WFS) derzeit nur unter 1:25000",
-      "topics": {
-        "f15d02b643c646f4b7dde35256b72c18": {
-          "id": "f15d02b643c646f4b7dde35256b72c18",
+      "topics": [
+        {
+          "id": "d6863dc67d5643838e510f97198a18c4",
           "entry_type": "topic",
           "title": "ST: LSA Wasserschutzgebiete (WFS)",
           "service_type": "ogc_wfs",
@@ -527,7 +531,7 @@
           ],
           "stroke_width": 0.1
         }
-      }
+      ]
     }
-  }
+  ]
 }

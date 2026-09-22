@@ -2,18 +2,19 @@
   "format_version": 7.0,
   "id": "world",
   "catalog_version": 1.0,
-  "modified": "2026-09-13T22:46:29+02:00",
+  "modified": "2026-09-22T09:57:54+02:00",
   "author": "geoObserver",
   "title": "Katalog 3: Welt / World",
   "description": "Migrated from a GeoBasis Loader v6 catalog.",
   "legal_notice": "This catalog is provided “as is” without warranty of any kind. The catalog author does not guarantee the accuracy, completeness, currency, legality, or availability of the catalog or the referenced services, and assumes no responsibility for their content, operation, or continued availability. The catalog author is not liable for any direct or indirect loss or damage arising from the use of, or reliance on, this catalog or the referenced services, except where liability cannot legally be excluded. The referenced services are provided by independent third parties; their terms of use, licenses, fees, access restrictions, attribution requirements, and privacy policies apply. Inclusion of a service does not constitute an endorsement or guarantee of its suitability.",
   "global_crs": [],
-  "regions": {
-    "Basemap World": {
+  "regions": [
+    {
+      "id": "c077a287b7c4469f9953e8c8a86a6061",
       "title": "Basemap World (außer Deutschland)",
-      "topics": {
-        "a39beadb453e4dafa42f220abdfac4a7": {
-          "id": "a39beadb453e4dafa42f220abdfac4a7",
+      "topics": [
+        {
+          "id": "66d3ce01fa6d482e8759c0d22d29af53",
           "entry_type": "topic",
           "title": "Basemap World (außer Deutschland) farbig (WFS)",
           "service_type": "ogc_vectortiles",
@@ -23,13 +24,14 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&styleUrl=https://sgx.geodatenzentrum.de/gdz_basemapworld_vektor/styles/bm_web_wld_col.json&type=xyz&url=https://sgx.geodatenzentrum.de/gdz_basemapworld_vektor/tiles/v1/bm_web_wld_3857/%7Bz%7D/%7Bx%7D/%7By%7D.pbf&zmax=14&zmin=0&http-header:referer="
         }
-      }
+      ]
     },
-    "Natural Earth Data (DLR)": {
+    {
+      "id": "347a6889250d433b9fe6dd4bab65cfb7",
       "title": "Natural Earth Data (DLR)",
-      "topics": {
-        "33ed4576080f474bafee3067424c36b5": {
-          "id": "33ed4576080f474bafee3067424c36b5",
+      "topics": [
+        {
+          "id": "186d1bbd0043485c96c0da6f18bc9b50",
           "entry_type": "topic",
           "title": "NE: Zeitzonen (TimeZones) 10m (WMS)",
           "service_type": "ogc_wms",
@@ -173,8 +175,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=ne:ne_10m_time_zones&styles&tilePixelRatio=0&url=https://geoservice.dlr.de/eoc/basemap/wms"
         },
-        "7c78a9b5060845b6b17e384095f8a239": {
-          "id": "7c78a9b5060845b6b17e384095f8a239",
+        {
+          "id": "7b99f866857d4d139520225eb6ccf748",
           "entry_type": "topic",
           "title": "NE: Zeitzonen (TimeZones) 10m (WFS)",
           "service_type": "ogc_wfs",
@@ -192,8 +194,8 @@
           ],
           "stroke_width": 1
         },
-        "e26f96f397064c9590cb26c895e39d38": {
-          "id": "e26f96f397064c9590cb26c895e39d38",
+        {
+          "id": "ac4e004eb1f6450c9b5dbbead95b3502",
           "entry_type": "topic",
           "title": "NE: Gradnetz/Gitterlinien (Graticules)",
           "service_type": "ogc_wms",
@@ -337,8 +339,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=ne:ne_graticules&styles=default-style-ne:ne_graticules&tilePixelRatio=0&url=https://geoservice.dlr.de/eoc/basemap/wms"
         },
-        "c1edfeb1d3f845ceb8152b24ef8ba689": {
-          "id": "c1edfeb1d3f845ceb8152b24ef8ba689",
+        {
+          "id": "1a3989519992425f8fc0e732e841936d",
           "entry_type": "group",
           "title": "NE: Basemap (WMS)",
           "crs": [
@@ -478,9 +480,9 @@
             "EPSG:900913",
             "OGC:CRS84"
           ],
-          "subtopics": {
-            "09811b27595641e197aba1c5a0d1f83f": {
-              "id": "09811b27595641e197aba1c5a0d1f83f",
+          "subtopics": [
+            {
+              "id": "fb18f4d0253f4a13b121a6dd5febb072",
               "entry_type": "topic",
               "title": "NE: Basemap (WMS)",
               "service_type": "ogc_wms",
@@ -624,8 +626,8 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=basemap&styles=default-style-basemap&tilePixelRatio=0&url=https://geoservice.dlr.de/eoc/basemap/wms"
             },
-            "b62f722874c14cb98971c4d3e04d009d": {
-              "id": "b62f722874c14cb98971c4d3e04d009d",
+            {
+              "id": "71dd1cb381fc44f9b12d263f421706e8",
               "entry_type": "topic",
               "title": "NE: Basemap Overlay (WMS)",
               "service_type": "ogc_wms",
@@ -769,10 +771,10 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=baseoverlay&styles=default-style-baseoverlay&tilePixelRatio=0&url=https://geoservice.dlr.de/eoc/basemap/wms"
             }
-          }
+          ]
         },
-        "6fa628aa7c7d4e51906c1172839d12e0": {
-          "id": "6fa628aa7c7d4e51906c1172839d12e0",
+        {
+          "id": "164525b9c0a54530bcb31b7119113c2e",
           "entry_type": "group",
           "title": "NE: Basemap Light (WMS)",
           "crs": [
@@ -912,9 +914,9 @@
             "EPSG:900913",
             "OGC:CRS84"
           ],
-          "subtopics": {
-            "9d047e16c55642d5b1ff13e304ed5e16": {
-              "id": "9d047e16c55642d5b1ff13e304ed5e16",
+          "subtopics": [
+            {
+              "id": "76584b4e267f464cb3c78f152de2b059",
               "entry_type": "topic",
               "title": "NE: Basemap Light (WMS)",
               "service_type": "ogc_wms",
@@ -1058,8 +1060,8 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=litemap&styles=default-style-litemap&tilePixelRatio=0&url=https://geoservice.dlr.de/eoc/basemap/wms"
             },
-            "d7d6681dad6449b1aff6812509c0ec8d": {
-              "id": "d7d6681dad6449b1aff6812509c0ec8d",
+            {
+              "id": "c55999e7423d4eed89339a9076c4c5ff",
               "entry_type": "topic",
               "title": "NE: Basemap Light Overlay (WMS)",
               "service_type": "ogc_wms",
@@ -1203,15 +1205,16 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=liteoverlay&styles=default-style-liteoverlay&tilePixelRatio=0&url=https://geoservice.dlr.de/eoc/basemap/wms"
             }
-          }
+          ]
         }
-      }
+      ]
     },
-    "osm1": {
+    {
+      "id": "e6c5d2c1e7a44194b8d939f222ad1d51",
       "title": "OpenStreetMap pur",
-      "topics": {
-        "02605af33e1144fba8f46ff81a330b44": {
-          "id": "02605af33e1144fba8f46ff81a330b44",
+      "topics": [
+        {
+          "id": "008b0fbea44b4921a46d2648bf4f7e95",
           "entry_type": "topic",
           "title": "OSM: OpenStreetMap (XYZ)",
           "service_type": "ogc_wmts",
@@ -1221,8 +1224,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&type=xyz&url=https://tile.openstreetmap.org/{z}/{x}/{y}.png&zmax=19&zmin=0"
         },
-        "eb8aa4e636314af4a9ac156d1c0490fa": {
-          "id": "eb8aa4e636314af4a9ac156d1c0490fa",
+        {
+          "id": "6f9a8ac2b42c4aa29b8e6ad1bd4d49fd",
           "entry_type": "topic",
           "title": "OSM: OpenStreetMap DE (XYZ)",
           "service_type": "ogc_wmts",
@@ -1232,8 +1235,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&type=xyz&url=https://tile.openstreetmap.de/{z}/{x}/{y}.png&zmax=19&zmin=0"
         },
-        "6db9e042c67f416484062d9dc759ce7f": {
-          "id": "6db9e042c67f416484062d9dc759ce7f",
+        {
+          "id": "51e595229adc4037af5482d742714fab",
           "entry_type": "topic",
           "title": "OSM: OpenStreetMap CH (XYZ)",
           "service_type": "ogc_wmts",
@@ -1244,8 +1247,8 @@
           "service_uri": "crs={crs}&type=xyz&url=https://tile.osm.ch/switzerland/{z}/{x}/{y}.png&zmax=19&zmin=0",
           "separator_after": true
         },
-        "7c83d8203e7b4cdca8334474b64ff747": {
-          "id": "7c83d8203e7b4cdca8334474b64ff747",
+        {
+          "id": "6b0838223c80417fa37ad1ff3bce1bcf",
           "entry_type": "topic",
           "title": "OSM: OpenStreetMap HOT (XYZ)",
           "service_type": "ogc_wmts",
@@ -1256,13 +1259,14 @@
           "service_uri": "crs={crs}&type=xyz&url=https://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png&zmax=19&zmin=0",
           "separator_after": true
         }
-      }
+      ]
     },
-    "osm_sport": {
+    {
+      "id": "f4bf442e2d9a4c97a7cf39f4a77e8aa1",
       "title": "OpenStreetMap Sport",
-      "topics": {
-        "3f4a7f00f16e407387f70a9018747f36": {
-          "id": "3f4a7f00f16e407387f70a9018747f36",
+      "topics": [
+        {
+          "id": "7f3bb1c89b7b479a8aab09123ab9a124",
           "entry_type": "topic",
           "title": "OSM: CyclOSM (XYZ)",
           "service_type": "ogc_wmts",
@@ -1272,8 +1276,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&format&type=xyz&url=https://a.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png&zmax=18&zmin=0"
         },
-        "9d4353cf564a4606a7cba205e00369f2": {
-          "id": "9d4353cf564a4606a7cba205e00369f2",
+        {
+          "id": "2d8389488c864c61aab0e4209bcaee75",
           "entry_type": "topic",
           "title": "OSM: Waymarked Trails Cycling (XYZ)",
           "service_type": "ogc_wmts",
@@ -1283,8 +1287,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&format&type=xyz&url=https://tile.waymarkedtrails.org/cycling/{z}/{x}/{y}.png&zmax=18&zmin=0"
         },
-        "6686516676e0428688e606598e7709a5": {
-          "id": "6686516676e0428688e606598e7709a5",
+        {
+          "id": "f1e72d54cb4242ac8853fed1f4d9e2f2",
           "entry_type": "topic",
           "title": "OSM: Waymarked Trails Hiking (XYZ)",
           "service_type": "ogc_wmts",
@@ -1294,8 +1298,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&format&type=xyz&url=https://tile.waymarkedtrails.org/hiking/{z}/{x}/{y}.png&zmax=18&zmin=0"
         },
-        "9af588c2dc6241cb9004aaf14a02c372": {
-          "id": "9af588c2dc6241cb9004aaf14a02c372",
+        {
+          "id": "905a2a29616e48388cec42e4f0337738",
           "entry_type": "topic",
           "title": "OSM: Waymarked MTB (XYZ)",
           "service_type": "ogc_wmts",
@@ -1305,8 +1309,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&format&type=xyz&url=https://tile.waymarkedtrails.org/mtb/{z}/{x}/{y}.png&zmax=18&zmin=0"
         },
-        "1222d4dbeb8a427ab2909615d9040dd4": {
-          "id": "1222d4dbeb8a427ab2909615d9040dd4",
+        {
+          "id": "ae8af68d156148a3bc0b457e7f45279e",
           "entry_type": "topic",
           "title": "OSM: Waymarked Riding (XYZ)",
           "service_type": "ogc_wmts",
@@ -1316,8 +1320,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&format&type=xyz&url=https://tile.waymarkedtrails.org/riding/{z}/{x}/{y}.png&zmax=18&zmin=0"
         },
-        "f99738c92acd462eb6ff9570f25ab677": {
-          "id": "f99738c92acd462eb6ff9570f25ab677",
+        {
+          "id": "e75cc1b269e44f549b6cb60e677e331f",
           "entry_type": "topic",
           "title": "OSM: Waymarked Skating (XYZ)",
           "service_type": "ogc_wmts",
@@ -1327,8 +1331,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&format&type=xyz&url=https://tile.waymarkedtrails.org/skating/{z}/{x}/{y}.png&zmax=18&zmin=0"
         },
-        "128127b5bb854485ab9b1300ae95c43c": {
-          "id": "128127b5bb854485ab9b1300ae95c43c",
+        {
+          "id": "ede0a46f70c24315ae9a651173cd5503",
           "entry_type": "topic",
           "title": "OSM: Waymarked Slopes (XYZ)",
           "service_type": "ogc_wmts",
@@ -1338,8 +1342,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&format&type=xyz&url=https://tile.waymarkedtrails.org/slopes/{z}/{x}/{y}.png&zmax=18&zmin=0"
         },
-        "32bb2651493f48c5bd51fe6ea556e3a0": {
-          "id": "32bb2651493f48c5bd51fe6ea556e3a0",
+        {
+          "id": "56e47a2334d14fd09e3299b7b87fdb47",
           "entry_type": "topic",
           "title": "OSM: MTB Map (XYZ)",
           "service_type": "ogc_wmts",
@@ -1349,8 +1353,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&format&type=xyz&url=http://tile.mtbmap.cz/mtbmap_tiles/{z}/{x}/{y}.png&zmax=18&zmin=0"
         },
-        "9845239d4e60488e8633d5a97903a84d": {
-          "id": "9845239d4e60488e8633d5a97903a84d",
+        {
+          "id": "1db0915527944b85a512c6b8df171575",
           "entry_type": "topic",
           "title": "OSM: OpenSnowMap Pisten (XYZ)",
           "service_type": "ogc_wmts",
@@ -1360,13 +1364,14 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&format&type=xyz&url=https://tiles.opensnowmap.org/pistes/{z}/{x}/{y}.png&zmax=18&zmin=0"
         }
-      }
+      ]
     },
-    "osm2": {
+    {
+      "id": "cd16ba37ba1742c68f988a97a0261504",
       "title": "OpenStreetMap abgeleitet",
-      "topics": {
-        "0ace9a59aa59441e8239a4817df68851": {
-          "id": "0ace9a59aa59441e8239a4817df68851",
+      "topics": [
+        {
+          "id": "226df04e80984f5aaeb8789722246c04",
           "entry_type": "topic",
           "title": "OSM: OpenTopoMap (XYZ)",
           "service_type": "ogc_wmts",
@@ -1376,8 +1381,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&format&type=xyz&url=https://a.tile.opentopomap.org/%7Bz%7D/%7Bx%7D/%7By%7D.png&zmax=18&zmin=0"
         },
-        "147fbdf2a91c4ad2986fed31c4be3d01": {
-          "id": "147fbdf2a91c4ad2986fed31c4be3d01",
+        {
+          "id": "03f1639a673341b99253eae2443a6dc4",
           "entry_type": "topic",
           "title": "OSM: OpenStreetMap Fire Map (XYZ)",
           "service_type": "ogc_wmts",
@@ -1387,8 +1392,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&http-header:referer=&type=xyz&url=http://openfiremap.org/hytiles/%7Bz%7D/%7Bx%7D/%7By%7D.png"
         },
-        "50ba3b2219654a9c922c5c2f4cce3877": {
-          "id": "50ba3b2219654a9c922c5c2f4cce3877",
+        {
+          "id": "c133d399c0ff46c1a034e169b9d3e1e6",
           "entry_type": "topic",
           "title": "OSM: MeMoMaps ÖPNV-Karte (XYZ)",
           "service_type": "ogc_wmts",
@@ -1398,8 +1403,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&format&type=xyz&url=https://tileserver.memomaps.de/tilegen/%7Bz%7D/%7Bx%7D/%7By%7D.png&zmax=18&zmin=0"
         },
-        "8960f20de6fd4af0977c81f3c2045a5d": {
-          "id": "8960f20de6fd4af0977c81f3c2045a5d",
+        {
+          "id": "63d60f3888bd4a1e90749f58517a975b",
           "entry_type": "topic",
           "title": "OSM: OpenRailwayMap (XYZ)",
           "service_type": "ogc_wmts",
@@ -1409,8 +1414,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&format&type=xyz&url=https://a.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png&zmax=18&zmin=0"
         },
-        "d79c43fe6c11426eb4bc4991139408e0": {
-          "id": "d79c43fe6c11426eb4bc4991139408e0",
+        {
+          "id": "68dc7da930074e71a6c67b7f358c832c",
           "entry_type": "topic",
           "title": "OSM: OpenSeaMap (XYZ)",
           "service_type": "ogc_wmts",
@@ -1421,8 +1426,8 @@
           "service_uri": "crs={crs}&format&type=xyz&url=https://t1.openseamap.org/seamark/{z}/{x}/{y}.png&zmax=18&zmin=0",
           "separator_after": true
         },
-        "924a3c1301fc4feaa78d758c4ebb1f09": {
-          "id": "924a3c1301fc4feaa78d758c4ebb1f09",
+        {
+          "id": "c7e0f37511864b8aba9d6280f944bffb",
           "entry_type": "topic",
           "title": "OSM: OpenInfraMap (WFS)",
           "service_type": "ogc_vectortiles",
@@ -1433,13 +1438,14 @@
           "service_uri": "crs={crs}&type=xyz&url=https://openinframap.org/tiles/%7Bz%7D/%7Bx%7D/%7By%7D.pbf&zmax=14&zmin=0",
           "separator_after": true
         }
-      }
+      ]
     },
-    "osm3_cartodb": {
+    {
+      "id": "9697382657814d21ad557e177af448b7",
       "title": "OpenStreetMap CartoDB",
-      "topics": {
-        "7667db4044f14102af5c6e8ebe1035b4": {
-          "id": "7667db4044f14102af5c6e8ebe1035b4",
+      "topics": [
+        {
+          "id": "cea913c727d84f2da482e75b58b58525",
           "entry_type": "topic",
           "title": "OSM: CartoDB DarkMatter (XYZ)",
           "service_type": "ogc_wmts",
@@ -1449,8 +1455,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&format&type=xyz&url=https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png"
         },
-        "ed15abc4478c48dc9157b49d0cb6b840": {
-          "id": "ed15abc4478c48dc9157b49d0cb6b840",
+        {
+          "id": "eb8153bc8c864f5d9efd8ae3b270c30e",
           "entry_type": "topic",
           "title": "OSM: CartoDB DarkMatter NoLabels (XYZ)",
           "service_type": "ogc_wmts",
@@ -1460,8 +1466,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&format&type=xyz&url=https://a.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png"
         },
-        "d30e9d6f47914874ac93ffcffb543716": {
-          "id": "d30e9d6f47914874ac93ffcffb543716",
+        {
+          "id": "bf2e01936c344f30ad6373805611c25a",
           "entry_type": "topic",
           "title": "OSM: CartoDB DarkMatter OnlyLabels (XYZ)",
           "service_type": "ogc_wmts",
@@ -1472,8 +1478,8 @@
           "service_uri": "crs={crs}&format&type=xyz&url=https://a.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}.png",
           "separator_after": true
         },
-        "47457763a65a4d3195df05747ef11524": {
-          "id": "47457763a65a4d3195df05747ef11524",
+        {
+          "id": "544e13f2acfc4259b46b28ed0ccb3cfa",
           "entry_type": "topic",
           "title": "OSM: CartoDB Positron (XYZ)",
           "service_type": "ogc_wmts",
@@ -1483,8 +1489,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&format&type=xyz&url=https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
         },
-        "f5a3a319172440dd9f99b02978d51965": {
-          "id": "f5a3a319172440dd9f99b02978d51965",
+        {
+          "id": "a696a8c0de844a8c9e4bc3d9c7c72d3f",
           "entry_type": "topic",
           "title": "OSM: CartoDB Positron NoLabels (XYZ)",
           "service_type": "ogc_wmts",
@@ -1494,8 +1500,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&format&type=xyz&url=https://a.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png"
         },
-        "7b4977403abb403aaa4566817337cac8": {
-          "id": "7b4977403abb403aaa4566817337cac8",
+        {
+          "id": "f6075534be564173af4e9016f791f81b",
           "entry_type": "topic",
           "title": "OSM: CartoDB Positron OnlyLabels (XYZ)",
           "service_type": "ogc_wmts",
@@ -1506,8 +1512,8 @@
           "service_uri": "crs={crs}&format&type=xyz&url=https://a.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png",
           "separator_after": true
         },
-        "46c1c5ff9411449aa041f6c7d7dbb095": {
-          "id": "46c1c5ff9411449aa041f6c7d7dbb095",
+        {
+          "id": "911f3e474ea844b5be48f7403ca97009",
           "entry_type": "topic",
           "title": "OSM: CartoDB Voyager (XYZ)",
           "service_type": "ogc_wmts",
@@ -1517,8 +1523,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&format&type=xyz&url=https://a.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png"
         },
-        "b93dcbb47335410fb86a872e588072ba": {
-          "id": "b93dcbb47335410fb86a872e588072ba",
+        {
+          "id": "28b6c448722f497f86dbcec21afbc437",
           "entry_type": "topic",
           "title": "OSM: CartoDB Voyager LabelsUnder (XYZ)",
           "service_type": "ogc_wmts",
@@ -1528,8 +1534,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&format&type=xyz&url=https://a.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}.png"
         },
-        "ab279563d1a7405d9578fab72fde13e0": {
-          "id": "ab279563d1a7405d9578fab72fde13e0",
+        {
+          "id": "ac1f8f829f2c41ca917375c7f7f1b6ad",
           "entry_type": "topic",
           "title": "OSM: CartoDB Voyager NoLabels (XYZ)",
           "service_type": "ogc_wmts",
@@ -1539,8 +1545,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&format&type=xyz&url=https://a.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}.png"
         },
-        "26a31698e10a44b6bcd87ac6d03e6033": {
-          "id": "26a31698e10a44b6bcd87ac6d03e6033",
+        {
+          "id": "3f407541bfd4434abef3eddf7df8401c",
           "entry_type": "topic",
           "title": "OSM: CartoDB Voyager OnlyLabels (XYZ)",
           "service_type": "ogc_wmts",
@@ -1551,13 +1557,14 @@
           "service_uri": "crs={crs}&format&type=xyz&url=https://a.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}.png",
           "separator_after": true
         }
-      }
+      ]
     },
-    "VersaTiles": {
+    {
+      "id": "d0cfc72fe2fc499fbc94cb411d83f0b4",
       "title": "OpenStreetMap VersaTiles",
-      "topics": {
-        "bbd43d88d0894a0da062b1628d67fe35": {
-          "id": "bbd43d88d0894a0da062b1628d67fe35",
+      "topics": [
+        {
+          "id": "a40d2eb37d26405fb48131495afcf102",
           "entry_type": "topic",
           "title": "VersaTiles: Colorful (WFS)",
           "service_type": "ogc_vectortiles",
@@ -1567,8 +1574,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&styleUrl=https://tiles.versatiles.org/assets/styles/colorful/style.json&type=xyz&url=https://tiles.versatiles.org/tiles/osm/%7Bz%7D/%7Bx%7D/%7By%7D&zmax=14&zmin=0&http-header:referer="
         },
-        "944f08f94e4440f792154b653793067d": {
-          "id": "944f08f94e4440f792154b653793067d",
+        {
+          "id": "5df3f67774cf47c69d041ffb7885aab0",
           "entry_type": "topic",
           "title": "VersaTiles: Eclipse (WFS)",
           "service_type": "ogc_vectortiles",
@@ -1578,8 +1585,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&styleUrl=https://tiles.versatiles.org/assets/styles/eclipse/style.json&type=xyz&url=https://tiles.versatiles.org/tiles/osm/%7Bz%7D/%7Bx%7D/%7By%7D&zmax=14&zmin=0&http-header:referer="
         },
-        "0a1da318d8524e64adc89d5284be0f67": {
-          "id": "0a1da318d8524e64adc89d5284be0f67",
+        {
+          "id": "0d04487f2d164cf7a87a2fc241c44427",
           "entry_type": "topic",
           "title": "VersaTiles: Graybeard (WFS)",
           "service_type": "ogc_vectortiles",
@@ -1589,8 +1596,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&styleUrl=https://tiles.versatiles.org/assets/styles/graybeard/style.json&type=xyz&url=https://tiles.versatiles.org/tiles/osm/%7Bz%7D/%7Bx%7D/%7By%7D&zmax=14&zmin=0&http-header:referer="
         },
-        "fd3b9612ac094cfb8b3a75f818ad91e4": {
-          "id": "fd3b9612ac094cfb8b3a75f818ad91e4",
+        {
+          "id": "446808f8590b44f0b039bca8e4ab8ec4",
           "entry_type": "topic",
           "title": "VersaTiles: Shadow (WFS)",
           "service_type": "ogc_vectortiles",
@@ -1600,8 +1607,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&styleUrl=https://tiles.versatiles.org/assets/styles/shadow/style.json&type=xyz&url=https://tiles.versatiles.org/tiles/osm/%7Bz%7D/%7Bx%7D/%7By%7D&zmax=14&zmin=0&http-header:referer="
         },
-        "b134a761e494424e9c24a2d33ab8f6f0": {
-          "id": "b134a761e494424e9c24a2d33ab8f6f0",
+        {
+          "id": "29c238d6301e46119359c8f036e83198",
           "entry_type": "topic",
           "title": "VersaTiles: Neutrino (WFS)",
           "service_type": "ogc_vectortiles",
@@ -1611,13 +1618,14 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&styleUrl=https://tiles.versatiles.org/assets/styles/neutrino/style.json&type=xyz&url=https://tiles.versatiles.org/tiles/osm/%7Bz%7D/%7Bx%7D/%7By%7D&zmax=14&zmin=0&http-header:referer="
         }
-      }
+      ]
     },
-    "google": {
+    {
+      "id": "61d07016867c4dc8b14329a384b35035",
       "title": "Google",
-      "topics": {
-        "4096d69368cf4f64b30f098d016ff599": {
-          "id": "4096d69368cf4f64b30f098d016ff599",
+      "topics": [
+        {
+          "id": "4e0ff774ee934bda8894045366d00c13",
           "entry_type": "topic",
           "title": "Google: Maps (XYZ)",
           "service_type": "ogc_wmts",
@@ -1627,8 +1635,8 @@
           "gbl_view": false,
           "service_uri": "crs={crs}&type=xyz&zmin=0&zmax=20&url=https://mt1.google.com/vt/lyrs%3Dm%26x%3D{x}%26y%3D{y}%26z%3D{z}"
         },
-        "deba2528076d472f9290a03e9274d077": {
-          "id": "deba2528076d472f9290a03e9274d077",
+        {
+          "id": "66224509856a4d2ead4b9ae5689ae1e5",
           "entry_type": "topic",
           "title": "Google: Satellite (XYZ)",
           "service_type": "ogc_wmts",
@@ -1638,8 +1646,8 @@
           "gbl_view": false,
           "service_uri": "crs={crs}&type=xyz&zmin=0&zmax=20&url=https://mt1.google.com/vt/lyrs%3Ds%26x%3D{x}%26y%3D{y}%26z%3D{z}"
         },
-        "de430a3444d145bba53cb94344882db4": {
-          "id": "de430a3444d145bba53cb94344882db4",
+        {
+          "id": "df6c719cf49e4452937875654f9dad01",
           "entry_type": "topic",
           "title": "Google: Terrain (XYZ)",
           "service_type": "ogc_wmts",
@@ -1649,8 +1657,8 @@
           "gbl_view": false,
           "service_uri": "crs={crs}&type=xyz&zmin=0&zmax=20&url=https://mt1.google.com/vt/lyrs%3Dp%26x%3D{x}%26y%3D{y}%26z%3D{z}"
         },
-        "b0f39a1ffd10418a9f1f726d95dbd8bb": {
-          "id": "b0f39a1ffd10418a9f1f726d95dbd8bb",
+        {
+          "id": "021d9955fd024584a783309bbf10c93a",
           "entry_type": "topic",
           "title": "Google: Hybrid (XYZ)",
           "service_type": "ogc_wmts",
@@ -1660,8 +1668,8 @@
           "gbl_view": false,
           "service_uri": "crs={crs}&type=xyz&zmin=0&zmax=20&url=https://mt1.google.com/vt/lyrs%3Dy%26x%3D{x}%26y%3D{y}%26z%3D{z}"
         },
-        "342f2c08581845afa414ac98f24e0e08": {
-          "id": "342f2c08581845afa414ac98f24e0e08",
+        {
+          "id": "1865025631194cf89370bd28d6f754e2",
           "entry_type": "topic",
           "title": "Google: Labels (XYZ)",
           "service_type": "ogc_wmts",
@@ -1671,8 +1679,8 @@
           "gbl_view": false,
           "service_uri": "crs={crs}&type=xyz&zmin=0&zmax=20&url=https://mt1.google.com/vt/lyrs%3Dh%26x%3D{x}%26y%3D{y}%26z%3D{z}"
         },
-        "8e510e5127a4482cbbee99f0d64e9659": {
-          "id": "8e510e5127a4482cbbee99f0d64e9659",
+        {
+          "id": "be44a300d22642959bbdcd09b002911f",
           "entry_type": "topic",
           "title": "Google: Traffic (XYZ)",
           "service_type": "ogc_wmts",
@@ -1682,13 +1690,14 @@
           "gbl_view": false,
           "service_uri": "crs={crs}&type=xyz&url=https://mt0.google.com/vt/lyrs%3Dh@221097413,traffic%7Cseconds_into_week:-1%26hl%3Den%26style%3D2%26x%3D%7Bx%7D%26y%3D%7By%7D%26z%3D%7Bz%7D&zmax=18&zmin=0"
         }
-      }
+      ]
     },
-    "BING": {
+    {
+      "id": "3e245ca982ea461a96eaf3f00901e1ff",
       "title": "BING",
-      "topics": {
-        "2bbc61de094142ac8ebb59313e0e32b8": {
-          "id": "2bbc61de094142ac8ebb59313e0e32b8",
+      "topics": [
+        {
+          "id": "c703c9ae63bd40b894e2070e4323942c",
           "entry_type": "topic",
           "title": "Bing VirtualEarth (XYZ)",
           "service_type": "ogc_wmts",
@@ -1698,13 +1707,14 @@
           "gbl_view": false,
           "service_uri": "crs={crs}&http-header:referer=&type=xyz&url=http://ecn.t3.tiles.virtualearth.net/tiles/a%7Bq%7D.jpeg?g%3D1&zmax=18&zmin=0"
         }
-      }
+      ]
     },
-    "USGS": {
+    {
+      "id": "17e0c5d37f66430694acade1b72abb1d",
       "title": "USGS",
-      "topics": {
-        "2ca29bf2176f4d31ade30aa81584d57c": {
-          "id": "2ca29bf2176f4d31ade30aa81584d57c",
+      "topics": [
+        {
+          "id": "c208f661859d4292aadb566b60723a49",
           "entry_type": "topic",
           "title": "USGS Topo Base Map (WMS)",
           "service_type": "ogc_wms",
@@ -1717,13 +1727,14 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=0&styles=default&tilePixelRatio=0&url=https://basemap.nationalmap.gov/arcgis/services/USGSTopo/MapServer/WMSServer"
         }
-      }
+      ]
     },
-    "ESRI": {
+    {
+      "id": "e5a1ebc332d94168ac04abb9878d08f2",
       "title": "ESRI",
-      "topics": {
-        "21b1013c083c433b90d2d4df65024d07": {
-          "id": "21b1013c083c433b90d2d4df65024d07",
+      "topics": [
+        {
+          "id": "c2968771a8a84932b06063deeb2a7246",
           "entry_type": "topic",
           "title": "ESRI: Gray (light) (XYZ)",
           "service_type": "ogc_wmts",
@@ -1733,8 +1744,8 @@
           "gbl_view": false,
           "service_uri": "crs={crs}&http-header:referer=Requires ArcGIS Onlinesubscription&referer=Requires ArcGIS Onlinesubscription&type=xyz&url=http://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D&zmax=16&zmin=0"
         },
-        "c3a7980998894e979a98115463d77d0c": {
-          "id": "c3a7980998894e979a98115463d77d0c",
+        {
+          "id": "02bbfe84aaf94f0baf33a9c85c658d56",
           "entry_type": "topic",
           "title": "ESRI: Gray (dark) (XYZ)",
           "service_type": "ogc_wmts",
@@ -1744,8 +1755,8 @@
           "gbl_view": false,
           "service_uri": "crs={crs}&http-header:referer=Requires ArcGIS Onlinesubscription&referer=Requires ArcGIS Onlinesubscription&type=xyz&url=http://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D&zmax=16&zmin=0"
         },
-        "0f7053d172c84c49a4dcbcb725e410b5": {
-          "id": "0f7053d172c84c49a4dcbcb725e410b5",
+        {
+          "id": "643a206a4e7d42edbbe4b2b4db36b787",
           "entry_type": "topic",
           "title": "ESRI: National Geographic (XYZ)",
           "service_type": "ogc_wmts",
@@ -1755,8 +1766,8 @@
           "gbl_view": false,
           "service_uri": "crs={crs}&http-header:referer=Requires ArcGIS Onlinesubscription&referer=Requires ArcGIS Onlinesubscription&type=xyz&url=http://services.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D&zmax=12&zmin=0"
         },
-        "db0b0633b9f043c38fdaac9dc1b61f93": {
-          "id": "db0b0633b9f043c38fdaac9dc1b61f93",
+        {
+          "id": "0b2e3a5bd94a41259f346294f050d1a0",
           "entry_type": "topic",
           "title": "ESRI: WorldTopoMap (XYZ)",
           "service_type": "ogc_wmts",
@@ -1766,8 +1777,8 @@
           "gbl_view": false,
           "service_uri": "crs={crs}&format&type=xyz&url=https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D&zmax=18&zmin=0&http-header:referer="
         },
-        "eaaaae98c47b4f2387761753078a8d2a": {
-          "id": "eaaaae98c47b4f2387761753078a8d2a",
+        {
+          "id": "592454218d254fb19be6924f6ebd7902",
           "entry_type": "topic",
           "title": "ESRI: WorldStreetMap (XYZ)",
           "service_type": "ogc_wmts",
@@ -1778,8 +1789,8 @@
           "service_uri": "crs={crs}&format&type=xyz&url=https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D&zmax=18&zmin=0&http-header:referer=",
           "separator_after": true
         },
-        "8db04ca37b8d4bb090bab0a2ac81bb6d": {
-          "id": "8db04ca37b8d4bb090bab0a2ac81bb6d",
+        {
+          "id": "9d9f96bf79924ff59ad12b6c6469b90c",
           "entry_type": "topic",
           "title": "ESRI: Transportation (XYZ)",
           "service_type": "ogc_wmts",
@@ -1789,8 +1800,8 @@
           "gbl_view": false,
           "service_uri": "crs={crs}&http-header:referer=Requires ArcGIS Onlinesubscription&referer=Requires ArcGIS Onlinesubscription&type=xyz&url=https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D&zmax=20&zmin=0"
         },
-        "5bf0d286f5f1422490db3ad8ce85e57e": {
-          "id": "5bf0d286f5f1422490db3ad8ce85e57e",
+        {
+          "id": "5d4b3caa462f412e848b88151ddc5526",
           "entry_type": "topic",
           "title": "ESRI: Boundaries Places (XYZ)",
           "service_type": "ogc_wmts",
@@ -1801,8 +1812,8 @@
           "service_uri": "crs={crs}&http-header:referer=Requires ArcGIS Onlinesubscription&referer=Requires ArcGIS Onlinesubscription&type=xyz&url=https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D&zmax=20&zmin=0",
           "separator_after": true
         },
-        "c39dbe475888455ab887ef1c20bc06c7": {
-          "id": "c39dbe475888455ab887ef1c20bc06c7",
+        {
+          "id": "8b3d87d746bb420c9e6a30105654a579",
           "entry_type": "topic",
           "title": "ESRI: Satellite (XYZ)",
           "service_type": "ogc_wmts",
@@ -1812,8 +1823,8 @@
           "gbl_view": false,
           "service_uri": "crs={crs}&http-header:referer=Requires ArcGIS Onlinesubscription&referer=Requires ArcGIS Onlinesubscription&type=xyz&url=https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D&zmax=17&zmin=0"
         },
-        "c361a8600efa4f26b8a0e267f3382864": {
-          "id": "c361a8600efa4f26b8a0e267f3382864",
+        {
+          "id": "cf770b4ca89d433f8b6b26e0776e3cc1",
           "entry_type": "topic",
           "title": "ESRI: WorldPhysical (XYZ)",
           "service_type": "ogc_wmts",
@@ -1823,8 +1834,8 @@
           "gbl_view": false,
           "service_uri": "crs={crs}&format&type=xyz&url=https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D&zmax=18&zmin=0&http-header:referer="
         },
-        "f6a3312cc53e46c1b577ed3d85410a7a": {
-          "id": "f6a3312cc53e46c1b577ed3d85410a7a",
+        {
+          "id": "e5a2dde2dc6c4b248acd86485b35ce2c",
           "entry_type": "topic",
           "title": "ESRI: WorldTerrain (XYZ)",
           "service_type": "ogc_wmts",
@@ -1834,8 +1845,8 @@
           "gbl_view": false,
           "service_uri": "crs={crs}&format&type=xyz&url=https://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D&zmax=18&zmin=0&http-header:referer="
         },
-        "0f359c97f6c147699ea555c6eb0b172f": {
-          "id": "0f359c97f6c147699ea555c6eb0b172f",
+        {
+          "id": "e82edf060ddc46659a75e761dbc2847b",
           "entry_type": "topic",
           "title": "ESRI: WorldShadedRelief (XYZ)",
           "service_type": "ogc_wmts",
@@ -1845,8 +1856,8 @@
           "gbl_view": false,
           "service_uri": "crs={crs}&format&type=xyz&url=https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D&zmax=18&zmin=0&http-header:referer="
         },
-        "feb68aa371ed4d3285e62a81bd713138": {
-          "id": "feb68aa371ed4d3285e62a81bd713138",
+        {
+          "id": "3e69017b346e4f8c8e3d603bbeed695e",
           "entry_type": "topic",
           "title": "ESRI: Ocean (XYZ)",
           "service_type": "ogc_wmts",
@@ -1856,7 +1867,7 @@
           "gbl_view": false,
           "service_uri": "crs={crs}&http-header:referer=Requires ArcGIS Onlinesubscription&referer=Requires ArcGIS Onlinesubscription&type=xyz&url=https://services.arcgisonline.com/ArcGIS/rest/services/Ocean/World_Ocean_Base/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D&zmax=10&zmin=0"
         }
-      }
+      ]
     }
-  }
+  ]
 }

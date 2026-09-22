@@ -2,7 +2,7 @@
   "format_version": 7.0,
   "id": "historical",
   "catalog_version": 1.0,
-  "modified": "2026-09-13T22:46:51+02:00",
+  "modified": "2026-09-22T09:58:06+02:00",
   "author": "geoObserver",
   "title": "Katalog 8: Historisch / Historical",
   "description": "Migrated from a GeoBasis Loader v6 catalog.",
@@ -12,12 +12,13 @@
     "EPSG:4258",
     "EPSG:4326"
   ],
-  "regions": {
-    "BE_BB": {
+  "regions": [
+    {
+      "id": "7b4ab2a150d940e08d74db85efd170f4",
       "title": "Berlin/Brandenburg",
-      "topics": {
-        "5c2cf46a17c34102b63e39c007c80669": {
-          "id": "5c2cf46a17c34102b63e39c007c80669",
+      "topics": [
+        {
+          "id": "6df5baa1cc7a4363adfc1471b9d97670",
           "entry_type": "topic",
           "title": "BE/BB: Schmettausches Kartenwerk 1767-1787 (WMS)",
           "service_type": "ogc_wms",
@@ -34,8 +35,8 @@
           "service_uri": "crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=schmettau&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/schmettau/service/wms",
           "separator_after": true
         },
-        "4a1fef83124b46e0ac327dc36a54bdde": {
-          "id": "4a1fef83124b46e0ac327dc36a54bdde",
+        {
+          "id": "c893cec50ac44ad1a1294006cea88d78",
           "entry_type": "topic",
           "title": "BE/BB: Histor. Digitale Orthophotos - DOP20 - 2009-2012 (WMS)",
           "service_type": "ogc_wms",
@@ -52,8 +53,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2009_2012_farbe&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2009_2012/service/wms"
         },
-        "5620135e85e14c5fa74e00d8d93d764f": {
-          "id": "5620135e85e14c5fa74e00d8d93d764f",
+        {
+          "id": "ade85ac004554502bfcdb21eef4ee1d7",
           "entry_type": "topic",
           "title": "BE/BB: Histor. Digitale Orthophotos - DOP20 - 2013-2015 (WMS)",
           "service_type": "ogc_wms",
@@ -70,8 +71,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2013_2015_farbe&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2013_2015/service/wms"
         },
-        "6485d93722bc4274af4802ffe4ba66b8": {
-          "id": "6485d93722bc4274af4802ffe4ba66b8",
+        {
+          "id": "034701e46a8a4c1f943f6926953ce751",
           "entry_type": "topic",
           "title": "BE/BB: Histor. Digitale Orthophotos - DOP20 - 2016-2018 (WMS)",
           "service_type": "ogc_wms",
@@ -88,8 +89,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2016_2018_farbe&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2016_2018/service/wms"
         },
-        "ccbc23d5f20e4c2d8fb1647c63c00238": {
-          "id": "ccbc23d5f20e4c2d8fb1647c63c00238",
+        {
+          "id": "a24724bddd6b4bf0b5d9e433301abb97",
           "entry_type": "topic",
           "title": "BE/BB: Histor. Digitale Orthophotos - DOP20 - 2019-2021 (WMS)",
           "service_type": "ogc_wms",
@@ -107,8 +108,8 @@
           "service_uri": "crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2019_2021_farbe&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2019_2021/service/wms",
           "separator_after": true
         },
-        "fda7c147f8644d7fb663d3af54c8ec88": {
-          "id": "fda7c147f8644d7fb663d3af54c8ec88",
+        {
+          "id": "64ccd27660c44216a3b2ffb8804c0e60",
           "entry_type": "topic",
           "title": "BE/BB: Histor. Digitale Orthophotos monochrom - DOP20 - 2009-2012 (WMS)",
           "service_type": "ogc_wms",
@@ -125,8 +126,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2009_2012_graustufen&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2009_2012/service/wms"
         },
-        "f03ab99c4864473b85ff709f0f4845d7": {
-          "id": "f03ab99c4864473b85ff709f0f4845d7",
+        {
+          "id": "dc718e33521b49629ac4ddba18b05813",
           "entry_type": "topic",
           "title": "BE/BB: Histor. Digitale Orthophotos monochrom - DOP20 - 2013-2015 (WMS)",
           "service_type": "ogc_wms",
@@ -143,8 +144,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2013_2015_grau&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2013_2015/service/wms"
         },
-        "efa46449b98644f6b8908401ab2567a0": {
-          "id": "efa46449b98644f6b8908401ab2567a0",
+        {
+          "id": "372793bc4c2d437d9da5cad7e24aaa94",
           "entry_type": "topic",
           "title": "BE/BB: Histor. Digitale Orthophotos monochrom - DOP20 - 2016-2018 (WMS)",
           "service_type": "ogc_wms",
@@ -161,8 +162,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2016_2018_graustufen&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2016_2018/service/wms"
         },
-        "328483c299424531b04805b46e24d8fc": {
-          "id": "328483c299424531b04805b46e24d8fc",
+        {
+          "id": "e7a4dddf71854032977b1d55b050da39",
           "entry_type": "topic",
           "title": "BE/BB: Histor. Digitale Orthophotos monochrom - DOP20 - 2019-2021 (WMS)",
           "service_type": "ogc_wms",
@@ -180,13 +181,14 @@
           "service_uri": "crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=dop20_bebb_2019_2021_graustufen&styles&tilePixelRatio=0&url=https://isk.geobasis-bb.de/mapproxy/dop20_2019_2021/service/wms",
           "separator_after": true
         }
-      }
+      ]
     },
-    "MV:": {
+    {
+      "id": "7d2a26c1473644d18931d37524516335",
       "title": "Mecklenburg/Vorpommern",
-      "topics": {
-        "6da3628ec4b7415cb77315d914fc7b62": {
-          "id": "6da3628ec4b7415cb77315d914fc7b62",
+      "topics": [
+        {
+          "id": "7f90de2240a446928290238c141957ec",
           "entry_type": "topic",
           "title": "MV: Wiebeking 1786 (WMS)",
           "service_type": "ogc_wms",
@@ -216,8 +218,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=wiebeking_1786&styles&tilePixelRatio=0&url=https://www.geodaten-mv.de/dienste/historische_karten_wms"
         },
-        "067385b769414259b0bea43ebf079c59": {
-          "id": "067385b769414259b0bea43ebf079c59",
+        {
+          "id": "4a30820100364ddd80bd70caa7bd3700",
           "entry_type": "topic",
           "title": "MV: Schmettau 1788 (WMS)",
           "service_type": "ogc_wms",
@@ -247,8 +249,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=schmettau_1788&styles&tilePixelRatio=0&url=https://www.geodaten-mv.de/dienste/historische_karten_wms"
         },
-        "31f767cbe8d140879394a33190337420": {
-          "id": "31f767cbe8d140879394a33190337420",
+        {
+          "id": "6ea1946dd05c442ab80f5a59710d7d8e",
           "entry_type": "topic",
           "title": "MV: Messtischblaetter 1888 (WMS)",
           "service_type": "ogc_wms",
@@ -278,8 +280,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=messtischblaetter_1888&styles&tilePixelRatio=0&url=https://www.geodaten-mv.de/dienste/historische_karten_wms"
         },
-        "8a7c141783d44fc8924fc9059be5edd8": {
-          "id": "8a7c141783d44fc8924fc9059be5edd8",
+        {
+          "id": "503f140a71684a94ad05442dc8dd138e",
           "entry_type": "topic",
           "title": "MV: TK25AS um 1980 (WMS)",
           "service_type": "ogc_wms",
@@ -309,13 +311,14 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=mv_tk25as&styles&tilePixelRatio=0&url=https://www.geodaten-mv.de/dienste/tk25as_laiv_wms"
         }
-      }
+      ]
     },
-    "ST:": {
+    {
+      "id": "3fac6e9c10904ee0a44432afa3ffac7f",
       "title": "Sachsen-Anhalt",
-      "topics": {
-        "20d9e6d828dd4bd38c81466ecea4051d": {
-          "id": "20d9e6d828dd4bd38c81466ecea4051d",
+      "topics": [
+        {
+          "id": "fb1e216ad3744b3b8583636aed39a53f",
           "entry_type": "topic",
           "title": "ST: DOP100 InVeKoS RGB 2009 - 100 cm (WMS)",
           "service_type": "ogc_wms",
@@ -338,8 +341,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/jpeg&layers=mlu_invekos09_rgb&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/f4bc7441-e2ce-d0a3/GDI-LSA_MLU_DOP/ows.wms"
         },
-        "a1570823b69e4c5ea45d589e3ebc6c81": {
-          "id": "a1570823b69e4c5ea45d589e3ebc6c81",
+        {
+          "id": "05f1eb38f3a1473a82d66acc9f01ef76",
           "entry_type": "topic",
           "title": "ST: DOP100 InVeKoS CIR 2009 - 100 cm (WMS)",
           "service_type": "ogc_wms",
@@ -362,13 +365,14 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/jpeg&layers=mlu_invekos09_cir&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/gfds/ws/wms/f4bc7441-e2ce-d0a3/GDI-LSA_MLU_DOP/ows.wms"
         }
-      }
+      ]
     },
-    "BY:": {
+    {
+      "id": "29acaf9d0cc74ef795a4ecfb1c0cff6a",
       "title": "Bayern",
-      "topics": {
-        "81250e64d8224698acfd06dfa0a8c906": {
-          "id": "81250e64d8224698acfd06dfa0a8c906",
+      "topics": [
+        {
+          "id": "37186ed479a34c16ba0091a3963a5971",
           "entry_type": "topic",
           "title": "BY: DOP 2024 Süd (WMS)",
           "service_type": "ogc_wms",
@@ -387,8 +391,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2024_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
         },
-        "20ec7456978d4ec7af6d3233ce08c71e": {
-          "id": "20ec7456978d4ec7af6d3233ce08c71e",
+        {
+          "id": "eb8a13099df643cba654000d3fefce9c",
           "entry_type": "topic",
           "title": "BY: DOP 2023 Nord (WMS)",
           "service_type": "ogc_wms",
@@ -407,8 +411,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2023_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
         },
-        "9d6daefa594248e2be20c5d4cb49d150": {
-          "id": "9d6daefa594248e2be20c5d4cb49d150",
+        {
+          "id": "d2499d5b5f5f4a69a50c8fcc07ceedeb",
           "entry_type": "topic",
           "title": "BY: DOP 2022 Süd (WMS)",
           "service_type": "ogc_wms",
@@ -427,8 +431,8 @@
           "gbl_view": true,
           "service_uri": "ontextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2022_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
         },
-        "b8eb6731ea084879ac2e88b3ccdd6b86": {
-          "id": "b8eb6731ea084879ac2e88b3ccdd6b86",
+        {
+          "id": "0d6950a77d284e31811caab0ebb000f6",
           "entry_type": "topic",
           "title": "BY: DOP 2021 Nord (WMS)",
           "service_type": "ogc_wms",
@@ -447,8 +451,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2021_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
         },
-        "582cea1f8afd4cf89c66e0378b6797be": {
-          "id": "582cea1f8afd4cf89c66e0378b6797be",
+        {
+          "id": "505106ebb5644b6e99ed9258d6a00ca8",
           "entry_type": "topic",
           "title": "BY: DOP 2020 Süd (WMS)",
           "service_type": "ogc_wms",
@@ -467,8 +471,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2020_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
         },
-        "537dc288715c480a801a4203b53d56ce": {
-          "id": "537dc288715c480a801a4203b53d56ce",
+        {
+          "id": "9c423ec1871f42ec8fc5cdb976c126d0",
           "entry_type": "topic",
           "title": "BY: DOP 2019 Nord (WMS)",
           "service_type": "ogc_wms",
@@ -487,8 +491,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2019_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
         },
-        "a696bb474ef9400c92699e24ffe95aea": {
-          "id": "a696bb474ef9400c92699e24ffe95aea",
+        {
+          "id": "b8552e85779740909250756e161365c4",
           "entry_type": "topic",
           "title": "BY: DOP 2018 Süd (WMS)",
           "service_type": "ogc_wms",
@@ -507,8 +511,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2018_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
         },
-        "1843670e50e14a1b99708bcf830bb9dd": {
-          "id": "1843670e50e14a1b99708bcf830bb9dd",
+        {
+          "id": "2805ff9ce8c444a2b34f7c57421e6353",
           "entry_type": "topic",
           "title": "BY: DOP 2017 Nord (WMS)",
           "service_type": "ogc_wms",
@@ -527,8 +531,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2017_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
         },
-        "8ca8c4f94a094eb9b3d1570c67f3ef7a": {
-          "id": "8ca8c4f94a094eb9b3d1570c67f3ef7a",
+        {
+          "id": "c7b20ef2d1c4454bad14804d407fd470",
           "entry_type": "topic",
           "title": "BY: DOP 2016 Niederbayern/Oberpfalz (WMS)",
           "service_type": "ogc_wms",
@@ -547,8 +551,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2016_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
         },
-        "9bd1a73aca8449989af03f4cc940f18d": {
-          "id": "9bd1a73aca8449989af03f4cc940f18d",
+        {
+          "id": "98e557a686f941e9a388dd812474d176",
           "entry_type": "topic",
           "title": "BY: DOP 2015 Oberbayern/Schwaben (WMS)",
           "service_type": "ogc_wms",
@@ -567,8 +571,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2015_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
         },
-        "659bcb345a9e4f7c8be9c1b34e3e4738": {
-          "id": "659bcb345a9e4f7c8be9c1b34e3e4738",
+        {
+          "id": "cbed7cbacb6c44d097a3daec115b58d4",
           "entry_type": "topic",
           "title": "BY: DOP 2014 Franken (WMS)",
           "service_type": "ogc_wms",
@@ -587,8 +591,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2014_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
         },
-        "638d8855b50a46b58ad9ce3eb3df71f6": {
-          "id": "638d8855b50a46b58ad9ce3eb3df71f6",
+        {
+          "id": "f63d046af8cc4132b0ed1ed32701eb74",
           "entry_type": "topic",
           "title": "BY: DOP 2013 Niederbayern/Oberpfalz (WMS)",
           "service_type": "ogc_wms",
@@ -607,8 +611,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2013_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
         },
-        "34f7bac40288460c9545739681209ca0": {
-          "id": "34f7bac40288460c9545739681209ca0",
+        {
+          "id": "f1d295ef7ace4cce97f89f06c3a10e59",
           "entry_type": "topic",
           "title": "BY: DOP 2012 Oberbayern/Schwaben (WMS)",
           "service_type": "ogc_wms",
@@ -627,8 +631,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2012_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
         },
-        "a50cf2e5e6d844358e86fd68656288da": {
-          "id": "a50cf2e5e6d844358e86fd68656288da",
+        {
+          "id": "dfa3aedaa542496394979e566e15e7d9",
           "entry_type": "topic",
           "title": "BY: DOP 2011 Franken (WMS)",
           "service_type": "ogc_wms",
@@ -647,8 +651,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2011_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
         },
-        "0f6b9ef16da54810bc203d263f315c55": {
-          "id": "0f6b9ef16da54810bc203d263f315c55",
+        {
+          "id": "56ec5bd203a145018ad1e3a5ef013aee",
           "entry_type": "topic",
           "title": "BY: DOP 2010 Niederbayern/Oberpfalz (WMS)",
           "service_type": "ogc_wms",
@@ -667,8 +671,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2010_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
         },
-        "06babb89ccc6491eb0680472e2be8523": {
-          "id": "06babb89ccc6491eb0680472e2be8523",
+        {
+          "id": "f98a388a813d48da8f35bfaa5733283d",
           "entry_type": "topic",
           "title": "BY: DOP 2009 Oberbayern/Schwaben/Teil Franken (WMS)",
           "service_type": "ogc_wms",
@@ -687,8 +691,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2009_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
         },
-        "307688acc42f4d95903d61cd7cdee436": {
-          "id": "307688acc42f4d95903d61cd7cdee436",
+        {
+          "id": "e21b723ab12442f492430849049ab2e2",
           "entry_type": "topic",
           "title": "BY: DOP 2008 Teil Franken (WMS)",
           "service_type": "ogc_wms",
@@ -707,8 +711,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2008_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
         },
-        "665a5f19b29347738ac598c3f4dc3a7e": {
-          "id": "665a5f19b29347738ac598c3f4dc3a7e",
+        {
+          "id": "f49e4bac6b074df382fcb2aff3cb7e16",
           "entry_type": "topic",
           "title": "BY: DOP 2007 Niederbayern/Oberpfalz (WMS)",
           "service_type": "ogc_wms",
@@ -727,8 +731,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2007_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
         },
-        "4c57926461ba4d748459a98874882e8e": {
-          "id": "4c57926461ba4d748459a98874882e8e",
+        {
+          "id": "371edc62c34b4370932c9a98dba39612",
           "entry_type": "topic",
           "title": "BY: DOP 2006 Oberbayern/Schwaben (WMS)",
           "service_type": "ogc_wms",
@@ -747,8 +751,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2006_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
         },
-        "6c853703ffb04238a04817b2caf489f3": {
-          "id": "6c853703ffb04238a04817b2caf489f3",
+        {
+          "id": "1f3c58cf8f5a4aee9e76bdad15e92600",
           "entry_type": "topic",
           "title": "BY: DOP 2005 Franken (WMS)",
           "service_type": "ogc_wms",
@@ -767,8 +771,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2005_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
         },
-        "e558ca1dfca549ceb9a9e1a140ba0f5a": {
-          "id": "e558ca1dfca549ceb9a9e1a140ba0f5a",
+        {
+          "id": "c9b1e343189f4a559fe52b1a08df3a13",
           "entry_type": "topic",
           "title": "BY: DOP 2004 Niederbayern/Oberpfalz (WMS)",
           "service_type": "ogc_wms",
@@ -787,8 +791,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2004_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
         },
-        "4200a2ab96494b89a919e36047feb897": {
-          "id": "4200a2ab96494b89a919e36047feb897",
+        {
+          "id": "123207a4936e4d6bb2feca81e7c5e21d",
           "entry_type": "topic",
           "title": "BY: DOP 2003 Oberbayern/Schwaben (WMS)",
           "service_type": "ogc_wms",
@@ -807,13 +811,14 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=by_dop_2003_h&styles&url=https://geoservices.bayern.de/od/wms/histdop/v1/histdop"
         }
-      }
+      ]
     },
-    "RLP:": {
+    {
+      "id": "6cbdaf5ddfee442d86a4991b038e00d5",
       "title": "Rheinland-Pfalz",
-      "topics": {
-        "2e9bd0fa3fa5485a8a24299d536cbe56": {
-          "id": "2e9bd0fa3fa5485a8a24299d536cbe56",
+      "topics": [
+        {
+          "id": "28c984d87d88455283b5b9ed912c1498",
           "entry_type": "topic",
           "title": "RP: Kartenaufnahme der Rheinlande durch Tranchot und von Müffling (1803 - 1820)(WMS)",
           "service_type": "ogc_wms",
@@ -828,8 +833,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&dpiMode=7&format=image/png&layers=rp_hktm&styles=&url=http://www.geoportal.rlp.de/mapbender/php/mod_showMetadata.php/../wms.php?layer_id%3D49370%26PHPSESSID%3Deb191d409bd6163b78cdf44b2462088e%26VERSION%3D1.1.1"
         },
-        "82e13b14dbe9410f98bce22657f6e262": {
-          "id": "82e13b14dbe9410f98bce22657f6e262",
+        {
+          "id": "de2ff7693fff46cd83646640d739db6a",
           "entry_type": "topic",
           "title": "RP: Preußische Kartenaufnahme (1843-1878) Uraufnahme-Urmesstischblätter (1843-1879) (WMS)",
           "service_type": "ogc_wms",
@@ -844,8 +849,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&dpiMode=7&format=image/png&layers=rp_hkpk&styles=&url=http://www.geoportal.rlp.de/mapbender/php/mod_showMetadata.php/../wms.php?layer_id%3D49367%26PHPSESSID%3Deb191d409bd6163b78cdf44b2462088e%26VERSION%3D1.1.1%26withChilds%3D1"
         },
-        "84199c77639749b3a6c4fe660ae72bab": {
-          "id": "84199c77639749b3a6c4fe660ae72bab",
+        {
+          "id": "b94dfdccb51f45e380937e3c8569ae93",
           "entry_type": "topic",
           "title": "RP: Topopgraphische Aufnahme der Pfalz (1836-1841) (WMS)",
           "service_type": "ogc_wms",
@@ -860,7 +865,7 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=rp_hkpb&styles&url=https://geo4.service24.rlp.de/wms/hkpb.fcgi"
         }
-      }
+      ]
     }
-  }
+  ]
 }

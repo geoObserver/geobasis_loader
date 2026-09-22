@@ -2,7 +2,7 @@
   "format_version": 7.0,
   "id": "halle",
   "catalog_version": 1.0,
-  "modified": "2026-09-13T22:46:35+02:00",
+  "modified": "2026-09-22T09:57:59+02:00",
   "author": "geoObserver",
   "title": "Katalog 5: BONUS Halle (Saale)",
   "description": "Migrated from a GeoBasis Loader v6 catalog.",
@@ -10,12 +10,13 @@
   "global_crs": [
     "EPSG:3857"
   ],
-  "regions": {
-    "Kap1": {
+  "regions": [
+    {
+      "id": "b512da0274b14257a6469112590b68bc",
       "title": "1. Bevölkerung",
-      "topics": {
-        "dc39b146bd474b1d8be1f5408d9bc950": {
-          "id": "dc39b146bd474b1d8be1f5408d9bc950",
+      "topics": [
+        {
+          "id": "c9c136c27b584881874bbf701a51b1d1",
           "entry_type": "topic",
           "title": "HAL: Bevölkerung nach Altersgruppen 2016 (WMS)",
           "service_type": "ogc_wms",
@@ -54,8 +55,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=ff8328f7-d9f6-0d70-cb2c-22ded9e70a5a&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/ff8328f7-d9f6-0d70-cb2c-22ded9e70a5a"
         },
-        "231683a1313042c887b81351d4b690cc": {
-          "id": "231683a1313042c887b81351d4b690cc",
+        {
+          "id": "3779b74e786b44f48ff43a354da80eb4",
           "entry_type": "topic",
           "title": "HAL: Bevölkerung nach Altersgruppen 2017 (WMS)",
           "service_type": "ogc_wmts",
@@ -94,8 +95,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=10&format=image/png&layers=fbde17b7-84d4-ef12-4317-3be6be966314&styles&url=https://geodienste.halle.de/opendata/fbde17b7-84d4-ef12-4317-3be6be966314"
         },
-        "1dd180d6e94d43ec81eedcb9e6e678cc": {
-          "id": "1dd180d6e94d43ec81eedcb9e6e678cc",
+        {
+          "id": "1d3d43a416314f0f91ff0379443777fa",
           "entry_type": "topic",
           "title": "HAL: Bevölkerung nach Altersgruppen 2018 (WMS)",
           "service_type": "ogc_wmts",
@@ -134,8 +135,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=10&format=image/png&layers=f29638d7-bafb-d85f-c907-01b4d544b6f4&styles&url=https://geodienste.halle.de/opendata/f29638d7-bafb-d85f-c907-01b4d544b6f4"
         },
-        "febd17a7a8e2407cbfad650a3789a769": {
-          "id": "febd17a7a8e2407cbfad650a3789a769",
+        {
+          "id": "3986a18edac5455dbe69590fe28f5b45",
           "entry_type": "topic",
           "title": "HAL: Bevölkerung nach Altersgruppen 2019 (WMS)",
           "service_type": "ogc_wmts",
@@ -174,8 +175,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=10&format=image/png&layers=f079914e-4ef0-bf07-ee0d-05498a8cd17f&styles&url=https://geodienste.halle.de/opendata/f079914e-4ef0-bf07-ee0d-05498a8cd17f"
         },
-        "fa85d3537fd24d12a53f0e31cc2ca983": {
-          "id": "fa85d3537fd24d12a53f0e31cc2ca983",
+        {
+          "id": "69bc1b2d3ce44e1cad7d4469c30b76ec",
           "entry_type": "topic",
           "title": "HAL: Bevölkerung nach Altersgruppen 2020 (WMS)",
           "service_type": "ogc_wmts",
@@ -214,8 +215,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=10&format=image/png&layers=fd021afa-fa05-f4fa-31c0-a5dbb092996a&styles&url=https://geodienste.halle.de/opendata/fd021afa-fa05-f4fa-31c0-a5dbb092996a"
         },
-        "fa90ca18946f49f3976afe67d43c1d67": {
-          "id": "fa90ca18946f49f3976afe67d43c1d67",
+        {
+          "id": "07fb5c9a793b4596b222c3f2c995b5df",
           "entry_type": "topic",
           "title": "HAL: Bevölkerung nach Altersgruppen 2021 (WMS)",
           "service_type": "ogc_wmts",
@@ -254,8 +255,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=10&format=image/png&layers=fb7c7826-c2e1-82f9-395c-bf3c65da4786&styles&url=https://geodienste.halle.de/opendata/fb7c7826-c2e1-82f9-395c-bf3c65da4786"
         },
-        "fb7e5b77a26644e081781940d973254b": {
-          "id": "fb7e5b77a26644e081781940d973254b",
+        {
+          "id": "eba87416adad401fb5a5c033508d6fd6",
           "entry_type": "topic",
           "title": "HAL: Bevölkerung nach Altersgruppen 2022 (WMS)",
           "service_type": "ogc_wmts",
@@ -295,8 +296,8 @@
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=10&format=image/png&layers=f4fed13f-c8da-79bb-d11d-4919fc5b1d7c&styles&url=https://geodienste.halle.de/opendata/f4fed13f-c8da-79bb-d11d-4919fc5b1d7c",
           "separator_after": true
         },
-        "50331ada8dbc4860b9dec4ec4f243370": {
-          "id": "50331ada8dbc4860b9dec4ec4f243370",
+        {
+          "id": "8f5d3b378dff45e79fe521e5a2d64a6b",
           "entry_type": "topic",
           "title": "HAL: Bevölkerung nach Familienstand 2016 (WMS)",
           "service_type": "ogc_wmts",
@@ -335,8 +336,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=10&format=image/png&layers=f6dc9fc5-07b7-7226-e61a-b513d4be1115&styles&url=https://geodienste.halle.de/opendata/f6dc9fc5-07b7-7226-e61a-b513d4be1115"
         },
-        "1c644a118e444963a730a874ed26a5fb": {
-          "id": "1c644a118e444963a730a874ed26a5fb",
+        {
+          "id": "ea2f7f04aed1497ba2146a9fb9101c93",
           "entry_type": "topic",
           "title": "HAL: Bevölkerung nach Familienstand 2017 (WMS)",
           "service_type": "ogc_wmts",
@@ -375,8 +376,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=10&format=image/png&layers=f07e7147-128d-111f-f4a4-c69888aa4101&styles&url=https://geodienste.halle.de/opendata/f07e7147-128d-111f-f4a4-c69888aa4101"
         },
-        "ac245227779a4dd287367bbef346dba7": {
-          "id": "ac245227779a4dd287367bbef346dba7",
+        {
+          "id": "23101bcc7c304419832eaa1741f216f3",
           "entry_type": "topic",
           "title": "HAL: Bevölkerung nach Familienstand 2018 (WMS)",
           "service_type": "ogc_wmts",
@@ -415,8 +416,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=10&format=image/png&layers=ffa452ad-192e-c816-11aa-b468447d4365&styles&url=https://geodienste.halle.de/opendata/ffa452ad-192e-c816-11aa-b468447d4365"
         },
-        "24400ffc3eb047eba77f1ac8060a80bf": {
-          "id": "24400ffc3eb047eba77f1ac8060a80bf",
+        {
+          "id": "0afa41f8e1ff487f92926abe38272f14",
           "entry_type": "topic",
           "title": "HAL: Bevölkerung nach Familienstand 2019 (WMS)",
           "service_type": "ogc_wmts",
@@ -455,8 +456,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=10&format=image/png&layers=f51be6a0-910d-9c73-e66b-9ca5d48cfd91&styles&url=https://geodienste.halle.de/opendata/f51be6a0-910d-9c73-e66b-9ca5d48cfd91"
         },
-        "1b6b98b7887f4af5bf6eb8f2a9fa5028": {
-          "id": "1b6b98b7887f4af5bf6eb8f2a9fa5028",
+        {
+          "id": "e94d4273a1404cef9cb86050edcd1676",
           "entry_type": "topic",
           "title": "HAL: Bevölkerung nach Familienstand 2020 (WMS)",
           "service_type": "ogc_wmts",
@@ -495,8 +496,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=10&format=image/png&layers=f818482f-228f-9de5-1e33-3b790e0d5dc9&styles&url=https://geodienste.halle.de/opendata/f818482f-228f-9de5-1e33-3b790e0d5dc9"
         },
-        "b110272ec1204f6f8d794c86a807c9c7": {
-          "id": "b110272ec1204f6f8d794c86a807c9c7",
+        {
+          "id": "0b5c97f054f843fca06c3a37ea26c63a",
           "entry_type": "topic",
           "title": "HAL: Bevölkerung nach Familienstand 2021 (WMS)",
           "service_type": "ogc_wmts",
@@ -535,8 +536,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=10&format=image/png&layers=fbad60e5-c9a8-b518-e34c-d2f829d9d78a&styles&url=https://geodienste.halle.de/opendata/fbad60e5-c9a8-b518-e34c-d2f829d9d78a"
         },
-        "ab0e57d3de4f4df19be1e9b93c68e135": {
-          "id": "ab0e57d3de4f4df19be1e9b93c68e135",
+        {
+          "id": "9264496b6c854bb5a1eca26f005577a0",
           "entry_type": "topic",
           "title": "HAL: Bevölkerung nach Familienstand 2022 (WMS)",
           "service_type": "ogc_wmts",
@@ -576,8 +577,8 @@
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=10&format=image/png&layers=f3c96774-babb-7363-b94c-f6cc416a3996&styles&url=https://geodienste.halle.de/opendata/f3c96774-babb-7363-b94c-f6cc416a3996",
           "separator_after": true
         },
-        "6aa3ebe8f1c042c88e3b8b289e60d9fc": {
-          "id": "6aa3ebe8f1c042c88e3b8b289e60d9fc",
+        {
+          "id": "4d371f3a171b4203b811a07c8f407731",
           "entry_type": "topic",
           "title": "HAL: Bevölkerung nach Geschlecht 2016 (WMS)",
           "service_type": "ogc_wmts",
@@ -616,8 +617,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=10&format=image/png&layers=f7a75416-ac16-0be2-3840-ca158f1706a2&styles&url=https://geodienste.halle.de/opendata/f7a75416-ac16-0be2-3840-ca158f1706a2"
         },
-        "772a55ac3b814b9393b47ce0d7e5aca7": {
-          "id": "772a55ac3b814b9393b47ce0d7e5aca7",
+        {
+          "id": "6ec15281e82447f996b8af87f20e894a",
           "entry_type": "topic",
           "title": "HAL: Bevölkerung nach Geschlecht 2017 (WMS)",
           "service_type": "ogc_wmts",
@@ -656,8 +657,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=10&format=image/png&layers=ff7f775d-fdcc-3b10-cc4e-0505a59c32e4&styles&url=https://geodienste.halle.de/opendata/ff7f775d-fdcc-3b10-cc4e-0505a59c32e4"
         },
-        "8c86a24b76ad4950a4f8c2cdac563e07": {
-          "id": "8c86a24b76ad4950a4f8c2cdac563e07",
+        {
+          "id": "f32c810d7c6f4360ba13eeae5392486b",
           "entry_type": "topic",
           "title": "HAL: Bevölkerung nach Geschlecht 2018 (WMS)",
           "service_type": "ogc_wmts",
@@ -696,8 +697,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=10&format=image/png&layers=fa677269-3ff5-7d3f-6e81-4897fa70de4c&styles&url=https://geodienste.halle.de/opendata/fa677269-3ff5-7d3f-6e81-4897fa70de4c"
         },
-        "24a3e0a574f84f2bbde8eb9516741928": {
-          "id": "24a3e0a574f84f2bbde8eb9516741928",
+        {
+          "id": "0e691e360e1a4deb85e0f0901478976c",
           "entry_type": "topic",
           "title": "HAL: Bevölkerung nach Geschlecht 2019 (WMS)",
           "service_type": "ogc_wmts",
@@ -736,8 +737,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=10&format=image/png&layers=f310e609-8de9-b803-bc55-d5388bed2402&styles&url=https://geodienste.halle.de/opendata/f310e609-8de9-b803-bc55-d5388bed2402"
         },
-        "a80ac77ec6d54614ae0d02e07121a9ed": {
-          "id": "a80ac77ec6d54614ae0d02e07121a9ed",
+        {
+          "id": "86dcabdbd7074383bd2da7766b75f7b4",
           "entry_type": "topic",
           "title": "HAL: Bevölkerung nach Geschlecht 2020 (WMS)",
           "service_type": "ogc_wmts",
@@ -776,8 +777,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=10&format=image/png&layers=f50a9e02-f5d0-2fea-e08d-34c253acb6c8&styles&url=https://geodienste.halle.de/opendata/f50a9e02-f5d0-2fea-e08d-34c253acb6c8"
         },
-        "99fa28a4192e41d79c0af50b9b1e3625": {
-          "id": "99fa28a4192e41d79c0af50b9b1e3625",
+        {
+          "id": "a1d0334612f94185a85c3f77541908af",
           "entry_type": "topic",
           "title": "HAL: Bevölkerung nach Geschlecht 2021 (WMS)",
           "service_type": "ogc_wmts",
@@ -816,8 +817,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=10&format=image/png&layers=f2100404-9c33-2fdb-3db9-59248da53cc9&styles&url=https://geodienste.halle.de/opendata/f2100404-9c33-2fdb-3db9-59248da53cc9"
         },
-        "660c0701d49647d2a661014f1a92cc64": {
-          "id": "660c0701d49647d2a661014f1a92cc64",
+        {
+          "id": "afd437895ec84932a3317fe0de66649a",
           "entry_type": "topic",
           "title": "HAL: Bevölkerung nach Geschlecht 2022 (WMS)",
           "service_type": "ogc_wmts",
@@ -857,13 +858,14 @@
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=10&format=image/png&layers=fd83efa8-2b00-70d3-352b-29986f498b9f&styles&url=https://geodienste.halle.de/opendata/fd83efa8-2b00-70d3-352b-29986f498b9f",
           "separator_after": true
         }
-      }
+      ]
     },
-    "Kap2": {
+    {
+      "id": "864e9bcbe4254df288d29e22ea270b6d",
       "title": "2. Bildung und Wissenschaft",
-      "topics": {
-        "6fb79d78c99e47f1ace9923589688b9d": {
-          "id": "6fb79d78c99e47f1ace9923589688b9d",
+      "topics": [
+        {
+          "id": "1ad7faa71114409caec5f1cec8f6794d",
           "entry_type": "topic",
           "title": "HAL: Schulen (WMS)",
           "service_type": "ogc_wms",
@@ -902,13 +904,14 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&layers=fe15de6b-c161-cf03-d436-5d4e65eb56d5&styles&url=https://geodienste.halle.de/opendata/fe15de6b-c161-cf03-d436-5d4e65eb56d5"
         }
-      }
+      ]
     },
-    "Kap3": {
+    {
+      "id": "01e7654b6a1f41f8b90b759cf9c3d1a7",
       "title": "3. Geographie, Geologie und Geobasisdaten",
-      "topics": {
-        "e4e25dda06314da39c11eca36587d1c2": {
-          "id": "e4e25dda06314da39c11eca36587d1c2",
+      "topics": [
+        {
+          "id": "6b3236e583fe42fd82084b6d5f3f300a",
           "entry_type": "topic",
           "title": "HAL: Stadtgrenze (WMS)",
           "service_type": "ogc_wms",
@@ -947,8 +950,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=fa4a4584-a8b0-9306-24cd-cd05f398e448&styles&url=https://geodienste.halle.de/opendata/fa4a4584-a8b0-9306-24cd-cd05f398e448"
         },
-        "dd85441daa62461b96168232b885dc7b": {
-          "id": "dd85441daa62461b96168232b885dc7b",
+        {
+          "id": "b8ee8cbdbb7141fab1c72228b4cf4203",
           "entry_type": "topic",
           "title": "HAL: Stadtbezirke Umrisse (WMS)",
           "service_type": "ogc_wms",
@@ -987,8 +990,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f12e2735-e59e-2072-8bb5-221189da5c1c&styles&url=https://geodienste.halle.de/opendata/f12e2735-e59e-2072-8bb5-221189da5c1c"
         },
-        "709434b8a65b4fe6a3577d9fcbd3eb9a": {
-          "id": "709434b8a65b4fe6a3577d9fcbd3eb9a",
+        {
+          "id": "8d3897099d91499fa9b78d77948717a8",
           "entry_type": "topic",
           "title": "HAL: Stadtviertel Umrisse (WMS)",
           "service_type": "ogc_wms",
@@ -1027,8 +1030,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f4354112-1c12-a113-af80-7d1582c74bea&styles&url=https://geodienste.halle.de/opendata/f4354112-1c12-a113-af80-7d1582c74bea"
         },
-        "90af656287b944989ca41d10e963385f": {
-          "id": "90af656287b944989ca41d10e963385f",
+        {
+          "id": "9e3cef47057b4e33936c36ec0b1a58aa",
           "entry_type": "topic",
           "title": "HAL: Baublöcke Umrisse (WMS)",
           "service_type": "ogc_wms",
@@ -1068,8 +1071,8 @@
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f6cfcbfb-e586-e782-e9ae-50d5c7151aa9&styles&url=https://geodienste.halle.de/opendata/f6cfcbfb-e586-e782-e9ae-50d5c7151aa9",
           "separator_after": true
         },
-        "f8e177d7d3df43a09d45bcd55593cbb0": {
-          "id": "f8e177d7d3df43a09d45bcd55593cbb0",
+        {
+          "id": "93d9bb3776d84c8aa38ce05a171a3971",
           "entry_type": "topic",
           "title": "HAL: Amtl. Stadtplan Grau (XYZ)",
           "service_type": "ogc_wmts",
@@ -1077,8 +1080,8 @@
           "gbl_view": true,
           "service_uri": "crs={crs}&type=xyz&zmin=0&zmax=25&url=http://geodienste.halle.de/tiles/stadtplan/grau/{z}/{x}/{y}.png"
         },
-        "5e1f4ef935ce4457875e1c8402818df6": {
-          "id": "5e1f4ef935ce4457875e1c8402818df6",
+        {
+          "id": "4d1d3dd80d274b89847db6c18f92e7e0",
           "entry_type": "topic",
           "title": "HAL: Digitale Stadtgrundkarte (WMS)",
           "service_type": "ogc_wms",
@@ -1094,8 +1097,8 @@
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f398a5d8-9dce-cbbc-b7ae-7e1a7f5bf809&styles&url=https://geodienste.halle.de/opendata/f398a5d8-9dce-cbbc-b7ae-7e1a7f5bf809",
           "separator_after": true
         },
-        "106ad8319ffe4f47b99fe9e4d1205d7f": {
-          "id": "106ad8319ffe4f47b99fe9e4d1205d7f",
+        {
+          "id": "1ff1d2dbaeac4d8db91fbc1c3f30094d",
           "entry_type": "topic",
           "title": "HAL: Höhenfestpunkte Stadt Halle (WMS)",
           "service_type": "ogc_wms",
@@ -1134,8 +1137,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f4d7a014-edce-fc02-7760-c998e3149ab3&styles&url=https://geodienste.halle.de/opendata/f4d7a014-edce-fc02-7760-c998e3149ab3"
         },
-        "8af589dd12ba49909363148e7ef94d25": {
-          "id": "8af589dd12ba49909363148e7ef94d25",
+        {
+          "id": "76f76a1e093748cc9dc677d0c8bd6749",
           "entry_type": "topic",
           "title": "HAL: Höhenfestpunkte Land Sachsen-Anhalt (WMS)",
           "service_type": "ogc_wms",
@@ -1175,8 +1178,8 @@
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f353de43-bcf6-f124-5f53-e6218b7531fd&styles&url=https://geodienste.halle.de/opendata/f353de43-bcf6-f124-5f53-e6218b7531fd",
           "separator_after": true
         },
-        "2bce01878d684f6a9a9eda731769919c": {
-          "id": "2bce01878d684f6a9a9eda731769919c",
+        {
+          "id": "6d93358ed871402aa5327f1dd994a5f7",
           "entry_type": "topic",
           "title": "HAL: Gitter 1km x 1km (Kilometerquadrate) (WMS)",
           "service_type": "ogc_wms",
@@ -1215,8 +1218,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f1501109-271e-3089-450e-73b22f1db87f&styles&url=https://geodienste.halle.de/opendata/f1501109-271e-3089-450e-73b22f1db87f"
         },
-        "29604f2528d54f3d934969fefabcb5d4": {
-          "id": "29604f2528d54f3d934969fefabcb5d4",
+        {
+          "id": "11ad402715de455da732d9ee9078e1de",
           "entry_type": "topic",
           "title": "HAL: Gitter 1km x 1km (Kilometerquadrate LS489 EPSG_4647) (WMS)",
           "service_type": "ogc_wms",
@@ -1255,8 +1258,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f8ff2819-4d69-8268-2f7e-3650de336f62&styles&url=https://geodienste.halle.de/opendata/f8ff2819-4d69-8268-2f7e-3650de336f62"
         },
-        "40db3ae63a9f4d37a3731abbc292272e": {
-          "id": "40db3ae63a9f4d37a3731abbc292272e",
+        {
+          "id": "b03ca8e9d08441aca03aafb416023c28",
           "entry_type": "topic",
           "title": "HAL: Gitter 500m x 250m (500er Kartenblätter) (WMS)",
           "service_type": "ogc_wms",
@@ -1296,8 +1299,8 @@
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f0c99f8a-2dc2-396c-060d-0c88984ba92f&styles&url=https://geodienste.halle.de/opendata/f0c99f8a-2dc2-396c-060d-0c88984ba92f",
           "separator_after": true
         },
-        "3b22a9c14c8c4e229a503101b8c9353c": {
-          "id": "3b22a9c14c8c4e229a503101b8c9353c",
+        {
+          "id": "5e3d1221f1fc4bee97a8a5523c7ccbcb",
           "entry_type": "topic",
           "title": "HAL: Hexagon-Gitter 1000m (WMS)",
           "service_type": "ogc_wms",
@@ -1336,8 +1339,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f4ebfe85-cee1-7ebf-acf1-940b8d194973&styles&url=https://geodienste.halle.de/opendata/f4ebfe85-cee1-7ebf-acf1-940b8d194973"
         },
-        "32d27ca3077d4f1d94ddabb150036914": {
-          "id": "32d27ca3077d4f1d94ddabb150036914",
+        {
+          "id": "1b961453fe654fce96a843a1fafe2ba3",
           "entry_type": "topic",
           "title": "HAL: Hexagon-Gitter 500m (WMS)",
           "service_type": "ogc_wms",
@@ -1376,8 +1379,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f6c967aa-e04f-489b-d569-8f53ccef89b9&styles&url=https://geodienste.halle.de/opendata/f6c967aa-e04f-489b-d569-8f53ccef89b9"
         },
-        "5a66f9bc1bc7479b8d6425b82ebd67e3": {
-          "id": "5a66f9bc1bc7479b8d6425b82ebd67e3",
+        {
+          "id": "f9f25a77c7be4591b105707f5aeec829",
           "entry_type": "topic",
           "title": "HAL: Hexagon-Gitter 250m (WMS)",
           "service_type": "ogc_wms",
@@ -1416,8 +1419,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=fd6a7fd7-8703-1a05-27af-110ef5fad060&styles&url=https://geodienste.halle.de/opendata/fd6a7fd7-8703-1a05-27af-110ef5fad060"
         },
-        "1eb620f760a84fc7b5a4d80a398f9cb8": {
-          "id": "1eb620f760a84fc7b5a4d80a398f9cb8",
+        {
+          "id": "78f253d191264bf683b80e2de55ba97e",
           "entry_type": "topic",
           "title": "HAL: Hexagon-Gitter 107.46m (3ha) (WMS)",
           "service_type": "ogc_wms",
@@ -1456,8 +1459,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f056d11c-27df-7c3e-1838-e3bb43ab9ee8&styles&url=https://geodienste.halle.de/opendata/f056d11c-27df-7c3e-1838-e3bb43ab9ee8"
         },
-        "901f83189687488698537e7649aa2322": {
-          "id": "901f83189687488698537e7649aa2322",
+        {
+          "id": "bcbd5cc9511f4a1aadda4681c497c7be",
           "entry_type": "topic",
           "title": "HAL: Hexagon-Gitter 100m (WMS)",
           "service_type": "ogc_wms",
@@ -1496,8 +1499,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f9571682-4b38-1b0a-5d84-a474bcd64959&styles&url=https://geodienste.halle.de/opendata/f9571682-4b38-1b0a-5d84-a474bcd64959"
         },
-        "e9a9d3b56e964134bc85f63496c44680": {
-          "id": "e9a9d3b56e964134bc85f63496c44680",
+        {
+          "id": "c4ff67fc992340caa1afd4e3b6225fda",
           "entry_type": "topic",
           "title": "HAL: Hexagon-Gitter 50m (WMS)",
           "service_type": "ogc_wms",
@@ -1537,8 +1540,8 @@
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f4e40e94-dd94-3bd7-6233-09c869cd1dad&styles&url=https://geodienste.halle.de/opendata/f4e40e94-dd94-3bd7-6233-09c869cd1dad",
           "separator_after": true
         },
-        "177a8cc35a9843f7a8964ce138aacc92": {
-          "id": "177a8cc35a9843f7a8964ce138aacc92",
+        {
+          "id": "75c76f42b3934b1b940ea56acb97fef9",
           "entry_type": "topic",
           "title": "HAL: Quadrat-Gitter 1000m (WMS)",
           "service_type": "ogc_wms",
@@ -1577,8 +1580,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f5d52925-6934-4091-795a-113870cce301&styles&url=https://geodienste.halle.de/opendata/f5d52925-6934-4091-795a-113870cce301"
         },
-        "bef643cd5c7f44de91245fd3d28fde77": {
-          "id": "bef643cd5c7f44de91245fd3d28fde77",
+        {
+          "id": "ac7aacde8ce2427eb39c608a7b978398",
           "entry_type": "topic",
           "title": "HAL: Quadrat-Gitter 500m (WMS)",
           "service_type": "ogc_wms",
@@ -1617,8 +1620,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f2e5edb9-e3b9-25cf-981b-80acf34ca1c6&styles&url=https://geodienste.halle.de/opendata/f2e5edb9-e3b9-25cf-981b-80acf34ca1c6"
         },
-        "de7a70c219e14531a6bd282b2df1fb49": {
-          "id": "de7a70c219e14531a6bd282b2df1fb49",
+        {
+          "id": "d17374b317534e42b96b88ef6f960577",
           "entry_type": "topic",
           "title": "HAL: Quadrat-Gitter 250m (WMS)",
           "service_type": "ogc_wms",
@@ -1657,8 +1660,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f1524313-2707-d9a9-4c73-c198cbc63904&styles&url=https://geodienste.halle.de/opendata/f1524313-2707-d9a9-4c73-c198cbc63904"
         },
-        "5f3cbeace8b1429a86128f5cbbfe2d70": {
-          "id": "5f3cbeace8b1429a86128f5cbbfe2d70",
+        {
+          "id": "3207d347f6fd43229c32f32fbb2c0949",
           "entry_type": "topic",
           "title": "HAL: Quadrat-Gitter 100m (1ha) (WMS)",
           "service_type": "ogc_wms",
@@ -1697,8 +1700,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f264b359-6f9a-dd3b-61d4-aa2a7ae0ec11&styles&url=https://geodienste.halle.de/opendata/f264b359-6f9a-dd3b-61d4-aa2a7ae0ec11"
         },
-        "6e4f87dd0caa4ae0b7435e831fe5b306": {
-          "id": "6e4f87dd0caa4ae0b7435e831fe5b306",
+        {
+          "id": "b88dc7fde7e1453d889eb9eaf932e49e",
           "entry_type": "topic",
           "title": "HAL: Quadrat-Gitter 50m (WMS)",
           "service_type": "ogc_wms",
@@ -1738,13 +1741,14 @@
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=fdd8269f-b4d7-dd40-bd05-c4b2fba93a3a&styles&url=https://geodienste.halle.de/opendata/fdd8269f-b4d7-dd40-bd05-c4b2fba93a3a",
           "separator_after": true
         }
-      }
+      ]
     },
-    "Kap4": {
+    {
+      "id": "5f5ce77cb7a2468dabcb54a68a135ae9",
       "title": "4. Infrastruktur, Bauen und Wohnen",
-      "topics": {
-        "a1e3efb4330e464fadec7c24a5b74ca7": {
-          "id": "a1e3efb4330e464fadec7c24a5b74ca7",
+      "topics": [
+        {
+          "id": "45deade701864faaa0678f20896df71c",
           "entry_type": "topic",
           "title": "HAL: Entwicklungssatzung Heide-Süd (§ 165 BauGB) (WMS)",
           "service_type": "ogc_wms",
@@ -1783,8 +1787,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f7014fed-19d4-1958-5958-8904bf73bf78&styles&url=https://geodienste.halle.de/opendata/f7014fed-19d4-1958-5958-8904bf73bf78"
         },
-        "0d2eb1b614fe4bb792e1d088d46a4f36": {
-          "id": "0d2eb1b614fe4bb792e1d088d46a4f36",
+        {
+          "id": "8ffd61bd1d3846f597f7a7e06ed1d967",
           "entry_type": "topic",
           "title": "HAL: FNP_2019_08_26_Nutzungsarten (WMS)",
           "service_type": "ogc_wms",
@@ -1823,8 +1827,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f75118fe-bb16-7c33-16b7-c663a23ef77a&styles&url=https://geodienste.halle.de/opendata/f75118fe-bb16-7c33-16b7-c663a23ef77a"
         },
-        "b4d61806f06b4d5cbbb6aa90cf6550a9": {
-          "id": "b4d61806f06b4d5cbbb6aa90cf6550a9",
+        {
+          "id": "5b9a79ba7e1d492785360f906fff749a",
           "entry_type": "topic",
           "title": "HAL: Sanierungssatzung (§ 142 BauGB) (WMS)",
           "service_type": "ogc_wms",
@@ -1863,8 +1867,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f413faa0-c636-4d24-dbb9-55050fca71b9&styles&url=https://geodienste.halle.de/opendata/f413faa0-c636-4d24-dbb9-55050fca71b9"
         },
-        "5bb019f755124d6cad256d9dd5925813": {
-          "id": "5bb019f755124d6cad256d9dd5925813",
+        {
+          "id": "abe3a9ee1b7c49edb6c437dfb3eb3dd6",
           "entry_type": "topic",
           "title": "HAL: Städtische Spielplätze 2020 (WMS)",
           "service_type": "ogc_wms",
@@ -1903,8 +1907,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f99755f0-d0f0-19b6-6011-9df79b880250&styles&url=https://geodienste.halle.de/opendata/f99755f0-d0f0-19b6-6011-9df79b880250"
         },
-        "59b08ab01392417d82bf720c9f28a14c": {
-          "id": "59b08ab01392417d82bf720c9f28a14c",
+        {
+          "id": "93eb4a7083944e57bb1b6cea741aa653",
           "entry_type": "topic",
           "title": "HAL: Stadtumbaugebiete (WMS)",
           "service_type": "ogc_wms",
@@ -1943,8 +1947,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=fea32850-90bc-e606-7fac-15e5e6388f1f&styles&url=https://geodienste.halle.de/opendata/fea32850-90bc-e606-7fac-15e5e6388f1f"
         },
-        "6f183315fe27470495b8669a42ba4095": {
-          "id": "6f183315fe27470495b8669a42ba4095",
+        {
+          "id": "84ed113460614086a78a5c116f4f091b",
           "entry_type": "topic",
           "title": "HAL: Lichtmasten Digitale Stadtgrundkarte (WMS)",
           "service_type": "ogc_wms",
@@ -1983,8 +1987,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=f632dfcd-de9a-5217-82d9-6e2bc0a7e745&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/f632dfcd-de9a-5217-82d9-6e2bc0a7e745"
         },
-        "7c5c5e19a43141e1abaa394c8c976307": {
-          "id": "7c5c5e19a43141e1abaa394c8c976307",
+        {
+          "id": "7302a682754e4db187465a91323adb03",
           "entry_type": "group",
           "title": "HAL: KWP - Kommunale Wärmeplanung (WMS) in AUFBAU!!!",
           "crs": [
@@ -2018,9 +2022,9 @@
             "EPSG:5650",
             "EPSG:900913"
           ],
-          "subtopics": {
-            "9b718180d778426c9b6e1860db578247": {
-              "id": "9b718180d778426c9b6e1860db578247",
+          "subtopics": [
+            {
+              "id": "bd2cbbec20084652ae5814c984b8bf46",
               "entry_type": "topic",
               "title": "HAL: KWP - Bestandsanalyse Gasnetz (WMS)",
               "service_type": "ogc_wms",
@@ -2059,8 +2063,8 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=f3c9549b-79be-d998-4c8f-3c05fa0de331&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/f3c9549b-79be-d998-4c8f-3c05fa0de331"
             },
-            "22ddd1e5394f4faba38d0fd9a2396dd2": {
-              "id": "22ddd1e5394f4faba38d0fd9a2396dd2",
+            {
+              "id": "ade04d91cfb443f8b36c04bc2bb271d1",
               "entry_type": "topic",
               "title": "HAL: KWP - Bestandsanalyse Großverbraucher Fernwärme (WMS)",
               "service_type": "ogc_wms",
@@ -2099,8 +2103,8 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=fe72a613-359b-ce11-3eeb-77c08900abc7&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/fe72a613-359b-ce11-3eeb-77c08900abc7"
             },
-            "1452e6ccb0c3446ea4c2cd7332027c0a": {
-              "id": "1452e6ccb0c3446ea4c2cd7332027c0a",
+            {
+              "id": "dc03cc7a879649058e325c024b6b8b4c",
               "entry_type": "topic",
               "title": "HAL: KWP - Bestandsanalyse Großverbraucher Gas (WMS)",
               "service_type": "ogc_wms",
@@ -2139,8 +2143,8 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=f07348b7-f351-d2a2-4e8a-7f4dfed7a196&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/f07348b7-f351-d2a2-4e8a-7f4dfed7a196"
             },
-            "c08584ae7b114560a991ac0d73ad9cbb": {
-              "id": "c08584ae7b114560a991ac0d73ad9cbb",
+            {
+              "id": "76ad3c7b60684a48aa534f829f0c144c",
               "entry_type": "topic",
               "title": "HAL: KWP - Bestandsanalyse Primärenergietraeger (WMS)",
               "service_type": "ogc_wms",
@@ -2179,8 +2183,8 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=f4e3792b-9849-cf75-bcfd-7e2ad4faa38b&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/f4e3792b-9849-cf75-bcfd-7e2ad4faa38b"
             },
-            "c68a14b386b541b39d2842786fc65c7c": {
-              "id": "c68a14b386b541b39d2842786fc65c7c",
+            {
+              "id": "01e71ea8c81e464cbc4757ec7afc56c7",
               "entry_type": "topic",
               "title": "HAL: KWP - Bestandsanalyse Stromnetzausbau (WMS)",
               "service_type": "ogc_wms",
@@ -2219,8 +2223,8 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=f71b5900-a718-22ea-4e19-65d0ee0f5af4&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/f71b5900-a718-22ea-4e19-65d0ee0f5af4"
             },
-            "ea2a90555be54f429789e208d40301dc": {
-              "id": "ea2a90555be54f429789e208d40301dc",
+            {
+              "id": "b1dabce944754aaba500f7aaeb6bbf05",
               "entry_type": "topic",
               "title": "HAL: KWP - Bestandsanalyse Wärmebrauchsdichte (WMS)",
               "service_type": "ogc_wms",
@@ -2259,8 +2263,8 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=f8b00e0c-3553-dd68-ee53-cd5ba8022d88&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/f8b00e0c-3553-dd68-ee53-cd5ba8022d88"
             },
-            "0f724737eae04d29bac90f40bd112d0c": {
-              "id": "0f724737eae04d29bac90f40bd112d0c",
+            {
+              "id": "0429ee5c49204b44af4ebed0f048aebf",
               "entry_type": "topic",
               "title": "HAL: KWP - Bestandsanalyse Wärmeliniendichten (WMS)",
               "service_type": "ogc_wms",
@@ -2299,8 +2303,8 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=f423c0ba-406c-311f-efe0-a16976e9db5c&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/f423c0ba-406c-311f-efe0-a16976e9db5c"
             },
-            "1d32af2ef4664124bdede9b23b5ef01d": {
-              "id": "1d32af2ef4664124bdede9b23b5ef01d",
+            {
+              "id": "945e5c9298b34f63a58479e385bf45ff",
               "entry_type": "topic",
               "title": "HAL: KWP - Potenzialanalyse Abwasserwärme (WMS)",
               "service_type": "ogc_wms",
@@ -2339,8 +2343,8 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=f831fb61-d753-b75d-ef26-c4fef40cb389&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/f831fb61-d753-b75d-ef26-c4fef40cb389"
             },
-            "def702c919bb4c4c8a258d92a371d93f": {
-              "id": "def702c919bb4c4c8a258d92a371d93f",
+            {
+              "id": "15d1da85e888428d92d825945058acf0",
               "entry_type": "topic",
               "title": "HAL: KWP - Potenzialanalyse Biomasse (WMS)",
               "service_type": "ogc_wms",
@@ -2379,8 +2383,8 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=f5617bba-f34b-e15d-e590-673d1c9274b2&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/f5617bba-f34b-e15d-e590-673d1c9274b2"
             },
-            "ff781cdb13994bacab8a30bc630336f1": {
-              "id": "ff781cdb13994bacab8a30bc630336f1",
+            {
+              "id": "f775cd1063ad4b0dbfc8b74c55a61b06",
               "entry_type": "topic",
               "title": "HAL: KWP - Potenzialanalyse Einsparpotenzial Wohngebäude (WMS)",
               "service_type": "ogc_wms",
@@ -2419,8 +2423,8 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=f7caf97b-9649-6b63-06aa-b66ead876ae4&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/f7caf97b-9649-6b63-06aa-b66ead876ae4"
             },
-            "cd50502e17074a9aa4d326dac23b779c": {
-              "id": "cd50502e17074a9aa4d326dac23b779c",
+            {
+              "id": "b756ee5204e7422094f88a4d427e72d4",
               "entry_type": "topic",
               "title": "HAL: KWP - Potenzialanalyse Flussthermie (WMS)",
               "service_type": "ogc_wms",
@@ -2459,8 +2463,8 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=f138d381-55a6-604d-038a-a0df0265fdcf&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/f138d381-55a6-604d-038a-a0df0265fdcf"
             },
-            "751bf8784a80402f89df9b70dc22a0c7": {
-              "id": "751bf8784a80402f89df9b70dc22a0c7",
+            {
+              "id": "edc3b84c82b94cf2a127ab64dc585d66",
               "entry_type": "topic",
               "title": "HAL: KWP - Potenzialanalyse Grundwasserthermie (WMS)",
               "service_type": "ogc_wms",
@@ -2499,8 +2503,8 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=f894e33e-af53-afd6-2e5a-c25da769818c&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/f894e33e-af53-afd6-2e5a-c25da769818c"
             },
-            "a146d989f1df440d96578486c238d70b": {
-              "id": "a146d989f1df440d96578486c238d70b",
+            {
+              "id": "0f6c8e4fc0ef40b5aab297dc4d536960",
               "entry_type": "topic",
               "title": "HAL: KWP - Potenzialanalyse Industrielle Abwärme (WMS)",
               "service_type": "ogc_wms",
@@ -2539,8 +2543,8 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=fbf81af6-41df-3fec-a744-94a793dd235e&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/fbf81af6-41df-3fec-a744-94a793dd235e"
             },
-            "3ce5a6b7a1dd48a1854ad66b6dadb0aa": {
-              "id": "3ce5a6b7a1dd48a1854ad66b6dadb0aa",
+            {
+              "id": "b2a9760ede3b443fa3a0c7de11bb373b",
               "entry_type": "topic",
               "title": "HAL: KWP - Potenzialanalyse Oberflächennahe Geothermie (WMS)",
               "service_type": "ogc_wms",
@@ -2579,8 +2583,8 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=f115fc05-b158-fc6c-69a1-f4efce83998f&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/f115fc05-b158-fc6c-69a1-f4efce83998f"
             },
-            "110a2f3d5f7e410392d10d61a67e47b7": {
-              "id": "110a2f3d5f7e410392d10d61a67e47b7",
+            {
+              "id": "5c5ec4b3ac8449ca9c2f0a24bd8bdb19",
               "entry_type": "topic",
               "title": "HAL: KWP - Potenzialanalyse Seethermie (WMS)",
               "service_type": "ogc_wms",
@@ -2619,8 +2623,8 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=f4b31195-ad8f-4cbb-2c5f-2f372a37c533&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/f4b31195-ad8f-4cbb-2c5f-2f372a37c533"
             },
-            "2c87eff5d5b84a20b3d13994b0e57f88": {
-              "id": "2c87eff5d5b84a20b3d13994b0e57f88",
+            {
+              "id": "e9b2c21f0ad542b5840970ab776eec82",
               "entry_type": "topic",
               "title": "HAL: KWP - Potenzialanalyse Solarthermie (WMS)",
               "service_type": "ogc_wms",
@@ -2659,8 +2663,8 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=f5416c3a-a23f-37c1-708d-66f74610e1bc&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/f5416c3a-a23f-37c1-708d-66f74610e1bc"
             },
-            "a9f35fcc37e44460991db8612b15b371": {
-              "id": "a9f35fcc37e44460991db8612b15b371",
+            {
+              "id": "28a665bcb1c844a28252eecd3d34efaa",
               "entry_type": "topic",
               "title": "HAL: KWP - Potenzialanalyse Tiefengeothermie (WMS)",
               "service_type": "ogc_wms",
@@ -2699,8 +2703,8 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=fb032b6e-b0aa-f547-9331-8895efffb60d&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/fb032b6e-b0aa-f547-9331-8895efffb60d"
             },
-            "b6ebf6f7a84f457ea9324a4c10d0be09": {
-              "id": "b6ebf6f7a84f457ea9324a4c10d0be09",
+            {
+              "id": "02825ba7055248bc830e44b7c04bafc9",
               "entry_type": "topic",
               "title": "HAL: KWP - Bestandsanalyse Baudenkmäler (WMS)",
               "service_type": "ogc_wms",
@@ -2739,8 +2743,8 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=f86d82b9-4cff-e3fa-9c34-ea1c6bc2f2c7&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/f86d82b9-4cff-e3fa-9c34-ea1c6bc2f2c7"
             },
-            "e81f55fe2f35424da62c6c136f527a3f": {
-              "id": "e81f55fe2f35424da62c6c136f527a3f",
+            {
+              "id": "047e9c8f71ca4ef18441194ffdfef88d",
               "entry_type": "topic",
               "title": "HAL: KWP - Zielszenarien Eignungsgebiete für dezentrale Wärmeversorgung (WMS)",
               "service_type": "ogc_wms",
@@ -2779,8 +2783,8 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=f916c2a5-2911-a1df-fde2-08f565761ace&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/f916c2a5-2911-a1df-fde2-08f565761ace"
             },
-            "a3c75a4645d242b58191484f35b46f4d": {
-              "id": "a3c75a4645d242b58191484f35b46f4d",
+            {
+              "id": "f6f4fa8f80e64bf7a2ec190b71815dc2",
               "entry_type": "topic",
               "title": "HAL: KWP - Zielszenarien Eignungsgebiete für Wärmenetze (WMS)",
               "service_type": "ogc_wms",
@@ -2819,8 +2823,8 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=f682c4ec-2f97-7f73-ed24-82f6c94a66e9&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/f682c4ec-2f97-7f73-ed24-82f6c94a66e9"
             },
-            "6fbca7fd06ba4e1fb5e2222792bb97b3": {
-              "id": "6fbca7fd06ba4e1fb5e2222792bb97b3",
+            {
+              "id": "f3da59a99aba45479ab9d36aadfe6f01",
               "entry_type": "topic",
               "title": "HAL: KWP - Zielszenarien Eignungsgebiete für Wasserstoffnetze (WMS)",
               "service_type": "ogc_wms",
@@ -2859,8 +2863,8 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=fa931a55-0e35-9d15-e964-3fb41da72730&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/fa931a55-0e35-9d15-e964-3fb41da72730"
             },
-            "f3316bba3f80458f85a45398b8085c74": {
-              "id": "f3316bba3f80458f85a45398b8085c74",
+            {
+              "id": "e610b98285f8411e9907c6f353830b51",
               "entry_type": "topic",
               "title": "HAL: KWP - Zielszenarien Versorgungsgebiete 2030 (WMS)",
               "service_type": "ogc_wms",
@@ -2899,8 +2903,8 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=f345122f-0508-dbe4-2238-7c6dad4bd95e&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/f345122f-0508-dbe4-2238-7c6dad4bd95e"
             },
-            "bf9145e7cc884f8f8b4f6d42b9cecb59": {
-              "id": "bf9145e7cc884f8f8b4f6d42b9cecb59",
+            {
+              "id": "b181cb420ebc4800835e82df83c47e07",
               "entry_type": "topic",
               "title": "HAL: KWP - Zielszenarien Versorgungsgebiete 2035 (WMS)",
               "service_type": "ogc_wms",
@@ -2939,8 +2943,8 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=fc95b6b7-9423-4a83-d0e5-b454d412b492&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/fc95b6b7-9423-4a83-d0e5-b454d412b492"
             },
-            "51bd63f66df440ae9ac282c10cb37e71": {
-              "id": "51bd63f66df440ae9ac282c10cb37e71",
+            {
+              "id": "d36db601028f4dd28f290e0134740248",
               "entry_type": "topic",
               "title": "HAL: KWP - Zielszenarien Versorgungsgebiete 2040 (WMS)",
               "service_type": "ogc_wms",
@@ -2979,8 +2983,8 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=feaea4e3-0fa4-f75f-24d2-f32e7f5c3c93&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/feaea4e3-0fa4-f75f-24d2-f32e7f5c3c93"
             },
-            "5133084593cd4e39bace40730661e902": {
-              "id": "5133084593cd4e39bace40730661e902",
+            {
+              "id": "3e05f727e3f54561b20f2eae55821c3e",
               "entry_type": "topic",
               "title": "HAL: KWP - Zielszenarien Versorgungsgebiete 2045 (WMS)",
               "service_type": "ogc_wms",
@@ -3019,8 +3023,8 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=fdb4ad4f-9c6f-19f8-1707-75b93e5d8ff1&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/fdb4ad4f-9c6f-19f8-1707-75b93e5d8ff1"
             },
-            "a226aba3d3ef4270a23414c90d9d8ac5": {
-              "id": "a226aba3d3ef4270a23414c90d9d8ac5",
+            {
+              "id": "e564024545f54a149cd497483df0af8a",
               "entry_type": "topic",
               "title": "HAL: KWP - Bestandsanalyse Dezentrale Wärmeversorgung (WMS)",
               "service_type": "ogc_wms",
@@ -3059,8 +3063,8 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=f15e6077-1d8c-accd-becf-5c57b18404ee&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/f15e6077-1d8c-accd-becf-5c57b18404ee"
             },
-            "710f5f3ac3bc4119a3114677de430af3": {
-              "id": "710f5f3ac3bc4119a3114677de430af3",
+            {
+              "id": "0e218822da1548b2970cada20214f094",
               "entry_type": "topic",
               "title": "HAL: KWP - Bestandsanalyse Gebäudetypen (WMS)",
               "service_type": "ogc_wms",
@@ -3099,8 +3103,8 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=f13cce2f-4fd6-d68b-275a-72e1b0f855a8&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/f13cce2f-4fd6-d68b-275a-72e1b0f855a8"
             },
-            "ad1cbb5e84074115b3c5e3d9ba44f0f9": {
-              "id": "ad1cbb5e84074115b3c5e3d9ba44f0f9",
+            {
+              "id": "cd8238e63aa545d88f962512fbb8a0c5",
               "entry_type": "topic",
               "title": "HAL: KWP - Bestandsanalyse Baualtersklassen (WMS)",
               "service_type": "ogc_wms",
@@ -3139,8 +3143,8 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=fe066d0d-970a-51a4-2fbf-dea1e93626e6&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/fe066d0d-970a-51a4-2fbf-dea1e93626e6"
             },
-            "3d000448788f425bbda37b829ec18e26": {
-              "id": "3d000448788f425bbda37b829ec18e26",
+            {
+              "id": "d5044ef4553e4bb19d00341f49ec32af",
               "entry_type": "topic",
               "title": "HAL: KWP - Potenzialanalyse Ersatzbrennstoffe (WMS)",
               "service_type": "ogc_wms",
@@ -3179,8 +3183,8 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=fd0bbcc5-5d13-f092-bdff-1715c90a3a93&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/fd0bbcc5-5d13-f092-bdff-1715c90a3a93"
             },
-            "cd23ad415d924dbe8e9386883c6a198a": {
-              "id": "cd23ad415d924dbe8e9386883c6a198a",
+            {
+              "id": "0b0363cac3da4cfd8ddd8c7f6b33b90c",
               "entry_type": "topic",
               "title": "HAL: KWP - Potenzialanalyse Einsparpotenzial Nichtwohngebäude (WMS)",
               "service_type": "ogc_wms",
@@ -3219,15 +3223,16 @@
               "gbl_view": true,
               "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&featureCount=10&format=image/png&layers=fd4446a6-aa5f-9531-a50d-764a992d7214&styles&tilePixelRatio=0&url=https://geodienste.halle.de/opendata/fd4446a6-aa5f-9531-a50d-764a992d7214"
             }
-          }
+          ]
         }
-      }
+      ]
     },
-    "Kap5": {
+    {
+      "id": "82772701e21842b5a67a2233bfee615f",
       "title": "5. Politik und Wahlen",
-      "topics": {
-        "24e2949f2a264cadb7e76327263abd2d": {
-          "id": "24e2949f2a264cadb7e76327263abd2d",
+      "topics": [
+        {
+          "id": "e31a69bcb1a24bd9b994eb2b1c49e2e6",
           "entry_type": "topic",
           "title": "HAL: Briefwahlbezirke 2019 (Europa- und Stadtratswahl) (WMS)",
           "service_type": "ogc_wms",
@@ -3266,13 +3271,14 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f0501a51-1505-23d4-926f-f0bd535ed016&styles&url=https://geodienste.halle.de/opendata/f0501a51-1505-23d4-926f-f0bd535ed016"
         }
-      }
+      ]
     },
-    "Kap6": {
+    {
+      "id": "b684471c9a0148689c3381075bebbe40",
       "title": "6. Transport und Verkehr",
-      "topics": {
-        "532efb856d7c475bbf1eacb328b0e7bf": {
-          "id": "532efb856d7c475bbf1eacb328b0e7bf",
+      "topics": [
+        {
+          "id": "564d2cf77f6e4350aeb529662e3dd246",
           "entry_type": "topic",
           "title": "HAL: Baustellen (WMS)",
           "service_type": "ogc_wms",
@@ -3311,8 +3317,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f625fc0c-674e-7ec5-7acf-3ce0f296dac5&styles&url=https://geodienste.halle.de/opendata/f625fc0c-674e-7ec5-7acf-3ce0f296dac5"
         },
-        "474975a1c4b44cff9c6bf35cee2f10bc": {
-          "id": "474975a1c4b44cff9c6bf35cee2f10bc",
+        {
+          "id": "46e3452ac80545de953a00551706a3da",
           "entry_type": "topic",
           "title": "HAL: Umleitungen (WMS)",
           "service_type": "ogc_wms",
@@ -3351,8 +3357,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=fdcdfc9f-2f6a-4cb4-9c5b-74b595ee47e1&styles&url=https://geodienste.halle.de/opendata/fdcdfc9f-2f6a-4cb4-9c5b-74b595ee47e1"
         },
-        "a235642cc524423b826e955e8efeadba": {
-          "id": "a235642cc524423b826e955e8efeadba",
+        {
+          "id": "92fb417c1bcd45cebb9ddf44c9127470",
           "entry_type": "topic",
           "title": "HAL: Parkplätze/Parkhäuser (WMS)",
           "service_type": "ogc_wms",
@@ -3391,8 +3397,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=fc8cd3cd-01f7-3663-d0c0-984bd3507f0b&styles&url=https://geodienste.halle.de/opendata/fc8cd3cd-01f7-3663-d0c0-984bd3507f0b"
         },
-        "ba3e1b3d651a4406bcc9d7f976d67f58": {
-          "id": "ba3e1b3d651a4406bcc9d7f976d67f58",
+        {
+          "id": "025fd6e014be44e99f1248339ba369fe",
           "entry_type": "topic",
           "title": "HAL: Bewohnerparkzonen (WMS)",
           "service_type": "ogc_wms",
@@ -3431,8 +3437,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f1b4e731-caa5-0ec3-ce32-9fe187ac7fee&styles&url=https://geodienste.halle.de/opendata/f1b4e731-caa5-0ec3-ce32-9fe187ac7fee"
         },
-        "1f5ef48909fc456b96ae2f7cab017429": {
-          "id": "1f5ef48909fc456b96ae2f7cab017429",
+        {
+          "id": "1278c84cc20149cf91766bc96bad38eb",
           "entry_type": "topic",
           "title": "HAL: Öffentliche Behindertenparkplätze (WMS)",
           "service_type": "ogc_wms",
@@ -3472,8 +3478,8 @@
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=fb6c27ba-c2f0-2840-1f1f-a78c4c13108e&styles&url=https://geodienste.halle.de/opendata/fb6c27ba-c2f0-2840-1f1f-a78c4c13108e",
           "separator_after": true
         },
-        "2f38b8e7c0f242069f617198a62ca86e": {
-          "id": "2f38b8e7c0f242069f617198a62ca86e",
+        {
+          "id": "174094f7d8b5456fb80660ca1a22526d",
           "entry_type": "topic",
           "title": "HAL: Kraftfahrzeuge nach Art des KFZ 2016 (WMS)",
           "service_type": "ogc_wms",
@@ -3512,8 +3518,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=0&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=ffb0d2b5-7cc7-0338-265e-9337a881a680&styles&url=https://geodienste.halle.de/opendata/ffb0d2b5-7cc7-0338-265e-9337a881a680"
         },
-        "03abefea5c304d0dbbe2c7f112519e6d": {
-          "id": "03abefea5c304d0dbbe2c7f112519e6d",
+        {
+          "id": "030a96eb52544aa58a6356536a209aaa",
           "entry_type": "topic",
           "title": "HAL: Kraftfahrzeuge nach Art des KFZ 2017 (WMS)",
           "service_type": "ogc_wms",
@@ -3552,8 +3558,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f1a51c43-1bb3-4347-40fe-10c5ca66f7a7&styles&url=https://geodienste.halle.de/opendata/f1a51c43-1bb3-4347-40fe-10c5ca66f7a7"
         },
-        "804d69457d264625ad928a985ba604af": {
-          "id": "804d69457d264625ad928a985ba604af",
+        {
+          "id": "0442d45713544d08a4d98e0c7d38110e",
           "entry_type": "topic",
           "title": "HAL: Kraftfahrzeuge nach Art des KFZ 2018 (WMS)",
           "service_type": "ogc_wms",
@@ -3592,8 +3598,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=fdc56703-7009-2f08-8d97-6623ea7a1e02&styles&url=https://geodienste.halle.de/opendata/fdc56703-7009-2f08-8d97-6623ea7a1e02"
         },
-        "fbd079eba8e44f5b8e42b84eee4ae9cc": {
-          "id": "fbd079eba8e44f5b8e42b84eee4ae9cc",
+        {
+          "id": "dc72d59fa48349119ddca3b205da8c3b",
           "entry_type": "topic",
           "title": "HAL: Kraftfahrzeuge nach Art des KFZ 2019 (WMS)",
           "service_type": "ogc_wms",
@@ -3632,8 +3638,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f5716547-9b18-2f1a-986f-016be98193b0&styles&url=https://geodienste.halle.de/opendata/f5716547-9b18-2f1a-986f-016be98193b0"
         },
-        "f18aaf8011894a74b3d5d074aac43144": {
-          "id": "f18aaf8011894a74b3d5d074aac43144",
+        {
+          "id": "e12ced7c8ada4b8bb18c6cdbf82e7450",
           "entry_type": "topic",
           "title": "HAL: Kraftfahrzeuge nach Art des KFZ 2020 (WMS)",
           "service_type": "ogc_wms",
@@ -3672,8 +3678,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f74a2a21-8475-275b-768e-3a0f61ce5ee5&styles&url=https://geodienste.halle.de/opendata/f74a2a21-8475-275b-768e-3a0f61ce5ee5"
         },
-        "dc183081b5344f1892a7814ee349fbfe": {
-          "id": "dc183081b5344f1892a7814ee349fbfe",
+        {
+          "id": "5a79cc597e444f45a259067625972f93",
           "entry_type": "topic",
           "title": "HAL: Kraftfahrzeuge nach Art des KFZ 2021 (WMS)",
           "service_type": "ogc_wms",
@@ -3712,8 +3718,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=fb8a8abf-595f-d359-ef39-d8a6bf625c28&styles&url=https://geodienste.halle.de/opendata/fb8a8abf-595f-d359-ef39-d8a6bf625c28"
         },
-        "37f623b7cdf94a038e42ee16a631e037": {
-          "id": "37f623b7cdf94a038e42ee16a631e037",
+        {
+          "id": "12c71c160d4740d8ba49d92ddabfe9f3",
           "entry_type": "topic",
           "title": "HAL: Kraftfahrzeuge nach Art des KFZ 2022 (WMS)",
           "service_type": "ogc_wms",
@@ -3752,13 +3758,14 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=fbc5b3ce-60ca-f221-5ec2-7bd13232c4cf&styles&url=https://geodienste.halle.de/opendata/fbc5b3ce-60ca-f221-5ec2-7bd13232c4cf"
         }
-      }
+      ]
     },
-    "Kap7": {
+    {
+      "id": "a3824db00a3c439c9c8ad7671f99a0c3",
       "title": "7. Umwelt und Klima",
-      "topics": {
-        "3eea11d3de2d48fa81a00d5eeed00af7": {
-          "id": "3eea11d3de2d48fa81a00d5eeed00af7",
+      "topics": [
+        {
+          "id": "aca6cc15e2f142a9aadd36db8b56f3a2",
           "entry_type": "topic",
           "title": "HAL: 2022 Lärmbelastete Flächen INDUSTRIE 24h (Lden) (WMS)",
           "service_type": "ogc_wms",
@@ -3797,13 +3804,14 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f9fd27da-2c3d-3c32-fd6e-0069cad51c59&styles&url=https://geodienste.halle.de/opendata/f9fd27da-2c3d-3c32-fd6e-0069cad51c59"
         }
-      }
+      ]
     },
-    "Kap8": {
+    {
+      "id": "dc98fef3ea7b44bd86c1d58bfb801caa",
       "title": "8. Wirtschaft und Arbeit",
-      "topics": {
-        "652355b3f4c84a8ba9029ecaf86e40d2": {
-          "id": "652355b3f4c84a8ba9029ecaf86e40d2",
+      "topics": [
+        {
+          "id": "ddd75a8f7b1648c0befcf240b5d5a83a",
           "entry_type": "topic",
           "title": "HAL: Baumärkte (WMS)",
           "service_type": "ogc_wms",
@@ -3842,8 +3850,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f3ac3cde-1652-8fcf-f855-e2d7c1fed758&styles&url=https://geodienste.halle.de/opendata/f3ac3cde-1652-8fcf-f855-e2d7c1fed758"
         },
-        "90d56348961e4cd5aa7484dbd927ccd2": {
-          "id": "90d56348961e4cd5aa7484dbd927ccd2",
+        {
+          "id": "cf84766dfd714270ac13f3c654c3228d",
           "entry_type": "topic",
           "title": "HAL: Lebensmitteleinzelhandel (großflächig) (WMS)",
           "service_type": "ogc_wms",
@@ -3882,8 +3890,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f56594d4-41fd-dbde-d6da-294f255f91f0&styles&url=https://geodienste.halle.de/opendata/f56594d4-41fd-dbde-d6da-294f255f91f0"
         },
-        "50a2ee287eec46b1b76ef5d886a07d7e": {
-          "id": "50a2ee287eec46b1b76ef5d886a07d7e",
+        {
+          "id": "7a7e54b3f4ca4e2d9e4327644bc69958",
           "entry_type": "topic",
           "title": "HAL: Möbelmärkte (WMS)",
           "service_type": "ogc_wms",
@@ -3922,8 +3930,8 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=f00b10c1-6cb3-832d-c64e-3f32432a01b0&styles&url=https://geodienste.halle.de/opendata/f00b10c1-6cb3-832d-c64e-3f32432a01b0"
         },
-        "c2641c2b2ffa47c0933d6e1012c622e7": {
-          "id": "c2641c2b2ffa47c0933d6e1012c622e7",
+        {
+          "id": "b8445fd3297f4e98ab0be97308371064",
           "entry_type": "topic",
           "title": "HAL: Zentren (WMS)",
           "service_type": "ogc_wms",
@@ -3962,7 +3970,7 @@
           "gbl_view": true,
           "service_uri": "contextualWMSLegend=1&crs={crs}&dpiMode=7&format=image/png&Request=GetMap&Version=1.3.0&layers=fa1745af-b0ad-f4e3-aa8e-934ff9d6fceb&styles&url=https://geodienste.halle.de/opendata/fa1745af-b0ad-f4e3-aa8e-934ff9d6fceb"
         }
-      }
+      ]
     }
-  }
+  ]
 }
