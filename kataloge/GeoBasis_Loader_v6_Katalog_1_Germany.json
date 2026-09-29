@@ -8873,7 +8873,7 @@
               "Land Mecklenburg-Vorpommern",
               "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
-              "WMS: DVG Land"
+              "WMS: DVG Gemeinden"
             ],
             "komgis_priority": "79900",
             "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gemeinden&styles&tilePixelRatio=0&url=https://www.geodaten-mv.de/dienste/dvg_laiv_wms?VERSION%3D1.3.0"
@@ -8914,7 +8914,7 @@
               "Land Mecklenburg-Vorpommern",
               "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
-              "WMS: DVG Land"
+              "WMS: DVG Ämter"
             ],
             "komgis_priority": "79900",
             "uri": "ontextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=aemter&styles&tilePixelRatio=0&url=https://www.geodaten-mv.de/dienste/dvg_laiv_wms?VERSION%3D1.3.0"
@@ -8955,7 +8955,7 @@
               "Land Mecklenburg-Vorpommern",
               "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
-              "WMS: DVG Land"
+              "WMS: DVG Kreise"
             ],
             "komgis_priority": "79900",
             "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=kreise&styles&tilePixelRatio=0&url=https://www.geodaten-mv.de/dienste/dvg_laiv_wms?VERSION%3D1.3.0"
@@ -16542,7 +16542,7 @@
         "name": "TH: Digitale Verwaltungsgrenzen (WMS)",
         "layers": {
           "bundessland": {
-            "name": "TH: Bundessland (WMS)",
+            "name": "TH: Bundesland (WMS)",
             "gbl-view": "true",
             "type": "ogc_wms",
             "valid_epsg": [
@@ -16573,7 +16573,7 @@
               "Land Thüringen",
               "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
-              "WMS: DVG Land"
+              "WMS: DVG Bundesland"
             ],
             "komgis_priority": "79900",
             "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=grzueb_land&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0"
@@ -16610,7 +16610,7 @@
               "Land Thüringen",
               "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
-              "WMS: DVG Land"
+              "WMS: DVG Gebietsübersicht"
             ],
             "komgis_priority": "79900",
             "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=grzueb_gebietsueb&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0"
@@ -16647,7 +16647,7 @@
               "Land Thüringen",
               "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
-              "WMS: DVG Land"
+              "WMS: DVG Gemeinden"
             ],
             "komgis_priority": "79900",
             "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=grzueb_gmd&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0"
@@ -16684,7 +16684,7 @@
               "Land Thüringen",
               "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
-              "WMS: DVG Land"
+              "WMS: DVG Gemeinden Beschriftung"
             ],
             "komgis_priority": "79900",
             "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=grzueb_gmd_name&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0"
@@ -16721,7 +16721,7 @@
               "Land Thüringen",
               "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
-              "WMS: DVG Land"
+              "WMS: DVG Erfüllende Gemeinden"
             ],
             "komgis_priority": "79900",
             "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=grzueb_erfgmd&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0"
@@ -16758,7 +16758,7 @@
               "Land Thüringen",
               "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
-              "WMS: DVG Land"
+              "WMS: DVG Erfüllende Gemeinden Beschriftung"
             ],
             "komgis_priority": "79900",
             "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=grzueb_erfgmd_name&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0"
@@ -16795,7 +16795,7 @@
               "Land Thüringen",
               "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
-              "WMS: DVG Land"
+              "WMS: DVG Verwaltungsgemeinschaften"
             ],
             "komgis_priority": "79900",
             "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=grzueb_vg&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0"
@@ -16832,7 +16832,7 @@
               "Land Thüringen",
               "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
-              "WMS: DVG Land"
+              "WMS: DVG Verwaltungsgemeinschaften Beschriftung"
             ],
             "komgis_priority": "79900",
             "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=grzueb_vg_name&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0"
@@ -16869,7 +16869,7 @@
               "Land Thüringen",
               "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
-              "WMS: DVG Land"
+              "WMS: DVG Landkreise und kreisfreie Städte "
             ],
             "komgis_priority": "79900",
             "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=grzueb_lkr&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0"
@@ -16906,7 +16906,7 @@
               "Land Thüringen",
               "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
-              "WMS: DVG Land"
+              "WMS: DVG Landkreise und kreisfreie Städte Beschriftung"
             ],
             "komgis_priority": "79900",
             "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=grzueb_lkr_name&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0"
@@ -16943,7 +16943,7 @@
               "Land Thüringen",
               "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
-              "WMS: DVG Land"
+              "WMS: DVG Gemarkungen"
             ],
             "komgis_priority": "79900",
             "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gmkueb_gmk&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0"
@@ -16980,7 +16980,7 @@
               "Land Thüringen",
               "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
-              "WMS: DVG Land"
+              "WMS: DVG Gemarkungen Beschriftung"
             ],
             "komgis_priority": "79900",
             "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gmkueb_gmk_name&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0"
@@ -17017,7 +17017,7 @@
               "Land Thüringen",
               "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
-              "WMS: DVG Land"
+              "WMS: DVG Fluren"
             ],
             "komgis_priority": "79900",
             "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gmkueb_flur&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0"
@@ -17054,7 +17054,7 @@
               "Land Thüringen",
               "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
-              "WMS: DVG Land"
+              "WMS: DVG Fluren Beschriftung"
             ],
             "komgis_priority": "79900",
             "uri": "ontextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gmkueb_flur_name&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0"
