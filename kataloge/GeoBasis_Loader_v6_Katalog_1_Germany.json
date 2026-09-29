@@ -5316,7 +5316,6 @@
           "WMS: ALKIS-Parzellarkarte (Farbig)"
         ],
         "komgis_priority": "75000",
-
         "type": "ogc_wms",
         "valid_epsg": [
           "EPSG:25832",
@@ -6364,7 +6363,6 @@
             "name": "BB: TK 50 farbig (WMS)",
             "gbl-view": "true",
             "type": "ogc_wms",
-
             "komgis_layerid": "e6551078-41c4-4779-95e3-b050f295b8e3",
             "komgis_node": [
               "Externe Geodienste",
@@ -8428,8 +8426,6 @@
           }
         }
       },
-
-
       "pg_farbig_layergroup": {
         "name": "HE: Präsentationsgrafik farbig (WMS)",
         "layers": {
@@ -8635,8 +8631,6 @@
           }
         }
       },
-
-
       "dop20": {
         "name": "HE: Digitale Orthophotos - DOP20 (WMS)",
         "gbl-view": "true",
@@ -8871,7 +8865,6 @@
             "komgis_node": [
               "Externe Geodienste",
               "Land Mecklenburg-Vorpommern",
-              "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
               "WMS: DVG Gemeinden"
             ],
@@ -8913,7 +8906,6 @@
             "komgis_node": [
               "Externe Geodienste",
               "Land Mecklenburg-Vorpommern",
-              "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
               "WMS: DVG Ämter"
             ],
@@ -8955,12 +8947,12 @@
             "komgis_node": [
               "Externe Geodienste",
               "Land Mecklenburg-Vorpommern",
-              "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
               "WMS: DVG Kreise"
             ],
             "komgis_priority": "79900",
-            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=kreise&styles&tilePixelRatio=0&url=https://www.geodaten-mv.de/dienste/dvg_laiv_wms?VERSION%3D1.3.0",            "opacity": 0.75
+            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=kreise&styles&tilePixelRatio=0&url=https://www.geodaten-mv.de/dienste/dvg_laiv_wms?VERSION%3D1.3.0",
+            "opacity": 0.75
           }
         }
       },
@@ -11953,14 +11945,14 @@
             "gbl-view": "true",
             "type": "ogc_wms",
             "valid_epsg": [
-             "OGC:CRS84",
-             "EPSG:4326",
-             "EPSG:25832",
-             "EPSG:31466",
-             "EPSG:31467",
-             "EPSG:3857",
-             "EPSG:4258"
-             ],
+              "OGC:CRS84",
+              "EPSG:4326",
+              "EPSG:25832",
+              "EPSG:31466",
+              "EPSG:31467",
+              "EPSG:3857",
+              "EPSG:4258"
+            ],
             "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=Fliessgeschwindigkeit_HQ_010&styles&tilePixelRatio=0&url=https://geodienste-wasser.rlp-umwelt.de/maps/HWGK/wms?VERSION%3D1.3.0",
             "opacity": 0.75
           },
@@ -11969,14 +11961,14 @@
             "gbl-view": "true",
             "type": "ogc_wms",
             "valid_epsg": [
-             "OGC:CRS84",
-             "EPSG:4326",
-             "EPSG:25832",
-             "EPSG:31466",
-             "EPSG:31467",
-             "EPSG:3857",
-             "EPSG:4258"
-             ],
+              "OGC:CRS84",
+              "EPSG:4326",
+              "EPSG:25832",
+              "EPSG:31466",
+              "EPSG:31467",
+              "EPSG:3857",
+              "EPSG:4258"
+            ],
             "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=HQ10_pot_Land_utm32&styles&tilePixelRatio=0&url=https://geodienste-wasser.rlp-umwelt.de/maps/HWGK/wms?VERSION%3D1.3.0",
             "opacity": 0.75
           },
@@ -11985,14 +11977,14 @@
             "gbl-view": "true",
             "type": "ogc_wms",
             "valid_epsg": [
-             "OGC:CRS84",
-             "EPSG:4326",
-             "EPSG:25832",
-             "EPSG:31466",
-             "EPSG:31467",
-             "EPSG:3857",
-             "EPSG:4258"
-             ],
+              "OGC:CRS84",
+              "EPSG:4326",
+              "EPSG:25832",
+              "EPSG:31466",
+              "EPSG:31467",
+              "EPSG:3857",
+              "EPSG:4258"
+            ],
             "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=HQ10_akt_Land_utm32&styles&tilePixelRatio=0&url=https://geodienste-wasser.rlp-umwelt.de/maps/HWGK/wms?VERSION%3D1.3.0",
             "opacity": 0.75
           },
@@ -12001,14 +11993,14 @@
             "gbl-view": "true",
             "type": "ogc_wms",
             "valid_epsg": [
-             "OGC:CRS84",
-             "EPSG:4326",
-             "EPSG:25832",
-             "EPSG:31466",
-             "EPSG:31467",
-             "EPSG:3857",
-             "EPSG:4258"
-             ],
+              "OGC:CRS84",
+              "EPSG:4326",
+              "EPSG:25832",
+              "EPSG:31466",
+              "EPSG:31467",
+              "EPSG:3857",
+              "EPSG:4258"
+            ],
             "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=Ueberflutungsflaechen_HQ_010&styles&tilePixelRatio=0&url=https://geodienste-wasser.rlp-umwelt.de/maps/HWGK/wms?VERSION%3D1.3.0",
             "opacity": 0.75
           }
@@ -12022,14 +12014,14 @@
             "gbl-view": "true",
             "type": "ogc_wms",
             "valid_epsg": [
-             "OGC:CRS84",
-             "EPSG:4326",
-             "EPSG:25832",
-             "EPSG:31466",
-             "EPSG:31467",
-             "EPSG:3857",
-             "EPSG:4258"
-             ],
+              "OGC:CRS84",
+              "EPSG:4326",
+              "EPSG:25832",
+              "EPSG:31466",
+              "EPSG:31467",
+              "EPSG:3857",
+              "EPSG:4258"
+            ],
             "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=Fliessgeschwindigkeit_HQ_100&styles&tilePixelRatio=0&url=https://geodienste-wasser.rlp-umwelt.de/maps/HWGK/wms?VERSION%3D1.3.0",
             "opacity": 0.75
           },
@@ -12038,14 +12030,14 @@
             "gbl-view": "true",
             "type": "ogc_wms",
             "valid_epsg": [
-             "OGC:CRS84",
-             "EPSG:4326",
-             "EPSG:25832",
-             "EPSG:31466",
-             "EPSG:31467",
-             "EPSG:3857",
-             "EPSG:4258"
-             ],
+              "OGC:CRS84",
+              "EPSG:4326",
+              "EPSG:25832",
+              "EPSG:31466",
+              "EPSG:31467",
+              "EPSG:3857",
+              "EPSG:4258"
+            ],
             "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=HQ100_pot_Land_utm32&styles&tilePixelRatio=0&url=https://geodienste-wasser.rlp-umwelt.de/maps/HWGK/wms?VERSION%3D1.3.0",
             "opacity": 0.75
           },
@@ -12054,14 +12046,14 @@
             "gbl-view": "true",
             "type": "ogc_wms",
             "valid_epsg": [
-             "OGC:CRS84",
-             "EPSG:4326",
-             "EPSG:25832",
-             "EPSG:31466",
-             "EPSG:31467",
-             "EPSG:3857",
-             "EPSG:4258"
-             ],
+              "OGC:CRS84",
+              "EPSG:4326",
+              "EPSG:25832",
+              "EPSG:31466",
+              "EPSG:31467",
+              "EPSG:3857",
+              "EPSG:4258"
+            ],
             "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=HQ100_akt_Land_utm32&styles&tilePixelRatio=0&url=https://geodienste-wasser.rlp-umwelt.de/maps/HWGK/wms?VERSION%3D1.3.0",
             "opacity": 0.75
           },
@@ -12070,14 +12062,14 @@
             "gbl-view": "true",
             "type": "ogc_wms",
             "valid_epsg": [
-             "OGC:CRS84",
-             "EPSG:4326",
-             "EPSG:25832",
-             "EPSG:31466",
-             "EPSG:31467",
-             "EPSG:3857",
-             "EPSG:4258"
-             ],
+              "OGC:CRS84",
+              "EPSG:4326",
+              "EPSG:25832",
+              "EPSG:31466",
+              "EPSG:31467",
+              "EPSG:3857",
+              "EPSG:4258"
+            ],
             "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=Ueberflutungsflaechen_HQ_100&styles&tilePixelRatio=0&url=https://geodienste-wasser.rlp-umwelt.de/maps/HWGK/wms?VERSION%3D1.3.0",
             "opacity": 0.75
           }
@@ -12091,14 +12083,14 @@
             "gbl-view": "true",
             "type": "ogc_wms",
             "valid_epsg": [
-             "OGC:CRS84",
-             "EPSG:4326",
-             "EPSG:25832",
-             "EPSG:31466",
-             "EPSG:31467",
-             "EPSG:3857",
-             "EPSG:4258"
-             ],
+              "OGC:CRS84",
+              "EPSG:4326",
+              "EPSG:25832",
+              "EPSG:31466",
+              "EPSG:31467",
+              "EPSG:3857",
+              "EPSG:4258"
+            ],
             "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=Fliessgeschwindigkeit_HQ_extrem&styles&tilePixelRatio=0&url=https://geodienste-wasser.rlp-umwelt.de/maps/HWGK/wms?VERSION%3D1.3.0",
             "opacity": 0.75
           },
@@ -12107,14 +12099,14 @@
             "gbl-view": "true",
             "type": "ogc_wms",
             "valid_epsg": [
-             "OGC:CRS84",
-             "EPSG:4326",
-             "EPSG:25832",
-             "EPSG:31466",
-             "EPSG:31467",
-             "EPSG:3857",
-             "EPSG:4258"
-             ],
+              "OGC:CRS84",
+              "EPSG:4326",
+              "EPSG:25832",
+              "EPSG:31466",
+              "EPSG:31467",
+              "EPSG:3857",
+              "EPSG:4258"
+            ],
             "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=HQext_pot_Land_utm32&styles&tilePixelRatio=0&url=https://geodienste-wasser.rlp-umwelt.de/maps/HWGK/wms?VERSION%3D1.3.0",
             "opacity": 0.75
           },
@@ -12123,14 +12115,14 @@
             "gbl-view": "true",
             "type": "ogc_wms",
             "valid_epsg": [
-             "OGC:CRS84",
-             "EPSG:4326",
-             "EPSG:25832",
-             "EPSG:31466",
-             "EPSG:31467",
-             "EPSG:3857",
-             "EPSG:4258"
-             ],
+              "OGC:CRS84",
+              "EPSG:4326",
+              "EPSG:25832",
+              "EPSG:31466",
+              "EPSG:31467",
+              "EPSG:3857",
+              "EPSG:4258"
+            ],
             "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=HQext_akt_Land_utm32&styles&tilePixelRatio=0&url=https://geodienste-wasser.rlp-umwelt.de/maps/HWGK/wms?VERSION%3D1.3.0",
             "opacity": 0.75
           },
@@ -12139,14 +12131,14 @@
             "gbl-view": "true",
             "type": "ogc_wms",
             "valid_epsg": [
-             "OGC:CRS84",
-             "EPSG:4326",
-             "EPSG:25832",
-             "EPSG:31466",
-             "EPSG:31467",
-             "EPSG:3857",
-             "EPSG:4258"
-             ],
+              "OGC:CRS84",
+              "EPSG:4326",
+              "EPSG:25832",
+              "EPSG:31466",
+              "EPSG:31467",
+              "EPSG:3857",
+              "EPSG:4258"
+            ],
             "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&http-header:referer=&layers=Ueberflutungsflaechen_HQ_extrem&styles&tilePixelRatio=0&url=https://geodienste-wasser.rlp-umwelt.de/maps/HWGK/wms?VERSION%3D1.3.0",
             "opacity": 0.75
           }
@@ -15216,8 +15208,7 @@
           "EPSG:4326",
           "EPSG:25832"
         ],
-        "uri": 
-        "cache=PreferNetwork&crs=EPSG:placeholder&dpiMode=7&format=GeoTIFF&identifier=1&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/ows_WCS_ST_DGM1"
+        "uri": "cache=PreferNetwork&crs=EPSG:placeholder&dpiMode=7&format=GeoTIFF&identifier=1&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/ows_WCS_ST_DGM1"
       },
       "dom1": {
         "name": "ST: Digitales Oberflächenmodell - DOM1 (WCS) !! ab v0.9",
@@ -16573,7 +16564,6 @@
             "komgis_node": [
               "Externe Geodienste",
               "Land Thüringen",
-              "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
               "WMS: DVG Bundesland"
             ],
@@ -16611,7 +16601,6 @@
             "komgis_node": [
               "Externe Geodienste",
               "Land Thüringen",
-              "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
               "WMS: DVG Gebietsübersicht"
             ],
@@ -16649,7 +16638,6 @@
             "komgis_node": [
               "Externe Geodienste",
               "Land Thüringen",
-              "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
               "WMS: DVG Gemeinden"
             ],
@@ -16687,7 +16675,6 @@
             "komgis_node": [
               "Externe Geodienste",
               "Land Thüringen",
-              "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
               "WMS: DVG Gemeinden Beschriftung"
             ],
@@ -16725,7 +16712,6 @@
             "komgis_node": [
               "Externe Geodienste",
               "Land Thüringen",
-              "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
               "WMS: DVG Erfüllende Gemeinden"
             ],
@@ -16763,7 +16749,6 @@
             "komgis_node": [
               "Externe Geodienste",
               "Land Thüringen",
-              "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
               "WMS: DVG Erfüllende Gemeinden Beschriftung"
             ],
@@ -16801,7 +16786,6 @@
             "komgis_node": [
               "Externe Geodienste",
               "Land Thüringen",
-              "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
               "WMS: DVG Verwaltungsgemeinschaften"
             ],
@@ -16839,7 +16823,6 @@
             "komgis_node": [
               "Externe Geodienste",
               "Land Thüringen",
-              "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
               "WMS: DVG Verwaltungsgemeinschaften Beschriftung"
             ],
@@ -16877,7 +16860,6 @@
             "komgis_node": [
               "Externe Geodienste",
               "Land Thüringen",
-              "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
               "WMS: DVG Landkreise und kreisfreie Städte "
             ],
@@ -16915,7 +16897,6 @@
             "komgis_node": [
               "Externe Geodienste",
               "Land Thüringen",
-              "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
               "WMS: DVG Landkreise und kreisfreie Städte Beschriftung"
             ],
@@ -16953,7 +16934,6 @@
             "komgis_node": [
               "Externe Geodienste",
               "Land Thüringen",
-              "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
               "WMS: DVG Gemarkungen"
             ],
@@ -16991,7 +16971,6 @@
             "komgis_node": [
               "Externe Geodienste",
               "Land Thüringen",
-              "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
               "WMS: DVG Gemarkungen Beschriftung"
             ],
@@ -17029,7 +17008,6 @@
             "komgis_node": [
               "Externe Geodienste",
               "Land Thüringen",
-              "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
               "WMS: DVG Fluren"
             ],
@@ -17067,7 +17045,6 @@
             "komgis_node": [
               "Externe Geodienste",
               "Land Thüringen",
-              "Geoleistungspaket (GLP)",
               "Digitale Verwaltungsgrenzen (DVG)",
               "WMS: DVG Fluren Beschriftung"
             ],
