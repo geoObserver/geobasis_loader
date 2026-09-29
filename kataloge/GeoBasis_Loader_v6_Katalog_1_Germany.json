@@ -8876,7 +8876,8 @@
               "WMS: DVG Gemeinden"
             ],
             "komgis_priority": "79900",
-            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gemeinden&styles&tilePixelRatio=0&url=https://www.geodaten-mv.de/dienste/dvg_laiv_wms?VERSION%3D1.3.0"
+            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gemeinden&styles&tilePixelRatio=0&url=https://www.geodaten-mv.de/dienste/dvg_laiv_wms?VERSION%3D1.3.0",
+            "opacity": 0.75
           },
           "aemter": {
             "name": "MV: Ämter (WMS)",
@@ -8917,7 +8918,8 @@
               "WMS: DVG Ämter"
             ],
             "komgis_priority": "79900",
-            "uri": "ontextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=aemter&styles&tilePixelRatio=0&url=https://www.geodaten-mv.de/dienste/dvg_laiv_wms?VERSION%3D1.3.0"
+            "uri": "ontextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=aemter&styles&tilePixelRatio=0&url=https://www.geodaten-mv.de/dienste/dvg_laiv_wms?VERSION%3D1.3.0",
+            "opacity": 0.75
           },
           "kreise": {
             "name": "MV: Kreise (WMS)",
@@ -8958,7 +8960,7 @@
               "WMS: DVG Kreise"
             ],
             "komgis_priority": "79900",
-            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=kreise&styles&tilePixelRatio=0&url=https://www.geodaten-mv.de/dienste/dvg_laiv_wms?VERSION%3D1.3.0"
+            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=kreise&styles&tilePixelRatio=0&url=https://www.geodaten-mv.de/dienste/dvg_laiv_wms?VERSION%3D1.3.0",            "opacity": 0.75
           }
         }
       },
@@ -16576,7 +16578,8 @@
               "WMS: DVG Bundesland"
             ],
             "komgis_priority": "79900",
-            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=grzueb_land&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0"
+            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=grzueb_land&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0",
+            "opacity": 0.75
           },
           "Gebietsübersicht": {
             "name": "TH: Gebietsübersicht (WMS)",
@@ -16613,7 +16616,8 @@
               "WMS: DVG Gebietsübersicht"
             ],
             "komgis_priority": "79900",
-            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=grzueb_gebietsueb&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0"
+            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=grzueb_gebietsueb&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0",
+            "opacity": 0.75
           },
           "gemeinden": {
             "name": "TH: Gemeinden (WMS)",
@@ -16650,7 +16654,8 @@
               "WMS: DVG Gemeinden"
             ],
             "komgis_priority": "79900",
-            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=grzueb_gmd&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0"
+            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=grzueb_gmd&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0",
+            "opacity": 0.75
           },
           "gemeinden_b": {
             "name": "TH: Gemeinden Beschriftung (WMS)",
@@ -16687,7 +16692,8 @@
               "WMS: DVG Gemeinden Beschriftung"
             ],
             "komgis_priority": "79900",
-            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=grzueb_gmd_name&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0"
+            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=grzueb_gmd_name&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0",
+            "opacity": 0.75
           },
           "erfuellende_gemeinden": {
             "name": "TH: Erfüllende Gemeinden (WMS)",
@@ -16724,7 +16730,8 @@
               "WMS: DVG Erfüllende Gemeinden"
             ],
             "komgis_priority": "79900",
-            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=grzueb_erfgmd&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0"
+            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=grzueb_erfgmd&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0",
+            "opacity": 0.75
           },
           "erfuellende_gemeinden_b": {
             "name": "TH: Erfüllende Gemeinden Beschriftung (WMS)",
@@ -16761,7 +16768,8 @@
               "WMS: DVG Erfüllende Gemeinden Beschriftung"
             ],
             "komgis_priority": "79900",
-            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=grzueb_erfgmd_name&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0"
+            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=grzueb_erfgmd_name&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0",
+            "opacity": 0.75
           },
           "Verwaltungsgemeinschaften": {
             "name": "TH: Verwaltungsgemeinschaften (WMS)",
@@ -16798,7 +16806,8 @@
               "WMS: DVG Verwaltungsgemeinschaften"
             ],
             "komgis_priority": "79900",
-            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=grzueb_vg&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0"
+            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=grzueb_vg&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0",
+            "opacity": 0.75
           },
           "Verwaltungsgemeinschaften_b": {
             "name": "TH: Verwaltungsgemeinschaften Beschriftung (WMS)",
@@ -16835,7 +16844,8 @@
               "WMS: DVG Verwaltungsgemeinschaften Beschriftung"
             ],
             "komgis_priority": "79900",
-            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=grzueb_vg_name&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0"
+            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=grzueb_vg_name&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0",
+            "opacity": 0.75
           },
           "Landkreise_und_kreisfreie_Staedte": {
             "name": "TH: Landkreise und kreisfreie Städte (WMS)",
@@ -16872,7 +16882,8 @@
               "WMS: DVG Landkreise und kreisfreie Städte "
             ],
             "komgis_priority": "79900",
-            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=grzueb_lkr&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0"
+            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=grzueb_lkr&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0",
+            "opacity": 0.75
           },
           "Landkreise_und_kreisfreie_Staedte_b": {
             "name": "TH: Landkreise und kreisfreie Städte Beschriftung (WMS)",
@@ -16909,7 +16920,8 @@
               "WMS: DVG Landkreise und kreisfreie Städte Beschriftung"
             ],
             "komgis_priority": "79900",
-            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=grzueb_lkr_name&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0"
+            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=grzueb_lkr_name&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0",
+            "opacity": 0.75
           },
           "Gemarkungen": {
             "name": "TH: Gemarkungen (WMS)",
@@ -16946,7 +16958,8 @@
               "WMS: DVG Gemarkungen"
             ],
             "komgis_priority": "79900",
-            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gmkueb_gmk&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0"
+            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gmkueb_gmk&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0",
+            "opacity": 0.75
           },
           "Gemarkungen_b": {
             "name": "TH: Gemarkungen Beschriftung (WMS)",
@@ -16983,7 +16996,8 @@
               "WMS: DVG Gemarkungen Beschriftung"
             ],
             "komgis_priority": "79900",
-            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gmkueb_gmk_name&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0"
+            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gmkueb_gmk_name&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0",
+            "opacity": 0.75
           },
           "Fluren": {
             "name": "TH: Fluren (WMS)",
@@ -17020,7 +17034,8 @@
               "WMS: DVG Fluren"
             ],
             "komgis_priority": "79900",
-            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gmkueb_flur&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0"
+            "uri": "contextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gmkueb_flur&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0",
+            "opacity": 0.75
           },
           "Fluren_b": {
             "name": "TH: Fluren Beschriftung (WMS)",
@@ -17057,7 +17072,8 @@
               "WMS: DVG Fluren Beschriftung"
             ],
             "komgis_priority": "79900",
-            "uri": "ontextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gmkueb_flur_name&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0"
+            "uri": "ontextualWMSLegend=1&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gmkueb_flur_name&styles&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/GRENZUEB?VERSION%3D1.3.0",
+            "opacity": 0.75
           }
         }
       },
