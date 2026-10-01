@@ -883,6 +883,100 @@
         "uri": "styleUrl=https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/styles/bm_web_top.json&type=xyz&url=https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/tiles/v2/bm_web_de_3857/%7Bz%7D/%7Bx%7D/%7By%7D.pbf&zmax=24&zmin=0&http-header:referer=",
         "seperator": true
       },
+      "grau-wfs": {
+        "name": "DE: basemap.de grau (WFS)",
+        "gbl-view": "true",
+        "type": "ogc_vectorTiles",
+        "valid_epsg": [
+          "EPSG:3857"
+        ],
+        "uri": "styleUrl=https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/styles/bm_web_gry.json&type=xyz&url=https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/tiles/v2/bm_web_de_3857/%7Bz%7D/%7Bx%7D/%7By%7D.pbf&zmax=24&zmin=0&http-header:referer=",
+        "seperator": true
+      },
+      "RasterCombShade": {
+        "name": "DE: basemap.de Raster CombShade (WMS)",
+        "gbl-view": "true",
+        "type": "ogc_wms",
+        "komgis_layerid": "37470cb2-11d2-40d0-87b6-d793209443b5",
+        "komgis_node": [
+          "Externe Geodienste",
+          "Bundesrepublik Deutschland",
+          "Basemap.de",
+          "WMS: Basemap.de (Raster CombShade)"
+        ],
+        "komgis_priority": "95002",
+        "valid_epsg": [
+          "OGC:CRS84",
+          "EPSG:3857",
+          "EPSG:25832",
+          "EPSG:25833",
+          "EPSG:4326",
+          "EPSG:4258",
+          "EPSG:3035",
+          "EPSG:3034",
+          "EPSG:3044",
+          "EPSG:3045",
+          "EPSG:4647",
+          "EPSG:5650"
+        ],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=de_basemapde_web_raster_combshade&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_basemapde_schummerung"
+      },
+      "RasterHillShade": {
+        "name": "DE: basemap.de Raster HillShade (WMS)",
+        "gbl-view": "true",
+        "type": "ogc_wms",
+        "komgis_layerid": "c40b7ee9-05d1-4d55-a7b8-f1ef495ecdfe",
+        "komgis_node": [
+          "Externe Geodienste",
+          "Bundesrepublik Deutschland",
+          "Basemap.de",
+          "WMS: Basemap.de (Raster HillShade)"
+        ],
+        "komgis_priority": "95002",
+        "valid_epsg": [
+          "OGC:CRS84",
+          "EPSG:3857",
+          "EPSG:25832",
+          "EPSG:25833",
+          "EPSG:4326",
+          "EPSG:4258",
+          "EPSG:3035",
+          "EPSG:3034",
+          "EPSG:3044",
+          "EPSG:3045",
+          "EPSG:4647",
+          "EPSG:5650"
+        ],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=de_basemapde_web_raster_hillshade&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_basemapde_schummerung"
+      },
+      "RasterColorDEM": {
+        "name": "DE: basemap.de Raster ColorDEM (WMS)",
+        "gbl-view": "true",
+        "type": "ogc_wms",
+        "komgis_layerid": "140dd515-c93a-4a03-8209-a893cb3afa7c",
+        "komgis_node": [
+          "Externe Geodienste",
+          "Bundesrepublik Deutschland",
+          "Basemap.de",
+          "WMS: Basemap.de (Raster ColorDEM)"
+        ],
+        "komgis_priority": "95002",
+        "valid_epsg": [
+          "OGC:CRS84",
+          "EPSG:3857",
+          "EPSG:25832",
+          "EPSG:25833",
+          "EPSG:4326",
+          "EPSG:4258",
+          "EPSG:3035",
+          "EPSG:3034",
+          "EPSG:3044",
+          "EPSG:3045",
+          "EPSG:4647",
+          "EPSG:5650"
+        ],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=de_basemapde_web_raster_colordem&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_basemapde_schummerung"
+      },
       "TopPlusOpen_farbig": {
         "name": "DE: TopPlusOpen farbig (WMS)",
         "gbl-view": "true",
@@ -1150,6 +1244,312 @@
         ],
         "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=2023_lb_aktualitaet&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_lb-de",
         "seperator": true
+      },
+      "dtk_farbe_layergroup": {
+        "name": "DE: Digitale Topografische Karte farbig (WMS)",
+        "layers": {
+          "dtk100": {
+            "name": "DE: DTK 100 (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "komgis_layerid": "0570d6dd-9a17-45f9-9519-03cb4842e6ac",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Bundesrepublik Deutschland",
+              "Digitala Topografische Karte farbig",
+              "WMS: DTK 100"
+            ],
+            "komgis_priority": "74816",
+            "valid_epsg": [
+              "EPSG:4326",
+              "EPSG:3857",
+              "EPSG:25832",
+              "EPSG:25833",
+              "EPSG:4647",
+              "EPSG:5650",
+              "EPSG:31466",
+              "EPSG:31467",
+              "EPSG:31468",
+              "EPSG:31469",
+              "EPSG:5676",
+              "EPSG:5677",
+              "EPSG:5678",
+              "EPSG:5679",
+              "EPSG:4839",
+              "EPSG:4258",
+              "EPSG:3034",
+              "EPSG:3035",
+              "EPSG:3044",
+              "EPSG:3045",
+              "OGC:CRS84"
+            ],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dtk100&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_dtk100"
+          },
+          "dtk250": {
+            "name": "DE: DTK 250 (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "komgis_layerid": "7d82e061-21e0-4721-ab16-67dfde58e945",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Bundesrepublik Deutschland",
+              "Digitala Topografische Karte farbig",
+              "WMS: DTK 250"
+            ],
+            "komgis_priority": "74816",
+            "valid_epsg": [
+              "EPSG:4326",
+              "EPSG:3857",
+              "EPSG:25832",
+              "EPSG:25833",
+              "EPSG:4647",
+              "EPSG:5650",
+              "EPSG:31466",
+              "EPSG:31467",
+              "EPSG:31468",
+              "EPSG:31469",
+              "EPSG:5676",
+              "EPSG:5677",
+              "EPSG:5678",
+              "EPSG:5679",
+              "EPSG:4839",
+              "EPSG:4258",
+              "EPSG:3034",
+              "EPSG:3035",
+              "EPSG:3044",
+              "EPSG:3045",
+              "OGC:CRS84"
+            ],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dtk250&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_dtk250"
+          },
+          "dtk500": {
+            "name": "DE: DTK 500 (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "komgis_layerid": "09534864-35c0-4582-bfd7-6c3b9ab1755b",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Bundesrepublik Deutschland",
+              "Digitala Topografische Karte farbig",
+              "WMS: DTK 500"
+            ],
+            "komgis_priority": "74816",
+            "valid_epsg": [
+              "EPSG:4326",
+              "EPSG:3857",
+              "EPSG:25832",
+              "EPSG:25833",
+              "EPSG:4647",
+              "EPSG:5650",
+              "EPSG:31466",
+              "EPSG:31467",
+              "EPSG:31468",
+              "EPSG:31469",
+              "EPSG:5676",
+              "EPSG:5677",
+              "EPSG:5678",
+              "EPSG:5679",
+              "EPSG:4839",
+              "EPSG:4258",
+              "EPSG:3034",
+              "EPSG:3035",
+              "EPSG:3044",
+              "EPSG:3045",
+              "OGC:CRS84"
+            ],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dtk500&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_dtk500"
+          },
+          "dtk1000": {
+            "name": "DE: DTK 1000 (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "komgis_layerid": "0b377891-74ab-4f60-a822-edbfcad7b3be",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Bundesrepublik Deutschland",
+              "Digitala Topografische Karte farbig",
+              "WMS: DTK 1000"
+            ],
+            "komgis_priority": "74816",
+            "valid_epsg": [
+              "EPSG:4326",
+              "EPSG:3857",
+              "EPSG:25832",
+              "EPSG:25833",
+              "EPSG:4647",
+              "EPSG:5650",
+              "EPSG:31466",
+              "EPSG:31467",
+              "EPSG:31468",
+              "EPSG:31469",
+              "EPSG:5676",
+              "EPSG:5677",
+              "EPSG:5678",
+              "EPSG:5679",
+              "EPSG:4839",
+              "EPSG:4258",
+              "EPSG:3034",
+              "EPSG:3035",
+              "EPSG:3044",
+              "EPSG:3045",
+              "OGC:CRS84"
+            ],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dtk1000&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_dtk1000"
+          }
+        }
+      },
+      "dtk_grau_layergroup": {
+        "name": "DE: Digitale Topografische Karte grau (WMS)",
+        "layers": {
+          "dtk100": {
+            "name": "DE: DTK 100 (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "komgis_layerid": "8d21b63a-5329-4faf-b16f-63c0db3ef62f",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Bundesrepublik Deutschland",
+              "Digitala Topografische Karte farbig",
+              "WMS: DTK 100"
+            ],
+            "komgis_priority": "74816",
+            "valid_epsg": [
+              "EPSG:4326",
+              "EPSG:3857",
+              "EPSG:25832",
+              "EPSG:25833",
+              "EPSG:4647",
+              "EPSG:5650",
+              "EPSG:31466",
+              "EPSG:31467",
+              "EPSG:31468",
+              "EPSG:31469",
+              "EPSG:5676",
+              "EPSG:5677",
+              "EPSG:5678",
+              "EPSG:5679",
+              "EPSG:4839",
+              "EPSG:4258",
+              "EPSG:3034",
+              "EPSG:3035",
+              "EPSG:3044",
+              "EPSG:3045",
+              "OGC:CRS84"
+            ],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dtk100_grau&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_dtk100"
+          },
+          "dtk250": {
+            "name": "DE: DTK 250 (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "komgis_layerid": "673a9444-2d8f-4c9c-bf24-874c2487a346",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Bundesrepublik Deutschland",
+              "Digitala Topografische Karte farbig",
+              "WMS: DTK 250"
+            ],
+            "komgis_priority": "74816",
+            "valid_epsg": [
+              "EPSG:4326",
+              "EPSG:3857",
+              "EPSG:25832",
+              "EPSG:25833",
+              "EPSG:4647",
+              "EPSG:5650",
+              "EPSG:31466",
+              "EPSG:31467",
+              "EPSG:31468",
+              "EPSG:31469",
+              "EPSG:5676",
+              "EPSG:5677",
+              "EPSG:5678",
+              "EPSG:5679",
+              "EPSG:4839",
+              "EPSG:4258",
+              "EPSG:3034",
+              "EPSG:3035",
+              "EPSG:3044",
+              "EPSG:3045",
+              "OGC:CRS84"
+            ],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dtk250_grau&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_dtk250"
+          },
+          "dtk500": {
+            "name": "DE: DTK 500 (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "komgis_layerid": "de6e492b-3209-4074-96ed-4867e325ced1",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Bundesrepublik Deutschland",
+              "Digitala Topografische Karte farbig",
+              "WMS: DTK 500"
+            ],
+            "komgis_priority": "74816",
+            "valid_epsg": [
+              "EPSG:4326",
+              "EPSG:3857",
+              "EPSG:25832",
+              "EPSG:25833",
+              "EPSG:4647",
+              "EPSG:5650",
+              "EPSG:31466",
+              "EPSG:31467",
+              "EPSG:31468",
+              "EPSG:31469",
+              "EPSG:5676",
+              "EPSG:5677",
+              "EPSG:5678",
+              "EPSG:5679",
+              "EPSG:4839",
+              "EPSG:4258",
+              "EPSG:3034",
+              "EPSG:3035",
+              "EPSG:3044",
+              "EPSG:3045",
+              "OGC:CRS84"
+            ],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dtk500_grau&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_dtk500"
+          },
+          "dtk1000": {
+            "name": "DE: DTK 1000 (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "komgis_layerid": "f798c8ba-0d0d-4afd-baf1-5b5cfb400bb5",
+            "komgis_node": [
+              "Externe Geodienste",
+              "Bundesrepublik Deutschland",
+              "Digitala Topografische Karte farbig",
+              "WMS: DTK 1000"
+            ],
+            "komgis_priority": "74816",
+            "valid_epsg": [
+              "EPSG:4326",
+              "EPSG:3857",
+              "EPSG:25832",
+              "EPSG:25833",
+              "EPSG:4647",
+              "EPSG:5650",
+              "EPSG:31466",
+              "EPSG:31467",
+              "EPSG:31468",
+              "EPSG:31469",
+              "EPSG:5676",
+              "EPSG:5677",
+              "EPSG:5678",
+              "EPSG:5679",
+              "EPSG:4839",
+              "EPSG:4258",
+              "EPSG:3034",
+              "EPSG:3035",
+              "EPSG:3044",
+              "EPSG:3045",
+              "OGC:CRS84"
+            ],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=dtk1000_grau&styles&tilePixelRatio=0&url=https://sgx.geodatenzentrum.de/wms_dtk1000"
+          }
+        }
       },
       "bsw_layergroup": {
         "name": "DE: Bundeswasserstraßen - WSV (WMS)",
