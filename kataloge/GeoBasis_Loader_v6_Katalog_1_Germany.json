@@ -6182,7 +6182,8 @@
               "EPSG:3857",
               "EPSG:31258"
             ],
-            "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=nicht_ueberwachte_lawinenstriche&styles&tilePixelRatio=0&url=https://www.lfu.bayern.de/gdi/wms/wasser/lawinenkataster"
+            "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=nicht_ueberwachte_lawinenstriche&styles&tilePixelRatio=0&url=https://www.lfu.bayern.de/gdi/wms/wasser/lawinenkataster",
+            "opacity": 0.75
           },
           "by_lawine2": {
             "name": "BY: Überwachte Lawinenstriche im Zuständigkeitsbereich einer Lawinenkommission (WMS)",
@@ -6201,6 +6202,83 @@
             ],
             "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=ueberwachte_lawinenstriche&styles&tilePixelRatio=0&url=https://www.lfu.bayern.de/gdi/wms/wasser/lawinenkataster"
           }   
+        }
+      },
+      "HQxxx_group": {
+        "name": "BY: Hochwasser HQxxx (WMS)",
+        "layers": {
+          "by_hq100-haeufig": {
+            "name": "BY: HQhäufig Wassertiefen (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "valid_epsg": [
+              "OGC:CRS84",
+              "EPSG:4326",
+              "EPSG:4258",
+              "EPSG:31467",
+              "EPSG:31468",
+              "EPSG:25832",
+              "EPSG:25833",
+              "EPSG:3857",
+              "EPSG:31258"
+            ],
+            "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=wt_hqhaeufig&styles&tilePixelRatio=0&url=https://www.lfu.bayern.de/gdi/wms/wasser/wassertiefen",
+            "opacity": 0.75
+          },
+          "by_hq100": {
+            "name": "BY: HQ100 Wassertiefen (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "valid_epsg": [
+              "OGC:CRS84",
+              "EPSG:4326",
+              "EPSG:4258",
+              "EPSG:31467",
+              "EPSG:31468",
+              "EPSG:25832",
+              "EPSG:25833",
+              "EPSG:3857",
+              "EPSG:31258"
+            ],
+            "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=wt_hq100&styles&tilePixelRatio=0&url=https://www.lfu.bayern.de/gdi/wms/wasser/wassertiefen",
+            "opacity": 0.75
+          },
+          "by_hq100_gesch": {
+            "name": "BY: HQ100 Wassertiefen in geschützten Gebieten (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "valid_epsg": [
+              "OGC:CRS84",
+              "EPSG:4326",
+              "EPSG:4258",
+              "EPSG:31467",
+              "EPSG:31468",
+              "EPSG:25832",
+              "EPSG:25833",
+              "EPSG:3857",
+              "EPSG:31258"
+            ],
+            "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=wt_hwgg_hq100&styles&tilePixelRatio=0&url=https://www.lfu.bayern.de/gdi/wms/wasser/wassertiefen",
+            "opacity": 0.75
+          },
+          "by_hq100_extrem": {
+            "name": "BY: HQextrem Wassertiefen (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "valid_epsg": [
+              "OGC:CRS84",
+              "EPSG:4326",
+              "EPSG:4258",
+              "EPSG:31467",
+              "EPSG:31468",
+              "EPSG:25832",
+              "EPSG:25833",
+              "EPSG:3857",
+              "EPSG:31258"
+            ],
+            "uri": "crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=wt_hqextrem&styles&tilePixelRatio=0&url=https://www.lfu.bayern.de/gdi/wms/wasser/wassertiefen",
+            "opacity": 0.75
+          }
         }
       }
     }
