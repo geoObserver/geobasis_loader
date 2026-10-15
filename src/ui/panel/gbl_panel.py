@@ -1,6 +1,6 @@
 from qgis.PyQt import uic, QtWidgets, QtCore
 from qgis.gui import QgsDockWidget
-from . import catalog_tab, settings_tab, favorites_tab, presets_tab
+from . import catalog_tab, settings_tab, favorites_tab, presets_tab, access_constraints_tab
 from .. import icons
 from ... import config
 
@@ -19,10 +19,12 @@ class GblPanel(QgsDockWidget, GBL_PANEL_DOCK):
         self.catalog_tab = catalog_tab.CatalogTab(self.tabWidget)
         self.favorites_tab = favorites_tab.FavoritesTab(self.tabWidget)
         self.presets_tab = presets_tab.PresetsTab(self.tabWidget)
+        self.accept_constraints_tab = access_constraints_tab.AccessConstraintsTab(self.tabWidget)
         self.settings_tab = settings_tab.SettingsTab(self.tabWidget)
         self.tabWidget.addTab(self.catalog_tab, icons.get_icon(icons.IconKey.CATALOG_GLOBE_ICON), "Katalog")
         self.tabWidget.addTab(self.favorites_tab, icons.get_icon(icons.IconKey.FAVORITE_STAR), "Favoriten")
         self.tabWidget.addTab(self.presets_tab, icons.get_icon(icons.IconKey.PRESET_USER), "Presets")
+        self.tabWidget.addTab(self.accept_constraints_tab, "Zugriffsbeschränkungen")
         self.tabWidget.addTab(self.settings_tab, icons.get_icon(icons.IconKey.SETTINGS), "Einstellungen")
         
         # Connect slots
