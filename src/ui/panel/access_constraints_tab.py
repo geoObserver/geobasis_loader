@@ -91,13 +91,8 @@ class AccessConstraintsTab(QtWidgets.QWidget, FAVORITES_TAB):
             self.build_constraints_tree()
             print(f"Layer: {layer.name()}, Fees: {fees}, Constraints: {constraints}")
     
-    def _on_layers_removed(self, layers: list[QgsMapLayer]) -> None:
-        ids = []
-        for layer in layers:
-            if layer is None or not layer.isValid():
-                continue
-            ids.append(layer.id())
-        self.constraints = [c for c in self.constraints if c.layer_id not in ids]
+    def _on_layers_removed(self, layers: list[str]) -> None:
+        self.constraints = [c for c in self.constraints if c.layer_id not in layers]
         self.build_constraints_tree()
 
     def _on_locale_changed(self) -> None:
