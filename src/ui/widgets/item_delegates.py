@@ -1,6 +1,74 @@
 from qgis.PyQt import QtWidgets, QtCore, QtGui
 from ... import config
 
+
+class WrappedTextItemDelegate(QtWidgets.QStyledItemDelegate):
+    """Wrap long text in a tree column while keeping row height tight and stable."""
+
+    def __init__(self, parent=None, wrap_column: int = 1):
+        super().__init__(parent)
+        # The second column contains the verbose metadata we want to wrap.
+        self.wrap_column = wrap_column
+
+    def _available_width(self, option, index):
+        widget = option.widget
+        if isinstance(widget, QtWidgets.QTreeWidget):
+            # Leave enough space for the left label column and a bit of padding.
+            header = widget.header()
+            left_width = header.sectionSize(0) if header is not None else 180
+            return max(1, widget.viewport().width() - left_width - 30)
+        return max(1, option.rect.width())
+
+    def paint(self, painter, option, index):
+        # Only handle the wrapped metadata column; everything else uses the default item painting.
+        if index.column() != self.wrap_column:
+            super().paint(painter, option, index)
+            return
+
+        self.initStyleOption(option, index)
+        text = option.text
+        if not text:
+            super().paint(painter, option, index)
+            return
+
+        # Draw the item background first, then paint the text ourselves so it can wrap.
+        painter.save()
+        option.text = ""
+        style = option.widget.style() if option.widget else QtWidgets.QApplication.style()
+        if style:
+            style.drawControl(QtWidgets.QStyle.ControlElement.CE_ItemViewItem, option, painter, option.widget)
+
+        # Minimal in-cell padding keeps it close to native tree rows.
+        # rect = option.rect.adjusted(2, 0, -2, 0)<
+        rect = option.rect.adjusted(0, 0, 0, 0)
+        width = self._available_width(option, index)
+        text_rect = QtCore.QRectF(rect.left(), rect.top(), width, rect.height())
+        text_option = QtGui.QTextOption(QtCore.Qt.AlignmentFlag.AlignLeft | QtCore.Qt.AlignmentFlag.AlignVCenter)
+        text_option.setWrapMode(QtGui.QTextOption.WrapMode.WrapAtWordBoundaryOrAnywhere)
+        painter.drawText(text_rect, text, text_option)
+        painter.restore()
+
+    def sizeHint(self, option, index):
+        # Height must adapt to the current width, otherwise rows stay stale after resizing.
+        if index.column() != self.wrap_column:
+            return super().sizeHint(option, index)
+
+        self.initStyleOption(option, index)
+        text = option.text or ""
+        if not text:
+            return super().sizeHint(option, index)
+
+        width = self._available_width(option, index)
+        # Measure the wrapped text height using the actual current width.
+        height = option.fontMetrics.boundingRect(
+            QtCore.QRect(0, 0, width, 10000),
+            QtCore.Qt.AlignmentFlag.AlignLeft | QtCore.Qt.AlignmentFlag.AlignTop | QtCore.Qt.TextFlag.TextWordWrap,
+            text,
+        ).height()
+        original_size_hint = super().sizeHint(option, index)
+        return QtCore.QSize(width, max(original_size_hint.height(), height))
+
+
 class SearchHighlightItemDelegate(QtWidgets.QStyledItemDelegate):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -160,3 +228,5 @@ class SearchHighlightItemDelegate(QtWidgets.QStyledItemDelegate):
                 ranges.append((start, end))
                 start = end  # Move past this match
         return ranges
+
+

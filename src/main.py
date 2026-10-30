@@ -99,6 +99,7 @@ class GeoBasis_Loader(QObject):
         self.search_filter = None
         
         if self.gbl_panel:
+            self.gbl_panel.accept_constraints_tab.dispose()     # Disconnect qgis signals
             self.gbl_panel.setUserVisible(False)
             self.iface.removeDockWidget(self.gbl_panel)
             self.gbl_panel.setParent(None)
