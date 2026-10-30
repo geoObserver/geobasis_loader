@@ -1,3 +1,3 @@
-from .src import GeoBasis_Loader
+from .src import main
 def classFactory(iface):
-    return GeoBasis_Loader(iface)
+    return main.GeoBasis_Loader(iface)
