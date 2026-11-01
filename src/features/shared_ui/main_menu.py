@@ -3,7 +3,9 @@ import weakref
 from qgis.PyQt.QtWidgets import QMenu, QAction
 from qgis.PyQt.QtGui import QIcon
 from ..catalog import models as catalog_types
-from ..catalog.topic.topic_app import TopicLoader
+from ..catalog import TopicLoader, CatalogManager
+from ..property import PropertyManager
+# from ..catalog.topic.topic_app import TopicLoader
 from ..catalog.ui import CatalogTreeViewModel, EntryNode, TopicMenu
 from ..property.ui import FavoritesMenu, FavoriteViewModel
 from ...core import config, settings, icons
@@ -12,16 +14,15 @@ from ...core.utils import custom_logger, signal_utils
 logger = custom_logger.get_logger(__name__)
 
 # TODO: Context menus
-
 class MainMenu(QMenu):
-    def __init__(self, topic_loader: TopicLoader, catalog_model: CatalogTreeViewModel, favorite_view_model: FavoriteViewModel, parent=None):
+    def __init__(self, catalog_manager: CatalogManager, property_manager: PropertyManager, catalog_model: CatalogTreeViewModel, favorite_view_model: FavoriteViewModel, parent=None):
         super().__init__(config.PLUGIN_NAME_AND_VERSION, parent)
         # This is enough since the model needs to know about every topic and its properties
         # Using a different catalog manager could lead to sync problems
         # If something is wrong with the model this also menas the ui is not working properly
-        self.catalog_manager = catalog_model.catalog_manager
+        self.catalog_manager = catalog_manager
         self.catalog_view_model = catalog_model
-        self.topic_loader = topic_loader
+        self.topic_loader = TopicLoader(property_manager)
         self._action_dict: weakref.WeakValueDictionary[str, QAction] = weakref.WeakValueDictionary()
         
         icon = QIcon(str(config.PLUGIN_DIR / "GeoBasis_Loader_icon.png"))
@@ -35,7 +36,6 @@ class MainMenu(QMenu):
         
         # Favorites menu
         self._favorites_menu = FavoritesMenu(favorite_view_model, self)
-        self._favorites_menu.set_triggered_action_func(self._on_topic_action_triggered)
         
         # Presets menu
         # self.presets_menu = PresetsMenu(self)
@@ -93,31 +93,31 @@ class MainMenu(QMenu):
             # ------- Name des Katalogs einfügen -----------------
             self.addAction(current_catalog.title)
             self.addSeparator()
-            
-        # TODO: Entries are now absolute so favorites and presets should always be built
+        
+        # TODO: TEST THIS
         # ------- Favoriten einfügen -------------------------
-        # self.favorites_menu.build()
-        # self.addMenu(self.favorites_menu)
+        self._favorites_menu.build()
+        self.addMenu(self._favorites_menu)
         
         # ------- Presets einfügen ---------------------------
         # self.presets_menu.build()
         # self.addMenu(self.presets_menu)
         
-        # self.addSeparator()
+        self.addSeparator()
             
-            # ------ Alle Dienste anzeigen -----------------------
-            for node in self.catalog_view_model.root_nodes:
-                # if not node.is_visible:
-                #     continue
-                
-                region_menu = self._build_region_menu(node)
-                self._dynamic_menus[node.id] = region_menu
-                self.addMenu(region_menu)
-                
-                if node.separator:
-                    self.addSeparator()
-                
-            self.addSeparator()
+        # ------ Alle Dienste anzeigen -----------------------
+        for node in self.catalog_view_model.root_nodes:
+            # if not node.is_visible:
+            #     continue
+            
+            region_menu = self._build_region_menu(node)
+            self._dynamic_menus[node.id] = region_menu
+            self.addMenu(region_menu)
+            
+            if node.separator:
+                self.addSeparator()
+            
+        self.addSeparator()
         
         # ------ Kataloge ------------------------------------
         if not self.catalog_view_model.index_nodes:
@@ -139,7 +139,8 @@ class MainMenu(QMenu):
     
     def _build_region_menu(self, node: EntryNode) -> "TopicMenu":
         menu = TopicMenu(node.title, 'region-menu-' + node.id, self)
-        menu.setVisible(node.is_visible)
+        # This command somehow makes all menus appear
+        # menu.setVisible(node.is_visible)
         
         for node_child in node:
             # if not node_child.is_visible:

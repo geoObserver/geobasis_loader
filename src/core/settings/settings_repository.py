@@ -8,6 +8,7 @@ class PluginSettings(QObject):
     automatic_crs_changed = pyqtSignal(bool)
     
     def __init__(self):
+        super().__init__()
         self._qgs_settings = CustomQgsSettings()
     
     def _check_type(self, value, expected_type):

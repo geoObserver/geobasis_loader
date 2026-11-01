@@ -1,10 +1,11 @@
 from typing import Optional
 from qgis.PyQt.QtWidgets import QMenu, QAction
 from ..catalog import models as catalog_types
+from ..catalog import TopicLoader
 
 
 class TopicContextMenu(QMenu):
-    def __init__(self, entry: catalog_types.TopicEntry, parent=None):
+    def __init__(self, topic_loader: TopicLoader, entry: catalog_types.TopicEntry, parent=None):
         super().__init__(parent)
         if not entry or not isinstance(
             entry,
@@ -13,13 +14,14 @@ class TopicContextMenu(QMenu):
             return
         
         self.entry = entry
+        self.topic_loader = topic_loader
         
         if isinstance(entry, catalog_types.Topic) and entry.service_type == catalog_types.ServiceType.WEB:
             text = "Webseite öffnen"
-            func = lambda: topic_ops.open_web_site(topic.uri)
+            func = lambda: self.topic_loader.open_web_site(entry.uri)
         else:
             text = "Zur Karte hinzufügen"
-            func = lambda: topic_ops.add_topic(topic)
+            func = lambda: self.topic_loader.add_topic(entry)
         load_action = QAction(text, self)
         load_action.setObjectName(f"load-topic")
         load_action.triggered.connect(func)
@@ -46,7 +48,7 @@ class TopicContextMenu(QMenu):
                 remove_from_preset_menu.addAction(no_preset_action)
             
             for preset in presets:
-                activated = self.topic in preset
+                activated = self.entry in preset
                 
                 add_action = QAction(preset.title, self)
                 add_action.setObjectName(f"add-preset-{preset.id}")
@@ -64,14 +66,14 @@ class TopicContextMenu(QMenu):
             self.addMenu(remove_from_preset_menu)
             self.addSeparator()
         
-        if topic.properties.visible:
+        if self.entry.properties.visible:
             visibility_action = QAction("Thema ausblenden", self)
         else:
             visibility_action = QAction("Thema einblenden", self)
         visibility_action.triggered.connect(self._change_visibility)
         self.addAction(visibility_action)
         
-        if topic.properties.enabled:
+        if self.entry.properties.enabled:
             enabled_action = QAction("Thema deaktivieren", self)
         else:
             enabled_action = QAction("Thema aktivieren", self)

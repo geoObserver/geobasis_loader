@@ -45,12 +45,16 @@ class GeoBasis_Loader:
             logger.critical("PropertyManager is not initialized. Cannot build the main menu.")
             return
         
+        if not self.favorites_view_model:
+            logger.critical("FavoriteViewModel is not initialized. Cannot build the main menu.")
+            return
+
         if plugin_menu:
-            self.main_menu = shared_ui.MainMenu(self.topic_loader, self.catalog_tree_view_model, parent=plugin_menu)
+            self.main_menu = shared_ui.MainMenu(self.catalog_manager, self.property_manager, self.catalog_tree_view_model, self.favorites_view_model, parent=plugin_menu)
             plugin_menu.addMenu(self.main_menu)
         else:
             logger.critical("Konnte Plugin-Menü nicht finden. Menü konnte nicht hinzugefügt werden.")
-            self.main_menu = shared_ui.MainMenu(self.topic_loader, self.catalog_tree_view_model, parent=None)
+            self.main_menu = shared_ui.MainMenu(self.catalog_manager, self.property_manager, self.catalog_tree_view_model, self.favorites_view_model, parent=None)
 
         # Fetch data from data sources
         self.property_manager.load_all()
