@@ -145,14 +145,65 @@ class AccessConstraintsTab(QtWidgets.QWidget, FAVORITES_TAB):
             if layer is None or not layer.isValid():
                 continue
             
-            # Prefer provider metadata if layer metadata hasn't been explicitly saved over
-            meta = layer.dataProvider().layerMetadata() if layer.dataProvider() else layer.metadata()
-
-            # If provider layerMetadata() is empty, fall back to layer.metadata()
-            if not meta.fees() and not meta.constraints() and not meta.licenses() and not meta.rights():
-                meta = layer.metadata()
+            data_provider = layer.dataProvider()
+            if data_provider is None:
+                continue
             
-            print(meta.fees())
+            # Prefer provider metadata if layer metadata hasn't been explicitly saved over
+            # meta = layer.dataProvider().layerMetadata() if layer.dataProvider() else layer.metadata()
+
+            # # If provider layerMetadata() is empty, fall back to layer.metadata()
+            # if not meta.fees() and not meta.constraints() and not meta.licenses() and not meta.rights():
+            #     meta = layer.metadata()
+            
+            # print(meta.fees())
+            
+            import urllib.parse as urlparse
+            from qgis.core import QgsProviderRegistry, QgsDataSourceUri
+            data_provider = layer.dataProvider()
+            source_uri = layer.source()
+            parsed_url = urlparse.urlparse(source_uri, scheme='http')
+            #TODO: Chack with database layers
+            if parsed_url.scheme not in ['http', 'https']:
+                continue  # Skip non-HTTP/HTTPS layers
+            
+            # print(urlparse.urlparse("https://example.com/Alice&Bob?param1=value1&param2=value2"))
+            
+            uri = QgsDataSourceUri(source_uri)
+            encoded_uri = uri.encodedUri()
+            print(uri.param("url") == encoded_uri.decode('utf-8'))
+            # print(uri.encodedUri())
+            
+            # # Normal url starting with http or https
+            # if parsed_url.netloc != '':
+            #     pass
+            
+            # elif 
+            
+            # elif
+            #     pass
+            # else:
+            #     # Unknown
+            #     continue
+                
+            # print(QgsDataSourceUri(layer.source()))
+            # print(urlparse.urlparse(layer.source()))
+            # print(wms_test_uri)
+            # result = QgsProviderRegistry.instance().decodeUri(layer.providerType(), layer.source())
+            
+            # uri = urlparse.quote(layer.source())
+            # url = QgsDataSourceUri(uri)
+            # # url.setEncodedUri(uri) 
+            
+            
+            
+            # print(url)
+            
+            # uri = QgsDataSourceUri()
+            # a = urlparse.quote("https://example.com/wfs?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAME=ms:cities&SRSNAME=EPSG:4326", safe="")
+            # # uri.setEncodedUri(a)
+            # print(urlparse.urlparse(urlparse.unquote(a)))
+            
             
             # server_url = "Test"
             # print(f"Processing layer: {layer.name()}, Server: {server_url}")
