@@ -24,7 +24,7 @@ class GblPanel(QgsDockWidget, GBL_PANEL_DOCK):
         self.tabWidget.addTab(self.catalog_tab, icons.get_icon(icons.IconKey.CATALOG_GLOBE_ICON), "Katalog")
         self.tabWidget.addTab(self.favorites_tab, icons.get_icon(icons.IconKey.FAVORITE_STAR), "Favoriten")
         self.tabWidget.addTab(self.presets_tab, icons.get_icon(icons.IconKey.PRESET_USER), "Presets")
-        self.tabWidget.addTab(self.accept_constraints_tab, "Zugriffsbeschränkungen")
+        self.tabWidget.addTab(self.accept_constraints_tab, icons.get_icon(icons.IconKey.ACCESS_CONSTRAINTS), "Zugriffsbeschränkungen")
         self.tabWidget.addTab(self.settings_tab, icons.get_icon(icons.IconKey.SETTINGS), "Einstellungen")
         
         # Connect slots
