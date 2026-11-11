@@ -142,10 +142,10 @@ class AccessConstraintsTab(QtWidgets.QWidget, FAVORITES_TAB):
             
             data_provider = layer.dataProvider()
             source_uri = layer.source()
-            # source_uri = "https://example.com/Alice%26Bob?param1%3Dvalue1%26param2=value2"
+            # source_uri = "xyz:test&url=https://example.com/Alice%26Bob?param1%3Dvalue1%26param2=value2"
             parsed_url = urlparse.urlsplit(source_uri, scheme='http')
             #TODO: Chack with database layers
-            if parsed_url.scheme not in ['http', 'https']:
+            if parsed_url.scheme not in ['http', 'https', 'http-header']:
                 continue  # Skip non-HTTP/HTTPS layers
             
             # Normal URLs
