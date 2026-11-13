@@ -17602,7 +17602,7 @@
           "EPSG:3047",
           "EPSG:3857"
         ],
-        "uri":"contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image%2Fpng&layers=BODENRICHTWERTZONE_aktuell&layers=BODENRICHTWERTZONE_aktuell_PTO&styles=Bodenrichtwertzone&styles=Bodenrichtwertzone_PTO&tilePixelRatio=0&url=https%3A%2F%2Fwww.geoproxy.geoportal-th.de%2Fgeoproxy%2Fservices%2Fboris%2Fboris_wms%3Fclient%3Dboris",
+        "uri":"contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&tilePixelRatio=0&url=https://www.geoproxy.geoportal-th.de/geoproxy/services/boris/boris_wms?client%3Dboris&layers=BODENRICHTWERTZONE_aktuell_PTO&layers=BODENRICHTWERTZONE_aktuell&styles=Bodenrichtwertzone_PTO&styles=Bodenrichtwertzone",
         "seperator": true,
         "opacity": 0.75
       },
