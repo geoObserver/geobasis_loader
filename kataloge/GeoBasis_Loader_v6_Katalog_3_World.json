@@ -1044,15 +1044,6 @@
         "uri": "crs=EPSG:placeholder&format&type=xyz&url=https://a.tile.opentopomap.org/%7Bz%7D/%7Bx%7D/%7By%7D.png&zmax=18&zmin=0",
         "type": "ogc_wmts"
       },
-      "osm_fm": {
-        "name": "OSM: OpenStreetMap Fire Map (XYZ)",
-        "gbl-view": "true",
-        "valid_epsg": [
-          "EPSG:3857"
-        ],
-        "uri": "http-header:referer=&type=xyz&url=http://openfiremap.org/hytiles/%7Bz%7D/%7Bx%7D/%7By%7D.png",
-        "type": "ogc_wmts"
-      },
       "oepnv": {
         "name": "OSM: MeMoMaps ÖPNV-Karte (XYZ)",
         "gbl-view": "true",
