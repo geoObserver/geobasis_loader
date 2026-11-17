@@ -14954,7 +14954,7 @@
         "name": "ST: Feldblockdaten (WMS)",
         "layers": {
           "feldblock_feldbloecke": {
-            "name": "ST: Feldbblöcke nach Hauptbodennutzung (WMS)",
+            "name": "ST: Feldblöcke nach Hauptbodennutzung (WMS)",
             "gbl-view": "true",
             "type": "ogc_wms",
             "valid_epsg": [
@@ -15084,7 +15084,7 @@
             "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=BENA&styles&tilePixelRatio=0&url=https://www.geodatenportal.sachsen-anhalt.de/wss-org1/service/ST_MWL_LFK/guest"
           },
           "feldblock_IDs": {
-            "name": "ST: Feldbblock-IDs (WMS)",
+            "name": "ST: Feldblock-IDs (WMS)",
             "gbl-view": "true",
             "type": "ogc_wms",
             "valid_epsg": [
