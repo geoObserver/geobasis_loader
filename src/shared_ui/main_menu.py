@@ -2,27 +2,36 @@ from typing import Optional
 import weakref
 from qgis.PyQt.QtWidgets import QMenu, QAction
 from qgis.PyQt.QtGui import QIcon
-from ..catalog import models as catalog_types
-from ..catalog import TopicLoader, CatalogManager
-from ..property import PropertyManager
-# from ..catalog.topic.topic_app import TopicLoader
-from ..catalog.ui import CatalogTreeViewModel, EntryNode, TopicMenu
-from ..property.ui import FavoritesMenu, FavoriteViewModel
-from ...core import config, settings, icons
-from ...core.utils import custom_logger, signal_utils
+from ..features.catalog import models as catalog_types
+from ..features.catalog import CatalogManager
+from ..features.catalog.ui import CatalogTreeViewModel, EntryNode, TopicMenu, STAR_PREFIX
+from ..features.property.ui import FavoritesMenu, FavoriteViewModel
+from ..app import TopicActions
+from .context_menus import TopicContextMenuFactory
+from ..core import config, settings, icons
+from ..core.utils import custom_logger, signal_utils
 
 logger = custom_logger.get_logger(__name__)
 
-# TODO: Context menus
+
 class MainMenu(QMenu):
-    def __init__(self, catalog_manager: CatalogManager, property_manager: PropertyManager, catalog_model: CatalogTreeViewModel, favorite_view_model: FavoriteViewModel, parent=None):
+    def __init__(
+        self, 
+        catalog_manager: CatalogManager, 
+        catalog_model: CatalogTreeViewModel, 
+        favorite_view_model: FavoriteViewModel,
+        topic_context_menu_factory: TopicContextMenuFactory,
+        topic_actions: TopicActions,
+        parent=None
+    ):
         super().__init__(config.PLUGIN_NAME_AND_VERSION, parent)
         # This is enough since the model needs to know about every topic and its properties
         # Using a different catalog manager could lead to sync problems
         # If something is wrong with the model this also menas the ui is not working properly
         self.catalog_manager = catalog_manager
         self.catalog_view_model = catalog_model
-        self.topic_loader = TopicLoader(property_manager)
+        self.topic_actions = topic_actions
+        self.topic_context_menu_factory = topic_context_menu_factory
         self._action_dict: weakref.WeakValueDictionary[str, QAction] = weakref.WeakValueDictionary()
         
         icon = QIcon(str(config.PLUGIN_DIR / "GeoBasis_Loader_icon.png"))
@@ -35,7 +44,7 @@ class MainMenu(QMenu):
         self.automatic_crs_action: Optional[QAction] = None
         
         # Favorites menu
-        self._favorites_menu = FavoritesMenu(favorite_view_model, self)
+        self._favorites_menu = FavoritesMenu(favorite_view_model, topic_actions, self.topic_context_menu_factory, self)
         
         # Presets menu
         # self.presets_menu = PresetsMenu(self)
@@ -74,7 +83,7 @@ class MainMenu(QMenu):
         self.deleteLater()
     
     def _create_entry_action(self, node: EntryNode, parent_menu: QMenu) -> QAction:
-        title = node.title if not node.is_favorite else config.STAR_PREFIX + node.title
+        title = node.favorite_title
         action = QAction(node.get_icon(), title, parent_menu)
         action.setObjectName(f"main-menu-action_{node.id}")
         action.setToolTip(node.tooltip)
@@ -138,7 +147,7 @@ class MainMenu(QMenu):
         # self.presets_menu.build()
     
     def _build_region_menu(self, node: EntryNode) -> "TopicMenu":
-        menu = TopicMenu(node.title, 'region-menu-' + node.id, self)
+        menu = TopicMenu(node.title, 'region-menu-' + node.id, self.topic_context_menu_factory, self)
         # This command somehow makes all menus appear
         # menu.setVisible(node.is_visible)
         
@@ -147,7 +156,7 @@ class MainMenu(QMenu):
             #     continue
             
             if len(node_child.child_nodes) > 0:
-                topic_group_menu = TopicMenu(node.title, 'topic-group-menu-' + node.id, menu)
+                topic_group_menu = TopicMenu(node.title, 'topic-group-menu-' + node.id, self.topic_context_menu_factory, self)
                 topic_group_menu.setIcon(icons.get_icon(icons.IconKey.FOLDER_CLOSED))
                 self._dynamic_menus[node_child.id] = topic_group_menu
                 
@@ -213,13 +222,13 @@ class MainMenu(QMenu):
         self.addSeparator()
         
         # ------- Spenden-Schaltfläche für #geoObserver ------------------------
-        self.addAction("GeoBasis_Loader per Spende unterstützen ...", lambda: self.topic_loader.open_web_site('https://geoobserver.de/support_geobasis_loader/'))
+        self.addAction("GeoBasis_Loader per Spende unterstützen ...", lambda: self.topic_actions.open_web_site('https://geoobserver.de/support_geobasis_loader/'))
         
         # ------- Andere #geoObserver Plugins Webseite -------------------------
-        self.addAction("#geoObserver-Tools", lambda: self.topic_loader.open_web_site('https://geoobserver.de/qgis-plugins/'))
+        self.addAction("#geoObserver-Tools", lambda: self.topic_actions.open_web_site('https://geoobserver.de/qgis-plugins/'))
         
         # ------- Über-Schaltfläche für #geoObserver ------------------------
-        self.addAction("Über ...", lambda: self.topic_loader.open_web_site('https://geoobserver.de/qgis-plugin-geobasis-loader/'))
+        self.addAction("Über ...", lambda: self.topic_actions.open_web_site('https://geoobserver.de/qgis-plugin-geobasis-loader/'))
     
     def _on_catalog_action_triggered(self) -> None:
         sender = self.sender()
@@ -232,15 +241,14 @@ class MainMenu(QMenu):
     
     def _on_topic_action_triggered(self) -> None:
         sender = self.sender()
-        if isinstance(sender, QAction):
-            entry: catalog_types.TopicEntry = sender.data()
-            if isinstance(entry, catalog_types.TopicEntry):
-                if isinstance(entry, catalog_types.Topic) and entry.is_web():
-                    self.topic_loader.open_web_site(entry.uri)
-                else:
-                    self.topic_loader.add_topic(entry)
-            else:
-                logger.warning(f"Ungültige Daten im QAction-Objekt: {sender.objectName()}")
+        if not isinstance(sender, QAction):
+            return
+        
+        entry: catalog_types.TopicEntry = sender.data()
+        if isinstance(entry, catalog_types.TopicEntry):
+            self.topic_actions.load(entry)
+        else:
+            logger.warning(f"Ungültige Daten im QAction-Objekt: {sender.objectName()}")
     
     def _on_node_visibility_updated(self, visibility_dict: dict):
         # TODO: Test this functionality
@@ -253,26 +261,41 @@ class MainMenu(QMenu):
                 menu.setVisible(is_visible)
     
     def _on_node_favorite_updated(self, favorite_dict: dict):
-        def update_title(current_title: str, is_favorite: bool):
-            if is_favorite and not current_title.startswith(config.STAR_PREFIX):
-                return config.STAR_PREFIX + current_title
-            elif not is_favorite and current_title.startswith(config.STAR_PREFIX):
-                return current_title[len(config.STAR_PREFIX):]
-            return current_title
-        
-        for node_id, is_favorite in favorite_dict.items():
+        for node_id, _ in favorite_dict.items():
             action = self._action_dict.get(node_id)
             menu = self._dynamic_menus.get(node_id)
-            
+            node = self.catalog_view_model.get_node_by_id(node_id)
+            if not node:
+                logger.warning(f"Node with ID '{node_id}' not found in catalog view model. Cannot update favorite stars.")
+                continue
+        
+            new_title = node.favorite_title
+                        
             if action:
-                title = action.text()
-                new_title = update_title(title, is_favorite)
                 action.setText(new_title)
             
             if menu:
-                title = menu.title()
-                new_title = update_title(title, is_favorite)
                 menu.setTitle(new_title)
+        # def update_title(current_title: str, is_favorite: bool):
+        #     if is_favorite and not current_title.startswith(STAR_PREFIX):
+        #         return STAR_PREFIX + current_title
+        #     elif not is_favorite and current_title.startswith(STAR_PREFIX):
+        #         return current_title[len(STAR_PREFIX):]
+        #     return current_title
+        
+        # for node_id, is_favorite in favorite_dict.items():
+        #     action = self._action_dict.get(node_id)
+        #     menu = self._dynamic_menus.get(node_id)
+            
+        #     if action:
+        #         title = action.text()
+        #         new_title = update_title(title, is_favorite)
+        #         action.setText(new_title)
+            
+        #     if menu:
+        #         title = menu.title()
+        #         new_title = update_title(title, is_favorite)
+        #         menu.setTitle(new_title)
     
     def _set_automatic_crs(self, enabled: bool):
         self._plugin_settings.automatic_crs = enabled
@@ -284,4 +307,3 @@ class MainMenu(QMenu):
         
         automatic_crs = self._plugin_settings.automatic_crs
         self.automatic_crs_action.setChecked(automatic_crs)
-

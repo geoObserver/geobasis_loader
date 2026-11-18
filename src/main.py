@@ -4,6 +4,7 @@ from . import catalog_module
 from . import property_module
 from . import search_module
 from . import shared_ui
+from . import app
 from .core.utils import custom_logger
 
 logger = custom_logger.get_logger(__name__)
@@ -23,6 +24,8 @@ class GeoBasis_Loader:
         self.property_manager = property_module.PropertyManager()
         self.search_index = search_module.SearchIndex(self.catalog_manager)
         self.topic_loader = catalog_module.TopicLoader(self.property_manager)
+        self.topic_actions = app.TopicActions(self.topic_loader, self.property_manager)
+        self.topic_context_menu_factory = shared_ui.TopicContextMenuFactory(self.topic_actions)
         self.catalog_tree_view_model = catalog_module.ui.CatalogTreeViewModel(self.catalog_manager, self.property_manager)
         self.favorites_view_model = property_module.ui.FavoriteViewModel(self.catalog_manager, self.property_manager)
         
@@ -48,13 +51,35 @@ class GeoBasis_Loader:
         if not self.favorites_view_model:
             logger.critical("FavoriteViewModel is not initialized. Cannot build the main menu.")
             return
+        
+        if not self.topic_actions:
+            logger.critical("TopicActions is not initialized. Cannot build the main menu.")
+            return
+        
+        if not self.topic_context_menu_factory:
+            logger.critical("TopicContextMenuFactory is not initialized. Cannot build the main menu.")
+            return
 
         if plugin_menu:
-            self.main_menu = shared_ui.MainMenu(self.catalog_manager, self.property_manager, self.catalog_tree_view_model, self.favorites_view_model, parent=plugin_menu)
+            self.main_menu = shared_ui.MainMenu(
+                catalog_manager=self.catalog_manager,
+                catalog_model=self.catalog_tree_view_model,
+                favorite_view_model=self.favorites_view_model,
+                topic_actions=self.topic_actions,
+                topic_context_menu_factory=self.topic_context_menu_factory,
+                parent=plugin_menu
+            )
             plugin_menu.addMenu(self.main_menu)
         else:
             logger.critical("Konnte Plugin-Menü nicht finden. Menü konnte nicht hinzugefügt werden.")
-            self.main_menu = shared_ui.MainMenu(self.catalog_manager, self.property_manager, self.catalog_tree_view_model, self.favorites_view_model, parent=None)
+            self.main_menu = shared_ui.MainMenu(
+                catalog_manager=self.catalog_manager,
+                catalog_model=self.catalog_tree_view_model,
+                favorite_view_model=self.favorites_view_model,
+                topic_actions=self.topic_actions,
+                topic_context_menu_factory=self.topic_context_menu_factory,
+                parent=None
+            )
 
         # Fetch data from data sources
         self.property_manager.load_all()

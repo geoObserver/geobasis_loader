@@ -2,41 +2,27 @@ from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Optional, Union
 from enum import Enum
-from ....core import icons
 from ....core.types import CatalogEntryServiceType as ServiceType
+from ....core.types import CatalogEntryType as EntryType
+from ....core.models import BasicCatalogEntry, BasicCatalogTopicEntry
 
-
-class EntryType(str, Enum):
-    TOPIC = "topic"
-    TOPIC_GROUP = "group"
-    TOPIC_COMBINATION = "combination"
 
 class CatalogSource(str, Enum):
     LOCAL = "local"
     SERVER = "server"
 
 @dataclass(frozen=True)
-class TopicEntry:
-    id: str
-    title: str
-    crs: frozenset[str]
-    description: Optional[str] = None
+class TopicEntry(BasicCatalogEntry):
+    crs: frozenset[str] = field(default_factory=frozenset)
     deprecated: bool = False
     deprecated_message: Optional[str] = None
     keywords: frozenset[str] = field(default_factory=frozenset)
     separator_after: bool = False
+    # TODO: remove in 3.0
     internal_key: Optional[str] = None  # Internal key for catalog index, not part of the public API
-    
-    @property
-    def entry_type(self) -> EntryType:
-        raise NotImplementedError("Subclasses must implement the entry_type property.")
-    
-    def get_icon(self) -> icons.icon_infrastructure.QIcon:
-        raise NotImplementedError("Subclasses must implement the get_icon method.")
-
 
 @dataclass(frozen=True)
-class Topic(TopicEntry):
+class Topic(TopicEntry, BasicCatalogTopicEntry):
     """A data class to represent a topic (layer) with various attributes."""
     
     uri: str = ""
@@ -44,7 +30,6 @@ class Topic(TopicEntry):
     server_uri: Optional[str] = None
     uri_pattern: Optional[str] = None
     layer_id: Optional[str] = None
-    service_type: ServiceType = ServiceType.WMS
     
     opacity: float = 1.0
     min_scale: Optional[float] = None
@@ -63,10 +48,16 @@ class Topic(TopicEntry):
     def is_web(self) -> bool:
         return self.service_type == ServiceType.WEB
     
-    def get_icon(self) -> icons.icon_infrastructure.QIcon:
-        """Returns the appropriate icon for the topic based on its service type."""
-        return icons.get_icon(self.service_type)
-
+    def get_summary(self) -> str:
+        """Returns a summary of the topic entry."""
+        
+        if self.is_web():
+            return f"{self.title} öffnen"
+        elif self.is_vector():
+            return f"{self.title} laden"
+        else:
+            return self.title
+    
     
 @dataclass(frozen=True)
 class TopicGroup(TopicEntry):
@@ -95,9 +86,9 @@ class TopicGroup(TopicEntry):
     def get_subtopics(self) -> list[Topic]:
         return list(self.subtopics)
     
-    def get_icon(self) -> icons.icon_infrastructure.QIcon:
-        """Returns the appropriate icon for the topic group."""
-        return icons.get_icon(icons.IconKey.FOLDER_CLOSED)
+    def get_summary(self) -> str:
+        """Returns a summary of the topic group entry."""
+        return f"{self.title} [Gruppe, {len(self.subtopics)} Themen]"
 
 
 @dataclass(frozen=True)
@@ -130,10 +121,10 @@ class TopicCombination(TopicEntry):
     def get_referenced_topics(self) -> list[Union[Topic, TopicGroup]]:
         return list(self.reference_dict.values())
     
-    def get_icon(self) -> icons.icon_infrastructure.QIcon:
-        """Returns the appropriate icon for the topic combination."""
-        return icons.get_icon(icons.IconKey.COMBINATION_ADD)
-
+    def get_summary(self) -> str:
+        """Returns a summary of the topic combination entry."""
+        return f"{self.title} [Kombination, {len(self.references)} Themen]"
+    
 
 @dataclass(frozen=True)
 class Region:
@@ -161,10 +152,6 @@ class Region:
     def get_topics(self) -> list[TopicEntry]:
         return list(self.topics)
     
-    def get_icon(self) -> icons.icon_infrastructure.QIcon:
-        """Returns the appropriate icon for the region."""
-        return icons.get_icon(icons.IconKey.FOLDER_CLOSED)
-
 
 @dataclass(frozen=True)
 class Catalog:

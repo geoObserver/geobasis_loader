@@ -69,9 +69,10 @@ TOOLBAR_NAME = "geoObserverTools"
 LOGGING_SUCCESS_LEVEL = 25
 PRESET_FORMAT_VERSION = 7.00
 CATALOG_FORMAT_VERSION = 7.00
-STAR_PREFIX = "\u2605 "  # ★
 SEARCH_HIGHLIGHT_COLOR = "#DA0000"  # Red, for highlight text when searching in the panel
 GRAYED_OUT_COLOR = "#808080"  # Gray, for items from other catalogs
+
+BOOKMARK_GROUP_NAME = plugin_info.name
 
 # CURRENT_CATALOG_SCORE_BONUS = 1000  # Score bonus for entries from the currently selected catalog
 

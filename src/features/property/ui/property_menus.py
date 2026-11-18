@@ -1,15 +1,19 @@
+from typing import TYPE_CHECKING
 import weakref
 from qgis.PyQt.QtWidgets import QAction
 from ....core.ui import CustomQMenu
 from ....core import icons
 from ....core.utils import signal_utils
 from ...catalog.models import catalog_models as catalog_types
-from ...catalog.topic.topic_app import TopicLoader
 from .favorite_view_model import FavoriteViewModel
+from ....app import TopicActions
+
+if TYPE_CHECKING:
+    from ....shared_ui.context_menus import TopicContextMenuFactory
 
 
 class FavoritesMenu(CustomQMenu):
-    def __init__(self, favorite_view_model: FavoriteViewModel, parent):
+    def __init__(self, favorite_view_model: FavoriteViewModel, topic_actions: TopicActions, context_menu_factory: "TopicContextMenuFactory", parent):
         """Initializes the FavoritesMenu. The provided FavoriteViewModel is used to build the menu and update it when the favorites change.
         The private property manager of the FavoriteViewModel is used to create a TopicLoader for loading topics.
         Since the UI has to be in sync with the topic loader this approach should be fine.
@@ -20,9 +24,9 @@ class FavoritesMenu(CustomQMenu):
         """
         super().__init__("Favoriten", "favorites-menu", parent)
         self.setIcon(icons.get_icon(icons.IconKey.FAVORITE_STAR))
-        self._property_manager = favorite_view_model._property_manager
-        self.topic_loader = TopicLoader(self._property_manager)
+        self.topic_actions = topic_actions
         self.favorite_view_model = favorite_view_model
+        self._context_menu_factory = context_menu_factory
         self._action_dict: weakref.WeakValueDictionary[str, QAction] = weakref.WeakValueDictionary()
         
         self.favorite_view_model.favorite_nodes_updated.connect(self.build)
@@ -56,20 +60,19 @@ class FavoritesMenu(CustomQMenu):
     
     def _on_topic_action_triggered(self) -> None:
         sender = self.sender()
-        if isinstance(sender, QAction):
-            entry: catalog_types.TopicEntry = sender.data()
-            if isinstance(entry, catalog_types.TopicEntry):
-                if isinstance(entry, catalog_types.Topic) and entry.is_web():
-                    self.topic_loader.open_web_site(entry.uri)
-                else:
-                    self.topic_loader.add_topic(entry)
-            else:
-                logger.warning(f"Ungültige Daten im QAction-Objekt: {sender.objectName()}")
-
-    # def _show_context_menu(self, action: QAction, global_pos) -> None:
-    #     data = action.data()
-    #     if not isinstance(data, str):
-    #         return
+        if not isinstance(sender, QAction):
+            return
         
-    #     context_menu = TopicContextMenu(data, self)
-    #     context_menu.exec(global_pos)
+        entry: catalog_types.TopicEntry = sender.data()
+        if isinstance(entry, catalog_types.TopicEntry):
+            self.topic_actions.load(entry)
+        else:
+            logger.warning(f"Ungültige Daten im QAction-Objekt: {sender.objectName()}")
+
+    def _show_context_menu(self, action: QAction, global_pos) -> None:
+        data = action.data()
+        if not isinstance(data, catalog_types.TopicEntry):
+            return
+        
+        context_menu = self._context_menu_factory.create(data, self)
+        context_menu.exec(global_pos)

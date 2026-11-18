@@ -196,10 +196,13 @@ class PropertyManager(QObject):
         values = property_infrastructure.load(property, self._qgs_settings)
         if property == PluginSettingsKeys.PROPERTY_FAVORITE:
             self.property_repository.load_favorites(set(values))
+            self.favorite_changed.emit({id: True for id in values})
         elif property == PluginSettingsKeys.PROPERTY_INVISIBLE:
             self.property_repository.load_invisible(set(values))
+            self.visibility_changed.emit({id: False for id in values})
         elif property == PluginSettingsKeys.PROPERTY_DISABLED:
             self.property_repository.load_disabled(set(values))
+            self.enabled_changed.emit({id: False for id in values})
         else:
             raise ValueError(f"Can't load '{property}': Unknown property")
         

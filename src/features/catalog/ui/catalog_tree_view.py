@@ -1,6 +1,5 @@
 from typing import Generator, Optional, Union
 from dataclasses import dataclass, field
-import weakref
 from qgis.PyQt import QtCore
 from qgis.PyQt.QtGui import QIcon
 from ....core import icons
@@ -8,6 +7,8 @@ from ..models import Region, TopicEntry, Topic, TopicGroup, TopicCombination, Ca
 from ..catalog_manager import CatalogManager
 from ...property.property_manager import PropertyManager
 from ....core.utils import signal_utils
+
+STAR_PREFIX = "\u2605 "  # ★
 
 @dataclass(slots=True)
 class EntryNode:
@@ -47,6 +48,10 @@ class EntryNode:
     @property
     def title(self) -> str:
         return self.entry.title
+    
+    @property
+    def favorite_title(self) -> str:
+        return f"{STAR_PREFIX}{self.entry.title}" if self.is_favorite else self.entry.title
 
     @property
     def tooltip(self) -> str:
@@ -164,6 +169,12 @@ class CatalogTreeViewModel(QtCore.QObject):
             index_node = IndexNode(index=index, catalogs=nodes)
             self.index_nodes.append(index_node)
         self.indices_rebuilt.emit()
+    
+    def get_node_by_id(self, entry_id: str) -> Optional[EntryNode]:
+        return self._node_dict.get(entry_id)
+    
+    def get_current_catalog(self) -> Optional[Catalog]:
+        return self.catalog_manager.get_current_catalog()
     
     def _on_property_changed(self, changes: dict[str, bool]) -> Generator[tuple[EntryNode, bool], None, None]:
         for entry_id, value in changes.items():

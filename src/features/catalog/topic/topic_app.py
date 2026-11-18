@@ -241,7 +241,8 @@ class TopicLoader:
                 if ltl is not None:
                     # FIXME: Global types
                     ltl.setCustomProperty("gbl_name", topic.title)
-                    ltl.setCustomProperty("gbl_path", topic.id)
+                    ltl.setCustomProperty("gbl_path", topic.internal_key)
+                    ltl.setCustomProperty("gbl_id", topic.id)
                     ltl.setCustomProperty("gbl_crs", crs)
                     ltl.setExpanded(False)
                     ltl.setItemVisibilityChecked(visible)
@@ -282,6 +283,7 @@ class TopicLoader:
         
         # FIXME: Global types
         new_layer_group.setCustomProperty("gbl_name", topic_group.title)
+        new_layer_group.setCustomProperty("gbl_path", topic_group.internal_key)
         new_layer_group.setCustomProperty("gbl_id", topic_group.id)
         new_layer_group.setCustomProperty("gbl_crs", preferred_crs)
         new_layer_group.setItemVisibilityChecked(group_visibility)
@@ -306,8 +308,10 @@ class TopicLoader:
             ltl = new_layer_group.insertLayer(0, sub_layer)
             if ltl is not None:
                 ltl.setCustomProperty("gbl_name", subtopic.title)
+                ltl.setCustomProperty("gbl_path", subtopic.internal_key)
                 ltl.setCustomProperty("gbl_id", subtopic.id)
                 ltl.setCustomProperty("gbl_crs", sub_layer.crs().authid())
+                ltl.setCustomProperty("gbl_parent", topic_group.id)
                 ltl.setExpanded(False)
                 ltl.setItemVisibilityChecked(subtopic_visibility)
             else:

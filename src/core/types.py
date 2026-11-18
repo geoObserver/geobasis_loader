@@ -15,4 +15,11 @@ class CatalogEntryServiceType(str, Enum):
 class CustomLayerProperty(str, Enum):
     GBL_NAME = "gbl_name"
     GBL_ID = "gbl_id"
+    GBL_PATH = "gbl_path"
+    GBL_PARENT_ID = "gbl_parent_id"
     GBL_CRS = "gbl_crs"
+
+class CatalogEntryType(str, Enum):
+    TOPIC = "topic"
+    TOPIC_GROUP = "group"
+    TOPIC_COMBINATION = "combination"
