@@ -5,19 +5,12 @@ from ..models.preset_models import Preset, PresetEntry
 from ..preset_manager import PresetManager
 from ....core.utils import signal_utils
 from ....core import icons
+from ....core.ui.ui_models import BasicCatalogDataUiModel
 
 
-@dataclass
-class PresetEntryNode:
-    entry: PresetEntry
-    
-    @property
-    def id(self) -> str:
-        return self.entry.id
-    
-    @property
-    def title(self) -> str:
-        return self.entry.title
+class PresetEntryNode(BasicCatalogDataUiModel["PresetEntryNode"]):
+    def __init__(self, entry: PresetEntry, child_nodes: list["PresetEntryNode"] = []):
+        super().__init__(entry=entry, child_nodes=child_nodes)
 
 @dataclass
 class PresetNode:

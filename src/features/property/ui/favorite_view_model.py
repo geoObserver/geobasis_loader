@@ -1,32 +1,14 @@
-from dataclasses import dataclass
-from typing import Union
 from qgis.PyQt.QtCore import QObject, pyqtSignal
-from qgis.PyQt.QtGui import QIcon
 from ..property_manager import PropertyManager
 from ...catalog.catalog_manager import CatalogManager
-from ...catalog.models import Region, TopicEntry
+from ...catalog.models import TopicEntry
 from ....core.utils import signal_utils
+from ....core.ui.ui_models import BasicCatalogDataUiModel
 
 
-@dataclass(slots=True, frozen=True)
-class FavoriteNode:
-    entry: TopicEntry
-    
-    @property
-    def id(self) -> str:
-        return self.entry.id
-    
-    @property
-    def title(self) -> str:
-        return self.entry.title
-    
-    @property
-    def tooltip(self) -> str:
-        return f"{self.title} laden"
-    
-    @property
-    def icon(self) -> QIcon:
-        return self.entry.get_icon()
+class FavoriteNode(BasicCatalogDataUiModel["FavoriteNode"]):
+    def __init__(self, entry: TopicEntry, child_nodes: list["FavoriteNode"] = []):
+        super().__init__(entry=entry, child_nodes=child_nodes)
 
 class FavoriteViewModel(QObject):
     favorite_nodes_updated = pyqtSignal(list)
@@ -59,7 +41,8 @@ class FavoriteViewModel(QObject):
             entry = self._catalog_manager.get_entry(favorite_id)
             if entry:
                 node = FavoriteNode(
-                    entry=entry
+                    entry=entry,
+                    child_nodes=[]
                 )
                 self._favorite_node_dict[node.id] = node
             else:
@@ -79,7 +62,8 @@ class FavoriteViewModel(QObject):
             entry = catalog.entries[favorite_id]
             if entry:
                 node = FavoriteNode(
-                    entry=entry
+                    entry=entry,
+                    child_nodes=[]
                 )
                 self._favorite_node_dict[favorite_id] = node
                 self._unreslved_favorites.remove(favorite_id)
@@ -95,7 +79,8 @@ class FavoriteViewModel(QObject):
                 entry = self._catalog_manager.get_entry(favorite_id)
                 if entry:
                     node = FavoriteNode(
-                        entry=entry
+                        entry=entry,
+                        child_nodes=[]
                     )
                     self._favorite_node_dict[favorite_id] = node
                     updates = True

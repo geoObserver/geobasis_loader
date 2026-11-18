@@ -1,79 +1,46 @@
 from typing import Generator, Optional, Union
 from dataclasses import dataclass, field
 from qgis.PyQt import QtCore
-from qgis.PyQt.QtGui import QIcon
 from ....core import icons
-from ..models import Region, TopicEntry, Topic, TopicGroup, TopicCombination, Catalog, CatalogIndex
+from ..models import Region, TopicEntry, Topic, TopicGroup, Catalog, CatalogIndex
 from ..catalog_manager import CatalogManager
 from ...property.property_manager import PropertyManager
 from ....core.utils import signal_utils
+from ....core.ui.ui_models import BasicCatalogDataUiModel
 
 STAR_PREFIX = "\u2605 "  # ★
 
-@dataclass(slots=True)
-class EntryNode:
-    entry: Union[Region, TopicEntry]
+class EntryNode(BasicCatalogDataUiModel["EntryNode"]):
     is_enabled: bool
     is_visible: bool
     is_favorite: bool
-    child_nodes: list["EntryNode"] = field(default_factory=list)
+    
+    def __init__(self, entry: Union[Region, TopicEntry], is_enabled: bool = True, is_visible: bool = True, is_favorite: bool = False, child_nodes: Optional[list["EntryNode"]] = None):
+        super().__init__(entry=entry, child_nodes=child_nodes)
+        self.is_enabled = is_enabled
+        self.is_visible = is_visible
+        self.is_favorite = is_favorite
+    
     # opened: bool = field(default=False)
     
-    def __iter__(self):
-        yield from self.child_nodes
-    
-    @property
-    def additional_node(self) -> Optional["EntryNode"]:
-        if isinstance(self.entry, TopicGroup):
-            return EntryNode(
-                entry=self.entry,
-                is_enabled=self.is_enabled,
-                is_visible=self.is_visible,
-                is_favorite=self.is_favorite
-            )
-        return None
-    
-    @property
-    def id(self) -> str:
-        return self.entry.id
+    # @property
+    # def additional_node(self) -> Optional["EntryNode"]:
+    #     if isinstance(self.entry, TopicGroup):
+    #         return EntryNode(
+    #             entry=self.entry,
+    #             is_enabled=self.is_enabled,
+    #             is_visible=self.is_visible,
+    #             is_favorite=self.is_favorite
+    #         )
+    #     return None
     
     @property
     def is_web(self) -> bool:
         return isinstance(self.entry, Topic) and self.entry.is_web()
     
     @property
-    def separator(self) -> bool:
-        return self.entry.separator_after
-    
-    @property
-    def title(self) -> str:
-        return self.entry.title
-    
-    @property
     def favorite_title(self) -> str:
         return f"{STAR_PREFIX}{self.entry.title}" if self.is_favorite else self.entry.title
-
-    @property
-    def tooltip(self) -> str:
-        if isinstance(self.entry, Topic):
-            if self.entry.is_web():
-                return f"{self.entry.title} öffnen"
-            else:
-                return f"{self.entry.title} laden"
-        elif isinstance(self.entry, TopicGroup):
-            return f"{self.entry.title} [Gruppe, {len(self.entry.get_subtopics())} Themen]"
-        elif isinstance(self.entry, TopicCombination):
-            return f"{self.entry.title} [Kombination, {len(self.entry.references)} Themen]"
-        else:
-            return self.entry.title
-    
-    def get_icon(self) -> QIcon:
-        if self.child_nodes:
-            # if self.opened:
-            #     return icons.get_icon(icons.IconKey.FOLDER_OPEN)
-            return icons.get_icon(icons.IconKey.FOLDER_CLOSED)
-        else:
-            return self.entry.get_icon()
 
 @dataclass(slots=True)
 class IndexEntryNode:
@@ -115,7 +82,8 @@ class CatalogTreeViewModel(QtCore.QObject):
             entry=entry,
             is_enabled=self.property_manager.is_enabled(entry.id),
             is_visible=self.property_manager.is_visible(entry.id),
-            is_favorite=self.property_manager.is_favorite(entry.id)
+            is_favorite=self.property_manager.is_favorite(entry.id),
+            child_nodes=[]
         )
         if parent:
             parent.child_nodes.append(node)

@@ -4,7 +4,7 @@ from typing import Optional, Union
 from enum import Enum
 from ....core.types import CatalogEntryServiceType as ServiceType
 from ....core.types import CatalogEntryType as EntryType
-from ....core.models import BasicCatalogEntry, BasicCatalogTopicEntry
+from ....core.models import BasicCatalogEntry, BasicCatalogTopicEntry, BasicCatalogData
 
 
 class CatalogSource(str, Enum):
@@ -17,7 +17,6 @@ class TopicEntry(BasicCatalogEntry):
     deprecated: bool = False
     deprecated_message: Optional[str] = None
     keywords: frozenset[str] = field(default_factory=frozenset)
-    separator_after: bool = False
     # TODO: remove in 3.0
     internal_key: Optional[str] = None  # Internal key for catalog index, not part of the public API
 
@@ -127,13 +126,10 @@ class TopicCombination(TopicEntry):
     
 
 @dataclass(frozen=True)
-class Region:
+class Region(BasicCatalogData):
     """A data class to represent a region with various attributes. A region is a structured collection of topics, groups and combinations."""
     
-    id: str
-    title: str
     topics: list[TopicEntry] = field(default_factory=list)
-    separator_after: bool = False
     # Custom properties for the region, not part of the public JSON
     topic_dict: dict[str, TopicEntry] = field(default_factory=dict, init=False, repr=False)
     

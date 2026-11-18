@@ -1,18 +1,29 @@
-from dataclasses import dataclass, field
-from typing import Optional
-from ..models import BasicCatalogEntry, BasicCatalogTopicEntry
+import copy
+from typing import Any, Generator, Generic, Optional, Sequence, TypeVar
+from ..models import BasicCatalogData, BasicCatalogEntry, BasicCatalogTopicEntry
 from ..types import CatalogEntryType
 from .. import icons
 
-@dataclass
-class BasicTopicEntryUiModel:
-    entry: BasicCatalogEntry
-    child_nodes: list["BasicTopicEntryUiModel"] = field(default_factory=list)
-    
+
+TNode = TypeVar("TNode", bound="BasicCatalogDataUiModel[Any]")
+
+
+class BasicCatalogDataUiModel(Generic[TNode]):
+    def __init__(self, entry: BasicCatalogData, child_nodes: Optional[Sequence[TNode]] = None):
+        self._entry = entry
+        self.child_nodes: list[TNode] = list(child_nodes) if child_nodes is not None else []
+
+    def __iter__(self) -> Generator[TNode, None, None]:
+        yield from self.child_nodes
+
+    @property
+    def entry(self) -> BasicCatalogData:
+        return self._entry
+
     @property
     def id(self) -> str:
         return self.entry.id
-    
+
     @property
     def title(self) -> str:
         return self.entry.title
@@ -23,21 +34,25 @@ class BasicTopicEntryUiModel:
             return self.entry.get_summary()
         except NotImplementedError:
             return self.entry.title
-    
+
     @property
-    def additional_node(self) -> Optional["BasicTopicEntryUiModel"]:
-        if self.entry.entry_type == CatalogEntryType.TOPIC_GROUP:
-            return BasicTopicEntryUiModel(
-                entry=self.entry
-            )
-        return None
-    
+    def separator(self) -> bool:
+        return self.entry.separator_after
+
+    def get_additional_node(self) -> "BasicCatalogDataUiModel[TNode]":
+        c: BasicCatalogDataUiModel[TNode] = copy.copy(self)
+        c.child_nodes = []
+        return c
+
     def get_icon(self) -> icons.icon_infrastructure.QIcon:
         """Returns the appropriate icon for the topic entry."""
 
         if len(self.child_nodes) > 0:
             return icons.get_icon(icons.IconKey.FOLDER_CLOSED)
-        
+
+        if not isinstance(self.entry, BasicCatalogEntry):
+            return icons.get_icon(icons.IconKey.FOLDER_CLOSED)
+
         entry_type = self.entry.entry_type
         if entry_type == CatalogEntryType.TOPIC:
             if isinstance(self.entry, BasicCatalogTopicEntry):
