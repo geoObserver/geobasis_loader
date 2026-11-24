@@ -10247,7 +10247,7 @@
         }
       },
       "bodenrichtwerte": {
-        "name": "NI: Bodenrichtwerte Bauland 2024 (WMS)",
+        "name": "NI: Bodenrichtwerte Bauland 2026 (WMS)",
         "gbl-view": "true",
         "type": "ogc_wms",
         "komgis_layerid": "50f12570-7868-4eab-8311-0bce44aa8f49",
@@ -10255,7 +10255,7 @@
           "Externe Geodienste",
           "Land Niedersachsen",
           "Bodenrichtwerte (BRW)",
-          "WMS: Bodenrichtwerte Bauland 2024"
+          "WMS: Bodenrichtwerte Bauland 2026"
         ],
         "komgis_priority": "79000",
         "valid_epsg": [
@@ -12052,7 +12052,7 @@
         "seperator": true
       },
       "bodenrichtwerte_bau": {
-        "name": "RP: Bodenrichtwerte Bauland 2024 (WMS)",
+        "name": "RP: Bodenrichtwerte Bauland 2026 (WMS)",
         "gbl-view": "true",
         "type": "ogc_wms",
         "valid_epsg": [
@@ -12069,7 +12069,7 @@
         "opacity": 0.75
       },
       "bodenrichtwerte_lw": {
-        "name": "RP: Bodenrichtwerte Landwirtschaft 2024 (WMS)",
+        "name": "RP: Bodenrichtwerte Landwirtschaft 2026 (WMS)",
         "gbl-view": "true",
         "type": "ogc_wms",
         "valid_epsg": [
